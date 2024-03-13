@@ -15,10 +15,13 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
+            'nama' => 'Admin eFarm',
+            'username' => 'admin',
             'password' => bcrypt('admin123'),
-            'email_verified_at' => now()
+            'alamat_lengkap' => 'Jember',
+            'role_id' => 2,
+            'email' => 'admin@gmail.com',
+            'email_verified_at' => now(),
         ]);
     }
 }
