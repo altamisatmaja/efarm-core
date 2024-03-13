@@ -34,3 +34,10 @@ Route::group([
         'kategori' => KategoriProductController::class
     ]);
 });
+
+// Route::group(['middleware' => 'api'], function() {
+//     Route::get('kategori', [KategoriProductController::class, 'index']);
+//     Route::post('kategori', [KategoriProductController::class, 'store']);
+//     Route::put('kategori/{id}', [KategoriProductController::class, 'update']);
+//     Route::delete('kategori/{id}', [KategoriProductController::class, 'destroy']);
+// });

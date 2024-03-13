@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\KategoriProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class KategoriProductController extends Controller
 {
@@ -42,7 +43,28 @@ class KategoriProductController extends Controller
      */
     public function store(Request $request)
     {
-        $kategori = KategoriProduct::create($request->all());
+        $validator = Validator::make($request->all(), [
+            'nama_kategori_product' => 'required',
+            'deskripsi_kategori_product' => 'required',
+            'gambar_kategori_product' => 'required|image|mimes:jpg,png,jpeg,webp',
+        ]);
+
+        if($validator->fails()){
+            return response()->json(
+                $validator->errors(), 422
+            );
+        }
+
+        $input = $request->all();
+
+        if($request->has('gambar_kategori_product')){
+            $gambar = $request->file('gambar_kategori_product');
+            $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
+            $gambar->move('uploads', $nama_gambar);
+            $input['gambar_kategori_product'] = $nama_gambar;
+        }
+
+        $kategori = KategoriProduct::create($input);
 
         return response()->json([
             'data' => $kategori
