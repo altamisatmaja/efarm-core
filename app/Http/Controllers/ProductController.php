@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth:api')->except(['index']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product = Product::all();
+
+        return response()->json([
+            'data' => '$product',
+        ]);
     }
 
     /**
@@ -35,7 +43,21 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'id_livestock' => 'required',
+            'harga_product' => 'required',
+            'id_kategori' => 'required',
+            'tags' => 'required',
+            'diskon' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json(
+                $validator->errors(), 422
+            );
+        }
+
+        
     }
 
     /**

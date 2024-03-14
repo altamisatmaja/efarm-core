@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\KategoriProductController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SliderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,7 +34,9 @@ Route::group([
     'middleware' => 'api',
 ], function() {
     Route::resources([
-        'category' => CategoryProductController::class
+        'category' => CategoryProductController::class,
+        'product' => ProductController::class,
+        'slider' => SliderController::class,
     ]);
 });
 
