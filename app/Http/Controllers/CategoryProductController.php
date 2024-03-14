@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KategoriProduct;
+use App\Models\CategoryProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
-class KategoriProductController extends Controller
+class CategoryProductController extends Controller
 {
     public function __construct(){
         $this->middleware('auth:api')->except(['index']);
@@ -18,7 +19,7 @@ class KategoriProductController extends Controller
      */
     public function index()
     {
-        $kategori =  KategoriProduct::all();
+        $kategori = CategoryProduct::all();
 
         return response()->json([
             'data' => $kategori,
@@ -64,7 +65,7 @@ class KategoriProductController extends Controller
             $input['gambar_kategori_product'] = $nama_gambar;
         }
 
-        $kategori = KategoriProduct::create($input);
+        $kategori = CategoryProduct::create($input);
 
         return response()->json([
             'data' => $kategori
@@ -74,10 +75,10 @@ class KategoriProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\KategoriProduct  $kategoriProduct
+     * @param  \App\Models\CategoryProduct  $categoryProduct
      * @return \Illuminate\Http\Response
      */
-    public function show(KategoriProduct $kategoriProduct)
+    public function show(CategoryProduct $categoryProduct)
     {
         //
     }
@@ -85,10 +86,10 @@ class KategoriProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\KategoriProduct  $kategoriProduct
+     * @param  \App\Models\CategoryProduct  $categoryProduct
      * @return \Illuminate\Http\Response
      */
-    public function edit(KategoriProduct $kategoriProduct)
+    public function edit(CategoryProduct $categoryProduct)
     {
         //
     }
@@ -97,31 +98,53 @@ class KategoriProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\KategoriProduct  $kategoriProduct
+     * @param  \App\Models\CategoryProduct  $categoryProduct
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, KategoriProduct $kategori)
+    public function update(Request $request, CategoryProduct $category)
     {
-        $kategori->update($request->all());
+        $validator = Validator::make($request->all(), [
+            'nama_kategori_product' => 'required',
+            'deskripsi_kategori_product' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json(
+                $validator->errors(), 422
+            );
+        }
+
+        $input = $request->all();
+
+        if($request->has('gambar_kategori_product')){
+            File::delete('uploads/'.$category->gambar_kategori_product);
+            $gambar = $request->file('gambar_kategori_product');
+            $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
+            $gambar->move('uploads', $nama_gambar);
+            $input['gambar_kategori_product'] = $nama_gambar;
+        } else {
+            unset($input['gambar_kategori_product']);
+        }
+
+        $category->update($input);
         
         return response()->json([
             'message' => 'success',
-            'data' => $kategori,
+            'data' => $category,
         ]);
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\KategoriProduct  $kategoriProduct
+     * @param  \App\Models\CategoryProduct  $categoryProduct
      * @return \Illuminate\Http\Response
      */
-    public function destroy(KategoriProduct $kategori)
+    public function destroy(CategoryProduct $category)
     {
-        // dd($kategori);
-        // KategoriProduct::destroy($kategori);
+        File::delete('uploads/'.$category->gambar_kategori_product);
 
-        $kategori->delete();
+        $category->delete();
 
         return response()->json([
             'message' => 'success',

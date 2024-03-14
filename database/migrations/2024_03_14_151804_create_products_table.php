@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKategoriProductsTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateKategoriProductsTable extends Migration
      */
     public function up()
     {
-        Schema::create('kategori_products', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_kategori_product');
-            $table->text('deskripsi_kategori_product');
-            $table->string('gambar_kategori_product');
+            $table->integer('id_livestock');
+            $table->integer('harga_product');
+            $table->integer('id_kategori');
+            $table->integer('harga');
+            $table->string('tags');
+            $table->integer('diskon');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateKategoriProductsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategori_products');
+        Schema::dropIfExists('products');
     }
 }
