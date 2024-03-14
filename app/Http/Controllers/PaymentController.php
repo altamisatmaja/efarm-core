@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Livestock;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 
-class LivestockController extends Controller
+class PaymentController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth:api')->except(['index']);
-    }
     /**
      * Display a listing of the resource.
      *
@@ -17,11 +14,7 @@ class LivestockController extends Controller
      */
     public function index()
     {
-        $livestock = Livestock::all();
-
-        return response()->json([
-            'data' => $livestock,
-        ]);
+        //
     }
 
     /**
@@ -48,10 +41,10 @@ class LivestockController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Livestock  $livestock
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function show(Livestock $livestock)
+    public function show(Payment $payment)
     {
         //
     }
@@ -59,10 +52,10 @@ class LivestockController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Livestock  $livestock
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Livestock $livestock)
+    public function edit(Payment $payment)
     {
         //
     }
@@ -71,10 +64,10 @@ class LivestockController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Livestock  $livestock
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Livestock $livestock)
+    public function update(Request $request, Payment $payment)
     {
         //
     }
@@ -82,10 +75,10 @@ class LivestockController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Livestock  $livestock
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Livestock $livestock)
+    public function destroy(Payment $payment)
     {
         //
     }

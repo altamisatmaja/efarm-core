@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLivestockSalesStatusesTable extends Migration
+class CreateFarmsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateLivestockSalesStatusesTable extends Migration
      */
     public function up()
     {
-        Schema::create('livestock_sales_statuses', function (Blueprint $table) {
+        Schema::create('farms', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_status_penjualan');
-            $table->text('deskripsi_status_penjualan');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class CreateLivestockSalesStatusesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('livestock_sales_statuses');
+        Schema::dropIfExists('farms');
     }
 }

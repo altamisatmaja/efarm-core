@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\KategoriProductController;
+use App\Http\Controllers\LivestockController;
+use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SliderController;
 use Illuminate\Http\Request;
@@ -37,6 +39,8 @@ Route::group([
         'category' => CategoryProductController::class,
         'product' => ProductController::class,
         'slider' => SliderController::class,
+        'livestock' => LivestockController::class,
+        'partner' => PartnerController::class,
     ]);
 });
 

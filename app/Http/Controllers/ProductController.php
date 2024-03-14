@@ -57,6 +57,11 @@ class ProductController extends Controller
             );
         }
 
+        $product = Product::create($request->all());
+
+        return response()->json([
+            'data' => $product
+        ]);
         
     }
 
@@ -91,7 +96,26 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'id_livestock' => 'required',
+            'harga_product' => 'required',
+            'id_kategori' => 'required',
+            'tags' => 'required',
+            'diskon' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json(
+                $validator->errors(), 422
+            );
+        }
+
+        $product = Product::create($request->all());
+
+        return response()->json([
+            'message' => 'succes',
+            'data' => $product
+        ]);
     }
 
     /**
@@ -102,6 +126,11 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return response()->json([
+            'message' => 'success',
+            'data' => $product
+        ]);
     }
 }
