@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ReviewController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth:api')->except(['index']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,11 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        $review = Review::all();
+
+        return response()->json([
+            'data' => $review
+        ]);
     }
 
     /**
@@ -35,7 +43,26 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'id_product' => 'required',
+            'id_user' => 'required',
+            'review' => 'required',
+            'rating' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json(
+                $validator->errors(), 422
+            );
+        }
+
+        $input = $request->all();
+
+        $review = Review::create($input);
+
+        return response()->json([
+            'data' => $review
+        ]);
     }
 
     /**
@@ -69,7 +96,26 @@ class ReviewController extends Controller
      */
     public function update(Request $request, Review $review)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'id_product' => 'required',
+            'id_user' => 'required',
+            'review' => 'required',
+            'rating' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json(
+                $validator->errors(), 422
+            );
+        }
+
+        $input = $request->all();
+
+        $review->update($input);
+
+        return response()->json([
+            'data' => $review
+        ]);
     }
 
     /**
@@ -80,6 +126,10 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review)
     {
-        //
+        $review->delete();
+
+        return response()->json([
+            'message' => 'success'
+        ]);
     }
 }
