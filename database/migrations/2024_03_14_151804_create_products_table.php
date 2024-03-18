@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->integer('harga_product');
             $table->integer('id_kategori');
             $table->string('tags');
+            $table->string('nama_product');
             $table->integer('diskon');
             $table->timestamps();
         });

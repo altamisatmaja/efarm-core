@@ -51,7 +51,7 @@ Route::group([
         'partner' => PartnerController::class,
         'categorylivestock' => CategoryLivestockController::class,
         'order' => OrderController::class,
-        'report' => ReportController::class,
+        // 'report' => ReportController::class,
         'review' => ReviewController::class,
         'testimonial' => TestimonialController::class,
         'typelivestock' => TypeLivestockController::class,
@@ -64,7 +64,8 @@ Route::group([
     Route::get('order/sent', [OrderController::class, 'order_sent']);
     Route::get('order/accepted', [OrderController::class, 'order_accepted']);
     Route::get('order/end', [OrderController::class, 'order_end']);
-    Route::get('order/status/{order}', [OrderController::class, 'handle_status']);
+    Route::post('order/status/{order}', [OrderController::class, 'handle_status']);
+    Route::get('report', [ReportController::class, 'index']);
 });
 
 // Route::group(['middleware' => 'api'], function() {
