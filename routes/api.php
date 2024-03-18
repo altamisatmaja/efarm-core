@@ -1,12 +1,20 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryLivestockController;
 use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\FarmController;
 use App\Http\Controllers\KategoriProductController;
 use App\Http\Controllers\LivestockController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\TypeLivestockController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +49,14 @@ Route::group([
         'slider' => SliderController::class,
         'livestock' => LivestockController::class,
         'partner' => PartnerController::class,
+        'categorylivestock' => CategoryLivestockController::class,
+        'order' => OrderController::class,
+        'report' => ReportController::class,
+        'review' => ReviewController::class,
+        'testimonial' => TestimonialController::class,
+        'typelivestock' => TypeLivestockController::class,
+        'payment' => PaymentController::class,
+        'farm' => FarmController::class,
     ]);
 });
 

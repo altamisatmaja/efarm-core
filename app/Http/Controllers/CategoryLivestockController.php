@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\CategoryLivestock;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class CategoryLivestockController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth:api')->except(['index']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,11 @@ class CategoryLivestockController extends Controller
      */
     public function index()
     {
-        //
+        $categoryLivestock = CategoryLivestock::all();
+
+        return response()->json([
+            'data' => $categoryLivestock,
+        ]);
     }
 
     /**
@@ -35,7 +43,23 @@ class CategoryLivestockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nama_kategori_hewan' =>  'required',
+            'deskripsi_kategori_hewan' =>  'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json(
+                $validator->errors(), 422
+            );
+        }
+
+        $categoryLivestock = CategoryLivestock::create($request->all());
+
+        return response()->json([
+            'message' => 'success',
+            'data' => $categoryLivestock,
+        ]);
     }
 
     /**
@@ -69,7 +93,23 @@ class CategoryLivestockController extends Controller
      */
     public function update(Request $request, CategoryLivestock $categoryLivestock)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nama_kategori_hewan' =>  'required',
+            'deskripsi_kategori_hewan' =>  'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json(
+                $validator->errors(), 422
+            );
+        }
+
+        $categoryLivestock = CategoryLivestock::create($request->all());
+
+        return response()->json([
+            'message' => 'succes',
+            'data' => $categoryLivestock
+        ]);
     }
 
     /**
@@ -78,8 +118,13 @@ class CategoryLivestockController extends Controller
      * @param  \App\Models\CategoryLivestock  $categoryLivestock
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CategoryLivestock $categoryLivestock)
+    public function destroy(CategoryLivestock $categorylivestock)
     {
-        //
+        $categorylivestock->delete();
+
+        return response()->json([
+            'message' => 'success',
+            'data' => $categorylivestock
+        ]);
     }
 }
