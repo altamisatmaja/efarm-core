@@ -91,7 +91,7 @@ class CategoryLivestockController extends Controller
      * @param  \App\Models\CategoryLivestock  $categoryLivestock
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CategoryLivestock $categoryLivestock)
+    public function update(Request $request, CategoryLivestock $categorylivestock)
     {
         $validator = Validator::make($request->all(), [
             'nama_kategori_hewan' =>  'required',
@@ -104,11 +104,11 @@ class CategoryLivestockController extends Controller
             );
         }
 
-        $categoryLivestock = CategoryLivestock::create($request->all());
+        $categorylivestock->update($request->all());
 
         return response()->json([
             'message' => 'succes',
-            'data' => $categoryLivestock
+            'data' => $categorylivestock
         ]);
     }
 

@@ -116,7 +116,7 @@ class CategoryProductController extends Controller
 
         $input = $request->all();
 
-        if($request->has('gambar_kategori_product')){
+        if($request->hasFile('gambar_kategori_product')){
             File::delete('uploads/'.$category->gambar_kategori_product);
             $gambar = $request->file('gambar_kategori_product');
             $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();

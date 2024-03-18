@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class TestimonialController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth:api')->except(['index']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,11 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        //
+        $testimonial = Testimonial::all();
+
+        return response()->json([
+            'data' => $testimonial
+        ]);
     }
 
     /**
@@ -35,7 +44,32 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nama_testimoni' => 'required',
+            'deskripsi' => 'required',
+            'gambar' => 'required|image|mimes:jpg,png,jpeg,webp',
+        ]);
+
+        if($validator->fails()){
+            return response()->json(
+                $validator->errors(), 422
+            );
+        }
+
+        $input = $request->all();
+
+        if($request->has('gambar')){
+            $gambar = $request->file('gambar');
+            $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
+            $gambar->move('uploads', $nama_gambar);
+            $input['gambar'] = $nama_gambar;
+        }
+
+        $testimonial = Testimonial::create($input);
+
+        return response()->json([
+            'data' => $testimonial
+        ]);
     }
 
     /**
@@ -69,7 +103,35 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, Testimonial $testimonial)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nama_testimoni' => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json(
+                $validator->errors(), 422
+            );
+        }
+
+        $input = $request->all();
+
+        if($request->hasFile('gambar')){
+            File::delete('uploads/'.$testimonial->gambar);
+            $gambar = $request->file('gambar');
+            $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
+            $gambar->move('uploads', $nama_gambar);
+            $input['gambar'] = $nama_gambar;
+        } else {
+            unset($input['gambar']);
+        }
+
+        $testimonial->update($input);
+        
+        return response()->json([
+            'message' => 'success',
+            'data' => $testimonial,
+        ]);
     }
 
     /**
@@ -80,6 +142,12 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
-        //
+        File::delete('uploads/'.$testimonial->gambar);
+
+        $testimonial->delete();
+
+        return response()->json([
+            'message' => 'success',
+        ]);
     }
 }

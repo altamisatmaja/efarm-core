@@ -110,7 +110,7 @@ class ProductController extends Controller
             );
         }
 
-        $product = Product::create($request->all());
+        $product->update($request->all());
 
         return response()->json([
             'message' => 'succes',
