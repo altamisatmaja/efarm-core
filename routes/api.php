@@ -58,6 +58,13 @@ Route::group([
         'payment' => PaymentController::class,
         'farm' => FarmController::class,
     ]);
+
+    Route::get('order/confirmed', [OrderController::class, 'order_confirmed']);
+    Route::get('order/packed', [OrderController::class, 'order_packed']);
+    Route::get('order/sent', [OrderController::class, 'order_sent']);
+    Route::get('order/accepted', [OrderController::class, 'order_accepted']);
+    Route::get('order/end', [OrderController::class, 'order_end']);
+    Route::get('order/status/{order}', [OrderController::class, 'handle_status']);
 });
 
 // Route::group(['middleware' => 'api'], function() {
