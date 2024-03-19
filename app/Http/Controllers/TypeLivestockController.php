@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\TypeLivestock;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TypeLivestockController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth:api')->except(['index']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,11 @@ class TypeLivestockController extends Controller
      */
     public function index()
     {
-        //
+        $typelivestock = TypeLivestock::all();
+
+        return response()->json([
+            'data' => $typelivestock
+        ]);
     }
 
     /**
@@ -35,7 +43,23 @@ class TypeLivestockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nama_jenis_hewan' => 'required',
+            'deskripsi_jenis_hewan' => 'required'
+        ]);
+
+        if($validator->fails()){
+            return response()->json([
+                $validator->errors(), 422
+            ]);
+        }
+
+        $typelivestock = TypeLivestock::create($request->all());
+
+        return response()->json([
+            'message' => 'success',
+            'data' => $typelivestock
+        ]);
     }
 
     /**
@@ -67,9 +91,25 @@ class TypeLivestockController extends Controller
      * @param  \App\Models\TypeLivestock  $typeLivestock
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TypeLivestock $typeLivestock)
+    public function update(Request $request, TypeLivestock $typelivestock)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nama_jenis_hewan' => 'required',
+            'deskripsi_jenis_hewan' => 'required'
+        ]);
+
+        if($validator->fails()){
+            return response()->json([
+                $validator->errors(), 422
+            ]);
+        }
+
+        $typelivestock->update($request->all());
+
+        return response()->json([
+            'message' => 'success',
+            'data' => $typelivestock
+        ]);
     }
 
     /**
@@ -80,6 +120,11 @@ class TypeLivestockController extends Controller
      */
     public function destroy(TypeLivestock $typeLivestock)
     {
-        //
+        $typeLivestock->delete();
+
+        return response()->json([
+            'message' => 'success',
+            'data' => $typeLivestock
+        ]);
     }
 }
