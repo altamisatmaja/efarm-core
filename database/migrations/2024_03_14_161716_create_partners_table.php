@@ -22,6 +22,7 @@ class CreatePartnersTable extends Migration
             $table->string('kecamatan_partner')->nullable();
             $table->string('kelurahan_partner')->nullable();
             $table->string('alamat_partner')->nullable();
+            $table->string('foto_profil');
             $table->timestamps();
         });
     }

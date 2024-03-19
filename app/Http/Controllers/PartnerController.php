@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Partner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class PartnerController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth:api')->except(['index']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,12 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        //
+        $partner = Partner::all();
+
+        return response()->json([
+            'data' => $partner
+        ]);
+        
     }
 
     /**
@@ -35,8 +45,39 @@ class PartnerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nama_partner' => 'required',
+            'nama_perusahaan_partner' => 'required',
+            'provinsi_partner' => 'required',
+            'kabupaten_partner' => 'required',
+            'kecamatan_partner' => 'required',
+            'kelurahan_partner' => 'required',
+            'alamat_partner' => 'required',
+            'foto_profil' => 'required|image|mimes:jpg,png,jpeg,webp',
+        ]);
+
+        if($validator->fails()){
+            return response()->json([
+                $validator->errors(), 422
+            ]);
+        }
+
+        $input = $request->all();
+
+        if($request->has('foto_profil')){
+            $gambar = $request->file('foto_profil');
+            $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
+            $gambar->move('uploads/', $nama_gambar);
+            $input['foto_profil'] = $nama_gambar;
+        }
+
+        $partner = Partner::create($input);
+
+        return response()->json([
+            'data' => $partner
+        ]);
     }
+    
 
     /**
      * Display the specified resource.
@@ -69,7 +110,40 @@ class PartnerController extends Controller
      */
     public function update(Request $request, Partner $partner)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nama_partner' => 'required',
+            'nama_perusahaan_partner' => 'required',
+            'provinsi_partner' => 'required',
+            'kabupaten_partner' => 'required',
+            'kecamatan_partner' => 'required',
+            'kelurahan_partner' => 'required',
+            'alamat_partner' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return response()->json([
+                $validator->errors(), 422
+            ]);
+        }
+
+        $input = $request->all();
+
+        if($request->hasFile('foto_profil')){
+            File::delete('uploads/'.$partner->foto_profil);
+            $gambar = $request->file('foto_profil');
+            $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
+            $gambar->move('uploads', $nama_gambar);
+            $input['foto_profil'] = $nama_gambar;
+        } else {
+            unset($input['foto_profil']);
+        }
+
+        $partner->update($input);
+
+        return response()->json([
+            'message' => 'success',
+            'data' => $partner
+        ]);
     }
 
     /**
@@ -80,6 +154,12 @@ class PartnerController extends Controller
      */
     public function destroy(Partner $partner)
     {
-        //
+        File::delete('uploads/'.$partner->foto_profil);
+
+        $partner->delete();
+
+        return response()->json([
+            'message' => 'success',
+        ]);
     }
 }
