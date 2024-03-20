@@ -118,13 +118,13 @@ class TypeLivestockController extends Controller
      * @param  \App\Models\TypeLivestock  $typeLivestock
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TypeLivestock $typeLivestock)
+    public function destroy(TypeLivestock $typelivestock)
     {
-        $typeLivestock->delete();
+        $typelivestock->delete();
 
         return response()->json([
             'message' => 'success',
-            'data' => $typeLivestock
+            'data' => $typelivestock
         ]);
     }
 }

@@ -48,11 +48,6 @@ class PartnerController extends Controller
         $validator = Validator::make($request->all(), [
             'nama_partner' => 'required',
             'nama_perusahaan_partner' => 'required',
-            'provinsi_partner' => 'required',
-            'kabupaten_partner' => 'required',
-            'kecamatan_partner' => 'required',
-            'kelurahan_partner' => 'required',
-            'alamat_partner' => 'required',
             'foto_profil' => 'required|image|mimes:jpg,png,jpeg,webp',
         ]);
 
@@ -113,11 +108,6 @@ class PartnerController extends Controller
         $validator = Validator::make($request->all(), [
             'nama_partner' => 'required',
             'nama_perusahaan_partner' => 'required',
-            'provinsi_partner' => 'required',
-            'kabupaten_partner' => 'required',
-            'kecamatan_partner' => 'required',
-            'kelurahan_partner' => 'required',
-            'alamat_partner' => 'required',
         ]);
 
         if($validator->fails()){
