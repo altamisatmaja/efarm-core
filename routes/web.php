@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\GoogleLoginController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,24 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login/google', [GoogleLoginController::class, 'redirectToGoogle'])->name('auth.google');
-Route::get('/login/google/callback', [GoogleLoginController::class, 'handleGoogleCallback']);
 
+Route::post('login', [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout']);
 
-Route::middleware([
-    'auth:jwt',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
-
-// Route::prefix('google')->name('google')->group(function () {
-//     Route::get('login', [GoogleLoginController::class, 'redirectToGoogle'])->name('auth.login');
-//     Route::any('login/callback', [GoogleLoginController::class, 'handleGoogleCallback']);
-// });
-
-
-
+Route::get('login', [AuthController::class, 'index']);
+Route::get('dashboard', [DashboardController::class, 'index']);

@@ -46,9 +46,14 @@ class PartnerController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'nama' => 'required',
+            'username' => 'required',
+            'email' => 'required',
+            'email_verified_at' => 'required',
+            'password' => 'required|same:konfirmasi_password',
+            'konfirmasi_password' => 'required|password',
             'nama_partner' => 'required',
             'nama_perusahaan_partner' => 'required',
-            'foto_profil' => 'required|image|mimes:jpg,png,jpeg,webp',
         ]);
 
         if($validator->fails()){
@@ -58,13 +63,7 @@ class PartnerController extends Controller
         }
 
         $input = $request->all();
-
-        if($request->has('foto_profil')){
-            $gambar = $request->file('foto_profil');
-            $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
-            $gambar->move('uploads/', $nama_gambar);
-            $input['foto_profil'] = $nama_gambar;
-        }
+        $input['password'] = bcrypt($request->password);
 
         $partner = Partner::create($input);
 

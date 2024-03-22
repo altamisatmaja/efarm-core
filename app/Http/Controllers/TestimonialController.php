@@ -80,7 +80,9 @@ class TestimonialController extends Controller
      */
     public function show(Testimonial $testimonial)
     {
-        //
+        return response()->json([
+            'data' => $testimonial
+        ]);
     }
 
     /**

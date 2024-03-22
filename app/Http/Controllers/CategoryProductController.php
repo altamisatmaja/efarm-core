@@ -78,9 +78,11 @@ class CategoryProductController extends Controller
      * @param  \App\Models\CategoryProduct  $categoryProduct
      * @return \Illuminate\Http\Response
      */
-    public function show(CategoryProduct $categoryProduct)
+    public function show(CategoryProduct $category)
     {
-        //
+        return response()->json([
+            'data' => $category
+        ]);
     }
 
     /**
