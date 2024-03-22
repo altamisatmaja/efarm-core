@@ -24,4 +24,4 @@ Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout']);
 
 Route::get('login', [AuthController::class, 'index']);
-Route::get('dashboard', [DashboardController::class, 'index']);
+Route::get('admin/dashboard', [DashboardController::class, 'index']);
