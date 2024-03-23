@@ -4,22 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+
 
 class AuthController extends Controller
 {
     public function index(){
         return view('admin.auth.login');
     }
-    public function login()
+    
+    public function login(Request $request)
     {
-        $credentials = request(['username', 'password']);
+        $this->validate($request, [
+            'email' => 'required|email',
+            'password' => 'required|password'
+        ]);
 
-        if (!$token = auth()->attempt($credentials)) {
-            return response()->json(['message' => 'Username atau password salah'], 401);
+        $credentials = request(['email', 'password']);
+
+        if (!Auth::attempt($credentials)) {
+            return redirect('/admin/dashboard');
         }
-
-        return $this->respondWithToken($token);
+    
+        return back()->withErrors(['error' => 'Email atau password salah']);
     }
 
     protected function respondWithToken($token)
@@ -61,9 +70,11 @@ class AuthController extends Controller
 
     public function logout()
     {
-        auth()->logout();
+        Session::flush();
+        return redirect('admin/login');
+        // auth()->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        // return response()->json(['message' => 'Successfully logged out']);
     }
 
 }

@@ -28,7 +28,6 @@ module.exports = {
       minWidth: {
         '20': '20rem'
       },
-    darkMode: "class",
     theme: {
         extend: {
             colors: {
@@ -57,6 +56,9 @@ module.exports = {
                     800: '#155E75',
                     900: '#164E63'
                   },
+                'primarybase' : '#AAC14C',
+                'sekunder': '#EAEFD2',
+                'textbase' : '#444444',
             },
         },
         fontFamily: {
