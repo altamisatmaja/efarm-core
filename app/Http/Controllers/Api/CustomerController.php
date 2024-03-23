@@ -1,20 +1,32 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
-
-class AuthController extends Controller
+class CustomerController extends Controller
 {
-    public function index(){
-        return view('admin.auth.login');
-    }
-    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+
+    //  public function __construct()
+    //  {
+    //      $this->middleware('auth:api', ['except' => ['login']]);
+    //  }
+ 
     public function login(Request $request)
     {
         $this->validate($request, [
@@ -26,25 +38,24 @@ class AuthController extends Controller
 
         if (auth()->attempt($credentials)) {
             $user = auth()->user();
-            if($user->id_user_role == 1){
+            if($user->id_user_role == 2){
                 $token = Auth::guard('api')->attempt($credentials);
-                cookie()->queue(cookie('token', $token, 120));
-                return redirect('/admin/dashboard');
-            }
-            else {
-                return back()->withErrors(['error' => 'Anda bukan admin!']);
+                return $this->respondWithToken($token);
             }
         }
     
-        return back()->withErrors(['error' => 'Email atau password salah']);
+        return response()->json([
+            'data' => 'succes'
+        ]);
     }
+    
 
     protected function respondWithToken($token)
     {
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 120,
+            'expires_in' => auth('api')->factory()->getTTL() * 60
         ]);
     }
 
@@ -53,11 +64,8 @@ class AuthController extends Controller
             'nama' => 'required',
             'username' => 'required',
             'email' => 'required',
-            // 'email_verified_at' => 'required',
-            'password' => 'required',
-            // 'konfirmasi_password' => 'required|password',
-            // 'nama_partner' => 'required',
-            // 'nama_perusahaan_partner' => 'required',
+            'password' => 'required|password|same:konfirmasi_password',
+            'konfirmasi_password' => 'required|password|same:password',
         ]);
 
         if($validator->fails()){
@@ -78,11 +86,10 @@ class AuthController extends Controller
 
     public function logout()
     {
-        Session::flush();
-        return redirect('admin/login');
-        // auth()->logout();
+        // Session::flush();
+        // return redirect('admin/login');
+        auth()->logout();
 
-        // return response()->json(['message' => 'Successfully logged out']);
+        return response()->json(['message' => 'Successfully logged out']);
     }
-
 }

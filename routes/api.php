@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\PartnerController as ApiPartnerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryLivestockController;
 use App\Http\Controllers\CategoryProductController;
@@ -37,9 +39,10 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
 ], function() {
-    Route::post('/login/admin', [AuthController::class, 'login']);
+    Route::post('/admin/login', [AuthController::class, 'login']);
+    Route::post('/customer/login', [CustomerController::class, 'login']);
+    Route::post('/partner/login', [ApiPartnerController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
-    Route::post('/login/user', [AuthController::class, 'login_user']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 

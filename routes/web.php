@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('admin/login', [AuthController::class, 'index'])->name('admin.login');
-Route::post('admin/login', [AuthController::class, 'login'])->name('admin.login');
+Route::post('admin/login', [AuthController::class, 'login']);
 Route::get('admin/logout', [AuthController::class, 'logout']);
 
 
