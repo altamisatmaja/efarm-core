@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Api\AuthPartnerController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Customer\AuthCustomerController;
+use App\Http\Controllers\Customer\DashboardCustomerController;
 use App\Http\Controllers\Partner\DashboardPartnerController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,12 +35,13 @@ Route::get('partner/login', [AuthPartnerController::class, 'index'])->name('part
 Route::post('partner/login', [AuthPartnerController::class, 'login']);
 Route::get('partner/logout', [AuthPartnerController::class, 'logout']);
 
-// route for user
-Route::get('partner/login', [AuthPartnerController::class, 'index'])->name('partner.login');
-Route::post('partner/login', [AuthPartnerController::class, 'login']);
-Route::get('partner/logout', [AuthPartnerController::class, 'logout']);
+// route for customer
+Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
+Route::post('customer/login', [AuthCustomerController::class, 'login']);
+Route::get('customer/logout', [AuthCustomerController::class, 'logout']);
 
 Route::middleware('auth')->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'index']);
     Route::get('partner/dashboard', [DashboardPartnerController::class, 'index']);
+    Route::get('customer/dashboard', [DashboardCustomerController::class, 'index']);
 });
