@@ -8,13 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class PartnerController extends Controller
+class AuthPartnerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function index(){
+        return view('partner.auth.login');
+    }
     public function login(Request $request)
     {
         $this->validate($request, [
@@ -28,13 +26,15 @@ class PartnerController extends Controller
             $user = auth()->user();
             if($user->id_user_role == 3){
                 $token = Auth::guard('api')->attempt($credentials);
-                return $this->respondWithToken($token);
+                cookie()->queue(cookie('token', $token, 120));
+                return redirect('/partner/dashboard');
+            }
+            else {
+                return back()->withErrors(['error' => 'Anda bukan partner!']);
             }
         }
     
-        return response()->json([
-            'message' => 'Anda bukan partner'
-        ]);
+        return back()->withErrors(['error' => 'Email atau password salah']);
     }
     
 

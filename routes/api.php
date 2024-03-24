@@ -40,10 +40,13 @@ Route::group([
     'prefix' => 'auth'
 ], function() {
     Route::post('/admin/login', [AuthController::class, 'login']);
-    Route::post('/customer/login', [CustomerController::class, 'login']);
     Route::post('/partner/login', [ApiPartnerController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
+    
+    // route api for customer
+    Route::post('/customer/login', [CustomerController::class, 'login']);
+    Route::post('/customer/register', [CustomerController::class, 'register']);
 });
 
 Route::group([
