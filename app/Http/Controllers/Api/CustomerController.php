@@ -11,20 +11,10 @@ use Illuminate\Support\Facades\Validator;
 
 class CustomerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
 
     //  public function __construct()
     //  {
-    //      $this->middleware('auth:api', ['except' => ['login']]);
+    //      $this->middleware('auth:web', ['except' => ['login']]);
     //  }
  
     public function login(Request $request)

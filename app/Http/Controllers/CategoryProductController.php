@@ -10,13 +10,19 @@ use Illuminate\Support\Facades\Validator;
 class CategoryProductController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth:api')->except(['index']);
+        $this->middleware('auth')->except(['index']);
+    }
+    
+
+    public function list(){
+        return view('admin.pages.category_product.index');
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $kategori = CategoryProduct::all();

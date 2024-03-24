@@ -43,7 +43,7 @@
                             Selamat datang admin 👋
                         </h1>
                     </div>
-                    <form class="space-y-4 md:space-y-6" action="/admin/login" method="POST">
+                    <form class="space-y-4 md:space-y-6" action="/partner/login" method="POST">
                         @csrf
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-textbase">Email

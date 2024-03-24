@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin | Masuk</title>
 </head>
 
@@ -38,18 +39,17 @@
             <div class="w-full bg-white rounded-lg shadow  md:mt-0 sm:max-w-md xl:p-0">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <div class="justify-center align-middle items-center flex">
-                        <h1
-                            class="text-xl font-bold leading-tight tracking-tight text-textbase md:text-2xl">
+                        <h1 class="text-xl font-bold leading-tight tracking-tight text-textbase md:text-2xl">
                             Selamat datang admin 👋
                         </h1>
                     </div>
-                    <form class="space-y-4 md:space-y-6" action="/admin/login" method="POST">
+                    <form class="form-login user space-y-4 md:space-y-6" action="/admin/login" method="POST">
                         @csrf
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-textbase">Email
                                 anda</label>
                             <input type="email" name="email" id="email"
-                                class="bg-gray-50 border border-gray-300 text-gray-400 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 -gray-600"
+                                class="email bg-gray-50 border border-gray-300 text-textbase sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 -gray-600"
                                 placeholder="pengguna@gmail.com" required="">
                         </div>
                         @error('email')
@@ -59,7 +59,7 @@
                         <div>
                             <label for="password" class="block mb-2 text-sm font-medium text-textbase">Password</label>
                             <input type="password" name="password" id="password" placeholder="••••••••" required=""
-                                class="bg-gray-50 border border-gray-300 text-gray-400 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 -gray-600">
+                                class="password bg-gray-50 border border-gray-300 text-textbase sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 -gray-600">
                         </div>
                         @error('password')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -68,7 +68,7 @@
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
                                     <input id="remember" aria-describedby="remember" type="checkbox"
-                                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 -gray-600"
+                                        class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300"
                                         required="">
                                 </div>
                                 <div class="ml-3 text-sm">
@@ -89,6 +89,49 @@
             </div>
         </div>
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+
+            function setCookie(name, value, days) {
+                var expires = '';
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + (value || "") + expires + "; path=/";
+            }
+
+
+            $('.form-login').submit(function(e) {
+                e.preventDefault();
+                const email = $('.email').val();
+                const password = $('.password').val();
+                const csrf_token = $('meta[name="csrf-token"]').attr('content')
+
+                console.log(csrf_token);
+
+                $.ajax({
+                    url: '/admin/login',
+                    type: 'POST',
+                    data: {
+                        email: email,
+                        password: password,
+                        _token: csrf_token,
+                    },
+                    success: function(data) {
+                        // console.log(data);
+                        if (!data.success) {
+                            alert(data.message);
+                        }
+                        setCookie('token-efarm', data.token, 7);
+                        window.location.href = "/admin/dashboard"
+                    }
+                })
+            })
+        });
+    </script>
 
 </body>
 

@@ -28,15 +28,24 @@ class AuthController extends Controller
             $user = auth()->user();
             if($user->id_user_role == 1){
                 $token = Auth::guard('api')->attempt($credentials);
-                cookie()->queue(cookie('token', $token, 120));
-                return redirect('/admin/dashboard');
+                // cookie()->queue(cookie('token', $token, 120));
+                // return redirect('/admin/dashboard');
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Login berhasil',
+                    'token' => $token,
+                ]);
             }
-            else {
-                return back()->withErrors(['error' => 'Anda bukan admin!']);
-            }
+            // else {
+            //     return back()->withErrors(['error' => 'Anda bukan admin!']);
+            // }
         }
     
-        return back()->withErrors(['error' => 'Email atau password salah']);
+        // return back()->withErrors(['error' => 'Email atau password salah']);
+        return response()->json([
+            'success' => false,
+            'message' => 'Email atau password salah'
+        ]);
     }
 
     protected function respondWithToken($token)

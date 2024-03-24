@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Api\AuthPartnerController;
+use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\Partner\AuthPartnerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Customer\AuthCustomerController;
 use App\Http\Controllers\Customer\DashboardCustomerController;
@@ -18,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -44,4 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'index']);
     Route::get('partner/dashboard', [DashboardPartnerController::class, 'index']);
     Route::get('customer/dashboard', [DashboardCustomerController::class, 'index']);
+
+    // route for category
+    Route::get('admin/category', [CategoryProductController::class, 'list'])->name('admin.category.list');
 });
