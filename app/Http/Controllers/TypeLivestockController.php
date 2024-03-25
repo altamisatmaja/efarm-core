@@ -9,7 +9,13 @@ use Illuminate\Support\Facades\Validator;
 class TypeLivestockController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth:api')->except(['index']);
+        // $this->middleware('auth:api')->except(['index']);
+        $this->middleware('auth')->only(['list']);
+        // $this->middleware('auth:api')->only(['delete']);
+    }
+
+    public function list(){
+        return view('admin.pages.typelivestock.index');
     }
     /**
      * Display a listing of the resource.
@@ -57,6 +63,7 @@ class TypeLivestockController extends Controller
         $typelivestock = TypeLivestock::create($request->all());
 
         return response()->json([
+            'success' => true,
             'message' => 'success',
             'data' => $typelivestock
         ]);
@@ -107,6 +114,7 @@ class TypeLivestockController extends Controller
         $typelivestock->update($request->all());
 
         return response()->json([
+            'success' => true,
             'message' => 'success',
             'data' => $typelivestock
         ]);
@@ -123,6 +131,7 @@ class TypeLivestockController extends Controller
         $typelivestock->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'success',
             'data' => $typelivestock
         ]);

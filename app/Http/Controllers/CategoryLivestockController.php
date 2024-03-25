@@ -9,8 +9,13 @@ use Illuminate\Support\Facades\Validator;
 class CategoryLivestockController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth:api')->except(['index']);
+        $this->middleware('auth')->only(['list']);
+        $this->middleware('auth:api')->only(['store', 'delete']);
     }
+    public function list(){
+        return view('admin.pages.category_livestock.index');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -57,6 +62,7 @@ class CategoryLivestockController extends Controller
         $categoryLivestock = CategoryLivestock::create($request->all());
 
         return response()->json([
+            'success' => true,
             'message' => 'success',
             'data' => $categoryLivestock,
         ]);
@@ -107,6 +113,7 @@ class CategoryLivestockController extends Controller
         $categorylivestock->update($request->all());
 
         return response()->json([
+            'success' => 'true',
             'message' => 'succes',
             'data' => $categorylivestock
         ]);

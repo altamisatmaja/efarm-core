@@ -43,8 +43,12 @@
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pelanggan</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.category.list') }}""
+                                <a href="{{ route('admin.category.list') }}"
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Kategori</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.typelivestock.list') }}"
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Typelivestock</a>
                             </li>
                             <li>
                                 <a href="#"
