@@ -119,7 +119,7 @@
 
     {{-- component for modal ubah --}}
     <div id="modal-form-ubah"
-        class="hidden modal-form-ubah modal-ubah fixed inset-0 z-50 overflow-auto bg-white/40 bg-opacity-50 backdrop-blur-md flex items-center justify-center">
+        class="hidden modal-form-ubah fixed inset-0 z-50 overflow-auto bg-white/40 bg-opacity-50 backdrop-blur-md flex items-center justify-center">
         <div
             class="flex invisible flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl">
             <div class="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
@@ -130,11 +130,11 @@
                 </svg>
             </div>
             <div class="flex flex-col px-6 py-5 bg-gray-50">
-                <form class="" action="" method="POST">
+                <form class="form-kategori-update" action="" method="POST">
                     <div class="grid md:grid-cols-2 grid-cols-1 gap-6">
                         <div class="md:col-span-2">
                             <label for="nama_kategori_product"
-                                class="float-left block  font-normal text-gray-400 text-lg">Nama
+                                class="float-left block font-normal text-gray-400 text-lg">Nama
                                 Kategori</label>
                             <input type="text" id="nama_kategori_product" name="nama_kategori_product"
                                 placeholder="Masukkan nama kategori"
@@ -157,7 +157,7 @@
                                 class="peer block w-full appearance-none border-none   bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0">
                         </div>
                         <div class="md:col-span-2">
-                            <button type="button"
+                            <button type="submit" id="button-submit-edit"
                                 class="middle none center mr-3 w-full rounded-lg border hover:bg-primarybase hover:text-white border-primarybase py-2.5 px-9 font-sans text-xs font-bold uppercase text-primarybase transition-all focus:ring focus:ring-primarybase active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                 data-ripple-dark="true">
                                 Simpan
@@ -190,7 +190,7 @@
                                 <td><img src="/uploads/${val.gambar_kategori_product}" width="150"></td>
                                 <td>
                                 
-                                    <a href="#modal-form-ubah" data-toggle="modal-ubah" class="modal-ubah" id="modal-ubah">Edit</a>
+                                    <a href="#modal-form-ubah" data-id="${val.id}" data-toggle="modal" class="modal-ubah" id="modal-ubah">Edit</a>
                                     <a href="#" data-id="${val.id}" id="delete-category">Hapus</a>
                                 </td>
                             </tr>
@@ -237,6 +237,7 @@
                     var formData = new FormData(this);
                     console.log(formData);
 
+
                     $.ajax({
                         url: '/api/category',
                         type: 'POST',
@@ -247,7 +248,7 @@
                         headers: {
                             "accept": "application/json",
                             "Authorization": "Bearer" + token,
-                            "Access-Control-Allow-Origin":"*"
+                            "Access-Control-Allow-Origin": "*"
                         },
                         success: function(data) {
                             if (data.success) {
@@ -266,22 +267,63 @@
                     e.stopPropagation();
                 });
 
+                $('#button-submit-edit').click(function(e) {
+                    e.stopPropagation();
+                });
+
                 $(document).on('click', '#cancel-tambah', function() {
-                    // $('#modal-form-tambah').addClass('hidden');
                     location.reload();
                 });
 
                 $(document).on('click', '.modal-ubah', function() {
                     $('#modal-form-ubah').removeClass('hidden');
+                    const id = $(this).data('id');
+                    console.log(id);
+                    const token = localStorage.getItem('token-efarm');
+
+                    $.get('/api/category/' + id, function({
+                        data
+                    }) {
+                        console.log(data.id);
+                        console.log(data);
+                        $('input[name="nama_kategori_product"]').val(data.nama_kategori_product);
+                        $('textarea[name="deskripsi_kategori_product"]').val(data
+                            .deskripsi_kategori_product);
+                    });
+
+                    $('.form-kategori-update').submit(function(e) {
+                        e.preventDefault();
+                        const form = $(this);
+                        const token = localStorage.getItem('token-efarm');
+                        var formData = new FormData(this);
+                        console.log(formData);
+
+                        $.ajax({
+                            url: `/api/category/${id}?_method=PUT`,
+                            type: 'POST',
+                            data: formData,
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            headers: {
+                                "accept": "application/json",
+                                "Authorization": token,
+                                "Access-Control-Allow-Origin": "*"
+                            },
+                            success: function(data) {
+                                if (data.success) {
+                                    alert('Data berhasil diubah');
+                                    location.reload();
+                                }
+                            }
+                        })
+                    });
                 });
 
                 $('#cancelubah').click(function(e) {
                     e.preventDefault();
                     location.reload();
                 });
-
-
-
             });
         </script>
     @endpush
