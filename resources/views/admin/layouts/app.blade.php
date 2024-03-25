@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +9,7 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
     <title>@yield('title')</title>
 </head>
+
 <body>
     <div>
         @include('admin.layouts.navbar')
@@ -19,9 +18,9 @@
             <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div>
             <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
                 <main>
-                    @yield('content')
-                    {{-- <div class="pt-6 px-4">
-                        <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
+                    <div class="pt-6 px-4">
+                        @yield('content')
+                        {{-- <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
                             <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
                                 <div class="flex items-center justify-between mb-4">
                                     <div class="flex-shrink-0">
@@ -510,10 +509,10 @@
                                     </table>
                                 </div>
                             </div>
-                        </div>
-                    </div> --}}
+                        </div> --}}
+                    </div>
                 </main>
-                {{-- <footer
+                <footer
                     class="bg-white md:flex md:items-center md:justify-between shadow rounded-lg p-4 md:p-6 xl:p-8 my-6 mx-4">
                     <ul class="flex items-center flex-wrap mb-6 md:mb-0">
                         <li><a href="#"
@@ -571,11 +570,29 @@
                 <p class="text-center text-sm text-gray-500 my-10">
                     &copy; 2019-2021 <a href="#" class="hover:underline" target="_blank">Themesberg</a>. All
                     rights reserved.
-                </p> --}}
+                </p>
             </div>
         </div>
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <script src="https://demo.themesberg.com/windster/app.bundle.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            function getCookie(cname) {
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for (var i = 0; i < ca.length; i++) {
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c.substring(name.length, c.length);
+                    }
+                }
+                return "";
+            }
+        </script>
+        @stack('js')
     </div>
 </body>
 

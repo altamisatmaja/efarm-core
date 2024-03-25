@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Customer\AuthCustomerController;
 use App\Http\Controllers\Customer\DashboardCustomerController;
 use App\Http\Controllers\Partner\DashboardPartnerController;
+use App\Http\Controllers\PartnerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +22,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homepage');
 });
+// Route::get('/home', function () {
+//     return view('homepage');
+// });
 
 
 // route for admin
@@ -41,10 +45,13 @@ Route::post('customer/login', [AuthCustomerController::class, 'login']);
 Route::get('customer/logout', [AuthCustomerController::class, 'logout']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('admin/dashboard', [DashboardController::class, 'index']);
+    Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('partner/dashboard', [DashboardPartnerController::class, 'index']);
     Route::get('customer/dashboard', [DashboardCustomerController::class, 'index']);
 
-    // route for category
+    // route admin for category
     Route::get('admin/category', [CategoryProductController::class, 'list'])->name('admin.category.list');
+
+    // route admin for partner
+    Route::get('admin/partner', [PartnerController::class, 'list'])->name('admin.partner');
 });

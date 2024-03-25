@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Validator;
 class PartnerController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth:api')->except(['index']);
+        $this->middleware('auth')->except(['index']);
+    }
+    public function list(){
+        return view('admin.pages.partner.index');
     }
     /**
      * Display a listing of the resource.

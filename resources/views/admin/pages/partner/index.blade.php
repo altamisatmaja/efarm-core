@@ -1,74 +1,15 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Dashboard | Admin')
+@section('title', 'Admin | Partner')
 
 @section('content')
-<div class="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-    <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-        <div class="flex items-center">
-            <div class="flex-shrink-0">
-                <span
-                    class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">2,340</span>
-                <h3 class="text-base font-normal text-gray-500">New products this week</h3>
-            </div>
-            <div
-                class="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-                14.6%
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </div>
-        </div>
-    </div>
-    <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-        <div class="flex items-center">
-            <div class="flex-shrink-0">
-                <span
-                    class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">5,355</span>
-                <h3 class="text-base font-normal text-gray-500">Visitors this week</h3>
-            </div>
-            <div
-                class="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-                32.9%
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </div>
-        </div>
-    </div>
-    <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-        <div class="flex items-center">
-            <div class="flex-shrink-0">
-                <span
-                    class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">385</span>
-                <h3 class="text-base font-normal text-gray-500">User signups this week</h3>
-            </div>
-            <div
-                class="ml-5 w-0 flex items-center justify-end flex-1 text-red-500 text-base font-bold">
-                -2.7%
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
     <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-xl font-bold leading-none text-gray-900">Latest Customers</h3>
+            <h3 class="text-xl font-bold leading-none text-gray-900">List kategori produk</h3>
             <a href="#"
-                class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg inline-flex items-center p-2">
-                View all
+                class="text-sm bg-primarybase font-medium text-white hover:bg-yellow-400 rounded-lg inline-flex items-center p-2">
+                Tambah Data
             </a>
         </div>
         <div class="flow-root">
@@ -185,6 +126,37 @@
                 </li>
             </ul>
         </div>
+    </div>
+    <div class="flex items-center justify-between mt-6">
+        <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+            </svg>
+
+            <span>
+                previous
+            </span>
+        </a>
+
+        <div class="items-center hidden md:flex gap-x-3">
+            <a href="#" class="px-2 py-1 text-sm text-blue-500 rounded-md bg-blue-100/60">1</a>
+            <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:text-gray-300 hover:bg-gray-100">2</a>
+            <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:text-gray-300 hover:bg-gray-100">3</a>
+            <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:text-gray-300 hover:bg-gray-100">...</a>
+            <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:text-gray-300 hover:bg-gray-100">12</a>
+            <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:text-gray-300 hover:bg-gray-100">13</a>
+            <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md dark:text-gray-300 hover:bg-gray-100">14</a>
+        </div>
+
+        <a href="#" class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
+            <span>
+                Next
+            </span>
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg>
+        </a>
     </div>
 </div>
 @endsection

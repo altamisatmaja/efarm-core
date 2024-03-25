@@ -10,11 +10,12 @@ use Illuminate\Support\Facades\Validator;
 class CategoryProductController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth')->except(['index']);
+        // Ignored, really
     }
     
 
     public function list(){
+        $this->middleware('auth');
         return view('admin.pages.category_product.index');
     }
     /**
@@ -150,6 +151,7 @@ class CategoryProductController extends Controller
      */
     public function destroy(CategoryProduct $category)
     {
+        $this->middleware('auth:api');
         File::delete('uploads/'.$category->gambar_kategori_product);
 
         $category->delete();

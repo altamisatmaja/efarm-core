@@ -6,7 +6,7 @@
             <div class="flex-1 px-3 bg-white divide-y space-y-1">
                 <ul class="space-y-2 pb-2">
                     <li>
-                        <a href="#"
+                        <a href="{{ route('admin.dashboard') }}"
                         class="text-base text-gray-900 font-normal rounded-lg hover:bg-primarybase hover:text-white flex items-center p-2 group ">
                             <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-white"
                                 xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
@@ -86,9 +86,13 @@
                         </button>
                         <ul id="dropdown-efarm-partner" class="hidden py-2 space-y-2">
                             <li>
-                                <a href="#"
+                                <a href="{{ route('admin.partner') }}"
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Data
                                     Partner</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pengajuan Partner</a>
                             </li>
                             <li>
                                 <a href="#"

@@ -121,12 +121,14 @@
                         _token: csrf_token,
                     },
                     success: function(data) {
-                        // console.log(data);
                         if (!data.success) {
                             alert(data.message);
+                        } else if (data.token) {
+                            localStorage.setItem('token-efarm', data.token);
+                            window.location.href = "/admin/dashboard";
+                        } else {
+                            alert("Token tidak ditemukan dalam respon dari server.");
                         }
-                        setCookie('token-efarm', data.token, 7);
-                        window.location.href = "/admin/dashboard"
                     }
                 })
             })
