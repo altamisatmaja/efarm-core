@@ -11,7 +11,8 @@ class TypeLivestockController extends Controller
     public function __construct(){
         // $this->middleware('auth:api')->except(['index']);
         $this->middleware('auth')->only(['list']);
-        // $this->middleware('auth:api')->only(['delete']);
+        // $this->middleware('auth:api')->only(['store', 'delete']);
+        $this->middleware('auth:api')->only(['delete']);
     }
 
     public function list(){
@@ -75,9 +76,11 @@ class TypeLivestockController extends Controller
      * @param  \App\Models\TypeLivestock  $typeLivestock
      * @return \Illuminate\Http\Response
      */
-    public function show(TypeLivestock $typeLivestock)
+    public function show(TypeLivestock $typelivestock)
     {
-        //
+        return response()->json([
+            'data' => $typelivestock
+        ]);
     }
 
     /**

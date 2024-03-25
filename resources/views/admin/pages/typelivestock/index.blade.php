@@ -228,7 +228,6 @@
                     })
                 });
 
-
                 $('#button-submit').click(function(e) {
                     e.stopPropagation();
                 });
@@ -244,18 +243,35 @@
                 $(document).on('click', '.modal-ubah', function() {
                     $('#modal-form-ubah').removeClass('hidden');
                     const id = $(this).data('id');
-                    console.log(id);
+                    console.log(`this is id ${id}`);
                     const token = localStorage.getItem('token-efarm');
+                    const uri = `/api/typelivestock/${id}`;
+                    console.log(uri);
 
-                    $.get('/api/typelivestock/' + id, function({
-                        data
-                    }) {
-                        // console.log(data.id);
-                        console.log(data);
-                        $('input[name="nama_jenis_hewan"]').val(data.nama_jenis_hewan);
-                        $('textarea[name="deskripsi_jenis_hewan"]').val(data
-                            .deskripsi_jenis_hewan);
+                    $.ajax({
+                        url: uri,
+                        type: "GET",
+                        headers: {
+                            "Authorization": "Bearer " + token
+                        },
+                        dataType: 'json',
+                        success: function({
+                            data
+                        }) {
+                            // console.log(data);
+                            // console.log(data.nama_jenis_hewan);
+                            $('input[id="nama_jenis_hewan"]').val(data.nama_jenis_hewan);
+                            $('textarea[id="deskripsi_jenis_hewan"]').val(data
+                                .deskripsi_jenis_hewan);
+                        },
+                        error: function(xhr, status, error) {
+                            console.error("Error:", error);
+                            console.error("Status:", status);
+                            console.error("Response Text:", xhr
+                                .responseText);
+                        }
                     });
+
 
                     $('.form-typelivestock-update').submit(function(e) {
                         e.preventDefault();
@@ -265,15 +281,16 @@
                         console.log(formData);
 
                         $.ajax({
-                            url: `/api/typelivestock/${id}`,
-                            type: 'PUT',
+                            url: `/api/typelivestock/${id}?_method=PUT`,
+                            type: 'POST',
                             data: formData,
                             cache: false,
                             contentType: false,
                             processData: false,
                             headers: {
-                                "accept": "application/json",
-                                "Authorization": token,
+                                headers: {
+                                    "Authorization": "Bearer " + token
+                                },
                                 "Access-Control-Allow-Origin": "*"
                             },
                             success: function(data) {
