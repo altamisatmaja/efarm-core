@@ -11,11 +11,11 @@ class CategoryProductController extends Controller
 {
     public function __construct(){
         // Ignored, really
-    }
+        $this->middleware('auth')->only(['list']);
+        $this->middleware('auth:api')->only(['store', 'update', 'delete']);
+    }   
     
-
     public function list(){
-        $this->middleware('auth');
         return view('admin.pages.category_product.index');
     }
     /**
@@ -75,6 +75,8 @@ class CategoryProductController extends Controller
         $kategori = CategoryProduct::create($input);
 
         return response()->json([
+            'success' => true,
+            'message' => 'success',
             'data' => $kategori
         ]);
     }
@@ -138,6 +140,7 @@ class CategoryProductController extends Controller
         $category->update($input);
         
         return response()->json([
+            'success' => true,
             'message' => 'success',
             'data' => $category,
         ]);
@@ -151,13 +154,13 @@ class CategoryProductController extends Controller
      */
     public function destroy(CategoryProduct $category)
     {
-        $this->middleware('auth:api');
         File::delete('uploads/'.$category->gambar_kategori_product);
 
         $category->delete();
 
         return response()->json([
             'message' => 'success',
+            'success' => true,
         ]);
     }
 }

@@ -1,3 +1,15 @@
+<style>
+    #modal-form-tambah {
+        backdrop-filter: blur(5px);
+        background-color: rgba(170, 193, 76, 0.2)
+    }
+
+    #modal-form-ubah {
+        backdrop-filter: blur(5px);
+        background-color: rgba(170, 193, 76, 0.2)
+    }
+</style>
+
 @extends('admin.layouts.app')
 
 @section('title', 'Dashboard | Category')
@@ -9,15 +21,14 @@
                 <div class="flex flex-wrap items-center">
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1">
                         <h3 class="font-semibold text-base text-blueGray-700">
-                            Social traffic
+                            List of category
                         </h3>
                     </div>
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                        <button
-                            class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                            type="button">
+                        <a href="#modal-form-tambah" data-toggle="modal-tambah"
+                            class="modal-tambah bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
                             Tambah data
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -49,116 +60,116 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- <tr>
-                            <th
-                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                Facebook
-                            </th>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                                1,480
-                            </td>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                <div class="flex items-center">
-                                    <span class="mr-2">60%</span>
-                                    <div class="relative w-full">
-                                        <div class="overflow-hidden h-2 text-xs flex rounded bg-red-200">
-                                            <div style="width: 60%"
-                                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th
-                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                Facebook
-                            </th>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                5,480
-                            </td>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                <div class="flex items-center">
-                                    <span class="mr-2">50%</span>
-                                    <div class="relative w-full">
-                                        <div class="overflow-hidden h-2 text-xs flex rounded bg-purple-200">
-                                            <div style="width: 50%"
-                                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th
-                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                Google
-                            </th>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                4,807
-                            </td>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                <div class="flex items-center">
-                                    <span class="mr-2">60%</span>
-                                    <div class="relative w-full">
-                                        <div class="overflow-hidden h-2 text-xs flex rounded bg-purple-200">
-                                            <div style="width: 60%"
-                                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-pink-500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th
-                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                Instagram
-                            </th>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                3,678
-                            </td>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                <div class="flex items-center">
-                                    <span class="mr-2">85%</span>
-                                    <div class="relative w-full">
-                                        <div class="overflow-hidden h-2 text-xs flex rounded bg-lightBlue-200">
-                                            <div style="width: 85%"
-                                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-lightBlue-500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th
-                                class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                                twitter
-                            </th>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                2,645
-                            </td>
-                            <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                                <div class="flex items-center">
-                                    <span class="mr-2">60%</span>
-                                    <div class="relative w-full">
-                                        <div class="overflow-hidden h-2 text-xs flex rounded bg-orange-200">
-                                            <div style="width: 60%"
-                                                class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr> --}}
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
+    {{-- component for modal tambah --}}
+    <div id="modal-form-tambah"
+        class="hidden modal-tambah fixed inset-0 z-50 overflow-auto bg-white/40 bg-opacity-50 backdrop-blur-md flex items-center justify-center">
+        <div
+            class="flex invisible flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl">
+            <div class="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
+                <p class="font-semibold text-gray-800">Tambah kategori</p>
+                <svg class="w-6 h-6 cursor-pointer cancel-tambah" id="cancel-tambah" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </div>
+            <div class="flex flex-col px-6 py-5 bg-gray-50">
+                <form class="form-kategori" action="" method="POST">
+                    <div class="grid md:grid-cols-2 grid-cols-1 gap-6">
+                        <div class="md:col-span-2">
+                            <label for="nama_kategori_product"
+                                class="float-left block  font-normal text-gray-400 text-lg">Nama
+                                Kategori</label>
+                            <input type="text" id="nama_kategori_product" name="nama_kategori_product"
+                                placeholder="Masukkan nama kategori"
+                                class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-700">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="deskripsi_kategori_product"
+                                class="float-left block  font-normal text-gray-400 text-lg">Nama
+                                Kategori</label>
+                            <textarea type="text" name="deskripsi_kategori_product" id="deskripsi_kategori_product" rows="5" cols=""
+                                placeholder="Msukkan deskripsi"
+                                class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-700"></textarea>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="gambar_kategori_product"
+                                class="float-left block  font-normal text-gray-400 text-lg">Pilih
+                                gambar</label>
+                            <input type="file" id="gambar_kategori_product" name="gambar_kategori_product" placeholder=""
+                                class="peer block w-full appearance-none border-none   bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0">
+                        </div>
+                        <div class="md:col-span-2">
+                            <button type="submit" id="button-submit"
+                                class="middle none center mr-3 w-full rounded-lg border hover:bg-primarybase hover:text-white border-primarybase py-2.5 px-9 font-sans text-xs font-bold uppercase text-primarybase transition-all focus:ring focus:ring-primarybase active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                data-ripple-dark="true">
+                                Simpan
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {{-- component for modal ubah --}}
+    <div id="modal-form-ubah"
+        class="hidden modal-form-ubah modal-ubah fixed inset-0 z-50 overflow-auto bg-white/40 bg-opacity-50 backdrop-blur-md flex items-center justify-center">
+        <div
+            class="flex invisible flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl">
+            <div class="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
+                <p class="font-semibold text-gray-800">Ubah kategori</p>
+                <svg class="w-6 h-6 cursor-pointer cancelubah" id="cancelubah" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </div>
+            <div class="flex flex-col px-6 py-5 bg-gray-50">
+                <form class="" action="" method="POST">
+                    <div class="grid md:grid-cols-2 grid-cols-1 gap-6">
+                        <div class="md:col-span-2">
+                            <label for="nama_kategori_product"
+                                class="float-left block  font-normal text-gray-400 text-lg">Nama
+                                Kategori</label>
+                            <input type="text" id="nama_kategori_product" name="nama_kategori_product"
+                                placeholder="Masukkan nama kategori"
+                                class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-700">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="deskripsi_kategori_product"
+                                class="float-left block  font-normal text-gray-400 text-lg">Nama
+                                Kategori</label>
+                            <textarea type="text" name="deskripsi_kategori_product" id="deskripsi_kategori_product" rows="5"
+                                cols="" placeholder="Msukkan deskripsi"
+                                class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-700"></textarea>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="gambar_kategori_product"
+                                class="float-left block  font-normal text-gray-400 text-lg">Pilih
+                                gambar</label>
+                            <input type="file" id="gambar_kategori_product" name="gambar_kategori_product"
+                                placeholder=""
+                                class="peer block w-full appearance-none border-none   bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0">
+                        </div>
+                        <div class="md:col-span-2">
+                            <button type="button"
+                                class="middle none center mr-3 w-full rounded-lg border hover:bg-primarybase hover:text-white border-primarybase py-2.5 px-9 font-sans text-xs font-bold uppercase text-primarybase transition-all focus:ring focus:ring-primarybase active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                data-ripple-dark="true">
+                                Simpan
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{-- <a>/category/edit/${val.id}</a> --}}
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @push('js')
         <script>
@@ -168,7 +179,7 @@
                     success: function({
                         data
                     }) {
-                        let row;
+                        let row = '';
 
                         data.map(function(val, index) {
                             row += `
@@ -178,7 +189,8 @@
                                 <td>${val.deskripsi_kategori_product}</td>
                                 <td><img src="/uploads/${val.gambar_kategori_product}" width="150"></td>
                                 <td>
-                                    <a href="/category/edit/${val.id}">Edit</a>
+                                
+                                    <a href="#modal-form-ubah" data-toggle="modal-ubah" class="modal-ubah" id="modal-ubah">Edit</a>
                                     <a href="#" data-id="${val.id}" id="delete-category">Hapus</a>
                                 </td>
                             </tr>
@@ -188,22 +200,24 @@
                     }
                 })
 
-                $(document).on('click', '#delete-category', function(){
+                $(document).on('click', '#delete-category', function() {
                     const id = $(this).data('id');
-                    const token =  localStorage.getItem('token-efarm');
+                    const token = localStorage.getItem('token-efarm');
 
-                    console.log(token);
-                    
+                    // console.log(token);
+
                     confirm_dialog = confirm('Apakah yakin dihapus?');
 
 
-                    if (confirm_dialog){
+                    if (confirm_dialog) {
                         $.ajax({
                             url: '/api/category/' + id,
                             type: "DELETE",
-                            headers: {"Authorization" : token},
-                            success : function(data){
-                                if(data.message == 'success'){
+                            headers: {
+                                "Authorization": token
+                            },
+                            success: function(data) {
+                                if (data.message == 'success') {
                                     alert('Data berhasil dihapus');
                                     location.reload();
                                 }
@@ -211,6 +225,63 @@
                         });
                     }
                 });
+
+                $('.modal-tambah').click(function(e) {
+                    $('#modal-form-tambah').removeClass('hidden');
+                });
+
+                $('.form-kategori').submit(function(e) {
+                    e.preventDefault();
+                    const form = $(this);
+                    const token = localStorage.getItem('token-efarm');
+                    var formData = new FormData(this);
+                    console.log(formData);
+
+                    $.ajax({
+                        url: '/api/category',
+                        type: 'POST',
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        headers: {
+                            "accept": "application/json",
+                            "Authorization": "Bearer" + token,
+                            "Access-Control-Allow-Origin":"*"
+                        },
+                        success: function(data) {
+                            if (data.success) {
+                                alert('Data berhasil ditambahkan');
+                                location.reload();
+                            }
+                        }
+                    })
+                });
+
+                $('#gambar_kategori_product').click(function(e) {
+                    e.stopPropagation();
+                });
+
+                $('#button-submit').click(function(e) {
+                    e.stopPropagation();
+                });
+
+                $(document).on('click', '#cancel-tambah', function() {
+                    // $('#modal-form-tambah').addClass('hidden');
+                    location.reload();
+                });
+
+                $(document).on('click', '.modal-ubah', function() {
+                    $('#modal-form-ubah').removeClass('hidden');
+                });
+
+                $('#cancelubah').click(function(e) {
+                    e.preventDefault();
+                    location.reload();
+                });
+
+
+
             });
         </script>
     @endpush
