@@ -47,7 +47,7 @@
 @section('title', 'Dashboard | Typelivestock')
 
 @section('content')
-    <section class="container mx-auto">
+    <section class="w-full px-4 mx-auto">
         <div class="flex flex-col">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 {{-- ignored really --}}

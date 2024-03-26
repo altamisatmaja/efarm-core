@@ -1588,6 +1588,10 @@ select {
   margin-bottom: 2rem;
 }
 
+.me-3 {
+  margin-inline-end: 0.75rem;
+}
+
 .block {
   display: block;
 }
@@ -1715,6 +1719,22 @@ select {
   height: 50%;
 }
 
+.h-\[50px\] {
+  height: 50px;
+}
+
+.h-32 {
+  height: 8rem;
+}
+
+.h-2\/3 {
+  height: 66.666667%;
+}
+
+.h-2\/5 {
+  height: 40%;
+}
+
 .min-h-0 {
   min-height: 0px;
 }
@@ -1819,6 +1839,22 @@ select {
   width: 75%;
 }
 
+.w-\[50px\] {
+  width: 50px;
+}
+
+.w-32 {
+  width: 8rem;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
+}
+
+.w-2\/5 {
+  width: 40%;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -1865,6 +1901,10 @@ select {
 
 .flex-shrink-0 {
   flex-shrink: 0;
+}
+
+.flex-shrink {
+  flex-shrink: 1;
 }
 
 .shrink-0 {
@@ -2184,6 +2224,10 @@ select {
 
 .rounded-sm {
   border-radius: 0.125rem;
+}
+
+.rounded-2xl {
+  border-radius: 1rem;
 }
 
 .rounded-b-none {
@@ -2802,6 +2846,10 @@ select {
   padding-bottom: 1.5rem;
 }
 
+.pl-0 {
+  padding-left: 0px;
+}
+
 .text-left {
   text-align: left;
 }
@@ -2864,6 +2912,11 @@ select {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-lg\/normal {
+  font-size: 1.125rem;
+  line-height: 1.5;
 }
 
 .font-bold {
