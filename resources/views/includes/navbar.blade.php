@@ -58,11 +58,11 @@
             <li><a class="hover:text-gray-200 text-primarybase" href="#">Tentang</a></li>
         </ul>
         <div class="hidden xl:flex items-center space-x-5">
-            <button
+            <a href="{{ route('customer.login') }}"
                 class="middle none center mr-3 w-full border bg-primarybase rounded-lg hover:border hover:bg-white hover:text-primarybase border-primarybase text-white py-2.5 px-9 font-sans text-xs font-bold uppercase transition-all focus:ring focus:ring-primarybase active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 data-ripple-dark="true">
                 Masuk
-            </button>
+            </a>
             <button
                 class="middle none center mr-3 rounded-lg border hover:bg-primarybase hover:text-white border-primarybase py-2.5 px-9 font-sans text-xs font-bold uppercase text-primarybase transition-all focus:ring focus:ring-primarybase active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 data-ripple-dark="true">

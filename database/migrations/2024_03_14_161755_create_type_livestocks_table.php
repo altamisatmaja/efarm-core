@@ -16,6 +16,7 @@ class CreateTypeLivestocksTable extends Migration
         Schema::create('type_livestocks', function (Blueprint $table) {
             $table->id();
             $table->string('nama_jenis_hewan');
+            $table->bigInteger('id_category_livestocks');
             $table->text('deskripsi_jenis_hewan');
             $table->timestamps();
         });

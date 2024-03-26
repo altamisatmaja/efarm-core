@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoryLivestock;
 use App\Models\TypeLivestock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -25,9 +26,16 @@ class TypeLivestockController extends Controller
      */
     public function index()
     {
-        $typelivestock = TypeLivestock::all();
+        // $typelivestock = TypeLivestock::all();
+
+        $typelivestock = TypeLivestock::with('categorylivestock')->get();
+        // $typelivestock = TypeLivestock::where('id_category_livestocks', $categorylivestock->id);
+
+        // dd($typelivestock);
 
         return response()->json([
+            'success' => true,
+            'message' => 'success',
             'data' => $typelivestock
         ]);
     }
@@ -79,6 +87,8 @@ class TypeLivestockController extends Controller
     public function show(TypeLivestock $typelivestock)
     {
         return response()->json([
+            'success' => true,
+            'message' => 'success',
             'data' => $typelivestock
         ]);
     }
