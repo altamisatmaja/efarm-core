@@ -1,9 +1,21 @@
+<style>
+    #modal-form-tambah {
+        backdrop-filter: blur(5px);
+        background-color: rgba(170, 193, 76, 0.2)
+    }
+
+    #modal-form-ubah {
+        backdrop-filter: blur(5px);
+        background-color: rgba(170, 193, 76, 0.2)
+    }
+</style>
+
 @extends('admin.layouts.app')
 
 @section('title', 'Dashboard | Typelivestock')
 
 @section('content')
-    <div class="w-full xl:w-4/12 px-4 mx-auto mt-24">
+    <div class="w-full px-4 mx-auto mt-24">
         <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-white ">
             <div class="rounded-t mb-0 px-4 py-3 border-0">
                 <div class="flex flex-wrap items-center">
@@ -52,7 +64,7 @@
 
     {{-- component for modal tambah --}}
     <div id="modal-form-tambah"
-        class="hidden modal-tambah fixed inset-0 z-50 overflow-auto bg-white/40 bg-opacity-50 backdrop-blur-md flex items-center justify-center">
+        class="hidden modal-tambah inset-0 z-50 overflow-auto bg-white/40 bg-opacity-50 backdrop-blur-md flex items-center justify-center">
         <div
             class="flex invisible flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl">
             <div class="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
@@ -95,7 +107,7 @@
 
     {{-- component for modal ubah --}}
     <div id="modal-form-ubah"
-        class="hidden modal-form-ubah fixed inset-0 z-50 overflow-auto bg-white/40 bg-opacity-50 backdrop-blur-md flex items-center justify-center">
+        class="hidden modal-form-ubah fixed inset-0 z-50 overflow-auto bg-white/40 bg-opacity-50 flex items-center justify-center">
         <div
             class="flex invisible flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl">
             <div class="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg">

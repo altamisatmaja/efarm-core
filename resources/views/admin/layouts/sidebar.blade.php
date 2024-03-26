@@ -51,6 +51,10 @@
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Typelivestock</a>
                             </li>
                             <li>
+                                <a href="{{ route('admin.categorylivestock.list') }}"
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Category Typelivestock</a>
+                            </li>
+                            <li>
                                 <a href="#"
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Produk</a>
                             </li>

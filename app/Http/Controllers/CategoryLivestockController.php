@@ -130,6 +130,7 @@ class CategoryLivestockController extends Controller
         $categorylivestock->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'success',
             'data' => $categorylivestock
         ]);
