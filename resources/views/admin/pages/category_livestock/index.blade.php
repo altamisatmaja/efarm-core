@@ -72,7 +72,7 @@
                                         class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 ">
                                         <div class="flex items-center gap-x-3">
                                             <button class="flex items-center gap-x-2">
-                                                <span>Invoice</span>
+                                                <span>No</span>
 
                                                 <svg class="h-3" viewBox="0 0 10 11" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -92,129 +92,30 @@
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
-                                        Date
+                                        Nama kategori hewan ternak
                                     </th>
 
-                                    <th scope="col"
+                                    {{-- <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
                                         Status
-                                    </th>
+                                    </th> --}}
 
-                                    <th scope="col"
+                                    {{-- <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
                                         Customer
-                                    </th>
+                                    </th> --}}
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
-                                        Purchase
+                                        Deskripsi kategori hewan ternak
                                     </th>
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
-                                        Action
+                                        Aksi
                                     </th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                                <tr>
-                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                        <div class="inline-flex items-center gap-x-3">
-                                            <span>#3066</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">Jan 6,
-                                        2022</td>
-                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                        <div
-                                            class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60">
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-
-                                            <h2 class="text-sm font-normal">Paid</h2>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        <div class="flex items-center gap-x-2">
-                                            <img class="object-cover w-8 h-8 rounded-full"
-                                                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
-                                                alt="">
-                                            <div>
-                                                <h2 class="text-sm font-medium text-gray-800 ">Arthur Melo
-                                                </h2>
-                                                <p class="text-xs font-normal text-gray-600 ">
-                                                    authurmelo@example.com</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">Monthly
-                                        subscription</td>
-                                    <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                        <div class="flex items-center gap-x-6">
-                                            <button
-                                                class="edit-data-categorylivestock text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Edit
-                                            </button>
-
-                                            <button
-                                                class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Download
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                        <div class="inline-flex items-center gap-x-3">
-                                            <span>#3065</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">Jan 5,
-                                        2022</td>
-                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                        <div
-                                            class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60">
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-
-                                            <h2 class="text-sm font-normal">Cancelled</h2>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        <div class="flex items-center gap-x-2">
-                                            <img class="object-cover w-8 h-8 rounded-full"
-                                                src="https://images.unsplash.com/photo-1531590878845-12627191e687?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
-                                                alt="">
-                                            <div>
-                                                <h2 class="text-sm font-medium text-gray-800 ">Andi Lane
-                                                </h2>
-                                                <p class="text-xs font-normal text-gray-600 ">
-                                                    andi@example.com</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">Monthly
-                                        subscription</td>
-                                    <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                        <div class="flex items-center gap-x-6">
-                                            <button
-                                                class="edit-data-categorylivestock text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Edit
-                                            </button>
-
-                                            <button
-                                                class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Download
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -279,7 +180,7 @@
                         </div>
                     </div>
                     <!--Body-->
-                    <form class="" action="" method="POST">
+                    <form class="form-tambah-categorylivestock" action="" method="POST">
                         <div class="mb-5">
                             <label for="nama_kategori_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
                                 Masukkan nama kategori hewan
@@ -332,7 +233,7 @@
                         </div>
 
                         <div class="pt-1">
-                            <button
+                            <button type="submit"
                                 class="hover:shadow-form w-full border hover:bg-primarybase hover:text-white border-primarybase rounded-md py-3 px-8 text-center text-base font-semibold text-primarybase">
                                 Batal
                             </button>
@@ -351,7 +252,7 @@
     </div>
 
     {{-- Modal edit --}}
-    <div class="hidden modal-edit-categorylivestock">
+    <div class="hidden modal-edit-categorylivestock modal">
         <div class="fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"
             style="background: rgba(0,0,0,.7);">
             <div
@@ -370,7 +271,7 @@
                         </div>
                     </div>
                     <!--Body-->
-                    <form class="" action="" method="POST">
+                    <form class="form-edit-categorylivestock" action="" method="POST">
                         <div class="mb-5">
                             <label for="nama_kategori_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
                                 Masukkan nama kategori hewan
@@ -429,13 +330,6 @@
                             </button>
                         </div>
                     </form>
-                    <!--Footer-->
-                    {{-- <div class="flex justify-end pt-2">
-                        <button
-                            class="cancel-edit-data-categorylivestock focus:outline-none modal-close px-4 bg-gray-400 p-3 rounded-lg text-black hover:bg-gray-300">Cancel</button>
-                        <button
-                            class="focus:outline-none px-4 bg-teal-500 p-3 ml-3 rounded-lg text-black hover:bg-teal-400">Confirm</button>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -453,9 +347,152 @@
                     $('.modal-tambah-categorylivestock').addClass('hidden');
                 });
 
-                $('.edit-data-categorylivestock').click(function(e) {
-                    $('.modal-edit-categorylivestock').removeClass('hidden');
+                // Read data
+                $.ajax({
+                    url: '/api/categorylivestock',
+                    success: function({
+                        data
+                    }) {
+                        let row = '';
+
+                        data.map(function(val, index) {
+                            row += `
+                            <tr>
+                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                        <div class="inline-flex items-center gap-x-3">
+                                            <span>${index+1}</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        ${val.nama_kategori_hewan}</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        ${val.deskripsi_kategori_hewan}</td>
+                                    <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                        <div class="flex items-center gap-x-6">
+                                            <a class="edit-data-categorylivestock" data-id="${val.id}" data-toggle="modal">
+                                            <button
+                                                class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                Edit
+                                            </button>
+                                        </a>
+                                        <a class="hapus-data-categorylivestock" data-id="${val.id}">
+                                            <button
+                                                class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                Hapus
+                                            </button>
+                                        </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `;
+                        });
+                        $('tbody').append(row);
+                    }
                 });
+
+                // Hapus data
+                $(document).on('click', '.hapus-data-categorylivestock', function() {
+                    const id = $(this).data('id');
+                    const token = localStorage.getItem('token-efarm');
+
+                    // console.log(token);
+
+                    confirm_dialog = confirm('Apakah yakin dihapus?');
+
+
+                    if (confirm_dialog) {
+                        $.ajax({
+                            url: '/api/categorylivestock/' + id,
+                            type: "DELETE",
+                            headers: {
+                                "Authorization": token
+                            },
+                            success: function(data) {
+                                if (data.message == 'success') {
+                                    alert('Data berhasil dihapus');
+                                    location.reload();
+                                }
+                            }
+                        });
+                    }
+                });
+
+                // Edit data
+                $(document).on('click', '.edit-data-categorylivestock', function(e) {
+                    $('.modal-edit-categorylivestock').removeClass('hidden');
+                    const id = $(this).data('id');
+                    console.log(id);
+                    const token = localStorage.getItem('token-efarm');
+
+                    $.get('/api/categorylivestock/' + id, function({
+                        data
+                    }) {
+                        // console.log(data.id);
+                        console.log(data);
+                        $('input[name="nama_kategori_hewan"]').val(data.nama_kategori_hewan);
+                        $('textarea[name="deskripsi_kategori_hewan"]').val(data
+                            .deskripsi_kategori_hewan);
+                    });
+
+                    $('.form-edit-categorylivestock').submit(function(e) {
+                        e.preventDefault();
+                        const form = $(this);
+                        const token = localStorage.getItem('token-efarm');
+                        var formData = new FormData(this);
+                        console.log(formData);
+
+                        $.ajax({
+                            url: `/api/categorylivestock/${id}?_method=PUT`,
+                            type: 'POST',
+                            data: formData,
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            headers: {
+                                "accept": "application/json",
+                                "Authorization": token,
+                                "Access-Control-Allow-Origin": "*"
+                            },
+                            success: function(data) {
+                                if (data.success) {
+                                    alert('Data berhasil diubah');
+                                    location.reload();
+                                }
+                            }
+                        })
+                    });
+                });
+
+                // Tambah data
+                $('.form-tambah-categorylivestock').submit(function(e) {
+                    e.preventDefault();
+                    const form = $(this);
+                    const token = localStorage.getItem('token-efarm');
+                    var formData = new FormData(this);
+                    console.log(formData);
+
+
+                    $.ajax({
+                        url: '/api/categorylivestock',
+                        type: 'POST',
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        headers: {
+                            "accept": "application/json",
+                            "Authorization": "Bearer" + token,
+                            "Access-Control-Allow-Origin": "*"
+                        },
+                        success: function(data) {
+                            if (data.success) {
+                                alert('Data berhasil ditambahkan');
+                                location.reload();
+                            }
+                        }
+                    })
+                });
+
 
                 $('.cancel-edit-data-categorylivestock').click(function(e) {
                     $('.modal-edit-categorylivestock').addClass('hidden');

@@ -10,7 +10,7 @@ class CategoryLivestockController extends Controller
 {
     public function __construct(){
         $this->middleware('auth')->only(['list']);
-        $this->middleware('auth:api')->only(['store', 'delete']);
+        $this->middleware('auth:api')->only(['delete']);
     }
     public function list(){
         return view('admin.pages.category_livestock.index');
@@ -74,9 +74,11 @@ class CategoryLivestockController extends Controller
      * @param  \App\Models\CategoryLivestock  $categoryLivestock
      * @return \Illuminate\Http\Response
      */
-    public function show(CategoryLivestock $categoryLivestock)
+    public function show(CategoryLivestock $categorylivestock)
     {
-        //
+        return response()->json([
+            'data' => $categorylivestock,
+        ]);
     }
 
     /**
