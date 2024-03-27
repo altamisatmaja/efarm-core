@@ -189,8 +189,7 @@
                                     Pilih kategori hewan
                                 </label>
                                 <select name="id_category_livestocks" id="id_category_livestocks"
-                                    class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500"
-                                    class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
+                                    class="id_category_livestocks inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
                                     <option value="Tes" selected
                                         class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">
                                         Pilih kategori hewan ternak</option>
@@ -249,19 +248,35 @@
                     <!--Body-->
                     <form class="form-edit-typelivestock" action="" method="POST">
                         <div class="mb-5">
-                            <label for="nama_kategori_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
+                            <label for="nama_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
                                 Masukkan nama kategori hewan
                             </label>
-                            <input type="nama_kategori_hewan" name="nama_kategori_hewan" id="nama_kategori_hewan"
+                            <input type="nama_jenis_hewan" name="nama_jenis_hewan" id="nama_jenis_hewan"
                                 placeholder="Kambing"
                                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
-
+                        <div class="w-full flex items-center justify-center mt-5">
+                            <div class="relative group w-full">
+                                <label for="id_category_livestocks"
+                                    class="mb-3 block text-base font-medium text-[#07074D]">
+                                    Pilih kategori hewan
+                                </label>
+                                <select name="id_category_livestocks" id="id_category_livestocks"
+                                    class="id_category_livestocks inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
+                                    <option value="Tes" selected
+                                        class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">
+                                        Pilih kategori hewan ternak</option>
+                                    <option value="Tes"
+                                        class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">
+                                        Lowercase</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="mb-6 pt-4">
-                            <label for="deskripsi_kategori_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
+                            <label for="deskripsi_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
                                 Masukkan deskripsi kategori hewan
                             </label>
-                            <textarea type="deskripsi_kategori_hewan" name="deskripsi_kategori_hewan" id="deskripsi_kategori_hewan"
+                            <textarea type="deskripsi_jenis_hewan" name="deskripsi_jenis_hewan" id="deskripsi_jenis_hewan"
                                 placeholder="Kambing adalah lorem ipsum"
                                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
                         </div>
@@ -307,7 +322,7 @@
                         console.log(data);
                         let row = '';
 
-                        const selectInput = $('#id_category_livestocks');
+                        const selectInput = $('.id_category_livestocks');
                         selectInput.empty();
 
                         selectInput.append($('<option>', {
@@ -408,9 +423,8 @@
                     $.get('/api/typelivestock/' + id, function({
                         data
                     }) {
-                        // console.log(data.id);
                         console.log(data);
-                        $('input[name="nama_jenis_hewan"]').val(data.jenis_hewan);
+                        $('input[name="nama_jenis_hewan"]').val(data.nama_jenis_hewan);
                         $('textarea[name="deskripsi_jenis_hewan"]').val(data
                             .deskripsi_jenis_hewan);
                     });
