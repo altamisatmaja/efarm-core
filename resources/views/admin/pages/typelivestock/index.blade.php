@@ -178,11 +178,28 @@
                             <label for="nama_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
                                 Masukkan nama jenis hewan
                             </label>
+
                             <input type="nama_jenis_hewan" name="nama_jenis_hewan" id="nama_jenis_hewan"
                                 placeholder="Kambing"
                                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
-
+                        <div class="w-full flex items-center justify-center mt-5">
+                            <div class="relative group w-full">
+                                <label for="nama_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
+                                    Pilih kategori hewan
+                                </label>
+                                <select name="id_category_livestocks" id="id_category_livestocks"
+                                    class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500"
+                                    class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
+                                    <option value="Tes" selected
+                                        class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">
+                                        Pilih kategori hewan ternak</option>
+                                    <option value="Tes"
+                                        class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">
+                                        Lowercase</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="mb-6 pt-4">
                             <label for="deskripsi_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
                                 Masukkan deskripsi jenis hewan
@@ -191,7 +208,6 @@
                                 placeholder="Kambing adalah lorem ipsum"
                                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
                         </div>
-
                         <div class="pb-4">
                             <button
                                 class="hover:shadow-form w-full rounded-md bg-primarybase py-3 px-8 text-center text-base font-semibold text-black outline-none">
@@ -280,6 +296,34 @@
                 $('.cancel-tambah-data-typelivestock').click(function(e) {
                     $('.modal-tambah-typelivestock').addClass('hidden');
                 });
+
+                // Read data for select option
+                $.ajax({
+                    url: '/api/categorylivestock',
+                    success: function({
+                        data
+                    }) {
+
+                        console.log(data);
+                        let row = '';
+
+                        const selectInput = $('#id_category_livestocks');
+                        selectInput.empty();
+
+                        selectInput.append($('<option>', {
+                            value: '',
+                            text: 'Pilih kategori hewan ternak'
+                        }));
+
+                        data.forEach(function(val) {
+                            selectInput.append($('<option>', {
+                                value: val.id,
+                                text: val.nama_kategori_hewan
+                            }));
+                        });
+                    }
+                });
+
 
                 // Read data
                 $.ajax({
