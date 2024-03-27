@@ -344,7 +344,8 @@
                 });
 
                 $('.cancel-tambah-data-categorylivestock').click(function(e) {
-                    $('.modal-tambah-categorylivestock').addClass('hidden');
+                    // $('.modal-tambah-categorylivestock').addClass('hidden');
+                    location.reload();
                 });
 
                 // Read data
@@ -495,7 +496,8 @@
 
 
                 $('.cancel-edit-data-categorylivestock').click(function(e) {
-                    $('.modal-edit-categorylivestock').addClass('hidden');
+                    // $('.modal-edit-categorylivestock').addClass('hidden');
+                    location.reload();
                 });
             })
         </script>
