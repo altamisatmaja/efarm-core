@@ -9,6 +9,8 @@ use App\Http\Controllers\Customer\AuthCustomerController;
 use App\Http\Controllers\Customer\DashboardCustomerController;
 use App\Http\Controllers\Partner\DashboardPartnerController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TypeLivestockController;
 use Illuminate\Support\Facades\Route;
 
@@ -59,7 +61,17 @@ Route::middleware('auth')->group(function () {
     
     // route admin for typelivestock
     Route::get('admin/categorylivestock', [CategoryLivestockController::class, 'list'])->name('admin.categorylivestock.list');
+    
+    // route admin for product
+
+    // route admin for get all product
+    Route::get('admin/product', [ProductController::class, 'list'])->name('admin.product.list');
+    Route::get('admin/product/edit/{product}', [ProductController::class, 'edit'])->name('admin.product.edit');
+    Route::get('admin/product/create', [ProductController::class, 'create'])->name('admin.product.create');
 
     // route admin for partner
     Route::get('admin/partner', [PartnerController::class, 'list'])->name('admin.partner');
+
+    // route admin for partner
+    Route::get('admin/testimoni', [TestimonialController::class, 'list'])->name('admin.testimoni.list');
 });

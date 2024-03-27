@@ -10,7 +10,13 @@ use Illuminate\Support\Facades\Validator;
 class TestimonialController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth:api')->except(['index']);
+        // Ignored, really
+        $this->middleware('auth')->only(['list']);
+        $this->middleware('auth:api')->only(['delete']);
+    }  
+    
+    public function list(){
+        return view('admin.pages.testimoni.list');
     }
     /**
      * Display a listing of the resource.

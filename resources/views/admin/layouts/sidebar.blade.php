@@ -39,10 +39,6 @@
                         </button>
                         <ul id="dropdown-example" class="hidden py-2 space-y-2">
                             <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pelanggan</a>
-                            </li>
-                            <li>
                                 <a href="{{ route('admin.category.list') }}"
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Kategori</a>
                             </li>
@@ -55,8 +51,16 @@
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Category Typelivestock</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{ route('admin.product.list') }}"
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Produk</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.testimoni.list') }}"
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Testimoni</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pelanggan</a>
                             </li>
                             <li>
                                 <a href="#"

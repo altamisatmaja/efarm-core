@@ -12,7 +12,7 @@ class CategoryProductController extends Controller
     public function __construct(){
         // Ignored, really
         $this->middleware('auth')->only(['list']);
-        $this->middleware('auth:api')->only(['store', 'delete']);
+        $this->middleware('auth:api')->only(['delete']);
     }   
     
     public function list(){

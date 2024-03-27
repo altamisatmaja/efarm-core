@@ -9,8 +9,15 @@ use Illuminate\Support\Facades\Validator;
 class ProductController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth:api')->except(['index']);
-    }
+       // Ignored, really
+       $this->middleware('auth')->only(['list']);
+       $this->middleware('auth:api')->only(['delete']);
+   }   
+   
+   public function list(){
+       return view('admin.pages.product.index');
+   }
+
     /**
      * Display a listing of the resource.
      *
@@ -25,14 +32,9 @@ class ProductController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.pages.product.create');
     }
 
     /**
@@ -78,15 +80,10 @@ class ProductController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Product $product)
     {
-        //
+        return view('admin.pages.product.edit');
     }
 
     /**
