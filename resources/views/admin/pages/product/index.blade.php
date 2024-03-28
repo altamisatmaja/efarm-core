@@ -1,3 +1,47 @@
+<style>
+    .animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+
+    .animated.faster {
+        -webkit-animation-duration: 500ms;
+        animation-duration: 500ms;
+    }
+
+    .fadeIn {
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+    }
+
+    .fadeOut {
+        -webkit-animation-name: fadeOut;
+        animation-name: fadeOut;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+        }
+    }
+</style>
+
 @extends('admin.layouts.app')
 
 @section('title', 'Dashboard | Semua Product')
@@ -111,7 +155,7 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                                <tr>
+                                {{-- <tr>
                                     <td class="px-4 py-4 text-sm text-gray-500">1</td>
                                     <td class="px-4 py-4 text-sm text-gray-500">2 Mei 2024</td>
                                     <td class="px-4 py-4 text-sm text-gray-500">Kambing Jawa Ngawi</td>
@@ -176,7 +220,7 @@
                                             </button>
                                         </div>
                                     </td>
-                                </tr>
+                                </tr> --}}
                             </tbody>
                         </table>
                     </div>
@@ -223,14 +267,14 @@
 
     {{-- Modal edit --}}
     <div class="hidden modal-edit-product modal">
-        <div class="fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"
+        <div class="fixed w-full h-100 inset-0 z-50 overflow-hidden flex py-5 animated fadeIn faster"
             style="background: rgba(0,0,0,.7);">
             <div
-                class="border border-teal-500 modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+                class="border border-teal-500 modal-container top-0 bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
                 <div class="modal-content py-4 text-left px-6">
                     <!--Title-->
                     <div class="flex justify-between items-center pb-3">
-                        <p class="text-2xl font-bold">Edit kategori hewan ternak</p>
+                        <p class="text-2xl font-bold">Edit product</p>
                         <div class="modal-close cursor-pointer z-50">
                             <svg class="cancel-edit-data-product fill-current text-black"
                                 xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
@@ -242,29 +286,122 @@
                     </div>
                     <!--Body-->
                     <form class="form-edit-product" action="" method="POST">
-                        <div class="mb-5">
-                            <label for="nama_kategori_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
-                                Masukkan nama kategori hewan
+                        <div class="mb-4">
+                            <label for="nama_product" class="text-sm font-medium text-gray-700 block mb-2">Nama Produk</label>
+                            <input type="text" name="nama_product" id="nama_product" placeholder="Nama product"
+                                class="border p-2 rounded w-full">
+                        </div>
+                        <div class="mb-4">
+                            <label for="harga_product" class="text-sm font-medium text-gray-700 block mb-2">Harga Produk</label>
+                            <input type="number" name="harga_product" id="harga_product" placeholder="Harga product"
+                                class="border p-2 rounded w-full">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="">
+                                <label for="id_kategori" class="text-sm font-medium text-gray-700 block mb-2">Kategori
+                                    Product</label>
+                                <select name="id_kategori" id="id_kategori" class="border p-2 rounded w-full">
+                                    @foreach ($categoryproduct as $category)
+                                        <option value="{{ $category->id }}">{{ $category->nama_kategori_product }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="">
+                                <label for="id_typelivestocks" class="text-sm font-medium text-gray-700 block mb-2">Jenis Hewan
+                                    Ternak</label>
+                                <select id="id_typelivestocks" name="id_typelivestocks" class="border p-2 rounded w-full">
+                                    @foreach ($typelivestocks as $typelivestock)
+                                        <option value="{{ $typelivestock->id }}">{{ $typelivestock->nama_jenis_hewan }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="">
+                                <label for="id_jenis_gender_hewan" class="text-sm font-medium text-gray-700 block mb-2">Jenis
+                                    Hewan Ternak</label>
+                                <select id="id_jenis_gender_hewan" name="id_jenis_gender_hewan"
+                                    class="border p-2 rounded w-full">
+                                    @foreach ($gender_livestocks as $gender)
+                                        <option value="{{ $gender->id }}">{{ $gender->nama_gender }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="mb-5 block text-xl font-semibold text-[#07074D]">
+                                Gambar hewan
                             </label>
-                            <input type="nama_kategori_hewan" name="nama_kategori_hewan" id="nama_kategori_hewan"
-                                placeholder="Kambing"
-                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+    
+                            <div class="mb-8">
+                                <input type="file" name="gambar_hewan" id="gambar_hewan" class="sr-only" />
+                                <label for="gambar_hewan"
+                                    class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
+                                    <div>
+                                        <span class="mb-2 block text-xl font-semibold text-[#07074D]">
+                                            Drop files here
+                                        </span>
+                                        <span class="mb-2 block text-base font-medium text-[#6B7280]">
+                                            Or
+                                        </span>
+                                        <span class="inline-flex rounded py-2 px-7 text-base font-medium text-[#07074D]">
+                                            Browse
+                                        </span>
+                                    </div>
+                                </label>
+                            </div>
                         </div>
-                        <div class="mb-6 pt-4">
-                            <label for="deskripsi_kategori_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
-                                Masukkan deskripsi kategori hewan
-                            </label>
-                            <textarea type="deskripsi_kategori_hewan" name="deskripsi_kategori_hewan" id="deskripsi_kategori_hewan"
-                                placeholder="Kambing adalah lorem ipsum"
-                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
-
+                        <div class="mb-4">
+                            <label for="deskripsi_product" class="text-sm font-medium text-gray-700 block mb-2">Deskripsi
+                                Product</label>
+                            <textarea id="deskripsi_product" name="deskripsi_product" rows="6" placeholder="Masukkan deskripsi product"
+                                class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
                         </div>
-                        <div class="pb-4">
-                            <button
-                                class="hover:shadow-form w-full rounded-md bg-primarybase py-3 px-8 text-center text-base font-semibold text-black outline-none">
-                                Simpan
-                            </button>
+                        <div class="mb-4">
+                            <label for="terjual" class="text-sm font-medium text-gray-700 block mb-2">Terjual</label>
+                            <input type="number" value="0" name="terjual" id="terjual" placeholder="0" readonly
+                                class="border p-2 rounded w-full">
                         </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                            <div>
+                                <label for="diskon" class="text-sm font-medium text-gray-700 block mb-2">Diskon</label>
+                                <input type="number" id="diskon" name="diskon" placeholder="Diskon"
+                                    class="border p-2 rounded w-full">
+                            </div>
+                            <div>
+                                <label for="berat_hewan_ternak" class="text-sm font-medium text-gray-700 block mb-2">Berat
+                                    Hewan</label>
+                                <input type="number" id="berat_hewan_ternak" name="berat_hewan_ternak"
+                                    placeholder="Berat dalam kg" class="border p-2 rounded w-full">
+                            </div>
+                            <div>
+                                <label for="stok_hewan_ternak" class="text-sm font-medium text-gray-700 block mb-2">Stok
+                                    hewan</label>
+                                <input type="number" id="stok_hewan_ternak" name="stok_hewan_ternak" placeholder="Stok hewan"
+                                    class="border p-2 rounded w-full">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <div>
+                                <label for="lahir_hewan" class="text-sm font-medium text-gray-700 block mb-2">Lahir
+                                    hewan</label>
+                                <input type="number" id="lahir_hewan" name="lahir_hewan"
+                                    placeholder="Lahir hewan dalam bulan" class="border p-2 rounded w-full">
+                            </div>
+                            <div>
+                                <label for="tags" class="text-sm font-medium text-gray-700 block mb-2">Tags</label>
+                                <input type="text" id="tags" name="tags" placeholder="Tags"
+                                    class="border p-2 rounded w-full">
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="id_partner" class="text-sm font-medium text-gray-700 block mb-2">Id Partner
+                                readonly</label>
+                            <input type="number" name="id_partner" id="id_partner" placeholder="Anda"
+                                class="border p-2 rounded w-full">
+                        </div>
+                        <button type="submit" id="theme-toggle"
+                            class="px-4 w-full py-2 rounded bg-primarybase text-white hover:bg-primarybase focus:outline-none transition-colors">
+                            Simpan
+                        </button>
 
                         <div class="pt-1">
                             <button
@@ -291,10 +428,26 @@
                         let row = '';
 
                         data.map(function(val, index) {
+                            var createdAtDate = new Date(val.created_at);
+
+                            var options = {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                                hour: 'numeric',
+                                minute: 'numeric',
+                                second: 'numeric',
+                                timeZoneName: 'short'
+                            };
+                            var formattedDate = createdAtDate.toLocaleDateString('id-ID',
+                            options);
+
+
+
                             row += `
                             <tr>
                                     <td class="px-4 py-4 text-sm text-gray-500">${index+1}</td>
-                                    <td class="px-4 py-4 text-sm text-gray-500">${val.created_at}</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500">${formattedDate}</td>
                                     <td class="px-4 py-4 text-sm text-gray-500">${val.nama_product}</td>
                                     <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                         <div
@@ -404,9 +557,20 @@
                     }) {
                         // console.log(data.id);
                         console.log(data);
-                        $('input[name="nama_kategori_hewan"]').val(data.nama_kategori_hewan);
-                        $('textarea[name="deskripsi_kategori_hewan"]').val(data
-                            .deskripsi_kategori_hewan);
+                        $('input[name="nama_product"]').val(data.nama_product);
+                        $('input[name="harga_product"]').val(data.harga_product);
+                        $('option[name="id_kategori"]').val(data.categoryproduct.id);
+                        $('option[name="id_typelivestocks"]').val(data.typelivestocks.id);
+                        $('option[name="id_jenis_gender_hewan"]').val(data.gender_livestocks.id);
+                        $('textarea[name="deskripsi_product"]').val(data
+                        .deskripsi_product);
+                        $('input[name="terjual"]').val(data.terjual);
+                        $('input[name="diskon"]').val(data.diskon);
+                        $('input[name="berat_hewan_ternak"]').val(data.berat_hewan_ternak);
+                        $('input[name="stok_hewan_ternak"]').val(data.stok_hewan_ternak);
+                        $('input[name="lahir_hewan"]').val(data.lahir_hewan);
+                        $('input[name="tags"]').val(data.tags);
+                        $('input[name="id_partner"]').val(data.partner[0].id);
                     });
 
                     $('.form-edit-product').submit(function(e) {
@@ -436,36 +600,6 @@
                             }
                         })
                     });
-                });
-
-                // Tambah data
-                $('.form-tambah-product').submit(function(e) {
-                    e.preventDefault();
-                    const form = $(this);
-                    const token = localStorage.getItem('token-efarm');
-                    var formData = new FormData(this);
-                    console.log(formData);
-
-
-                    $.ajax({
-                        url: '/api/product',
-                        type: 'POST',
-                        data: formData,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        headers: {
-                            "accept": "application/json",
-                            "Authorization": "Bearer" + token,
-                            "Access-Control-Allow-Origin": "*"
-                        },
-                        success: function(data) {
-                            if (data.success) {
-                                alert('Data berhasil ditambahkan');
-                                location.reload();
-                            }
-                        }
-                    })
                 });
 
 

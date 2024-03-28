@@ -22,7 +22,12 @@ class ProductController extends Controller
 
     public function list()
     {
-        return view('admin.pages.product.index');
+        $categoryproduct = CategoryProduct::all();
+        $typelivestocks = TypeLivestock::all();
+        $gender_livestocks = GenderLivestock::all();
+        $partner = Partner::all();
+        
+        return view('admin.pages.product.index', compact('categoryproduct', 'typelivestocks', 'gender_livestocks', 'partner'));
     }
     /**
      * Display a listing of the resource.
@@ -106,6 +111,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        $product->load('typelivestocks', 'gender_livestocks', 'partner', 'categoryproduct');
+
         return response()->json([
             'data' => $product
         ]);
@@ -126,20 +133,19 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $validator = Validator::make($request->all(), [
-            'id_livestock' => 'required',
             'harga_product' => 'required',
-            'id_kategori' => 'required',
+            'id_kategori' => 'required',  // done
             'nama_product' => 'required',
             'tags' => 'required',
             'diskon' => 'required',
-            'id_partner' => 'required',
-            'id_jenis_gender_hewan' => 'required',
+            'id_partner' => 'required',  // done
+            'id_jenis_gender_hewan' => 'required',  // done
             'lahir_hewan' => 'required',
             'berat_hewan_ternak' => 'required',
             'stok_hewan_ternak' => 'required',
             'terjual' => 'required',
             'deskripsi_product' => 'required',
-            'id_livestocks' => 'required'
+            'id_typelivestocks' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -150,14 +156,14 @@ class ProductController extends Controller
 
         $input = $request->all();
 
-        if ($request->hasFile('gambar_product')) {
-            File::delete('uploads/' . $product->gambar_product);
-            $gambar = $request->file('gambar_product');
+        if ($request->hasFile('gambar_hewan')) {
+            File::delete('uploads/' . $product->gambar_hewan);
+            $gambar = $request->file('gambar_hewan');
             $nama_gambar = time() . rand(1, 9) . '.' . $gambar->getClientOriginalExtension();
             $gambar->move('uploads', $nama_gambar);
-            $input['gambar_product'] = $nama_gambar;
+            $input['gambar_hewan'] = $nama_gambar;
         } else {
-            unset($input['gambar_product']);
+            unset($input['gambar_hewan']);
         }
 
         $product->update($input);
