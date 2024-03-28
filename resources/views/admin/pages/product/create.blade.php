@@ -158,7 +158,6 @@
                                 alert('Data berhasil ditambahkan');
                                 window.location.href = "{{ route('admin.product.list') }}";
                             }
-
                         }
                     })
                 });

@@ -10,7 +10,7 @@
                 <div class="rounded-t mb-0 px-4 py-3 border-0">
                     <div class="flex flex-wrap items-center">
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                            <h3 class="font-semibold text-base text-blueGray-700">Kategori Hewan</h3>
+                            <h3 class="font-semibold text-base text-blueGray-700">Product</h3>
                         </div>
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                             <a href="{{ route('admin.product.create') }}">
@@ -27,94 +27,144 @@
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th scope="col"
-                                        class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500">
-                                        <div class="flex items-center gap-x-3">
-                                            <input type="checkbox" class="text-blue-500 border-gray-300 rounded ">
-                                            <button class="flex items-center gap-x-2">
-                                                <span>Invoice</span>
-
-                                                <svg class="h-3" viewBox="0 0 10 11" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path
-                                                        d="M2.13347 0.0999756H2.98516L5.01902 4.79058H3.86226L3.45549 3.79907H1.63772L1.24366 4.79058H0.0996094L2.13347 0.0999756ZM2.54025 1.46012L1.96822 2.92196H3.11227L2.54025 1.46012Z"
-                                                        fill="currentColor" stroke="currentColor" stroke-width="0.1" />
-                                                    <path
-                                                        d="M0.722656 9.60832L3.09974 6.78633H0.811638V5.87109H4.35819V6.78633L2.01925 9.60832H4.43446V10.5617H0.722656V9.60832Z"
-                                                        fill="currentColor" stroke="currentColor" stroke-width="0.1" />
-                                                    <path
-                                                        d="M8.45558 7.25664V7.40664H8.60558H9.66065C9.72481 7.40664 9.74667 7.42274 9.75141 7.42691C9.75148 7.42808 9.75146 7.42993 9.75116 7.43262C9.75001 7.44265 9.74458 7.46304 9.72525 7.49314C9.72522 7.4932 9.72518 7.49326 9.72514 7.49332L7.86959 10.3529L7.86924 10.3534C7.83227 10.4109 7.79863 10.418 7.78568 10.418C7.77272 10.418 7.73908 10.4109 7.70211 10.3534L7.70177 10.3529L5.84621 7.49332C5.84617 7.49325 5.84612 7.49318 5.84608 7.49311C5.82677 7.46302 5.82135 7.44264 5.8202 7.43262C5.81989 7.42993 5.81987 7.42808 5.81994 7.42691C5.82469 7.42274 5.84655 7.40664 5.91071 7.40664H6.96578H7.11578V7.25664V0.633865C7.11578 0.42434 7.29014 0.249976 7.49967 0.249976H8.07169C8.28121 0.249976 8.45558 0.42434 8.45558 0.633865V7.25664Z"
-                                                        fill="currentColor" stroke="currentColor" stroke-width="0.3" />
-                                                </svg>
-                                            </button>
-                                        </div>
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        No
+                                    </th>
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        Tanggal
                                     </th>
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
-                                        Date
+                                        Nama Product
                                     </th>
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
-                                        Status
+                                        Harga
                                     </th>
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
-                                        Customer
+                                        Diskon
                                     </th>
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
-                                        Purchase
+                                        Gambar
                                     </th>
 
-                                    <th scope="col" class="relative py-3.5 px-4">
-                                        <span class="sr-only">Actions</span>
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        Nama Kategori
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        Jenis Hewan
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        Deskripsi
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        Gender Hewan
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        Umur
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        Tags
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        Berat
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        Stok
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        Terjual
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        Partner
+                                    </th>
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        Aksi
                                     </th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                                 <tr>
-                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                        <div class="inline-flex items-center gap-x-3">
-                                            <input type="checkbox" class="text-blue-500 border-gray-300 rounded ">
-
-                                            <span>#3063</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">Jan 4,
-                                        2022</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500">1</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500">2 Mei 2024</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500">Kambing Jawa Ngawi</td>
                                     <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                         <div
                                             class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60">
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-
-                                            <h2 class="text-sm font-normal">Paid</h2>
+                                            <h2 class="text-sm font-normal">Rp 222222</h2>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                        <div
+                                            class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60">
+                                            <h2 class="text-sm font-normal">Rp 0</h2>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap align-middle">
+                                        <div class="flex gap-1 flex-col items-center justify-center">
+                                            <img class="object-cover w-14 h-14 rounded-lg"
+                                                src="https://images.unsplash.com/photo-1506863530036-1efeddceb993?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1344&q=80"
+                                                alt="">
                                         </div>
                                     </td>
                                     <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        <div class="flex items-center gap-x-2">
-                                            <img class="object-cover w-8 h-8 rounded-full"
+                                        Kambing</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        Gibas</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500">Lorem ipsum, dolor sit amet consectetur
+                                        adipisicing elit. Quaerat rerum deserunt explicabo impedit sed est ullam doloremque
+                                        commodi.</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        Jantan</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500">
+                                        2 tahun</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        Kurban</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500">
+                                        70 kg</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        4</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        3</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap align-middle">
+                                        <div class="flex gap-1 flex-col items-center justify-center">
+                                            <img class="object-cover w-8 h-8 rounded-lg"
                                                 src="https://images.unsplash.com/photo-1506863530036-1efeddceb993?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1344&q=80"
                                                 alt="">
                                             <div>
-                                                <h2 class="text-sm font-medium text-gray-800Candice Wu
-                                                </h2>
-                                                <p class="text-xs
-                                                    font-normal text-gray-600">
-                                                    candice@example.com</p>
+                                                <p class="text-xs font-normal text-gray-600">Anis</p>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        Monthly subscription</td>
                                     <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                        <div class="flex items-center gap-x-6">
+                                        <div class="flex flex-col items-center gap-x-6">
                                             <button
                                                 class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
                                                 Edit
@@ -170,4 +220,260 @@
             </a>
         </div>
     </section>
+
+    {{-- Modal edit --}}
+    <div class="hidden modal-edit-product modal">
+        <div class="fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"
+            style="background: rgba(0,0,0,.7);">
+            <div
+                class="border border-teal-500 modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+                <div class="modal-content py-4 text-left px-6">
+                    <!--Title-->
+                    <div class="flex justify-between items-center pb-3">
+                        <p class="text-2xl font-bold">Edit kategori hewan ternak</p>
+                        <div class="modal-close cursor-pointer z-50">
+                            <svg class="cancel-edit-data-product fill-current text-black"
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                                <path
+                                    d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                    <!--Body-->
+                    <form class="form-edit-product" action="" method="POST">
+                        <div class="mb-5">
+                            <label for="nama_kategori_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
+                                Masukkan nama kategori hewan
+                            </label>
+                            <input type="nama_kategori_hewan" name="nama_kategori_hewan" id="nama_kategori_hewan"
+                                placeholder="Kambing"
+                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                        </div>
+                        <div class="mb-6 pt-4">
+                            <label for="deskripsi_kategori_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
+                                Masukkan deskripsi kategori hewan
+                            </label>
+                            <textarea type="deskripsi_kategori_hewan" name="deskripsi_kategori_hewan" id="deskripsi_kategori_hewan"
+                                placeholder="Kambing adalah lorem ipsum"
+                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
+
+                        </div>
+                        <div class="pb-4">
+                            <button
+                                class="hover:shadow-form w-full rounded-md bg-primarybase py-3 px-8 text-center text-base font-semibold text-black outline-none">
+                                Simpan
+                            </button>
+                        </div>
+
+                        <div class="pt-1">
+                            <button
+                                class="hover:shadow-form w-full border hover:bg-primarybase hover:text-white border-primarybase rounded-md py-3 px-8 text-center text-base font-semibold text-primarybase">
+                                Batal
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    @push('js')
+        <script>
+            $(function() {
+                // Read data
+                $.ajax({
+                    url: '/api/product',
+                    success: function({
+                        data
+                    }) {
+                        let row = '';
+
+                        data.map(function(val, index) {
+                            row += `
+                            <tr>
+                                    <td class="px-4 py-4 text-sm text-gray-500">${index+1}</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500">${val.created_at}</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500">${val.nama_product}</td>
+                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                        <div
+                                            class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60">
+                                            <h2 class="text-sm font-normal">Rp ${val.harga_product}</h2>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                        <div
+                                            class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60">
+                                            <h2 class="text-sm font-normal">Rp ${val.diskon}</h2>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap align-middle">
+                                        <div class="flex gap-1 flex-col items-center justify-center">
+                                            <img class="object-cover w-14 h-14 rounded-lg"
+                                                src="/uploads/${val.gambar_hewan}"
+                                                alt="">
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 text-sm text-gray-500">
+                                        ${val.categoryproduct[0].nama_kategori_product}</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        ${val.typelivestocks[0].nama_jenis_hewan}</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500">${val.deskripsi_product}</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        ${val.gender_livestocks[0].nama_gender}</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500">
+                                        ${val.lahir_hewan} tahun</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        ${val.tags}</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500">
+                                        ${val.berat_hewan_ternak} kg</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        ${val.stok_hewan_ternak}</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        ${val.terjual}</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap align-middle">
+                                        <div class="flex gap-1 flex-col items-center justify-center">
+                                            <img class="object-cover w-8 h-8 rounded-lg"
+                                                src="/uploads/${val.partner[0].foto_profil}"
+                                                alt="">
+                                            <div>
+                                                <p class="text-xs font-normal text-gray-600">${val.partner[0].nama_partner}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                        <div class="flex flex-col items-center gap-x-6">
+                                            <a data-id="${val.id}" data-toggle="modal" class="edit-data-product cursor-pointer">
+                                                <button
+                                                    class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                    Edit
+                                                </button>
+                                            </a>
+                                            <a class="hapus-data-product cursor-pointer" data-id="${val.id}" class="ml-2" id="delete-product">
+                                                <button
+                                                    class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                    Hapus
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `;
+                        });
+                        $('tbody').append(row);
+                    }
+                });
+
+                // Hapus data
+                $(document).on('click', '.hapus-data-product', function() {
+                    const id = $(this).data('id');
+                    const token = localStorage.getItem('token-efarm');
+
+                    // console.log(token);
+
+                    confirm_dialog = confirm('Apakah yakin dihapus?');
+
+
+                    if (confirm_dialog) {
+                        $.ajax({
+                            url: '/api/product/' + id,
+                            type: "DELETE",
+                            headers: {
+                                "Authorization": token
+                            },
+                            success: function(data) {
+                                if (data.message == 'success') {
+                                    alert('Data berhasil dihapus');
+                                    location.reload();
+                                }
+                            }
+                        });
+                    }
+                });
+
+                // Edit data
+                $(document).on('click', '.edit-data-product', function(e) {
+                    $('.modal-edit-product').removeClass('hidden');
+                    const id = $(this).data('id');
+                    console.log(id);
+                    const token = localStorage.getItem('token-efarm');
+
+                    $.get('/api/product/' + id, function({
+                        data
+                    }) {
+                        // console.log(data.id);
+                        console.log(data);
+                        $('input[name="nama_kategori_hewan"]').val(data.nama_kategori_hewan);
+                        $('textarea[name="deskripsi_kategori_hewan"]').val(data
+                            .deskripsi_kategori_hewan);
+                    });
+
+                    $('.form-edit-product').submit(function(e) {
+                        e.preventDefault();
+                        const form = $(this);
+                        const token = localStorage.getItem('token-efarm');
+                        var formData = new FormData(this);
+                        console.log(formData);
+
+                        $.ajax({
+                            url: `/api/product/${id}?_method=PUT`,
+                            type: 'POST',
+                            data: formData,
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            headers: {
+                                "accept": "application/json",
+                                "Authorization": token,
+                                "Access-Control-Allow-Origin": "*"
+                            },
+                            success: function(data) {
+                                if (data.success) {
+                                    alert('Data berhasil diubah');
+                                    location.reload();
+                                }
+                            }
+                        })
+                    });
+                });
+
+                // Tambah data
+                $('.form-tambah-product').submit(function(e) {
+                    e.preventDefault();
+                    const form = $(this);
+                    const token = localStorage.getItem('token-efarm');
+                    var formData = new FormData(this);
+                    console.log(formData);
+
+
+                    $.ajax({
+                        url: '/api/product',
+                        type: 'POST',
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        headers: {
+                            "accept": "application/json",
+                            "Authorization": "Bearer" + token,
+                            "Access-Control-Allow-Origin": "*"
+                        },
+                        success: function(data) {
+                            if (data.success) {
+                                alert('Data berhasil ditambahkan');
+                                location.reload();
+                            }
+                        }
+                    })
+                });
+
+
+                $('.cancel-edit-data-product').click(function(e) {
+                    // $('.modal-edit-product').addClass('hidden');
+                    location.reload();
+                });
+            })
+        </script>
+    @endpush
 @endsection

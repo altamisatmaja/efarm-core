@@ -31,7 +31,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::with(['typelivestocks', 'gender_livestocks', 'partner', 'categoryproduct'])->get();
+        $product = Product::with('typelivestocks', 'gender_livestocks', 'partner', 'categoryproduct')->get();
 
         return response()->json([
             'data' => $product,

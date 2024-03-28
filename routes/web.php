@@ -66,7 +66,7 @@ Route::middleware('auth')->group(function () {
 
     // route admin for get all product
     Route::get('admin/product', [ProductController::class, 'list'])->name('admin.product.list');
-    Route::get('admin/product/edit/{product}', [ProductController::class, 'edit'])->name('admin.product.edit');
+    Route::get('admin/product/edit/', [ProductController::class, 'edit'])->name('admin.product.edit');
     Route::get('admin/product/create', [ProductController::class, 'create'])->name('admin.product.create');
 
     // route admin for partner

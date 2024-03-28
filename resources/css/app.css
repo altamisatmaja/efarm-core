@@ -1415,6 +1415,11 @@ select {
   margin-bottom: 1.5rem;
 }
 
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .-mb-1 {
   margin-bottom: -0.25rem;
 }
@@ -1698,6 +1703,10 @@ select {
   height: 100vh;
 }
 
+.h-14 {
+  height: 3.5rem;
+}
+
 .min-h-0 {
   min-height: 0px;
 }
@@ -1800,6 +1809,10 @@ select {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-14 {
+  width: 3.5rem;
 }
 
 .min-w-0 {
