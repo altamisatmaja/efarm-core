@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +9,7 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
     <title>@yield('title')</title>
 </head>
+
 <body>
     <div>
         @include('partner.layouts.navbar')
@@ -19,6 +18,9 @@
             <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div>
             <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
                 <main>
+                    <div class="pt-6 px-4">
+                        @yield('content')
+                    </div>
                 </main>
             </div>
         </div>

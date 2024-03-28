@@ -16,7 +16,8 @@ class CategoryProductController extends Controller
     }   
     
     public function list(){
-        return view('admin.pages.category_product.index');
+        $categoryproduct = CategoryProduct::all();
+        return view('admin.pages.category_product.index', compact('categoryproduct'));
     }
     /**
      * Display a listing of the resource.

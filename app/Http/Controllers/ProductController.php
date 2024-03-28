@@ -2,23 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CategoryProduct;
+use App\Models\GenderLivestock;
+use App\Models\Partner;
 use App\Models\Product;
+use App\Models\TypeLivestock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
-    public function __construct(){
-       // Ignored, really
-       $this->middleware('auth')->only(['list']);
-       $this->middleware('auth:api')->only(['delete']);
-   }   
-   
-   public function list(){
-       return view('admin.pages.product.index');
-   }
+    public function __construct()
+    {
+        // Ignored, really
+        $this->middleware('auth')->only(['list']);
+        $this->middleware('auth:api')->only(['delete']);
+    }
 
+    public function list()
+    {
+        return view('admin.pages.product.index');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +31,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
+        $product = Product::with(['typelivestocks', 'gender_livestocks', 'partner', 'categoryproduct'])->get();
 
         return response()->json([
             'data' => $product,
@@ -35,7 +40,13 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('admin.pages.product.create');
+        $categoryproduct = CategoryProduct::all();
+        $typelivestocks = TypeLivestock::all();
+        $gender_livestocks = GenderLivestock::all();
+        $partner = Partner::all();
+
+        return view('admin.pages.product.create', compact('categoryproduct', 'typelivestocks', 'gender_livestocks', 'partner'));
+    
     }
 
     /**
@@ -47,14 +58,14 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'harga_product' => 'required', 
-            'id_kategori' => 'required', //done
+            'harga_product' => 'required',
+            'id_kategori' => 'required',  // done
             'nama_product' => 'required',
             'tags' => 'required',
             'diskon' => 'required',
-            'id_partner' => 'required', //done
+            'id_partner' => 'required',  // done
             'gambar_hewan' => 'required',
-            'id_jenis_gender_hewan' => 'required', //done
+            'id_jenis_gender_hewan' => 'required',  // done
             'lahir_hewan' => 'required',
             'berat_hewan_ternak' => 'required',
             'stok_hewan_ternak' => 'required',
@@ -63,7 +74,7 @@ class ProductController extends Controller
             'id_typelivestocks' => 'required'
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json(
                 $validator->errors(), 422
             );
@@ -71,9 +82,9 @@ class ProductController extends Controller
 
         $input = $request->all();
 
-        if($request->has('gambar_hewan')){
+        if ($request->has('gambar_hewan')) {
             $gambar = $request->file('gambar_hewan');
-            $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
+            $nama_gambar = time() . rand(1, 9) . '.' . $gambar->getClientOriginalExtension();
             $gambar->move('uploads', $nama_gambar);
             $input['gambar_hewan'] = $nama_gambar;
         }
@@ -85,7 +96,6 @@ class ProductController extends Controller
             'message' => 'success',
             'data' => $product
         ]);
-        
     }
 
     /**
@@ -100,7 +110,6 @@ class ProductController extends Controller
             'data' => $product
         ]);
     }
-
 
     public function edit(Product $product)
     {
@@ -133,7 +142,7 @@ class ProductController extends Controller
             'id_livestocks' => 'required'
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json(
                 $validator->errors(), 422
             );
@@ -141,10 +150,10 @@ class ProductController extends Controller
 
         $input = $request->all();
 
-        if($request->hasFile('gambar_product')){
-            File::delete('uploads/'.$product->gambar_product);
+        if ($request->hasFile('gambar_product')) {
+            File::delete('uploads/' . $product->gambar_product);
             $gambar = $request->file('gambar_product');
-            $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
+            $nama_gambar = time() . rand(1, 9) . '.' . $gambar->getClientOriginalExtension();
             $gambar->move('uploads', $nama_gambar);
             $input['gambar_product'] = $nama_gambar;
         } else {
@@ -168,7 +177,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        File::delete('uploads/'.$product->gambar_product);
+        File::delete('uploads/' . $product->gambar_product);
         $product->delete();
 
         return response()->json([

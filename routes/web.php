@@ -74,4 +74,7 @@ Route::middleware('auth')->group(function () {
 
     // route admin for partner
     Route::get('admin/testimoni', [TestimonialController::class, 'list'])->name('admin.testimoni.list');
+
+    // route partner for product
+    Route::get('partner/product', [ProductController::class, 'list'])->name('partner.product.list');
 });

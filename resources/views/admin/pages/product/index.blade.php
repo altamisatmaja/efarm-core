@@ -7,6 +7,20 @@
     <section class="container px-4 mx-auto">
         <div class="flex flex-col">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="rounded-t mb-0 px-4 py-3 border-0">
+                    <div class="flex flex-wrap items-center">
+                        <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                            <h3 class="font-semibold text-base text-blueGray-700">Kategori Hewan</h3>
+                        </div>
+                        <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                            <a href="{{ route('admin.product.create') }}">
+                                <button
+                                    class="bg-primarybase text-white active:bg-primarybase text-xs font-bold uppercase px-3 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                    type="button">Tambah data</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
                     <div class="overflow-hidden border border-gray-200 md:rounded-lg">
                         <table class="min-w-full divide-y divide-gray-200">

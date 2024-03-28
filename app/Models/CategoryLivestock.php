@@ -16,4 +16,5 @@ class CategoryLivestock extends Model
         return $this->hasMany(TypeLivestock::class);
         // return $this->belongsTo(CategoryLivestock::class, 'id', 'id');
     }
+
 }

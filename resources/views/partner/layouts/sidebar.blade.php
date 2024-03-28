@@ -43,7 +43,7 @@
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pelanggan</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{ route('partner.product.list') }}"
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Produk</a>
                             </li>
                             <li>

@@ -159,4 +159,161 @@
         </a>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    @push('js')
+        <script>
+            $(function() {
+                // Read data
+                $.ajax({
+                    url: '/api/category',
+                    success: function({
+                        data
+                    }) {
+                        let row = '';
+
+                        data.map(function(val, index) {
+                            row += `
+                            <tr>
+                                <td style="text-align: center;">${index+1}</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap text-center">
+                                    ${val.nama_kategori_product}
+                                </td>
+                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap text-center">
+                                    ${val.deskripsi_kategori_product}</td>
+                                <td class="p-3 flex items-center justify-center">
+                                    <div class="flex-shrink-0 rounded-lg overflow-hidden w-48 h-48">
+                                        <img src="/uploads/${val.gambar_kategori_product}" class="w-full h-full object-cover" alt="">
+                                    </div>
+                                </td>
+                                <td class="py-3.5 px-4 text-sm font-normal text-gray-500">
+                                    <div class="gap-x-3">
+                                        <a data-id="${val.id}" data-toggle="modal" class="edit-data-categoryproduct cursor-pointer">Edit</a>
+                                        <a class="hapus-data-categorylivestock cursor-pointer" data-id="${val.id}" class="ml-2" id="delete-categoryproduct">Hapus</a>
+                                    </div>
+                                </td>
+                            </tr>
+                            `;
+                        });
+                        $('tbody').append(row);
+                    }
+                })
+
+                // Delete data
+                $(document).on('click', '#delete-categoryproduct', function() {
+                    const id = $(this).data('id');
+                    const token = localStorage.getItem('token-efarm');
+
+                    // console.log(token);
+
+                    confirm_dialog = confirm('Apakah yakin dihapus?');
+
+                    if (confirm_dialog) {
+                        $.ajax({
+                            url: '/api/category/' + id,
+                            type: "DELETE",
+                            headers: {
+                                "Authorization": token
+                            },
+                            success: function(data) {
+                                if (data.message == 'success') {
+                                    alert('Data berhasil dihapus');
+                                    location.reload();
+                                }
+                            }
+                        });
+                    }
+                });
+
+                $('.tambah-data-categoryproduct').click(function(e) {
+                    $('.modal-tambah-categoryproduct').removeClass('hidden');
+                });
+
+                $('.form-tambah-categoryproduct').submit(function(e) {
+                    e.preventDefault();
+                    const form = $(this);
+                    const token = localStorage.getItem('token-efarm');
+                    var formData = new FormData(this);
+                    console.log(formData);
+
+
+                    $.ajax({
+                        url: '/api/category',
+                        type: 'POST',
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        headers: {
+                            "accept": "application/json",
+                            "Authorization": "Bearer" + token,
+                            "Access-Control-Allow-Origin": "*"
+                        },
+                        success: function(data) {
+                            if (data.success) {
+                                alert('Data berhasil ditambahkan');
+                                location.reload();
+                            }
+                        }
+                    })
+                });
+
+                $('#gambar_kategori_product').click(function(e) {
+                    e.stopPropagation();
+                });
+
+                $(document).on('click', '.cancel-tambah-data-categoryproduct', function() {
+                    location.reload();
+                });
+
+                $(document).on('click', '.cancel-edit-data-categoryproduct', function() {
+                    location.reload();
+                });
+
+                $(document).on('click', '.edit-data-categoryproduct', function() {
+                    $('.modal-edit-categoryproduct').removeClass('hidden');
+                    const id = $(this).data('id');
+                    console.log(id);
+                    const token = localStorage.getItem('token-efarm');
+
+                    $.get('/api/category/' + id, function({
+                        data
+                    }) {
+                        console.log(data.id);
+                        console.log(data);
+                        $('input[name="nama_kategori_product"]').val(data.nama_kategori_product);
+                        $('textarea[name="deskripsi_kategori_product"]').val(data
+                            .deskripsi_kategori_product);
+                    });
+
+                    $('.form-edit-categoryproduct').submit(function(e) {
+                        e.preventDefault();
+                        const form = $(this);
+                        const token = localStorage.getItem('token-efarm');
+                        var formData = new FormData(this);
+                        console.log(formData);
+
+                        $.ajax({
+                            url: `/api/category/${id}?_method=PUT`,
+                            type: 'POST',
+                            data: formData,
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            headers: {
+                                "accept": "application/json",
+                                "Authorization": token,
+                                "Access-Control-Allow-Origin": "*"
+                            },
+                            success: function(data) {
+                                if (data.success) {
+                                    alert('Data berhasil diubah');
+                                    location.reload();
+                                }
+                            }
+                        })
+                    });
+                });
+            });
+        </script>
+    @endpush
 @endsection
