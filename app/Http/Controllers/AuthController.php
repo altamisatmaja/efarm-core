@@ -36,9 +36,9 @@ class AuthController extends Controller
                     'token' => $token,
                 ]);
             }
-            else {
-                return back()->withErrors(['error' => 'Anda bukan admin!']);
-            }
+            // else {
+            //     return back()->withErrors(['error' => 'Anda bukan admin!']);
+            // }
         }
     
         // return back()->withErrors(['error' => 'Email atau password salah']);

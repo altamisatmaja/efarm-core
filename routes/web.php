@@ -34,19 +34,19 @@ Route::get('/', function () {
 
 
 // route for admin
-Route::get('admin/auth/login', [AuthController::class, 'index'])->name('admin.login');
-Route::post('admin/auth/login', [AuthController::class, 'login']);
-Route::get('admin/auth/logout', [AuthController::class, 'logout']);
+Route::get('admin/login', [AuthController::class, 'index'])->name('admin.login');
+Route::post('admin/login', [AuthController::class, 'login']);
+Route::get('admin/logout', [AuthController::class, 'logout']);
 
 // route for partner
-Route::get('partner/auth/login', [AuthPartnerController::class, 'index'])->name('partner.login');
-Route::post('partner/auth/login', [AuthPartnerController::class, 'login']);
-Route::get('partner/auth/logout', [AuthPartnerController::class, 'logout']);
+Route::get('partner/login', [AuthPartnerController::class, 'index'])->name('partner.login');
+Route::post('partner/login', [AuthPartnerController::class, 'login']);
+Route::get('partner/logout', [AuthPartnerController::class, 'logout']);
 
 // route for customer
-Route::get('customer/auth/login', [AuthCustomerController::class, 'index'])->name('customer.login');
-Route::post('customer/auth/login', [AuthCustomerController::class, 'login']);
-Route::get('customer/auth/logout', [AuthCustomerController::class, 'logout']);
+Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
+Route::post('customer/login', [AuthCustomerController::class, 'login']);
+Route::get('customer/logout', [AuthCustomerController::class, 'logout']);
 
 Route::middleware('auth')->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
