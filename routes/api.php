@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryLivestockController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\FarmController;
+use App\Http\Controllers\GenderLivestockController;
 use App\Http\Controllers\KategoriProductController;
 use App\Http\Controllers\LivestockController;
 use App\Http\Controllers\OrderController;
@@ -66,6 +67,7 @@ Route::group([
         'typelivestock' => TypeLivestockController::class,
         'payment' => PaymentController::class,
         'farm' => FarmController::class,
+        'genderlivestock' => GenderLivestockController::class,
     ]);
 
     Route::get('order/confirmed', [OrderController::class, 'order_confirmed']);

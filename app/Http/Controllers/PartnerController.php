@@ -10,8 +10,11 @@ use Illuminate\Support\Facades\Validator;
 class PartnerController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth')->except(['index']);
+        // Ignored, really
+        $this->middleware('auth')->only(['list']);
+        $this->middleware('auth:api')->only(['delete']);
     }
+
     public function list(){
         return view('admin.pages.partner.index');
     }
@@ -49,14 +52,15 @@ class PartnerController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nama' => 'required',
-            'username' => 'required',
-            'email' => 'required',
-            'email_verified_at' => 'required',
-            'password' => 'required|same:konfirmasi_password',
-            'konfirmasi_password' => 'required|password',
+            'id_user' => 'required',
             'nama_partner' => 'required',
             'nama_perusahaan_partner' => 'required',
+            'provinsi_partner' => 'required',
+            'kabupaten_partner' => 'required',
+            'kecamatan_partner' => 'required',
+            'kelurahan_partner' => 'required',
+            'alamat_partner' => 'required',
+            'foto_profil' => 'required',
         ]);
 
         if($validator->fails()){
@@ -66,11 +70,20 @@ class PartnerController extends Controller
         }
 
         $input = $request->all();
-        $input['password'] = bcrypt($request->password);
+
+        if($request->has('foto_profil')){
+            $gambar = $request->file('foto_profil');
+            $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
+            $gambar->move('uploads', $nama_gambar);
+            $input['foto_profil'] = $nama_gambar;
+        }
+        // $input['password'] = bcrypt($request->password);
 
         $partner = Partner::create($input);
 
         return response()->json([
+            'success' => true,
+            'message' => 'success',
             'data' => $partner
         ]);
     }
@@ -108,8 +121,15 @@ class PartnerController extends Controller
     public function update(Request $request, Partner $partner)
     {
         $validator = Validator::make($request->all(), [
+            'id_user' => 'required',
             'nama_partner' => 'required',
             'nama_perusahaan_partner' => 'required',
+            'provinsi_partner' => 'required',
+            'kabupaten_partner' => 'required',
+            'kecamatan_partner' => 'required',
+            'kelurahan_partner' => 'required',
+            'alamat_partner' => 'required',
+            'foto_profil' => 'required',
         ]);
 
         if($validator->fails()){

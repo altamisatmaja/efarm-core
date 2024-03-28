@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
@@ -46,11 +47,20 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id_livestock' => 'required',
-            'harga_product' => 'required',
-            'id_kategori' => 'required',
+            'id_livestock' => 'required', //done
+            'harga_product' => 'required', 
+            'id_kategori' => 'required', //done
+            'nama_product' => 'required',
             'tags' => 'required',
             'diskon' => 'required',
+            'id_partner' => 'required', //done
+            'gambar_hewan' => 'required',
+            'id_jenis_gender_hewan' => 'required', //done
+            'lahir_hewan' => 'required',
+            'berat_hewan_ternak' => 'required',
+            'stok_hewan_ternak' => 'required',
+            'terjual' => 'required',
+            'deskripsi_product' => 'required',
         ]);
 
         if($validator->fails()){
@@ -59,9 +69,20 @@ class ProductController extends Controller
             );
         }
 
-        $product = Product::create($request->all());
+        $input = $request->all();
+
+        if($request->has('gambar_hewan')){
+            $gambar = $request->file('gambar_hewan');
+            $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
+            $gambar->move('uploads', $nama_gambar);
+            $input['gambar_hewan'] = $nama_gambar;
+        }
+
+        $product = Product::create($input);
 
         return response()->json([
+            'success' => true,
+            'message' => 'success',
             'data' => $product
         ]);
         
@@ -99,8 +120,16 @@ class ProductController extends Controller
             'id_livestock' => 'required',
             'harga_product' => 'required',
             'id_kategori' => 'required',
+            'nama_product' => 'required',
             'tags' => 'required',
             'diskon' => 'required',
+            'id_partner' => 'required',
+            'id_jenis_gender_hewan' => 'required',
+            'lahir_hewan' => 'required',
+            'berat_hewan_ternak' => 'required',
+            'stok_hewan_ternak' => 'required',
+            'terjual' => 'required',
+            'deskripsi_product' => 'required',
         ]);
 
         if($validator->fails()){
@@ -109,9 +138,22 @@ class ProductController extends Controller
             );
         }
 
-        $product->update($request->all());
+        $input = $request->all();
+
+        if($request->hasFile('gambar_product')){
+            File::delete('uploads/'.$product->gambar_product);
+            $gambar = $request->file('gambar_product');
+            $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
+            $gambar->move('uploads', $nama_gambar);
+            $input['gambar_product'] = $nama_gambar;
+        } else {
+            unset($input['gambar_product']);
+        }
+
+        $product->update($input);
 
         return response()->json([
+            'success' => true,
             'message' => 'succes',
             'data' => $product
         ]);
@@ -125,6 +167,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        File::delete('uploads/'.$product->gambar_product);
         $product->delete();
 
         return response()->json([
