@@ -10,4 +10,10 @@ class Product extends Model
     use HasFactory;
 
     protected $guarded = [];
+    
+    // public function livestocks(){
+    //     return $this->belongsTo(Livestock::class, 'id_livestock');
+    // }
+
+    // public function categorylivestock
 }

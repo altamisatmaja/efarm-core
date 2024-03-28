@@ -47,7 +47,6 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id_livestock' => 'required', //done
             'harga_product' => 'required', 
             'id_kategori' => 'required', //done
             'nama_product' => 'required',
@@ -61,6 +60,7 @@ class ProductController extends Controller
             'stok_hewan_ternak' => 'required',
             'terjual' => 'required',
             'deskripsi_product' => 'required',
+            'id_typelivestocks' => 'required'
         ]);
 
         if($validator->fails()){
@@ -130,6 +130,7 @@ class ProductController extends Controller
             'stok_hewan_ternak' => 'required',
             'terjual' => 'required',
             'deskripsi_product' => 'required',
+            'id_livestocks' => 'required'
         ]);
 
         if($validator->fails()){
