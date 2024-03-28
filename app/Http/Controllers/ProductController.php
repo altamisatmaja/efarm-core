@@ -64,7 +64,7 @@ class ProductController extends Controller
             'tags' => 'required',
             'diskon' => 'required',
             'id_partner' => 'required',  // done
-            'gambar_hewan' => 'required',
+            'gambar_hewan' => 'required|image|mimes:jpg,png,jpeg,webp',
             'id_jenis_gender_hewan' => 'required',  // done
             'lahir_hewan' => 'required',
             'berat_hewan_ternak' => 'required',

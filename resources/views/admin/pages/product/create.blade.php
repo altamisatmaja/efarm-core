@@ -80,7 +80,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="terjual" class="text-sm font-medium text-gray-700 block mb-2">Terjual</label>
-                        <input type="number" name="terjual" id="terjual" placeholder="0" readonly
+                        <input type="number" value="0" name="terjual" id="terjual" placeholder="0" readonly
                             class="border p-2 rounded w-full">
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
@@ -106,8 +106,8 @@
                         <div>
                             <label for="lahir_hewan" class="text-sm font-medium text-gray-700 block mb-2">Lahir
                                 hewan</label>
-                            <input type="number" id="lahir_hewan" name="lahir_hewan" placeholder="Lahir hewan dalam bulan"
-                                class="border p-2 rounded w-full">
+                            <input type="number" id="lahir_hewan" name="lahir_hewan"
+                                placeholder="Lahir hewan dalam bulan" class="border p-2 rounded w-full">
                         </div>
                         <div>
                             <label for="tags" class="text-sm font-medium text-gray-700 block mb-2">Tags</label>
@@ -156,8 +156,9 @@
                         success: function(data) {
                             if (data.success) {
                                 alert('Data berhasil ditambahkan');
-                                location.reload();
+                                window.location.href = "{{ route('admin.product.list') }}";
                             }
+
                         }
                     })
                 });
