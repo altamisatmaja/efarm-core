@@ -183,7 +183,7 @@
                                     <a data-id="${val.id}" class="kirim-order">
                                         <button 
                                             class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                            Kirim
+                                            Kemas
                                         </button>
                                     </a>
                                     </div>
@@ -204,13 +204,13 @@
                         url: '/api/order/status/' + id,
                         type: 'POST',
                         data: {
-                            status: 'Dikirim'
+                            status: 'Dikemas'
                         },
                         headers: {
                             "Authorization": "Bearer" + token,
                         },
                         success: function(data) {
-                            alert('Pesanan berhasil dikonfirmasi');
+                            alert('Pesanan berhasil dikonfirmasi dan siap dikemas');
                             location.reload();
                         }
                     })

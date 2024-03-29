@@ -54,7 +54,7 @@ Route::group([
     'middleware' => 'api',
 ], function() {
     Route::get('order/new', [OrderController::class, 'order_new']);
-    Route::get('order/confirmed', [OrderController::class, 'orderconfirmed']);
+    Route::get('order/confirmed', [OrderController::class, 'order_confirmed']);
     Route::get('order/packed', [OrderController::class, 'order_packed']);
     Route::get('order/sent', [OrderController::class, 'order_sent']);
     Route::get('order/accepted', [OrderController::class, 'order_accepted']);

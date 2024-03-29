@@ -161,6 +161,10 @@
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan Dikonfirmasi</a>
                             </li>
                             <li>
+                                <a href="{{ route('admin.order.packed') }}"
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan Dikemas</a>
+                            </li>
+                            <li>
                                 <a href="{{ route('admin.order.sent') }}"
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan Dikirim</a>
                             </li>

@@ -200,7 +200,7 @@ class OrderController extends Controller
     }
 
 
-    public function orderconfirmed()
+    public function order_confirmed()
     {
         $order = Order::with('user')->where('status', 'Dikonfirmasi')->get();
 
