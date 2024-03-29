@@ -53,6 +53,13 @@ Route::group([
 Route::group([
     'middleware' => 'api',
 ], function() {
+    Route::get('order/new', [OrderController::class, 'order_new']);
+    Route::get('order/confirmed', [OrderController::class, 'orderconfirmed']);
+    Route::get('order/packed', [OrderController::class, 'order_packed']);
+    Route::get('order/sent', [OrderController::class, 'order_sent']);
+    Route::get('order/accepted', [OrderController::class, 'order_accepted']);
+    Route::get('order/end', [OrderController::class, 'order_end']);
+    Route::post('order/status/{order}', [OrderController::class, 'handle_status']);
     Route::resources([
         'category' => CategoryProductController::class,
         'product' => ProductController::class,
@@ -69,20 +76,5 @@ Route::group([
         'farm' => FarmController::class,
         'genderlivestock' => GenderLivestockController::class,
     ]);
-
-    Route::get('order/toconfirmed', [OrderController::class, 'order_confirmed']);
-    Route::get('order/new', [OrderController::class, 'order_new']);
-    Route::get('order/packed', [OrderController::class, 'order_packed']);
-    Route::get('order/sent', [OrderController::class, 'order_sent']);
-    Route::get('order/accepted', [OrderController::class, 'order_accepted']);
-    Route::get('order/end', [OrderController::class, 'order_end']);
-    Route::post('order/status/{order}', [OrderController::class, 'handle_status']);
     Route::get('report', [ReportController::class, 'index']);
 });
-
-// Route::group(['middleware' => 'api'], function() {
-//     Route::get('kategori', [KategoriProductController::class, 'index']);
-//     Route::post('kategori', [KategoriProductController::class, 'store']);
-//     Route::put('kategori/{id}', [KategoriProductController::class, 'update']);
-//     Route::delete('kategori/{id}', [KategoriProductController::class, 'destroy']);
-// });

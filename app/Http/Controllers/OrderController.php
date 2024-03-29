@@ -194,18 +194,13 @@ class OrderController extends Controller
 
     public function order_new()
     {
-        // $order = Order::with('user')->where('status', 'Baru')->get();
+        $order = Order::with('user')->where('status', 'Baru')->get();
 
-        // return response()->json(['message' => 'success', 'data' => $order]);
-        $order = Order::with('user')->get();
-
-        return response()->json([
-            'data' => $order
-        ]);
+        return response()->json(['message' => 'success', 'data' => $order]);
     }
 
 
-    public function order_confirmed()
+    public function orderconfirmed()
     {
         $order = Order::with('user')->where('status', 'Dikonfirmasi')->get();
 
