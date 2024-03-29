@@ -7,7 +7,7 @@
                 <ul class="space-y-2 pb-2">
                     <li>
                         <a href="{{ route('admin.dashboard') }}"
-                        class="text-base text-gray-900 font-normal rounded-lg hover:bg-primarybase hover:text-white flex items-center p-2 group ">
+                            class="text-base text-gray-900 font-normal rounded-lg hover:bg-primarybase hover:text-white flex items-center p-2 group ">
                             <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-white"
                                 xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
                                 fill="currentColor" width="24">
@@ -20,7 +20,7 @@
                     </li>
                     <li>
                         <button type="button"
-                        class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white"
+                            class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white"
                             aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                             <svg class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-white"
                                 xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
@@ -48,7 +48,8 @@
                             </li>
                             <li>
                                 <a href="{{ route('admin.categorylivestock.list') }}"
-                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Category Typelivestock</a>
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Category
+                                    Typelivestock</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.product.list') }}"
@@ -104,7 +105,8 @@
                             </li>
                             <li>
                                 <a href="#"
-                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pengajuan Partner</a>
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pengajuan
+                                    Partner</a>
                             </li>
                             <li>
                                 <a href="#"
@@ -126,16 +128,51 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="text-base text-gray-900 font-normal rounded-lg hover:bg-primarybase hover:text-white flex items-center p-2 group ">
+                        <button type="button"
+                            class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white"
+                            aria-controls="dropdown-pesanan" data-collapse-toggle="dropdown-pesanan">
                             <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-white transition duration-75"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="24"
                                 viewBox="0 -960 960 960" width="24">
                                 <path
                                     d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM120-800H80q-17 0-28.5-11.5T40-840q0-17 11.5-28.5T80-880h66q11 0 21 6t15 17l159 337h280l145-260q5-10 14-15t20-5q23 0 34.5 19.5t.5 39.5L692-482q-11 20-29.5 31T622-440H324l-44 80h440q17 0 28.5 11.5T760-320q0 17-11.5 28.5T720-280H280q-45 0-68.5-39t-1.5-79l54-98-144-304Zm367 120H360q-17 0-28.5-11.5T320-720q0-17 11.5-28.5T360-760h127l-36-36q-12-12-11.5-28t12.5-28q12-11 28-11.5t28 11.5l104 104q12 12 12 28t-12 28L508-588q-11 11-27.5 11.5T452-588q-11-11-11-28t11-28l35-36Z" />
                             </svg>
-                            <span class="ml-3 flex-1 whitespace-nowrap">Pesanan</span>
-                        </a>
+                            <span class="flex-1 ml-3 text-left whitespace-nowrap" sidebar-toggle-item>Data
+                                Pesanan</span>
+                            <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </button>
+                        <ul id="dropdown-pesanan" class="hidden py-2 space-y-2">
+                            <li>
+                                <a href="{{ route('admin.order.master') }}"
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Master
+                                    Pesanan</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.order.new') }}"
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan Baru</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.order.confirmed') }}"
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan Dikonfirmasi</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.order.sent') }}"
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan Dikirim</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.order.accepted') }}"
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan Diterima</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.order.end') }}"
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan Selesai</a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#"

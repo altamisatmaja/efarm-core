@@ -434,10 +434,10 @@
                                 year: 'numeric',
                                 month: 'long',
                                 day: 'numeric',
-                                hour: 'numeric',
-                                minute: 'numeric',
-                                second: 'numeric',
-                                timeZoneName: 'short'
+                                // hour: 'numeric',
+                                // minute: 'numeric',
+                                // second: 'numeric',
+                                // timeZoneName: 'short'
                             };
                             var formattedDate = createdAtDate.toLocaleDateString('id-ID',
                             options);
@@ -470,7 +470,7 @@
                                     </td>
                                     <td class="px-4 py-4 text-sm text-gray-500">
                                         ${val.categoryproduct[0].nama_kategori_product}</td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    <td class="px-4 py-4 text-sm text-gray-500">
                                         ${val.typelivestocks[0].nama_jenis_hewan}</td>
                                     <td class="px-4 py-4 text-sm text-gray-500">${val.deskripsi_product}</td>
                                     <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
@@ -485,13 +485,13 @@
                                         ${val.stok_hewan_ternak}</td>
                                     <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
                                         ${val.terjual}</td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap align-middle">
+                                    <td class="px-4 py-4 text-sm text-gray-500 align-middle">
                                         <div class="flex gap-1 flex-col items-center justify-center">
                                             <img class="object-cover w-8 h-8 rounded-lg"
                                                 src="/uploads/${val.partner[0].foto_profil}"
                                                 alt="">
                                             <div>
-                                                <p class="text-xs font-normal text-gray-600">${val.partner[0].nama_partner}</p>
+                                                <p class="text-xs font-normal align-middle text-center items-center text-gray-600">${val.partner[0].nama_partner}</p>
                                             </div>
                                         </div>
                                     </td>

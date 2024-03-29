@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title' | 'Dashboard | Order confimed')
+@section('title', 'Dashboard | Order')
 
 @section('content')
     <section class="container mx-auto">
@@ -109,7 +109,7 @@
             $(function() {
                 // Read data
                 $.ajax({
-                    url: '/api/order/confirmed',
+                    url: '/api/order',
                     success: function({
                         data
                     }) {
@@ -138,78 +138,78 @@
                             }
 
                             row += `
-                        <tr>
-                                <td
-                                    class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <div class="inline-flex items-center gap-x-3">
-                                        <span>${index+1}</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">${formattedDate}</td>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <div
-                                        class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-
-                                        <h2 class="text-sm font-normal">${val.status}</h2>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    <div class="flex items-center gap-x-2">
-                                        <img class="object-cover w-8 h-8 rounded-full"
-                                            src="/uploads/${val.user.profile_photo_path}"
-                                            alt="">
-                                        <div>
-                                            <h2 class="text-sm font-medium text-gray-800 ">${val.user.nama}
-                                            </h2>
-                                            <p class="text-xs font-normal text-gray-600 ">
-                                                ${val.user.alamat_lengkap}</p>
+                            <tr>
+                                    <td
+                                        class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                        <div class="inline-flex items-center gap-x-3">
+                                            <span>${index+1}</span>
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">${rupiah(val.sub_total)}</td>
-                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                    <div class="flex items-center gap-x-6">
-                                        <a data-id="${val.id}">
-                                        <button
-                                            class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                            Lihat detail
-                                        </button>
-                                    </a>
-                                    <a data-id="${val.id}" class="kirim-order">
-                                        <button 
-                                            class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                            Kirim
-                                        </button>
-                                    </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        `;
+                                    </td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">${formattedDate}</td>
+                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                        <div
+                                            class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60">
+                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg>
+
+                                            <h2 class="text-sm font-normal">${val.status}</h2>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        <div class="flex items-center gap-x-2">
+                                            <img class="object-cover w-8 h-8 rounded-full"
+                                                src="/uploads/${val.user.profile_photo_path}"
+                                                alt="">
+                                            <div>
+                                                <h2 class="text-sm font-medium text-gray-800 ">${val.user.nama}
+                                                </h2>
+                                                <p class="text-xs font-normal text-gray-600 ">
+                                                    ${val.user.alamat_lengkap}</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">${rupiah(val.sub_total)}</td>
+                                    <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                        <div class="flex items-center gap-x-6">
+                                            <a data-id="${val.id}">
+                                            <button
+                                                class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                Lihat detail
+                                            </button>
+                                        </a>
+                                        <a data-id="${val.id}" class="konfirmasi-order">
+                                            <button 
+                                                class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                Konfirmasi
+                                            </button>
+                                        </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `;
                         });
                         $('tbody').append(row);
                     }
                 });
 
-                // Kirim pesanan
-                $(document).on('click', '.kirim-order', function() {
+                // Konfirmasi pesanan
+                $(document).on('click', '.konfirmasi-order', function(){
                     const id = $(this).data('id');
                     const token = localStorage.getItem('token-efarm');
 
                     $.ajax({
                         url: '/api/order/status/' + id,
                         type: 'POST',
-                        data: {
-                            status: 'Dikirim'
+                        data : {
+                            status : 'Dikemas'
                         },
                         headers: {
                             "Authorization": "Bearer" + token,
                         },
-                        success: function(data) {
+                        success : function(data){
                             alert('Pesanan berhasil dikonfirmasi');
                             location.reload();
                         }

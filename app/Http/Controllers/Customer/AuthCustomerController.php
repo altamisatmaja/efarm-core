@@ -28,7 +28,7 @@ class AuthCustomerController extends Controller
                 $token = Auth::guard('api')->attempt($credentials);
                 cookie()->queue(cookie('token', $token, 120));
                 return redirect('/customer/dashboard');
-            }
+            }   
             else {
                 return back()->withErrors(['error' => 'Anda bukan partner!']);
             }

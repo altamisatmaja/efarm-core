@@ -1,7 +1,7 @@
 @extends('admin.layouts.app')
 
-@section('title' | 'Dashboard | Order Sent')
+@section('title' | 'Dashboard | Order end')
 
 @section('content')
-    <p>Sent</p>
+    <p>end</p>
 @endsection

@@ -11,17 +11,52 @@ class OrderController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api')->except(['index']);
+        $this->middleware('auth')->only(['list']);
+        $this->middleware('auth:api')->only(['delete']);
+
+        // 'handle_status', 'order_new', 'order_confirmed', 'order_packed', 'order_sent', 'order_accepted', 'order_end'
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function list()
+    {
+        return view('admin.pages.order.index');
+    }
+
+    public function order_new_view()
+    {
+        return view('admin.pages.order.new');
+    }
+
+
+    public function order_confirmed_view()
+    {
+        return view('admin.pages.order.confirmed');
+    }
+
+    public function order_packed_view()
+    {
+        return view('admin.pages.order.packed');
+    }
+
+    public function order_sent_view()
+    {
+        return view('admin.pages.order.sent');
+    }
+
+
+    public function order_accepted_view()
+    {
+        return view('admin.pages.order.accepted');
+    }
+
+    public function order_end_view()
+    {
+        return view('admin.pages.order.end');
+    }
+
     public function index()
     {
-        $order = Order::all();
+        $order = Order::with('user')->get();
 
         return response()->json([
             'data' => $order
@@ -157,72 +192,57 @@ class OrderController extends Controller
         message' => 'success']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
+    public function order_new()
+    {
+        // $order = Order::with('user')->where('status', 'Baru')->get();
+
+        // return response()->json(['message' => 'success', 'data' => $order]);
+        $order = Order::with('user')->get();
+
+        return response()->json([
+            'data' => $order
+        ]);
+    }
+
+
     public function order_confirmed()
     {
-        $order = Order::where('status', 'Dikonfirmasi')->get();
+        $order = Order::with('user')->where('status', 'Dikonfirmasi')->get();
 
         return response()->json(['message' => 'success', 'data' => $order]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function order_packed()
     {
-        $order = Order::where('status', 'Dikemas')->get();
+        $order = Order::with('user')->where('status', 'Dikemas')->get();
 
         return response()->json(['message' => 'success', 'data' => $order]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
+
     public function order_sent()
     {
-        $order = Order::where('status', 'Dikirim')->get();
+        $order = Order::with('user')->where('status', 'Dikirim')->get();
 
         return response()->json(['message' => 'success', 'data' => $order]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function order_accepted()
     {
-        $order = Order::where('status', 'Diterima')->get();
+        $order = Order::with('user')->where('status', 'Diterima')->get();
 
         return response()->json(['message' => 'success', 'data' => $order]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
     public function order_end()
     {
-        $order = Order::where('status', 'Selesai')->get();
+        $order = Order::with('user')->where('status', 'Selesai')->get();
 
         return response()->json(['message' => 'success', 'data' => $order]);
     }
 
-    public function handle_status(Request $request, Order $order) {
+    public function handle_status(Request $request, Order $order)
+    {
         $order->update([
             'status' => $request->status
         ]);

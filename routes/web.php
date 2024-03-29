@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\CategoryLivestockController;
 use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Partner\AuthPartnerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Customer\AuthCustomerController;
@@ -74,7 +75,17 @@ Route::middleware('auth')->group(function () {
 
     // route admin for partner
     Route::get('admin/testimoni', [TestimonialController::class, 'list'])->name('admin.testimoni.list');
-
+    
+    // route admin for pesanan
+    Route::get('admin/order', [OrderController::class, 'list'])->name('admin.order.master');
+    Route::get('admin/order/new', [OrderController::class, 'order_new_view'])->name('admin.order.new');
+    Route::get('admin/order/confirmed', [OrderController::class, 'order_confirmed_view'])->name('admin.order.confirmed');
+    Route::get('admin/order/packed', [OrderController::class, 'order_packed_view'])->name('admin.order.packed');
+    Route::get('admin/order/sent', [OrderController::class, 'order_sent_view'])->name('admin.order.sent');
+    Route::get('admin/order/accepted', [OrderController::class, 'order_accepted_view'])->name('admin.order.accepted');
+    Route::get('admin/order/end', [OrderController::class, 'order_end_view'])->name('admin.order.end');
+    
     // route partner for product
     Route::get('partner/product', [ProductController::class, 'list'])->name('partner.product.list');
+
 });
