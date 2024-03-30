@@ -18,17 +18,24 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function get_data(Request $request)
     {
         $report = DB::table('orders_details')
             ->join('products', 'products.id', '=', 'orders_details.id_product')
-            ->select(DB::raw('count(*) as jumlah_dibeli, nama_product, harga_product, SUM(total) as total_qty'))
-            ->groupBy('id_product', 'nama_product', 'harga_product')
+            ->select(DB::raw('products.id as id_product ,count(*) as jumlah_dibeli, nama_product, harga_product, SUM(total) as total_qty'))
+            ->whereRaw("date(orders_details.created_at) >= '$request->dari' ")
+            ->whereRaw("date(orders_details.created_at) >= '$request->sampai' ")
+            ->groupBy('id_product', 'nama_product', 'harga_product', 'products.id')
             ->get();
 
         return response()->json([
             'data' => $report
         ]);
+    }
+
+    public function index()
+    {
+       return view('admin.pages.report.index');
     }
 
     /**

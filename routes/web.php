@@ -11,6 +11,7 @@ use App\Http\Controllers\Customer\DashboardCustomerController;
 use App\Http\Controllers\Partner\DashboardPartnerController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TypeLivestockController;
 use Illuminate\Support\Facades\Route;
@@ -84,6 +85,9 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/order/sent', [OrderController::class, 'order_sent_view'])->name('admin.order.sent');
     Route::get('admin/order/accepted', [OrderController::class, 'order_accepted_view'])->name('admin.order.accepted');
     Route::get('admin/order/end', [OrderController::class, 'order_end_view'])->name('admin.order.end');
+
+    // route admin for report
+    Route::get('report', [ReportController::class, 'index'])->name('admin.report.list');
     
     // route partner for product
     Route::get('partner/product', [ProductController::class, 'list'])->name('partner.product.list');

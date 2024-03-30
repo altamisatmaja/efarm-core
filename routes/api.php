@@ -76,5 +76,5 @@ Route::group([
         'farm' => FarmController::class,
         'genderlivestock' => GenderLivestockController::class,
     ]);
-    Route::get('report', [ReportController::class, 'index']);
+    Route::get('report', [ReportController::class, 'get_data']);
 });
