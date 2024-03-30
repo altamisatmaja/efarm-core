@@ -10,7 +10,8 @@ class ReportController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api')->except(['index']);
+        $this->middleware('auth')->only(['index']);
+        $this->middleware('auth:api')->only(['get_data']);
     }
 
     /**
@@ -22,10 +23,11 @@ class ReportController extends Controller
     {
         $report = DB::table('orders_details')
             ->join('products', 'products.id', '=', 'orders_details.id_product')
-            ->select(DB::raw('products.id as id_product ,count(*) as jumlah_dibeli, nama_product, harga_product, SUM(total) as total_qty'))
-            ->whereRaw("date(orders_details.created_at) >= '$request->dari' ")
-            ->whereRaw("date(orders_details.created_at) >= '$request->sampai' ")
-            ->groupBy('id_product', 'nama_product', 'harga_product', 'products.id')
+            ->join('partners', 'partners.id', '=', 'orders_details.id_partner')
+            ->select(DB::raw('partners.nama_partner as nama_partner, products.id as id_product, count(*) as jumlah_dibeli, nama_product, harga_product, SUM(kuantitas) as total_qty'))
+            ->whereRaw("date(orders_details.created_at) >= '$request->dari'")
+            ->whereRaw("date(orders_details.created_at) <= '$request->sampai'")
+            ->groupBy('id_product', 'nama_product', 'harga_product', 'products.id', 'nama_partner')
             ->get();
 
         return response()->json([
@@ -35,7 +37,7 @@ class ReportController extends Controller
 
     public function index()
     {
-       return view('admin.pages.report.index');
+        return view('admin.pages.report.index');
     }
 
     /**
