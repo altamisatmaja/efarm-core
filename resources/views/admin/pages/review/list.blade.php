@@ -164,18 +164,17 @@
                         let row = '';
                         console.log(data);
 
-                        
 
                         data.map(function(val, index) {
                             var createdAtDate = new Date(val.created_at);
 
-                        var options = {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                        };
-                        var formattedDate = createdAtDate.toLocaleDateString('id-ID',
-                            options);
+                            var options = {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                            };
+                            var formattedDate = createdAtDate.toLocaleDateString('id-ID',
+                                options);
                             row += `
                             
                         <tr>
