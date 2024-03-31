@@ -28,8 +28,6 @@ class AuthController extends Controller
             $user = auth()->user();
             if($user->id_user_role == 1){
                 $token = Auth::guard('api')->attempt($credentials);
-                // cookie()->queue(cookie('token', $token, 120));
-                // return redirect('/admin/dashboard');
                 return response()->json([
                     'success' => true,
                     'message' => 'Login berhasil',

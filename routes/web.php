@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\CategoryLivestockController;
 use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\Customer\GoogleSocialiteController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Partner\AuthPartnerController;
 use App\Http\Controllers\AuthController;
@@ -51,6 +52,11 @@ Route::get('partner/logout', [AuthPartnerController::class, 'logout']);
 Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
 Route::post('customer/login', [AuthCustomerController::class, 'login']);
 Route::get('customer/logout', [AuthCustomerController::class, 'logout']);
+
+// route customer google auth
+Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('customer.google');
+Route::get('login/google/callback', [GoogleSocialiteController::class, 'handleCallback']);  
+
 
 Route::middleware('auth')->group(function () {
     Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
