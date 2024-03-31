@@ -35,26 +35,34 @@
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                        No
+                                    </th>
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
                                         Tanggal
                                     </th>
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                        Id Order
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                        Jumlah
+                                    </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                        Alamat
+                                    </th>
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
                                         Status
                                     </th>
-
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
-                                        Pelanggan
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
-                                        Sub Total
-                                    </th>
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
-                                        Action
+                                        Nama Pemilik Rekening
                                     </th>
                                 </tr>
                             </thead>
@@ -109,7 +117,7 @@
             $(function() {
                 // Read data
                 $.ajax({
-                    url: '/api/order/new',
+                    url: '/api/payment',
                     success: function({
                         data
                     }) {
@@ -122,10 +130,6 @@
                                 year: 'numeric',
                                 month: 'long',
                                 day: 'numeric',
-                                // hour: 'numeric',
-                                // minute: 'numeric',
-                                // second: 'numeric',
-                                // timeZoneName: 'short'
                             };
                             var formattedDate = createdAtDate.toLocaleDateString('id-ID',
                                 options);
@@ -155,66 +159,20 @@
                                         stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
 
-                                <h2 class="text-sm font-normal">${val.status}</h2>
+                                <h2 class="text-sm font-normal">${val.id_order}</h2>
                             </div>
                         </td>
-                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                            <div class="flex items-center gap-x-2">
-                                <img class="object-cover w-8 h-8 rounded-full"
-                                    src="/uploads/${val.user.profile_photo_path}"
-                                    alt="">
-                                <div>
-                                    <h2 class="text-sm font-medium text-gray-800 ">${val.user.nama}
-                                    </h2>
-                                    <p class="text-xs font-normal text-gray-600 ">
-                                        ${val.user.alamat_lengkap}</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">${rupiah(val.sub_total)}</td>
-                        <td class="px-4 py-4 text-sm whitespace-nowrap">
-                            <div class="flex items-center gap-x-6">
-                                <a data-id="${val.id}">
-                                <button
-                                    class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                    Lihat detail
-                                </button>
-                            </a>
-                            <a data-id="${val.id}" class="konfirmasi-order">
-                                <button 
-                                    class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                    Konfirmasi
-                                </button>
-                            </a>
-                            </div>
-                        </td>
+                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">${rupiah(val.jumlah)}</td>
+                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">${val.provinsi}, ${val.kabupaten}, ${val.kecamatan}, ${val.kelurahan}, ${val.detail_alamat}</td>
+                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">${val.latitude}, ${val.longitude}</td>
+                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">${val.status}</td>
+                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">${val.nama_pemilik_rekening}</td>
                     </tr>
                 `;
                         });
                         $('tbody').append(row);
                     }
                 });
-
-                // Kirim pesanan
-                $(document).on('click', '.konfirmasi-order', function() {
-                    const id = $(this).data('id');
-                    const token = localStorage.getItem('token-efarm');
-
-                    $.ajax({
-                        url: '/api/order/status/' + id,
-                        type: 'POST',
-                        data: {
-                            status: 'Dikonfirmasi'
-                        },
-                        headers: {
-                            "Authorization": "Bearer" + token,
-                        },
-                        success: function(data) {
-                            alert('Pesanan berhasil dikonfirmasi');
-                            location.reload();
-                        }
-                    })
-                })
             })
         </script>
     @endpush
