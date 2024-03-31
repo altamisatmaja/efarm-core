@@ -55,7 +55,7 @@ Route::get('customer/logout', [AuthCustomerController::class, 'logout']);
 
 // route customer google auth
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('customer.google');
-Route::get('login/google/callback', [GoogleSocialiteController::class, 'handleCallback']);  
+Route::get('/login/google/callback', [GoogleSocialiteController::class, 'handleCallback']); 
 
 
 Route::middleware('auth')->group(function () {

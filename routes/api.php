@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\PartnerController as ApiPartnerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryLivestockController;
 use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\Customer\GoogleSocialiteController;
 use App\Http\Controllers\FarmController;
 use App\Http\Controllers\GenderLivestockController;
 use App\Http\Controllers\KategoriProductController;
@@ -48,6 +49,7 @@ Route::group([
     // route api for customer
     Route::post('/customer/login', [CustomerController::class, 'login']);
     Route::post('/customer/register', [CustomerController::class, 'register']);
+    Route::get('/login/google/callback', [GoogleSocialiteController::class, 'handleCallback']); 
 });
 
 Route::group([

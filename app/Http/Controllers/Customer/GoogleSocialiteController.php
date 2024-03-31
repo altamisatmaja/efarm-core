@@ -25,9 +25,11 @@ class GoogleSocialiteController extends Controller
 
             if ($finduser) {
                 Auth::login($finduser);
-                $token = Auth::guard('api')->attempt(['email' => $finduser->email, 'password' => $finduser->password]);
-                cookie()->queue(cookie('token-customer', $token, 120));
-                return redirect('/customer/dashboard');
+                $token = Auth::guard('api')->login($finduser);
+                echo "<script>
+                    localStorage.setItem('token-customer', '" . $token . "');
+                    window.location.href = '/customer/dashboard';
+                </script>";
             } else {
                 $newUser = User::create([
                     'nama' => $user->name,
@@ -41,9 +43,11 @@ class GoogleSocialiteController extends Controller
                 ]);
 
                 Auth::login($newUser);
-                $token = Auth::guard('api')->attempt(['email' => $finduser->email, 'password' => $finduser->password]);
-                cookie()->queue(cookie('token-customer', $token, 120));
-                return redirect('/customer/dashboard');
+                $token = Auth::guard('api')->login($newUser);
+                echo "<script>
+                    localStorage.setItem('token-customer', '" . $token . "');
+                    window.location.href = '/customer/dashboard';
+                </script>";
             }
         } catch (Exception $e) {
             dd($e->getMessage());
