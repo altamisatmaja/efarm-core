@@ -74,6 +74,8 @@ class TestimonialController extends Controller
         $testimonial = Testimonial::create($input);
 
         return response()->json([
+            'success' => true,
+            'message' => 'success',
             'data' => $testimonial
         ]);
     }
@@ -137,6 +139,7 @@ class TestimonialController extends Controller
         $testimonial->update($input);
         
         return response()->json([
+            'success' => true,
             'message' => 'success',
             'data' => $testimonial,
         ]);
@@ -155,6 +158,7 @@ class TestimonialController extends Controller
         $testimonial->delete();
 
         return response()->json([
+            'success' => true,
             'message' => 'success',
         ]);
     }
