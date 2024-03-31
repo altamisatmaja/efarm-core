@@ -204,7 +204,7 @@
                         url: '/api/order/status/' + id,
                         type: 'POST',
                         data: {
-                            status: 'Diterima'
+                            status: 'Selesai'
                         },
                         headers: {
                             "Authorization": "Bearer" + token,
