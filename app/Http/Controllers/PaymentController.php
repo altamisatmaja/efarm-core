@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth')->only(['list']);
+        $this->middleware('auth:api')->only(['delete']);
+    }
+
+    public function list(){
+        return view('admin.pages.payment.index');
+    }
     /**
      * Display a listing of the resource.
      *

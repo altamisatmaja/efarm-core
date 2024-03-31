@@ -64,8 +64,8 @@
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pelanggan</a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Ulasan</a>
+                                <a href="{{ route('admin.review.list') }}"
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Review</a>
                             </li>
                         </ul>
                     </li>
@@ -178,6 +178,18 @@
                                     d="M320-600q17 0 28.5-11.5T360-640q0-17-11.5-28.5T320-680q-17 0-28.5 11.5T280-640q0 17 11.5 28.5T320-600Zm0 160q17 0 28.5-11.5T360-480q0-17-11.5-28.5T320-520q-17 0-28.5 11.5T280-480q0 17 11.5 28.5T320-440Zm0 160q17 0 28.5-11.5T360-320q0-17-11.5-28.5T320-360q-17 0-28.5 11.5T280-320q0 17 11.5 28.5T320-280ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h407q16 0 30.5 6t25.5 17l154 154q11 11 17 25.5t6 30.5v407q0 33-23.5 56.5T760-120H200Zm0-80h560v-400H640q-17 0-28.5-11.5T600-640v-120H200v560Zm0-560v160-160 560-560Z" />
                             </svg>
                             <span class="ml-3 flex-1 whitespace-nowrap">Laporan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('admin.payment.list') }}"
+                            class="text-base text-gray-900 font-normal rounded-lg hover:bg-primarybase hover:text-white flex items-center p-2 group ">
+                            <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-white transition duration-75"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="24"
+                                viewBox="0 -960 960 960" width="24">
+                                <path
+                                    d="M320-600q17 0 28.5-11.5T360-640q0-17-11.5-28.5T320-680q-17 0-28.5 11.5T280-640q0 17 11.5 28.5T320-600Zm0 160q17 0 28.5-11.5T360-480q0-17-11.5-28.5T320-520q-17 0-28.5 11.5T280-480q0 17 11.5 28.5T320-440Zm0 160q17 0 28.5-11.5T360-320q0-17-11.5-28.5T320-360q-17 0-28.5 11.5T280-320q0 17 11.5 28.5T320-280ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h407q16 0 30.5 6t25.5 17l154 154q11 11 17 25.5t6 30.5v407q0 33-23.5 56.5T760-120H200Zm0-80h560v-400H640q-17 0-28.5-11.5T600-640v-120H200v560Zm0-560v160-160 560-560Z" />
+                            </svg>
+                            <span class="ml-3 flex-1 whitespace-nowrap">Pembayaran</span>
                         </a>
                     </li>
                 </ul>

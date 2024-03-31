@@ -10,8 +10,10 @@ use App\Http\Controllers\Customer\AuthCustomerController;
 use App\Http\Controllers\Customer\DashboardCustomerController;
 use App\Http\Controllers\Partner\DashboardPartnerController;
 use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TypeLivestockController;
 use Illuminate\Support\Facades\Route;
@@ -74,8 +76,11 @@ Route::middleware('auth')->group(function () {
     // route admin for partner
     Route::get('admin/partner', [PartnerController::class, 'list'])->name('admin.partner');
 
-    // route admin for partner
+    // route admin for testimoni
     Route::get('admin/testimoni', [TestimonialController::class, 'list'])->name('admin.testimoni.list');
+    
+    // route admin for review
+    Route::get('admin/review', [ReviewController::class, 'list'])->name('admin.review.list');
     
     // route admin for pesanan
     Route::get('admin/order', [OrderController::class, 'list'])->name('admin.order.master');
@@ -87,7 +92,10 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/order/end', [OrderController::class, 'order_end_view'])->name('admin.order.end');
 
     // route admin for report
-    Route::get('report', [ReportController::class, 'index'])->name('admin.report.list');
+    Route::get('admin/report', [ReportController::class, 'index'])->name('admin.report.list');
+
+    // route admin for payment
+    Route::get('admin/payment', [PaymentController::class, 'list'])->name('admin.payment.list');
     
     // route partner for product
     Route::get('partner/product', [ProductController::class, 'list'])->name('partner.product.list');

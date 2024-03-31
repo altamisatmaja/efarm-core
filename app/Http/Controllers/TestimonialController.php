@@ -13,7 +13,7 @@ class TestimonialController extends Controller
         // Ignored, really
         $this->middleware('auth')->only(['list']);
         $this->middleware('auth:api')->only(['delete']);
-    }  
+    }
     
     public function list(){
         return view('admin.pages.testimoni.list');

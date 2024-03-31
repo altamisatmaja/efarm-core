@@ -9,7 +9,12 @@ use Illuminate\Support\Facades\Validator;
 class ReviewController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth:api')->except(['index']);
+        $this->middleware('auth')->only(['list']);
+        $this->middleware('auth:api')->only(['delete']);
+    }
+
+    public function list(){
+        return view('admin.pages.review.list');
     }
     /**
      * Display a listing of the resource.
