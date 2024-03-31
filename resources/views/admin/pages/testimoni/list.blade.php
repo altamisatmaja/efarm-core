@@ -58,7 +58,7 @@
                     </div>
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                         <button
-                            class="tambah-data-categoryproduct bg-primarybase text-white active:bg-primarybase text-xs font-bold uppercase px-3 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                            class="tambah-data-testimoni bg-primarybase text-white active:bg-primarybase text-xs font-bold uppercase px-3 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                             type="button">Tambah data</button>
                     </div>
                 </div>
@@ -154,7 +154,7 @@
 </section>
 
 {{-- Modal tambah --}}
-<div class="hidden modal-tambah-categoryproduct">
+<div class="hidden modal-tambah-testimoni">
     <div class="fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"
         style="background: rgba(0,0,0,.7);">
         <div
@@ -164,7 +164,7 @@
                 <div class="flex justify-between items-center pb-3">
                     <p class="text-2xl font-bold">Tambah kategori produk</p>
                     <div class="modal-close cursor-pointer z-50">
-                        <svg class="cancel-tambah-data-categoryproduct fill-current text-black"
+                        <svg class="cancel-tambah-data-testimoni fill-current text-black"
                             xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                             <path
                                 d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
@@ -173,21 +173,21 @@
                     </div>
                 </div>
                 <!--Body-->
-                <form class="form-tambah-categoryproduct" action="" method="POST">
+                <form class="form-tambah-testimoni" action="" method="POST">
                     <div class="mb-5">
-                        <label for="nama_kategori_product" class="mb-3 block text-base font-medium text-[#07074D]">
+                        <label for="nama_testimoni" class="mb-3 block text-base font-medium text-[#07074D]">
                             Masukkan nama kategori hewan
                         </label>
-                        <input type="nama_kategori_product" name="nama_kategori_product" id="nama_kategori_product"
+                        <input type="nama_testimoni" name="nama_testimoni" id="nama_testimoni"
                             placeholder="Kambing"
                             class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                     </div>
 
                     <div class="mb-6 pt-4">
-                        <label for="deskripsi_kategori_product" class="mb-3 block text-base font-medium text-[#07074D]">
+                        <label for="deskripsi" class="mb-3 block text-base font-medium text-[#07074D]">
                             Masukkan deskripsi kategori hewan
                         </label>
-                        <textarea type="deskripsi_kategori_product" name="deskripsi_kategori_product" id="deskripsi_kategori_product"
+                        <textarea type="deskripsi" name="deskripsi" id="deskripsi"
                             placeholder="Kambing adalah lorem ipsum"
                             class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
                     </div>
@@ -198,8 +198,8 @@
                         </label>
 
                         <div class="mb-8">
-                            <input type="file" name="gambar_kategori_product" id="gambar_kategori_product" class="sr-only" />
-                            <label for="gambar_kategori_product"
+                            <input type="file" name="gambar_kategori_testimoni" id="gambar_kategori_testimoni" class="sr-only" />
+                            <label for="gambar_kategori_testimoni"
                                 class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
                                 <div>
                                     <span class="mb-2 block text-xl font-semibold text-[#07074D]">
@@ -226,7 +226,7 @@
 
                     <div class="pt-1">
                         <button type="button"
-                            class="cancel-edit-form-categoryproduct hover:shadow-form w-full border hover:bg-primarybase hover:text-white border-primarybase rounded-md py-3 px-8 text-center text-base font-semibold text-primarybase">
+                            class="cancel-edit-form-testimoni hover:shadow-form w-full border hover:bg-primarybase hover:text-white border-primarybase rounded-md py-3 px-8 text-center text-base font-semibold text-primarybase">
                             Batal
                         </button>
                     </div>
@@ -237,7 +237,7 @@
 </div>
 
 {{-- Modal edit --}}
-<div class="hidden modal-edit-categoryproduct">
+<div class="hidden modal-edit-testimoni">
     <div class="fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"
         style="background: rgba(0,0,0,.7);">
         <div
@@ -247,7 +247,7 @@
                 <div class="flex justify-between items-center pb-3">
                     <p class="text-2xl font-bold">Edit kategori produk</p>
                     <div class="modal-close cursor-pointer z-50">
-                        <svg class="cancel-edit-data-categoryproduct fill-current text-black"
+                        <svg class="cancel-edit-data-testimoni fill-current text-black"
                             xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
                             <path
                                 d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
@@ -256,21 +256,21 @@
                     </div>
                 </div>
                 <!--Body-->
-                <form class="form-edit-categoryproduct" action="" method="POST">
+                <form class="form-edit-testimoni" action="" method="POST">
                     <div class="mb-5">
-                        <label for="nama_kategori_product" class="mb-3 block text-base font-medium text-[#07074D]">
+                        <label for="nama_testimoni" class="mb-3 block text-base font-medium text-[#07074D]">
                             Masukkan nama kategori hewan
                         </label>
-                        <input type="nama_kategori_product" name="nama_kategori_product" id="nama_kategori_product"
+                        <input type="nama_testimoni" name="nama_testimoni" id="nama_testimoni"
                             placeholder="Kambing"
                             class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                     </div>
 
                     <div class="mb-6 pt-4">
-                        <label for="deskripsi_kategori_product" class="mb-3 block text-base font-medium text-[#07074D]">
+                        <label for="deskripsi" class="mb-3 block text-base font-medium text-[#07074D]">
                             Masukkan deskripsi kategori hewan
                         </label>
-                        <textarea type="deskripsi_kategori_product" name="deskripsi_kategori_product" id="deskripsi_kategori_product"
+                        <textarea type="deskripsi" name="deskripsi" id="deskripsi"
                             placeholder="Kambing adalah lorem ipsum"
                             class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
                     </div>
@@ -281,8 +281,8 @@
                         </label>
 
                         <div class="mb-8 cursor-pointer">
-                            <input type="file" name="gambar_kategori_product" id="gambar_kategori_product" class="sr-only" />
-                            <label for="gambar_kategori_product"
+                            <input type="file" name="gambar_kategori_testimoni" id="gambar_kategori_testimoni" class="sr-only" />
+                            <label for="gambar_kategori_testimoni"
                                 class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
                                 <div>
                                     <span class="mb-2 block text-xl font-semibold text-[#07074D]">
@@ -309,7 +309,7 @@
 
                     <div class="pt-1">
                         <button type="button"
-                            class="cancel-edit-data-categoryproduct hover:shadow-form w-full border hover:bg-primarybase hover:text-white border-primarybase rounded-md py-3 px-8 text-center text-base font-semibold text-primarybase">
+                            class="cancel-edit-data-testimoni hover:shadow-form w-full border hover:bg-primarybase hover:text-white border-primarybase rounded-md py-3 px-8 text-center text-base font-semibold text-primarybase">
                             Batal
                         </button>
                     </div>
@@ -347,8 +347,8 @@
                             </td>
                             <td class="py-3.5 px-4 text-sm font-normal text-gray-500">
                                 <div class="gap-x-3">
-                                    <a data-id="${val.id}" data-toggle="modal" class="edit-data-categoryproduct cursor-pointer">Edit</a>
-                                    <a class="hapus-data-categorylivestock cursor-pointer" data-id="${val.id}" class="ml-2" id="delete-categoryproduct">Hapus</a>
+                                    <a data-id="${val.id}" data-toggle="modal" class="edit-data-testimoni cursor-pointer">Edit</a>
+                                    <a class="hapus-data-testimoni cursor-pointer" data-id="${val.id}" class="ml-2" id="delete-testimoni">Hapus</a>
                                 </div>
                             </td>
                         </tr>
@@ -359,7 +359,7 @@
             })
 
             // Delete data
-            $(document).on('click', '#delete-categoryproduct', function() {
+            $(document).on('click', '#delete-testimoni', function() {
                 const id = $(this).data('id');
                 const token = localStorage.getItem('token-efarm');
 
@@ -369,7 +369,7 @@
 
                 if (confirm_dialog) {
                     $.ajax({
-                        url: '/api/category/' + id,
+                        url: '/api/testimoni/' + id,
                         type: "DELETE",
                         headers: {
                             "Authorization": token
@@ -384,11 +384,11 @@
                 }
             });
 
-            $('.tambah-data-categoryproduct').click(function(e) {
-                $('.modal-tambah-categoryproduct').removeClass('hidden');
+            $('.tambah-data-testimoni').click(function(e) {
+                $('.modal-tambah-testimoni').removeClass('hidden');
             });
 
-            $('.form-tambah-categoryproduct').submit(function(e) {
+            $('.form-tambah-testimoni').submit(function(e) {
                 e.preventDefault();
                 const form = $(this);
                 const token = localStorage.getItem('token-efarm');
@@ -397,7 +397,7 @@
 
 
                 $.ajax({
-                    url: '/api/category',
+                    url: '/api/testimoni',
                     type: 'POST',
                     data: formData,
                     cache: false,
@@ -417,35 +417,35 @@
                 })
             });
 
-            $('#gambar_kategori_product').click(function(e) {
+            $('#gambar_kategori_testimoni').click(function(e) {
                 e.stopPropagation();
             });
 
-            $(document).on('click', '.cancel-tambah-data-categoryproduct', function() {
+            $(document).on('click', '.cancel-tambah-data-testimoni', function() {
                 location.reload();
             });
 
-            $(document).on('click', '.cancel-edit-data-categoryproduct', function() {
+            $(document).on('click', '.cancel-edit-data-testimoni', function() {
                 location.reload();
             });
 
-            $(document).on('click', '.edit-data-categoryproduct', function() {
-                $('.modal-edit-categoryproduct').removeClass('hidden');
+            $(document).on('click', '.edit-data-testimoni', function() {
+                $('.modal-edit-testimoni').removeClass('hidden');
                 const id = $(this).data('id');
                 console.log(id);
                 const token = localStorage.getItem('token-efarm');
 
-                $.get('/api/category/' + id, function({
+                $.get('/api/testimoni/' + id, function({
                     data
                 }) {
                     console.log(data.id);
                     console.log(data);
-                    $('input[name="nama_kategori_product"]').val(data.nama_kategori_product);
-                    $('textarea[name="deskripsi_kategori_product"]').val(data
-                        .deskripsi_kategori_product);
+                    $('input[name="nama_testimoni"]').val(data.nama_testimoni);
+                    $('textarea[name="deskripsi"]').val(data
+                        .deskripsi);
                 });
 
-                $('.form-edit-categoryproduct').submit(function(e) {
+                $('.form-edit-testimoni').submit(function(e) {
                     e.preventDefault();
                     const form = $(this);
                     const token = localStorage.getItem('token-efarm');
@@ -453,7 +453,7 @@
                     console.log(formData);
 
                     $.ajax({
-                        url: `/api/category/${id}?_method=PUT`,
+                        url: `/api/testimoni/${id}?_method=PUT`,
                         type: 'POST',
                         data: formData,
                         cache: false,
