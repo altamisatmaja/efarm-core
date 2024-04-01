@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryLivestockController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\Customer\GoogleSocialiteController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\Partner\AuthPartnerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Customer\AuthCustomerController;
@@ -30,13 +31,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('homepage');
-});
-// Route::get('/home', function () {
+// Route::get('/', function () {
 //     return view('homepage');
 // });
 
+Route::get('/', [PageController::class, 'index']);
+Route::get('/market', [PageController::class, 'market'])->name('homepage.market');
+Route::get('/partner', [PageController::class, 'partner'])->name('homepage.partner');
+Route::get('/about', [PageController::class, 'about'])->name('homepage.about');
 
 // route for admin
 Route::get('admin/login', [AuthController::class, 'index'])->name('admin.login');
@@ -50,6 +52,7 @@ Route::get('partner/logout', [AuthPartnerController::class, 'logout']);
 
 // route for customer
 Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
+Route::get('customer/register', [AuthCustomerController::class, 'register_view'])->name('customer.register');
 Route::post('customer/login', [AuthCustomerController::class, 'login']);
 Route::get('customer/logout', [AuthCustomerController::class, 'logout']);
 

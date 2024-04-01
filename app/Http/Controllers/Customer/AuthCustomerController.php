@@ -14,6 +14,11 @@ class AuthCustomerController extends Controller
     public function index(){
         return view('customer.auth.login');
     }
+
+    public function register_view(){
+        return view('customer.auth.register');
+    }
+
     public function login(Request $request)
     {
         $this->validate($request, [

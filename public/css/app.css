@@ -1484,6 +1484,21 @@ select {
   margin-bottom: 1.5rem;
 }
 
+.mx-5 {
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 .-mb-1 {
   margin-bottom: -0.25rem;
 }
@@ -1756,6 +1771,14 @@ select {
   margin-top: -4rem;
 }
 
+.-mb-4 {
+  margin-bottom: -1rem;
+}
+
+.ml-0 {
+  margin-left: 0px;
+}
+
 .block {
   display: block;
 }
@@ -1906,6 +1929,10 @@ select {
 .h-max {
   height: -moz-max-content;
   height: max-content;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .max-h-screen {
@@ -2073,6 +2100,14 @@ select {
   width: max-content;
 }
 
+.w-\[45rem\] {
+  width: 45rem;
+}
+
+.w-2\/3 {
+  width: 66.666667%;
+}
+
 .min-w-0 {
   min-width: 0px;
 }
@@ -2135,6 +2170,10 @@ select {
 
 .max-w-\[60px\] {
   max-width: 60px;
+}
+
+.max-w-sm {
+  max-width: 24rem;
 }
 
 .flex-1 {
@@ -2290,6 +2329,10 @@ select {
 
 .items-start {
   align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
 }
 
 .items-center {
@@ -2546,6 +2589,16 @@ select {
 .rounded-b-md {
   border-bottom-right-radius: 0.375rem;
   border-bottom-left-radius: 0.375rem;
+}
+
+.rounded-l {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.rounded-r {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 
 .border {
@@ -2875,6 +2928,16 @@ select {
 .bg-teal-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(13 148 136 / var(--tw-bg-opacity));
+}
+
+.bg-blue-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+
+.bg-indigo-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 231 255 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-25 {
@@ -3408,6 +3471,10 @@ select {
   letter-spacing: 0.1em;
 }
 
+.tracking-wide {
+  letter-spacing: 0.025em;
+}
+
 .text-\[\#07074D\] {
   --tw-text-opacity: 1;
   color: rgb(7 7 77 / var(--tw-text-opacity));
@@ -3723,6 +3790,11 @@ select {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.blur {
+  --tw-blur: blur(8px);
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .drop-shadow-\[0px_4px_34px_rgba\(0\2c 0\2c 0\2c 0\.06\)\] {
   --tw-drop-shadow: drop-shadow(0px 4px 34px rgba(0,0,0,0.06));
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -3735,6 +3807,17 @@ select {
 
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
+.backdrop-blur-md {
+  --tw-backdrop-blur: blur(12px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+          backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+
+.backdrop-filter {
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+          backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 
 .transition {
@@ -3976,6 +4059,21 @@ select {
   background-color: rgb(244 244 245 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-green-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(74 222 128 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-green-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(187 247 208 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-blue-500:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+
 .hover\:text-black:hover {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -4149,6 +4247,11 @@ select {
 .focus\:bg-red-600:focus {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
+
+.focus\:bg-blue-500:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
 
 .focus\:text-gray-500:focus {
@@ -4734,6 +4837,10 @@ select {
     width: 50%;
   }
 
+  .md\:w-1\/2 {
+    width: 50%;
+  }
+
   .md\:max-w-md {
     max-width: 28rem;
   }
@@ -4894,6 +5001,10 @@ select {
     width: auto;
   }
 
+  .lg\:w-2\/5 {
+    width: 40%;
+  }
+
   .lg\:max-w-7xl {
     max-width: 80rem;
   }
@@ -4986,6 +5097,26 @@ select {
     padding-right: 0.75rem;
   }
 
+  .lg\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .lg\:py-28 {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .lg\:py-32 {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
+  .lg\:px-16 {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
   .lg\:pb-10 {
     padding-bottom: 2.5rem;
   }
@@ -5043,6 +5174,10 @@ select {
 
   .xl\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .xl\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .xl\:gap-4 {
@@ -5193,6 +5328,11 @@ select {
 
   .dark\:text-white\/70 {
     color: rgb(255 255 255 / 0.7);
+  }
+
+  .dark\:text-gray-100 {
+    --tw-text-opacity: 1;
+    color: rgb(243 244 246 / var(--tw-text-opacity));
   }
 
   .dark\:placeholder-gray-400::-moz-placeholder {

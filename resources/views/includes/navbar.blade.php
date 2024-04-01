@@ -1,77 +1,119 @@
-{{-- <nav class="fixed px-8 flex justify-between bg-white text-white w-screen border-b">
-    <div class="px-5 xl:px-12 py-3 flex w-full items-center">
-        <a href="#" class="text-xl font-bold flex items-center lg:ml-2.5">
-            <img src="{{ asset('logo.svg') }}" class="h-6 mr-2" alt="eFarm">
-        </a>
-        <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-            <li><a class="hover:text-gray-200 text-primarybase" href="#">
-                    <div class="relative" x-data="{ open: false }">
-                        <button @click="open = ! open" type="button"
-                            class="text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900"
-                            aria-expanded="false">
-                            <span class="font-semibold text-textbase">Layanan</span>
-                            <svg :class="{ 'rotate-180 duration-300': open, 'duration-300': !open }"
-                                class="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500"
-                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#444444"
-                                aria-hidden="true">
-                                <path fill-rule="evenodd"
-                                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                        <div x-show="open" x-transition:enter="transition ease-out duration-200"
-                            x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
-                            x-transition:leave="transition ease-in duration-200"
-                            x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90"
-                            class="absolute z-50 left-1/2 z-full w-11 mt-3 -translate-x-1/2 transform px-2 sm:px-0">
+<script>
+    window.addEventListener('scroll', function() {
+        var scrollPosition = window.scrollY;
+        var navbar = document.querySelector('.sticky');
 
-                            <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5">
-                                <div class="bg-gray-50 py-5 px-5 sm:px-8 sm:py-8">
-                                    <ul class=" space-y-4">
-                                        <li class="truncate text-base">
-                                            <a href="#"
-                                                class="font-medium text-gray-900 hover:text-gray-700">eFarm Mart</a>
-                                        </li>
-                                        <li class="truncate text-base">
-                                            <a href="#"
-                                                class="font-medium text-gray-900 hover:text-gray-700">eFarm Partner</a>
-                                        </li>
-                                        <li class="truncate text-base">
-                                            <a href="#"
-                                                class="font-medium text-gray-900 hover:text-gray-700">eFarm AI</a>
-                                        </li>
-                                        <li class="truncate text-base">
-                                            <a href="#"
-                                                class="font-medium text-gray-900 hover:text-gray-700">eFarm App</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+        // Atur titik scroll di mana efek blur diaktifkan
+        var blurTriggerPosition = 200;
+
+        if (scrollPosition > blurTriggerPosition) {
+            navbar.classList.add('blurred-background');
+        } else {
+            navbar.classList.remove('blurred-background');
+        }
+    });
+</script>
+
+<style>
+    .blurred-background {
+        backdrop-filter: blur(8px);
+    }
+</style>
+
+<div class="sticky top-0 z-50">
+    <div>
+        <div class="w-full bg-primarybase h-6 flex justify-center items-center">
+            <div class="">
+                <p class="text-white font-medium text-sm">Dipercaya oleh 412 mitra yang tersebar diseluruh
+                    Indonesia</p>
+            </div>
+        </div>
+        <div class="w-full bg-white h-16 px-10 flex justify-between ">
+            <div class="w-full lg:w-30/6 xl:w-full  h-full flex items-center px-4 ">
+                <a href="/">
+                    <img class="rounded-lg w-32" src="{{ asset('logo.png') }}" alt="efarm logo" />
+                </a>
+            </div>
+            <div class="w-full  flex justify-center items-center">
+                <button
+                    class="relative group transition-all duration-200 focus:overflow-visible w-max h-max p-3 overflow-hidden flex flex-row items-center justify-center bg-white gap-2 rounded-lg">
+                    <span class="font-semibold text-textbase">
+                        Layanan
+                    </span>
+                    <svg class="rotate-90 group-focus:rotate-180" xmlns="http://www.w3.org/2000/svg" width="22"
+                        height="22" viewBox="0 0 24 24">
+                        <path fill="currentColor"
+                            d="m12 10.8l-3.9 3.9q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7l4.6-4.6q.3-.3.7-.3t.7.3l4.6 4.6q.275.275.275.7t-.275.7q-.275.275-.7.275t-.7-.275z" />
+                    </svg>
+                    <div
+                        class="absolute shadow-lg -bottom-52 left-0 w-full h-max p-2 bg-white border border-zinc-200 rounded-lg flex flex-col gap-2">
+                        <span class="flex flex-row gap-2 items-center hover:bg-zinc-100 p-2 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M12 5q-.425 0-.712-.288T11 4V2q0-.425.288-.712T12 1q.425 0 .713.288T13 2v2q0 .425-.288.713T12 5m4.95 2.05q-.275-.275-.275-.687t.275-.713l1.4-1.425q.3-.3.712-.3t.713.3q.275.275.275.7t-.275.7L18.35 7.05q-.275.275-.7.275t-.7-.275M20 13q-.425 0-.713-.288T19 12q0-.425.288-.712T20 11h2q.425 0 .713.288T23 12q0 .425-.288.713T22 13zm-8 10q-.425 0-.712-.288T11 22v-2q0-.425.288-.712T12 19q.425 0 .713.288T13 20v2q0 .425-.288.713T12 23M5.65 7.05l-1.425-1.4q-.3-.3-.3-.725t.3-.7q.275-.275.7-.275t.7.275L7.05 5.65q.275.275.275.7t-.275.7q-.3.275-.7.275t-.7-.275m12.7 12.725l-1.4-1.425q-.275-.3-.275-.712t.275-.688q.275-.275.688-.275t.712.275l1.425 1.4q.3.275.288.7t-.288.725q-.3.3-.725.3t-.7-.3M2 13q-.425 0-.712-.288T1 12q0-.425.288-.712T2 11h2q.425 0 .713.288T5 12q0 .425-.288.713T4 13zm2.225 6.775q-.275-.275-.275-.7t.275-.7L5.65 16.95q.275-.275.687-.275t.713.275q.3.3.3.713t-.3.712l-1.4 1.4q-.3.3-.725.3t-.7-.3M12 18q-2.5 0-4.25-1.75T6 12q0-2.5 1.75-4.25T12 6q2.5 0 4.25 1.75T18 12q0 2.5-1.75 4.25T12 18m0-2q1.65 0 2.825-1.175T16 12q0-1.65-1.175-2.825T12 8q-1.65 0-2.825 1.175T8 12q0 1.65 1.175 2.825T12 16m0-4" />
+                            </svg>
+                            <p>Market</p>
+                        </span>
+                        <span class="flex flex-row gap-2 items-center hover:bg-zinc-100 p-2 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M12 5q-.425 0-.712-.288T11 4V2q0-.425.288-.712T12 1q.425 0 .713.288T13 2v2q0 .425-.288.713T12 5m4.95 2.05q-.275-.275-.275-.687t.275-.713l1.4-1.425q.3-.3.712-.3t.713.3q.275.275.275.7t-.275.7L18.35 7.05q-.275.275-.7.275t-.7-.275M20 13q-.425 0-.713-.288T19 12q0-.425.288-.712T20 11h2q.425 0 .713.288T23 12q0 .425-.288.713T22 13zm-8 10q-.425 0-.712-.288T11 22v-2q0-.425.288-.712T12 19q.425 0 .713.288T13 20v2q0 .425-.288.713T12 23M5.65 7.05l-1.425-1.4q-.3-.3-.3-.725t.3-.7q.275-.275.7-.275t.7.275L7.05 5.65q.275.275.275.7t-.275.7q-.3.275-.7.275t-.7-.275m12.7 12.725l-1.4-1.425q-.275-.3-.275-.712t.275-.688q.275-.275.688-.275t.712.275l1.425 1.4q.3.275.288.7t-.288.725q-.3.3-.725.3t-.7-.3M2 13q-.425 0-.712-.288T1 12q0-.425.288-.712T2 11h2q.425 0 .713.288T5 12q0 .425-.288.713T4 13zm2.225 6.775q-.275-.275-.275-.7t.275-.7L5.65 16.95q.275-.275.687-.275t.713.275q.3.3.3.713t-.3.712l-1.4 1.4q-.3.3-.725.3t-.7-.3M12 18q-2.5 0-4.25-1.75T6 12q0-2.5 1.75-4.25T12 6q2.5 0 4.25 1.75T18 12q0 2.5-1.75 4.25T12 18m0-2q1.65 0 2.825-1.175T16 12q0-1.65-1.175-2.825T12 8q-1.65 0-2.825 1.175T8 12q0 1.65 1.175 2.825T12 16m0-4" />
+                            </svg>
+                            <p>Partner</p>
+                        </span>
+                        <span class="flex flex-row gap-2 items-center hover:bg-zinc-100 p-2 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24">
+                                <path fill="currentColor"
+                                    d="M12 21q-3.775 0-6.387-2.613T3 12q0-3.45 2.25-5.988T11 3.05q.325-.05.575.088t.4.362q.15.225.163.525t-.188.575q-.425.65-.638 1.375T11.1 7.5q0 2.25 1.575 3.825T16.5 12.9q.775 0 1.538-.225t1.362-.625q.275-.175.563-.162t.512.137q.25.125.388.375t.087.6q-.35 3.45-2.937 5.725T12 21m0-2q2.2 0 3.95-1.213t2.55-3.162q-.5.125-1 .2t-1 .075q-3.075 0-5.238-2.163T9.1 7.5q0-.5.075-1t.2-1q-1.95.8-3.163 2.55T5 12q0 2.9 2.05 4.95T12 19m-.25-6.75" />
+                            </svg>
+                            <p>AI</p>
+                        </span>
+                        <span class="flex flex-row gap-2 items-center hover:bg-zinc-100 p-2 rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 48 48">
+                                <g fill="none" stroke="currentColor" stroke-width="4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 32h10v9H19z" />
+                                    <rect width="38" height="24" x="5" y="8" rx="2" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M22 27h4M14 41h20" />
+                                </g>
+                            </svg>
+                            <p>App</p>
+                        </span>
                     </div>
-                </a></li>
-            <li><a class="hover:text-gray-200 text-textbase" href="#">Toko</a></li>
-            <li><a class="hover:text-gray-200 text-textbase" href="#">Partner</a></li>
-            <li><a class="hover:text-gray-200 text-textbase" href="#">Tentang</a></li>
-        </ul>
-        <div class="hidden xl:flex items-center space-x-5">
-            <a href="{{ route('customer.login') }}"
-                class="middle none center mr-3 w-full border bg-primarybase rounded-lg hover:border hover:bg-white hover:text-primarybase border-primarybase text-white py-2.5 px-9 font-sans text-xs font-bold uppercase transition-all focus:ring focus:ring-primarybase active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                data-ripple-dark="true">
-                Masuk
-            </a>
-            <button
-                class="middle none center mr-3 rounded-lg border hover:bg-primarybase hover:text-white border-primarybase py-2.5 px-9 font-sans text-xs font-bold uppercase text-primarybase transition-all focus:ring focus:ring-primarybase active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                data-ripple-dark="true">
-                Daftar
-            </button>
+                </button>
+                <a href="{{ route('homepage.market') }}">
+                    <div class="px-5">
+                        <p class="font-semibold text-textbase">Market</p>
+                    </div>
+                </a>
+                <a href="{{ route('homepage.partner') }}">
+                    <div class="px-5">
+                        <p class="font-semibold text-textbase">Partner</p>
+                    </div>
+                </a>
+                <a href="{{ route('homepage.about') }}">
+                    <div class="px-5">
+                        <p class="font-semibold text-textbase">Tentang</p>
+                    </div>
+                </a>
+            </div>
+            <div class="w-full  h-full flex justify-end items-center">
+                <div class="flex">
+                    <a href="{{ route('customer.login') }}" class="cursor-pointer">
+                        <button
+                            class="middle none center mr-4 rounded-lg bg-primarybase py-2 px-9 font-sans text-md font-bold text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:opacity-50 disabled:shadow-none"
+                            style="outline: none;" data-ripple-light="true">
+                            Masuk
+                        </button>
+                    </a>
+                    <a href="{{ route('customer.register') }}" class="cursor-pointer">
+                        <button
+                            class="middle none center mr-4 rounded-lg border hover:border-white border-primarybase py-2 px-9 text-primarybase font-sans text-md font-bold primarybase-white shadow-md shadow-blue-500/20 transition-all hover:bg-primarybase hover:text-white hover:shadow-lg focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            style="outline: none;" data-ripple-light="true">
+                            Daftar
+                        </button>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-    <a class="navbar-burger self-center mr-12 xl:hidden" href="#">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-white" fill="#AAC14C" viewBox="0 0 24 24"
-            stroke="#AAC14C">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-    </a>
-</nav>
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
+</div>
