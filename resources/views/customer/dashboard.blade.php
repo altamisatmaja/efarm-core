@@ -8,7 +8,6 @@
     @push('js')
         <script>
             const token = localStorage.getItem('token-customer');
-
             console.log(`Ini token customer: ${token}`);
         </script>
     @endpush

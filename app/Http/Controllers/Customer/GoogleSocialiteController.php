@@ -21,29 +21,29 @@ class GoogleSocialiteController extends Controller
         try {
             $user = Socialite::driver('google')->user();
 
-            $finduser = User::where('social_id', $user->id)->first();
+            $userexists = User::where('social_id', $user->id)->first();
 
-            if ($finduser) {
-                Auth::login($finduser);
-                $token = Auth::guard('api')->login($finduser);
+            if ($userexists) {
+                Auth::login($userexists);
+                $token = Auth::guard('api')->login($userexists);
                 echo "<script>
                     localStorage.setItem('token-customer', '" . $token . "');
                     window.location.href = '/customer/dashboard';
                 </script>";
             } else {
-                $newUser = User::create([
+                $emptyuser = User::create([
                     'nama' => $user->name,
                     'username' => $user->name,
                     'email' => $user->email,
                     'social_id' => $user->id,
                     'id_user_role' => 3,
                     'social_type' => 'google',
-                    'password' => bcrypt('my-google'),
-                    'konfirmasi_password' => bcrypt('my-google'),
+                    'password' => bcrypt($user->password),
+                    'konfirmasi_password' => bcrypt($user->password),
                 ]);
 
-                Auth::login($newUser);
-                $token = Auth::guard('api')->login($newUser);
+                Auth::login($emptyuser);
+                $token = Auth::guard('api')->login($emptyuser);
                 echo "<script>
                     localStorage.setItem('token-customer', '" . $token . "');
                     window.location.href = '/customer/dashboard';

@@ -1,10 +1,7 @@
-{{-- <div class="flex flex-wrap h-screen">
-    <section class="relative mx-auto"> --}}
-<nav class="flex justify-between bg-white text-white w-screen border-b">
+{{-- <nav class="fixed px-8 flex justify-between bg-white text-white w-screen border-b">
     <div class="px-5 xl:px-12 py-3 flex w-full items-center">
         <a href="#" class="text-xl font-bold flex items-center lg:ml-2.5">
             <img src="{{ asset('logo.svg') }}" class="h-6 mr-2" alt="eFarm">
-            {{-- <span class="self-center whitespace-nowrap">eFarm</span> --}}
         </a>
         <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
             <li><a class="hover:text-gray-200 text-primarybase" href="#">
@@ -12,7 +9,7 @@
                         <button @click="open = ! open" type="button"
                             class="text-gray-500 group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900"
                             aria-expanded="false">
-                            <span class="text-primarybase">Layanan</span>
+                            <span class="font-semibold text-textbase">Layanan</span>
                             <svg :class="{ 'rotate-180 duration-300': open, 'duration-300': !open }"
                                 class="text-gray-400 ml-2 h-5 w-5 group-hover:text-gray-500"
                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#444444"
@@ -53,9 +50,9 @@
                         </div>
                     </div>
                 </a></li>
-            <li><a class="hover:text-gray-200 text-primarybase" href="#">Toko</a></li>
-            <li><a class="hover:text-gray-200 text-primarybase" href="#">Partner</a></li>
-            <li><a class="hover:text-gray-200 text-primarybase" href="#">Tentang</a></li>
+            <li><a class="hover:text-gray-200 text-textbase" href="#">Toko</a></li>
+            <li><a class="hover:text-gray-200 text-textbase" href="#">Partner</a></li>
+            <li><a class="hover:text-gray-200 text-textbase" href="#">Tentang</a></li>
         </ul>
         <div class="hidden xl:flex items-center space-x-5">
             <a href="{{ route('customer.login') }}"
@@ -77,4 +74,4 @@
         </svg>
     </a>
 </nav>
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}

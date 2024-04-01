@@ -63,6 +63,7 @@ module.exports = {
         },
         fontFamily: {
             body: [
+                "Montserrat",
                 "Inter",
                 "ui-sans-serif",
                 "system-ui",
