@@ -21,6 +21,17 @@
 <body>
     <div>
         @include('includes.navbar')
+        <div class="w-full  h-full flex justify-end items-center">
+            <div class="flex">
+                <a href="{{ route('partner.login') }}" class="cursor-pointer">
+                    <button
+                        class="middle none center mr-4 rounded-lg bg-primarybase py-2 px-9 font-sans text-md font-bold text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:opacity-50 disabled:shadow-none"
+                        style="outline: none;" data-ripple-light="true">
+                        Masuk
+                    </button>
+                </a>
+            </div>
+        </div>
         <div class="container mx-auto p-4">
             <div class="bg-white dark:bg-gray-700 shadow rounded-lg p-6">
                 <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Personal Information</h1>
