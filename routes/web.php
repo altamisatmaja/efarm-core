@@ -11,6 +11,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Customer\AuthCustomerController;
 use App\Http\Controllers\Customer\DashboardCustomerController;
 use App\Http\Controllers\Partner\DashboardPartnerController;
+use App\Http\Controllers\Partner\SubmissionController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
@@ -49,6 +50,9 @@ Route::get('admin/logout', [AuthController::class, 'logout']);
 Route::get('partner/login', [AuthPartnerController::class, 'index'])->name('partner.login');
 Route::post('partner/login', [AuthPartnerController::class, 'login']);
 Route::get('partner/logout', [AuthPartnerController::class, 'logout']);
+
+// route partner for submission
+Route::get('partner/submission', [SubmissionController::class, 'submission'])->name('partner.submission');
 
 // route for customer
 Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
@@ -108,5 +112,4 @@ Route::middleware('auth')->group(function () {
     
     // route partner for product
     Route::get('partner/product', [ProductController::class, 'list'])->name('partner.product.list');
-
 });

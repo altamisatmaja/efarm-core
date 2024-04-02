@@ -20,7 +20,6 @@ class GoogleSocialiteController extends Controller
     {
         try {
             $user = Socialite::driver('google')->user();
-
             $userexists = User::where('social_id', $user->id)->first();
 
             if ($userexists) {
