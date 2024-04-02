@@ -42,8 +42,9 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label for="provinsi_partner">Provinsi *</label>
-                            <input name="provinsi_partner" id="provinsi_partner" type="text"
-                                placeholder="Nama Partner" class="border p-2 rounded w-full">
+                            <select name="pronvisi_partner" id="provinsi_partner" class="provinsi_partner border p-2 rounded w-full">
+                                <option value="1">Aceh</option>
+                            </select>
                         </div>
                         <div>
                             <label for="kabupaten_partner">Kabupaten *</label>
@@ -154,6 +155,116 @@
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+
+            // get provinsi
+            $.ajax({
+                url: 'https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json',
+                method: 'GET',
+                success: function(response) {
+                    console.log(response);
+
+                    let row = '';
+
+                    const selectprovinsi = $('.provinsi_partner');
+                    selectprovinsi.empty();
+
+                    selectprovinsi.append($('<option>', {
+                        value: '',
+                        text: 'Pilih provinsi'
+                    }));
+
+                    response.map(function(data) {
+                        console.log(data);
+                        selectprovinsi.append($('<option>', {
+                            value: data.id,
+                            text: data.name,
+                        }))
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error(status, error);
+                }
+            });
+
+
+
+            // Read data
+            $.ajax({
+                url: '/api/categorylivestock',
+                success: function({
+                    data
+                }) {
+                    let row = '';
+
+                    data.map(function(val, index) {
+                        row += `
+                        <tr>
+                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div class="inline-flex items-center gap-x-3">
+                                        <span>${index+1}</span>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    ${val.nama_kategori_hewan}</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    ${val.deskripsi_kategori_hewan}</td>
+                                <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                    <div class="flex items-center gap-x-6">
+                                        <a class="edit-data-categorylivestock" data-id="${val.id}" data-toggle="modal">
+                                        <button
+                                            class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                            Edit
+                                        </button>
+                                    </a>
+                                    <a class="hapus-data-categorylivestock" data-id="${val.id}">
+                                        <button
+                                            class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                            Hapus
+                                        </button>
+                                    </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                    $('tbody').append(row);
+                }
+            });
+
+            // Tambah data
+            $('.form-tambah-categorylivestock').submit(function(e) {
+                e.preventDefault();
+                const form = $(this);
+                const token = localStorage.getItem('token-efarm');
+                var formData = new FormData(this);
+                console.log(formData);
+
+
+                $.ajax({
+                    url: '/api/categorylivestock',
+                    type: 'POST',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    headers: {
+                        "accept": "application/json",
+                        "Authorization": "Bearer" + token,
+                        "Access-Control-Allow-Origin": "*"
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            alert('Data berhasil ditambahkan');
+                            location.reload();
+                        }
+                    }
+                })
+            });
+        })
+    </script>
 </body>
 
 </html>

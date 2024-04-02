@@ -80,6 +80,162 @@
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            // Read data
+            $.ajax({
+                url: '/api/categorylivestock',
+                success: function({
+                    data
+                }) {
+                    let row = '';
+
+                    data.map(function(val, index) {
+                        row += `
+                        <tr>
+                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <div class="inline-flex items-center gap-x-3">
+                                        <span>${index+1}</span>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    ${val.nama_kategori_hewan}</td>
+                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    ${val.deskripsi_kategori_hewan}</td>
+                                <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                    <div class="flex items-center gap-x-6">
+                                        <a class="edit-data-categorylivestock" data-id="${val.id}" data-toggle="modal">
+                                        <button
+                                            class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                            Edit
+                                        </button>
+                                    </a>
+                                    <a class="hapus-data-categorylivestock" data-id="${val.id}">
+                                        <button
+                                            class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                            Hapus
+                                        </button>
+                                    </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                    $('tbody').append(row);
+                }
+            });
+
+            // Hapus data
+            $(document).on('click', '.hapus-data-categorylivestock', function() {
+                const id = $(this).data('id');
+                const token = localStorage.getItem('token-efarm');
+
+                // console.log(token);
+
+                confirm_dialog = confirm('Apakah yakin dihapus?');
+
+
+                if (confirm_dialog) {
+                    $.ajax({
+                        url: '/api/categorylivestock/' + id,
+                        type: "DELETE",
+                        headers: {
+                            "Authorization": token
+                        },
+                        success: function(data) {
+                            if (data.message == 'success') {
+                                alert('Data berhasil dihapus');
+                                location.reload();
+                            }
+                        }
+                    });
+                }
+            });
+
+            // Edit data
+            $(document).on('click', '.edit-data-categorylivestock', function(e) {
+                $('.modal-edit-categorylivestock').removeClass('hidden');
+                const id = $(this).data('id');
+                console.log(id);
+                const token = localStorage.getItem('token-efarm');
+
+                $.get('/api/categorylivestock/' + id, function({
+                    data
+                }) {
+                    // console.log(data.id);
+                    console.log(data);
+                    $('input[name="nama_kategori_hewan"]').val(data.nama_kategori_hewan);
+                    $('textarea[name="deskripsi_kategori_hewan"]').val(data
+                        .deskripsi_kategori_hewan);
+                });
+
+                $('.form-edit-categorylivestock').submit(function(e) {
+                    e.preventDefault();
+                    const form = $(this);
+                    const token = localStorage.getItem('token-efarm');
+                    var formData = new FormData(this);
+                    console.log(formData);
+
+                    $.ajax({
+                        url: `/api/categorylivestock/${id}?_method=PUT`,
+                        type: 'POST',
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        headers: {
+                            "accept": "application/json",
+                            "Authorization": token,
+                            "Access-Control-Allow-Origin": "*"
+                        },
+                        success: function(data) {
+                            if (data.success) {
+                                alert('Data berhasil diubah');
+                                location.reload();
+                            }
+                        }
+                    })
+                });
+            });
+
+            // Tambah data
+            $('.form-tambah-categorylivestock').submit(function(e) {
+                e.preventDefault();
+                const form = $(this);
+                const token = localStorage.getItem('token-efarm');
+                var formData = new FormData(this);
+                console.log(formData);
+
+
+                $.ajax({
+                    url: '/api/categorylivestock',
+                    type: 'POST',
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    headers: {
+                        "accept": "application/json",
+                        "Authorization": "Bearer" + token,
+                        "Access-Control-Allow-Origin": "*"
+                    },
+                    success: function(data) {
+                        if (data.success) {
+                            alert('Data berhasil ditambahkan');
+                            location.reload();
+                        }
+                    }
+                })
+            });
+
+
+            $('.cancel-edit-data-categorylivestock').click(function(e) {
+                // $('.modal-edit-categorylivestock').addClass('hidden');
+                location.reload();
+            });
+        })
+    </script>
 </body>
 
 </html>
