@@ -49,27 +49,32 @@
                         </div>
                         <div>
                             <label for="kabupaten_partner">Kabupaten *</label>
-                            <select name="kabupaten_partner" id="kabupaten_partner"
+                            <select disabled name="kabupaten_partner" id="kabupaten_partner"
                                 class="kabupaten_partner border p-2 rounded w-full">
-                                <option value="1">Pilih kabupaten</option>
+                                <option  value="1">Pilih kabupaten</option>
                             </select>
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label for="kecamatan_partner">Kecamatan *</label>
-                            <select name="kecamatan_partner" id="kecamatan_partner"
+                            <select disabled name="kecamatan_partner" id="kecamatan_partner"
                                 class="kecamatan_partner border p-2 rounded w-full">
                                 <option value="1">Pilih kecamatan</option>
                             </select>
                         </div>
                         <div>
                             <label for="kelurahan_partner">kelurahan *</label>
-                            <select name="kelurahan_partner" id="kelurahan_partner"
+                            <select disabled name="kelurahan_partner" id="kelurahan_partner"
                                 class="kelurahan_partner border p-2 rounded w-full">
                                 <option value="1">Pilih kelurahan</option>
                             </select>
                         </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="alamat_partner">Detail alamat</label>
+                        <input name="alamat_partner" id="alamat_partner" type="text" placeholder="Detail alamat"
+                            class="border p-2 rounded w-full">
                     </div>
                     <div class="mb-4">
                         <div>
@@ -86,11 +91,6 @@
                                 <option value="Perempuan">Perempuan</option>
                             </select>
                         </div>
-                    </div>
-                    <div class="mb-4">
-                        <label for="alamat_partner">Detail alamat</label>
-                        <input name="alamat_partner" id="alamat_partner" type="text" placeholder="Detail alamat"
-                            class="border p-2 rounded w-full">
                     </div>
                     <div class="mb-4">
                         <label for="lama_peternakan_berdiri">Lama peternakan berdiri</label>
@@ -192,8 +192,10 @@
                         });
 
                         $("select.provinsi_partner").change(function() {
+                            document.getElementById("kabupaten_partner").removeAttribute("disabled");
                             var selectprovince = $(this).children("option:selected")
                                 .val();
+
 
                             console.log(selectprovince);
 
@@ -227,6 +229,7 @@
 
                                     $("select.kabupaten_partner").change(
                                         function() {
+                                            document.getElementById("kecamatan_partner").removeAttribute("disabled");
                                             var selectkabupaten = $(
                                                     this).children(
                                                     "option:selected")
@@ -240,11 +243,11 @@
                                                 method: 'GET',
                                                 success: function(
                                                     response
-                                                    ) {
+                                                ) {
                                                     console
                                                         .log(
                                                             response
-                                                            );
+                                                        );
 
                                                     let row =
                                                         '';
@@ -252,7 +255,8 @@
                                                     const
                                                         selectkecamatan =
                                                         $(
-                                                            '.kecamatan_partner');
+                                                            '.kecamatan_partner'
+                                                        );
                                                     selectkecamatan
                                                         .empty();
 
@@ -262,13 +266,13 @@
                                                                 value: '',
                                                                 text: 'Pilih kecamatan'
                                                             })
-                                                            );
+                                                        );
 
                                                     response
                                                         .map(
                                                             function(
                                                                 data
-                                                                ) {
+                                                            ) {
                                                                 // console.log(data);
                                                                 selectkecamatan
                                                                     .append(
@@ -278,24 +282,26 @@
                                                                             text: data
                                                                                 .nama,
                                                                         })
-                                                                        )
+                                                                    )
                                                             }
-                                                            );
+                                                        );
 
                                                     $("select.kecamatan_partner")
                                                         .change(
                                                             function() {
+                                                                document.getElementById("kelurahan_partner").removeAttribute("disabled");
                                                                 var selectkec =
                                                                     $(
-                                                                        this)
+                                                                        this
+                                                                    )
                                                                     .children(
                                                                         "option:selected"
-                                                                        )
+                                                                    )
                                                                     .val();
                                                                 console
                                                                     .log(
                                                                         `Ini data id kecamtan: ${selectkec}`
-                                                                        );
+                                                                    );
 
                                                                 // ini yang diterusin al
                                                                 $.ajax({
@@ -303,11 +309,11 @@
                                                                     method: 'GET',
                                                                     success: function(
                                                                         response
-                                                                        ) {
+                                                                    ) {
                                                                         console
                                                                             .log(
                                                                                 response
-                                                                                );
+                                                                            );
 
                                                                         let row =
                                                                             '';
@@ -315,7 +321,8 @@
                                                                         const
                                                                             selectkelurahan =
                                                                             $(
-                                                                                '.kelurahan_partner');
+                                                                                '.kelurahan_partner'
+                                                                            );
                                                                         selectkelurahan
                                                                             .empty();
 
@@ -325,17 +332,17 @@
                                                                                     value: '',
                                                                                     text: 'Pilih kelurahan',
                                                                                 })
-                                                                                );
+                                                                            );
 
                                                                         response
                                                                             .map(
                                                                                 function(
                                                                                     data
-                                                                                    ) {
+                                                                                ) {
                                                                                     console
                                                                                         .log(
                                                                                             data
-                                                                                            );
+                                                                                        );
                                                                                     selectkelurahan
                                                                                         .append(
                                                                                             $('<option>', {
@@ -344,13 +351,13 @@
                                                                                                 text: data
                                                                                                     .nama,
                                                                                             })
-                                                                                            )
+                                                                                        )
                                                                                 }
-                                                                                )
+                                                                            )
                                                                     }
                                                                 })
                                                             }
-                                                            );
+                                                        );
                                                 }
                                             })
                                         });
