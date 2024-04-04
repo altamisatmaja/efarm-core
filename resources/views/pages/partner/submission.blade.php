@@ -54,12 +54,60 @@
 <body onload="getLocationAndIP()">
     <div>
         @include('includes.navbar')
-        <div class="container mx-auto p-4">
+        <div id="form-akun-partner-parent" class="container mx-auto p-4">
+            <div class="bg-white dark:bg-gray-700 shadow rounded-lg p-6">
+                <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Formulir akun partner</h1>
+                <p class="text-gray-600 dark:text-gray-300 mb-6">Silahkan diisi sesuai akun yang anda inginkan</p>
+                <form class="form-akun-partner" action="" method="POST">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label for="nama">Nama *</label>
+                            <input name="nama" id="nama" type="text" placeholder="Nama Partner"
+                                class="border p-2 rounded w-full">
+                        </div>
+                        <div>
+                            <label for="username">Username *</label>
+                            <input name="username" id="username" type="text" placeholder="Masukkan nama peternakan"
+                                class="border p-2 rounded w-full">
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div>
+                            <label for="email">Email *</label>
+                            <input type="email" name="email" id="email" placeholder="Masukkan Email"
+                                class="border p-2 rounded w-full">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label for="password">Password *</label>
+                            <input name="password" id="password" type="password" placeholder="Nama Partner"
+                                class="border p-2 rounded w-full">
+                        </div>
+                        <div>
+                            <label for="konfirmasi_password">Konfirmasi password *</label>
+                            <input name="konfirmasi_password" id="konfirmasi_password" type="password"
+                                placeholder="Masukkan nama peternakan" class="border p-2 rounded w-full">
+                            <input name="id_user_role" id="id_user_role" type="text"
+                                placeholder="Masukkan nama peternakan" value="3"
+                                class="hidden border p-2 rounded w-full">
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit"
+                            class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                            Lanjut
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="form-data-diri-partner-parent" class="container mx-auto p-4 hidden">
             <div class="bg-white dark:bg-gray-700 shadow rounded-lg p-6">
                 <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Formulir pengajuan partner</h1>
                 <p class="text-gray-600 dark:text-gray-300 mb-6">Silahkan diisi dengan kesesuaian data yang ada
                     dilapangan. Akan terjadi pengecekan dari admin ke lokasi</p>
-                    <form class="form-submission" action="" method="POST">
+                <form class="form-submission" action="" method="POST">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label for="nama_partner">Nama Partner *</label>
@@ -107,19 +155,19 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 hidden">
                         <div>
                             <label>Latitude *</label>
-                            <input type="text" name="latitude" id="latitude" placeholder="Masih belum terdeteksi"
-                                class="border p-2 rounded w-full">
+                            <input type="text" name="latitude" id="latitude"
+                                placeholder="Masih belum terdeteksi" class="border p-2 rounded w-full">
                         </div>
                         <div>
                             <label>Longitude *</label>
-                            <input type="text" name="longitude" id="longitude" placeholder="Masih belum terdeteksi"
-                                class="border p-2 rounded w-full">
+                            <input type="text" name="longitude" id="longitude"
+                                placeholder="Masih belum terdeteksi" class="border p-2 rounded w-full">
                         </div>
                     </div>
                     <div class="mb-4">
                         <label for="id_user">id_user</label>
-                        <input value="3" name="id_user" id="id_user" type="text" placeholder="Detail alamat"
-                            class="border p-2 rounded w-full">
+                        <input value="3" name="id_user" id="id_user" type="text"
+                            placeholder="Detail alamat" class="border p-2 rounded w-full">
                     </div>
                     <div class="mb-4 hidden">
                         <label for="status">Status</label>
@@ -438,6 +486,36 @@
                 });
             });
 
+            // Tambah data akun
+            $('.form-akun-partner').submit(function(e) {
+                e.preventDefault();
+                const form = $(this);
+                var formData = new FormData(this);
+                console.log(formData);
+                var id_user_role = formData.get('id_user_role');
+                $.ajax({
+                    url: '/api/auth/partner/register',
+                    type: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        const akun_id_partner = $('#id_user');
+
+                        console.log(JSON.stringify(data));
+                        console.log(data.data.id);
+                        const id_user_input = $('#id_user');
+                        id_user_input.val(data.data.id);
+                        if (data.success) {
+                            document.getElementById('form-akun-partner-parent').classList.add(
+                                'hidden');
+                            document.getElementById('form-data-diri-partner-parent').classList
+                                .remove('hidden');
+                        }
+                    }
+                })
+            });
+
             // Tambah partner
             $('.form-submission').submit(function(e) {
                 e.preventDefault();
@@ -478,27 +556,6 @@
                 console.log(foto_peternakan);
                 console.log(created_at);
                 console.log(updated_at);
-                // const form = $(this);
-                // const token = localStorage.getItem('token-efarm');
-                // var formData = {};
-                // formData.id_user = 3;
-                // formData.nama_partner = $('#nama_partner').val();
-                // formData.nama_perusahaaan_partner = $('#nama_perusahaaan_partner').val();
-                // formData.provinsi_partner = $('#provinsi_partner option:selected').text();
-                // formData.kabupaten_partner = $('#kabupaten_partner option:selected').text();
-                // formData.kecamatan_partner = $('#kecamatan_partner option:selected').text();
-                // formData.kelurahan_partner = $('#kelurahan_partner option:selected').text();
-                // formData.alamat_partner = $('#alamat_partner').val();
-                // formData.lama_peternakan_berdiri = $('#lama_peternakan_berdiri').val();
-                // formData.latitude = $('#latitude').val();
-                // formData.longitude = $('#longitude').val();
-                // formData.tanggal_lahir = $('#tanggal_lahir').val();
-                // formData.jenis_kelamin = $('#jenis_kelamin').val();
-                // formData.foto_profil = $('#foto_profil').val();
-                // formData.foto_peternakan = $('#foto_peternakan').val();
-                // formData.status = "Belum terverifikasi";
-                // formData.created_at = new Date().toISOString();
-                // formData.updated_at = new Date().toISOString();
 
                 console.log(formData);
 
@@ -509,11 +566,6 @@
                     cache: false,
                     contentType: false,
                     processData: false,
-                    // headers: {
-                    //     "accept": "application/json",
-                    //     "Authorization": "Bearer" + token,
-                    //     "Access-Control-Allow-Origin": "*"
-                    // },
                     success: function(data) {
                         if (data.success) {
                             alert('Data berhasil ditambahkan');
