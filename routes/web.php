@@ -36,6 +36,10 @@ use Illuminate\Support\Facades\Route;
 //     return view('homepage');
 // });
 
+Route::get('/maps', function () {
+    return view('pages.partner.maps');
+});
+
 Route::get('/', [PageController::class, 'index']);
 Route::get('/market', [PageController::class, 'market'])->name('homepage.market');
 Route::get('/partner', [PageController::class, 'partner'])->name('homepage.partner');

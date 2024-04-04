@@ -16,9 +16,42 @@
             font-family: Montserrat;
         }
     </style>
+    <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+    <script type="text/javascript">
+        function showLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                console.log("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+
+            document.getElementById('latitude').placeholder = `${latitude}`;
+            document.getElementById('longitude').placeholder = `${longitude}`;
+
+            document.getElementById('latitude').value = `${latitude}`;
+            document.getElementById('longitude').value = `${longitude}`;
+            console.log("Latitude:", latitude);
+            console.log("Longitude:", longitude);
+        }
+
+        function showIP() {
+            var ip = geoplugin_request();
+            console.log("IP Address:", ip);
+        }
+
+        function getLocationAndIP() {
+            showLocation();
+            showIP();
+        }
+    </script>
 </head>
 
-<body>
+<body onload="getLocationAndIP()">
     <div>
         @include('includes.navbar')
         <div class="container mx-auto p-4">
@@ -51,7 +84,7 @@
                             <label for="kabupaten_partner">Kabupaten *</label>
                             <select disabled name="kabupaten_partner" id="kabupaten_partner"
                                 class="kabupaten_partner border p-2 rounded w-full">
-                                <option  value="1">Pilih kabupaten</option>
+                                <option value="1">Pilih kabupaten</option>
                             </select>
                         </div>
                     </div>
@@ -69,6 +102,16 @@
                                 class="kelurahan_partner border p-2 rounded w-full">
                                 <option value="1">Pilih kelurahan</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label for="latitude">latitude *</label>
+                            <input type="text" name="latitude" id="latitude" placeholder="Masih belum terdeteksi" class="border p-2 rounded w-full">
+                        </div>
+                        <div>
+                            <label for="longitude">longitude *</label>
+                            <input type="text" name="longitude" id="longitude" placeholder="Masih belum terdeteksi" class="border p-2 rounded w-full">
                         </div>
                     </div>
                     <div class="mb-4">
@@ -93,14 +136,9 @@
                         </div>
                     </div>
                     <div class="mb-4">
-                        <label for="lama_peternakan_berdiri">Lama peternakan berdiri</label>
-                        <input name="lama_peternakan_berdiri" id="lama_peternakan_berdiri" type="text"
-                            placeholder="Detail alamat" class="border p-2 rounded w-full">
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                        <label for="kode_zip_partner">Kode Zip</label>
-                        <input name="kode_zip_partner" id="kode_zip_partner" type="text"
-                            placeholder="ZIP / Postal code" class="border p-2 rounded w-full">
+                        <label for="lama_peternakan_berdiri">Berdiri sejak*</label>
+                        <input name="lama_peternakan_berdiri" id="lama_peternakan_berdiri" type="number"
+                            placeholder="Berdiri sejak" class="border p-2 rounded w-full">
                     </div>
                     <div class="mb-6 pt-4">
                         <label class="mb-5 block text-xl font-semibold text-[#07074D]">
@@ -163,6 +201,8 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
     <script>
         $(function() {
             // get provinsi
@@ -192,7 +232,8 @@
                         });
 
                         $("select.provinsi_partner").change(function() {
-                            document.getElementById("kabupaten_partner").removeAttribute("disabled");
+                            document.getElementById("kabupaten_partner")
+                                .removeAttribute("disabled");
                             var selectprovince = $(this).children("option:selected")
                                 .val();
 
@@ -229,7 +270,10 @@
 
                                     $("select.kabupaten_partner").change(
                                         function() {
-                                            document.getElementById("kecamatan_partner").removeAttribute("disabled");
+                                            document.getElementById(
+                                                    "kecamatan_partner")
+                                                .removeAttribute(
+                                                    "disabled");
                                             var selectkabupaten = $(
                                                     this).children(
                                                     "option:selected")
@@ -289,7 +333,13 @@
                                                     $("select.kecamatan_partner")
                                                         .change(
                                                             function() {
-                                                                document.getElementById("kelurahan_partner").removeAttribute("disabled");
+                                                                document
+                                                                    .getElementById(
+                                                                        "kelurahan_partner"
+                                                                        )
+                                                                    .removeAttribute(
+                                                                        "disabled"
+                                                                        );
                                                                 var selectkec =
                                                                     $(
                                                                         this
