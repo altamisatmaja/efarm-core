@@ -167,7 +167,7 @@
                     <div class="mb-4">
                         <label for="id_user">id_user</label>
                         <input value="3" name="id_user" id="id_user" type="text"
-                            placeholder="Detail alamat" class="border p-2 rounded w-full">
+                            placeholder="Detail alamat" class="border p-2 rounded w-full hidden">
                     </div>
                     <div class="mb-4 hidden">
                         <label for="status">Status</label>
