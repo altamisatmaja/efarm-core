@@ -60,7 +60,14 @@ class PartnerController extends Controller
             'kecamatan_partner' => 'required',
             'kelurahan_partner' => 'required',
             'alamat_partner' => 'required',
-            'foto_profil' => 'required',
+            'foto_profil' => 'required|image|mimes:jpg,png,jpeg,webp',
+            'foto_peternakan' => 'required|image|mimes:jpg,png,jpeg,webp',
+            'lama_peternakan_berdiri' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'status' => 'required',
+            'tanggal_lahir' => 'required',
+            'jenis_kelamin' => 'required',
         ]);
 
         if($validator->fails()){
@@ -76,6 +83,13 @@ class PartnerController extends Controller
             $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
             $gambar->move('uploads', $nama_gambar);
             $input['foto_profil'] = $nama_gambar;
+        }
+
+        if($request->has('foto_peternakan')){
+            $gambar = $request->file('foto_peternakan');
+            $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
+            $gambar->move('uploads', $nama_gambar);
+            $input['foto_peternakan'] = $nama_gambar;
         }
         // $input['password'] = bcrypt($request->password);
 

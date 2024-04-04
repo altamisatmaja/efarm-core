@@ -59,7 +59,7 @@
                 <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Formulir pengajuan partner</h1>
                 <p class="text-gray-600 dark:text-gray-300 mb-6">Silahkan diisi dengan kesesuaian data yang ada
                     dilapangan. Akan terjadi pengecekan dari admin ke lokasi</p>
-                <form>
+                <form class="form-submission" action="" method="POST">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label for="nama_partner">Nama Partner *</label>
@@ -106,13 +106,23 @@
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
-                            <label for="latitude">latitude *</label>
+                            <label>Latitude *</label>
                             <input type="text" name="latitude" id="latitude" placeholder="Masih belum terdeteksi" class="border p-2 rounded w-full">
                         </div>
                         <div>
-                            <label for="longitude">longitude *</label>
+                            <label>Longitude *</label>
                             <input type="text" name="longitude" id="longitude" placeholder="Masih belum terdeteksi" class="border p-2 rounded w-full">
                         </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="id_user">id_user</label>
+                        <input value="3" name="id_user" id="id_user" type="text" placeholder="Detail alamat"
+                            class="border p-2 rounded w-full">
+                    </div>
+                    <div class="mb-4">
+                        <label for="status">Status</label>
+                        <input value="Belum terferifikasi" name="status" id="status" type="text" placeholder="Detail alamat"
+                            class="border p-2 rounded w-full">
                     </div>
                     <div class="mb-4">
                         <label for="alamat_partner">Detail alamat</label>
@@ -426,75 +436,35 @@
                 });
             });
 
-            // Read data
-            $.ajax({
-                url: '/api/categorylivestock',
-                success: function({
-                    data
-                }) {
-                    let row = '';
-
-                    data.map(function(val, index) {
-                        row += `
-                        <tr>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <div class="inline-flex items-center gap-x-3">
-                                        <span>${index+1}</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    ${val.nama_kategori_hewan}</td>
-                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    ${val.deskripsi_kategori_hewan}</td>
-                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                    <div class="flex items-center gap-x-6">
-                                        <a class="edit-data-categorylivestock" data-id="${val.id}" data-toggle="modal">
-                                        <button
-                                            class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                            Edit
-                                        </button>
-                                    </a>
-                                    <a class="hapus-data-categorylivestock" data-id="${val.id}">
-                                        <button
-                                            class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                            Hapus
-                                        </button>
-                                    </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        `;
-                    });
-                    $('tbody').append(row);
-                }
-            });
-
-            // Tambah data
-            $('.form-tambah-categorylivestock').submit(function(e) {
+            // Tambah partner
+            $('.form-submission').submit(function(e) {
                 e.preventDefault();
                 const form = $(this);
-                const token = localStorage.getItem('token-efarm');
+                // const token = localStorage.getItem('token-efarm');
                 var formData = new FormData(this);
                 console.log(formData);
 
 
                 $.ajax({
-                    url: '/api/categorylivestock',
+                    url: '/api/partner',
                     type: 'POST',
                     data: formData,
                     cache: false,
                     contentType: false,
                     processData: false,
-                    headers: {
-                        "accept": "application/json",
-                        "Authorization": "Bearer" + token,
-                        "Access-Control-Allow-Origin": "*"
-                    },
+                    // headers: {
+                    //     "accept": "application/json",
+                    //     "Authorization": "Bearer" + token,
+                    //     "Access-Control-Allow-Origin": "*"
+                    // },
                     success: function(data) {
                         if (data.success) {
                             alert('Data berhasil ditambahkan');
                             location.reload();
                         }
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        console.log(xhr.status);
                     }
                 })
             });
