@@ -59,7 +59,7 @@
                 <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Formulir pengajuan partner</h1>
                 <p class="text-gray-600 dark:text-gray-300 mb-6">Silahkan diisi dengan kesesuaian data yang ada
                     dilapangan. Akan terjadi pengecekan dari admin ke lokasi</p>
-                <form class="form-submission" action="" method="POST">
+                    <form class="form-submission" action="" method="POST">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label for="nama_partner">Nama Partner *</label>
@@ -67,8 +67,8 @@
                                 class="border p-2 rounded w-full">
                         </div>
                         <div>
-                            <label for="nama_peternakan">Nama peternakan *</label>
-                            <input name="nama_peternakan" id="nama_peternakan" type="text"
+                            <label for="nama_perusahaan_partner">Nama peternakan *</label>
+                            <input name="nama_perusahaan_partner" id="nama_perusahaan_partner" type="text"
                                 placeholder="Masukkan nama peternakan" class="border p-2 rounded w-full">
                         </div>
                     </div>
@@ -104,14 +104,16 @@
                             </select>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 hidden">
                         <div>
                             <label>Latitude *</label>
-                            <input type="text" name="latitude" id="latitude" placeholder="Masih belum terdeteksi" class="border p-2 rounded w-full">
+                            <input type="text" name="latitude" id="latitude" placeholder="Masih belum terdeteksi"
+                                class="border p-2 rounded w-full">
                         </div>
                         <div>
                             <label>Longitude *</label>
-                            <input type="text" name="longitude" id="longitude" placeholder="Masih belum terdeteksi" class="border p-2 rounded w-full">
+                            <input type="text" name="longitude" id="longitude" placeholder="Masih belum terdeteksi"
+                                class="border p-2 rounded w-full">
                         </div>
                     </div>
                     <div class="mb-4">
@@ -119,10 +121,10 @@
                         <input value="3" name="id_user" id="id_user" type="text" placeholder="Detail alamat"
                             class="border p-2 rounded w-full">
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-4 hidden">
                         <label for="status">Status</label>
-                        <input value="Belum terferifikasi" name="status" id="status" type="text" placeholder="Detail alamat"
-                            class="border p-2 rounded w-full">
+                        <input value="Belum terverifikasi" name="status" id="status" type="text"
+                            placeholder="Detail alamat" class="border p-2 rounded w-full">
                     </div>
                     <div class="mb-4">
                         <label for="alamat_partner">Detail alamat</label>
@@ -156,8 +158,8 @@
                         </label>
 
                         <div class="mb-8">
-                            <input type="file" name="file" id="file" class="sr-only" />
-                            <label for="file"
+                            <input type="file" name="foto_profil" id="foto_profil" class="sr-only" />
+                            <label for="foto_profil"
                                 class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
                                 <div>
                                     <span class="mb-2 block text-xl font-semibold text-[#07074D]">
@@ -181,8 +183,8 @@
                         </label>
 
                         <div class="mb-8">
-                            <input type="file" name="file" id="file" class="sr-only" />
-                            <label for="file"
+                            <input type="file" name="foto_peternakan" id="foto_peternakan" class="sr-only" />
+                            <label for="foto_peternakan"
                                 class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
                                 <div>
                                     <span class="mb-2 block text-xl font-semibold text-[#07074D]">
@@ -211,7 +213,7 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
     <script>
         $(function() {
@@ -346,10 +348,10 @@
                                                                 document
                                                                     .getElementById(
                                                                         "kelurahan_partner"
-                                                                        )
+                                                                    )
                                                                     .removeAttribute(
                                                                         "disabled"
-                                                                        );
+                                                                    );
                                                                 var selectkec =
                                                                     $(
                                                                         this
@@ -440,10 +442,65 @@
             $('.form-submission').submit(function(e) {
                 e.preventDefault();
                 const form = $(this);
-                // const token = localStorage.getItem('token-efarm');
+                const token = localStorage.getItem('token-efarm');
                 var formData = new FormData(this);
                 console.log(formData);
+                var nama_partner = formData.get('nama_partner');
+                var nama_perusahaan_partner = formData.get('nama_perusahaan_partner');
+                var provinsi_partner = formData.get('provinsi_partner');
+                var kabupaten_partner = formData.get('kabupaten_partner');
+                var kecamatan_partner = formData.get('kecamatan_partner');
+                var kelurahan_partner = formData.get('kelurahan_partner');
+                var alamat_partner = formData.get('alamat_partner');
+                var lama_peternakan_berdiri = formData.get('lama_peternakan_berdiri');
+                var latitude = formData.get('latitude');
+                var longitude = formData.get('longitude');
+                var tanggal_lahir = formData.get('tanggal_lahir');
+                var jenis_kelamin = formData.get('jenis_kelamin');
+                var status = formData.get('status');
+                var foto_profil = formData.get('foto_profil');
+                var foto_peternakan = formData.get('foto_peternakan');
+                var updated_at = formData.get('updated_at');
+                var created_at = formData.get('created_at');
+                console.log(nama_partner);
+                console.log(nama_perusahaan_partner);
+                console.log(provinsi_partner);
+                console.log(kabupaten_partner);
+                console.log(kecamatan_partner);
+                console.log(kelurahan_partner);
+                console.log(lama_peternakan_berdiri);
+                console.log(latitude);
+                console.log(longitude);
+                console.log(tanggal_lahir);
+                console.log(jenis_kelamin);
+                console.log(status);
+                console.log(foto_profil);
+                console.log(foto_peternakan);
+                console.log(created_at);
+                console.log(updated_at);
+                // const form = $(this);
+                // const token = localStorage.getItem('token-efarm');
+                // var formData = {};
+                // formData.id_user = 3;
+                // formData.nama_partner = $('#nama_partner').val();
+                // formData.nama_perusahaaan_partner = $('#nama_perusahaaan_partner').val();
+                // formData.provinsi_partner = $('#provinsi_partner option:selected').text();
+                // formData.kabupaten_partner = $('#kabupaten_partner option:selected').text();
+                // formData.kecamatan_partner = $('#kecamatan_partner option:selected').text();
+                // formData.kelurahan_partner = $('#kelurahan_partner option:selected').text();
+                // formData.alamat_partner = $('#alamat_partner').val();
+                // formData.lama_peternakan_berdiri = $('#lama_peternakan_berdiri').val();
+                // formData.latitude = $('#latitude').val();
+                // formData.longitude = $('#longitude').val();
+                // formData.tanggal_lahir = $('#tanggal_lahir').val();
+                // formData.jenis_kelamin = $('#jenis_kelamin').val();
+                // formData.foto_profil = $('#foto_profil').val();
+                // formData.foto_peternakan = $('#foto_peternakan').val();
+                // formData.status = "Belum terverifikasi";
+                // formData.created_at = new Date().toISOString();
+                // formData.updated_at = new Date().toISOString();
 
+                console.log(formData);
 
                 $.ajax({
                     url: '/api/partner',
@@ -463,8 +520,9 @@
                             location.reload();
                         }
                     },
-                    error: function (xhr, ajaxOptions, thrownError) {
+                    error: function(xhr, ajaxOptions, thrownError) {
                         console.log(xhr.status);
+                        console.log('error');
                     }
                 })
             });

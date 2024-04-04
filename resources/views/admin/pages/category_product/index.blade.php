@@ -394,6 +394,10 @@
                     const token = localStorage.getItem('token-efarm');
                     var formData = new FormData(this);
                     console.log(formData);
+                    var namaPartner = formData.get('nama_kategori_product');
+                    var foto = formData.get('gambar_kategori_product');
+                    console.log(namaPartner);
+                    console.log(foto);
 
 
                     $.ajax({

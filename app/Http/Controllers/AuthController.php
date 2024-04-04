@@ -60,11 +60,7 @@ class AuthController extends Controller
             'nama' => 'required',
             'username' => 'required',
             'email' => 'required',
-            // 'email_verified_at' => 'required',
             'password' => 'required',
-            // 'konfirmasi_password' => 'required|password',
-            // 'nama_partner' => 'required',
-            // 'nama_perusahaan_partner' => 'required',
         ]);
 
         if($validator->fails()){

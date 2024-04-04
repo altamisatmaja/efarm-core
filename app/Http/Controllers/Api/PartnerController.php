@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Validator;
 
 class PartnerController extends Controller
 {
+    public function __construct(){
+        // Ignored, really
+        // $this->middleware('auth')->only(['list']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -51,9 +55,10 @@ class PartnerController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
             'username' => 'required',
-            'email' => 'required|email',
+            'email' => 'required',
             'password' => 'required',
             'konfirmasi_password' => 'required',
+            'id_user_role' => 'required',
         ]);
 
         if($validator->fails()){
@@ -68,6 +73,8 @@ class PartnerController extends Controller
         $user = User::create($input);
 
         return response()->json([
+            'success' => true,
+            'message' => 'success',
             'data' => $user
         ]);
     }

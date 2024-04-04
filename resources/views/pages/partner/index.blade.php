@@ -36,7 +36,7 @@
             <div class="bg-white dark:bg-gray-700 shadow rounded-lg p-6">
                 <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Formulir akun partner</h1>
                 <p class="text-gray-600 dark:text-gray-300 mb-6">Silahkan diisi sesuai akun yang anda inginkan</p>
-                <form>
+                <form class="form-akun-partner" action="" method="POST">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label for="nama">Nama *</label>
@@ -52,29 +52,29 @@
                     <div class="mb-4">
                         <div>
                             <label for="email">Email *</label>
-                            <input type="text" name="email" id="email" placeholder="Masukkan Tanggal lahir"
+                            <input type="email" name="email" id="email" placeholder="Masukkan Email"
                                 class="border p-2 rounded w-full">
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label for="password">Password *</label>
-                            <input name="password" id="password" type="text" placeholder="Nama Partner"
+                            <input name="password" id="password" type="password" placeholder="Nama Partner"
                                 class="border p-2 rounded w-full">
                         </div>
                         <div>
                             <label for="konfirmasi_password">Konfirmasi password *</label>
-                            <input name="konfirmasi_password" id="konfirmasi_password" type="text"
+                            <input name="konfirmasi_password" id="konfirmasi_password" type="password"
                                 placeholder="Masukkan nama peternakan" class="border p-2 rounded w-full">
+                            <input name="id_user_role" id="id_user_role" type="text"
+                                placeholder="Masukkan nama peternakan" value="3" class="hidden border p-2 rounded w-full">
                         </div>
                     </div>
                     <div>
-                        <a href="{{ route('partner.submission') }}">
-                            <button type="button"
-                                class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                                Ajukan
-                            </button>
-                        </a>
+                        <button type="submit"
+                            class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                            Lanjut
+                        </button>
                     </div>
                 </form>
             </div>
@@ -83,143 +83,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(function() {
-            // Read data
-            $.ajax({
-                url: '/api/categorylivestock',
-                success: function({
-                    data
-                }) {
-                    let row = '';
-
-                    data.map(function(val, index) {
-                        row += `
-                        <tr>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <div class="inline-flex items-center gap-x-3">
-                                        <span>${index+1}</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    ${val.nama_kategori_hewan}</td>
-                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    ${val.deskripsi_kategori_hewan}</td>
-                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                    <div class="flex items-center gap-x-6">
-                                        <a class="edit-data-categorylivestock" data-id="${val.id}" data-toggle="modal">
-                                        <button
-                                            class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                            Edit
-                                        </button>
-                                    </a>
-                                    <a class="hapus-data-categorylivestock" data-id="${val.id}">
-                                        <button
-                                            class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                            Hapus
-                                        </button>
-                                    </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        `;
-                    });
-                    $('tbody').append(row);
-                }
-            });
-
-            // Hapus data
-            $(document).on('click', '.hapus-data-categorylivestock', function() {
-                const id = $(this).data('id');
-                const token = localStorage.getItem('token-efarm');
-
-                // console.log(token);
-
-                confirm_dialog = confirm('Apakah yakin dihapus?');
-
-
-                if (confirm_dialog) {
-                    $.ajax({
-                        url: '/api/categorylivestock/' + id,
-                        type: "DELETE",
-                        headers: {
-                            "Authorization": token
-                        },
-                        success: function(data) {
-                            if (data.message == 'success') {
-                                alert('Data berhasil dihapus');
-                                location.reload();
-                            }
-                        }
-                    });
-                }
-            });
-
-            // Edit data
-            $(document).on('click', '.edit-data-categorylivestock', function(e) {
-                $('.modal-edit-categorylivestock').removeClass('hidden');
-                const id = $(this).data('id');
-                console.log(id);
-                const token = localStorage.getItem('token-efarm');
-
-                $.get('/api/categorylivestock/' + id, function({
-                    data
-                }) {
-                    // console.log(data.id);
-                    console.log(data);
-                    $('input[name="nama_kategori_hewan"]').val(data.nama_kategori_hewan);
-                    $('textarea[name="deskripsi_kategori_hewan"]').val(data
-                        .deskripsi_kategori_hewan);
-                });
-
-                $('.form-edit-categorylivestock').submit(function(e) {
-                    e.preventDefault();
-                    const form = $(this);
-                    const token = localStorage.getItem('token-efarm');
-                    var formData = new FormData(this);
-                    console.log(formData);
-
-                    $.ajax({
-                        url: `/api/categorylivestock/${id}?_method=PUT`,
-                        type: 'POST',
-                        data: formData,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        headers: {
-                            "accept": "application/json",
-                            "Authorization": token,
-                            "Access-Control-Allow-Origin": "*"
-                        },
-                        success: function(data) {
-                            if (data.success) {
-                                alert('Data berhasil diubah');
-                                location.reload();
-                            }
-                        }
-                    })
-                });
-            });
-
             // Tambah data
-            $('.form-tambah-categorylivestock').submit(function(e) {
+            $('.form-akun-partner').submit(function(e) {
                 e.preventDefault();
                 const form = $(this);
-                const token = localStorage.getItem('token-efarm');
                 var formData = new FormData(this);
                 console.log(formData);
-
+                var id_user_role = formData.get('id_user_role');
+                console.log(id_user_role);
 
                 $.ajax({
-                    url: '/api/categorylivestock',
+                    url: '/api/auth/partner/register',
                     type: 'POST',
                     data: formData,
-                    cache: false,
                     contentType: false,
                     processData: false,
-                    headers: {
-                        "accept": "application/json",
-                        "Authorization": "Bearer" + token,
-                        "Access-Control-Allow-Origin": "*"
-                    },
                     success: function(data) {
                         if (data.success) {
                             alert('Data berhasil ditambahkan');
@@ -227,12 +105,6 @@
                         }
                     }
                 })
-            });
-
-
-            $('.cancel-edit-data-categorylivestock').click(function(e) {
-                // $('.modal-edit-categorylivestock').addClass('hidden');
-                location.reload();
             });
         })
     </script>

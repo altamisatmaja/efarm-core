@@ -43,6 +43,7 @@ Route::group([
 ], function() {
     Route::post('/admin/login', [AuthController::class, 'login']);
     Route::post('/partner/login', [ApiPartnerController::class, 'login']);
+    Route::post('/partner/register', [ApiPartnerController::class, 'register']);
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
     
