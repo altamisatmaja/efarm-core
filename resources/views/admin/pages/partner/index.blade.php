@@ -168,6 +168,12 @@
                                                 Verifikasi
                                             </button>
                                         </a>
+                                            <a data-id="${val.id}" class="nonaktif-partner">
+                                            <button
+                                                class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                Nonaktif
+                                            </button>
+                                        </a>
                                         </div>
                                     </td>
                                 </tr>
@@ -192,6 +198,26 @@
                         },
                         success: function(data) {
                             alert('Partner berhasil diverifikasi dan bisa berjualan');
+                            location.reload();
+                        }
+                    })
+                })
+
+                $(document).on('click', '.nonaktif-partner', function() {
+                    const id = $(this).data('id');
+                    const token = localStorage.getItem('token-efarm');
+
+                    $.ajax({
+                        url: '/api/partner/status/' + id,
+                        type: 'POST',
+                        data: {
+                            status: 'Dinonaktifkan'
+                        },
+                        headers: {
+                            "Authorization": "Bearer" + token,
+                        },
+                        success: function(data) {
+                            alert('Partner berhasil dinonaktifkan');
                             location.reload();
                         }
                     })

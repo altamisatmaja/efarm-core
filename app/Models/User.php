@@ -41,4 +41,10 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function partner()
+    {
+        return $this->hasOne(Partner::class, 'id_user', 'id');
+    }
+
 }

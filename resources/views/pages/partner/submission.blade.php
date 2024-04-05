@@ -125,14 +125,14 @@
                             <label for="provinsi_partner">Provinsi *</label>
                             <select name="provinsi_partner" id="provinsi_partner"
                                 class="provinsi_partner border p-2 rounded w-full">
-                                <option value="1">Pilih provinsi</option>
+                                <option data-id="1" value="JAWA TIMUR">Pilih provinsi</option>
                             </select>
                         </div>
                         <div>
                             <label for="kabupaten_partner">Kabupaten *</label>
                             <select disabled name="kabupaten_partner" id="kabupaten_partner"
                                 class="kabupaten_partner border p-2 rounded w-full">
-                                <option value="1">Pilih kabupaten</option>
+                                <option data-id="1" value="KAB. NGAWI">Pilih kabupaten</option>
                             </select>
                         </div>
                     </div>
@@ -141,14 +141,14 @@
                             <label for="kecamatan_partner">Kecamatan *</label>
                             <select disabled name="kecamatan_partner" id="kecamatan_partner"
                                 class="kecamatan_partner border p-2 rounded w-full">
-                                <option value="1">Pilih kecamatan</option>
+                                <option data-id="1" value="Paron">Pilih kecamatan</option>
                             </select>
                         </div>
                         <div>
                             <label for="kelurahan_partner">kelurahan *</label>
                             <select disabled name="kelurahan_partner" id="kelurahan_partner"
                                 class="kelurahan_partner border p-2 rounded w-full">
-                                <option value="1">Pilih kelurahan</option>
+                                <option data-id="1" value="1">Pilih kelurahan</option>
                             </select>
                         </div>
                     </div>
@@ -279,13 +279,15 @@
 
                         selectprovinsi.append($('<option>', {
                             value: '',
+                            'data-id': '',
                             text: 'Pilih provinsi'
                         }));
 
                         response.map(function(data) {
                             // console.log(data);
                             selectprovinsi.append($('<option>', {
-                                value: data.id,
+                                'data-id': data.id,
+                                value: data.nama,
                                 text: data.nama,
                             }))
                         });
@@ -294,10 +296,12 @@
                             document.getElementById("kabupaten_partner")
                                 .removeAttribute("disabled");
                             var selectprovince = $(this).children("option:selected")
+                                .attr('data-id');
+                            var valofselectprovince = $(this).children("option:selected")
                                 .val();
 
-
                             console.log(selectprovince);
+                            console.log(valofselectprovince);
 
                             $.ajax({
                                 url: `https://ibnux.github.io/data-indonesia/kabupaten/${selectprovince}.json`,
@@ -313,6 +317,7 @@
 
                                     selectkabupaten.append($('<option>', {
                                         value: '',
+                                        'data-id': '',
                                         text: 'Pilih kabupaten'
                                     }));
 
@@ -320,10 +325,9 @@
                                         // console.log(data);
                                         selectkabupaten.append($(
                                             '<option>', {
-                                                value: data
-                                                    .id,
-                                                text: data
-                                                    .nama,
+                                                value: data.nama,
+                                                'data-id': data.id,
+                                                text: data.nama,
                                             }))
                                     });
 
@@ -336,7 +340,7 @@
                                             var selectkabupaten = $(
                                                     this).children(
                                                     "option:selected")
-                                                .val();
+                                                .attr('data-id');
 
                                             console.log(
                                                 selectkabupaten);
@@ -367,6 +371,7 @@
                                                         .append(
                                                             $('<option>', {
                                                                 value: '',
+                                                                'data-id': '',
                                                                 text: 'Pilih kecamatan'
                                                             })
                                                         );
@@ -381,6 +386,8 @@
                                                                     .append(
                                                                         $('<option>', {
                                                                             value: data
+                                                                                .nama,
+                                                                            'data-id': data
                                                                                 .id,
                                                                             text: data
                                                                                 .nama,
@@ -406,7 +413,7 @@
                                                                     .children(
                                                                         "option:selected"
                                                                     )
-                                                                    .val();
+                                                                    .attr('data-id');
                                                                 console
                                                                     .log(
                                                                         `Ini data id kecamtan: ${selectkec}`
@@ -439,6 +446,7 @@
                                                                             .append(
                                                                                 $('<option>', {
                                                                                     value: '',
+                                                                                    'data-id': '',
                                                                                     text: 'Pilih kelurahan',
                                                                                 })
                                                                             );
@@ -456,6 +464,8 @@
                                                                                         .append(
                                                                                             $('<option>', {
                                                                                                 value: data
+                                                                                                    .nama,
+                                                                                                'data-id': data
                                                                                                     .id,
                                                                                                 text: data
                                                                                                     .nama,
@@ -521,6 +531,16 @@
                 const form = $(this);
                 const token = localStorage.getItem('token-efarm');
                 var formData = new FormData(this);
+
+                // var provinsiText = $('#provinsi_partner option:selected').text();
+                // var kabupatenText = $('#kabupaten_partner option:selected').text();
+                // var kecamatanText = $('#kecamatan_partner option:selected').text();
+                // var kelurahanText = $('#kelurahan_partner option:selected').text();
+                // formData.append('provinsi_partner_text', provinsiText);
+                // formData.append('kabupaten_partner_text', kabupatenText);
+                // formData.append('kecamatan_partner_text', provinsiText);
+                // formData.append('kelurahan_partner_text', kelurahanText);
+
                 console.log(formData);
                 var nama_partner = formData.get('nama_partner');
                 var nama_perusahaan_partner = formData.get('nama_perusahaan_partner');

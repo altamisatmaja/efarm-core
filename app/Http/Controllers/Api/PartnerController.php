@@ -30,9 +30,14 @@ class PartnerController extends Controller
 
         if (auth()->attempt($credentials)) {
             $user = auth()->user();
-            if($user->id_user_role == 3){
+            $partner = $user->partner;
+            if($user->id_user_role == 3 && $partner->status == 'Sudah diverifikasi'){
                 $token = Auth::guard('api')->attempt($credentials);
                 return $this->respondWithToken($token);
+            } else {
+                return response()->json([
+                    'message' => 'Akun anda belum terverifikasi'
+                ]);
             }
         }
     
