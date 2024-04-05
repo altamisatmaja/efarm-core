@@ -40,7 +40,7 @@
                     <div class="justify-center align-middle items-center flex">
                         <h1
                             class="text-xl font-bold leading-tight tracking-tight text-textbase md:text-2xl">
-                            Selamat datang admin 👋
+                            Selamat datang partner 👋
                         </h1>
                     </div>
                     <form class="space-y-4 md:space-y-6" action="/partner/login" method="POST">

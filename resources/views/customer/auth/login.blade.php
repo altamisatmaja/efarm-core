@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
@@ -33,7 +34,7 @@
                                 Selamat datang user 👋
                             </h1>
                         </div>
-                        <form class="space-y-4 md:space-y-6" action="#">
+                        <form class="form-customer-login space-y-4 md:space-y-6" action="" method="POST">
                             <div>
                                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your
                                     email</label>
@@ -53,7 +54,7 @@
                                     <div class="flex items-center h-5">
                                         <input id="remember" aria-describedby="remember" type="checkbox"
                                             class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 "
-                                            required="">
+                                            >
                                     </div>
                                     <div class="ml-3 text-sm">
                                         <label for="remember" class="text-gray-500 ">Remember me</label>
@@ -63,7 +64,7 @@
                                     password?</a>
                             </div>
                             <button type="submit"
-                                class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign
+                                class="w-full text-white bg-primarybase hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign
                                 in</button>
                             <p class="text-sm font-light text-gray-500 ">
                                 Don't have an account yet? <a href="#"
@@ -95,6 +96,49 @@
             </div>
         </section>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            function setCookie(name, value, days) {
+                var expires = '';
+                if (days) {
+                    var date = new Date();
+                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = name + "=" + (value || "") + expires + "; path=/";
+            }
+
+            $('.form-customer-login').submit(function(e) {
+                e.preventDefault();
+                const email = $('#email').val();
+                const password = $('#password').val();
+                const csrf_token = $('meta[name="csrf-token"]').attr('content')
+
+                console.log(csrf_token);
+
+                $.ajax({
+                    url: '/customer/login',
+                    type: 'POST',
+                    data: {
+                        email: email,
+                        password: password,
+                        _token: csrf_token,
+                    },
+                    success: function(data) {
+                        if (!data.success) {
+                            alert(data.message);
+                        } else if (data.token) {
+                            localStorage.setItem('token-efarm', data.token);
+                            window.location.href = "/";
+                        } else {
+                            alert("Token tidak ditemukan dalam respon dari server.");
+                        }
+                    }
+                })
+            })
+        });
+    </script>
 </body>
 
 </html>

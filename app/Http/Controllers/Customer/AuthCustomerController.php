@@ -22,7 +22,7 @@ class AuthCustomerController extends Controller
     public function login(Request $request)
     {
         $this->validate($request, [
-            'email' => 'required|email',
+            'email' => 'required',
             'password' => 'required',
         ]);
 
@@ -30,17 +30,21 @@ class AuthCustomerController extends Controller
 
         if (auth()->attempt($credentials)) {
             $user = auth()->user();
-            if($user->id_user_role == 3){
+            if($user->id_user_role == 2){
                 $token = Auth::guard('api')->attempt($credentials);
                 cookie()->queue(cookie('token', $token, 120));
-                return redirect('/customer/dashboard');
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Login berhasil',
+                    'token' => $token,
+                ]);
             }   
-            else {
-                return back()->withErrors(['error' => 'Anda bukan partner!']);
-            }
         }
     
-        return back()->withErrors(['error' => 'Email atau password salah']);
+        return response()->json([
+            'success' => false,
+            'message' => 'Email atau password salah'
+        ]);
     }
     
 

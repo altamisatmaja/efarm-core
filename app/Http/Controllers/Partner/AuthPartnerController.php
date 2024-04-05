@@ -28,14 +28,13 @@ class AuthPartnerController extends Controller
 
         if (auth()->attempt($credentials)) {
             $user = auth()->user();
-            // $partner = Partner::with('users')->where('status', 'Sudah diverifikasi')->first();
             $partner = $user->partner()->where('status', 'Sudah diverifikasi')->first();
             if ($user->id_user_role == 3 && $partner) {
                 $token = Auth::guard('api')->attempt($credentials);
                 cookie()->queue(cookie('token', $token, 120));
                 return redirect('/partner/dashboard');
             } else if (!$partner) {
-                return back()->withErrors(['errors' => 'Anda belum diverifikasi!']);
+                return back()->withErrors(['error' => 'Anda belum diverifikasi!']);
             } else {
                 return back()->withErrors(['error' => 'Anda bukan partner!']);
             }
