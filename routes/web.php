@@ -90,7 +90,8 @@ Route::middleware('auth')->group(function () {
 
     // route admin for partner
     Route::get('admin/partner', [PartnerController::class, 'list'])->name('admin.partner');
-    Route::get('admin/partner', [PartnerController::class, 'list'])->name('admin.partner');
+    Route::get('admin/partner/submission', [PartnerController::class, 'submission'])->name('admin.partner.submission');
+    Route::get('admin/partner/unsubmission', [PartnerController::class, 'unsubmission'])->name('admin.partner.unsubmission');
 
     // route admin for testimoni
     Route::get('admin/testimoni', [TestimonialController::class, 'list'])->name('admin.testimoni.list');

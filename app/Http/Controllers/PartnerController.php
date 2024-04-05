@@ -18,6 +18,14 @@ class PartnerController extends Controller
     public function list(){
         return view('admin.pages.partner.index');
     }
+
+    public function submission(){
+        return view('admin.pages.partner.submission');
+    }
+
+    public function unsubmission(){
+        return view('admin.pages.partner.unsubmission');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -29,8 +37,7 @@ class PartnerController extends Controller
 
         return response()->json([
             'data' => $partner
-        ]);
-        
+        ]);   
     }
 
     /**

@@ -111,11 +111,12 @@
         <script>
             $(function() {
                 $.ajax({
-                    url: '/api/partner',
+                    url: '/api/partner/unconfirmed',
                     success: function({
                         data
                     }) {
                         let row = '';
+
                         data.map(function(val, index) {
                             row += `
                                 <tr>

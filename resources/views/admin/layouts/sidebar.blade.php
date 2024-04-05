@@ -95,9 +95,13 @@
                                     Partner</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="{{ route('admin.partner.submission') }}"
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pengajuan
                                     Partner</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.partner.unsubmission') }}"
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Partner Diverifikasi</a>
                             </li>
                         </ul>
                     </li>

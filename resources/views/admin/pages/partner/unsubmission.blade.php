@@ -111,11 +111,12 @@
         <script>
             $(function() {
                 $.ajax({
-                    url: '/api/partner',
+                    url: '/api/partner/confirmed',
                     success: function({
                         data
                     }) {
                         let row = '';
+
                         data.map(function(val, index) {
                             row += `
                                 <tr>
@@ -158,14 +159,10 @@
                                     <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">${val.provinsi_partner}, ${val.kabupaten_partner}, ${val.kecamatan_partner}, ${val.kelurahan_partner}, ${val.alamat_partner}</td>
                                     <td class="px-4 py-4 text-sm whitespace-nowrap">
                                         <div class="flex items-center gap-x-6">
+                                            <a data-id="${val.id}" class="lihat-detail-partner">
                                             <button
                                                 class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
                                                 Lihat Detail
-                                            </button>
-                                            <a data-id="${val.id}" class="verifikasi-partner">
-                                            <button
-                                                class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Verifikasi
                                             </button>
                                         </a>
                                         </div>
@@ -175,26 +172,6 @@
                         });
                         $('tbody').append(row);
                     }
-                })
-
-                $(document).on('click', '.verifikasi-partner', function() {
-                    const id = $(this).data('id');
-                    const token = localStorage.getItem('token-efarm');
-
-                    $.ajax({
-                        url: '/api/partner/status/' + id,
-                        type: 'POST',
-                        data: {
-                            status: 'Sudah diverifikasi'
-                        },
-                        headers: {
-                            "Authorization": "Bearer" + token,
-                        },
-                        success: function(data) {
-                            alert('Partner berhasil diverifikasi dan bisa berjualan');
-                            location.reload();
-                        }
-                    })
                 })
             })
         </script>
