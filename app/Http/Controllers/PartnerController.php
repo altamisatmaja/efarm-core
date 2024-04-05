@@ -12,7 +12,7 @@ class PartnerController extends Controller
     public function __construct(){
         // Ignored, really
         $this->middleware('auth')->only(['list']);
-        $this->middleware('auth:api')->only(['delete']);
+        $this->middleware('auth:api')->only(['delete', 'handle_status']);
     }
 
     public function list(){
@@ -25,7 +25,7 @@ class PartnerController extends Controller
      */
     public function index()
     {
-        $partner = Partner::all();
+        $partner = Partner::with('users')->get();
 
         return response()->json([
             'data' => $partner
@@ -187,5 +187,28 @@ class PartnerController extends Controller
         return response()->json([
             'message' => 'success',
         ]);
+    }
+
+    public function partner_not_confirmed()
+    {
+        $partner = Partner::with('users')->where('status', 'Belum terverifikasi')->get();
+
+        return response()->json(['message' => 'success', 'data' => $partner]);
+    }
+
+    public function partner_confirmed()
+    {
+        $partner = Partner::with('users')->where('status', 'Sudah diverifikasi')->get();
+
+        return response()->json(['message' => 'success', 'data' => $partner]);
+    }
+
+    public function handle_status(Request $request, Partner $partner)
+    {
+        $partner->update([
+            'status' => $request->status
+        ]);
+
+        return response()->json(['message' => 'success', 'data' => $partner]);
     }
 }

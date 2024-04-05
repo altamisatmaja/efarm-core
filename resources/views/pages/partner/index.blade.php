@@ -32,82 +32,8 @@
                 </a>
             </div>
         </div>
-        <div class="container mx-auto p-4">
-            <div class="bg-white dark:bg-gray-700 shadow rounded-lg p-6">
-                <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Formulir akun partner</h1>
-                <p class="text-gray-600 dark:text-gray-300 mb-6">Silahkan diisi sesuai akun yang anda inginkan</p>
-                <form class="form-akun-partner" action="" method="POST">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label for="nama">Nama *</label>
-                            <input name="nama" id="nama" type="text" placeholder="Nama Partner"
-                                class="border p-2 rounded w-full">
-                        </div>
-                        <div>
-                            <label for="username">Username *</label>
-                            <input name="username" id="username" type="text" placeholder="Masukkan nama peternakan"
-                                class="border p-2 rounded w-full">
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <div>
-                            <label for="email">Email *</label>
-                            <input type="email" name="email" id="email" placeholder="Masukkan Email"
-                                class="border p-2 rounded w-full">
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label for="password">Password *</label>
-                            <input name="password" id="password" type="password" placeholder="Nama Partner"
-                                class="border p-2 rounded w-full">
-                        </div>
-                        <div>
-                            <label for="konfirmasi_password">Konfirmasi password *</label>
-                            <input name="konfirmasi_password" id="konfirmasi_password" type="password"
-                                placeholder="Masukkan nama peternakan" class="border p-2 rounded w-full">
-                            <input name="id_user_role" id="id_user_role" type="text"
-                                placeholder="Masukkan nama peternakan" value="3" class="hidden border p-2 rounded w-full">
-                        </div>
-                    </div>
-                    <div>
-                        <button type="submit"
-                            class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                            Lanjut
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(function() {
-            // Tambah data akun
-            $('.form-akun-partner').submit(function(e) {
-                e.preventDefault();
-                const form = $(this);
-                var formData = new FormData(this);
-                console.log(formData);
-                var id_user_role = formData.get('id_user_role');
-                console.log(id_user_role);
-
-                $.ajax({
-                    url: '/api/auth/partner/register',
-                    type: 'POST',
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function(data) {
-                        if (data.success) {
-                            alert('Data berhasil ditambahkan');
-                            location.reload();
-                        }
-                    }
-                })
-            });
-        })
-    </script>
 </body>
 
 </html>

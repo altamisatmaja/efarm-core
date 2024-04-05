@@ -63,6 +63,9 @@ Route::group([
     Route::get('order/accepted', [OrderController::class, 'order_accepted']);
     Route::get('order/end', [OrderController::class, 'order_end']);
     Route::post('order/status/{order}', [OrderController::class, 'handle_status']);
+    Route::get('partner/confirmed', [PartnerController::class, 'partner_confirmed']);
+    Route::get('partner/unconfirmed', [PartnerController::class, 'partner_not_confirmed']);
+    Route::post('partner/status/{partner}', [PartnerController::class, 'handle_status']);
     Route::resources([
         'category' => CategoryProductController::class,
         'product' => ProductController::class,

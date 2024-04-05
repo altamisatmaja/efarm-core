@@ -82,8 +82,6 @@ Route::middleware('auth')->group(function () {
     
     // route admin for typelivestock
     Route::get('admin/categorylivestock', [CategoryLivestockController::class, 'list'])->name('admin.categorylivestock.list');
-    
-    // route admin for product
 
     // route admin for get all product
     Route::get('admin/product', [ProductController::class, 'list'])->name('admin.product.list');
@@ -91,6 +89,7 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/product/create', [ProductController::class, 'create'])->name('admin.product.create');
 
     // route admin for partner
+    Route::get('admin/partner', [PartnerController::class, 'list'])->name('admin.partner');
     Route::get('admin/partner', [PartnerController::class, 'list'])->name('admin.partner');
 
     // route admin for testimoni
