@@ -19,8 +19,8 @@ class ProductSeeder extends Seeder
         for ($i = 1; $i <= 10; $i++) {
             Product::create([
                 'harga_product' => rand(100000, 40000),
-                'id_kategori' => rand(1, 9),
-                'nama_product' => 'Kambing Cino Nyel',
+                'id_kategori' => rand(1, 3),
+                'nama_product' => 'Hewan Jawa',
                 'tags' => 'kambing',
                 'diskon' => 0,
                 'id_partner' => rand(3, 8),
@@ -30,8 +30,8 @@ class ProductSeeder extends Seeder
                 'berat_hewan_ternak' => rand(5,100),
                 'stok_hewan_ternak' => rand(5, 10),
                 'terjual' => rand(3, 5),
-                'deskripsi_product' => 'Lorem ipsum, atau ringkasnya lipsum, adalah teks standar yang ditempatkan untuk mendemostrasikan elemen grafis atau presentasi visual seperti font',
-                'id_typelivestocks' => rand(1, 5),
+                'deskripsi_product' => 'Lorem ipsum, atau ringkasnya lipsum, adalah teks standar',
+                'id_typelivestocks' => rand(1, 12),
             ]);
         }
     }

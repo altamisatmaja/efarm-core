@@ -101,7 +101,8 @@
                             </li>
                             <li>
                                 <a href="{{ route('admin.partner.unsubmission') }}"
-                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Partner Diverifikasi</a>
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Partner
+                                    Diverifikasi</a>
                             </li>
                         </ul>
                     </li>
@@ -144,31 +145,38 @@
                             </li>
                             <li>
                                 <a href="{{ route('admin.order.new') }}"
-                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan Baru</a>
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan
+                                    Baru</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.order.confirmed') }}"
-                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan Dikonfirmasi</a>
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan
+                                    Dikonfirmasi</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.order.packed') }}"
-                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan Dikemas</a>
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan
+                                    Dikemas</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.order.sent') }}"
-                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan Dikirim</a>
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan
+                                    Dikirim</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.order.accepted') }}"
-                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan Diterima</a>
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan
+                                    Diterima</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.order.end') }}"
-                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan Selesai</a>
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan
+                                    Selesai</a>
                             </li>
                             <li>
                                 <a href="{{ route('admin.order.end') }}"
-                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan Batal</a>
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pesanan
+                                    Batal</a>
                             </li>
                         </ul>
                     </li>

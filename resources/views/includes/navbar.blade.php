@@ -223,12 +223,17 @@
                         <p class="font-semibold text-textbase">Termurah</p>
                     </div>
                 </a>
-                <a href="{{ route('homepage.about') }}">
-                    <div class="px-5">
-                        <p class="font-semibold text-textbase">Kambing</p>
-                    </div>
-                </a>
-                <a href="{{ route('homepage.about') }}">
+                @php
+                    $categoryproduct = App\Models\CategoryProduct::all();
+                @endphp
+                @foreach ($categoryproduct as $category)
+                    <a href="{{ route('homepage.about') }}">
+                        <div class="px-5">
+                            <p class="font-semibold text-textbase">{{ $category->nama_kategori_product }}</p>
+                        </div>
+                    </a>
+                @endforeach
+                {{-- <a href="{{ route('homepage.about') }}">
                     <div class="px-5">
                         <p class="font-semibold text-textbase">Domba</p>
                     </div>
@@ -237,7 +242,7 @@
                     <div class="px-5">
                         <p class="font-semibold text-textbase">Sapi</p>
                     </div>
-                </a>
+                </a> --}}
             </div>
         @else
             <div class="sticky-nonauth w-full bg-white h-16 px-10 flex justify-between ">
@@ -341,8 +346,8 @@
         var navbar = document.querySelector('.sticky');
         var bgScrollNoAuth = document.querySelector('.sticky-nonauth');
         var layananNoAuth = document.querySelector('.layanan-nonauth');
-        
-        if (scrollPosition > 100){
+
+        if (scrollPosition > 100) {
             var blurAmount = scrollPosition / 100;
             navbar.style.backdropFilter = "blur(" + blurAmount + "px)";
             bgScrollNoAuth.classList.remove('bg-white');

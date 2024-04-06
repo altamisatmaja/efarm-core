@@ -14,7 +14,10 @@ class CategoryLivestock extends Model
 
     public function typelivestock() : HasMany {
         return $this->hasMany(TypeLivestock::class);
-        // return $this->belongsTo(CategoryLivestock::class, 'id', 'id');
+    }
+
+    public function categoryproduct() {
+        return $this->belongsTo(CategoryProduct::class, 'id_kategori_produk');
     }
 
 }

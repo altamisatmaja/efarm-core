@@ -16,338 +16,412 @@
             font-family: Montserrat;
         }
     </style>
+    <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
 </head>
 
 <body>
     <div>
         @include('includes.navbar')
-        <div tabindex="0" class="focus:outline-none">
-            <!-- Remove py-8 -->
-            <div class="mx-auto container py-8">
-                <div class="flex flex-wrap items-center lg:justify-between justify-center">
-                    <!-- Card 1 -->
-                    <div tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8">
-                        <div>
-                            <img alt="person capturing an image" src="https://cdn.tuk.dev/assets/templates/classified/Bitmap (1).png" tabindex="0" class="focus:outline-none w-full h-44" />
-                        </div>
-                        <div class="bg-white">
-                            <div class="flex items-center justify-between px-4 pt-4">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" tabindex="0" class="focus:outline-none" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M9 4h6a2 2 0 0 1 2 2v14l-5-3l-5 3v-14a2 2 0 0 1 2 -2"></path>
-                                    </svg>
-                                </div>
-                                <div class="bg-yellow-200 py-1.5 px-6 rounded-full">
-                                    <p tabindex="0" class="focus:outline-none text-xs text-yellow-700">Featured</p>
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="flex items-center">
-                                    <h2 tabindex="0" class="focus:outline-none text-lg font-semibold">iphone XS</h2>
-                                    <p tabindex="0" class="focus:outline-none text-xs text-gray-600 pl-5">4 days ago</p>
-                                </div>
-                                <p tabindex="0" class="focus:outline-none text-xs text-gray-600 mt-2">The Apple iPhone XS is available in 3 colors with 64GB memory. Shoot amazing videos</p>
-                                <div class="flex mt-4">
-                                    <div>
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">12 months warranty</p>
-                                    </div>
-                                    <div class="pl-2">
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">Complete box</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between py-4">
-                                    <h2 tabindex="0" class="focus:outline-none text-indigo-700 text-xs font-semibold">Bay Area, San Francisco</h2>
-                                    <h3 tabindex="0" class="focus:outline-none text-indigo-700 text-xl font-semibold"></h3>
-                                </div>
-                            </div>
-                        </div>
+        <div class="bg-orange-100 min-h-screen">
+            <div class="flex flex-row pt-5 px-10 pb-4">
+                <div class="w-2/12 mr-6">
+
+                    <div class="bg-white relative rounded-xl shadow-lg mb-6 px-4 py-4 mb-2 border border-1 border-black">
+                        <a href="" class="inline-block text-gray-600 hover:text-black w-full">
+                            <span class="material-icons-outlined font-semibold  float-left">Kategori</span>
+                        </a>
+                        <div class="h-px bg-black"></div>
+                        @php
+                            $categoryproducts =  App\Models\CategoryProduct::all();
+                        @endphp
+                        @foreach ($categoryproducts as $category)
+                        <li class="list-none">
+                            <button type="button"
+                                class="flex items-center w-full p-2 my-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white"
+                                aria-controls="dropdown-mart-kategori-{{ $category->id }}" data-collapse-toggle="dropdown-mart-kategori-{{ $category->id }}">
+                                <span class="flex-1 text-left whitespace-nowrap" sidebar-toggle-item>{{ $category->nama_kategori_product }}</span>
+                                <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                            </button>
+                            @php
+                                $categorylivestocks =  App\Models\CategoryLivestock::where('id_kategori_produk', $category->id)->get();
+                            @endphp
+                            <ul id="dropdown-mart-kategori-{{ $category->id }}" class="hidden py-2 space-y-2 list-none">
+                                @foreach ($categorylivestocks as $categorylivestock)
+                                <li class="">
+                                    <a href="/market/{{ $categorylivestock->slug }}"
+                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-14"><span class="pl-3">{{ $categorylivestock->nama_kategori_hewan }}</span></a>
+                                </li> @endforeach
+                            </ul>
+                        </li>
+                    @endforeach
                     </div>
-                    <!-- Card 1 Ends -->
-                    <!-- Card 2 -->
-                    <div tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8">
-                        <div>
-                            <img alt="person capturing an image" src="https://cdn.tuk.dev/assets/templates/classified/Bitmap (1).png" tabindex="0" class="focus:outline-none w-full h-44" />
-                        </div>
-                        <div class="bg-white">
-                            <div class="flex items-center justify-between px-4 pt-4">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" tabindex="0" class="focus:outline-none" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M9 4h6a2 2 0 0 1 2 2v14l-5-3l-5 3v-14a2 2 0 0 1 2 -2"></path>
-                                    </svg>
-                                </div>
-                                <div class="bg-yellow-200 py-1.5 px-6 rounded-full">
-                                    <p tabindex="0" class="focus:outline-none text-xs text-yellow-700">Featured</p>
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="flex items-center">
-                                    <h2 tabindex="0" class="focus:outline-none text-lg font-semibold">iphone XS</h2>
-                                    <p tabindex="0" class="focus:outline-none text-xs text-gray-600 pl-5">4 days ago</p>
-                                </div>
-                                <p tabindex="0" class="focus:outline-none text-xs text-gray-600 mt-2">The Apple iPhone XS is available in 3 colors with 64GB memory. Shoot amazing videos</p>
-                                <div class="flex mt-4">
-                                    <div>
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">12 months warranty</p>
-                                    </div>
-                                    <div class="pl-2">
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">Complete box</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between py-4">
-                                    <h2 tabindex="0" class="focus:outline-none text-indigo-700 text-xs font-semibold">Bay Area, San Francisco</h2>
-                                    <h3 tabindex="0" class="focus:outline-none text-indigo-700 text-xl font-semibold"></h3>
-                                </div>
-                            </div>
-                        </div>
+
+                    <div class="bg-white
+        relative rounded-xl shadow-lg mb-6 px-4 py-4 mb-2 border border-1 border-black">
+    <a href="" class="inline-block text-gray-600 hover:text-black w-full">
+        <span class="material-icons-outlined font-semibold  float-left">Kisaran harga</span>
+    </a>
+    <div class="h-px bg-black"></div>
+    <form action="">
+        <div class="flex flex-row my-2">
+            <span
+                class="z-highest rounded-l-lg w-10 h-10 flex justify-center items-center text-md text-gray-400 border border-r-0"
+                mode="render" block="">
+                Rp
+            </span>
+            <input value=""
+                class="border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-400 w-full pl-2"
+                id="" name="" required="false" placeholder="50000">
+        </div>
+        <div class=" flex flex-row my-2">
+            <span
+                class="z-highest rounded-l-lg w-10 h-10 flex justify-center items-center text-md text-gray-400 border border-r-0"
+                mode="render" block="">
+                Rp
+            </span>
+            <input value=""
+                class="border border-gray-200 rounded-r-lg outline-none focus:ring-1 ring-blue-400 w-full pl-2"
+                id="" name="" required="false" placeholder="50000">
+        </div>
+
+        <a href="#"
+            class="w-full block text-black justify-center flex font-medium text-lg py-2 mt-2 rounded-xl border border-1 border-white transition duration-200 ease-in-out hover:border hover:border-1 hover:border-solid hover:border-black hover:text-black">
+            <button type="button">
+                Batalkan filter
+            </button>
+        </a>
+        <a href="#"
+            class="w-full block bg-primarybase text-white justify-center flex font-medium text-lg py-2 mt-2 rounded-xl hover:shadow-lg transition duration-200 ease-in-out hover:bg-yellow-600 hover:text-white">
+            <button type="button">
+                Terapkan filter
+            </button>
+        </a>
+    </form>
+    </div>
+    </div>
+    <main class="w-full">
+        <div class="container">
+            <div class="grid gap-6 grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1495856458515-0637185db551?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
                     </div>
-                    <!-- Card 2 Ends -->
-                    <!-- Card 3  -->
-                    <div tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8">
-                        <div>
-                            <img alt="person capturing an image" src="https://cdn.tuk.dev/assets/templates/classified/Bitmap (1).png" tabindex="0" class="focus:outline-none w-full h-44" />
-                        </div>
-                        <div class="bg-white">
-                            <div class="flex items-center justify-between px-4 pt-4">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" tabindex="0" class="focus:outline-none" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M9 4h6a2 2 0 0 1 2 2v14l-5-3l-5 3v-14a2 2 0 0 1 2 -2"></path>
-                                    </svg>
-                                </div>
-                                <div class="bg-yellow-200 py-1.5 px-6 rounded-full">
-                                    <p tabindex="0" class="focus:outline-none text-xs text-yellow-700">Featured</p>
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="flex items-center">
-                                    <h2 tabindex="0" class="focus:outline-none text-lg font-semibold">iphone XS</h2>
-                                    <p tabindex="0" class="focus:outline-none text-xs text-gray-600 pl-5">4 days ago</p>
-                                </div>
-                                <p tabindex="0" class="focus:outline-none text-xs text-gray-600 mt-2">The Apple iPhone XS is available in 3 colors with 64GB memory. Shoot amazing videos</p>
-                                <div class="flex mt-4">
-                                    <div>
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">12 months warranty</p>
-                                    </div>
-                                    <div class="pl-2">
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">Complete box</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between py-4">
-                                    <h2 tabindex="0" class="focus:outline-none text-indigo-700 text-xs font-semibold">Bay Area, San Francisco</h2>
-                                    <h3 tabindex="0" class="focus:outline-none text-indigo-700 text-xl font-semibold"></h3>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">Classic watch</h3>
+                        <span class="text-gray-500 mt-2">$123</span>
                     </div>
-                    <!-- Card 3 Ends -->
-                    <!-- Card 4  -->
-                    <div tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8">
-                        <div>
-                            <img alt="person capturing an image" src="https://cdn.tuk.dev/assets/templates/classified/Bitmap (1).png" tabindex="0" class="focus:outline-none w-full h-44" />
-                        </div>
-                        <div class="bg-white">
-                            <div class="flex items-center justify-between px-4 pt-4">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" tabindex="0" class="focus:outline-none" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M9 4h6a2 2 0 0 1 2 2v14l-5-3l-5 3v-14a2 2 0 0 1 2 -2"></path>
-                                    </svg>
-                                </div>
-                                <div class="bg-yellow-200 py-1.5 px-6 rounded-full">
-                                    <p tabindex="0" class="focus:outline-none text-xs text-yellow-700">Featured</p>
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="flex items-center">
-                                    <h2 tabindex="0" class="focus:outline-none text-lg font-semibold">iphone XS</h2>
-                                    <p tabindex="0" class="focus:outline-none text-xs text-gray-600 pl-5">4 days ago</p>
-                                </div>
-                                <p tabindex="0" class="focus:outline-none text-xs text-gray-600 mt-2">The Apple iPhone XS is available in 3 colors with 64GB memory. Shoot amazing videos</p>
-                                <div class="flex mt-4">
-                                    <div>
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">12 months warranty</p>
-                                    </div>
-                                    <div class="pl-2">
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">Complete box</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between py-4">
-                                    <h2 tabindex="0" class="focus:outline-none text-indigo-700 text-xs font-semibold">Bay Area, San Francisco</h2>
-                                    <h3 tabindex="0" class="focus:outline-none text-indigo-700 text-xl font-semibold"></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Card 4 Ends -->
                 </div>
-                <div class="flex flex-wrap items-center lg:justify-between justify-center pb-10 mt-16">
-                    <!-- Card 1 -->
-                    <div tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8">
-                        <div>
-                            <img alt="girl texting" src="https://cdn.tuk.dev/assets/templates/classified/Bitmap.png" class="focus:outline-none w-full h-44" />
-                        </div>
-                        <div class="bg-white">
-                            <div class="flex items-center justify-between px-4 pt-4">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" tabindex="0" class="focus:outline-none" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M9 4h6a2 2 0 0 1 2 2v14l-5-3l-5 3v-14a2 2 0 0 1 2 -2"></path>
-                                    </svg>
-                                </div>
-                                <div class="bg-yellow-200 py-1.5 px-6 rounded-full">
-                                    <p tabindex="0" class="focus:outline-none text-xs text-yellow-700">Featured</p>
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="flex items-center">
-                                    <h2 tabindex="0" class="focus:outline-none text-lg font-semibold">iphone XS</h2>
-                                    <p tabindex="0" class="focus:outline-none text-xs text-gray-600 pl-5">4 days ago</p>
-                                </div>
-                                <p tabindex="0" class="focus:outline-none text-xs text-gray-600 mt-2">The Apple iPhone XS is available in 3 colors with 64GB memory. Shoot amazing videos</p>
-                                <div class="flex mt-4">
-                                    <div>
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">12 months warranty</p>
-                                    </div>
-                                    <div class="pl-2">
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">Complete box</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between py-4">
-                                    <h2 tabindex="0" class="focus:outline-none text-indigo-700 text-xs font-semibold">Bay Area, San Francisco</h2>
-                                    <h3 tabindex="0" class="focus:outline-none text-indigo-700 text-xl font-semibold"></h3>
-                                </div>
-                            </div>
-                        </div>
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1524592094714-0f0654e20314?ixlib=rb-1.2.1&auto=format&fit=crop&w=689&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
                     </div>
-                    <!-- Card 1 Ends -->
-                    <!-- Card 2 -->
-                    <div tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8">
-                        <div>
-                            <img alt="girl texting" src="https://cdn.tuk.dev/assets/templates/classified/Bitmap.png" class="focus:outline-none w-full h-44" />
-                        </div>
-                        <div class="bg-white">
-                            <div class="flex items-center justify-between px-4 pt-4">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" tabindex="0" class="focus:outline-none" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M9 4h6a2 2 0 0 1 2 2v14l-5-3l-5 3v-14a2 2 0 0 1 2 -2"></path>
-                                    </svg>
-                                </div>
-                                <div class="bg-yellow-200 py-1.5 px-6 rounded-full">
-                                    <p tabindex="0" class="focus:outline-none text-xs text-yellow-700">Featured</p>
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="flex items-center">
-                                    <h2 tabindex="0" class="focus:outline-none text-lg font-semibold">iphone XS</h2>
-                                    <p tabindex="0" class="focus:outline-none text-xs text-gray-600 pl-5">4 days ago</p>
-                                </div>
-                                <p tabindex="0" class="focus:outline-none text-xs text-gray-600 mt-2">The Apple iPhone XS is available in 3 colors with 64GB memory. Shoot amazing videos</p>
-                                <div class="flex mt-4">
-                                    <div>
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">12 months warranty</p>
-                                    </div>
-                                    <div class="pl-2">
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">Complete box</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between py-4">
-                                    <h2 tabindex="0" class="focus:outline-none text-indigo-700 text-xs font-semibold">Bay Area, San Francisco</h2>
-                                    <h3 tabindex="0" class="focus:outline-none text-indigo-700 text-xl font-semibold"></h3>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">Old watch</h3>
+                        <span class="text-gray-500 mt-2">$95</span>
                     </div>
-                    <!-- Card 2 Ends -->
-                    <!-- Card 3  -->
-                    <div tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8">
-                        <div>
-                            <img alt="girl texting" src="https://cdn.tuk.dev/assets/templates/classified/Bitmap.png" class="focus:outline-none w-full h-44" />
-                        </div>
-                        <div class="bg-white">
-                            <div class="flex items-center justify-between px-4 pt-4">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" tabindex="0" class="focus:outline-none" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M9 4h6a2 2 0 0 1 2 2v14l-5-3l-5 3v-14a2 2 0 0 1 2 -2"></path>
-                                    </svg>
-                                </div>
-                                <div class="bg-yellow-200 py-1.5 px-6 rounded-full">
-                                    <p tabindex="0" class="focus:outline-none text-xs text-yellow-700">Featured</p>
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="flex items-center">
-                                    <h2 tabindex="0" class="focus:outline-none text-lg font-semibold">iphone XS</h2>
-                                    <p tabindex="0" class="focus:outline-none text-xs text-gray-600 pl-5">4 days ago</p>
-                                </div>
-                                <p tabindex="0" class="focus:outline-none text-xs text-gray-600 mt-2">The Apple iPhone XS is available in 3 colors with 64GB memory. Shoot amazing videos</p>
-                                <div class="flex mt-4">
-                                    <div>
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">12 months warranty</p>
-                                    </div>
-                                    <div class="pl-2">
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">Complete box</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between py-4">
-                                    <h2 tabindex="0" class="focus:outline-none text-indigo-700 text-xs font-semibold">Bay Area, San Francisco</h2>
-                                    <h3 tabindex="0" class="focus:outline-none text-indigo-700 text-xl font-semibold"></h3>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1532667449560-72a95c8d381b?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
                     </div>
-                    <!-- Card 3 Ends -->
-                    <!-- Card 4  -->
-                    <div tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8">
-                        <div>
-                            <img alt="girl texting" src="https://cdn.tuk.dev/assets/templates/classified/Bitmap.png" class="focus:outline-none w-full h-44" />
-                        </div>
-                        <div class="bg-white">
-                            <div class="flex items-center justify-between px-4 pt-4">
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" tabindex="0" class="focus:outline-none" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M9 4h6a2 2 0 0 1 2 2v14l-5-3l-5 3v-14a2 2 0 0 1 2 -2"></path>
-                                    </svg>
-                                </div>
-                                <div class="bg-yellow-200 py-1.5 px-6 rounded-full">
-                                    <p tabindex="0" class="focus:outline-none text-xs text-yellow-700">Featured</p>
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <div class="flex items-center">
-                                    <h2 tabindex="0" class="focus:outline-none text-lg font-semibold">iphone XS</h2>
-                                    <p tabindex="0" class="focus:outline-none text-xs text-gray-600 pl-5">4 days ago</p>
-                                </div>
-                                <p tabindex="0" class="focus:outline-none text-xs text-gray-600 mt-2">The Apple iPhone XS is available in 3 colors with 64GB memory. Shoot amazing videos</p>
-                                <div class="flex mt-4">
-                                    <div>
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">12 months warranty</p>
-                                    </div>
-                                    <div class="pl-2">
-                                        <p tabindex="0" class="focus:outline-none text-xs text-gray-600 px-2 bg-gray-200 py-1">Complete box</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center justify-between py-4">
-                                    <h2 tabindex="0" class="focus:outline-none text-indigo-700 text-xs font-semibold">Bay Area, San Francisco</h2>
-                                    <h3 tabindex="0" class="focus:outline-none text-indigo-700 text-xl font-semibold"></h3>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">Classic watch</h3>
+                        <span class="text-gray-500 mt-2">$125</span>
                     </div>
-                    <!-- Card 4 Ends -->
+                </div>
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">fossil watch</h3>
+                        <span class="text-gray-500 mt-2">$180</span>
+                    </div>
+                </div>
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">braun watch</h3>
+                        <span class="text-gray-500 mt-2">$49</span>
+                    </div>
+                </div>
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1526045431048-f857369baa09?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">rolex watch</h3>
+                        <span class="text-gray-500 mt-2">$86</span>
+                    </div>
+                </div>
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1495857000853-fe46c8aefc30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">MVMtx watch</h3>
+                        <span class="text-gray-500 mt-2">$100</span>
+                    </div>
+                </div>
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1444881421460-d838c3b98f95?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">breitling watch</h3>
+                        <span class="text-gray-500 mt-2">$180</span>
+                    </div>
+                </div>
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1495856458515-0637185db551?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">Classic watch</h3>
+                        <span class="text-gray-500 mt-2">$123</span>
+                    </div>
+                </div>
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1524592094714-0f0654e20314?ixlib=rb-1.2.1&auto=format&fit=crop&w=689&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">Old watch</h3>
+                        <span class="text-gray-500 mt-2">$95</span>
+                    </div>
+                </div>
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1532667449560-72a95c8d381b?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">Classic watch</h3>
+                        <span class="text-gray-500 mt-2">$125</span>
+                    </div>
+                </div>
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">fossil watch</h3>
+                        <span class="text-gray-500 mt-2">$180</span>
+                    </div>
+                </div>
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1434056886845-dac89ffe9b56?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">braun watch</h3>
+                        <span class="text-gray-500 mt-2">$49</span>
+                    </div>
+                </div>
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1526045431048-f857369baa09?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">rolex watch</h3>
+                        <span class="text-gray-500 mt-2">$86</span>
+                    </div>
+                </div>
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1495857000853-fe46c8aefc30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">MVMtx watch</h3>
+                        <span class="text-gray-500 mt-2">$100</span>
+                    </div>
+                </div>
+                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                    <div class="flex items-end justify-end h-56 w-full bg-cover"
+                        style="background-image: url('https://images.unsplash.com/photo-1444881421460-d838c3b98f95?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=889&q=80')">
+                        <button
+                            class="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                            <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="px-5 py-3">
+                        <h3 class="text-gray-700 uppercase">breitling watch</h3>
+                        <span class="text-gray-500 mt-2">$180</span>
+                    </div>
                 </div>
             </div>
-            <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
+            <div class="flex justify-center">
+                <div class="flex rounded-md mt-8">
+                    <a href="#"
+                        class="py-2 px-4 leading-tight bg-white border border-gray-200 text-blue-700 border-r-0 ml-0 rounded-l hover:bg-blue-500 hover:text-white"><span>Previous</a></a>
+                    <a href="#"
+                        class="py-2 px-4 leading-tight bg-white border border-gray-200 text-blue-700 border-r-0 hover:bg-blue-500 hover:text-white"><span>1</span></a>
+                    <a href="#"
+                        class="py-2 px-4 leading-tight bg-white border border-gray-200 text-blue-700 border-r-0 hover:bg-blue-500 hover:text-white"><span>2</span></a>
+                    <a href="#"
+                        class="py-2 px-4 leading-tight bg-white border border-gray-200 text-blue-700 border-r-0 hover:bg-blue-500 hover:text-white"><span>3</span></a>
+                    <a href="#"
+                        class="py-2 px-4 leading-tight bg-white border border-gray-200 text-blue-700 rounded-r hover:bg-blue-500 hover:text-white"><span>Next</span></a>
+                </div>
+            </div>
         </div>
-         <script src="chrome-extension://kgejglhpjiefppelpmljglcjbhoiplfn/shadydom.js"></script>
-        <script>
-            if (!window.ShadyDOM) window.ShadyDOM = { force: true, noPatch: true };
-        </script>
+    </main>
     </div>
-</body>
+    </div>
+    <script src="chrome-extension://kgejglhpjiefppelpmljglcjbhoiplfn/shadydom.js"></script>
+    <script>
+        if (!window.ShadyDOM) window.ShadyDOM = {
+            force: true,
+            noPatch: true
+        };
+    </script>
+    </div>
+    </body>
 
 </html>
