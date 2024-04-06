@@ -62,7 +62,7 @@ Route::get('partner/submission', [SubmissionController::class, 'submission'])->n
 Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
 Route::get('customer/register', [AuthCustomerController::class, 'register_view'])->name('customer.register');
 Route::post('customer/login', [AuthCustomerController::class, 'login']);
-Route::get('customer/logout', [AuthCustomerController::class, 'logout']);
+Route::get('customer/logout', [AuthCustomerController::class, 'logout'])->name('customer.logout');
 
 // route customer google auth
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('customer.google');
