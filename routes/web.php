@@ -41,9 +41,12 @@ Route::get('/maps', function () {
 });
 
 Route::get('/', [PageController::class, 'index']);
-Route::get('/market', [PageController::class, 'market'])->name('homepage.market');
 Route::get('/partner', [PageController::class, 'partner'])->name('homepage.partner');
 Route::get('/about', [PageController::class, 'about'])->name('homepage.about');
+Route::get('/market', [PageController::class, 'market'])->name('homepage.market');
+Route::get('/market/buy', [PageController::class, 'buy'])->name('homepage.market.buy');
+Route::get('/market/buy/{farm}', [PageController::class, 'farm'])->name('homepage.market.farm');
+Route::get('/market/buy/{farm}/{product}', [PageController::class, 'product'])->name('homepage.market.farm.product');
 
 // route for admin
 Route::get('admin/login', [AuthController::class, 'index'])->name('admin.login');

@@ -15,10 +15,10 @@
         * {
             font-family: Montserrat;
         }
+
         .blurred-background {
             backdrop-filter: blur(8px);
         }
-
     </style>
 </head>
 
@@ -137,20 +137,17 @@
                     </div>
                 </div>
         </section>
-        <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
-            data-id="sahilnetic" data-description="Support me on Buy me a coffee!" data-message="" data-color="#FFDD00"
-            data-position="Right" data-x_margin="18" data-y_margin="18"></script>
-        <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js"></script>
     </div>
+    @include('includes.footer')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $(window).scroll(function(){
+        $(document).ready(function() {
+            $(window).scroll(function() {
                 var scrollPosition = $(window).scrollTop();
                 var blurTriggerPosition = 200;
 
                 // Menambahkan atau menghapus kelas blur sesuai dengan posisi scroll
-                if(scrollPosition > blurTriggerPosition) {
+                if (scrollPosition > blurTriggerPosition) {
                     $('.sticky').addClass('blurred-background');
                 } else {
                     $('.sticky').removeClass('blurred-background');
