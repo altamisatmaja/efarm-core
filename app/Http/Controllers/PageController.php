@@ -18,14 +18,18 @@ class PageController extends Controller
     {
         return view('pages.market.buy');
     }
-
     public function livestock($slug_kategori_product, $slug_category_livestock)
-    {
-        // $categoryproduct = CategoryProduct::where('slug_kategori_product', $slug_kategori_product)->first();
-        // $categorylivestock = CategoryLivestock::where('slug_category_livestock', $categoryproduct->id)->get();
-        // dd($categorylivestock);
-        return view('pages.market.product', compact('categorylivestock'));
-    }
+{
+    $id_kategori_product = CategoryProduct::where('slug_kategori_product', $slug_kategori_product)->value('id');
+
+    $livestock = CategoryLivestock::where('slug', $slug_category_livestock)->first();
+
+    $products = Product::where('id_kategori', $livestock->id)->get(); 
+
+    return view('pages.market.livestock', compact('products', 'slug_kategori_product', 'slug_category_livestock'));
+}
+
+    
 
     public function product($slug_kategori_product, $slug_category_livestock, $slug_product)
     {

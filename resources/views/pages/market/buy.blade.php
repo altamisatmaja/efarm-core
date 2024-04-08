@@ -53,7 +53,7 @@
                             <ul id="dropdown-mart-kategori-{{ $category->id }}" class="hidden py-2 space-y-2 list-none">
                                 @foreach ($categorylivestocks as $categorylivestock)
                                 <li class="">
-                                    <a href="/market/{{ $categorylivestock->slug }}"
+                                    <a href="/market/buy/{{ $categorylivestock->slug }}"
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-14"><span class="pl-3">{{ $categorylivestock->nama_kategori_hewan }}</span></a>
                                 </li> @endforeach
                             </ul>

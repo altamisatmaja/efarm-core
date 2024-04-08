@@ -125,16 +125,24 @@
                     <!-- cards -->
                     <div class="mt-5">
                         <ul class="-m-3.5 flex">
-                            @foreach ($categoryproduct as $livestock)
-                            <a href="/market/buy{{ $livestock->slug_kategori_product }}/{{ $livestock->slug_category_livestock }}">
-                            <li
-                                class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
-                                <img class="max-h-20"
-                                    src="https://png.pngtree.com/png-clipart/20230411/original/pngtree-goat-animal-realistic-white-transparent-png-image_9047537.png"
-                                    alt="" />
-                                <span class="font-semibold">Kambing</span>
-                            </li>
-                        </a> @endforeach
+                            @php
+    $categoryProduct = App\Models\CategoryProduct::find(1);
+
+    $categorylivestocks = App\Models\CategoryLivestock::whereHas('categoryProduct', function ($query) {
+        $query->where('id_kategori_produk', 1);
+    })->get();
+@endphp
+
+@foreach ($categorylivestocks as $livestock)
+    <a href="/market/buy/{{ $categoryProduct->slug_kategori_product }}/{{ $livestock->slug }}/">
+        <li class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
+            <img class="max-h-20" src="https://png.pngtree.com/png-clipart/20230411/original/pngtree-goat-animal-realistic-white-transparent-png-image_9047537.png" alt="" />
+            <span class="font-semibold">{{ $livestock->nama_kategori_hewan }}</span>
+        </li>
+    </a>
+@endforeach
+
+
                            
     </ul>
     </div>
