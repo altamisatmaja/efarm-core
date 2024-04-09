@@ -15,7 +15,8 @@
         @include('includes.navbar')
 
         <div class="py-6">
-            <!-- Breadcrumbs -->
+            
+            {{-- for routes --}}
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center space-x-2 text-gray-400 text-sm">
                     <a href="#" class="hover:underline hover:text-gray-600">Home</a>
@@ -35,8 +36,10 @@
                     <span>Headphones</span>
                 </div>
             </div>
-            <!-- ./ Breadcrumbs -->
 
+            @foreach ($product as $products)
+                
+            @endforeach
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
                 <div class="flex flex-col md:flex-row -mx-4">
                     <div class="lg:w-4/12 md:w-4/12 sm:w-full bg-white">
@@ -83,8 +86,7 @@
 
                     <div class="md:flex-1 px-4">
                         <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">
-                            Lorem
-                            ipsum dolor, sit amet consectetur, adipisicing elit.</h2>
+                            {{ $products->nama_product }}</h2>
                         <p class="text-gray-500 text-sm">By <a href="#"
                                 class="text-indigo-600 hover:underline">ABC
                                 Company</a></p>
@@ -92,8 +94,8 @@
                         <div class="flex items-center space-x-4 my-4">
                             <div>
                                 <div class="rounded-lg bg-gray-100 flex py-2 px-3">
-                                    <span class="text-indigo-400 mr-1 mt-1">$</span>
-                                    <span class="font-bold text-indigo-600 text-3xl">25</span>
+                                    <span class="text-indigo-400 mr-1 mt-1">Rp</span>
+                                    <span class="font-bold text-indigo-600 text-3xl">{{ $products->harga_product }}</span>
                                 </div>
                             </div>
                             <div class="flex-1">
@@ -102,51 +104,7 @@
                             </div>
                         </div>
 
-                        <p class="text-gray-500">Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Vitae
-                            exercitationem porro saepe ea harum corrupti vero id laudantium enim, libero blanditiis
-                            expedita cupiditate a est.</p>
-                        <p class="text-gray-500">Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Vitae
-                            exercitationem porro saepe ea harum corrupti vero id laudantium enim, libero blanditiis
-                            expedita cupiditate a est.</p>
-                        <p class="text-gray-500">Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Vitae
-                            exercitationem porro saepe ea harum corrupti vero id laudantium enim, libero blanditiis
-                            expedita cupiditate a est.</p>
-                        <p class="text-gray-500">Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Vitae
-                            exercitationem porro saepe ea harum corrupti vero id laudantium enim, libero blanditiis
-                            expedita cupiditate a est.</p>
-                        <p class="text-gray-500">Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Vitae
-                            exercitationem porro saepe ea harum corrupti vero id laudantium enim, libero blanditiis
-                            expedita cupiditate a est.</p>
-                        <p class="text-gray-500">Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Vitae
-                            exercitationem porro saepe ea harum corrupti vero id laudantium enim, libero blanditiis
-                            expedita cupiditate a est.</p>
-                        <p class="text-gray-500">Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Vitae
-                            exercitationem porro saepe ea harum corrupti vero id laudantium enim, libero blanditiis
-                            expedita cupiditate a est.</p>
-                        <p class="text-gray-500">Lorem ipsum, dolor sit, amet consectetur adipisicing elit. Vitae
-                            exercitationem porro saepe ea harum corrupti vero id laudantium enim, libero blanditiis
-                            expedita cupiditate a est.</p>
-
-                        <div class="flex py-4 space-x-4">
-                            <div class="relative">
-                                <div
-                                    class="text-center left-0 pt-2 right-0 absolute block text-xs uppercase text-gray-400 tracking-wide font-semibold">
-                                    Qty</div>
-                                <select
-                                    class="cursor-pointer appearance-none rounded-xl border border-gray-200 pl-4 pr-8 h-14 flex items-end pb-1">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-
-                            <button type="button"
-                                class="h-14 px-6 py-2 font-semibold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white">
-                                Add to Cart
-                            </button>
-                        </div>
+                        <p class="text-gray-500">{{ $products->deskripsi_product }}</p>
                     </div>
                     <div class="w-full md:w-4/12 bg-white md:block">
                         <div class="py-2 pl-8 pr-10 space-y-3 sticky top-0">

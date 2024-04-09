@@ -18,37 +18,29 @@ class PageController extends Controller
     {
         return view('pages.market.buy');
     }
+
     public function livestock($slug_kategori_product, $slug_category_livestock)
-{
-    $id_kategori_product = CategoryProduct::where('slug_kategori_product', $slug_kategori_product)->value('id');
+    {
+        $id_kategori_product = CategoryProduct::where('slug_kategori_product', $slug_kategori_product)->value('id');
 
-    $livestock = CategoryLivestock::where('slug', $slug_category_livestock)->first();
+        $livestock = CategoryLivestock::where('slug', $slug_category_livestock)->first();
 
-    $products = Product::where('id_kategori', $livestock->id)->get(); 
+        $products = Product::where('id_kategori', $livestock->id)->get();
 
-    return view('pages.market.livestock', compact('products', 'slug_kategori_product', 'slug_category_livestock'));
-}
-
-    
+        return view('pages.market.livestock', compact('products', 'slug_kategori_product', 'slug_category_livestock'));
+    }
 
     public function product($slug_kategori_product, $slug_category_livestock, $slug_product)
     {
-        $categoryproduct = CategoryProduct::where('slug_kategori_product', $slug_kategori_product)->first();
-        $categorylivestock = CategoryLivestock::where('slug', $slug_category_livestock)->first();
-
         $product = Product::where('slug_product', $slug_product)
-            ->where('id_kategori', $categoryproduct->id) 
-            ->first();
+            ->get();
 
-        // dd($categoryproduct);
-        // dd($product);
-        return view('pages.market.product', compact('categoryproduct', 'categorylivestock', 'product'));
+        return view('pages.market.product', compact('product'));
     }
 
     public function farm($slug_kategori_product)
     {
         $category = CategoryProduct::where('slug_kategori_product', $slug_kategori_product)->first();
-        // $products = Product::where('')
         $products = Product::where('id_kategori', $category->id)->get();
         // dd($products);
         return view('pages.market.farm', compact('products'));
