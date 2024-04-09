@@ -49,7 +49,7 @@ Route::get('/market/buy/{slug_kategori_product}', [PageController::class, 'farm'
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}', [PageController::class, 'livestock'])->name('homepage.market.farm.livestock');
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}/{slug_product}', [PageController::class, 'product'])->name('homepage.market.farm.product');
 
-// route for admin
+// route for admin  
 Route::get('admin/login', [AuthController::class, 'index'])->name('admin.login');
 Route::post('admin/login', [AuthController::class, 'login']);
 Route::get('admin/logout', [AuthController::class, 'logout']);
@@ -57,7 +57,7 @@ Route::get('admin/logout', [AuthController::class, 'logout']);
 // route for partner
 Route::get('partner/login', [AuthPartnerController::class, 'index'])->name('partner.login');
 Route::post('partner/login', [AuthPartnerController::class, 'login']);
-Route::get('partner/logout', [AuthPartnerController::class, 'logout']);
+Route::get('partner/logout', [AuthPartnerController::class, 'logout'])->name('partner.logout');
 
 // route partner for submission
 Route::get('partner/submission', [SubmissionController::class, 'submission'])->name('partner.submission');

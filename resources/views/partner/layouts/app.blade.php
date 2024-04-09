@@ -10,23 +10,23 @@
     <title>@yield('title')</title>
 </head>
 
-<body>
+<body class="relative antialiased bg-gray-100">
+    <div class="fixed bottom-4 right-4 xl:right-20">
+        <a href="https://www.instagram.com/ternakexpress" target="_blank"
+            class="transform duration-500 ease-in-out animate-bounce bg-yellow-400 px-4 py-3 font-mono font-semibold rounded-lg shadow hover:shadow-xl flex justify-between items-center gap-4">
+            <img class="w-8 h-8 rounded"
+                src="https://static.vecteezy.com/system/resources/thumbnails/018/930/748/small/whatsapp-logo-whatsapp-icon-whatsapp-transparent-free-png.png"
+                alt="kontakadmin">
+            Kontak Admin
+        </a>
+    </div>
     <div>
         @include('partner.layouts.navbar')
-        <div class="flex overflow-hidden bg-white pt-16">
-            @include('partner.layouts.sidebar')
-            <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div>
-            <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
-                <main>
-                    <div class="pt-6 px-4">
-                        @yield('content')
-                    </div>
-                </main>
-            </div>
-        </div>
-        <script async defer src="https://buttons.github.io/buttons.js"></script>
-        <script src="https://demo.themesberg.com/windster/app.bundle.js"></script>
+        <main class="container mx-w-6xl mx-auto py-4">
+            @yield('content')
+        </main>
     </div>
+    @stack('js')
 </body>
 
 </html>
