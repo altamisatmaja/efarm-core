@@ -97,27 +97,35 @@
         @include('includes.navbar')
 
         <div class="py-6">
-
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
                 <div class="flex items-center space-x-2 text-gray-400 text-sm">
-                    <a href="#" class="hover:underline hover:text-gray-600">Home</a>
+                    <a href="#" class="hover:underline hover:text-gray-600">Market</a>
                     <span>
                         <svg class="h-5 w-5 leading-none text-gray-300" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </span>
-                    <a href="#" class="hover:underline hover:text-gray-600">Electronics</a>
+                    <a href="#" class="hover:underline hover:text-gray-600">Hewan Ternak</a>
                     <span>
                         <svg class="h-5 w-5 leading-none text-gray-300" xmlns="http://www.w3.org/2000/svg"
                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </span>
-                    <span>Headphones</span>
+                    <span>Kambing</span>
+                    <span>
+                        <svg class="h-5 w-5 leading-none text-gray-300" xmlns="http://www.w3.org/2000/svg"
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </span>
+                    <span>Hewan Jawa</span>
                 </div>
             </div>
+            <div>
 
+            </div>
             @foreach ($product as $products)
             @endforeach
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
@@ -155,7 +163,7 @@
                                             <div class="flex-1 px-2">
                                                 <button x-on:click="image = i"
                                                     :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }"
-                                                    class="focus:outline-none w-full rounded-lg h-24 md:h-32 bg-gray-100 flex items-center justify-center">
+                                                    class="focus:outline-none w-full rounded-lg h-20 md:h-20 bg-gray-100 flex items-center justify-center">
                                                     <span x-text="i" class="text-2xl"></span>
                                                 </button>
                                             </div>
@@ -168,27 +176,141 @@
 
                     {{-- for product  --}}
                     <div class="md:flex-1 px-4">
-                        <h2 class="mb-2 leading-tight tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">
-                            {{ $products->nama_product }}</h2>
-                        <p class="text-gray-500 text-sm">By <a href="#"
-                                class="text-indigo-600 hover:underline">ABC
-                                Company</a></p>
 
+                        <h2 class="mb-2 leading-tight pt-2 tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">
+                            {{ $products->nama_product }}</h2>
+                        <div class="flex justify-between item-center">
+                            <p class="text-gray-500 font-medium hidden md:block">Kambing</p>
+                            <div class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500"
+                                    viewBox="0 0 20 20" fill="currentColor">
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <p class="text-gray-600 font-bold text-sm ml-1">
+                                    4.96
+                                    <span class="text-gray-500 font-normal">(76 reviews)</span>
+                                </p>
+                            </div>
+                            <div
+                                class="bg-gray-200 px-3 py-1 rounded-full text-xs font-medium text-gray-800 hidden md:block">
+                                100 Terjual</div>
+                        </div>
                         <div class="flex items-center space-x-4 my-4">
                             <div>
-                                <div class="rounded-lg bg-gray-100 flex py-2 px-3">
+                                <div class="rounded-lg flex py-2 px-3">
                                     <span class="text-indigo-400 mr-1 mt-1">Rp</span>
                                     <span
-                                        class="font-bold text-indigo-600 text-3xl">{{ $products->harga_product }}</span>
+                                        class="font-bold text-primarybase text-3xl">{{ $products->harga_product }}</span>
                                 </div>
                             </div>
                             <div class="flex-1">
-                                <p class="text-green-500 text-xl font-semibold">Save 12%</p>
-                                <p class="text-gray-400 text-sm">Inclusive of all Taxes.</p>
+                                <p class="text-green-500 text-xl font-semibold">Diskon 12%</p>
+                                <p class="text-gray-400 line-through text-sm">Rp 2.222.222</p>
                             </div>
                         </div>
-
-                        <p class="text-gray-500">{{ $products->deskripsi_product }}</p>
+                        <div class="max-w-4xl bg-white w-full rounded-lg">
+                            <div class="">
+                                <h2 class="text-2xl ">
+                                    Detail hewan
+                                </h2>
+                            </div>
+                            <div>
+                                <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
+                                    <p class="text-gray-600">
+                                        Gender hewan
+                                    </p>
+                                    <p>
+                                        Jantan
+                                    </p>
+                                </div>
+                                <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
+                                    <p class="text-gray-600">
+                                        Usia hewan
+                                    </p>
+                                    <p>
+                                        11 Bulan
+                                    </p>
+                                </div>
+                                <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
+                                    <p class="text-gray-600">
+                                        Berat hewan
+                                    </p>
+                                    <p>
+                                        100 kg
+                                    </p>
+                                </div>
+                                <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
+                                    <p class="text-gray-600">
+                                        Stok
+                                    </p>
+                                    <p>
+                                        22 ekor
+                                    </p>
+                                </div>
+                                <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
+                                    <p class="text-gray-600">
+                                        Deskripsi
+                                    <p class="text-gray-500">{{ $products->deskripsi_product }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="h-px  bg-slate-400"></div>
+                        </div>
+                        <div class="max-w-4xl bg-white w-full rounded-lg">
+                            <div class="">
+                                <h2 class="text-2xl ">
+                                    Pengiriman
+                                </h2>
+                            </div>
+                            <div>
+                                <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
+                                    <p class="text-gray-600">
+                                        Dikirim dari
+                                    </p>
+                                    <p>
+                                        KAB. JAKARTA
+                                    </p>
+                                </div>
+                                <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
+                                    <p class="text-gray-600">
+                                        Melalui
+                                    </p>
+                                    <p>
+                                        Internal Kontaner
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <div class="h-px  bg-slate-400"></div>
+                        </div>
+                        <div class="sm:flex sm:justify-between py-2">
+                            <div class="flex items-center">
+                                <div class="flex items-start justify-start">
+                                    <img class="h-12 w-12 rounded-full" src="https://lh3.googleusercontent.com/a-/AOh14Gi0DgItGDTATTFV6lPiVrqtja6RZ_qrY91zg42o-g" alt="">
+                                    <div class="ml-2 flex flex-col">
+                                        <h3 class="text-lg text-gray-800 font-medium">Pak Aji</h3>
+                                        <span class="text-gray-600">Peternakan pak aji</span>
+                                        <span class="text-gray-600">Lokasi pak ajiadadadadadadaddaadadada</span>
+                                        <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
+                                            <p class="text-gray-600 w-full">Bergabung pada 2021</p>
+                                            <p class="w-full">Peternakan 2 Tahun berdiri</p>
+                                        </div>                                                                     
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2 sm:mt-0">
+                                <button class="flex items-center text-white bg-blue-600 rounded px-2 py-1 hover:bg-blue-500 focus:outline-none focus:shadow-outline">
+                                    <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <span class="ml-1 text-sm">hubungi</span> 
+                                </button>
+                            </div>
+                        </div>                        
+                        <div class="flex flex-col">
+                            <div class="h-px  bg-slate-400"></div>
+                        </div>
                     </div>
 
 
@@ -199,23 +321,17 @@
                             <div class="h-full rounded-lg border bg-white p-6 shadow-md md:mt-0">
                                 <div class="mb-2 flex justify-between">
                                     <p class="text-gray-700">Subtotal</p>
-                                    <p class="text-gray-700">$129.99</p>
-                                </div>
-                                <div class="flex justify-between">
-                                    <p class="text-gray-700">Shipping</p>
-                                    <p class="text-gray-700">$4.99</p>
+                                    <p class="text-gray-700">Rp.222.2222.22</p>
                                 </div>
                                 <hr class="my-4" />
-                                <div class="flex justify-between">
-                                    <p class="text-lg font-bold">Total</p>
-                                    <div class="">
-                                        <p class="mb-1 text-lg font-bold">$134.98 USD</p>
-                                        <p class="text-sm text-gray-700">including VAT</p>
-                                    </div>
-                                </div>
                                 <button
-                                    class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check
-                                    out</button>
+                                    class="mt-3 hover:shadow-form w-full border hover:bg-primarybase hover:text-white border-primarybase rounded-md py-3 px-8 text-center text-base font-semibold text-primarybase">
+                                    Tambah ke keranjang
+                                </button>
+                                <button
+                                    class="mt-3 hover:shadow-form w-full border bg-primarybase hover:bg-primarybase hover:text-white border-white rounded-md py-3 px-8 text-center text-base font-semibold text-white">
+                                    Beli sekarang
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -226,41 +342,48 @@
             <!-- component -->
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
-                <div class="flex flex-col justify-start items-start w-full space-y-8">
-                    <div class="w-full flex justify-start items-start flex-col p-8">
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                            </svg>
-                            <svg class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor"
-                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                                <p class="ml-3 text-sm leading-none text-gray-600 ">14 July 2021</p>
-                            </svg>
+                <div class="flex flex-col justify-start items-start w-full">
+                    <div class="p-8 flex text-2xl font-semibold">
+                        <h1>Testimoni dari pembeli lain</h1>
+                    </div>
+                    <div class="w-full flex justify-start items-start flex-col px-8 pb-4">
+                        <div class="flex justify-between w-full">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                    </path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                    </path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                    </path>
+                                </svg>
+                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                    </path>
+                                </svg>
+                                <svg class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor"
+                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                    </path>
+                                    <p class="ml-2 text-sm leading-none text-gray-600 ">(4)</p>
+                                </svg>
+                            </div>
+                            <p class="ml-3 text-sm leading-none text-gray-600 ">14 July 2021</p>
                         </div>
+
                         <div class="mt-6 flex justify-start items-center flex-row space-x-2.5">
                             <div>
                                 <img src="https://randomuser.me/api/portraits/men/12.jpg"
@@ -291,37 +414,6 @@
                                             alt="bag" class="w-full h-full object-fit object-cover" />
                                     </div>
                                 </div>
-                                <div class="carousel-cell">
-                                    <div class="md:w-full h-full relative">
-                                        <img src="https://i.ibb.co/znYKsbc/vincent-wachowiak-z-P316-KSOX0-E-unsplash-1.png"
-                                            alt="shoes" class="w-full h-full object-fit object-cover" />
-                                    </div>
-                                </div>
-                                <div class="carousel-cell">
-                                    <div class="md:w-full h-full relative">
-                                        <img src="https://i.ibb.co/QXzVpHp/vincent-wachowiak-8g-Cm-EBVl6a-I-unsplash-1.png"
-                                            alt="wallet" class="w-full h-full object-fit object-cover" />
-                                    </div>
-                                </div>
-                                <div class="carousel-cell">
-                                    <div class="md:w-full h-full relative">
-                                        <img src="https://i.ibb.co/znYKsbc/vincent-wachowiak-z-P316-KSOX0-E-unsplash-1.png"
-                                            alt="wallet" class="w-full h-full object-fit object-cover" />
-                                    </div>
-                                </div>
-                                <div class="carousel-cell">
-                                    <div class="md:w-full h-full relative">
-                                        <img src="https://i.ibb.co/QXzVpHp/vincent-wachowiak-8g-Cm-EBVl6a-I-unsplash-1.png"
-                                            alt="wallet" class="w-full h-full object-fit object-cover" />
-                                    </div>
-                                </div>
-                                <div class="carousel-cell">
-                                    <div class="md:w-full h-full relative">
-                                        <img src="https://i.ibb.co/znYKsbc/vincent-wachowiak-z-P316-KSOX0-E-unsplash-1.png"
-                                            alt="wallet" class="w-full h-full object-fit object-cover" />
-                                    </div>
-                                </div>
-                                <div class="carousel-cell"></div>
                             </div>
 
                         </div>
@@ -431,13 +523,14 @@
                         </div>
                     </div>
                 </div>
+
+                {{-- baris --}}
                 <div class="flex px-8 flex-col">
                     <div class="h-px w-full bg-slate-400"></div>
                 </div>
             </div>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="relative
-        flex items-end font-bold mt-6">
+                <div class="relative flex items-end font-bold mt-6">
                     <h2 class="text-2xl">Hewan ternak lain</h2>
                 </div>
                 <main class="w-full mt-6">
