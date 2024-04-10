@@ -2164,6 +2164,10 @@ select {
   height: auto;
 }
 
+.h-\[250px\] {
+  height: 250px;
+}
+
 .max-h-20 {
   max-height: 5rem;
 }
@@ -2186,6 +2190,10 @@ select {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.min-h-\[1em\] {
+  min-height: 1em;
 }
 
 .w-0 {
@@ -2396,6 +2404,10 @@ select {
 
 .w-96 {
   width: 24rem;
+}
+
+.w-0\.5 {
+  width: 0.125rem;
 }
 
 .min-w-0 {
@@ -2676,6 +2688,10 @@ select {
   grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .grid-rows-1 {
   grid-template-rows: repeat(1, minmax(0, 1fr));
 }
@@ -2919,6 +2935,12 @@ select {
   border-bottom-width: calc(2px * var(--tw-divide-y-reverse));
 }
 
+.divide-x > :not([hidden]) ~ :not([hidden]) {
+  --tw-divide-x-reverse: 0;
+  border-right-width: calc(1px * var(--tw-divide-x-reverse));
+  border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
+}
+
 .divide-gray-100 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(243 244 246 / var(--tw-divide-opacity));
@@ -2931,6 +2953,10 @@ select {
 
 .self-center {
   align-self: center;
+}
+
+.self-stretch {
+  align-self: stretch;
 }
 
 .overflow-hidden {
@@ -3483,6 +3509,16 @@ select {
 .bg-yellow-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
+}
+
+.bg-gray-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-25 {
@@ -4116,6 +4152,14 @@ select {
   padding-left: 3rem;
 }
 
+.pe-6 {
+  padding-inline-end: 1.5rem;
+}
+
+.ps-6 {
+  padding-inline-start: 1.5rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -4216,6 +4260,10 @@ select {
 
 .font-black {
   font-weight: 900;
+}
+
+.font-thin {
+  font-weight: 100;
 }
 
 .uppercase {
@@ -5257,6 +5305,11 @@ select {
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-gray-400:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-opacity-5:hover {
   --tw-bg-opacity: 0.05;
 }
@@ -5486,6 +5539,11 @@ select {
 .focus\:text-purple-800:focus {
   --tw-text-opacity: 1;
   color: rgb(107 33 168 / var(--tw-text-opacity));
+}
+
+.focus\:text-black:focus {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .focus\:opacity-\[0\.85\]:focus {

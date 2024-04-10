@@ -9,6 +9,19 @@
     <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
     <title>eFarm | Market</title>
     <style>
+        input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .custom-number-input input:focus {
+    outline: none !important;
+  }
+
+  .custom-number-input button:focus {
+    outline: none !important;
+  }
         .carousel-cell {
             width: 150px;
             height: 150px;
@@ -89,6 +102,42 @@
                 openIcon2.classList.toggle("hidden");
             }
         };
+
+        function decrement(e) {
+    const btn = e.target.parentNode.parentElement.querySelector(
+      'button[data-action="decrement"]'
+    );
+    const target = btn.nextElementSibling;
+    let value = Number(target.value);
+    value--;
+    target.value = value;
+  }
+
+  function increment(e) {
+    const btn = e.target.parentNode.parentElement.querySelector(
+      'button[data-action="decrement"]'
+    );
+    const target = btn.nextElementSibling;
+    let value = Number(target.value);
+    value++;
+    target.value = value;
+  }
+
+  const decrementButtons = document.querySelectorAll(
+    `button[data-action="decrement"]`
+  );
+
+  const incrementButtons = document.querySelectorAll(
+    `button[data-action="increment"]`
+  );
+
+  decrementButtons.forEach(btn => {
+    btn.addEventListener("click", decrement);
+  });
+
+  incrementButtons.forEach(btn => {
+    btn.addEventListener("click", increment);
+  });
     </script>
 </head>
 
@@ -289,25 +338,33 @@
                         <div class="sm:flex sm:justify-between py-2">
                             <div class="flex items-center">
                                 <div class="flex items-start justify-start">
-                                    <img class="h-12 w-12 rounded-full" src="https://lh3.googleusercontent.com/a-/AOh14Gi0DgItGDTATTFV6lPiVrqtja6RZ_qrY91zg42o-g" alt="">
+                                    <img class="h-12 w-12 rounded-full"
+                                        src="https://lh3.googleusercontent.com/a-/AOh14Gi0DgItGDTATTFV6lPiVrqtja6RZ_qrY91zg42o-g"
+                                        alt="">
                                     <div class="ml-2 flex flex-col">
                                         <h3 class="text-lg text-gray-800 font-medium">Pak Aji</h3>
                                         <span class="text-gray-600">Peternakan pak aji</span>
                                         <span class="text-gray-600">Lokasi pak ajiadadadadadadaddaadadada</span>
-                                        <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
+                                        <div
+                                            class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
                                             <p class="text-gray-600 w-full">Bergabung pada 2021</p>
                                             <p class="w-full">Peternakan 2 Tahun berdiri</p>
-                                        </div>                                                                     
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="mt-2 sm:mt-0">
-                                <button class="flex items-center text-white bg-blue-600 rounded px-2 py-1 hover:bg-blue-500 focus:outline-none focus:shadow-outline">
-                                    <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                    <span class="ml-1 text-sm">hubungi</span> 
+                                <button
+                                    class="flex items-center text-white bg-blue-600 rounded px-2 py-1 hover:bg-blue-500 focus:outline-none focus:shadow-outline">
+                                    <svg class="h-5 w-5" fill="none" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <span class="ml-1 text-sm">hubungi</span>
                                 </button>
                             </div>
-                        </div>                        
+                        </div>
                         <div class="flex flex-col">
                             <div class="h-px  bg-slate-400"></div>
                         </div>
@@ -319,6 +376,30 @@
                     <div class="w-full md:w-4/12 bg-white md:block">
                         <div class="py-2 pl-8 pr-10 space-y-3 sticky top-0">
                             <div class="h-full rounded-lg border bg-white p-6 shadow-md md:mt-0">
+                                <div class="mb-2 flex justify-between">
+                                    <p class="text-gray-700 text-xl font-semibold">Atur jumlah dan catatan</p>
+                                </div>
+                                <hr class="my-4" />
+                                <p>Atur kuantitas</p>
+                                <div class="mb-2 flex justify-between">
+                                    <div class="custom-number-input h-10 w-32">
+                                        <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                                            <button data-action="decrement"
+                                                class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                                                <span class="m-auto text-2xl font-thin">−</span>
+                                            </button>
+                                            <input type="number"
+                                                class="focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
+                                                name="custom-input-number" value="0"></input>
+                                            <button data-action="increment"
+                                                class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                                                <span class="m-auto text-2xl font-thin">+</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700">Stok 2222</p>
+                                </div>
+                                
                                 <div class="mb-2 flex justify-between">
                                     <p class="text-gray-700">Subtotal</p>
                                     <p class="text-gray-700">Rp.222.2222.22</p>
@@ -332,6 +413,10 @@
                                     class="mt-3 hover:shadow-form w-full border bg-primarybase hover:bg-primarybase hover:text-white border-white rounded-md py-3 px-8 text-center text-base font-semibold text-white">
                                     Beli sekarang
                                 </button>
+                                <div class="grid grid-cols-2 divide-x mt-2">
+                                    <div class="flex items-center justify-center">Chat</div>
+                                    <div class="flex items-center justify-center">Share</div>
+                                  </div>                                  
                             </div>
                         </div>
                     </div>
