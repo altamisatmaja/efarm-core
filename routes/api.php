@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\PartnerController as ApiPartnerController;
+use App\Http\Controllers\Api\Partner\ProductPartnerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryLivestockController;
 use App\Http\Controllers\CategoryProductController;
@@ -12,7 +13,6 @@ use App\Http\Controllers\GenderLivestockController;
 use App\Http\Controllers\KategoriProductController;
 use App\Http\Controllers\LivestockController;
 use App\Http\Controllers\OrderController;
-use App\Http\Controllers\Partner\ProductPartnerController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;

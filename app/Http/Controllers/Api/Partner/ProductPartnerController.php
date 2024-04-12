@@ -32,6 +32,7 @@ class ProductPartnerController extends Controller
 
     public function index($username){
         $user = User::where('username', $username)->first();
+        // dd($user);
         
         if (!$user) {
             return response()->json([
@@ -74,7 +75,8 @@ class ProductPartnerController extends Controller
             'stok_hewan_ternak' => 'required',
             'terjual' => 'required',
             'deskripsi_product' => 'required',
-            'id_typelivestocks' => 'required'
+            'id_typelivestocks' => 'required',
+            // 'slug_product' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -92,6 +94,10 @@ class ProductPartnerController extends Controller
             $input['gambar_hewan'] = $nama_gambar;
         }
 
+        $slug = $this->generateSlug($input['nama_product']);
+
+        $input['slug_product'] = $slug;
+
         $input['id_partner'] = $user->id;
 
         $product = Product::create($input);
@@ -107,6 +113,7 @@ class ProductPartnerController extends Controller
     {
 
         $user = User::where('username', $username)->first();
+        dd($user);
 
         $validator = Validator::make($request->all(), [
             'harga_product' => 'required',
@@ -121,7 +128,8 @@ class ProductPartnerController extends Controller
             'stok_hewan_ternak' => 'required',
             'terjual' => 'required',
             'deskripsi_product' => 'required',
-            'id_typelivestocks' => 'required'
+            'id_typelivestocks' => 'required',
+            'slug_product' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -141,6 +149,10 @@ class ProductPartnerController extends Controller
         } else {
             unset($input['gambar_hewan']);
         }
+
+        $slug = $this->generateSlug($input['nama_product']);
+
+        $input['slug_product'] = $slug;
 
         $input['id_partner'] = $user->id;
 
@@ -162,4 +174,12 @@ class ProductPartnerController extends Controller
             'data' => $product,
         ]);
     }
+
+    public function generateSlug($nama_product)
+{
+    $slug = strtolower($nama_product);
+    $slug = str_replace(' ', '-', $slug);
+    return $slug;
+}
+
 }
