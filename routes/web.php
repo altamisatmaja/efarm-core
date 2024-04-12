@@ -11,6 +11,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Customer\AuthCustomerController;
 use App\Http\Controllers\Customer\DashboardCustomerController;
 use App\Http\Controllers\Partner\DashboardPartnerController;
+use App\Http\Controllers\Partner\PagePartnerController;
 use App\Http\Controllers\Partner\SubmissionController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PaymentController;
@@ -119,6 +120,27 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/payment', [PaymentController::class, 'list'])->name('admin.payment.list');
     
     // route partner for product
-    Route::get('partner/product', [ProductController::class, 'list'])->name('partner.product.list');
-    Route::get('partner/product/add', [ProductController::class, 'add'])->name('partner.product.add');
+    Route::get('partner/{partner}/product', [PagePartnerController::class, 'product_index'])->name('partner.product.list');
+    Route::get('partner/{partner}/product/add', [PagePartnerController::class, 'product_create'])->name('partner.product.add');
+    Route::get('partner/{partner/product/{slug_product}/edit', [PagePartnerController::class, 'product_edit'])->name('partner.product.edit');
+    
+    // route partner for farm
+    Route::get('partner/{partner}/farm', [PagePartnerController::class, 'farm_index'])->name('partner.farm.list');
+    Route::get('partner/{partner}/farm/add', [PagePartnerController::class, 'farm_create'])->name('partner.farm.add');
+    Route::get('partner/{partner/farm/{slug_farm}/edit', [PagePartnerController::class, 'farm_edit'])->name('partner.farm.edit');
+
+    // route partner for testimonial
+    Route::get('partner/{partner}/testimonial', [PagePartnerController::class, 'testimonial_index'])->name('partner.testimonial.list');
+    Route::get('partner/{partner}/testimonial/detail/{id}', [PagePartnerController::class, 'testimonial_show'])->name('partner.testimonial.detail');
+    Route::get('partner/{partner}/testimonial/reply/{id}', [PagePartnerController::class, 'testimonial_reply'])->name('partner.testimonial.reply');
+
+    // route partner for order
+    Route::get('partner/order', [PagePartnerController::class, 'order'])->name('partner.order.master');
+    Route::get('partner/order/new', [PagePartnerController::class, 'order_new_view'])->name('partner.order.new');
+    Route::get('partner/order/confirmed', [PagePartnerController::class, 'order_confirmed_view'])->name('partner.order.confirmed');
+    Route::get('partner/order/packed', [PagePartnerController::class, 'order_packed_view'])->name('partner.order.packed');
+    Route::get('partner/order/sent', [PagePartnerController::class, 'order_sent_view'])->name('partner.order.sent');
+    Route::get('partner/order/accepted', [PagePartnerController::class, 'order_accepted_view'])->name('partner.order.accepted');
+    Route::get('partner/order/end', [PagePartnerController::class, 'order_end_view'])->name('partner.order.end');
+    Route::get('partner/order/end/{id}', [PagePartnerController::class, 'order_end_show_view'])->name('partner.order.end.show');
 });
