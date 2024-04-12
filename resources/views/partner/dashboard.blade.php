@@ -82,7 +82,7 @@
                                     </p>
                                 </div>
                                 <div class="">
-                                    <p class="font-light text-xs text-xs">
+                                    <p class="font-light text-xs">
                                         Expiry
                                     </h1>
                                     <p class="font-medium tracking-wider text-sm">

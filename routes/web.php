@@ -120,4 +120,5 @@ Route::middleware('auth')->group(function () {
     
     // route partner for product
     Route::get('partner/product', [ProductController::class, 'list'])->name('partner.product.list');
+    Route::get('partner/product/add', [ProductController::class, 'add'])->name('partner.product.add');
 });

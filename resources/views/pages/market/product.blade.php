@@ -10,18 +10,19 @@
     <title>eFarm | Market</title>
     <style>
         input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
+        input[type='number']::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
-  .custom-number-input input:focus {
-    outline: none !important;
-  }
+        .custom-number-input input:focus {
+            outline: none !important;
+        }
 
-  .custom-number-input button:focus {
-    outline: none !important;
-  }
+        .custom-number-input button:focus {
+            outline: none !important;
+        }
+
         .carousel-cell {
             width: 150px;
             height: 150px;
@@ -104,40 +105,40 @@
         };
 
         function decrement(e) {
-    const btn = e.target.parentNode.parentElement.querySelector(
-      'button[data-action="decrement"]'
-    );
-    const target = btn.nextElementSibling;
-    let value = Number(target.value);
-    value--;
-    target.value = value;
-  }
+            const btn = e.target.parentNode.parentElement.querySelector(
+                'button[data-action="decrement"]'
+            );
+            const target = btn.nextElementSibling;
+            let value = Number(target.value);
+            value--;
+            target.value = value;
+        }
 
-  function increment(e) {
-    const btn = e.target.parentNode.parentElement.querySelector(
-      'button[data-action="decrement"]'
-    );
-    const target = btn.nextElementSibling;
-    let value = Number(target.value);
-    value++;
-    target.value = value;
-  }
+        function increment(e) {
+            const btn = e.target.parentNode.parentElement.querySelector(
+                'button[data-action="decrement"]'
+            );
+            const target = btn.nextElementSibling;
+            let value = Number(target.value);
+            value++;
+            target.value = value;
+        }
 
-  const decrementButtons = document.querySelectorAll(
-    `button[data-action="decrement"]`
-  );
+        const decrementButtons = document.querySelectorAll(
+            `button[data-action="decrement"]`
+        );
 
-  const incrementButtons = document.querySelectorAll(
-    `button[data-action="increment"]`
-  );
+        const incrementButtons = document.querySelectorAll(
+            `button[data-action="increment"]`
+        );
 
-  decrementButtons.forEach(btn => {
-    btn.addEventListener("click", decrement);
-  });
+        decrementButtons.forEach(btn => {
+            btn.addEventListener("click", decrement);
+        });
 
-  incrementButtons.forEach(btn => {
-    btn.addEventListener("click", increment);
-  });
+        incrementButtons.forEach(btn => {
+            btn.addEventListener("click", increment);
+        });
     </script>
 </head>
 
@@ -373,7 +374,7 @@
 
 
                     {{-- for checkout --}}
-                    <div class="w-full md:w-4/12 bg-white md:block">
+                    <div class="w-full md:w-4/12 bg-white md:block mb-2">
                         <div class="py-2 pl-8 pr-10 space-y-3 sticky top-0">
                             <div class="h-full rounded-lg border bg-white p-6 shadow-md md:mt-0">
                                 <div class="mb-2 flex justify-between">
@@ -399,7 +400,7 @@
                                     </div>
                                     <p class="text-gray-700">Stok 2222</p>
                                 </div>
-                                
+
                                 <div class="mb-2 flex justify-between">
                                     <p class="text-gray-700">Subtotal</p>
                                     <p class="text-gray-700">Rp.222.2222.22</p>
@@ -416,7 +417,7 @@
                                 <div class="grid grid-cols-2 divide-x mt-2">
                                     <div class="flex items-center justify-center">Chat</div>
                                     <div class="flex items-center justify-center">Share</div>
-                                  </div>                                  
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -382,9 +382,11 @@
                                             fugiat suscipit natus! Eum corporis illum nihil officiis tempore. Excepturi
                                             illo natus libero sit doloremque, laborum molestias rerum pariatur quam
                                             ipsam necessitatibus incidunt, explicabo.</p>
+                                            <a href="{{ route('partner.login') }}">
                                         <button type="button"
                                             class="inline-block px-4 py-1.5 bg-primarybase text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
                                             data-mdb-ripple="true">Masuk sebagai partner</button>
+                                        </a>
                                     </div>
                                 </div>
                             </li>
@@ -511,6 +513,8 @@
             <!-- End Accordion -->
         </div>
         <!-- End Layout -->
+        @include('includes.footer')
+        </div>
 
         <script>
             // Faq

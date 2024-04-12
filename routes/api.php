@@ -12,6 +12,7 @@ use App\Http\Controllers\GenderLivestockController;
 use App\Http\Controllers\KategoriProductController;
 use App\Http\Controllers\LivestockController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Partner\ProductPartnerController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
@@ -84,4 +85,8 @@ Route::group([
         'genderlivestock' => GenderLivestockController::class,
     ]);
     Route::get('report', [ReportController::class, 'get_data']);
+    Route::get('partner/{username}/product', [ProductPartnerController::class, 'index']);
+    Route::post('partner/{username}/product/add', [ProductPartnerController::class, 'store']);
+    Route::post('partner/{username}/product/{product}/edit', [ProductPartnerController::class, 'update']);
+    Route::delete('partner/{username}/product/{product}/delete', [ProductPartnerController::class, 'destroy']);
 });
