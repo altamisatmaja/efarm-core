@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Partner;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardPartnerController extends Controller
 {
@@ -11,6 +12,7 @@ class DashboardPartnerController extends Controller
         $this->middleware('auth');
     }
     public function index(){
-        return view('partner.dashboard');
+        $partner = Auth::user();
+        return view('partner.dashboard', compact('partner'));
     }
 }

@@ -3,5 +3,5 @@
 @section('title', 'Dashboard | Order')
 
 @section('content')
-    <p>End Show Order</p>
+    <p>Aceppted Order</p>
 @endsection

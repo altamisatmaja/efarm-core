@@ -135,12 +135,16 @@ Route::middleware('auth')->group(function () {
     Route::get('partner/{partner}/testimonial/reply/{id}', [PagePartnerController::class, 'testimonial_reply'])->name('partner.testimonial.reply');
 
     // route partner for order
-    Route::get('partner/order', [PagePartnerController::class, 'order'])->name('partner.order.master');
-    Route::get('partner/order/new', [PagePartnerController::class, 'order_new_view'])->name('partner.order.new');
-    Route::get('partner/order/confirmed', [PagePartnerController::class, 'order_confirmed_view'])->name('partner.order.confirmed');
-    Route::get('partner/order/packed', [PagePartnerController::class, 'order_packed_view'])->name('partner.order.packed');
-    Route::get('partner/order/sent', [PagePartnerController::class, 'order_sent_view'])->name('partner.order.sent');
-    Route::get('partner/order/accepted', [PagePartnerController::class, 'order_accepted_view'])->name('partner.order.accepted');
-    Route::get('partner/order/end', [PagePartnerController::class, 'order_end_view'])->name('partner.order.end');
-    Route::get('partner/order/end/{id}', [PagePartnerController::class, 'order_end_show_view'])->name('partner.order.end.show');
+    Route::get('partner/{partner}/order', [PagePartnerController::class, 'order'])->name('partner.order.master');
+    Route::get('partner/{partner}/order/new', [PagePartnerController::class, 'order_new_view'])->name('partner.order.new');
+    Route::get('partner/{partner}/order/confirmed', [PagePartnerController::class, 'order_confirmed_view'])->name('partner.order.confirmed');
+    Route::get('partner/{partner}/order/packed', [PagePartnerController::class, 'order_packed_view'])->name('partner.order.packed');
+    Route::get('partner/{partner}/order/sent', [PagePartnerController::class, 'order_sent_view'])->name('partner.order.sent');
+    Route::get('partner/{partner}/order/accepted', [PagePartnerController::class, 'order_accepted_view'])->name('partner.order.accepted');
+    Route::get('partner/{partner}/order/end', [PagePartnerController::class, 'order_end_view'])->name('partner.order.end');
+    Route::get('partner/{partner}/order/end/{id}', [PagePartnerController::class, 'order_end_show_view'])->name('partner.order.end.show');
+
+    // route partner for report
+    Route::get('partner/{partner}/report', [PagePartnerController::class, 'report'])->name('partner.report.list');
+    Route::get('partner/{partner}/report/{id}', [PagePartnerController::class, 'report_detail'])->name('partner.report.detail');
 });

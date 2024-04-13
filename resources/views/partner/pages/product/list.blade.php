@@ -3,5 +3,5 @@
 @section('title', 'Partner | Product')
 
 @section('content')
-    <p>Text</p>
+    <p>Text List</p>
 @endsection

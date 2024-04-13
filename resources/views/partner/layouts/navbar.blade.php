@@ -9,6 +9,21 @@
 </style>
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+<script>
+    const setup = () => {
+        return {
+            loading: true,
+            isSidebarOpen: false,
+            toggleSidbarMenu() {
+                this.isSidebarOpen = !this.isSidebarOpen
+            },
+            isSettingsPanelOpen: false,
+            isSearchBoxOpen: false,
+        }
+    }
+</script>
+
+@auth
 <nav class="p-4 md:py-8 xl:px-0 md:container md:mx-w-6xl md:mx-auto">
     <div class="hidden lg:flex lg:justify-between lg:items-center">
         <a href="#" class="flex items-start gap-2 group">
@@ -27,54 +42,109 @@
             </p>
         </a>
         <ul class="flex items-center space-x-4 text-sm font-semibold">
-            <li><a href="#" class="px-2 xl:px-4 py-2 text-gray-800 rounded-md hover:bg-gray-200">Dashboard</a></li>
+            <li><a href="/partner/dashboard" class="px-2 xl:px-4 py-2 text-gray-800 rounded-md hover:bg-gray-200">Dashboard</a>
+            </li>
             <li class="relative" x-data="{ open: false }">
                 <a x-on:click="open = !open" x-on:click.outside="open = false" href="#"
                     class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200 flex gap-2 items-center">
-                    Transaksi
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 stroke-current stroke-2 text-gray-800 transform duration-500 ease-in-out" :class="open ? 'rotate-90' : ''"  fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
+                    Order
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4 stroke-current stroke-2 text-gray-800 transform duration-500 ease-in-out"
+                        :class="open ? 'rotate-90' : ''" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                     </svg> </a>
                 <ul x-cloak x-show="open" x-transition
                     class="absolute top-10 left-0 bg-white p-4 rounded-md shadow overflow-hidden w-64">
+
+                    @php
+                        $username = auth()->user()->username;
+                    @endphp            
                     <li>
-                        <a href="{{ route('partner.login') }}"
+                        <a href="/partner/{{ $username }}/order"
                             class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 5l7 7-7 7" />
                             </svg>
-                            Transaction ABC
+                            Semua order
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/partner/{{ $partner->username }}/order/new"
                             class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 5l7 7-7 7" />
                             </svg>
-                            Transaction DEF
+                            Order terbaru
                         </a>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="/partner/{{ $partner->username }}/order/confirmed"
                             class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
                             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 5l7 7-7 7" />
                             </svg>
-                            Transaction GHI
+                            Order dikonfirmasi
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/partner/{{ $partner->username }}/order/packed"
+                            class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                            Order dikemas
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/partner/{{ $partner->username }}/order/sent"
+                            class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                            Order dikirim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/partner/{{ $partner->username }}/order/accepted"
+                            class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                            Order diterima
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/partner/{{ $partner->username }}/order/end"
+                            class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                            Order selesai
                         </a>
                     </li>
                 </ul>
             </li>
-            <li><a href="#" class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Peternakan </a></li>
-            <li><a href="#" class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Report</a></li>
+            <li><a href="/partner/{{ $partner->username }}/farm"
+                    class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Peternakan </a>
+            </li>
+            <li><a href="/partner/{{ $partner->username }}/report"
+                    class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Laporan</a></li>
+            <li><a href="/partner/{{ $partner->username }}/testimonial"
+                    class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Testimoni</a></li>
         </ul>
         <ul class="flex space-x-2 xl:space-x-4 text-sm font-semibold">
             <li>
@@ -116,7 +186,7 @@
         <ul class="flex items-center gap-6">
             <li>
                 <a href="#" class="text-sm font-sans text-gray-800 font-semibold tracking-wider">
-                    Derol Hakim
+                    {{ $partner->username }}
                 </a>
             </li>
             <li>
@@ -132,6 +202,7 @@
             </li>
         </ul>
     </div>
+
     <div x-data="{ open: false }" class="lg:hidden relative flex justify-between w-full">
         <a href="#" class="flex items-start gap-2 group">
             <div class="bg-blue-600 text-white p-3 rounded-md group-hover:bg-blue-800">
@@ -149,12 +220,12 @@
             </p>
         </a>
         <button x-on:click="open = !open" type="button" class="bg-gray-200 p-3 rounded-md">
-            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
+            <svg x-show="!open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
             </svg>
-            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
+            <svg x-show="open" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
@@ -164,8 +235,7 @@
                     <a href="#" class="flex items-center gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 5l7 7-7 7" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                         My Account
                     </a>
@@ -174,8 +244,7 @@
                     <a href="#" class="flex items-center gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 5l7 7-7 7" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                         Transactions
                     </a>
@@ -184,8 +253,7 @@
                     <a href="#" class="flex items-center gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 5l7 7-7 7" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                         Cards
                     </a>
@@ -194,8 +262,7 @@
                     <a href="#" class="flex items-center gap-4">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 5l7 7-7 7" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                         Offers
                     </a>
@@ -205,3 +272,4 @@
         </div>
     </div>
 </nav>
+@endauth

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
-    <title>Admin | Masuk</title>
+    <title>Partner | Masuk</title>
 </head>
 
 <body>
