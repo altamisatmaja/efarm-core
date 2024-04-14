@@ -74,16 +74,8 @@ Route::get('customer/logout', [AuthCustomerController::class, 'logout'])->name('
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('customer.google');
 Route::get('/login/google/callback', [GoogleSocialiteController::class, 'handleCallback']); 
 
-// Auth::routes();
-// Auth::routes(['verify' => true]);
-
 
 Route::middleware('auth')->group(function () {
-    // verification
-    // Route::get('/email/verify', [VerificationController::class, 'show' ])->name('verification.notice');
-    // Route::get('/email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify')->middleware(['signed']);
-    // Route::post('/email/resend', 'VerificationController@resend')->name('verification.resend');
-
     Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('partner/dashboard', [DashboardPartnerController::class, 'index']);
     Route::get('personal/account', [DashboardCustomerController::class, 'index']);

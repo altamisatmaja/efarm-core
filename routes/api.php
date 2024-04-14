@@ -52,6 +52,8 @@ Route::group([
     // route api for customer
     Route::post('/customer/login', [AuthCustomerController::class, 'login']);
     Route::post('/customer/register', [CustomerController::class, 'register']);
+    Route::post('/customer/verifyemail', [CustomerController::class, 'verifyUserEmail']);
+    Route::post('/customer/resendverifyemail', [CustomerController::class, 'resendEmailVerificationLink']);
     Route::get('/login/google/callback', [GoogleSocialiteController::class, 'handleCallback']); 
 });
 

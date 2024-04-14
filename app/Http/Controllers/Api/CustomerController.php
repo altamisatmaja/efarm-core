@@ -8,9 +8,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use App\Services\EmailVerificationService;
+use App\Http\Requests\VerifyEmailRequest;
+use App\Http\Requests\ResendEmailVerificationLinkRequest;
 
 class CustomerController extends Controller
 {
+    private $service;
+    public function __construct(EmailVerificationService $service){
+        $this->service = $service;
+    }
 
     //  public function __construct()
     //  {
@@ -49,13 +56,35 @@ class CustomerController extends Controller
         ]);
     }
 
+    /**
+     * Verify user email
+     */
+
+    public function verifyUserEmail(VerifyEmailRequest $request)
+    {
+        return $this->service->verifyEmail($request->email, $request->token);
+    }
+
+    /**
+     * Resend verification link
+     */
+
+    public function resendEmailVerificationLink(ResendEmailVerificationLinkRequest $request)
+    {
+        return $this->service->resendLink($request->email);
+    }
+
+    /**
+     * Registration
+     */
+
     public function register(Request $request){
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
             'username' => 'required',
-            'email' => 'required',
-            'password' => 'required|password|same:konfirmasi_password',
-            'konfirmasi_password' => 'required|password|same:password',
+            'email' => 'required|email',
+            'password' => 'required|min:8',
+            'konfirmasi_password' => 'required|same:password',        
         ]);
 
         if($validator->fails()){
@@ -69,9 +98,15 @@ class CustomerController extends Controller
 
         $user = User::create($input);
 
-        return response()->json([
-            'data' => $user
-        ]);
+        if($user){
+            $verif = $this->service->sendVerificationLink($user);
+            return response()->json([
+                'success' => true,
+                'message' => 'success',
+                'data' => $user,
+                'token' => $verif,
+            ]);
+        }
     }
 
     public function logout()

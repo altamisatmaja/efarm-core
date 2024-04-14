@@ -8,9 +8,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+use App\Services\EmailVerificationService;
 
 class AuthCustomerController extends Controller
 {
+    private $service;
+    public function __construct(EmailVerificationService $service){
+        $this->service = $service;
+    }
     public function index(){
         return view('customer.auth.login');
     }
@@ -77,9 +82,16 @@ class AuthCustomerController extends Controller
 
         $user = User::create($input);
 
-        return response()->json([
-            'data' => $user
-        ]);
+        if($user){
+            $this->service->sendVerificationLink($user);
+            return response()->json([
+                'data' => $user
+            ]);
+        }
+
+        // return response()->json([
+        //     'data' => $user
+        // ]);
     }
 
     public function logout()
