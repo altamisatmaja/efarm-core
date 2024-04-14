@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Auth;
 
 class PagePartnerController extends Controller
 {
+    public function account($partner){
+        $partner = Auth::user();
+        $partnertable = Partner::where('id_user', $partner->id)->first();
+
+        return view('partner.pages.profile.account', compact('partner', 'partnertable'));
+    }
     public function index($partner){
         $partner = Auth::user();
 

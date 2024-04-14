@@ -60,10 +60,6 @@
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Testimoni</a>
                             </li>
                             <li>
-                                <a href="#"
-                                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pelanggan</a>
-                            </li>
-                            <li>
                                 <a href="{{ route('admin.review.list') }}"
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Review</a>
                             </li>
@@ -107,7 +103,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#"
+                        <a href="{{ route('admin.customer.account') }}"
                             class="text-base text-gray-900 font-normal rounded-lg hover:bg-primarybase hover:text-white flex items-center p-2 group ">
                             <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-white transition duration-75"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="24"

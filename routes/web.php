@@ -129,6 +129,13 @@ Route::middleware('auth')->group(function () {
     // route admin for read account customer
     Route::get('admin/account/customer', [CustomerAccountController::class, 'index'])->name('admin.customer.account');
     
+    // route partner for they account
+    Route::get('partner/{partner}/account', [PagePartnerController::class, 'account'])->name('partner.account');
+    Route::get('partner/{partner}/account/edit', [PagePartnerController::class, 'edit'])->name('partner.account.edit');
+    Route::get('partner/{partner}/account/information', [PagePartnerController::class, 'information'])->name('partner.account.information');
+    Route::get('partner/{partner}/account/address', [PagePartnerController::class, 'address'])->name('partner.account.address');
+    Route::get('partner/{partner}/account/rekening', [PagePartnerController::class, 'rekening'])->name('partner.account.rekening');
+
     // route partner for product
     Route::get('partner/{partner}/product', [PagePartnerController::class, 'product_index'])->name('partner.product.list');
     Route::get('partner/{partner}/product/add', [PagePartnerController::class, 'product_create'])->name('partner.product.add');

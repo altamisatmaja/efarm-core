@@ -497,12 +497,6 @@
                                     </td>
                                     <td class="px-4 py-4 text-sm whitespace-nowrap">
                                         <div class="flex flex-col items-center gap-x-6">
-                                            <a data-id="${val.id}" data-toggle="modal" class="edit-data-product cursor-pointer">
-                                                <button
-                                                    class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                    Edit
-                                                </button>
-                                            </a>
                                             <a class="hapus-data-product cursor-pointer" data-id="${val.id}" class="ml-2" id="delete-product">
                                                 <button
                                                     class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
