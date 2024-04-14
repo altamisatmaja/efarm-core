@@ -144,7 +144,7 @@
             <li><a href="/partner/{{ $partner->username }}/report"
                     class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Laporan</a></li>
             <li><a href="/partner/{{ $partner->username }}/testimonial"
-                    class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Testimoni</a></li>
+                    class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Ulasan</a></li>
             <li><a href="/partner/{{ $partner->username }}/product"
                     class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Produk</a></li>
         </ul>

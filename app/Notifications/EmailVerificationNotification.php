@@ -42,7 +42,7 @@ class EmailVerificationNotification extends Notification
     {
         return (new MailMessage)
                     ->subject('Verifikasi akun anda')
-                    ->line("Untuk $notifiable->nama")
+                    ->line("Untuk $notifiable->username")
                     ->line('Verifikasi dari eFarm broku!')
                     ->action('Verifikasi email', $this->url)
                     ->line('Verifikasi sekarang bro!');

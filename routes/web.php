@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CustomerAccountController;
 use App\Http\Controllers\CategoryLivestockController;
 use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\Customer\GoogleSocialiteController;
@@ -124,6 +125,9 @@ Route::middleware('auth')->group(function () {
 
     // route admin for payment
     Route::get('admin/payment', [PaymentController::class, 'list'])->name('admin.payment.list');
+
+    // route admin for read account customer
+    Route::get('admin/account/customer', [CustomerAccountController::class, 'index'])->name('admin.customer.account');
     
     // route partner for product
     Route::get('partner/{partner}/product', [PagePartnerController::class, 'product_index'])->name('partner.product.list');
