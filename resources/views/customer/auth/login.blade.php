@@ -31,7 +31,7 @@
                     <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <div class="justify-center align-middle items-center flex">
                             <h1 class="text-xl font-bold leading-tight tracking-tight text-textbase md:text-2xl">
-                                Selamat datang user 👋
+                                Selamat datang pengguna 👋
                             </h1>
                         </div>
                         <form class="form-customer-login space-y-4 md:space-y-6" action="" method="POST">
@@ -67,8 +67,8 @@
                                 class="w-full text-white bg-primarybase hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign
                                 in</button>
                             <p class="text-sm font-light text-gray-500 ">
-                                Don't have an account yet? <a href="#"
-                                    class="font-medium text-primary-600 hover:underline">Sign up</a>
+                                Belum punya akun? <a href="{{ route('customer.register') }}"
+                                    class="font-medium text-primary-600 hover:underline">Daftar</a>
                             </p>
                         </form>
                         <a href="{{ route('customer.google') }}"
@@ -130,7 +130,7 @@
                             alert(data.message);
                         } else if (data.token) {
                             localStorage.setItem('token-efarm', data.token);
-                            window.location.href = "/";
+                            window.location.href = "/personal/account";
                         } else {
                             alert("Token tidak ditemukan dalam respon dari server.");
                         }

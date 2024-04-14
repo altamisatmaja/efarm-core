@@ -145,6 +145,8 @@
                     class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Laporan</a></li>
             <li><a href="/partner/{{ $partner->username }}/testimonial"
                     class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Testimoni</a></li>
+            <li><a href="/partner/{{ $partner->username }}/product"
+                    class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Produk</a></li>
         </ul>
         <ul class="flex space-x-2 xl:space-x-4 text-sm font-semibold">
             <li>

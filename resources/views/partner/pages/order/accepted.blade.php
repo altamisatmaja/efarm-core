@@ -4,4 +4,5 @@
 
 @section('content')
     <p>Aceppted Order</p>
+    
 @endsection

@@ -3,14 +3,21 @@
 namespace App\Http\Controllers\Partner;
 
 use App\Http\Controllers\Controller;
+use App\Models\CategoryProduct;
+use App\Models\GenderLivestock;
+use App\Models\Partner;
+use App\Models\Product;
+use App\Models\TypeLivestock;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PagePartnerController extends Controller
 {
-    public function index(){
-        return view('partner.dashboard');
+    public function index($partner){
+        $partner = Auth::user();
+
+        return view('partner.dashboard', compact('partner'));
     }
 
     public function farm_index($partner){
@@ -32,14 +39,22 @@ class PagePartnerController extends Controller
 
     public function product_index($partner){
         $partner = Auth::user();
+        $categoryproduct = CategoryProduct::all();
+        $typelivestocks = TypeLivestock::all();
+        $gender_livestocks = GenderLivestock::all();
+        $partnerall = Partner::all();
 
-        return view('partner.pages.product.index', compact('partner'));
+        return view('partner.pages.product.list', compact('partner', 'categoryproduct', 'typelivestocks', 'gender_livestocks', 'partnerall'));
     }
 
-    public function product_create(){
+    public function product_create($partner){
         $partner = Auth::user();
+        $categoryproduct = CategoryProduct::all();
+        $typelivestocks = TypeLivestock::all();
+        $gender_livestocks = GenderLivestock::all();
+        $partnerall = Partner::all();
 
-        return view('partner.pages.product.create', compact('partner'));
+        return view('partner.pages.product.create', compact('partner', 'categoryproduct', 'typelivestocks', 'gender_livestocks', 'partnerall'));
     }
 
     public function product_edit($partner, $slug_product){
@@ -48,7 +63,7 @@ class PagePartnerController extends Controller
         return view('partner.pages.product.edit', compact('partner'));
     }
 
-    public function testimonial_index(){
+    public function testimonial_index($partner){
         $partner = Auth::user();
 
         return view('partner.pages.testimonial.index', compact('partner'));
@@ -110,12 +125,12 @@ class PagePartnerController extends Controller
 
         return view('partner.pages.order.accepted', compact('partner'));
     }
-    public function order_end_view(){
+    public function order_end_view($partner){
         $partner = Auth::user();
 
         return view('partner.pages.order.end', compact('partner'));
     }
-    public function order_end_show_view(){
+    public function order_end_show_view($partner){
         $partner = Auth::user();
 
         return view('partner.pages.order.end_show', compact('partner'));

@@ -20,6 +20,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\TypeLivestockController;
+use App\Http\Controllers\VerificationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -73,11 +74,24 @@ Route::get('customer/logout', [AuthCustomerController::class, 'logout'])->name('
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('customer.google');
 Route::get('/login/google/callback', [GoogleSocialiteController::class, 'handleCallback']); 
 
+// Auth::routes();
+// Auth::routes(['verify' => true]);
+
 
 Route::middleware('auth')->group(function () {
+    // verification
+    // Route::get('/email/verify', [VerificationController::class, 'show' ])->name('verification.notice');
+    // Route::get('/email/verify/{id}/{hash}', 'VerificationController@verify')->name('verification.verify')->middleware(['signed']);
+    // Route::post('/email/resend', 'VerificationController@resend')->name('verification.resend');
+
     Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('partner/dashboard', [DashboardPartnerController::class, 'index']);
-    Route::get('customer/dashboard', [DashboardCustomerController::class, 'index']);
+    Route::get('personal/account', [DashboardCustomerController::class, 'index']);
+
+    // route customer for account
+    Route::get('personal/account/edit', [DashboardCustomerController::class, 'account'])->name('customer.account.edit');
+    Route::get('personal/account/information', [DashboardCustomerController::class, 'information'])->name('customer.account.information');
+    Route::get('personal/account/address', [DashboardCustomerController::class, 'address'])->name('customer.account.address');
 
     // route admin for category
     Route::get('admin/category', [CategoryProductController::class, 'list'])->name('admin.category.list');

@@ -87,4 +87,23 @@ class AuthCustomerController extends Controller
         Session::flush();
         return redirect('customer/login');
     }
+
+    /**
+    * Handle account registration request
+    * 
+    * @param Request $request
+    * 
+    * @return \Illuminate\Http\Response
+    */
+    public function register_email(Request $request) 
+    {
+    $user = User::create($request->validated());
+
+    event(new Registered($user));
+
+    auth()->login($user);
+
+    return redirect('/')->with('success', "Account successfully registered.");
+    }
+
 }

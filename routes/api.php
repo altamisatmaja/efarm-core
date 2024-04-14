@@ -87,6 +87,7 @@ Route::group([
     Route::get('report', [ReportController::class, 'get_data']);
     Route::get('partner/{username}/product', [ProductPartnerController::class, 'index']);
     Route::post('partner/{username}/product/add', [ProductPartnerController::class, 'store']);
-    Route::post('partner/{username}/product/{product}/edit', [ProductPartnerController::class, 'update']);
+    Route::get('partner/{username}/product/{product}', [ProductPartnerController::class, 'update']);
+    Route::put('partner/{username}/product/{product}/edit', [ProductPartnerController::class, 'update']);
     Route::delete('partner/{username}/product/{product}/delete', [ProductPartnerController::class, 'destroy']);
 });

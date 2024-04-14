@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Partner;
+namespace App\Http\Controllers\Api\Partner;
 
 use App\Http\Controllers\Controller;
 use App\Models\CategoryProduct;
@@ -98,7 +98,7 @@ class ProductPartnerController extends Controller
 
         $input['slug_product'] = $slug;
 
-        $input['id_partner'] = $user->id;
+        // $input['id_partner'] = $user->id;
 
         $product = Product::create($input);
 
@@ -113,7 +113,7 @@ class ProductPartnerController extends Controller
     {
 
         $user = User::where('username', $username)->first();
-        dd($user);
+        // dd($user);
 
         $validator = Validator::make($request->all(), [
             'harga_product' => 'required',
@@ -154,7 +154,7 @@ class ProductPartnerController extends Controller
 
         $input['slug_product'] = $slug;
 
-        $input['id_partner'] = $user->id;
+        // $input['id_partner'] = $user->id;
 
         $product->update($input);
 
