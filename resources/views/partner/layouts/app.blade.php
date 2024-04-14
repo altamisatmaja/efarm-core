@@ -11,7 +11,7 @@
 </head>
 
 <body class="relative antialiased bg-gray-100">
-    <div class="fixed bottom-4 right-4 xl:right-20">
+    {{-- <div class="fixed bottom-4 right-4 xl:right-20">
         <a href="https://www.instagram.com/ternakexpress" target="_blank"
             class="transform duration-500 ease-in-out animate-bounce bg-yellow-400 px-4 py-3 font-mono font-semibold rounded-lg shadow hover:shadow-xl flex justify-between items-center gap-4">
             <img class="w-8 h-8 rounded"
@@ -19,7 +19,7 @@
                 alt="kontakadmin">
             Kontak Admin
         </a>
-    </div>
+    </div> --}}
     <div>
         @include('partner.layouts.navbar')
         <main class="container mx-w-6xl mx-auto py-4">

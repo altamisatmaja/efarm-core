@@ -73,7 +73,7 @@
         <div class="flex mx-auto justify-center">
         <div class="flex flex-row pt-6 px-6 pb-4">
             <div class="w-3/12 mr-8">
-                <div class="bg-white relative rounded-xl shadow-lg mb-6 px-4 py-4 mb-2 border border-1 border-black">
+                <div class="bg-white relative rounded-xl shadow-lg mb-6 px-4 py-4 mb-2">
                     <a href="" class="inline-block text-gray-600 hover:text-black w-full">
                         <span class="material-icons-outlined font-semibold  float-left">Kategori</span>
                     </a>
@@ -107,9 +107,22 @@
                     </li>
                 @endforeach
                 </div>
-
+                <div class="bg-white relative rounded-xl shadow-lg mb-6 px-4 py-4">
+                    <a href="" class="inline-block text-gray-600 hover:text-black w-full">
+                        <span class="material-icons-outlined font-semibold  float-left">Produk terdekat</span>
+                    </a>
+                    <div class="h-px bg-black"></div>
+                    <form action="">
+                        <div class="flex flex-row my-2">
+                            <div class="flex items-center">
+                                <input id="checkbox-1" aria-describedby="checkbox-1" type="checkbox" class="bg-gray-50 border-gray-300 focus:ring-3 focus:ring-blue-300 h-4 w-4 rounded" checked="">
+                                <label for="checkbox-1" class="text-sm ml-3 font-medium text-gray-900">Cari produk terdekat</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 <div class="bg-white
-        relative rounded-xl shadow-lg mb-6 px-4 py-4 mb-2 border border-1 border-black">
+        relative rounded-xl shadow-lg mb-6 px-4 py-4 mb-2">
     <a href="" class="inline-block text-gray-600 hover:text-black w-full">
         <span class="material-icons-outlined font-semibold  float-left">Kisaran harga</span>
     </a>

@@ -338,7 +338,7 @@
                                 <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap text-center">
                                     ${val.nama_kategori_product}
                                 </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap text-center">
+                                <td class="px-4 py-4 text-sm text-gray-500 text-center">
                                     ${val.deskripsi_kategori_product}</td>
                                 <td class="p-3 flex items-center justify-center">
                                     <div class="flex-shrink-0 rounded-lg overflow-hidden w-48 h-48">

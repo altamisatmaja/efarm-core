@@ -254,7 +254,7 @@
                     </a>
                 </div>
                 <!-- Services Button -->
-                <div x-data="{ isOpen: false }">
+                {{-- <div x-data="{ isOpen: false }">
                     <button @click="isOpen = !isOpen"
                         class="p-2 bg-gray-100 rounded-full hover:bg-gray-200 focus:outline-none focus:ring">
                         <svg class="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -311,7 +311,7 @@
                             <a href="#">Show all apps</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="w-full flex justify-center items-center">
                     <button
                         class="relative group transition-all duration-200 focus:overflow-visible w-max h-max p-3 overflow-hidden flex flex-row items-center justify-center gap-2 rounded-lg">

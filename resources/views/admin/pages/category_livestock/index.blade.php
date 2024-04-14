@@ -358,16 +358,16 @@
                         data.map(function(val, index) {
                             row += `
                             <tr>
-                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                    <td class="px-4 py-4 text-sm font-medium text-gray-700">
                                         <div class="inline-flex items-center gap-x-3">
                                             <span>${index+1}</span>
                                         </div>
                                     </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    <td class="px-4 py-4 text-sm text-gray-500">
                                         ${val.nama_kategori_hewan}</td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    <td class="px-4 py-4 text-sm text-gray-500">
                                         ${val.deskripsi_kategori_hewan}</td>
-                                    <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                    <td class="px-4 py-4 text-sm ">
                                         <div class="flex items-center gap-x-6">
                                             <a class="edit-data-categorylivestock" data-id="${val.id}" data-toggle="modal">
                                             <button

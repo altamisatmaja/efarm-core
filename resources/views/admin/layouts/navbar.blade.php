@@ -50,15 +50,6 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </button>
-                <div class="hidden lg:flex items-center">
-                    <span class="text-base font-normal text-gray-500 mr-5">Admin</span>
-                    <div class="-mb-1">
-                        <a class="github-button" href="#"
-                            data-color-scheme="no-preference: dark; light: light; dark: light;"
-                            data-icon="octicon-star" data-size="large" data-show-count="true"
-                            aria-label="Star themesberg/windster-tailwind-css-dashboard on GitHub">Admin</a>
-                    </div>
-                </div>
                 <a href="#"
                     class="hidden sm:inline-flex ml-5 text-white bg-primarybase hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mr-3">
                     <svg class="svg-inline--fa fa-gem -ml-1 mr-2 h-4 w-4" aria-hidden="true" focusable="false"

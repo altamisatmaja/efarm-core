@@ -361,7 +361,7 @@
                                         ${val.nama_jenis_hewan}</td>
                                     <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
                                         ${val.categorylivestock.nama_kategori_hewan}</td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                    <td class="px-4 py-4 text-sm text-gray-500">
                                         ${val.deskripsi_jenis_hewan}</td>
                                     <td class="px-4 py-4 text-sm whitespace-nowrap">
                                         <div class="flex items-center gap-x-6">

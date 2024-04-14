@@ -20,6 +20,34 @@ class PagePartnerController extends Controller
 
         return view('partner.pages.profile.account', compact('partner', 'partnertable'));
     }
+
+    public function edit($partner){
+        $partner = Auth::user();
+        $partnertable = Partner::where('id_user', $partner->id)->first();
+
+        return view('partner.pages.profile.edit', compact('partner', 'partnertable'));
+    }
+
+    public function information($partner){
+        $partner = Auth::user();
+        $partnertable = Partner::where('id_user', $partner->id)->first();
+
+        return view('partner.pages.profile.information', compact('partner', 'partnertable'));
+    }
+
+    public function address($partner){
+        $partner = Auth::user();
+        $partnertable = Partner::where('id_user', $partner->id)->first();
+
+        return view('partner.pages.profile.address', compact('partner', 'partnertable'));
+    }
+
+    public function rekening($partner){
+        $partner = Auth::user();
+        $partnertable = Partner::where('id_user', $partner->id)->first();
+
+        return view('partner.pages.profile.rekening', compact('partner', 'partnertable'));
+    }
     public function index($partner){
         $partner = Auth::user();
 

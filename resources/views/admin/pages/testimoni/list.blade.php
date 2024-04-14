@@ -54,13 +54,13 @@
             <div class="rounded-t mb-0 px-4 py-3 border-0">
                 <div class="flex flex-wrap items-center">
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                        <h3 class="font-semibold text-base text-blueGray-700">Kategori Hewan</h3>
+                        <h3 class="font-semibold text-base text-blueGray-700">Ulasan</h3>
                     </div>
-                    <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                    {{-- <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                         <button
                             class="tambah-data-testimoni bg-primarybase text-white active:bg-primarybase text-xs font-bold uppercase px-3 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                             type="button">Tambah data</button>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
