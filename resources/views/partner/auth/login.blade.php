@@ -13,12 +13,12 @@
 <body>
     <div>
         @include('includes.navbar')
-        <section class="bg-gray-50">
-            <div class="flex flex-col items-center justify-center px-6 py-8 mt-5 mx-auto md:h-screen lg:py-0">
+        <section class="">
+            <div class="flex flex-col items-center justify-center px-6 my-24 mx-auto max-h-screen lg:py-0">
                 <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
                     <img class="w-56 mr-2" src="{{ asset('logo.svg') }}" alt="logo">
                 </a>
-                @if ($errors->any())
+                @if (session('status'))
                     <div
                         class='flex items-center text-white w-full sm:max-w-md bg-red-400 shadow-md rounded-lg overflow-hidden mx-auto mb-7'>
                         <div class='w-10 border-r px-2'>
@@ -33,7 +33,7 @@
 
                         <div class='flex items-center px-2 py-3'>
                             <div class='mx-3'>
-                                <p>{{ $errors->first() }}</p>
+                                <p>{{ session('status') }}</p>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                                 Selamat datang partner 👋
                             </h1>
                         </div>
-                        <form class="space-y-4 md:space-y-6" action="/partner/login" method="POST">
+                        <form class="space-y-4 md:space-y-6" action="{{ route('partner.login.store') }}" method="POST">
                             @csrf
                             <div>
                                 <label for="email" class="block mb-2 text-sm font-medium text-textbase">Email
@@ -71,10 +71,6 @@
                             
                             <button type="submit"
                                 class="w-full text-white bg-primarybase hover:bg-primarybase focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masuk</button>
-                            {{-- <p class="text-sm font-light text-gray-500">
-                            Don't have an account yet? <a href="#"
-                                class="font-medium text-primarybase hover:underline">Sign up</a>
-                        </p> --}}
                         </form>
                     </div>
                 </div>

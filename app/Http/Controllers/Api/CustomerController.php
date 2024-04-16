@@ -18,11 +18,6 @@ class CustomerController extends Controller
     public function __construct(EmailVerificationService $service){
         $this->service = $service;
     }
-
-    //  public function __construct()
-    //  {
-    //      $this->middleware('auth:web', ['except' => ['login']]);
-    //  }
  
     public function login(Request $request)
     {

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}"></script>
     <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Admin | Masuk</title>

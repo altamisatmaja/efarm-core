@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Partner;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Partner;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,30 +18,28 @@ class AuthPartnerController extends Controller
         return view('partner.auth.login');
     }
 
-    public function login(Request $request)
+    /**
+     * Handle an incoming authentication request.
+     *
+     * @param  \App\Http\Requests\Auth\LoginRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function login(LoginRequest $request)
     {
-        $this->validate($request, [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        $credentials = $request->only('email', 'password');
 
-        $credentials = $request->only(['email', 'password']);
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
-        if (auth()->attempt($credentials)) {
-            $user = auth()->user();
-            $partner = $user->partner()->where('status', 'Sudah diverifikasi')->first();
-            if ($user->id_user_role == 3 && $partner) {
-                $token = Auth::guard('api')->attempt($credentials);
-                cookie()->queue(cookie('token', $token, 120));
-                return redirect('/partner/dashboard');
-            } else if (!$partner) {
-                return back()->withErrors(['error' => 'Anda belum diverifikasi!']);
+            if (Auth::user()->user_role === 'Partner') {
+                return redirect()->route('partner.dashboard')->with('status', 'Anda berhasil login');
             } else {
-                return back()->withErrors(['error' => 'Anda bukan partner!']);
+                Auth::logout();
+                return redirect()->back()->with('status', 'Anda bukan partner!');
             }
         }
 
-        return back()->withErrors(['error' => 'Email atau password salah']);
+        return redirect()->route('partner.login')->with('status', 'Email atau password salah.');
     }
 
     protected function respondWithToken($token)
@@ -78,9 +77,20 @@ class AuthPartnerController extends Controller
         ]);
     }
 
-    public function logout()
+     /**
+     * Destroy an authenticated session.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logout(Request $request)
     {
-        Session::flush();
-        return redirect('partner/login');
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

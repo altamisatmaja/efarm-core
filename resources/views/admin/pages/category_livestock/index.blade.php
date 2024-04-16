@@ -95,16 +95,6 @@
                                         Nama kategori hewan ternak
                                     </th>
 
-                                    {{-- <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
-                                        Status
-                                    </th> --}}
-
-                                    {{-- <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
-                                        Customer
-                                    </th> --}}
-
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
                                         Deskripsi kategori hewan ternak
@@ -199,32 +189,6 @@
                                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
 
                         </div>
-
-                        {{-- <div class="mb-6 pt-4">
-                            <label class="mb-5 block text-xl font-semibold text-[#07074D]">
-                                Upload File
-                            </label>
-
-                            <div class="mb-8">
-                                <input type="file" name="file" id="file" class="sr-only" />
-                                <label for="file"
-                                    class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
-                                    <div>
-                                        <span class="mb-2 block text-xl font-semibold text-[#07074D]">
-                                            Drop files here
-                                        </span>
-                                        <span class="mb-2 block text-base font-medium text-[#6B7280]">
-                                            Or
-                                        </span>
-                                        <span
-                                            class="inline-flex rounded py-2 px-7 text-base font-medium text-[#07074D]">
-                                            Browse
-                                        </span>
-                                    </div>
-                                </label>
-                            </div>
-                        </div> --}}
-
                         <div class="pb-4">
                             <button
                                 class="hover:shadow-form w-full rounded-md bg-primarybase py-3 px-8 text-center text-base font-semibold text-black outline-none">
@@ -239,13 +203,6 @@
                             </button>
                         </div>
                     </form>
-                    <!--Footer-->
-                    {{-- <div class="flex justify-end pt-2">
-                        <button
-                            class="cancel-tambah-data-categorylivestock focus:outline-none modal-close px-4 bg-gray-400 p-3 rounded-lg text-black hover:bg-gray-300">Cancel</button>
-                        <button
-                            class="focus:outline-none px-4 bg-teal-500 p-3 ml-3 rounded-lg text-black hover:bg-teal-400">Confirm</button>
-                    </div> --}}
                 </div>
             </div>
         </div>

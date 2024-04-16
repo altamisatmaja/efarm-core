@@ -1,26 +1,26 @@
 <?php
 
 use App\Http\Controllers\Api\CustomerController;
-use App\Http\Controllers\Api\PartnerController as ApiPartnerController;
 use App\Http\Controllers\Api\Partner\ProductPartnerController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\CategoryLivestockController;
-use App\Http\Controllers\CategoryProductController;
+use App\Http\Controllers\Api\CategoryLivestockController;
+use App\Http\Controllers\Api\CategoryProductController;
 use App\Http\Controllers\Customer\AuthCustomerController;
 use App\Http\Controllers\Customer\GoogleSocialiteController;
-use App\Http\Controllers\FarmController;
-use App\Http\Controllers\GenderLivestockController;
-use App\Http\Controllers\KategoriProductController;
-use App\Http\Controllers\LivestockController;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\PartnerController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\SliderController;
-use App\Http\Controllers\TestimonialController;
-use App\Http\Controllers\TypeLivestockController;
+use App\Http\Controllers\Api\FarmController;
+use App\Http\Controllers\Api\GenderLivestockController;
+use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\KategoriProductController;
+use App\Http\Controllers\Api\LivestockController;
+use App\Http\Controllers\Api\PartnerController;
+use App\Http\Controllers\Api\PartnerAuthController;
+use App\Http\Controllers\Api\PaymentController;
+use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\ReportController;
+use App\Http\Controllers\Api\ReviewController;
+use App\Http\Controllers\Api\SliderController;
+use App\Http\Controllers\Api\TestimonialController;
+use App\Http\Controllers\Api\TypeLivestockController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,17 +35,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
 ], function() {
     Route::post('/admin/login', [AuthController::class, 'login']);
-    Route::post('/partner/login', [ApiPartnerController::class, 'login']);
-    Route::post('/partner/register', [ApiPartnerController::class, 'register']);
+    Route::post('/partner/login', [PartnerAuthController::class, 'login']);
+    Route::post('/partner/register', [PartnerAuthController::class, 'register']);
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
     

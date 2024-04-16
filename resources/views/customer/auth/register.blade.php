@@ -36,8 +36,8 @@
                         </div>
                         <form class="form-customer-register space-y-4 md:space-y-6" action="" method="POST">
                             <div>
-                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
-                                <input type="email" name="email" id="email"
+                                <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
+                                <input type="username" name="username" id="username"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     placeholder="name@company.com" required="">
                             </div>
@@ -69,11 +69,9 @@
                                             >
                                     </div>
                                     <div class="ml-3 text-sm">
-                                        <label for="remember" class="text-gray-500 ">Remember me</label>
+                                        <label for="remember" class="text-gray-500 ">Saya menyetujui kebijakan privasi *</label>
                                     </div>
                                 </div>
-                                <a href="#" class="text-sm font-medium text-primary-600 hover:underline">Forgot
-                                    password?</a>
                             </div>
                             <button type="submit"
                                 class="w-full text-white bg-primarybase hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign
@@ -99,20 +97,16 @@
 
             $('.form-customer-register').submit(function(e) {
                 e.preventDefault();
-                const email = $('#email').val();
-                const password = $('#password').val();
+                const form = $(this);
+                var formData = new FormData(this);
                 const csrf_token = $('meta[name="csrf-token"]').attr('content')
 
                 console.log(csrf_token);
 
                 $.ajax({
-                    url: '/customer/login',
+                    url: '/customer/register',
                     type: 'POST',
-                    data: {
-                        email: email,
-                        password: password,
-                        _token: csrf_token,
-                    },
+                    data: formData,
                     success: function(data) {
                         if (!data.success) {
                             alert(data.message);

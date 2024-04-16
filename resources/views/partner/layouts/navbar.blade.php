@@ -68,7 +68,7 @@
                             $username = auth()->user()->username;
                         @endphp
                         <li>
-                            <a href="/partner/{{ $username }}/order"
+                            <a href="/partner/order"
                                 class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -79,7 +79,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/partner/{{ $partner->username }}/order/new"
+                            <a href="/partner/order/new"
                                 class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -90,7 +90,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/partner/{{ $partner->username }}/order/confirmed"
+                            <a href="/partner/order/confirmed"
                                 class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -101,7 +101,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/partner/{{ $partner->username }}/order/packed"
+                            <a href="/partner/order/packed"
                                 class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -112,7 +112,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/partner/{{ $partner->username }}/order/sent"
+                            <a href="/partner/order/sent"
                                 class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -123,7 +123,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/partner/{{ $partner->username }}/order/accepted"
+                            <a href="/partner/order/accepted"
                                 class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -134,7 +134,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/partner/{{ $partner->username }}/order/end"
+                            <a href="/partner/order/end"
                                 class="p-4 block text-sm text-gray-600 rounded flex items-center gap-2 hover:bg-gray-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
@@ -146,19 +146,19 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="/partner/{{ $partner->username }}/farm"
+                <li><a href="/partner/farm"
                         class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Peternakan </a>
                 </li>
-                <li><a href="/partner/{{ $partner->username }}/report"
+                <li><a href="/partner/report"
                         class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Laporan</a></li>
-                <li><a href="/partner/{{ $partner->username }}/testimonial"
+                <li><a href="/partner/testimonial"
                         class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Ulasan</a></li>
-                <li><a href="/partner/{{ $partner->username }}/product"
+                <li><a href="/partner/product"
                         class="px-2 xl:px-4 py-2 text-gray-600 rounded-md hover:bg-gray-200">Produk</a></li>
             </ul>
             <ul class="flex space-x-2 xl:space-x-4 text-sm font-semibold">
                 <li>
-                    <a href="/partner/{{ $partner->username }}/account">
+                    <a href="/partner/account">
                         <div class="p-2 rounded hover:bg-gray-200">
                             <div class="flex flex-wrap gap-2 justify-center items-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 stroke-current text-textbase"
