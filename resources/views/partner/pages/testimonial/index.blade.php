@@ -123,6 +123,9 @@
                 </div>
             </div>
         </div>
+        
+        {{ $testimonials->links() }}
+        
 
         <div class="flex items-center justify-between mt-6">
             <a href="#"

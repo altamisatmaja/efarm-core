@@ -19,7 +19,7 @@ class TestimonialPartnerController extends Controller
 
     public function list(){
         $partner = Auth::user();
-        $testimonials = Testimonial::with(['user', 'product'])->get();
+        $testimonials = Testimonial::with(['user', 'product'])->paginate(1);
         // dd($testimonials->products);
         
         return view('partner.pages.testimonial.index', compact('testimonials', 'partner'));

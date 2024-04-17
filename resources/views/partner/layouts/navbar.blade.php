@@ -176,14 +176,16 @@
             </ul>
             <ul class="flex items-center gap-6">
                 <li>
-                    <div
-                        class="flex flex-row items-center justify-center rounded-lg gap-2 ring-1 ring-primarybase py-2 px-4">
-                        <img src="{{ asset('uploads/' . ($partner->foto_profil ?? 'user.jpeg')) }}"
-                            class="w-6 h-6 rounded-full" alt="Foto Profil">
-                        <span class="font-semibold text-textbase">
-                            {{ $partner->username }}
-                        </span>
-                    </div>
+                    <a href="/partner/account">
+                        <div
+                            class="flex flex-row items-center justify-center rounded-lg gap-2 ring-1 ring-primarybase py-2 px-4">
+                            <img src="{{ asset('uploads/' . ($partner->foto_profil ?? 'user.jpeg')) }}"
+                                class="w-6 h-6 rounded-full" alt="Foto Profil">
+                            <span class="font-semibold text-textbase">
+                                {{ $partner->username }}
+                            </span>
+                        </div>
+                    </a>
                 </li>
                 <li>
                     <a href="{{ route('partner.logout') }}">
