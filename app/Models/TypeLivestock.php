@@ -14,7 +14,9 @@ class TypeLivestock extends Model
 
     public function categorylivestock() {
         return $this->belongsTo(CategoryLivestock::class, 'id_category_livestocks');
-        // return $this->hasMany(CategoryLivestock::class);
     }
     
+    public function farm(){
+        return $this->hasMany(Farm::class);
+    }
 }

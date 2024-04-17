@@ -10,4 +10,8 @@ class GenderLivestock extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function farm(){
+        return $this->hasMany(Farm::class);
+    }
 }

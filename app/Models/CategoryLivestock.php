@@ -20,4 +20,8 @@ class CategoryLivestock extends Model
         return $this->belongsTo(CategoryProduct::class, 'id_kategori_produk');
     }
 
+    public function farm(){
+        return $this->hasMany(Farm::class);
+    }
+
 }

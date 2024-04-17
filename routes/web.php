@@ -26,6 +26,7 @@ use App\Http\Controllers\Customer\DashboardCustomerController;
 use App\Http\Controllers\Customer\GoogleSocialiteController;
 use App\Http\Controllers\Partner\AuthPartnerController;
 use App\Http\Controllers\Partner\DashboardPartnerController;
+use App\Http\Controllers\Partner\FarmPartnerController;
 use App\Http\Controllers\Partner\PagePartnerController;
 use App\Http\Controllers\Partner\SubmissionController;
 use App\Http\Controllers\Web\PageWebController;
@@ -63,12 +64,6 @@ Route::get('/dashboard', function () {
 // route partner for submission
 Route::get('partner/submission', [SubmissionController::class, 'submission'])->name('partner.submission');
 
-// route for customer
-Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
-Route::get('customer/register', [AuthCustomerController::class, 'register_view'])->name('customer.register');
-Route::post('customer/login', [AuthCustomerController::class, 'login']);
-Route::get('customer/logout', [AuthCustomerController::class, 'logout'])->name('customer.logout');
-
 // route customer google auth
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('customer.google');
 Route::get('/login/google/callback', [GoogleSocialiteController::class, 'handleCallback']);
@@ -104,6 +99,11 @@ Route::middleware('guest')->group(function () {
     // route for partner
     Route::get('partner/login', [AuthPartnerController::class, 'index'])->name('partner.login');
     Route::post('partner/login', [AuthPartnerController::class, 'login'])->name('partner.login.store');
+
+    // route for customer
+    Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
+    Route::get('customer/register', [AuthCustomerController::class, 'register_view'])->name('customer.register');
+    Route::post('customer/login', [AuthCustomerController::class, 'login']);
 });
 
 Route::middleware('auth')->group(function () {
@@ -182,6 +182,7 @@ Route::middleware(['auth', 'role:Pelanggan'])->group(function () {
     Route::get('personal/account/edit', [DashboardCustomerController::class, 'account'])->name('customer.account.edit');
     Route::get('personal/account/information', [DashboardCustomerController::class, 'information'])->name('customer.account.information');
     Route::get('personal/account/address', [DashboardCustomerController::class, 'address'])->name('customer.account.address');
+    Route::get('customer/logout', [AuthCustomerController::class, 'logout'])->name('customer.logout');
 });
 
 Route::middleware(['auth', 'role:Partner'])->group(function () {
@@ -198,9 +199,11 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     Route::get('partner/product/{slug_product}/edit', [PagePartnerController::class, 'product_edit'])->name('partner.product.edit');
 
     // route partner for farm
-    Route::get('partner/farm', [PagePartnerController::class, 'farm_index'])->name('partner.farm.list');
-    Route::get('partner/farm/add', [PagePartnerController::class, 'farm_create'])->name('partner.farm.add');
-    Route::get('partner/farm/{slug_farm}/edit', [PagePartnerController::class, 'farm_edit'])->name('partner.farm.edit');
+    Route::get('partner/farm', [FarmPartnerController::class, 'list'])->name('partner.farm.list');
+    Route::get('partner/farm/add', [PagePartnerController::class, 'add'])->name('partner.farm.add');
+    Route::post('partner/farm/add', [PagePartnerController::class, 'store'])->name('partner.farm.store');
+    Route::get('partner/farm/edit/{slug_farm}', [PagePartnerController::class, 'farm_edit'])->name('partner.farm.edit');
+    Route::delete('partner/farm/destroy/{slug_farm}', [FarmPartnerController::class, 'destroy'])->name('partner.farm.destroy');
 
     // route partner for testimonial
     Route::get('partner/testimonial', [PagePartnerController::class, 'testimonial_index'])->name('partner.testimonial.list');
