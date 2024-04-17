@@ -31,7 +31,9 @@ class TestimonialPartnerController extends Controller
     public function show($slug_testimonial){
         $partner = Auth::user();
         $testimonials = Testimonial::where('slug_testimonial', $slug_testimonial)->first();
+        $testimoni = $testimonials->with(['user', 'product'])->get();
+        // dd($testimoni);
 
-        return view('partner.pages.testimonial.show', compact('partner', 'testimonials'));
+        return view('partner.pages.testimonial.show', compact('partner', 'testimonials', 'testimoni'));
     }
 }
