@@ -101,7 +101,7 @@
                                             {{ $farm->gender_livestocks->nama_gender }}</td>
                                         <td class="px-4 py-4 text-sm">
                                             <div class="flex items-center gap-x-6">
-                                                <a href="{{ route('partner.farm.edit', $farm->slug_farm) }}">
+                                                <a href="{{ route('partner.farm.update', $farm->slug_farm) }}">
                                                     <button
                                                         class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
                                                         Edit

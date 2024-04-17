@@ -32,6 +32,33 @@ class FarmPartnerController extends Controller
     }
 
     /**
+     * View create data peternakan
+     */
+    public function create()
+    {
+        $partner = Auth::user();
+        return view('partner.pages.farm.create', compact('partner'));
+    }
+
+    /**
+     * View edit data peternakan
+     */
+    public function update($slug_farm)
+    {
+        $user = Auth::user();
+        $partner = Partner::where('id_user', $user->id)->first();
+        $farm = Farm::where('slug_farm', $slug_farm)->first();
+        $partnerid = $farm->id;
+
+        $typelivestocks = TypeLivestock::all();
+        $genderlivestocks = GenderLivestock::all();
+        $conditionlivestock = ConditionLivestock::all();
+        $categorylivestock = CategoryLivestock::all();
+    
+        return view('partner.pages.farm.edit', compact('partner', 'farm', 'partnerid', 'typelivestocks', 'genderlivestocks', 'conditionlivestock', 'categorylivestock'));
+    }
+
+    /**
      * Read page tambah data peternakan
      */
     public function add()
@@ -73,10 +100,43 @@ class FarmPartnerController extends Controller
 
         $data = $request->all();
         $data['id_partner'] = $partner->id;
+        $data['slug_farm'] = $this->generateSlug($request->nama_hewan, $request->kode_hewan);
 
         Farm::create($data);
 
         return redirect()->route('partner.farm.list')->with('success', 'Data hewan telah berhasil ditambahkan!');
+    }
+
+    /**
+     * Edit data peternakan
+     */
+    public function edit(Request $request, $slug_farm)
+    {
+        $user = Auth::user();
+        $partner = Partner::where('id_user', $user->id)->first();
+
+        $validator = Validator::make($request->all(), [
+            'lahir_hewan' => 'required|date',
+            'deskripsi_hewan' => 'required',
+            'nama_hewan' => 'required',
+            'kode_hewan' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $data = $request->all();
+        $data['id_partner'] = $partner->id;
+        $data['slug_farm'] = $this->generateSlug($request->nama_hewan, $request->kode_hewan);
+
+        $farm = Farm::where('slug_farm', $slug_farm)->firstOrFail();
+        $farm->update($data);
+
+        return redirect()->route('partner.farm.list')->with('status', 'Data hewan telah berhasil ditambahkan!');
     }
 
     /**
@@ -88,12 +148,22 @@ class FarmPartnerController extends Controller
 
         if ($farm) {
             $farmid = $farm->id;
-            
+
             Farm::destroy($farmid);
 
             return redirect()->route('partner.farm.list')->with('success', 'Data peternakan berhasil dihapus');
         } else {
             return redirect()->route('partner.farm.list')->with('status', 'Data peternakan gagal dihapus');
         }
+    }
+
+    /**
+     * Generate slug
+     */
+    public function generateSlug($nama_hewan, $kode_hewan)
+    {
+        $slug_farm = strtolower($nama_hewan.'-'.$kode_hewan);
+        $slug_farm = str_replace(' ', '-', $slug_farm);
+        return $slug_farm;
     }
 }

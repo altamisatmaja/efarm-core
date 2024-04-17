@@ -29,6 +29,7 @@ use App\Http\Controllers\Partner\DashboardPartnerController;
 use App\Http\Controllers\Partner\FarmPartnerController;
 use App\Http\Controllers\Partner\PagePartnerController;
 use App\Http\Controllers\Partner\SubmissionController;
+use App\Http\Controllers\Partner\TestimonialPartnerController;
 use App\Http\Controllers\Web\PageWebController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -200,14 +201,15 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
 
     // route partner for farm
     Route::get('partner/farm', [FarmPartnerController::class, 'list'])->name('partner.farm.list');
-    Route::get('partner/farm/add', [PagePartnerController::class, 'add'])->name('partner.farm.add');
-    Route::post('partner/farm/add', [PagePartnerController::class, 'store'])->name('partner.farm.store');
-    Route::get('partner/farm/edit/{slug_farm}', [PagePartnerController::class, 'farm_edit'])->name('partner.farm.edit');
+    Route::get('partner/farm/add', [FarmPartnerController::class, 'create'])->name('partner.farm.create');
+    Route::post('partner/farm/add', [FarmPartnerController::class, 'store'])->name('partner.farm.store');
+    Route::get('partner/farm/edit/{slug_farm}', [FarmPartnerController::class, 'update'])->name('partner.farm.update');
+    Route::put('partner/farm/update/{slug_farm}', [FarmPartnerController::class, 'edit'])->name('partner.farm.edit');
     Route::delete('partner/farm/destroy/{slug_farm}', [FarmPartnerController::class, 'destroy'])->name('partner.farm.destroy');
 
     // route partner for testimonial
-    Route::get('partner/testimonial', [PagePartnerController::class, 'testimonial_index'])->name('partner.testimonial.list');
-    Route::get('partner/testimonial/detail/{id}', [PagePartnerController::class, 'testimonial_show'])->name('partner.testimonial.detail');
+    Route::get('partner/testimonial', [TestimonialPartnerController::class, 'list'])->name('partner.testimonial.list');
+    Route::get('partner/testimonial/show/{slug_testimonial}', [TestimonialPartnerController::class, 'show'])->name('partner.testimonial.show');
     Route::get('partner/testimonial/reply/{id}', [PagePartnerController::class, 'testimonial_reply'])->name('partner.testimonial.reply');
 
     // route partner for order

@@ -10,52 +10,54 @@ use App\Models\Product;
 use App\Models\TypeLivestock;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Validator;
 
 class ProductPartnerController extends Controller
 {
     //
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth')->only('list');
         // $this->middleware('auth:api')->only(['delete']);
     }
 
-    public function list(){
+    public function list()
+    {
         $categoryproduct = CategoryProduct::all();
         $typelivestocks = TypeLivestock::all();
         $gender_livestocks = GenderLivestock::all();
         $partner = Partner::all();
-        
+
         return view('admin.pages.product.index', compact('categoryproduct', 'typelivestocks', 'gender_livestocks', 'partner'));
     }
 
-    public function index($username){
+    public function index($username)
+    {
         $user = User::where('username', $username)->first();
         // dd($user);
-        
+
         if (!$user) {
             return response()->json([
                 'message' => 'User not found',
             ], 404);
         }
-    
+
         $products = Product::whereHas('partner', function ($query) use ($user) {
             $query->where('id_user', $user->id);
         })->with('typelivestocks', 'gender_livestocks', 'partner', 'categoryproduct')->get();
-        
+
         return response()->json([
             'message' => 'success',
             'data' => $products,
         ]);
     }
-    
 
     public function store(Request $request, $username)
     {
         $user = User::where('username', $username)->first();
 
-        if(!$user){
+        if (!$user) {
             return response()->json([
                 'message' => 'Partner tidak ada',
             ], 404);
@@ -111,7 +113,6 @@ class ProductPartnerController extends Controller
 
     public function update(Request $request, Product $product, $username)
     {
-
         $user = User::where('username', $username)->first();
         // dd($user);
 
@@ -165,8 +166,9 @@ class ProductPartnerController extends Controller
         ]);
     }
 
-    public function destroy(Product $product){
-        File::delete('uploads/'.$product->gambar_product);
+    public function destroy(Product $product)
+    {
+        File::delete('uploads/' . $product->gambar_product);
         $product->delete();
 
         return response()->json([
@@ -176,10 +178,9 @@ class ProductPartnerController extends Controller
     }
 
     public function generateSlug($nama_product)
-{
-    $slug = strtolower($nama_product);
-    $slug = str_replace(' ', '-', $slug);
-    return $slug;
-}
-
+    {
+        $slug = strtolower($nama_product);
+        $slug = str_replace(' ', '-', $slug);
+        return $slug;
+    }
 }

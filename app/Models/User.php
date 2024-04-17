@@ -49,4 +49,8 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         return $this->belongsTo(Partner::class, 'id_user', 'id');
     }
 
+    public function testimonials(){
+        return $this->hasMany(Testimonial::class, 'id_user', 'id');
+    }
+
 }

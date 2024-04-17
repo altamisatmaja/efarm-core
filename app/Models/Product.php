@@ -28,8 +28,7 @@ class Product extends Model
         return $this->hasMany(CategoryProduct::class, 'id', 'id_kategori');
     }
 
-    // public function categorylivestock
-
-    // relationship to typelivestock
-    
+    public function testimonial() : hasMany {
+        return $this->hasMany(Testimonial::class);
+    }
 }
