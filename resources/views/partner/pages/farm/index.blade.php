@@ -107,7 +107,7 @@
                                                         Edit
                                                     </button>
                                                 </a>
-                                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('partner.farm.destroy', '$farm->slug_farm') }}" method="POST">
+                                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('partner.farm.destroy', $farm->slug_farm) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')                
                                                     <button type="submit"

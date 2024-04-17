@@ -85,12 +85,9 @@ class FarmPartnerController extends Controller
     public function destroy($slug_farm)
     {
         $farm = Farm::where('slug_farm', $slug_farm)->first();
-        dd($farm);
 
         if ($farm) {
             $farmid = $farm->id;
-
-            dd($farmid);
             
             Farm::destroy($farmid);
 
