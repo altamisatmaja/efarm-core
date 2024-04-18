@@ -13,7 +13,7 @@ class AccountPartnerController extends Controller
     }
 
     public function index(){
-        $partner = Auth::user()->partner;
+        $partner = Auth::user();
         // dd($partner);
         return view('partner.pages.profile.account', compact('partner'));   
     }
@@ -23,8 +23,8 @@ class AccountPartnerController extends Controller
      */
 
     public function account_edit_view(){
-        $partner = Auth::user()->partner;
-        $user = Auth::user();
+        $user = Auth::user()->partner;
+        $partner = Auth::user();
         return view('partner.pages.profile.edit', compact('partner', 'user'));
     }
 
@@ -35,8 +35,9 @@ class AccountPartnerController extends Controller
     }
 
     public function address_view(){
-        $partner = Auth::user()->partner;
-        return view('partner.pages.profile.address', compact('partner'));
+        $partner = Auth::user();
+        $partners = Auth::user()->partner;
+        return view('partner.pages.profile.address', compact('partner', 'partners'));
     }
 
     public function rekening_view(){
@@ -70,7 +71,6 @@ class AccountPartnerController extends Controller
                 'nama_partner' => 'required',
                 'nama_perusahaan_partner' => 'required',
                 'lama_peternakan_berdiri' => 'required',
-                'alamat_partner' => 'required',
             ]);
     
             $user = Auth::user()->partner;
@@ -78,6 +78,25 @@ class AccountPartnerController extends Controller
             $user->update($request->all());
     
             return redirect()->back()->with('success', 'Informasi akun berhasil diupdate');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
+    }
+
+    /**
+     * Ubah data informasi partner
+     */
+    public function update_address(Request $request){
+        try {
+            $request->validate([
+                'alamat_partner' => 'required',
+            ]);
+    
+            $user = Auth::user()->partner;
+    
+            $user->update($request->all());
+    
+            return redirect()->back()->with('success', 'Informasi alamat berhasil diupdate');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
