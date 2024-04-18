@@ -35,7 +35,7 @@ class Role
                 $redirectTo = 'partner.login';
                 break;
             default:
-                $redirectTo = 'user.login';
+                $redirectTo = 'login';
                 break;
         }
     

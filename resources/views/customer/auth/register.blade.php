@@ -34,7 +34,10 @@
                                 Silahkan mendaftar 👋
                             </h1>
                         </div>
-                        <form class="form-customer-register space-y-4 md:space-y-6" action="" method="POST">
+                        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                        <form class="form-customer-register space-y-4 md:space-y-6" action="{{ route('register') }}" method="POST">
+                            @csrf
+                            @method('POST')
                             <div>
                                 <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
                                 <input type="username" name="username" id="username"
@@ -83,44 +86,6 @@
         </section>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(function() {
-            function setCookie(name, value, days) {
-                var expires = '';
-                if (days) {
-                    var date = new Date();
-                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                    expires = "; expires=" + date.toUTCString();
-                }
-                document.cookie = name + "=" + (value || "") + expires + "; path=/";
-            }
-
-            $('.form-customer-register').submit(function(e) {
-                e.preventDefault();
-                const form = $(this);
-                var formData = new FormData(this);
-                const csrf_token = $('meta[name="csrf-token"]').attr('content')
-
-                console.log(csrf_token);
-
-                $.ajax({
-                    url: '/customer/register',
-                    type: 'POST',
-                    data: formData,
-                    success: function(data) {
-                        if (!data.success) {
-                            alert(data.message);
-                        } else if (data.token) {
-                            localStorage.setItem('token-efarm', data.token);
-                            window.location.href = "/personal/account";
-                        } else {
-                            alert("Token tidak ditemukan dalam respon dari server.");
-                        }
-                    }
-                })
-            })
-        });
-    </script>
 </body>
 
 </html>

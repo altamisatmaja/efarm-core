@@ -180,7 +180,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     /**
      * Logout admin
      */
-    Route::get('admin/logout', [AuthAdminController::class, 'destroy'])->name('admin.logout');
+    Route::post('admin/logout', [AuthAdminController::class, 'destroy'])->name('admin.logout');
 });
 
 Route::middleware(['auth', 'role:Pelanggan'])->group(function () {
