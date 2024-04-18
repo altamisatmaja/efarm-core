@@ -42,7 +42,7 @@
                 
             @endif
             <!-- First Row -->
-            <div class="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-5 px-4 xl:p-0 gap-y-4 md:gap-6">
+            {{-- <div class="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-5 px-4 xl:p-0 gap-y-4 md:gap-6">
                 <div class="md:col-span-2 xl:col-span-3 bg-white p-6 rounded-2xl border border-gray-50">
                     <div class="flex flex-col space-y-6 md:h-full md:justify-between">
                         <div class="flex justify-between">
@@ -202,10 +202,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- End Second Row -->
             <!-- Start Third Row -->
-            <div class="grid grid-cols-1 md:grid-cols-5 items-start px-4 xl:p-0 gap-y-4 md:gap-6">
+            {{-- <div class="grid grid-cols-1 md:grid-cols-5 items-start px-4 xl:p-0 gap-y-4 md:gap-6">
                 <div class="col-start-1 col-end-5">
                     <h2 class="text-xs md:text-sm text-gray-800 font-bold tracking-wide">Summary Transactions</h2>
                 </div>
@@ -319,7 +319,8 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> --}}
+            <h1 class="font-bold text-2xl items-center mx-auto flex justify-center">Sprint 2</h1>
             <!-- End Third Row -->
         </div>
     </main>

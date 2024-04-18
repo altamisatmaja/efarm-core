@@ -8,7 +8,7 @@
         <h1 class="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Formulir pengajuan partner</h1>
         <p class="text-gray-600 dark:text-gray-300 mb-6">Silahkan diisi dengan kesesuaian data yang ada
             dilapangan. Akan terjadi pengecekan dari admin ke lokasi</p>
-        <form class="form-submission" action="{{ route('partner.farm.add'}}" method="POST">
+        <form class="form-submission" action="{{ route('partner.farm.add') }}" method="POST">
             @csrf
             @method('POST')
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
