@@ -61,7 +61,7 @@ Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}/{slug_
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth'])->name('admin.dashboard');
 
 // route partner for submission
 Route::get('partner/submission', [SubmissionController::class, 'submission'])->name('partner.submission');
@@ -131,7 +131,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'role:Admin'])->group(function () {
     // route dashboard admin
-    Route::get('admin/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('admin/dashboard', [DashboardAdminController::class, 'index']);
 
     // route admin for category
     Route::get('admin/category', [CategoryProductController::class, 'list'])->name('admin.category.list');

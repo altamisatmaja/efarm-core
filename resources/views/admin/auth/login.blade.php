@@ -111,7 +111,7 @@
                             localStorage.setItem('token-efarm', data.token);
                             window.location.href = "/admin/dashboard";
                         } else {
-                            alert("Token tidak ditemukan dalam respon dari server.");
+                            window.location.href = "/dashboard";
                         }
                     }
                 })
