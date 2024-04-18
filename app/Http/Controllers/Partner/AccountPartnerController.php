@@ -29,8 +29,9 @@ class AccountPartnerController extends Controller
     }
 
     public function information_view(){
-        $partner = Auth::user()->partner;
-        return view('partner.pages.profile.information', compact('partner'));
+        $partner = Auth::user();
+        $partners = Auth::user()->partner;
+        return view('partner.pages.profile.information', compact('partner', 'partners'));
     }
 
     public function address_view(){
@@ -46,7 +47,7 @@ class AccountPartnerController extends Controller
     /**
      * Ubah data akun partner
      */
-    public function update(Request $request){
+    public function update_account(Request $request){
         $request->validate([
             'nama' => 'required',
             'username' => 'required',
@@ -58,5 +59,27 @@ class AccountPartnerController extends Controller
         $user->update($request->all());
 
         return redirect()->back()->with('success', 'Informasi akun berhasil diupdate');
+    }
+
+    /**
+     * Ubah data informasi partner
+     */
+    public function update_information(Request $request){
+        try {
+            $request->validate([
+                'nama_partner' => 'required',
+                'nama_perusahaan_partner' => 'required',
+                'lama_peternakan_berdiri' => 'required',
+                'alamat_partner' => 'required',
+            ]);
+    
+            $user = Auth::user()->partner;
+    
+            $user->update($request->all());
+    
+            return redirect()->back()->with('success', 'Informasi akun berhasil diupdate');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 }

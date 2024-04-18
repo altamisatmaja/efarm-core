@@ -197,9 +197,11 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     Route::get('partner/dashboard', [DashboardPartnerController::class, 'index'])->name('partner.dashboard');
     Route::get('partner/account', [AccountPartnerController::class, 'index'])->name('partner.account');
     Route::get('partner/account/edit', [AccountPartnerController::class, 'account_edit_view'])->name('partner.account.edit');
-    Route::put('partner/account/update', [AccountPartnerController::class, 'update'])->name('partner.account.update');
+    Route::put('partner/account/update', [AccountPartnerController::class, 'update_account'])->name('partner.account.update');
     Route::get('partner/account/information', [AccountPartnerController::class, 'information_view'])->name('partner.account.information');
+    Route::put('partner/account/information/update', [AccountPartnerController::class, 'update_information'])->name('partner.account.information.update');
     Route::get('partner/account/address', [AccountPartnerController::class, 'address_view'])->name('partner.account.address');
+    Route::put('partner/account/address/update', [AccountPartnerController::class, 'update_address'])->name('partner.account.address.update');
     Route::get('partner/account/rekening', [AccountPartnerController::class, 'rekening_view'])->name('partner.account.rekening');
 
     // route partner for product
