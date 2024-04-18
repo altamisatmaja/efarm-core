@@ -9,12 +9,12 @@
         </div>
         <div class="flex">
             <img class="rounded-2xl border-zinc-700 w-20 h-20" alt="potoprofil" <img
-            src="/uploads/{{ $partnertable->foto_profil }}" />
+            src="/uploads/{{ $partner->foto_profil }}" />
             <div class="w-full text-gray-500 px-4">
                 <p class="text-lg font-semibold space-x-1 inline-block overflow-hidden whitespace-nowrap text-ellipsis">
-                    <span class="text-textbase">Halo</span><span class="font-extralight text-textbase">{{ $partnertable->nama_partner }} 👋</span>
+                    <span class="text-textbase">Halo</span><span class="font-extralight text-textbase">{{ $partner->nama_partner }} 👋</span>
                 </p>
-                <p>Bergabung sejak, {{ $partnertable->created_at->diffForHumans() }}</p>
+                <p>Bergabung sejak, {{ $partner->created_at->diffForHumans() }}</p>
             </div>
         </div>
         <div x-data="{ openTab: 1 }" class="py-4">

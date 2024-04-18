@@ -11,6 +11,7 @@ class DashboardPartnerController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
+    
     public function index(){
         $partner = Auth::user();
         return view('partner.dashboard', compact('partner'));

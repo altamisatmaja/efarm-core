@@ -24,6 +24,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Customer\AuthCustomerController;
 use App\Http\Controllers\Customer\DashboardCustomerController;
 use App\Http\Controllers\Customer\GoogleSocialiteController;
+use App\Http\Controllers\Partner\AccountPartnerController;
 use App\Http\Controllers\Partner\AuthPartnerController;
 use App\Http\Controllers\Partner\DashboardPartnerController;
 use App\Http\Controllers\Partner\FarmPartnerController;
@@ -194,11 +195,12 @@ Route::middleware(['auth', 'role:Pelanggan'])->group(function () {
 
 Route::middleware(['auth', 'role:Partner'])->group(function () {
     Route::get('partner/dashboard', [DashboardPartnerController::class, 'index'])->name('partner.dashboard');
-    Route::get('partner/account', [PagePartnerController::class, 'account'])->name('partner.account');
-    Route::get('partner/account/edit', [PagePartnerController::class, 'edit'])->name('partner.account.edit');
-    Route::get('partner/account/information', [PagePartnerController::class, 'information'])->name('partner.account.information');
-    Route::get('partner/account/address', [PagePartnerController::class, 'address'])->name('partner.account.address');
-    Route::get('partner/account/rekening', [PagePartnerController::class, 'rekening'])->name('partner.account.rekening');
+    Route::get('partner/account', [AccountPartnerController::class, 'index'])->name('partner.account');
+    Route::get('partner/account/edit', [AccountPartnerController::class, 'account_edit_view'])->name('partner.account.edit');
+    Route::put('partner/account/update', [AccountPartnerController::class, 'update'])->name('partner.account.update');
+    Route::get('partner/account/information', [AccountPartnerController::class, 'information_view'])->name('partner.account.information');
+    Route::get('partner/account/address', [AccountPartnerController::class, 'address_view'])->name('partner.account.address');
+    Route::get('partner/account/rekening', [AccountPartnerController::class, 'rekening_view'])->name('partner.account.rekening');
 
     // route partner for product
     Route::get('partner/product', [PagePartnerController::class, 'product_index'])->name('partner.product.list');
