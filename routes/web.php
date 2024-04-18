@@ -60,7 +60,7 @@ Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}', [Pag
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}/{slug_product}', [PageWebController::class, 'product'])->name('homepage.market.farm.product');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 // route partner for submission
@@ -96,7 +96,7 @@ Route::middleware('guest')->group(function () {
     Route::get('admin/login', [AuthAdminController::class, 'index'])
         ->name('admin.login');
     Route::post('admin/login', [AuthAdminController::class, 'store']);
-    Route::get('admin/logout', [AuthAdminController::class, 'logout']);
+    
 
     // route for partner
     Route::get('partner/login', [AuthPartnerController::class, 'index'])->name('partner.login');
@@ -175,6 +175,11 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 
     // route admin for read account customer
     Route::get('admin/account/customer', [CustomerAccountController::class, 'index'])->name('admin.customer.account');
+
+    /**
+     * Logout admin
+     */
+    Route::get('admin/logout', [AuthAdminController::class, 'destroy'])->name('admin.logout');
 });
 
 Route::middleware(['auth', 'role:Pelanggan'])->group(function () {

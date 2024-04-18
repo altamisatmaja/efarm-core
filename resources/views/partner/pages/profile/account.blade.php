@@ -3,12 +3,6 @@
 @section('title', 'Dashboard | Order')
 
 @section('content')
-@php
-    // $user = App\Models\User::where('username', $partner)->first();
-    // $partner = 
-    // dd($user);
-    // $partner = $user->partner;
-@endphp
     <div class="flex w-3/4 flex-col h-screen px-16 py-10 mx-auto">
         <div class="flex pb-4">
             <h1 class="text-2xl font-semibold text-textbase">Pengaturan</h1>
@@ -35,7 +29,7 @@
                 <div x-show="openTab === 1" class="transition-all duration-300 w-full">
                     <div class="space-x-2">
                         <div class="grid gap-x-3 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-2 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-2">
-                            <a href="/partner/{{ $partner->username }}/account/edit">
+                            <a href="/partner/account/edit">
                                 <div
                                     class="mb-6 h-full rounded-lg bg-white p-6 border border-gray-400 hover:bg-gray-100 hover:shadow-3xl">
                                     <div class="flex items-center justify-between">
@@ -56,7 +50,7 @@
                                 </div>
                             </a>
 
-                            <a href="/partner/{{ $partner->username }}/account/information">
+                            <a href="/partner/account/information">
                                 <div
                                     class="mb-6 h-full rounded-lg bg-white p-6 border border-gray-400 hover:bg-gray-100 hover:shadow-3xl">
                                     <div class="flex items-center justify-between">
@@ -79,7 +73,7 @@
                             </a>
 
 
-                            <a href="/partner/{{ $partner->username }}/account/address">
+                            <a href="/partner/account/address">
                                 <div
                                     class="mb-6 h-full rounded-lg bg-white p-6 border border-gray-400 hover:bg-gray-100 hover:shadow-3xl">
                                     <div class="flex items-center justify-between">

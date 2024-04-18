@@ -22,9 +22,35 @@ class AuthAdminController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(LoginRequest $request) {
-        $request->authenticate();
-        $request->session()->regenerate();
+        $credentials = $request->only('email', 'password');
 
-        return redirect()->route('admin.dashboard')->with('status', 'Anda berhasil login!');
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            if (Auth::user()->user_role === 'Admin') {
+                return redirect()->route('admin.dashboard')->with('status', 'Anda berhasil login');
+            } else {
+                Auth::logout();
+                return redirect()->back()->with('status', 'Anda bukan admin!');
+            }
+        }
+
+        return redirect()->route('admin.login')->with('status', 'Email atau password salah.');
+    }
+    
+     /**
+     * Destroy an authenticated session.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

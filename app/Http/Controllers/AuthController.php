@@ -26,11 +26,11 @@ class AuthController extends Controller
 
         if (auth()->attempt($credentials)) {
             $user = auth()->user();
-            if($user->id_user_role == 1){
+            if($user->user_role == 'Admin'){
                 $token = Auth::guard('api')->attempt($credentials);
                 return response()->json([
                     'success' => true,
-                    'message' => 'Login berhasil',
+                    'message' => 'success',
                     'token' => $token,
                 ]);
             }
@@ -39,7 +39,6 @@ class AuthController extends Controller
             }
         }
     
-        // return back()->withErrors(['error' => 'Email atau password salah']);
         return response()->json([
             'success' => false,
             'message' => 'Email atau password salah'
@@ -83,9 +82,6 @@ class AuthController extends Controller
     {
         Session::flush();
         return redirect('admin/login');
-        // auth()->logout();
-
-        // return response()->json(['message' => 'Successfully logged out']);
     }
 
 }

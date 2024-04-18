@@ -104,8 +104,9 @@
                         _token: csrf_token,
                     },
                     success: function(data) {
-                        if (!data.success) {
-                            alert(data.message);
+                        if (data.token) {
+                            localStorage.setItem('token-efarm', data.token);
+                            window.location.href = "/admin/dashboard";
                         } else if (data.token) {
                             localStorage.setItem('token-efarm', data.token);
                             window.location.href = "/admin/dashboard";

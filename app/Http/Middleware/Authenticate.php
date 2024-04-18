@@ -22,7 +22,17 @@ class Authenticate extends Middleware
                 case 'partner.account':
                     return route('partner.login');
                 default:
-                    return route('login');
+                    return view('/');
+            }
+        } else {
+            $targetRoute = $request->route()->getName();
+            switch ($targetRoute) {
+                case 'admin.dashboard':
+                    return route('admin.login');
+                case 'partner.account':
+                    return route('partner.login');
+                default:
+                    return view('/');
             }
         }
     }
