@@ -27,7 +27,7 @@ class GoogleSocialiteController extends Controller
                 $token = Auth::guard('api')->login($userexists);
                 echo "<script>
                     localStorage.setItem('token-customer', '" . $token . "');
-                    window.location.href = '/customer/dashboard';
+                    window.location.href = '/personal/account';
                 </script>";
             } else {
                 $emptyuser = User::create([
@@ -45,7 +45,7 @@ class GoogleSocialiteController extends Controller
                 $token = Auth::guard('api')->login($emptyuser);
                 echo "<script>
                     localStorage.setItem('token-customer', '" . $token . "');
-                    window.location.href = '/customer/dashboard';
+                    window.location.href = '/personal/account';
                 </script>";
             }
         } catch (Exception $e) {

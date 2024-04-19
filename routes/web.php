@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthAdminController;
 use App\Http\Controllers\Admin\CustomerAccountController;
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Api\AIController;
 use App\Http\Controllers\Api\CategoryLivestockController;
 use App\Http\Controllers\Api\CategoryProductController;
 use App\Http\Controllers\Api\OrderController;
@@ -59,6 +60,7 @@ Route::get('/market/buy', [PageWebController::class, 'buy'])->name('homepage.mar
 Route::get('/market/buy/{slug_kategori_product}', [PageWebController::class, 'farm'])->name('homepage.market.farm');
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}', [PageWebController::class, 'livestock'])->name('homepage.market.farm.livestock');
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}/{slug_product}', [PageWebController::class, 'product'])->name('homepage.market.farm.product');
+Route::get('/market/nearest', [AIController::class, 'nearest_view'])->name('homepage.market.nearest');
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');

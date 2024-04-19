@@ -202,8 +202,7 @@
                     </li>
                 </ul>
                 <div class="space-y-2 pt-2">
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="text-base text-gray-900 font-normal rounded-lg hover:bg-primarybase hover:text-white flex items-center p-2 group ">
-                        
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="text-base text-gray-900 font-normal rounded-lg hover:bg-primarybase hover:text-white flex items-center p-2 group "> 
                         @csrf
                         <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-white transition duration-75"
                             xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"

@@ -215,7 +215,7 @@
                 <div class="flex flex-col">
                     <div class="w-px h-5 bg-slate-400"></div>
                 </div>
-                <a href="{{ route('homepage.about') }}">
+                <a href="{{ route('homepage.market.nearest') }}">
                     <div class="px-5">
                         <p class="font-semibold text-textbase">Terdekat</p>
                     </div>
