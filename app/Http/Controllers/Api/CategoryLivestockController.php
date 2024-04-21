@@ -65,7 +65,7 @@ class CategoryLivestockController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'success',
-            'data' => $categoryLivestock,
+            'data' => $categoryLivestock    ,
         ]);
     }
 
