@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CategoryProduct;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class CategoyProductAdminController extends Controller
@@ -50,20 +51,38 @@ class CategoyProductAdminController extends Controller
 
     public function update(Request $request, $slug_kategori_product){
         $categoryproduct = CategoryProduct::where('slug_kategori_product', $slug_kategori_product);
+
+        $validator = Validator::make($request->all(), [
+            'nama_kategori_product' => 'required',
+            'deskripsi_kategori_product' => 'required',
+            'gambar_kategori_product' => 'required|image|mimes:jpg,png,jpeg,webp',
+            'slug_kategori_product' => 'required',
+        ]);
+
+        $input = $request->all();
         
-        // if($request->hasFile('gambar_kategori_product')){
-        //     File::delete('uploads/'.$category->gambar_kategori_product);
-        //     $gambar = $request->file('gambar_kategori_product');
-        //     $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
-        //     $gambar->move('uploads', $nama_gambar);
-        //     $input['gambar_kategori_product'] = $nama_gambar;
-        // } else {
-        //     unset($input['gambar_kategori_product']);
-        // }
+        if($request->hasFile('gambar_kategori_product')){
+            File::delete('uploads/'.$categoryproduct->gambar_kategori_product);
+            $gambar = $request->file('gambar_kategori_product');
+            $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
+            $gambar->move('uploads', $nama_gambar);
+            $input['gambar_kategori_product'] = $nama_gambar;
+        } else {
+            unset($input['gambar_kategori_product']);
+        }
+
+        $slug = $this->generateSlug($input['nama_kategori_product']);
+        $input['slug_kategori_product'] = $slug;
+
+        $categoryproduct->update($input);
+
+        return redirect()->route('admin.category_product.list')->with('success', 'Data kategori product berhasil diubah');
     }
 
-    public function destory(){
-
+    public function destory($slug_kategori_product){
+        File::delete('uploads/'.$slug_kategori_product);
+        $slug_kategori_product->delete();
+        return redirect()->route('admin.category_product.list')->with('success', 'Data berhasil dihapus');
     }
 
     public function generateSlug($nama_product)
