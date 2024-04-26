@@ -10,8 +10,8 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoyProductAdminController extends Controller
 {
-    public function index(){
-        return view('admin.pages.category_product');
+    public function add(){
+        return view('admin.pages.category_product.create');
     }
 
     public function list(){
@@ -47,6 +47,11 @@ class CategoyProductAdminController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }   
+    }
+
+    public function show($slug_kategori_product){
+        $categoryproduct = CategoryProduct::where('slug_kategori_product', $slug_kategori_product);
+        return view('admin.pages.category_product.edit', compact('categoryproduct'));
     }
 
     public function update(Request $request, $slug_kategori_product){

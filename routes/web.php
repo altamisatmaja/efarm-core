@@ -138,6 +138,10 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 
     // route admin for category
     Route::get('admin/category', [CategoryProductController::class, 'list'])->name('admin.category.list');
+    Route::get('admin/category/add', [CategoryProductController::class, 'add'])->name('admin.category.add');
+    Route::post('admin/category/create', [CategoryProductController::class, 'store'])->name('admin.category.store');
+    Route::get('admin/category/edit/{slug_kategori_product}', [CategoryProductController::class, 'show'])->name('admin.category.store');
+    Route::put('admin/category/update/{slug_kategori_product}', [CategoryProductController::class, 'update'])->name('admin.category.update');
 
     // route admin for typelivestock
     Route::get('admin/typelivestock', [TypeLivestockController::class, 'list'])->name('admin.typelivestock.list');

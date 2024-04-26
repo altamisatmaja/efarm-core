@@ -22,7 +22,7 @@
                         alt="eFarm">
                     {{-- <span class="self-center whitespace-nowrap">eFarm</span> --}}
                 </a>
-                <form action="#" method="GET" class="hidden lg:block lg:pl-32">
+                {{-- <form action="#" method="GET" class="hidden lg:block lg:pl-32">
                     <label for="topbar-search" class="sr-only">Search</label>
                     <div class="mt-1 relative lg:w-64">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -37,7 +37,7 @@
                             class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full pl-10 p-2.5"
                             placeholder="Search">
                     </div>
-                </form>
+                </form> --}}
             </div>
             <div class="flex items-center">
                 <button id="toggleSidebarMobileSearch" type="button"
