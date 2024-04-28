@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\TestimonialController;
 use App\Http\Controllers\Api\TypeLivestockController;
+use App\Http\Controllers\Admin\CategoryProductAdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -136,12 +137,12 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     // route dashboard admin
     Route::get('admin/dashboard', [DashboardAdminController::class, 'index']);
 
-    // route admin for category
-    Route::get('admin/category', [CategoryProductController::class, 'list'])->name('admin.category.list');
-    Route::get('admin/category/add', [CategoryProductController::class, 'add'])->name('admin.category.add');
-    Route::post('admin/category/create', [CategoryProductController::class, 'store'])->name('admin.category.store');
-    Route::get('admin/category/edit/{slug_kategori_product}', [CategoryProductController::class, 'show'])->name('admin.category.store');
-    Route::put('admin/category/update/{slug_kategori_product}', [CategoryProductController::class, 'update'])->name('admin.category.update');
+    // route admin for categoryproducts
+    Route::get('admin/category', [CategoryProductAdminController::class, 'list'])->name('admin.category.list');
+    Route::get('admin/category/add', [CategoryProductAdminController::class, 'add'])->name('admin.category.add');
+    Route::post('admin/category/create', [CategoryProductAdminController::class, 'store'])->name('admin.category.store');
+    Route::get('admin/category/edit/{slug_kategori_product}', [CategoryProductAdminController::class, 'show'])->name('admin.category.edit');
+    Route::put('admin/category/update/{slug_kategori_product}', [CategoryProductAdminController::class, 'update'])->name('admin.category.update');
 
     // route admin for typelivestock
     Route::get('admin/typelivestock', [TypeLivestockController::class, 'list'])->name('admin.typelivestock.list');

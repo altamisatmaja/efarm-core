@@ -10,6 +10,12 @@ class CategoryProduct extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $fillable = [
+        'nama_kategori_product',
+        'deskripsi_kategori_product',
+        'gambar_kategori_product',
+        'slug_kategori_product',
+    ];
 
     public function categorylivestock() {
         return $this->hasMany(CategoryLivestock::class, 'id_kategori_produk');
