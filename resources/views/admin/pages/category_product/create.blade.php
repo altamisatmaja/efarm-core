@@ -26,10 +26,10 @@
                             @csrf
                             <div class="mb-5">
                                 <label for="nama_kategori_product" class="mb-3 block text-base font-medium text-[#07074D]">
-                                    Masukkan nama kategori hewan
+                                    Masukkan nama kategori product
                                 </label>
                                 <input type="text" name="nama_kategori_product" id="nama_kategori_product"
-                                    placeholder="Masukkan nama kategori hewan"
+                                    placeholder="Masukkan nama kategori product"
                                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                             </div>
                             @error('nama_kategori_product')
@@ -38,10 +38,10 @@
                             <div class="mb-6 pt-4">
                                 <label for="deskripsi_kategori_product"
                                     class="mb-3 block text-base font-medium text-[#07074D]">
-                                    Masukkan deskripsi kategori hewan
+                                    Masukkan deskripsi kategori product
                                 </label>
                                 <textarea type="text" name="deskripsi_kategori_product" id="deskripsi_kategori_product"
-                                    placeholder="Masukkan deskripsi kategori hewan"
+                                    placeholder="Masukkan deskripsi kategori product"
                                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
                             </div>
                             @error('deskripsi_kategori_product')

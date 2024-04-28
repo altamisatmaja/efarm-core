@@ -68,7 +68,8 @@ class CategoryProductAdminController extends Controller
 
     public function show($slug_kategori_product)
     {
-        $categoryproduct = CategoryProduct::where('slug_kategori_product', $slug_kategori_product);
+        $categoryproduct = CategoryProduct::where('slug_kategori_product', $slug_kategori_product)->first();
+        
         return view('admin.pages.category_product.edit', compact('categoryproduct'));
     }
 
