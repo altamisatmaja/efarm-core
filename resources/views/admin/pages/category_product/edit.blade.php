@@ -21,9 +21,10 @@
                         <div class="flex justify-between items-center pb-3">
                             <p class="text-2xl font-bold">Tambah kategori produk</p>
                         </div>
-                        <form class="" action="{{ route('admin.category.store') }}" method="POST"
+                        <form class="" action="{{ route('admin.category.update', $categoryproduct->slug_kategori_product) }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="mb-5">
                                 <label for="nama_kategori_product" class="mb-3 block text-base font-medium text-[#07074D]">
                                     Masukkan nama kategori product
@@ -142,14 +143,14 @@
                     var reader = new FileReader();
                     reader.onload = function(e) {
                         $('#image-preview').html(`
-            <div class="mb-5 rounded-md border border-[#e0e0e0] py-4 px-8">
-                <div class="flex items-center justify-between">
-                    <span class="truncate pr-3 text-base font-medium text-[#07074D]">
-                    ${fileName}
-                    </span>
-                </div>
-            </div>
-            `);
+                        <div class="mb-5 rounded-md border border-[#e0e0e0] py-4 px-8">
+                            <div class="flex items-center justify-between">
+                                <span class="truncate pr-3 text-base font-medium text-[#07074D]">
+                                ${fileName}
+                                </span>
+                            </div>
+                        </div>
+                        `);
                     };
                     reader.readAsDataURL(file);
                 }
