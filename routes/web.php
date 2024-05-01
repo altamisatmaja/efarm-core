@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthAdminController;
+use App\Http\Controllers\Admin\CategoryLivestockAdminController;
 use App\Http\Controllers\Admin\CustomerAccountController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Api\AIController;
@@ -149,7 +150,12 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('admin/typelivestock', [TypeLivestockController::class, 'list'])->name('admin.typelivestock.list');
 
     // route admin for typelivestock
-    Route::get('admin/categorylivestock', [CategoryLivestockController::class, 'list'])->name('admin.categorylivestock.list');
+    Route::get('admin/categorylivestock', [CategoryLivestockAdminController::class, 'list'])->name('admin.categorylivestock.list');
+    Route::get('admin/categorylivestock/add', [CategoryLivestockAdminController::class, 'add'])->name('admin.categorylivestock.add');
+    Route::post('admin/categorylivestock/create', [CategoryLivestockAdminController::class, 'store'])->name('admin.categorylivestock.store');
+    Route::get('admin/categorylivestock/edit/{slug}', [CategoryLivestockAdminController::class, 'show'])->name('admin.categorylivestock.show');
+    Route::put('admin/categorylivestock/update/{slug}', [CategoryLivestockAdminController::class, 'update'])->name('admin.categorylivestock.update');
+    Route::delete('admin/categorylivestock/delete/{slug}', [CategoryLivestockAdminController::class, 'destroy'])->name('admin.categorylivestock.destroy');
 
     // route admin for get all product
     Route::get('admin/product', [ProductController::class, 'list'])->name('admin.product.list');

@@ -10,8 +10,16 @@ use Illuminate\Support\Facades\Validator;
 
 class CategoryLivestockAdminController extends Controller
 {
+    public function add(){
+        return view('admin.pages.category_livestock.create');
+    }
     public function index(){
         return view('admin.pages.category_livestock.index');
+    }
+
+    public function show($slug){
+        $categorylivestock = CategoryLivestock::where('slug', $slug)->first();
+        return view('admin.pages.category_livestock.edit', compact('categorylivestock'));
     }
 
     public function list(){
@@ -81,7 +89,7 @@ class CategoryLivestockAdminController extends Controller
         return redirect()->route('admin.category_product.list')->with('success', 'Data kategori hewan berhasil diubah');
     }
 
-    public function destory($slug){
+    public function destroy($slug){
         File::delete('uploads/'.$slug);
         $slug->delete();
         return redirect()->route('admin.category_livestock.list')->with('success', 'Data berhasil dihapus');

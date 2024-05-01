@@ -150,7 +150,7 @@ class CategoryProductAdminController extends Controller
 
             return $slug;
         } catch (\Exception $e) {
-            throw 'Gagal mendapatkan slug';
+            throw $e;
         }
     }
 }

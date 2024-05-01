@@ -12,6 +12,14 @@ class CategoryLivestock extends Model
 
     protected $guarded = [];
 
+    protected $fillable = [
+        'nama_kategori_hewan',
+        'deskripsi_kategori_hewan',
+        'id_kategori_produk',
+        'slug',
+        'gambar_kategori_hewan',
+    ];
+
     public function typelivestock() : HasMany {
         return $this->hasMany(TypeLivestock::class);
     }

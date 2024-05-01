@@ -21,8 +21,9 @@
                         <div class="flex justify-between items-center pb-3">
                             <p class="text-2xl font-bold">Tambah kategori produk</p>
                         </div>
-                        <form class="" action="{{ route('admin.category.update', $categoryproduct->slug_kategori_product) }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form class=""
+                            action="{{ route('admin.category.update', $categoryproduct->slug_kategori_product) }}"
+                            method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="mb-5">
