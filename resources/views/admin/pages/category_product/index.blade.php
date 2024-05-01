@@ -44,7 +44,7 @@
 
 @extends('admin.layouts.app')
 
-@section('title', 'Dashboard | Category')
+@section('title', 'Dashboard | Kategori Produk')
 
 @section('content')
     <section class="w-full px-4 mx-auto">

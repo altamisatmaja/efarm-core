@@ -127,15 +127,15 @@ class CategoryProductAdminController extends Controller
         try {
             $categoryproduct = CategoryProduct::where('slug_kategori_product', $slug_kategori_product)->first();
 
-        if ($categoryproduct) {
-            File::delete('uploads/' . $categoryproduct->gambar_kategori_product);
+            if ($categoryproduct) {
+                File::delete('uploads/' . $categoryproduct->gambar_kategori_product);
 
-            $categoryproduct->delete();
+                $categoryproduct->delete();
 
-            return redirect()->route('admin.category.list')->with('success', 'Data berhasil dihapus');
-        } else {
-            return redirect()->route('admin.category.list')->with('error', 'Data tidak ditemukan');
-        }
+                return redirect()->route('admin.category.list')->with('success', 'Data berhasil dihapus');
+            } else {
+                return redirect()->route('admin.category.list')->with('error', 'Data tidak ditemukan');
+            }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
