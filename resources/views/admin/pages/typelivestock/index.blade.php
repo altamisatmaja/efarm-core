@@ -91,12 +91,14 @@
 
                     <div class="flex flex-wrap items-center">
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                            <h3 class="font-semibold text-xl">Tipe Hewan Ternak</h3>
+                            <h3 class="font-semibold text-xl">Kategori Hewan Ternak</h3>
                         </div>
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                            <button
-                                class="tambah-data-typelivestock bg-primarybase text-white active:bg-primarybase text-xs font-bold uppercase px-3 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                type="button">Tambah data</button>
+                            <a href="{{ route('admin.typelivestock.create') }}">
+                                <button
+                                    class="bg-primarybase text-white active:bg-primarybase text-md font-semibold px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                    type="button">Tambah data</button>
+                            </a>
                         </div>
                     </div>
 
@@ -142,6 +144,63 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
+                                @foreach ($typelivestock as $typelivestocks)
+                                    <tr>
+                                        <td class="px-4 py-4 text-sm text-gray-500 text-center">{{ $loop->iteration }}</td>
+                                        <td class="px-4 py-4 text-sm text-gray-500 text-center">
+                                            {{ $typelivestocks->nama_jenis_hewan }}
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500 text-center">
+                                            {{ $typelivestocks->categorylivestock->nama_kategori_product }}
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500 text-center">
+                                            {{ $typelivestocks->deskripsi_jenis_hewan }}
+                                        </td>
+                                        <td class="p-3 flex items-center justify-center">
+                                            <div class="flex-shrink-0 rounded-lg overflow-hidden w-48 h-48">
+                                                <img src="/uploads/{{ $typelivestocks->gambar_livestocks }}"
+                                                    class="w-full h-full object-cover" alt="">
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500 text-center">
+                                            {{ $typelivestocks->slug_typelivestocks }}
+                                        </td>
+                                        <td class="py-3.5 px-4 text-sm font-normal text-gray-500">
+                                            <div class="gap-x-3">
+                                                <div class="flex item-center justify-center">
+                                                    <a href="{{ route('admin.typelivestock.edit', $typelivestocks->slug_typelivestocks) }}"
+                                                        class="cursor-pointer">
+                                                        <div
+                                                            class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2"
+                                                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                                            </svg>
+                                                        </div>
+                                                    </a>
+                                                    <form onsubmit="return confirm('Apakah Anda Yakin ?');" method="POST"
+                                                        action="{{ route('admin.typelivestock.destroy', $typelivestocks->slug_typelivestocks) }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit">
+                                                            <div
+                                                                class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                    viewBox="0 0 24 24" stroke="currentColor">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                                        stroke-width="2"
+                                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                                </svg>
+                                                            </div>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -186,346 +245,7 @@
         </div>
     </section>
 
-    {{-- Modal tambah --}}
-    <div class="hidden modal-tambah-typelivestock">
-        <div class="fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"
-            style="background: rgba(0,0,0,.7);">
-            <div
-                class="border border-teal-500 modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-                <div class="modal-content py-4 text-left px-6">
-                    <!--Title-->
-                    <div class="flex justify-between items-center pb-3">
-                        <p class="text-2xl font-bold">Tambah kategori hewan ternak</p>
-                        <div class="modal-close cursor-pointer z-50">
-                            <svg class="cancel-tambah-data-typelivestock fill-current text-black"
-                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                                <path
-                                    d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
-                                </path>
-                            </svg>
-                        </div>
-                    </div>
-                    <!--Body-->
-                    <form class="form-tambah-typelivestock" action="" method="POST">
-                        <div class="mb-5">
-                            <label for="nama_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
-                                Masukkan nama jenis hewan
-                            </label>
-
-                            <input type="nama_jenis_hewan" name="nama_jenis_hewan" id="nama_jenis_hewan"
-                                placeholder="Kambing"
-                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
-                        </div>
-                        <div class="w-full flex items-center justify-center mt-5">
-                            <div class="relative group w-full">
-                                <label for="nama_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
-                                    Pilih kategori hewan
-                                </label>
-                                <select name="id_category_livestocks" id="id_category_livestocks"
-                                    class="id_category_livestocks inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
-                                    <option value="Tes" selected
-                                        class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">
-                                        Pilih kategori hewan ternak</option>
-                                    <option value="Tes"
-                                        class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">
-                                        Lowercase</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="mb-6 pt-4">
-                            <label for="deskripsi_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
-                                Masukkan deskripsi jenis hewan
-                            </label>
-                            <textarea type="deskripsi_jenis_hewan" name="deskripsi_jenis_hewan" id="deskripsi_jenis_hewan"
-                                placeholder="Kambing adalah lorem ipsum"
-                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
-                        </div>
-                        <div class="pb-4">
-                            <button
-                                class="hover:shadow-form w-full rounded-md bg-primarybase py-3 px-8 text-center text-base font-semibold text-black outline-none">
-                                Simpan
-                            </button>
-                        </div>
-
-                        <div class="pt-1">
-                            <button type="submit"
-                                class="hover:shadow-form w-full border hover:bg-primarybase hover:text-white border-primarybase rounded-md py-3 px-8 text-center text-base font-semibold text-primarybase">
-                                Batal
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- Modal edit --}}
-    <div class="hidden modal-edit-typelivestock modal">
-        <div class="fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"
-            style="background: rgba(0,0,0,.7);">
-            <div
-                class="border border-teal-500 modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
-                <div class="modal-content py-4 text-left px-6">
-                    <!--Title-->
-                    <div class="flex justify-between items-center pb-3">
-                        <p class="text-2xl font-bold">Edit kategori hewan ternak</p>
-                        <div class="modal-close cursor-pointer z-50">
-                            <svg class="cancel-edit-data-typelivestock fill-current text-black"
-                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
-                                <path
-                                    d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
-                                </path>
-                            </svg>
-                        </div>
-                    </div>
-                    <!--Body-->
-                    <form class="form-edit-typelivestock" action="" method="POST">
-                        <div class="mb-5">
-                            <label for="nama_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
-                                Masukkan nama kategori hewan
-                            </label>
-                            <input type="nama_jenis_hewan" name="nama_jenis_hewan" id="nama_jenis_hewan"
-                                placeholder="Kambing"
-                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
-                        </div>
-                        <div class="w-full flex items-center justify-center mt-5">
-                            <div class="relative group w-full">
-                                <label for="id_category_livestocks"
-                                    class="mb-3 block text-base font-medium text-[#07074D]">
-                                    Pilih kategori hewan
-                                </label>
-                                <select name="id_category_livestocks" id="id_category_livestocks"
-                                    class="id_category_livestocks inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
-                                    <option value="Tes" selected
-                                        class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">
-                                        Pilih kategori hewan ternak</option>
-                                    <option value="Tes"
-                                        class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">
-                                        Lowercase</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="mb-6 pt-4">
-                            <label for="deskripsi_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
-                                Masukkan deskripsi kategori hewan
-                            </label>
-                            <textarea type="deskripsi_jenis_hewan" name="deskripsi_jenis_hewan" id="deskripsi_jenis_hewan"
-                                placeholder="Kambing adalah lorem ipsum"
-                                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
-                        </div>
-
-                        <div class="pb-4">
-                            <button
-                                class="hover:shadow-form w-full rounded-md bg-primarybase py-3 px-8 text-center text-base font-semibold text-black outline-none">
-                                Simpan
-                            </button>
-                        </div>
-
-                        <div class="pt-1">
-                            <button
-                                class="hover:shadow-form w-full border hover:bg-primarybase hover:text-white border-primarybase rounded-md py-3 px-8 text-center text-base font-semibold text-primarybase">
-                                Batal
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @push('js')
-        <script>
-            $(function() {
-                $('.tambah-data-typelivestock').click(function(e) {
-                    $('.modal-tambah-typelivestock').removeClass('hidden');
-                });
-
-                $('.cancel-tambah-data-typelivestock').click(function(e) {
-                    $('.modal-tambah-typelivestock').addClass('hidden');
-                });
-
-                // Read data for select option
-                $.ajax({
-                    url: '/api/categorylivestock',
-                    success: function({
-                        data
-                    }) {
-
-                        console.log(data);
-                        let row = '';
-
-                        const selectInput = $('.id_category_livestocks');
-                        selectInput.empty();
-
-                        selectInput.append($('<option>', {
-                            value: '',
-                            text: 'Pilih kategori hewan ternak'
-                        }));
-
-                        data.forEach(function(val) {
-                            selectInput.append($('<option>', {
-                                value: val.id,
-                                text: val.nama_kategori_hewan
-                            }));
-                        });
-                    }
-                });
-
-
-                // Read data
-                $.ajax({
-                    url: '/api/typelivestock',
-                    success: function({
-                        data
-                    }) {
-                        let row = '';
-                        console.log(data);
-
-                        data.map(function(val, index) {
-                            row += `
-                            <tr>
-                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                        <div class="inline-flex items-center gap-x-3">
-                                            <span>${index+1}</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        ${val.nama_jenis_hewan}</td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        ${val.categorylivestock.nama_kategori_hewan}</td>
-                                    <td class="px-4 py-4 text-sm text-gray-500">
-                                        ${val.deskripsi_jenis_hewan}</td>
-                                    <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                        <div class="flex items-center gap-x-6">
-                                            <a class="edit-data-typelivestock" data-id="${val.id}" data-toggle="modal">
-                                            <button
-                                                class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Edit
-                                            </button>
-                                        </a>
-                                        <a class="hapus-data-typelivestock" data-id="${val.id}">
-                                            <button
-                                                class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Hapus
-                                            </button>
-                                        </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            `;
-                        });
-                        $('tbody').append(row);
-                    }
-                });
-
-                // Hapus data
-                $(document).on('click', '.hapus-data-typelivestock', function() {
-                    const id = $(this).data('id');
-                    const token = localStorage.getItem('token-efarm');
-
-                    // console.log(token);
-
-                    confirm_dialog = confirm('Apakah yakin dihapus?');
-
-
-                    if (confirm_dialog) {
-                        $.ajax({
-                            url: '/api/typelivestock/' + id,
-                            type: "DELETE",
-                            headers: {
-                                "Authorization": token
-                            },
-                            success: function(data) {
-                                if (data.message == 'success') {
-                                    alert('Data berhasil dihapus');
-                                    location.reload();
-                                }
-                            }
-                        });
-                    }
-                });
-
-                // Edit data
-                $(document).on('click', '.edit-data-typelivestock', function(e) {
-                    $('.modal-edit-typelivestock').removeClass('hidden');
-                    const id = $(this).data('id');
-                    console.log(id);
-                    const token = localStorage.getItem('token-efarm');
-
-                    $.get('/api/typelivestock/' + id, function({
-                        data
-                    }) {
-                        console.log(data);
-                        $('input[name="nama_jenis_hewan"]').val(data.nama_jenis_hewan);
-                        $('textarea[name="deskripsi_jenis_hewan"]').val(data
-                            .deskripsi_jenis_hewan);
-                    });
-
-                    $('.form-edit-typelivestock').submit(function(e) {
-                        e.preventDefault();
-                        const form = $(this);
-                        const token = localStorage.getItem('token-efarm');
-                        var formData = new FormData(this);
-                        console.log(formData);
-
-                        $.ajax({
-                            url: `/api/typelivestock/${id}?_method=PUT`,
-                            type: 'POST',
-                            data: formData,
-                            cache: false,
-                            contentType: false,
-                            processData: false,
-                            headers: {
-                                "accept": "application/json",
-                                "Authorization": token,
-                                "Access-Control-Allow-Origin": "*"
-                            },
-                            success: function(data) {
-                                if (data.success) {
-                                    alert('Data berhasil diubah');
-                                    location.reload();
-                                }
-                            }
-                        })
-                    });
-                });
-
-                // Tambah data
-                $('.form-tambah-typelivestock').submit(function(e) {
-                    e.preventDefault();
-                    const form = $(this);
-                    const token = localStorage.getItem('token-efarm');
-                    var formData = new FormData(this);
-                    console.log(formData);
-
-
-                    $.ajax({
-                        url: '/api/typelivestock',
-                        type: 'POST',
-                        data: formData,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        headers: {
-                            "accept": "application/json",
-                            "Authorization": "Bearer" + token,
-                            "Access-Control-Allow-Origin": "*"
-                        },
-                        success: function(data) {
-                            if (data.success) {
-                                alert('Data berhasil ditambahkan');
-                                location.reload();
-                            }
-                        }
-                    })
-                });
-
-
-                $('.cancel-edit-data-typelivestock').click(function(e) {
-                    $('.modal-edit-typelivestock').addClass('hidden');
-                });
-            })
-        </script>
     @endpush
 @endsection

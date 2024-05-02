@@ -24,8 +24,11 @@ class TypeLivestockAdminController extends Controller
     }
 
     public function index(){
-        $typelivestocks = TypeLivestock::with('categorylivestock')->get();
-        return view('admin.pages.typelivestock.index', compact('typelivestocks'));
+        $typelivestock = TypeLivestock::with('categorylivestock')->get();
+        foreach ($typelivestock as $typelivestocks) {
+            var_dump($typelivestocks->categorylivestock);
+        }
+        return view('admin.pages.typelivestock.index', compact('typelivestock'));
     }
 
     public function create(){
@@ -45,8 +48,8 @@ class TypeLivestockAdminController extends Controller
     public function store(Request $request){
         try {
             $validator = Validator::make($request->all(), [
-                'nama_jenis_hewan' => 'required',
                 'id_category_livestocks' => 'required',
+                'nama_jenis_hewan' => 'required',
                 'deskripsi_jenis_hewan' => 'required',
                 'gambar_livestocks' => 'required|image|mimes:png,jpeg,jpg,gif,webp|max:2048',
             ], [
