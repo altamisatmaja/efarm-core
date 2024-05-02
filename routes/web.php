@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthAdminController;
 use App\Http\Controllers\Admin\CategoryLivestockAdminController;
 use App\Http\Controllers\Admin\CustomerAccountController;
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Admin\ProductAdminController;
 use App\Http\Controllers\Admin\TypeLivestockAdminController;
 use App\Http\Controllers\Api\AIController;
 use App\Http\Controllers\Api\CategoryLivestockController;
@@ -165,9 +166,8 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::delete('admin/categorylivestock/delete/{slug}', [CategoryLivestockAdminController::class, 'destroy'])->name('admin.categorylivestock.destroy');
 
     // route admin for get all product
-    Route::get('admin/product', [ProductController::class, 'list'])->name('admin.product.list');
-    Route::get('admin/product/edit/', [ProductController::class, 'edit'])->name('admin.product.edit');
-    Route::get('admin/product/create', [ProductController::class, 'create'])->name('admin.product.create');
+    Route::get('admin/product', [ProductAdminController::class, 'index'])->name('admin.product.list');
+    Route::get('admin/product/show/{slug_product}', [ProductAdminController::class, 'show'])->name('admin.product.show');
 
     // route admin for partner
     Route::get('admin/partner', [PartnerController::class, 'list'])->name('admin.partner');

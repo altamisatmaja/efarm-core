@@ -25,15 +25,13 @@ class TypeLivestockAdminController extends Controller
 
     public function index(){
         $typelivestock = TypeLivestock::with('categorylivestock')->get();
-        foreach ($typelivestock as $typelivestocks) {
-            var_dump($typelivestocks->categorylivestock);
-        }
+        
         return view('admin.pages.typelivestock.index', compact('typelivestock'));
     }
 
     public function create(){
         $categorylivestocks = CategoryLivestock::all();
-        return view('admin.pages.typelivestocks.create', compact('categorylivestocks'));
+        return view('admin.pages.typelivestock.create', compact('categorylivestocks'));
     }
 
     public function show($slug_typelivestocks){
@@ -97,14 +95,15 @@ class TypeLivestockAdminController extends Controller
             }
     
             $validator = Validator::make($request->all(), [
-                'nama_jenis_hewan' => 'required',
                 'id_category_livestocks' => 'required',
+                'nama_jenis_hewan' => 'required',
                 'deskripsi_jenis_hewan' => 'required',
                 'gambar_livestocks' => 'required|image|mimes:png,jpeg,jpg,gif,webp|max:2048',
             ], [
                 'nama_jenis_hewan.required' => 'Nama jenis hewan wajib diisi.',
                 'deskripsi_jenis_hewan.required' => 'Deskripsi jenis hewan wajib diisi.',
                 'gambar_livestocks.required' => 'Gambar jenis hewan wajib diisi dan harus berupa file gambar.',
+                'id_category_livestocks.required' => 'Nama kategori hewan ternak wajib diisi.',
                 'gambar_livestocks.image' => 'Gambar jenis hewan harus berupa file gambar.',
                 'gambar_livestocks.mimes' => 'Gambar jenis hewan harus memiliki format file jpg, png, jpeg, atau webp.',
                 'gambar_livestocks.max' => 'Gambar jenis hewan harus berukuran 1MB kebawah',

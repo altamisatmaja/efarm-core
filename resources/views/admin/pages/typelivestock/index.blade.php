@@ -151,7 +151,9 @@
                                             {{ $typelivestocks->nama_jenis_hewan }}
                                         </td>
                                         <td class="px-4 py-4 text-sm text-gray-500 text-center">
-                                            {{ $typelivestocks->categorylivestock->nama_kategori_product }}
+                                            
+                                                {{ $typelivestocks->categorylivestock->nama_kategori_hewan }}
+                                            
                                         </td>
                                         <td class="px-4 py-4 text-sm text-gray-500 text-center">
                                             {{ $typelivestocks->deskripsi_jenis_hewan }}
