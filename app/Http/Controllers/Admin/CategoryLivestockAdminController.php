@@ -13,9 +13,6 @@ class CategoryLivestockAdminController extends Controller
     public function add(){
         return view('admin.pages.category_livestock.create');
     }
-    public function index(){
-        return view('admin.pages.category_livestock.index');
-    }
 
     public function show($slug){
         $categorylivestock = CategoryLivestock::where('slug', $slug)->first();

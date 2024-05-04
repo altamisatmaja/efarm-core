@@ -152,11 +152,10 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('admin/typelivestock', [TypeLivestockAdminController::class, 'index'])->name('admin.typelivestock.list');
     Route::get('admin/typelivestock/add', [TypeLivestockAdminController::class, 'create'])->name('admin.typelivestock.create');
     Route::post('admin/typelivestock/create', [TypeLivestockAdminController::class, 'store'])->name('admin.typelivestock.add');
-    Route::get('admin/typelivestock/edit/{slug_typelivestocks}', [TypeLivestockAdminController::class, 'edit'])->name('admin.typelivestock.edit');
+    Route::get('admin/typelivestock/edit/{slug_typelivestocks}', [TypeLivestockAdminController::class, 'show'])->name('admin.typelivestock.edit');
     Route::put('admin/typelivestock/update/{slug_typelivestocks}', [TypeLivestockAdminController::class, 'update'])->name('admin.typelivestock.update');
     Route::delete('admin/typelivestock/delete/{slug_typelivestocks}', [TypeLivestockAdminController::class, 'destroy'])->name('admin.typelivestock.destroy');
     
-
     // route admin for typelivestock
     Route::get('admin/categorylivestock', [CategoryLivestockAdminController::class, 'list'])->name('admin.categorylivestock.list');
     Route::get('admin/categorylivestock/add', [CategoryLivestockAdminController::class, 'add'])->name('admin.categorylivestock.add');

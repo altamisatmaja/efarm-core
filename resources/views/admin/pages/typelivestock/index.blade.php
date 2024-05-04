@@ -44,7 +44,7 @@
 
 @extends('admin.layouts.app')
 
-@section('title', 'Dashboard | Typelivestock')
+@section('title', 'Dashboard | categorylivestock')
 
 @section('content')
     <section class="w-full px-4 mx-auto">
@@ -91,7 +91,7 @@
 
                     <div class="flex flex-wrap items-center">
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                            <h3 class="font-semibold text-xl">Kategori jenis hewan ternak</h3>
+                            <h3 class="font-semibold text-xl">Jenis hewan ternak</h3>
                         </div>
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                             <a href="{{ route('admin.typelivestock.create') }}">
@@ -163,7 +163,7 @@
                                             </div>
                                         </td>
                                         <td class="px-4 py-4 text-sm text-gray-500 text-center">
-                                            {{ $typelivestocks->slug_typelivestocks }}
+                                            {{ $typelivestocks->slug_typelivestock }}
                                         </td>
                                         <td class="py-3.5 px-4 text-sm font-normal text-gray-500">
                                             <div class="gap-x-3">
