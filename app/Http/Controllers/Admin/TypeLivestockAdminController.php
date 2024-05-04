@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CategoryLivestock;
+use App\Models\CategoryProduct;
 use App\Models\TypeLivestock;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -34,9 +35,9 @@ class TypeLivestockAdminController extends Controller
         return view('admin.pages.typelivestock.create', compact('categorylivestocks'));
     }
 
-    public function show($slug_typelivestocks){
-        $typelivestocks = TypeLivestock::with('categorylivestock')->where('slug_typelivestocks', $slug_typelivestocks)->first();
-        return view('admin.pages.typelivestock.edit', compact('$typelivestocks'));
+    public function edit($slug_typelivestocks){
+        $typelivestocks = TypeLivestock::where('slug_typelivestocks', $slug_typelivestocks)->first();
+        return view('admin.pages.typelivestock.edit', compact('typelivestocks'));
     }
 
     /**
@@ -80,7 +81,7 @@ class TypeLivestockAdminController extends Controller
 
             TypeLivestock::create($input);
 
-            return redirect()->route('admin.typelivestocks.list')->with('success', 'Data jenis hewan berhasil ditambahkan');
+            return redirect()->route('admin.typelivestock.list')->with('success', 'Data jenis hewan berhasil ditambahkan');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
@@ -89,13 +90,13 @@ class TypeLivestockAdminController extends Controller
     public function update(Request $request, $slug_typelivestocks){
         try {
             $typelivestocks = TypeLivestock::where('slug_typelivestocks', $slug_typelivestocks)->first();
+            // dd($typelivestocks);
     
             if (!$typelivestocks) {
                 return redirect()->back()->with('error', 'Data jenis hewan tidak ditemukan');
             }
     
             $validator = Validator::make($request->all(), [
-                'id_category_livestocks' => 'required',
                 'nama_jenis_hewan' => 'required',
                 'deskripsi_jenis_hewan' => 'required',
                 'gambar_livestocks' => 'required|image|mimes:png,jpeg,jpg,gif,webp|max:2048',
@@ -103,7 +104,6 @@ class TypeLivestockAdminController extends Controller
                 'nama_jenis_hewan.required' => 'Nama jenis hewan wajib diisi.',
                 'deskripsi_jenis_hewan.required' => 'Deskripsi jenis hewan wajib diisi.',
                 'gambar_livestocks.required' => 'Gambar jenis hewan wajib diisi dan harus berupa file gambar.',
-                'id_category_livestocks.required' => 'Nama kategori hewan ternak wajib diisi.',
                 'gambar_livestocks.image' => 'Gambar jenis hewan harus berupa file gambar.',
                 'gambar_livestocks.mimes' => 'Gambar jenis hewan harus memiliki format file jpg, png, jpeg, atau webp.',
                 'gambar_livestocks.max' => 'Gambar jenis hewan harus berukuran 1MB kebawah',
@@ -131,7 +131,7 @@ class TypeLivestockAdminController extends Controller
     
             $typelivestocks->update($input);
     
-            return redirect()->route('admin.typelivestocks.list')->with('success', 'Data jenis hewan berhasil ubah');
+            return redirect()->route('admin.typelivestock.list')->with('success', 'Data jenis hewan berhasil ubah');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
@@ -139,7 +139,7 @@ class TypeLivestockAdminController extends Controller
 
     public function destroy($slug_typelivestocks){
         try {
-            $typelivestocks = TypeLivestock::where('slug_typelivestocks', $slug_typelivestocks);
+            $typelivestocks = TypeLivestock::where('slug_typelivestocks', $slug_typelivestocks)->first();
 
             if($typelivestocks){
                 File::delete('uploads/'. $typelivestocks->gambar_livestocks);

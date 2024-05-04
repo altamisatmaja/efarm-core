@@ -19,7 +19,7 @@
                             </div>
                         @endif
                         <div class="flex justify-between items-center pb-3">
-                            <p class="text-2xl font-bold">Tambah kategori hewan</p>
+                            <p class="text-2xl font-bold">Tambah jenis hewan</p>
                         </div>
                         <form class="" action="{{ route('admin.typelivestock.add') }}" method="POST"
                             enctype="multipart/form-data">
@@ -37,14 +37,14 @@
                             @enderror
                             <div class="mb-5">
                                 <label for="id_category_livestocks" class="mb-3 block text-base font-medium text-[#07074D]">
-                                    Pilih nama kategori hewan
+                                    Pilih nama jenis hewan
                                 </label>
                                 <div>
                                     <select name="id_category_livestocks" id="id_category_livestocks"
                                         class="id_category_livestocks border p-2 rounded w-full">
-                                        <option value="">Pilih kategori hewan</option>
+                                        <option value="">Pilih jenis hewan</option>
                                         @foreach ($categorylivestocks as $categorylivestock)
-                                            <option value="{{ $categorylivestock }}">{{ $categorylivestock->nama_kategori_hewan  }}</option>
+                                            <option value="{{ $categorylivestock->id }}">{{ $categorylivestock->nama_kategori_hewan  }}</option>
                                         @endforeach
                                     </select>
                                 </div>

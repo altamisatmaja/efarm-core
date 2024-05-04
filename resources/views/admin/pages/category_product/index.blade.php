@@ -51,6 +51,7 @@
         <div class="flex flex-col">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="rounded-t mb-0 px-4 py-3 border-0">
+                    
                     @if (session('success'))
                         <div id="successMessage"
                             class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">

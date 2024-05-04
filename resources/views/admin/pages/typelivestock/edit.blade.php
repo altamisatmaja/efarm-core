@@ -22,32 +22,32 @@
                             <p class="text-2xl font-bold">Tambah kategori produk</p>
                         </div>
                         <form class=""
-                            action="{{ route('admin.category.update', $categoryproduct->slug_kategori_product) }}"
+                            action="{{ route('admin.typelivestock.update', $typelivestocks->slug_typelivestocks) }}"
                             method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="mb-5">
-                                <label for="nama_kategori_product" class="mb-3 block text-base font-medium text-[#07074D]">
+                                <label for="nama_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
                                     Masukkan nama kategori product
                                 </label>
-                                <input value="{{ $categoryproduct->nama_kategori_product }}" type="text"
-                                    name="nama_kategori_product" id="nama_kategori_product"
-                                    placeholder="Masukkan nama kategori product"
+                                <input value="{{ $typelivestocks->nama_jenis_hewan }}" type="text"
+                                    name="nama_jenis_hewan" id="nama_jenis_hewan"
+                                    placeholder="Masukkan nama jenis hewan"
                                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                             </div>
-                            @error('nama_kategori_product')
+                            @error('nama_jenis_hewan')
                                 <span class="text-red-500">{{ $message }}</span>
                             @enderror
                             <div class="mb-6 pt-4">
-                                <label for="deskripsi_kategori_product"
+                                <label for="deskripsi_jenis_hewan"
                                     class="mb-3 block text-base font-medium text-[#07074D]">
                                     Masukkan deskripsi kategori product
                                 </label>
-                                <textarea name="deskripsi_kategori_product" id="deskripsi_kategori_product"
+                                <textarea name="deskripsi_jenis_hewan" id="deskripsi_jenis_hewan"
                                     placeholder="Masukkan deskripsi kategori product"
-                                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">{{ $categoryproduct->deskripsi_kategori_product }}</textarea>
+                                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">{{ $typelivestocks->deskripsi_jenis_hewan }}</textarea>
                             </div>
-                            @error('deskripsi_kategori_product')
+                            @error('deskripsi_jenis_hewan')
                                 <span class="text-red-500">{{ $message }}</span>
                             @enderror
                             <div class="mb-6 pt-4">
@@ -55,9 +55,9 @@
                                     Upload gambar
                                 </label>
                                 <div class="mb-8">
-                                    <input type="file" name="gambar_kategori_product" id="gambar_kategori_product"
+                                    <input type="file" name="gambar_livestocks" id="gambar_livestocks"
                                         class="sr-only" onchange="validateImage(this)" />
-                                    <label for="gambar_kategori_product"
+                                    <label for="gambar_livestocks"
                                         class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
                                         <div>
                                             <span class="mb-2 block text-xl font-semibold text-[#07074D]">
@@ -73,7 +73,7 @@
                                         </div>
                                     </label>
                                 </div>
-                                @error('gambar_kategori_product')
+                                @error('gambar_livestocks')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
                                 <div id="image-preview" class="mt-4"></div>
@@ -93,10 +93,10 @@
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @push('js')
-        @if ($categoryproduct->gambar_kategori_product && !$errors->has('gambar_kategori_product'))
+        @if ($typelivestocks->gambar_livestocks && !$errors->has('gambar_livestocks'))
             <script>
                 $(document).ready(function() {
-                    var fileName = "{{ $categoryproduct->gambar_kategori_product }}";
+                    var fileName = "{{ $typelivestocks->gambar_livestocks }}";
                     $('#image-preview').html(`
                 <div class="mb-5 rounded-md border border-[#e0e0e0] py-4 px-8">
                     <div class="flex items-center justify-between">
@@ -111,7 +111,7 @@
         @endif
         <script>
             $(document).ready(function() {
-                $('#gambar_kategori_product').change(function(e) {
+                $('#gambar_livestocks').change(function(e) {
                     var fileName = e.target.files[0].name;
                     var fileExt = fileName.split('.').pop();
                     var reader = new FileReader();
@@ -158,7 +158,7 @@
             }
 
             function submitForm() {
-                var fileInput = document.getElementById('gambar_kategori_product');
+                var fileInput = document.getElementById('gambar_livestocks');
                 var file = fileInput.files[0];
                 var fileType = file.type.split('/').shift();
 
