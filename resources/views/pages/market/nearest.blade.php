@@ -268,7 +268,7 @@
     <script>
         $(function() {
             $.ajax({
-                url: 'http://127.0.0.1:5000/product/-6.2088/106.8456/',
+                url: 'http://127.0.0.1:5000/nearest',
                 method: 'GET',
                 crossDomain: true,
                 headers: {
@@ -277,6 +277,7 @@
                 },
                 success: function(data) {
                     let row = '';
+                    console.log(data);
                     data.map(function(val) {
                         row += `
                 <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">

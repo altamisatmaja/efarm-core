@@ -28,7 +28,18 @@ class Product extends Model
         return $this->hasMany(CategoryProduct::class, 'id', 'id_kategori');
     }
 
+    public function categorylivestocks() : HasMany {
+        return $this->hasMany(CategoryLivestock::class, 'id', 'id_category_livestocks');
+    }
+
     public function testimonial() : hasMany {
         return $this->hasMany(Testimonial::class);
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'id', 'id_product');
+    }
+
+    
 }

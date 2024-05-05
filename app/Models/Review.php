@@ -12,9 +12,12 @@ class Review extends Model
 
     protected $guarded = [];
 
-    public function product(){
-        return $this->BelongsTo(Product::class, 'id', 'id');
+    public function products()
+    {
+        return $this->belongsTo(Product::class, 'id_product', 'id');
     }
+
+
     public function user(){
         return $this->BelongsTo(User::class, 'id', 'id');
     }
