@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Dashboard | Edit Category')
+@section('title', 'Dashboard | Edit Kategori Hewan Ternak')
 
 @section('content')
     <section class="w-full px-4 mx-auto">
@@ -22,7 +22,7 @@
                             <p class="text-2xl font-bold">Tambah kategori produk</p>
                         </div>
                         <form class=""
-                            action="{{ route('admin.typelivestock.update', $typelivestocks->slug_typelivestocks) }}"
+                            action="{{ route('admin.typelivestock.update', $categorylivestock->slug_typelivestocks) }}"
                             method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -30,7 +30,7 @@
                                 <label for="nama_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
                                     Masukkan nama kategori product
                                 </label>
-                                <input value="{{ $typelivestocks->nama_jenis_hewan }}" type="text"
+                                <input value="{{ $categorylivestock->nama_jenis_hewan }}" type="text"
                                     name="nama_jenis_hewan" id="nama_jenis_hewan"
                                     placeholder="Masukkan nama jenis hewan"
                                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
@@ -45,7 +45,7 @@
                                 </label>
                                 <textarea name="deskripsi_jenis_hewan" id="deskripsi_jenis_hewan"
                                     placeholder="Masukkan deskripsi kategori product"
-                                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">{{ $typelivestocks->deskripsi_jenis_hewan }}</textarea>
+                                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">{{ $categorylivestock->deskripsi_jenis_hewan }}</textarea>
                             </div>
                             @error('deskripsi_jenis_hewan')
                                 <span class="text-red-500">{{ $message }}</span>
@@ -93,10 +93,10 @@
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @push('js')
-        @if ($typelivestocks->gambar_livestocks && !$errors->has('gambar_livestocks'))
+        @if ($categorylivestock->gambar_livestocks && !$errors->has('gambar_livestocks'))
             <script>
                 $(document).ready(function() {
-                    var fileName = "{{ $typelivestocks->gambar_livestocks }}";
+                    var fileName = "{{ $categorylivestock->gambar_livestocks }}";
                     $('#image-preview').html(`
                 <div class="mb-5 rounded-md border border-[#e0e0e0] py-4 px-8">
                     <div class="flex items-center justify-between">

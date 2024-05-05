@@ -21,46 +21,29 @@
                         <div class="flex justify-between items-center pb-3">
                             <p class="text-2xl font-bold">Tambah kategori jenis hewan</p>
                         </div>
-                        <form class="" action="{{ route('admin.typelivestock.add') }}" method="POST"
+                        <form class="" action="{{ route('admin.categorylivestock.store') }}" method="POST"
                             enctype="multipart/form-data">
                             @csrf
                             <div class="mb-5">
-                                <label for="nama_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
+                                <label for="nama_kategori_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
                                     Masukkan nama jenis hewan
                                 </label>
-                                <input type="text" name="nama_jenis_hewan" id="nama_jenis_hewan"
+                                <input type="text" name="nama_kategori_hewan" id="nama_kategori_hewan"
                                     placeholder="Masukkan nama jenis hewan"
                                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                             </div>
-                            @error('nama_jenis_hewan')
-                                <span class="text-red-500">{{ $message }}</span>
-                            @enderror
-                            <div class="mb-5">
-                                <label for="id_category_livestocks" class="mb-3 block text-base font-medium text-[#07074D]">
-                                    Pilih nama jenis hewan
-                                </label>
-                                <div>
-                                    <select name="id_category_livestocks" id="id_category_livestocks"
-                                        class="id_category_livestocks border p-2 rounded w-full">
-                                        <option value="">Pilih jenis hewan</option>
-                                        @foreach ($categorylivestocks as $categorylivestock)
-                                            <option value="{{ $categorylivestock->id }}">{{ $categorylivestock->nama_kategori_hewan  }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-                            @error('id_category_livestocks')
+                            @error('nama_kategori_hewan')
                                 <span class="text-red-500">{{ $message }}</span>
                             @enderror
                             <div class="mb-6 pt-4">
-                                <label for="deskripsi_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
+                                <label for="deskripsi_kategori_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
                                     Masukkan deskripsi jenis hewan
                                 </label>
-                                <textarea type="text" name="deskripsi_jenis_hewan" id="deskripsi_jenis_hewan"
+                                <textarea type="text" name="deskripsi_kategori_hewan" id="deskripsi_kategori_hewan"
                                     placeholder="Masukkan deskripsi jenis hewan"
                                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
                             </div>
-                            @error('deskripsi_jenis_hewan')
+                            @error('deskripsi_kategori_hewan')
                                 <span class="text-red-500">{{ $message }}</span>
                             @enderror
                             <div class="mb-6 pt-4">
@@ -68,9 +51,9 @@
                                     Upload gambar
                                 </label>
                                 <div class="mb-8">
-                                    <input type="file" name="gambar_livestocks" id="gambar_livestocks" class="sr-only"
+                                    <input type="file" name="gambar_kategori_hewan" id="gambar_kategori_hewan" class="sr-only"
                                         onchange="validateImage(this)" />
-                                    <label for="gambar_livestocks"
+                                    <label for="gambar_kategori_hewan"
                                         class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
                                         <div>
                                             <span class="mb-2 block text-xl font-semibold text-[#07074D]">
@@ -86,7 +69,7 @@
                                         </div>
                                     </label>
                                 </div>
-                                @error('gambar_livestocks')
+                                @error('gambar_kategori_hewan')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
                                 <div id="image-preview" class="mt-4"></div>
@@ -108,7 +91,7 @@
     @push('js')
         <script>
             $(document).ready(function() {
-                $('#gambar_livestocks').change(function(e) {
+                $('#gambar_kategori_hewan').change(function(e) {
                     var fileName = e.target.files[0].name;
                     var fileExt = fileName.split('.').pop();
                     var reader = new FileReader();
@@ -155,7 +138,7 @@
             }
 
             function submitForm() {
-                var fileInput = document.getElementById('gambar_livestocks');
+                var fileInput = document.getElementById('gambar_kategori_hewan');
                 var file = fileInput.files[0];
                 var fileType = file.type.split('/').shift();
 

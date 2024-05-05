@@ -55,11 +55,13 @@
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
                             <h3 class="font-semibold text-xl">Kategori jenis hewan</h3>
                         </div>
-                        <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
-                            <button
-                                class="tambah-data-categorylivestock bg-primarybase text-white active:bg-primarybase text-xs font-bold uppercase px-3 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                                type="button">Tambah data</button>
-                        </div>
+                        <a href="{{ route('admin.categorylivestock.add') }}">
+                            <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                                <button
+                                    class="tambah-data-categorylivestock bg-primarybase text-white active:bg-primarybase text-xs font-bold uppercase px-3 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                    type="button">Tambah data</button>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -91,12 +93,12 @@
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
-                                        Nama kategori hewan ternak
+                                        Nama kategori
                                     </th>
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
-                                        Deskripsi kategori hewan ternak
+                                        Deskripsi kategori
                                     </th>
 
                                     <th scope="col"
@@ -131,7 +133,7 @@
                                                     class="w-full h-full object-cover" alt="">
                                             </div>
                                         </td>
-                                        
+
                                         <td class="px-4 py-4 text-sm text-gray-500 text-center">
                                             {{ $categorylivestocks->slug }}
                                         </td>

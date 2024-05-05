@@ -16,6 +16,8 @@ class CategoryLivestockAdminController extends Controller
 
     public function show($slug){
         $categorylivestock = CategoryLivestock::where('slug', $slug)->first();
+
+        // dd($categorylivestock);
         return view('admin.pages.category_livestock.edit', compact('categorylivestock'));
     }
 
@@ -31,7 +33,6 @@ class CategoryLivestockAdminController extends Controller
                 'nama_kategori_hewan' => 'required',
                 'deskripsi_kategori_hewan' => 'required',
                 'gambar_kategori_hewan' => 'required|image|mimes:jpg,png,jpeg,webp',
-                'id_kategori_produk' => 'required',
                 'slug' => 'required',
             ]);
     
@@ -49,7 +50,7 @@ class CategoryLivestockAdminController extends Controller
     
             CategoryLivestock::create($input);
     
-            return redirect()->route('admin.pages.category_livestock.list')->with('success', 'Data kategori hewan berhasil ditambahkan');
+            return redirect()->route('admin.categorylivestock.list')->with('success', 'Data kategori hewan berhasil ditambahkan');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         } 
@@ -59,14 +60,13 @@ class CategoryLivestockAdminController extends Controller
         $categorylivestock = CategoryLivestock::where('slug', $slug);
 
         $validator = Validator::make($request->all(), [
-            'nama_kategori_hewan' => 'required',
+                'nama_kategori_hewan' => 'required',
                 'deskripsi_kategori_hewan' => 'required',
                 'gambar_kategori_hewan' => 'required|image|mimes:jpg,png,jpeg,webp',
-                'id_kategori_produk' => 'required',
                 'slug' => 'required',
         ]);
 
-        $input = $request->all();
+        $input = $request->except(['_token', '_method' ]);
         
         if($request->hasFile('gambar_kategori_hewan')){
             File::delete('uploads/'.$categorylivestock->gambar_kategori_hewan);
@@ -78,18 +78,30 @@ class CategoryLivestockAdminController extends Controller
             unset($input['gambar_kategori_hewan']);
         }
 
-        $slug = $this->generateSlug($input['nama_kategori_product']);
+        $slug = $this->generateSlug($input['nama_kategori_hewan']);
         $input['slug'] = $slug;
 
         $categorylivestock->update($input);
 
-        return redirect()->route('admin.category_product.list')->with('success', 'Data kategori hewan berhasil diubah');
+        return redirect()->route('admin.categorylivestock.list')->with('success', 'Data kategori hewan berhasil diubah');
     }
 
     public function destroy($slug){
-        File::delete('uploads/'.$slug);
-        $slug->delete();
-        return redirect()->route('admin.category_livestock.list')->with('success', 'Data berhasil dihapus');
+        try {
+            $categorylivestock = CategoryLivestock::where('slug', $slug)->first();
+
+            if ($categorylivestock) {
+                File::delete('uploads/' . $categorylivestock->gambar_kategori_product);
+
+                $categorylivestock->delete();
+
+                return redirect()->route('admin.categorylivestock.list')->with('success', 'Data berhasil dihapus');
+            } else {
+                return redirect()->route('admin.categorylivestock.list')->with('error', 'Data tidak ditemukan');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 
     public function generateSlug($nama_product)
