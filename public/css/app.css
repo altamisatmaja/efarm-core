@@ -5858,6 +5858,14 @@ select {
     width: 100%;
   }
 
+  .lg\:w-3\/5 {
+    width: 60%;
+  }
+
+  .lg\:w-5\/12 {
+    width: 41.666667%;
+  }
+
   .lg\:max-w-7xl {
     max-width: 80rem;
   }
@@ -6043,6 +6051,10 @@ select {
 
   .lg\:pt-8 {
     padding-top: 2rem;
+  }
+
+  .lg\:pl-5 {
+    padding-left: 1.25rem;
   }
 
   .lg\:text-left {

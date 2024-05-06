@@ -24,7 +24,12 @@ class ProductAdminController extends Controller
         }
 
         $total_reviews = count($reviews);
-        $hasil_reviews = $total_rating / $total_reviews;
+
+        if($total_reviews != 0){
+            $hasil_reviews = number_format($total_rating / $total_reviews, 2);
+        } else {
+            $hasil_reviews = 0;
+        }
         $banyak_reviewers = count($reviews);
 
         $product = Product::with('typelivestocks', 'gender_livestocks', 'partner', 'categoryproduct', 'categorylivestocks')->where('slug_product', $slug_product)->first();

@@ -34,7 +34,7 @@
                             @php
                                 $categoryproducts =  App\Models\CategoryProduct::all();
                             @endphp
-                            @foreach ($categoryproducts as $category)
+                            {{-- @foreach ($categoryproducts as $category)
                             <li class="list-none">
                                 <button type="button" class="flex items-center w-full p-2 my-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white"
                                 aria-controls="dropdown-mart-kategori-{{ $category->id }}" data-collapse-toggle="dropdown-mart-kategori-{{ $category->id }}">
@@ -57,7 +57,7 @@
                                     </li> @endforeach
                                 </ul>
                             </li>
-                            @endforeach
+                            @endforeach --}}
                         </div>
                         <div class="bg-white relative rounded-xl shadow-lg mb-6 px-4 py-4">
                             <a href="" class="inline-block text-gray-600 hover:text-black w-full">
