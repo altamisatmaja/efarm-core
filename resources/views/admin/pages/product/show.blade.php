@@ -182,10 +182,33 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="flex flex-col">
+                            <div class="h-px  bg-slate-400"></div>
+                        </div>
+                        <form onsubmit="return confirm('Apakah Anda Yakin ?');" method="POST"
+                            action="{{ route('admin.product.status', $product->slug_product) }}">
+                            @csrf
+                            @method('PUT')
+                            @php
+                                $statusEnum = ['Aktif', 'Tidak Aktif']
+                            @endphp
+                            <div class="pb-4">
+                                <label for="status">Status Produk *</label>
+                                <select name="status" id="status"
+                                    class="status border p-2 rounded w-full">
+                                    @foreach ($statusEnum as $item)
+                                        <option value="{{ $item }}" {{ $product->status == $item ? 'selected' : '' }}>{{ $item }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="pb-4">
+                                <button type="submit"
+                                    class="hover:shadow-form w-full rounded-md bg-primarybase py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                                    Simpan
+                                </button>
+                            </div>
+                        </form>
                     @endforeach
-                    {{-- <div class="flex flex-col">
-                        <div class="h-px  bg-slate-400"></div>
-                    </div> --}}
                 </div>
             </div>
         </div>

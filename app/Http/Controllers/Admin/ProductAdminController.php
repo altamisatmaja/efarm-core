@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ProductAdminController extends Controller
 {
@@ -35,5 +36,27 @@ class ProductAdminController extends Controller
         $product = Product::with('typelivestocks', 'gender_livestocks', 'partner', 'categoryproduct', 'categorylivestocks')->where('slug_product', $slug_product)->first();
         
         return view('admin.pages.product.show', compact('product', 'reviews', 'hasil_reviews', 'banyak_reviewers'));
+    }
+
+    public function status_handling(Request $request, $slug_product){
+        try {
+            $product = Product::where('slug_product', $slug_product)->first();
+            $validator = Validator::make($request->all(), [
+                'status' => 'required'
+            ], [
+                'status' => 'Status wajib diisi'
+            ]);
+
+            if ($validator->fails()){
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+            $input = $request->except(['_token', '_method' ]);
+            $product->update($input);
+
+            return redirect()->route('admin.product.list')->with('success', 'Data kategori hewan berhasil diubah');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 }

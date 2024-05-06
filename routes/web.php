@@ -167,7 +167,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     // route admin for get all product
     Route::get('admin/product', [ProductAdminController::class, 'index'])->name('admin.product.list');
     Route::get('admin/product/show/{slug_product}', [ProductAdminController::class, 'show'])->name('admin.product.show');
-    Route::put('admin/products/nonactive/{slug_product}', [ProductAdminController::class, 'nonactive'])->name('admin.product.nonactive');
+    Route::put('admin/products/status/{slug_product}', [ProductAdminController::class, 'status_handling'])->name('admin.product.status');
 
     // route admin for partner
     Route::get('admin/partner', [PartnerController::class, 'list'])->name('admin.partner');
