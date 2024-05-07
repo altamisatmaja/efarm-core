@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryLivestockAdminController;
 use App\Http\Controllers\Admin\CustomerAccountController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\ProductAdminController;
+use App\Http\Controllers\Admin\ReviewAdminController;
 use App\Http\Controllers\Admin\TestimonialAdminController;
 use App\Http\Controllers\Admin\TypeLivestockAdminController;
 use App\Http\Controllers\Api\AIController;
@@ -181,7 +182,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('admin/testimoni/show/{id}', [TestimonialAdminController::class, 'show'])->name('admin.testimoni.show');
 
     // route admin for review
-    Route::get('admin/review', [ReviewController::class, 'list'])->name('admin.review.list');
+    Route::get('admin/review', [ReviewAdminController::class, 'list'])->name('admin.review.list');
 
     // route admin for pesanan
     Route::get('admin/order', [OrderController::class, 'list'])->name('admin.order.master');
