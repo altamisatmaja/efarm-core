@@ -201,6 +201,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 
     // route admin for read account customer
     Route::get('admin/account/customer', [CustomerAccountController::class, 'index'])->name('admin.customer.account');
+    Route::put('admin/account/customer/status/{id}', [CustomerAccountController::class, 'status_handling'])->name('admin.customer.status');
 
     /**
      * Logout admin
