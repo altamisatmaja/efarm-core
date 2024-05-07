@@ -92,6 +92,11 @@
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
                                         Partner
                                     </th>
+
+                                    <th scope="col"
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        Status
+                                    </th>
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
                                         Aksi
@@ -163,6 +168,9 @@
                                                     </p>
                                                 </div>
                                             </div>
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            {{ $products->status }}
                                         </td>
                                         <td class="px-4 py-4 text-sm whitespace-nowrap text-gray-500">
                                             <a href="{{ route('admin.product.show', $products->slug_product) }}">

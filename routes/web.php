@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryLivestockAdminController;
 use App\Http\Controllers\Admin\CustomerAccountController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\ProductAdminController;
+use App\Http\Controllers\Admin\TestimonialAdminController;
 use App\Http\Controllers\Admin\TypeLivestockAdminController;
 use App\Http\Controllers\Api\AIController;
 use App\Http\Controllers\Api\CategoryLivestockController;
@@ -175,7 +176,9 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('admin/partner/unsubmission', [PartnerController::class, 'unsubmission'])->name('admin.partner.unsubmission');
 
     // route admin for testimoni
-    Route::get('admin/testimoni', [TestimonialController::class, 'list'])->name('admin.testimoni.list');
+    Route::get('admin/testimoni', [TestimonialAdminController::class, 'list'])->name('admin.testimoni.list');
+    Route::delete('admin/testimoni/delete/{id}', [TestimonialAdminController::class, 'destroy'])->name('admin.testimoni.destroy');
+    Route::get('admin/testimoni/show/{id}', [TestimonialAdminController::class, 'show'])->name('admin.testimoni.show');
 
     // route admin for review
     Route::get('admin/review', [ReviewController::class, 'list'])->name('admin.review.list');

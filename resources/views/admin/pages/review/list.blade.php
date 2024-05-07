@@ -107,6 +107,90 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
+                                @foreach ($product as $products)
+                                    <tr>
+                                        <td class="px-4 py-4 text-sm text-gray-500">{{ $loop->iteration }}</td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $products->created_at->format('d M Y') }}</td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">{{ $products->nama_product }}</td>
+                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                            <div
+                                                class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60">
+                                                <h2 class="text-sm font-normal">@currency($products->harga_product)</h2>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                            <div
+                                                class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60">
+                                                <h2 class="text-sm font-normal">@currency($products->diskon)</h2>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap align-middle">
+                                            <div class="flex gap-1 flex-col items-center justify-center">
+                                                <img class="object-cover w-14 h-14 rounded-lg"
+                                                    src="/uploads/{{ $products->gambar_hewan }}" alt="">
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            @foreach ($products->categoryproduct as $categoryproducts)
+                                                {{ $categoryproducts->nama_kategori_product }}
+                                            @endforeach
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            @foreach ($products->typelivestocks as $typelivestock)
+                                                {{ $typelivestock->nama_jenis_hewan }}
+                                            @endforeach
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $products->deskripsi_product }}
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            @foreach ($products->gender_livestocks as $gender_livestockss)
+                                                {{ $gender_livestockss->nama_gender }}
+                                            @endforeach
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $products->lahir_hewan }} tahun</td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $products->berat_hewan_ternak }} kg</td>
+                                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            {{ $products->stok_hewan_ternak }} ekor
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            {{ $products->terjual }} ekor
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500 align-middle">
+                                            <div class="flex gap-1 flex-col items-center justify-center">
+                                                @foreach ($products->partner as $partner)
+                                                    <img class="object-cover w-8 h-8 rounded-lg"
+                                                        src="/uploads/{{ $partner->foto_profil }}" alt="">
+                                                @endforeach
+                                                <div>
+                                                    <p
+                                                        class="text-xs font-normal align-middle text-center items-center text-gray-600">
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            {{ $products->status }}
+                                        </td>
+                                        <td class="px-4 py-4 text-sm whitespace-nowrap text-gray-500">
+                                            <a href="{{ route('admin.product.show', $products->slug_product) }}">
+                                                <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                    </svg>
+                                                </div>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -153,88 +237,5 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @push('js')
-        <script>
-            $(function() {
-                // Read data
-                $.ajax({
-                    url: '/api/review',
-                    success: function({
-                        data
-                    }) {
-                        let row = '';
-                        console.log(data);
-
-
-                        data.map(function(val, index) {
-                            var createdAtDate = new Date(val.created_at);
-
-                            var options = {
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric',
-                            };
-                            var formattedDate = createdAtDate.toLocaleDateString('id-ID',
-                                options);
-                            row += `
-                            
-                        <tr>
-                                <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                    <div class="inline-flex items-center gap-x-3">
-                                        <span>${index+1}</span>
-                                    </div>
-                                </td>
-                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    ${formattedDate}</td>
-                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    ${val.product.nama_product}</td>
-                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    ${val.review}</td>
-                                <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                    ${val.user.nama}</td>
-                                <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                    <div class="flex items-center gap-x-6">
-                                    <a class="hapus-data-review" data-id="${val.id}">
-                                        <button
-                                            class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                            Hapus
-                                        </button>
-                                    </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        `;
-                        });
-                        $('tbody').append(row);
-                    }
-                });
-
-                // Hapus data
-                $(document).on('click', '.hapus-data-review', function() {
-                    const id = $(this).data('id');
-                    const token = localStorage.getItem('token-efarm');
-
-                    // console.log(token);
-
-                    confirm_dialog = confirm('Apakah yakin dihapus?');
-
-
-                    if (confirm_dialog) {
-                        $.ajax({
-                            url: '/api/review/' + id,
-                            type: "DELETE",
-                            headers: {
-                                "Authorization": token
-                            },
-                            success: function(data) {
-                                if (data.message == 'success') {
-                                    alert('Data berhasil dihapus');
-                                    location.reload();
-                                }
-                            }
-                        });
-                    }
-                });
-            })
-        </script>
     @endpush
 @endsection
