@@ -21,4 +21,5 @@ class Review extends Model
     public function user(){
         return $this->BelongsTo(User::class, 'id', 'id');
     }
+
 }

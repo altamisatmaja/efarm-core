@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\Review;
 use App\Models\Testimonial;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -34,9 +37,25 @@ class TestimonialAdminController extends Controller
     {
         try {
             $testimonials = Testimonial::where('id', $id)->first();
+            $product = Product::where('id', $testimonials->id_products)->first();
+            $user = User::where('id', $testimonials->id_user)->first();
+            $reviews = Review::where('id_product', $product->id)->get();
+            $total_rating = 0;
+            foreach ($reviews as $review) {
+                $total_rating += $review->rating;
+            }
+
+            $total_reviews = count($reviews);
+
+            if ($total_reviews != 0) {
+                $hasil_reviews = number_format($total_rating / $total_reviews, 2);
+            } else {
+                $hasil_reviews = 0;
+            }
+            $banyak_reviewers = count($reviews);
 
             if ($testimonials) {
-                return view('admin.pages.testimoni.show', compact('testimonials'));
+                return view('admin.pages.testimoni.show', compact('testimonials', 'product', 'user', 'reviews', 'hasil_reviews', 'banyak_reviewers'));
             } else {
                 return redirect()->route('admin.testimoni.list')->with('error', 'Data tidak ditemukan');
             }

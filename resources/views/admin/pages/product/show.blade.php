@@ -19,7 +19,7 @@
                             <span class="flex items-center">
                                 @php
                                     $rating = (int) $hasil_reviews;
-                                    if (!$rating) {
+                                    if ($rating) {
                                         for ($i = 1; $i <= 5; $i++) {
                                             if ($i <= $rating) {
                                                 echo '<svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-yellow-500"';
@@ -35,12 +35,15 @@
                                                 echo '</svg>';
                                             }
                                         }
+                                    } else {
+                                        for ($i = 1; $i <= 5; $i++) {
+                                                echo '<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-yellow-500"';
+                                                echo ' viewBox="0 0 24 24">';
+                                                echo '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"';
+                                                echo '></path>';
+                                                echo '</svg>';
+                                        }
                                     }
-                                    echo '<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-yellow-500"';
-                                    echo ' viewBox="0 0 24 24">';
-                                    echo '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"';
-                                    echo '></path>';
-                                    echo '</svg>';
                                 @endphp
                                 <p class="text-gray-600 font-bold text-sm ml-1">
                                     {{ $hasil_reviews }}
@@ -59,10 +62,6 @@
                                 <span class="font-bold text-primarybase text-3xl">{{ $product->harga_product }}</span>
                             </div>
                         </div>
-                        {{-- <div class="flex-1">
-                            <p class="text-green-500 text-xl font-semibold">Diskon 12%</p>
-                            <p class="text-gray-400 line-through text-sm">Rp 2.222.222</p>
-                        </div> --}}
                     </div>
                     <div class="max-w-4xl bg-white w-full rounded-lg">
                         <div class="">
