@@ -13,4 +13,17 @@ class ReviewAdminController extends Controller
 
         return view('admin.pages.review.list', compact('review'));
     }
+
+    public function destroy($id){
+        try {
+            $review = Review::find($id);
+
+            if ($review){
+                $review->delete();
+                return redirect()->route('admin.review.destroy')->with('success', 'Data berhasil dihapus');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan:'. $e->getMessage());
+        }
+    }
 }

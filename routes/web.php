@@ -183,6 +183,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 
     // route admin for review
     Route::get('admin/review', [ReviewAdminController::class, 'list'])->name('admin.review.list');
+    Route::delete('admin/review/destroy/{id}', [ReviewAdminController::class, 'destroy'])->name('admin.review.destroy');
 
     // route admin for pesanan
     Route::get('admin/order', [OrderController::class, 'list'])->name('admin.order.master');
