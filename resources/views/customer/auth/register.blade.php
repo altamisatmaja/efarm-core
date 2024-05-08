@@ -35,12 +35,18 @@
                             </h1>
                         </div>
                         <x-auth-validation-errors class="mb-4" :errors="$errors" />
-                        <form class="form-customer-register space-y-4 md:space-y-6" action="{{ route('register') }}" method="POST">
+                        <form class="space-y-4 md:space-y-6" action="{{ route('register.customer.account') }}" method="POST">
                             @csrf
                             @method('POST')
                             <div>
+                                <label for="nama" class="block mb-2 text-sm font-medium text-gray-900">nama</label>
+                                <input type="text" name="nama" id="nama"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                    placeholder="name@company.com" required="">
+                            </div>
+                            <div>
                                 <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
-                                <input type="username" name="username" id="username"
+                                <input type="text" name="username" id="username"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     placeholder="name@company.com" required="">
                             </div>
@@ -58,23 +64,11 @@
                                     required="">
                             </div>
                             <div>
-                                <label for="konfirmasi_password"
+                                <label 
                                     class="block mb-2 text-sm font-medium text-gray-900">Konfirmasi Password</label>
-                                <input type="password" name="konfirmasi_password" id="konfirmasi_password" placeholder="••••••••"
+                                <input type="password" placeholder="••••••••"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     required="">
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-start">
-                                    <div class="flex items-center h-5">
-                                        <input id="remember" aria-describedby="remember" type="checkbox"
-                                            class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 "
-                                            >
-                                    </div>
-                                    <div class="ml-3 text-sm">
-                                        <label for="remember" class="text-gray-500 ">Saya menyetujui kebijakan privasi *</label>
-                                    </div>
-                                </div>
                             </div>
                             <button type="submit"
                                 class="w-full text-white bg-primarybase hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign

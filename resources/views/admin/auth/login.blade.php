@@ -44,7 +44,7 @@
                             Selamat datang admin 👋
                         </h1>
                     </div>
-                    <form class="form-login user space-y-4 md:space-y-6" action="/admin/login" method="POST">
+                    <form class="form-login user space-y-4 md:space-y-6" action="{{ route('admin.login') }}" method="POST">
                         @csrf
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-textbase">Email
@@ -73,52 +73,6 @@
         </div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        $(function() {
-
-            function setCookie(name, value, days) {
-                var expires = '';
-                if (days) {
-                    var date = new Date();
-                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-                    expires = "; expires=" + date.toUTCString();
-                }
-                document.cookie = name + "=" + (value || "") + expires + "; path=/";
-            }
-
-
-            $('.form-login').submit(function(e) {
-                e.preventDefault();
-                const email = $('.email').val();
-                const password = $('.password').val();
-                const csrf_token = $('meta[name="csrf-token"]').attr('content')
-
-                console.log(csrf_token);
-
-                $.ajax({
-                    url: '/admin/login',
-                    type: 'POST',
-                    data: {
-                        email: email,
-                        password: password,
-                        _token: csrf_token,
-                    },
-                    success: function(data) {
-                        if (data.token) {
-                            localStorage.setItem('token-efarm', data.token);
-                            window.location.href = "/admin/dashboard";
-                        } else if (data.token) {
-                            localStorage.setItem('token-efarm', data.token);
-                            window.location.href = "/admin/dashboard";
-                        } else {
-                            window.location.href = "/dashboard";
-                        }
-                    }
-                })
-            })
-        });
-    </script>
-
 </body>
 
 </html>

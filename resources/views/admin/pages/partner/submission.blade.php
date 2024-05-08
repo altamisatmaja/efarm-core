@@ -63,6 +63,58 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200 ">
+                                @foreach ($partner as $partners)
+                                    <tr>
+                                        <td class="px-4 py-4 text-sm font-medium text-gray-700  whitespace-nowrap">
+                                            <div class="inline-flex items-center gap-x-3">
+                                                <input type="checkbox" class="text-blue-500 border-gray-300 rounded">
+
+                                                <span>{{ $loop->iteration }}</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $partners->created_at->format('d M y') }}</td>
+                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                            <div
+                                                class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60">
+                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+
+                                                <h2 class="text-sm font-normal">{{ $partners->status }}</h2>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            <div class="flex items-center gap-x-2">
+                                                <img class="object-cover w-8 h-8 rounded-full"
+                                                    src="/uploads/{{ $partners->foto_profil }}" alt="">
+                                                <div>
+                                                    <h2 class="text-sm font-medium text-gray-800 ">{{ $partners->nama_partner }}
+                                                    </h2>
+                                                    <p class="text-xs font-normal text-gray-600">{{ $partners->users->email }}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500 text-center">
+                                            {{ $partners->alamat_partner }}, {{ $partners->kelurahan_partner }}, {{ $partners->kecamatan_partner }}, {{ $partners->kabupaten_partner }}, {{ $partners->provinsi_alamat }}
+                                        </td>
+                                        <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                            <div class="flex items-center gap-x-6">
+                                                <button
+                                                    class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                    Lihat Detail
+                                                </button>
+                                                <a data-id="${val.id}" class="verifikasi-partner">
+                                                    <button
+                                                        class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                        Verifikasi
+                                                    </button>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -108,96 +160,5 @@
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @push('js')
-        <script>
-            $(function() {
-                $.ajax({
-                    url: '/api/partner/unconfirmed',
-                    success: function({
-                        data
-                    }) {
-                        let row = '';
-
-                        data.map(function(val, index) {
-                            row += `
-                                <tr>
-                                    <td
-                                        class="px-4 py-4 text-sm font-medium text-gray-700  whitespace-nowrap">
-                                        <div class="inline-flex items-center gap-x-3">
-                                            <input type="checkbox"
-                                                class="text-blue-500 border-gray-300 rounded">
-
-                                            <span>${index+1}</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">Jan 6,
-                                        2022</td>
-                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                        <div
-                                            class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60">
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-
-                                            <h2 class="text-sm font-normal">${val.status}</h2>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        <div class="flex items-center gap-x-2">
-                                            <img class="object-cover w-8 h-8 rounded-full"
-                                                src="/uploads/${val.foto_profil}"
-                                                alt="">
-                                            <div>
-                                                <h2 class="text-sm font-medium text-gray-800 ">${val.nama_partner}
-                                                </h2>
-                                                <p class="text-xs font-normal text-gray-600">
-                                                    ${val.users.email}</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">${val.provinsi_partner}, ${val.kabupaten_partner}, ${val.kecamatan_partner}, ${val.kelurahan_partner}, ${val.alamat_partner}</td>
-                                    <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                        <div class="flex items-center gap-x-6">
-                                            <button
-                                                class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Lihat Detail
-                                            </button>
-                                            <a data-id="${val.id}" class="verifikasi-partner">
-                                            <button
-                                                class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Verifikasi
-                                            </button>
-                                        </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            `;
-                        });
-                        $('tbody').append(row);
-                    }
-                })
-
-                $(document).on('click', '.verifikasi-partner', function() {
-                    const id = $(this).data('id');
-                    const token = localStorage.getItem('token-efarm');
-
-                    $.ajax({
-                        url: '/api/partner/status/' + id,
-                        type: 'POST',
-                        data: {
-                            status: 'Sudah diverifikasi'
-                        },
-                        headers: {
-                            "Authorization": "Bearer" + token,
-                        },
-                        success: function(data) {
-                            alert('Partner berhasil diverifikasi dan bisa berjualan');
-                            location.reload();
-                        }
-                    })
-                })
-            })
-        </script>
     @endpush
 @endsection

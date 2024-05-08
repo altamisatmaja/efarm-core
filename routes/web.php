@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthAdminController;
 use App\Http\Controllers\Admin\CategoryLivestockAdminController;
 use App\Http\Controllers\Admin\CustomerAccountController;
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Admin\PartnerAdminController;
 use App\Http\Controllers\Admin\ProductAdminController;
 use App\Http\Controllers\Admin\ReviewAdminController;
 use App\Http\Controllers\Admin\TestimonialAdminController;
@@ -31,6 +32,8 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Customer\AuthCustomerController;
 use App\Http\Controllers\Customer\DashboardCustomerController;
 use App\Http\Controllers\Customer\GoogleSocialiteController;
+use App\Http\Controllers\Customer\RegisterCustomerController;
+use App\Http\Controllers\Customer\VerificationController;
 use App\Http\Controllers\Partner\AccountPartnerController;
 use App\Http\Controllers\Partner\AuthPartnerController;
 use App\Http\Controllers\Partner\DashboardPartnerController;
@@ -67,19 +70,27 @@ Route::get('/market/buy/{slug_kategori_product}', [PageWebController::class, 'fa
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}', [PageWebController::class, 'livestock'])->name('homepage.market.farm.livestock');
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}/{slug_product}', [PageWebController::class, 'product'])->name('homepage.market.farm.product');
 Route::get('/market/nearest', [AIController::class, 'nearest_view'])->name('homepage.market.nearest');
-
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth'])->name('admin.dashboard');
-
+Route::get('verify-email/{id}/{hash}', [RegisterCustomerController::class, 'show'])
+        ->middleware(['throttle:6,1'])
+        ->name('verification.verify');
 // route partner for submission
 Route::get('partner/submission', [SubmissionController::class, 'submission'])->name('partner.submission');
 
 // route customer google auth
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('customer.google');
 Route::get('/login/google/callback', [GoogleSocialiteController::class, 'handleCallback']);
+Route::get('customer/register', [RegisterCustomerController::class, 'index'])
+    ->name('register.customer');
+
+Route::post('customer/register/account', [RegisterCustomerController::class, 'store'])
+    ->name('register.customer.account');    
 
 Route::middleware('guest')->group(function () {
+    /**
+     * Register Customer
+     */
+    
+    
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
@@ -89,6 +100,11 @@ Route::middleware('guest')->group(function () {
         ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
+
+
+    /**
+     * How breeze send new verif password
+     */
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
@@ -102,28 +118,37 @@ Route::middleware('guest')->group(function () {
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.update');
 
+
+    /**
+     * Ending of breeze send new verif passowrd
+     */
+
     Route::get('admin/login', [AuthAdminController::class, 'index'])
         ->name('admin.login');
     Route::post('admin/login', [AuthAdminController::class, 'store']);
     
-
     // route for partner
     Route::get('partner/login', [AuthPartnerController::class, 'index'])->name('partner.login');
     Route::post('partner/login', [AuthPartnerController::class, 'login'])->name('partner.login.store');
 
     // route for customer
-    Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
-    Route::get('customer/register', [AuthCustomerController::class, 'register_view'])->name('customer.register');
-    Route::post('customer/login', [AuthCustomerController::class, 'login']);
+
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
-        ->name('verification.notice');
+    Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
+    Route::get('customer/register', [AuthCustomerController::class, 'register_view'])->name('customer.register');
+    Route::post('customer/login', [AuthCustomerController::class, 'login']);
+    // Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
+    //     ->name('verification.notice');
 
-    Route::get('verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
-        ->middleware(['signed', 'throttle:6,1'])
-        ->name('verification.verify');
+    Route::get('customer/verify-email', [RegisterCustomerController::class, 'verify_email'])->name('customer.verify.email');
+
+    
+
+    // Route::get('verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
+    // ->middleware(['signed', 'throttle:6,1'])
+    // ->name('verification.verify');
 
     Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
         ->middleware('throttle:6,1')
@@ -140,7 +165,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'role:Admin'])->group(function () {
     // route dashboard admin
-    Route::get('admin/dashboard', [DashboardAdminController::class, 'index']);
+    Route::get('admin/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
 
     // route admin for categoryproducts
     Route::get('admin/category', [CategoryProductAdminController::class, 'list'])->name('admin.category.list');
@@ -172,9 +197,11 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::put('admin/products/status/{slug_product}', [ProductAdminController::class, 'status_handling'])->name('admin.product.status');
 
     // route admin for partner
-    Route::get('admin/partner', [PartnerController::class, 'list'])->name('admin.partner');
-    Route::get('admin/partner/submission', [PartnerController::class, 'submission'])->name('admin.partner.submission');
-    Route::get('admin/partner/unsubmission', [PartnerController::class, 'unsubmission'])->name('admin.partner.unsubmission');
+    Route::get('admin/partner', [PartnerAdminController::class, 'list'])->name('admin.partner');
+    Route::get('admin/partner/show/{id}', [PartnerAdminController::class, 'show'])->name('admin.partner.show');
+    Route::get('admin/partner/submission', [PartnerAdminController::class, 'submission'])->name('admin.partner.from.submission');
+    Route::get('admin/partner/verified', [PartnerAdminController::class, 'verified'])->name('admin.partner.from.verified');
+    Route::put('admin/partner/handle_status/{id}', [PartnerAdminController::class, 'handle_status'])->name('admin.partner.from.handle_status');
 
     // route admin for testimoni
     Route::get('admin/testimoni', [TestimonialAdminController::class, 'list'])->name('admin.testimoni.list');
@@ -207,11 +234,12 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     /**
      * Logout admin
      */
-    Route::post('admin/logout', [AuthAdminController::class, 'destroy'])->name('admin.logout');
+    Route::get('admin/logout', [AuthAdminController::class, 'destroy'])->name('admin.logout');
 });
 
-Route::middleware(['auth', 'role:Pelanggan'])->group(function () {
-    Route::get('personal/account', [DashboardCustomerController::class, 'index']);
+Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
+    
+    Route::get('personal/account', [DashboardCustomerController::class, 'index'])->name('customer.account');
 
     // route customer for account
     Route::get('personal/account/edit', [DashboardCustomerController::class, 'account'])->name('customer.account.edit');

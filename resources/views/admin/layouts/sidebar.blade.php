@@ -91,12 +91,12 @@
                                     Partner</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.partner.submission') }}"
+                                <a href="{{ route('admin.partner.from.submission') }}"
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Pengajuan
                                     Partner</a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.partner.unsubmission') }}"
+                                <a href="{{ route('admin.partner.from.verified') }}"
                                     class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg group hover:bg-primarybase hover:text-white pl-11">Partner
                                     Diverifikasi</a>
                             </li>
@@ -202,8 +202,8 @@
                     </li>
                 </ul>
                 <div class="space-y-2 pt-2">
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="text-base text-gray-900 font-normal rounded-lg hover:bg-primarybase hover:text-white flex items-center p-2 group "> 
-                        @csrf
+                    <a href="{{ route('admin.logout') }}"
+                        class="text-base text-gray-900 font-normal rounded-lg hover:bg-primarybase hover:text-white flex items-center p-2 group ">
                         <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-white transition duration-75"
                             xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
                             fill="currentColor" width="24">
@@ -211,7 +211,7 @@
                                 d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h240q17 0 28.5 11.5T480-800q0 17-11.5 28.5T440-760H200v560h240q17 0 28.5 11.5T480-160q0 17-11.5 28.5T440-120H200Zm487-320H400q-17 0-28.5-11.5T360-480q0-17 11.5-28.5T400-520h287l-75-75q-11-11-11-27t11-28q11-12 28-12.5t29 11.5l143 143q12 12 12 28t-12 28L669-309q-12 12-28.5 11.5T612-310q-11-12-10.5-28.5T613-366l74-74Z" />
                         </svg>
                         <button type="submit" class="ml-3">Logout</button>
-                    </form>
+                    </a>
                 </div>
             </div>
         </div>

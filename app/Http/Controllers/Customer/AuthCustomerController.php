@@ -89,9 +89,6 @@ class AuthCustomerController extends Controller
             ]);
         }
 
-        // return response()->json([
-        //     'data' => $user
-        // ]);
     }
 
     public function logout()
