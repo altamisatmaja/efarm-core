@@ -387,13 +387,19 @@
                                 Masuk
                             </button>
                         </a>
-                        <a href="{{ route('customer.register') }}" class="cursor-pointer">
-                            <button
-                                class="middle none center mr-4 rounded-lg border hover:border-white border-primarybase py-2 px-9 text-primarybase font-sans text-md font-bold primarybase-white shadow-md shadow-blue-500/20 transition-all hover:bg-primarybase hover:text-white hover:shadow-lg focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                                style="outline: none;" data-ripple-light="true">
-                                Daftar
-                            </button>
-                        </a>
+                        {{-- <form method="POST" action="{{ route('verification.send') }}">
+                            @csrf --}}
+                            {{-- <div>
+                                <x-button>
+                                    {{ __('Resend Verification Email') }}
+                                </x-button>
+                            </div> --}}
+                        {{-- </form> --}}
+                        <button
+                            class="middle none center mr-4 rounded-lg border hover:border-white border-primarybase py-2 px-9 text-primarybase font-sans text-md font-bold primarybase-white shadow-md shadow-blue-500/20 transition-all hover:bg-primarybase hover:text-white hover:shadow-lg focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            style="outline: none;" data-ripple-light="true">
+                            Daftar
+                        </button>
                     </div>
                 </div>
             </div>

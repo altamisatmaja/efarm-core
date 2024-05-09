@@ -2761,6 +2761,10 @@ select {
   white-space: nowrap;
 }
 
+.break-all {
+  word-break: break-all;
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
@@ -2844,6 +2848,11 @@ select {
 .rounded-t-none {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
+}
+
+.rounded-t-xl {
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
 }
 
 .rounded-tl-lg {
@@ -3176,6 +3185,11 @@ select {
 .bg-yellow-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
+}
+
+.bg-pink-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 72 153 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-25 {
@@ -4155,6 +4169,11 @@ select {
   --tw-shadow: var(--tw-shadow-colored);
 }
 
+.shadow-pink-500\/20 {
+  --tw-shadow-color: rgb(236 72 153 / 0.2);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -4451,15 +4470,46 @@ select {
   inset: 0px;
 }
 
+.before\:left-0::before {
+  content: var(--tw-content);
+  left: 0px;
+}
+
+.before\:top-0::before {
+  content: var(--tw-content);
+  top: 0px;
+}
+
 .before\:mx-auto::before {
   content: var(--tw-content);
   margin-left: auto;
   margin-right: auto;
 }
 
+.before\:block::before {
+  content: var(--tw-content);
+  display: block;
+}
+
+.before\:h-full::before {
+  content: var(--tw-content);
+  height: 100%;
+}
+
+.before\:w-full::before {
+  content: var(--tw-content);
+  width: 100%;
+}
+
 .before\:w-px::before {
   content: var(--tw-content);
   width: 1px;
+}
+
+.before\:-translate-y-full::before {
+  content: var(--tw-content);
+  --tw-translate-y: -100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .before\:rounded-full::before {
@@ -4476,6 +4526,19 @@ select {
   content: var(--tw-content);
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.before\:bg-red-300::before {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+
+.before\:transition-transform::before {
+  content: var(--tw-content);
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 
 .hover\:scale-110:hover {
@@ -4707,8 +4770,19 @@ select {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.hover\:shadow-pink-500\/40:hover {
+  --tw-shadow-color: rgb(236 72 153 / 0.4);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
 .hover\:ring-black\/20:hover {
   --tw-ring-color: rgb(0 0 0 / 0.2);
+}
+
+.hover\:before\:translate-y-0:hover::before {
+  content: var(--tw-content);
+  --tw-translate-y: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .focus\:z-10:focus {

@@ -35,36 +35,37 @@ class RegisterCustomerController extends Controller
         return redirect()->route('customer.verify.email')->with('status', 'Akun berhasil dibuat, silahkan verifikasi');
     }
 
-    public function verify_email()
+    public function verify_email(Request $request)
     {
         return view('verify');
     }
 
     public function show(Request $request)
     {
-        // Ambil ID dan hash dari URL
         $id = $request->route('id');
         $hash = $request->route('hash');
 
-        // Proses verifikasi email menggunakan ID dan hash
         $user = User::findOrFail($id);
+        $user->update([
+            'email_verified_at' => now(),
+        ]);
 
         if (!hash_equals((string) $hash, sha1($user->getEmailForVerification()))) {
-            // Jika hash tidak cocok, mungkin URL sudah kadaluarsa atau tidak valid
             abort(403);
         }
 
+        $user->email_verified_at = now();
+        $user->save();
+
         if ($user->hasVerifiedEmail()) {
-            // Jika email sudah diverifikasi sebelumnya, Anda bisa redirect ke halaman lain atau melakukan tindakan lain
             return redirect('/');
         }
 
-        // Verifikasi email
         if ($user->markEmailAsVerified()) {
             event(new Verified($user));
         }
 
-        // Redirect ke halaman verifikasi sukses
         return redirect()->route('customer.verify.email')->with('status', 'Email berhasil diverifikasi');
+
     }
 }

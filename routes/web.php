@@ -73,23 +73,34 @@ Route::get('/market/nearest', [AIController::class, 'nearest_view'])->name('home
 Route::get('verify-email/{id}/{hash}', [RegisterCustomerController::class, 'show'])
         ->middleware(['throttle:6,1'])
         ->name('verification.verify');
+
 // route partner for submission
 Route::get('partner/submission', [SubmissionController::class, 'submission'])->name('partner.submission');
+Route::get('verify-email/{id}/{hash}', [PartnerAdminController::class, 'verify'])
+        ->middleware(['throttle:6,1'])
+        ->name('verification.verify');
 
 // route customer google auth
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('customer.google');
 Route::get('/login/google/callback', [GoogleSocialiteController::class, 'handleCallback']);
-Route::get('customer/register', [RegisterCustomerController::class, 'index'])
-    ->name('register.customer');
+// Route::get('customer/register', [RegisterCustomerController::class, 'index'])
+//     ->name('register.customer');
 
 Route::post('customer/register/account', [RegisterCustomerController::class, 'store'])
-    ->name('register.customer.account');    
+    ->name('register.customer.account');
+
+ROute::post('partner/verify/account', [PartnerAdminController::class, 'verify'])
+    ->name('partner.verify.account');
 
 Route::middleware('guest')->group(function () {
     /**
      * Register Customer
      */
-    
+
+    Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
+    Route::get('customer/register', [AuthCustomerController::class, 'register_view'])->name('customer.register');
+    Route::post('customer/login', [AuthCustomerController::class, 'login']);
+    Route::get('customer/verify-email/', [RegisterCustomerController::class, 'verify_email'])->name('customer.verify.email');
     
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
@@ -131,25 +142,11 @@ Route::middleware('guest')->group(function () {
     Route::get('partner/login', [AuthPartnerController::class, 'index'])->name('partner.login');
     Route::post('partner/login', [AuthPartnerController::class, 'login'])->name('partner.login.store');
 
-    // route for customer
-
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
-    Route::get('customer/register', [AuthCustomerController::class, 'register_view'])->name('customer.register');
-    Route::post('customer/login', [AuthCustomerController::class, 'login']);
-    // Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
-    //     ->name('verification.notice');
-
-    Route::get('customer/verify-email', [RegisterCustomerController::class, 'verify_email'])->name('customer.verify.email');
-
-    
-
-    // Route::get('verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
-    // ->middleware(['signed', 'throttle:6,1'])
-    // ->name('verification.verify');
-
+    Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
+                ->name('verification.notice');
     Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
         ->middleware('throttle:6,1')
         ->name('verification.send');
