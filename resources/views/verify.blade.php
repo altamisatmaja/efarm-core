@@ -31,6 +31,12 @@
                                     click here to request another
                                 </button>.
                             </form> --}}
+                            <form action="{{ route('customer.verify.success', $user->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <input value="{{ now() }}" name="email_verified_at" value="{{ now() }}" type="text">
+                                <button type="submit">Verfikasi</button>
+                            </form>
                         </div>
                     
                     </main>

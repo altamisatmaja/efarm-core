@@ -68,20 +68,22 @@ class PartnerAdminController extends Controller
 
     public function verify(Request $request) {
         $user = User::where('email', $request->email)->first();
+        $id = $request->route('id');
     
         if ($user) {
             $user->update([
                 'username' => $request->nama,
                 'nama' => $request->username,
                 'password' => $request->password,
+                'email_verified_at' => now(),
             ]);
             
     
             Auth::login($user);
     
-            return redirect()->route('customer.verify.email')->with('status', 'Akun berhasil diperbarui');
+            return redirect()->route('customer.verify.email', ['id' => $id])->with('status', 'Akun berhasil diperbarui');
         } else {
-            return redirect()->route('customer.verify.email')->with('status', 'Akun tidak ditemukan');
+            return redirect()->route('customer.verify.email', ['id' => $id])->with('status', 'Akun tidak ditemukan');
         }
     }
     

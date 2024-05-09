@@ -19,6 +19,23 @@ class RegisterCustomerController extends Controller
         return view('customer.auth.register');
     }
 
+    public function email_verified(Request $request, $id){
+        $user = User::findOrFail($id);
+    
+        // $input = $request->only(['email_verified_at']);
+        // $input['email_verified_at'] = now();
+        
+        // Melakukan update data
+        // $verify = $user->update($input);
+        $user->email_verified_at = now();
+        $p = $user->save();
+        
+        if ($p){
+            return redirect()->back();
+        }
+    }
+    
+
     public function store(Request $request)
     {
         $user = User::create([
@@ -35,37 +52,35 @@ class RegisterCustomerController extends Controller
         return redirect()->route('customer.verify.email')->with('status', 'Akun berhasil dibuat, silahkan verifikasi');
     }
 
-    public function verify_email(Request $request)
+    public function verify_email(Request $request, $id)
     {
-        return view('verify');
+        $user = User::find($id);
+        return view('verify', compact('user'));
     }
 
     public function show(Request $request)
     {
         $id = $request->route('id');
         $hash = $request->route('hash');
-
+    
         $user = User::findOrFail($id);
-        $user->update([
-            'email_verified_at' => now(),
-        ]);
-
+    
+        // Check if the hash matches
         if (!hash_equals((string) $hash, sha1($user->getEmailForVerification()))) {
             abort(403);
         }
-
-        $user->email_verified_at = now();
-        $user->save();
-
-        if ($user->hasVerifiedEmail()) {
-            return redirect('/');
-        }
-
-        if ($user->markEmailAsVerified()) {
+    
+        // Mark the email as verified
+        if (!$user->hasVerifiedEmail()) {
+            $user->email_verified_at = now();
+            $user->save();
+    
+            // Trigger 'verified' event
             event(new Verified($user));
+    
+            // Redirect with 'id' parameter
+            return redirect()->route('customer.verify.email', $id)->with('status', 'Email berhasil diverifikasi');
         }
-
-        return redirect()->route('customer.verify.email')->with('status', 'Email berhasil diverifikasi');
-
     }
+    
 }
