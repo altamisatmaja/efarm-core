@@ -74,7 +74,6 @@
             <main>
                 <section class="relative z-10 bg-opacity-90 py-10">
                     <div class="container mx-auto flex flex-col lg:flex-row">
-                        {{-- https://cdn.kibrispdr.org/data/380/gambar-kambing-png-25.png --}}
                         <div class="bg-[url('')] relative lg:w-2/3 rounded-xl bg-secondary-lite bg-cover p-8 md:p-16">
                             <p class="max-w-sm text-secondary text-3xl md:text-4xl font-semibold">Diskon hewan kurban
                                 selama periode Idul Adha</p>
@@ -125,27 +124,15 @@
                     <!-- cards -->
                     <div class="mt-5">
                         <ul class="-m-3.5 flex">
-                            @php
-    $categoryProduct = App\Models\CategoryProduct::find(1);
-
-    $categorylivestocks = App\Models\CategoryLivestock::whereHas('categoryProduct', function ($query) {
-        $query->where('id_kategori_produk', 1);
-    })->get();
-@endphp
-
-@foreach ($categorylivestocks as $livestock)
-    <a href="/market/buy/{{ $categoryProduct->slug_kategori_product }}/{{ $livestock->slug }}/">
-        <li class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
-            <img class="max-h-20" src="https://png.pngtree.com/png-clipart/20230411/original/pngtree-goat-animal-realistic-white-transparent-png-image_9047537.png" alt="" />
-            <span class="font-semibold">{{ $livestock->nama_kategori_hewan }}</span>
-        </li>
-    </a>
-@endforeach
-
-
-                           
-    </ul>
-    </div>
+                @foreach ($categorylivestock as $categorylivestocks)
+                <a href="{{ route('homepage.market.farm', $categorylivestocks->slug) }}">
+                    <li class="m-3.5 h-52 w-40 bg-gray-100 rounded-xl flex flex-col items-center justify-center text-center duration-300 hover:bg-white hover:shadow-2xl">
+                        <img class="max-h-20" src="/uploads/{{ $categorylivestocks->gambar_kategori_hewan }}" alt="" />
+                        <span class="font-semibold">{{ $categorylivestocks->nama_kategori_hewan }}</span>
+                    </li> 
+                </a> @endforeach
+                    </ul>
+                </div>
     </section>
     <div class="relative
         flex items-end font-bold mt-6">
@@ -171,258 +158,105 @@
     <main class="w-full mt-6">
         <div class="container">
             <div class="grid gap-3 grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
+                @foreach ($product as $products)
+                    @php
+                        $categorySlug = $products->categoryproduct->first()->slug_kategori_product;
+                        $categorylivestockSlug = $products->categorylivestocks->first()->slug;
+                        $productSlug = $products->slug_product;
+                    @endphp
 
-                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                    <div class="flex items-end justify-end h-52 w-full bg-cover relative"
-                        style="background-image: url('https://assets2.rumah-bumn.id/produk/product-16067182096361.jpg')">
-                        <p class="absolute right-2 top-2 bg-primarybase rounded-lg p-2 cursor-pointer group">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
-                                class="text-white" width="24">
-                                <path fill="white"
-                                    d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h440q17 0 28.5 11.5T760-320q0 17-11.5 28.5T720-280H280q-45 0-68-39.5t-2-78.5l54-98-144-304H80q-17 0-28.5-11.5T40-840q0-17 11.5-28.5T80-880h65q11 0 21 6t15 17l27 57Zm134 280h280-280Z" />
-                            </svg>
-                        </p>
-                    </div>
+                    <a
+                        href="{{ route('homepage.market.farm.product', [$categorySlug, $categorylivestockSlug, $productSlug]) }}">
+                        <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                            <div class="flex items-end justify-end h-52 w-full bg-cover relative"
+                                style="background-image: url('https://assets2.rumah-bumn.id/produk/product-16067182096361.jpg')">
+                                <p class="absolute right-2 top-2 bg-primarybase rounded-lg p-2 cursor-pointer group">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
+                                        class="text-white" width="24">
+                                        <path fill="white"
+                                            d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h440q17 0 28.5 11.5T760-320q0 17-11.5 28.5T720-280H280q-45 0-68-39.5t-2-78.5l54-98-144-304H80q-17 0-28.5-11.5T40-840q0-17 11.5-28.5T80-880h65q11 0 21 6t15 17l27 57Zm134 280h280-280Z" />
+                                    </svg>
+                                </p>
+                            </div>
 
-                    <div class="px-5 py-3">
-                        <h3 class="text-gray-700 text-lg font-semibold">Kambing Jawa Asli</h3>
-                        <div>
-                            <h2 class="text-primarybase text-lg font-semibold">Rp 2.000.000</h2>
-                            <div class="flex gap-2">
-                                <div class="px-4 py-1 rounded-md bg-primarybase">
-                                    <p class="text-white text-sm">Jantan</p>
-                                </div>
-                                <div class="px-4 py-1 rounded-md bg-primarybase">
-                                    <p class="text-white text-sm">Boer</p>
+                            <div class="px-5 py-3">
+                                <h3 class="text-gray-700 text-lg font-semibold">{{ $products->nama_product }}</h3>
+                                <div>
+                                    <h2 class="text-primarybase text-lg font-semibold">@currency($products->harga_product)</h2>
+                                    <div class="flex gap-2">
+                                        <div class="px-4 py-1 rounded-md bg-primarybase">
+                                            @foreach ($products->gender_livestocks as $genderlivestocks)
+                                                <p class="text-white text-sm">{{ $genderlivestocks->nama_gender }}</p>
+                                            @endforeach
+                                        </div>
+                                        <div class="px-4 py-1 rounded-md bg-primarybase">
+                                            @foreach ($products->typelivestocks as $livestock)
+                                                <p class="text-white text-sm">{{ $livestock->nama_jenis_hewan }}</p>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    @foreach ($products->partner as $partners)
+                                        <p class="text-gray-700 text-md font-medium mt-4">
+                                            {{ $partners->provinsi_partner }}</p>
+                                    @endforeach
+                                    <div class="flex items-center">
+                                        @if ($products->reviews->isEmpty())
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="w-5 h-5 text-gray-400 fill-current" viewBox="0 0 20 20">
+                                                <path
+                                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                        @else
+                                            @foreach ($products->reviews as $review)
+                                                @php
+                                                    $rating = $review->rating;
+                                                    echo $rating;
+                                                    $total_rating = 0;
+
+                                                    $total_rating += $review->rating;
+
+                                                    // $total_reviews = count($review);
+
+                                                    // if ($total_reviews != 0) {
+                                                    //     $hasil_reviews = number_format(
+                                                    //         $total_rating / $total_reviews,
+                                                    //         2,
+                                                    //     );
+                                                    // } else {
+                                                    //     $hasil_reviews = 0;
+                                                    // }
+                                                    // $banyak_reviewers = count($reviews);
+
+                                                @endphp
+                                                <div>
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        @if ($rating >= $i)
+                                                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor"
+                                                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                <path
+                                                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                                                </path>
+                                                            </svg>
+                                                        @else
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                class="w-5 h-5 text-gray-400 fill-current"
+                                                                viewBox="0 0 20 20">
+                                                                <path
+                                                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                            </svg>
+                                                        @endif
+                                                    @endfor
+                                                </div>
+                                            @endforeach
+                                        @endif
+                                        <p class="text-gray-700 text-sm font-medium">(3)</p>
+                                    </div>
+                                    <p class="text-gray-700 text-sm font-medium mb-4">200 Terjual</p>
                                 </div>
                             </div>
-                            <p class="text-gray-700 text-md font-medium mt-4">Jawa Timur</p>
-                            <div class="flex items-center">
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor"
-                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <p class="text-gray-700 text-sm font-medium">(3)</p>
-                            </div>
-                            <p class="text-gray-700 text-sm font-medium mb-4">200 Terjual</p>
                         </div>
-                    </div>
-                </div>
-
-                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                    <div class="flex items-end justify-end h-52 w-full bg-cover relative"
-                        style="background-image: url('https://assets2.rumah-bumn.id/produk/product-16067182096361.jpg')">
-                        <p class="absolute right-2 top-2 bg-primarybase rounded-lg p-2 cursor-pointer group">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
-                                class="text-white" width="24">
-                                <path fill="white"
-                                    d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h440q17 0 28.5 11.5T760-320q0 17-11.5 28.5T720-280H280q-45 0-68-39.5t-2-78.5l54-98-144-304H80q-17 0-28.5-11.5T40-840q0-17 11.5-28.5T80-880h65q11 0 21 6t15 17l27 57Zm134 280h280-280Z" />
-                            </svg>
-                        </p>
-                    </div>
-
-                    <div class="px-5 py-3">
-                        <h3 class="text-gray-700 text-lg font-semibold">Kambing Jawa Asli</h3>
-                        <div>
-                            <h2 class="text-primarybase text-lg font-semibold">Rp 2.000.000</h2>
-                            <div class="flex gap-2">
-                                <div class="px-4 py-1 rounded-md bg-primarybase">
-                                    <p class="text-white text-sm">Jantan</p>
-                                </div>
-                                <div class="px-4 py-1 rounded-md bg-primarybase">
-                                    <p class="text-white text-sm">Boer</p>
-                                </div>
-                            </div>
-                            <p class="text-gray-700 text-md font-medium mt-4">Jawa Timur</p>
-                            <div class="flex items-center">
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor"
-                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <p class="text-gray-700 text-sm font-medium">(3)</p>
-                            </div>
-                            <p class="text-gray-700 text-sm font-medium mb-4">200 Terjual</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                    <div class="flex items-end justify-end h-52 w-full bg-cover relative"
-                        style="background-image: url('https://assets2.rumah-bumn.id/produk/product-16067182096361.jpg')">
-                        <p class="absolute right-2 top-2 bg-primarybase rounded-lg p-2 cursor-pointer group">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
-                                class="text-white" width="24">
-                                <path fill="white"
-                                    d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h440q17 0 28.5 11.5T760-320q0 17-11.5 28.5T720-280H280q-45 0-68-39.5t-2-78.5l54-98-144-304H80q-17 0-28.5-11.5T40-840q0-17 11.5-28.5T80-880h65q11 0 21 6t15 17l27 57Zm134 280h280-280Z" />
-                            </svg>
-                        </p>
-                    </div>
-
-                    <div class="px-5 py-3">
-                        <h3 class="text-gray-700 text-lg font-semibold">Kambing Jawa Asli</h3>
-                        <div>
-                            <h2 class="text-primarybase text-lg font-semibold">Rp 2.000.000</h2>
-                            <div class="flex gap-2">
-                                <div class="px-4 py-1 rounded-md bg-primarybase">
-                                    <p class="text-white text-sm">Jantan</p>
-                                </div>
-                                <div class="px-4 py-1 rounded-md bg-primarybase">
-                                    <p class="text-white text-sm">Boer</p>
-                                </div>
-                            </div>
-                            <p class="text-gray-700 text-md font-medium mt-4">Jawa Timur</p>
-                            <div class="flex items-center">
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor"
-                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <p class="text-gray-700 text-sm font-medium">(3)</p>
-                            </div>
-                            <p class="text-gray-700 text-sm font-medium mb-4">200 Terjual</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
-                    <div class="flex items-end justify-end h-52 w-full bg-cover relative"
-                        style="background-image: url('https://assets2.rumah-bumn.id/produk/product-16067182096361.jpg')">
-                        <p class="absolute right-2 top-2 bg-primarybase rounded-lg p-2 cursor-pointer group">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
-                                class="text-white" width="24">
-                                <path fill="white"
-                                    d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h440q17 0 28.5 11.5T760-320q0 17-11.5 28.5T720-280H280q-45 0-68-39.5t-2-78.5l54-98-144-304H80q-17 0-28.5-11.5T40-840q0-17 11.5-28.5T80-880h65q11 0 21 6t15 17l27 57Zm134 280h280-280Z" />
-                            </svg>
-                        </p>
-                    </div>
-
-                    <div class="px-5 py-3">
-                        <h3 class="text-gray-700 text-lg font-semibold">Kambing Jawa Asli</h3>
-                        <div>
-                            <h2 class="text-primarybase text-lg font-semibold">Rp 2.000.000</h2>
-                            <div class="flex gap-2">
-                                <div class="px-4 py-1 rounded-md bg-primarybase">
-                                    <p class="text-white text-sm">Jantan</p>
-                                </div>
-                                <div class="px-4 py-1 rounded-md bg-primarybase">
-                                    <p class="text-white text-sm">Boer</p>
-                                </div>
-                            </div>
-                            <p class="text-gray-700 text-md font-medium mt-4">Jawa Timur</p>
-                            <div class="flex items-center">
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <svg class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor"
-                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                    </path>
-                                </svg>
-                                <p class="text-gray-700 text-sm font-medium">(3)</p>
-                            </div>
-                            <p class="text-gray-700 text-sm font-medium mb-4">200 Terjual</p>
-                        </div>
-                    </div>
-                </div>
+                    </a>
+                @endforeach
 
             </div>
             <div class="flex justify-center">

@@ -81,65 +81,7 @@
             height: 24px;
         }
     </style>
-    <script>
-        let menu = document.getElementById("menu");
-        let closeIcon = document.getElementById("closeIcon");
-        let openIcon = document.getElementById("openIcon");
-        const showMenu = (flag) => {
-            if (flag) {
-                menu.classList.toggle("hidden");
-                closeIcon.classList.toggle("hidden");
-                openIcon.classList.toggle("hidden");
-            }
-        };
 
-        let menu2 = document.getElementById("menu2");
-        let closeIcon2 = document.getElementById("closeIcon2");
-        let openIcon2 = document.getElementById("openIcon2");
-        const showMenu2 = (flag) => {
-            if (flag) {
-                menu2.classList.toggle("hidden");
-                closeIcon2.classList.toggle("hidden");
-                openIcon2.classList.toggle("hidden");
-            }
-        };
-
-        function decrement(e) {
-            const btn = e.target.parentNode.parentElement.querySelector(
-                'button[data-action="decrement"]'
-            );
-            const target = btn.nextElementSibling;
-            let value = Number(target.value);
-            value--;
-            target.value = value;
-        }
-
-        function increment(e) {
-            const btn = e.target.parentNode.parentElement.querySelector(
-                'button[data-action="decrement"]'
-            );
-            const target = btn.nextElementSibling;
-            let value = Number(target.value);
-            value++;
-            target.value = value;
-        }
-
-        const decrementButtons = document.querySelectorAll(
-            `button[data-action="decrement"]`
-        );
-
-        const incrementButtons = document.querySelectorAll(
-            `button[data-action="increment"]`
-        );
-
-        decrementButtons.forEach(btn => {
-            btn.addEventListener("click", decrement);
-        });
-
-        incrementButtons.forEach(btn => {
-            btn.addEventListener("click", increment);
-        });
-    </script>
 </head>
 
 <body class="antialiased">
@@ -176,8 +118,6 @@
             <div>
 
             </div>
-            @foreach ($product as $products)
-            @endforeach
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6">
                 <div class="flex flex-col md:flex-row -mx-4">
 
@@ -186,72 +126,74 @@
                         <div class="py-2 pl-8 pr-10 space-y-3 sticky top-0">
                             <div class="md:flex-1 px-4">
                                 <div x-data="{ image: 1 }" x-cloak>
-                                    <div class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
+                                    <div class="bg-cover h-64 md:h-80 rounded-lg bg-gray-100 mb-4">
                                         <div x-show="image === 1"
-                                            class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                                            <span class="text-5xl">1</span>
+                                            class="bg-cover h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center"
+                                            style="background-image: url('/uploads/{{ $product->gambar_hewan }}'); background-size: cover;">
                                         </div>
-
-                                        <div x-show="image === 2"
-                                            class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                                            <span class="text-5xl">2</span>
-                                        </div>
-
-                                        <div x-show="image === 3"
-                                            class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                                            <span class="text-5xl">3</span>
-                                        </div>
-
-                                        <div x-show="image === 4"
-                                            class="h-64 md:h-80 rounded-lg bg-gray-100 mb-4 flex items-center justify-center">
-                                            <span class="text-5xl">4</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex -mx-2 mb-4">
-                                        <template x-for="i in 4">
-                                            <div class="flex-1 px-2">
-                                                <button x-on:click="image = i"
-                                                    :class="{ 'ring-2 ring-indigo-300 ring-inset': image === i }"
-                                                    class="focus:outline-none w-full rounded-lg h-20 md:h-20 bg-gray-100 flex items-center justify-center">
-                                                    <span x-text="i" class="text-2xl"></span>
-                                                </button>
-                                            </div>
-                                        </template>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+
                     {{-- for product  --}}
                     <div class="md:flex-1 px-4">
 
                         <h2 class="mb-2 leading-tight pt-2 tracking-tight font-bold text-gray-800 text-2xl md:text-3xl">
-                            {{ $products->nama_product }}</h2>
+                            {{ $product->nama_product }}</h2>
                         <div class="flex justify-between item-center">
-                            <p class="text-gray-500 font-medium hidden md:block">Kambing</p>
-                            <div class="flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500"
-                                    viewBox="0 0 20 20" fill="currentColor">
-                                    <path
-                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                </svg>
-                                <p class="text-gray-600 font-bold text-sm ml-1">
-                                    4.96
-                                    <span class="text-gray-500 font-normal">(76 reviews)</span>
-                                </p>
+                            <p class="text-gray-500 font-medium hidden md:block">
+                                {{ $categorylivestock->nama_kategori_hewan }}</p>
+                            <div class="flex justify-between item-center">
+                                <div class="flex mb-4 items-center">
+                                    <span class="flex items-center">
+                                        @php
+                                            $rating = (int) $hasil_reviews;
+                                            if ($rating) {
+                                                for ($i = 1; $i <= 5; $i++) {
+                                                    if ($i <= $rating) {
+                                                        echo '<svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-yellow-500"';
+                                                        echo ' viewBox="0 0 24 24">';
+                                                        echo '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"';
+                                                        echo '></path>';
+                                                        echo '</svg>';
+                                                    } else {
+                                                        echo '<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-yellow-500"';
+                                                        echo ' viewBox="0 0 24 24">';
+                                                        echo '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"';
+                                                        echo '></path>';
+                                                        echo '</svg>';
+                                                    }
+                                                }
+                                            } else {
+                                                for ($i = 1; $i <= 5; $i++) {
+                                                    echo '<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-yellow-500"';
+                                                    echo ' viewBox="0 0 24 24">';
+                                                    echo '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"';
+                                                    echo '></path>';
+                                                    echo '</svg>';
+                                                }
+                                            }
+                                        @endphp
+                                        <p class="text-gray-600 font-bold text-sm ml-1">
+                                            {{ $hasil_reviews }}
+                                            <span class="text-gray-500 font-normal">({{ $banyak_reviewers }}
+                                                reviews)</span>
+                                        </p>
+                                    </span>
+                                    <div
+                                        class="ml-8 bg-gray-200 px-3 py-1 rounded-full text-xs font-medium text-gray-800 hidden md:block">
+                                        {{ $product->terjual }} Terjual</div>
+                                </div>
                             </div>
-                            <div
-                                class="bg-gray-200 px-3 py-1 rounded-full text-xs font-medium text-gray-800 hidden md:block">
-                                100 Terjual</div>
                         </div>
                         <div class="flex items-center space-x-4 my-4">
                             <div>
                                 <div class="rounded-lg flex py-2 px-3">
                                     <span class="text-indigo-400 mr-1 mt-1">Rp</span>
-                                    <span
-                                        class="font-bold text-primarybase text-3xl">{{ $products->harga_product }}</span>
+                                    <span class="font-bold text-primarybase text-3xl"></span>
                                 </div>
                             </div>
                             <div class="flex-1">
@@ -270,16 +212,18 @@
                                     <p class="text-gray-600">
                                         Gender hewan
                                     </p>
-                                    <p>
-                                        Jantan
-                                    </p>
+                                    @foreach ($product->gender_livestocks as $gender)
+                                        <p>
+                                            {{ $gender->nama_gender }}
+                                        </p>
+                                    @endforeach
                                 </div>
                                 <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
                                     <p class="text-gray-600">
                                         Usia hewan
                                     </p>
                                     <p>
-                                        11 Bulan
+                                        {{ $product->lahir_hewan }} Bulan
                                     </p>
                                 </div>
                                 <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
@@ -287,7 +231,7 @@
                                         Berat hewan
                                     </p>
                                     <p>
-                                        100 kg
+                                        {{ $product->berat_hewan_ternak }} kg
                                     </p>
                                 </div>
                                 <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
@@ -295,13 +239,15 @@
                                         Stok
                                     </p>
                                     <p>
-                                        22 ekor
+                                        {{ $product->stok_hewan_ternak }} ekor
                                     </p>
                                 </div>
                                 <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
                                     <p class="text-gray-600">
                                         Deskripsi
-                                    <p class="text-gray-500">{{ $products->deskripsi_product }}</p>
+                                    <p class="text-gray-500">
+                                        {{ $product->deskripsi_product }}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -319,16 +265,18 @@
                                     <p class="text-gray-600">
                                         Dikirim dari
                                     </p>
-                                    <p>
-                                        KAB. JAKARTA
-                                    </p>
+                                    @foreach ($product->partner as $partners)
+                                        <p class="text-gray-500">
+                                            {{ $partners->kabupaten_partner }}
+                                        </p>
+                                    @endforeach
                                 </div>
                                 <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
                                     <p class="text-gray-600">
                                         Melalui
                                     </p>
-                                    <p>
-                                        Internal Kontaner
+                                    <p class="text-gray-500">
+                                        {{ $product->pengiriman }}
                                     </p>
                                 </div>
                             </div>
@@ -336,42 +284,57 @@
                         <div class="flex flex-col">
                             <div class="h-px  bg-slate-400"></div>
                         </div>
-                        <div class="sm:flex sm:justify-between py-2">
-                            <div class="flex items-center">
-                                <div class="flex items-start justify-start">
-                                    <img class="h-12 w-12 rounded-full"
-                                        src="https://lh3.googleusercontent.com/a-/AOh14Gi0DgItGDTATTFV6lPiVrqtja6RZ_qrY91zg42o-g"
-                                        alt="">
-                                    <div class="ml-2 flex flex-col">
-                                        <h3 class="text-lg text-gray-800 font-medium">Pak Aji</h3>
-                                        <span class="text-gray-600">Peternakan pak aji</span>
-                                        <span class="text-gray-600">Lokasi pak ajiadadadadadadaddaadadada</span>
-                                        <div
-                                            class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
-                                            <p class="text-gray-600 w-full">Bergabung pada 2021</p>
-                                            <p class="w-full">Peternakan 2 Tahun berdiri</p>
+                        @foreach ($product->partner as $partner)
+                            <div class="sm:flex sm:justify-between py-2">
+                                <div class="flex items-center">
+                                    <div class="flex items-start justify-start">
+                                        <img class="h-12 w-12 rounded-full"
+                                            src="/uploads/{{ $partner->foto_profil }}" alt="">
+                                        <div class="ml-2 flex flex-col">
+                                            <h3 class="text-lg text-gray-800 font-medium">{{ $partner->nama_partner }}</h3>
+                                            <span class="text-gray-600">Peternakan {{ $partner->nama_perusahaan_partner }}</span>
+                                            {{-- <div
+                                                class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
+                                                <p class="text-gray-600 w-full">Bergabung pada {{ $partner->created_at->diffForHumans() }}</p>
+                                                <p class="w-full">Peternakan 2 Tahun berdiri</p>
+                                            </div> --}}
+                                            <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
+                                                <p class="text-gray-600">
+                                                    Bergabung pada
+                                                </p>
+                                                    <p>
+                                                        {{ $partner->created_at->diffForHumans() }}
+                                                    </p>
+                                            </div>
+                                            <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
+                                                <p class="text-gray-600">
+                                                    Lama peternakan berdiri
+                                                </p>
+                                                    <p>
+                                                        {{ $partner->lama_peternakan_berdiri }} tahun
+                                                    </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="mt-2 sm:mt-0">
+                                    <button
+                                        class="flex items-center text-white bg-blue-600 rounded px-2 py-1 hover:bg-blue-500 focus:outline-none focus:shadow-outline">
+                                        <svg class="h-5 w-5" fill="none" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z">
+                                            </path>
+                                        </svg>
+                                        <span class="ml-1 text-sm">hubungi</span>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="mt-2 sm:mt-0">
-                                <button
-                                    class="flex items-center text-white bg-blue-600 rounded px-2 py-1 hover:bg-blue-500 focus:outline-none focus:shadow-outline">
-                                    <svg class="h-5 w-5" fill="none" stroke-linecap="round"
-                                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
-                                    <span class="ml-1 text-sm">hubungi</span>
-                                </button>
+                            <div class="flex flex-col">
+                                <div class="h-px  bg-slate-400"></div>
                             </div>
-                        </div>
-                        <div class="flex flex-col">
-                            <div class="h-px  bg-slate-400"></div>
-                        </div>
+                            @endforeach
                     </div>
-
-
 
                     {{-- for checkout --}}
                     <div class="w-full md:w-4/12 bg-white md:block mb-2">
@@ -387,7 +350,7 @@
                                         <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
                                             <button data-action="decrement"
                                                 class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
-                                                <span class="m-auto text-2xl font-thin">−</span>
+                                                <span class="m-auto text-2xl font-thin">-</span>
                                             </button>
                                             <input type="number"
                                                 class="focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700  outline-none"
@@ -403,12 +366,12 @@
 
                                 <div class="mb-2 flex justify-between">
                                     <p class="text-gray-700">Subtotal</p>
-                                    <p class="text-gray-700">Rp.222.2222.22</p>
+                                    <p class="text-gray-700">@currency($product->harga_product)</p>
                                 </div>
                                 <hr class="my-4" />
                                 <button
                                     class="mt-3 hover:shadow-form w-full border hover:bg-primarybase hover:text-white border-primarybase rounded-md py-3 px-8 text-center text-base font-semibold text-primarybase">
-                                    Tambah ke keranjang
+                                    Tambah ke wishlist
                                 </button>
                                 <button
                                     class="mt-3 hover:shadow-form w-full border bg-primarybase hover:bg-primarybase hover:text-white border-white rounded-md py-3 px-8 text-center text-base font-semibold text-white">
@@ -899,6 +862,69 @@
             </div>
         </div>
     </div>
+    <script>
+        let menu = document.getElementById("menu");
+        let closeIcon = document.getElementById("closeIcon");
+        let openIcon = document.getElementById("openIcon");
+        const showMenu = (flag) => {
+            if (flag) {
+                menu.classList.toggle("hidden");
+                closeIcon.classList.toggle("hidden");
+                openIcon.classList.toggle("hidden");
+            }
+        };
+
+        let menu2 = document.getElementById("menu2");
+        let closeIcon2 = document.getElementById("closeIcon2");
+        let openIcon2 = document.getElementById("openIcon2");
+        const showMenu2 = (flag) => {
+            if (flag) {
+                menu2.classList.toggle("hidden");
+                closeIcon2.classList.toggle("hidden");
+                openIcon2.classList.toggle("hidden");
+            }
+        };
+
+        function decrement(e) {
+            const btn = e.target.parentNode.parentElement.querySelector(
+                'button[data-action="decrement"]'
+            );
+            const target = btn.nextElementSibling;
+            let value = Number(target.value);
+
+            if (value > 0) {
+                value--;
+                target.value = value;
+            }
+        }
+
+
+        function increment(e) {
+            const btn = e.target.parentNode.parentElement.querySelector(
+                'button[data-action="decrement"]'
+            );
+            const target = btn.nextElementSibling;
+            let value = Number(target.value);
+            value++;
+            target.value = value;
+        }
+
+        const decrementButtons = document.querySelectorAll(
+            `button[data-action="decrement"]`
+        );
+
+        const incrementButtons = document.querySelectorAll(
+            `button[data-action="increment"]`
+        );
+
+        decrementButtons.forEach(btn => {
+            btn.addEventListener("click", decrement);
+        });
+
+        incrementButtons.forEach(btn => {
+            btn.addEventListener("click", increment);
+        });
+    </script>
 </body>
 
 </html>

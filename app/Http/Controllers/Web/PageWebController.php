@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Models\CategoryLivestock;
 use App\Models\CategoryProduct;
+use App\Models\GenderLivestock;
+use App\Models\Livestock;
 use App\Models\Product;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
 class PageWebController extends Controller
@@ -33,27 +36,54 @@ class PageWebController extends Controller
 
     public function product($slug_kategori_product, $slug_category_livestock, $slug_product)
     {
-        $product = Product::where('slug_product', $slug_product)
-            ->get();
+        $product = Product::with('typelivestocks', 'gender_livestocks', 'partner', 'categoryproduct', 'categorylivestocks')->where('slug_product', $slug_product)->first();
 
-        return view('pages.market.product', compact('product'));
+        $id_products = Product::where('slug_product', $slug_product)->first()->id;
+        $reviews = Review::where('id_product', $id_products)->get();
+        $total_rating = 0;
+        foreach ($reviews as $review) {
+            $total_rating += $review->rating;
+        }
+
+        $total_reviews = count($reviews);
+
+        if($total_reviews != 0){
+            $hasil_reviews = number_format($total_rating / $total_reviews, 2);
+        } else {
+            $hasil_reviews = 0;
+        }
+        $banyak_reviewers = count($reviews);
+
+        $categoryproduct = CategoryProduct::where('slug_kategori_product', $slug_kategori_product)->first();
+        $categorylivestock = CategoryLivestock::where('slug', $slug_category_livestock)->first();
+
+        return view('pages.market.product', compact('product', 'reviews', 'hasil_reviews', 'banyak_reviewers', 'categoryproduct', 'categorylivestock'));
     }
 
     public function farm($slug_kategori_product)
     {
         $category = CategoryProduct::where('slug_kategori_product', $slug_kategori_product)->first();
-        $products = Product::where('id_kategori', $category->id)->get();
+        // dd($category);
+        // $products = Product::where('id_kategori', $category->id)->get();
         // dd($products);
         return view('pages.market.farm', compact('products'));
+    }
+
+    public function by_categorytypelivestocks($slug){
+        $categorytypelivestocks = CategoryLivestock::where('slug', $slug)->first();
+        dd($categorytypelivestocks);
+        return view('pages.market.farm', compact('categorytypelivestocks'));
     }
 
     public function market()
     {
         $categoryproduct = CategoryProduct::all();
-        // dd($categoryproduct);
-        // $categorylivestock = CategoryLivestock::where('id_kategori_product', $categoryproduct->id_kategori_product)->first();
-        // dd($categorylivestock);
-        return view('pages.market.index', compact('categoryproduct'));
+        $categorylivestock = CategoryLivestock::all();
+        $livestock = Livestock::all();
+        $product = Product::orderBy('created_at', 'desc')->limit(8)->with('categorylivestocks','categoryproduct','gender_livestocks', 'typelivestocks', 'partner', 'testimonial', 'reviews')->get();
+        // $reviews = Review::all();
+        
+        return view('pages.market.index', compact('categoryproduct', 'categorylivestock', 'livestock', 'product'));
     }
 
     public function about()

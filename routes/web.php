@@ -66,9 +66,11 @@ Route::get('/partner', [PageWebController::class, 'partner'])->name('homepage.pa
 Route::get('/about', [PageWebController::class, 'about'])->name('homepage.about');
 Route::get('/market', [PageWebController::class, 'market'])->name('homepage.market');
 Route::get('/market/buy', [PageWebController::class, 'buy'])->name('homepage.market.buy');
-Route::get('/market/buy/{slug_kategori_product}', [PageWebController::class, 'farm'])->name('homepage.market.farm');
+Route::get('/market/buy/{slug}', [PageWebController::class, 'by_categorytypelivestocks'])->name('homepage.market.farm');
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}', [PageWebController::class, 'livestock'])->name('homepage.market.farm.livestock');
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}/{slug_product}', [PageWebController::class, 'product'])->name('homepage.market.farm.product');
+
+
 Route::get('/market/nearest', [AIController::class, 'nearest_view'])->name('homepage.market.nearest');
 Route::get('verify-email/{id}/{hash}', [RegisterCustomerController::class, 'show'])
         ->middleware(['throttle:6,1'])

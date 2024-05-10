@@ -33,12 +33,12 @@ class Product extends Model
     }
 
     public function testimonial() : hasMany {
-        return $this->hasMany(Testimonial::class);
+        return $this->hasMany(Testimonial::class, 'id_products', 'id');
     }
 
     public function reviews()
     {
-        return $this->hasMany(Review::class, 'id', 'id_product');
+        return $this->hasMany(Review::class, 'id_product', 'id');
     }
 
     
