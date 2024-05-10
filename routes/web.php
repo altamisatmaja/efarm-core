@@ -30,6 +30,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Customer\AuthCustomerController;
+use App\Http\Controllers\Customer\CheckOutController;
 use App\Http\Controllers\Customer\DashboardCustomerController;
 use App\Http\Controllers\Customer\GoogleSocialiteController;
 use App\Http\Controllers\Customer\RegisterCustomerController;
@@ -240,6 +241,9 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
 Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
     
     Route::get('personal/account', [DashboardCustomerController::class, 'index'])->name('customer.account');
+
+
+    Route::get('checkout/{slug_product}', [CheckOutController::class, 'index'])->name('customer.checkout');
 
     // route customer for account
     Route::get('personal/account/edit', [DashboardCustomerController::class, 'account'])->name('customer.account.edit');
