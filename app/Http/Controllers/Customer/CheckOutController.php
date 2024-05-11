@@ -18,6 +18,13 @@ class CheckOutController extends Controller
         return view('pages.market.checkout', compact('channels', 'product'));
     }
 
+    public function show($reference){
+        $tripay = new TripayController();
+        $detail = $tripay->detailTransaction($reference);
+        // dd($detail);
+        return view('pages.market.finally', compact('detail'));
+    }
+
     public function store(Request $request){
         // dd($request->all());
         $product = Product::find($request->product_id);
@@ -30,6 +37,8 @@ class CheckOutController extends Controller
         // dd($product->harga_product);
 
         $tripay = new TripayController();
-        $tripay->requestTransaction($product, $method, $kuantitas, $harga_product, $nama_product, $gambar_hewan);
+        $reference =  $tripay->requestTransaction($product, $method, $kuantitas, $harga_product, $nama_product, $gambar_hewan);
+
+        return redirect()->route('customer.checkout.show', ['reference' => $reference]);
     }
 }

@@ -38,7 +38,7 @@ class TripayController extends Controller
         $apiKey = config('tripay.api_key');
         $privateKey = config('tripay.private_key');
         $merchantCode = config('tripay.merchant_code');
-        $merchantRef = 'TE-'.time();
+        $merchantRef = 'TE-' . time();
         // dd($apiKey, $privateKey, $merchantCode);
         $amount = $harga_product * $kuantitas;
         // dd($amount);
@@ -58,14 +58,13 @@ class TripayController extends Controller
                     'name' => $nama_product,
                     'price' => $harga_product,
                     'quantity' => $kuantitas,
-                    'image_url' => '/uploads/'.$gambar_hewan,
+                    'image_url' => '/uploads/' . $gambar_hewan,
                 ]
             ],
             // 'return_url' => 'https://domainanda.com/redirect',
             'expired_time' => (time() + (24 * 60 * 60)),  // 24 jam
             'signature' => hash_hmac('sha256', $merchantCode . $merchantRef . $amount, $privateKey)
         ];
-        
 
         $curl = curl_init();
 
@@ -88,8 +87,39 @@ class TripayController extends Controller
 
         // dd($reponse);
         $response = json_decode($response)->data;
-        dd($response);
+        // dd($response);
 
-        echo $response ?: $error;
+        return $response ?: $error;
+    }
+
+    public function detailTransaction($reference)
+    {
+        $apiKey = config('tripay.api_key');
+
+        $payload = ['reference' => $reference];
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, [
+            CURLOPT_FRESH_CONNECT => true,
+            CURLOPT_URL => 'https://tripay.co.id/api-sandbox/transaction/detail?' . http_build_query($payload),
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_HEADER => false,
+            CURLOPT_HTTPHEADER => ['Authorization: Bearer ' . $apiKey],
+            CURLOPT_FAILONERROR => false,
+            CURLOPT_IPRESOLVE => CURL_IPRESOLVE_V4
+        ]);
+
+        $response = curl_exec($curl);
+        $error = curl_error($curl);
+
+        curl_close($curl);
+
+        
+        $response = json_decode($response)->data;
+        
+        // dd($response);
+
+        return $response ?: $error;
     }
 }

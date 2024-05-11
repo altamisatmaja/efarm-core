@@ -245,6 +245,7 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
 
     Route::get('checkout/{slug_product}', [CheckOutController::class, 'index'])->name('customer.checkout');
     Route::post('checkout/', [CheckoutController::class, 'store'])->name('customer.checkout.store');
+    Route::get('checkout/show/{reference}', [CheckoutController::class, 'show'])->name('customer.checkout.show');
 
     // route customer for account
     Route::get('personal/account/edit', [DashboardCustomerController::class, 'account'])->name('customer.account.edit');
