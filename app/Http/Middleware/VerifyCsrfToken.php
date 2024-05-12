@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        //
+        'https://2edd-140-213-118-85.ngrok-free.app/checkout/callback',
+        'https://2edd-140-213-118-85.ngrok-free.app/api/checkout/callback/test'
     ];
 }

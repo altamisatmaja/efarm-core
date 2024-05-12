@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthAdminController;
 use App\Http\Controllers\Admin\CategoryLivestockAdminController;
+use App\Http\Controllers\Admin\CategoryProductAdminController;
 use App\Http\Controllers\Admin\CustomerAccountController;
 use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\PartnerAdminController;
@@ -20,7 +21,6 @@ use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\TestimonialController;
 use App\Http\Controllers\Api\TypeLivestockController;
-use App\Http\Controllers\Admin\CategoryProductAdminController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
@@ -44,6 +44,7 @@ use App\Http\Controllers\Partner\OrderPartnerController;
 use App\Http\Controllers\Partner\PagePartnerController;
 use App\Http\Controllers\Partner\SubmissionController;
 use App\Http\Controllers\Partner\TestimonialPartnerController;
+use App\Http\Controllers\Payment\TripayCallbackController;
 use App\Http\Controllers\Web\PageWebController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -72,17 +73,16 @@ Route::get('/market/buy/{slug}', [PageWebController::class, 'by_categorytypelive
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}', [PageWebController::class, 'livestock'])->name('homepage.market.farm.livestock');
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}/{slug_product}', [PageWebController::class, 'product'])->name('homepage.market.farm.product');
 
-
 Route::get('/market/nearest', [AIController::class, 'nearest_view'])->name('homepage.market.nearest');
 Route::get('verify-email/{id}/{hash}', [RegisterCustomerController::class, 'show'])
-        ->middleware(['throttle:6,1'])
-        ->name('verification.verify');
+    ->middleware(['throttle:6,1'])
+    ->name('verification.verify');
 
 // route partner for submission
 Route::get('partner/submission', [SubmissionController::class, 'submission'])->name('partner.submission');
 Route::get('verify-email/{id}/{hash}', [PartnerAdminController::class, 'verify'])
-        ->middleware(['throttle:6,1'])
-        ->name('verification.verify');
+    ->middleware(['throttle:6,1'])
+    ->name('verification.verify');
 
 // route customer google auth
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('customer.google');
@@ -93,20 +93,20 @@ Route::get('/login/google/callback', [GoogleSocialiteController::class, 'handleC
 Route::post('customer/register/account', [RegisterCustomerController::class, 'store'])
     ->name('register.customer.account');
 
-ROute::post('partner/verify/account', [PartnerAdminController::class, 'verify'])
+Route::post('partner/verify/account', [PartnerAdminController::class, 'verify'])
     ->name('partner.verify.account');
 
 Route::middleware('guest')->group(function () {
-    /**
-     * Register Customer
-     */
+    /** Callback Payment Gateway */
+    Route::post('checkout/callback', [TripayCallbackController::class, 'handle']);
 
+    /** Register Customer */
     Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
     Route::get('customer/register', [AuthCustomerController::class, 'register_view'])->name('customer.register');
     Route::post('customer/login', [AuthCustomerController::class, 'login']);
     Route::get('customer/verify-email/{id}', [RegisterCustomerController::class, 'verify_email'])->name('customer.verify.email');
     Route::put('customer/verify-email/success/{id}', [RegisterCustomerController::class, 'email_verified'])->name('customer.verify.success');
-    
+
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
@@ -117,11 +117,7 @@ Route::middleware('guest')->group(function () {
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-
-    /**
-     * How breeze send new verif password
-     */
-
+    /** How breeze send new verif password */
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
 
@@ -134,24 +130,19 @@ Route::middleware('guest')->group(function () {
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.update');
 
-
-    /**
-     * Ending of breeze send new verif passowrd
-     */
-
+    /** Ending of breeze send new verif passowrd */
     Route::get('admin/login', [AuthAdminController::class, 'index'])
         ->name('admin.login');
     Route::post('admin/login', [AuthAdminController::class, 'store']);
-    
+
     // route for partner
     Route::get('partner/login', [AuthPartnerController::class, 'index'])->name('partner.login');
     Route::post('partner/login', [AuthPartnerController::class, 'login'])->name('partner.login.store');
-
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
-                ->name('verification.notice');
+        ->name('verification.notice');
     Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
         ->middleware('throttle:6,1')
         ->name('verification.send');
@@ -184,7 +175,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('admin/typelivestock/edit/{slug_typelivestocks}', [TypeLivestockAdminController::class, 'show'])->name('admin.typelivestock.edit');
     Route::put('admin/typelivestock/update/{slug_typelivestocks}', [TypeLivestockAdminController::class, 'update'])->name('admin.typelivestock.update');
     Route::delete('admin/typelivestock/delete/{slug_typelivestocks}', [TypeLivestockAdminController::class, 'destroy'])->name('admin.typelivestock.destroy');
-    
+
     // route admin for typelivestock
     Route::get('admin/categorylivestock', [CategoryLivestockAdminController::class, 'list'])->name('admin.categorylivestock.list');
     Route::get('admin/categorylivestock/add', [CategoryLivestockAdminController::class, 'add'])->name('admin.categorylivestock.add');
@@ -233,21 +224,16 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('admin/account/customer', [CustomerAccountController::class, 'index'])->name('admin.customer.account');
     Route::put('admin/account/customer/status/{id}', [CustomerAccountController::class, 'status_handling'])->name('admin.customer.status');
 
-    /**
-     * Logout admin
-     */
+    /** Logout admin */
     Route::get('admin/logout', [AuthAdminController::class, 'destroy'])->name('admin.logout');
 });
 
 Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
-    
     Route::get('personal/account', [DashboardCustomerController::class, 'index'])->name('customer.account');
-
 
     Route::get('checkout/{slug_product}', [CheckOutController::class, 'index'])->name('customer.checkout');
     Route::post('checkout/', [CheckoutController::class, 'store'])->name('customer.checkout.store');
     Route::get('checkout/show/{reference}', [CheckoutController::class, 'show'])->name('customer.checkout.show');
-
 
     Route::get('personal/order', [OrderCustomerController::class, 'index'])->name('customer.order.list');
 
@@ -296,9 +282,7 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     Route::get('partner/order/accepted', [OrderPartnerController::class, 'order_accepted_view'])->name('partner.order.accepted');
     Route::get('partner/order/end', [OrderPartnerController::class, 'order_end_view'])->name('partner.order.end');
 
-    /**
-     * Route for handling status
-     */
+    /** Route for handling status */
     Route::put('partner/confirm/order/new/{id}', [OrderPartnerController::class, 'status_new_to_confirm'])->name('partner.confirm.status.order.new');
     Route::put('partner/confirm/order/confirm/{id}', [OrderPartnerController::class, 'status_confirm_to_packed'])->name('partner.confirm.status.order.confirmed');
     Route::put('partner/confirm/order/packed/{id}', [OrderPartnerController::class, 'status_packed_to_sent'])->name('partner.confirm.status.order.packed');

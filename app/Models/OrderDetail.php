@@ -21,7 +21,7 @@ class OrderDetail extends Model
 
 
     public function  order(){
-        return $this->belongsTo(Order::class, 'id');
+        return $this->belongsTo(Order::class, 'id_order');
     }
 
     public function partner(){

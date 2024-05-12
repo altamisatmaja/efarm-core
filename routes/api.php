@@ -22,6 +22,7 @@ use App\Http\Controllers\Api\ReviewController;
 use App\Http\Controllers\Api\SliderController;
 use App\Http\Controllers\Api\TestimonialController;
 use App\Http\Controllers\Api\TypeLivestockController;
+use App\Http\Controllers\Payment\TripayCallbackController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +36,8 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+Route::post('checkout/callback/test', [TripayCallbackController::class, 'handle']);
 
 Route::group([
     'middleware' => 'api',
