@@ -45,6 +45,7 @@ use App\Http\Controllers\Partner\PagePartnerController;
 use App\Http\Controllers\Partner\SubmissionController;
 use App\Http\Controllers\Partner\TestimonialPartnerController;
 use App\Http\Controllers\Payment\TripayCallbackController;
+use App\Http\Controllers\Web\LocationController;
 use App\Http\Controllers\Web\PageWebController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -63,6 +64,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/get-location', [AIController::class, 'getLocation']);
+Route::get('/find-nearest-product', [AIController::class, 'findNearestProductView']);
+
+
+
+Route::get('show-user-location-data', [LocationController::class, 'index']);
+
 
 Route::get('/', [PageWebController::class, 'index']);
 Route::get('/partner', [PageWebController::class, 'partner'])->name('homepage.partner');

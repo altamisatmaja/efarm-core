@@ -23,6 +23,7 @@ use App\Http\Controllers\Api\SliderController;
 use App\Http\Controllers\Api\TestimonialController;
 use App\Http\Controllers\Api\TypeLivestockController;
 use App\Http\Controllers\Payment\TripayCallbackController;
+use App\Http\Controllers\Web\AIController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -37,7 +38,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('checkout/callback/test', [TripayCallbackController::class, 'handle']);
+Route::post('checkout/callback', [TripayCallbackController::class, 'handle']);
 
 Route::group([
     'middleware' => 'api',
@@ -53,6 +54,7 @@ Route::group([
      * Route api for AI
      */
     Route::get('/product/nearest', [AIApiController::class, 'index']);
+    Route::get('/product/nearest/ai', [AIController::class, 'fetchData']);
     
     // route api for customer
     Route::post('/customer/login', [AuthCustomerController::class, 'login']);
