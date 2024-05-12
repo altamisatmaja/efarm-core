@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
-class AIController extends Controller
+class AIApiController extends Controller
 {
     public function index(){
         $products = Product::with('partner')->get();

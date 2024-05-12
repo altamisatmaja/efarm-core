@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\AIController;
+use App\Http\Controllers\Api\AIApiController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\Partner\ProductPartnerController;
 use App\Http\Controllers\AuthController;
@@ -52,7 +52,7 @@ Route::group([
     /**
      * Route api for AI
      */
-    Route::get('/product/nearest', [AIController::class, 'index']);
+    Route::get('/product/nearest', [AIApiController::class, 'index']);
     
     // route api for customer
     Route::post('/customer/login', [AuthCustomerController::class, 'login']);
