@@ -12,6 +12,16 @@ class Order extends Model
 
     protected $guarded = [];
 
+    protected $fillable = [
+        'id_user',
+        'status',
+        'pengiriman',
+        'catatan',
+        'reference',
+        'merchant_ref',
+        'status_pembayaran'
+    ];
+
     public function user() {
         return $this->belongsTo(User::class, 'id_user');
     }

@@ -79,7 +79,7 @@
                             <div class="relative w-full lg:w-full">
                                     <input hidden type="text" name="product_id" value="{{ $product->id }}">
                                     <input value="{{ $channel->code }}" class="peer hidden" id="radio_{{ $loop->iteration }}_payment" type="radio" name="method" />
-                                    <input hidden type="text" name="kuantitas" id="kuantitas" value="3">
+                                    <input hidden type="text" name="kuantitas" id="kuantitas" value="2">
                                     <span
                                         class="peer-checked:border-blue-500 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
 

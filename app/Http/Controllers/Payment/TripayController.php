@@ -52,7 +52,7 @@ class TripayController extends Controller
             'amount' => $amount,
             'customer_name' => $user->nama,
             'customer_email' => $user->email,
-            'customer_phone' => $user->no_telp,
+            'customer_phone' => '089383831',
             'order_items' => [
                 [
                     'name' => $nama_product,
@@ -65,6 +65,8 @@ class TripayController extends Controller
             'expired_time' => (time() + (24 * 60 * 60)),  // 24 jam
             'signature' => hash_hmac('sha256', $merchantCode . $merchantRef . $amount, $privateKey)
         ];
+
+        
 
         $curl = curl_init();
 
@@ -86,7 +88,8 @@ class TripayController extends Controller
         curl_close($curl);
 
         // dd($reponse);
-        $response = json_decode($response)->data;
+        $response = json_decode($response);
+        // $response = $response->data;
         // dd($response);
 
         return $response ?: $error;

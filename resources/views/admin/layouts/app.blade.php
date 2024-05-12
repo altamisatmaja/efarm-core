@@ -16,7 +16,7 @@
         @include('admin.layouts.navbar')
         <div class="flex overflow-hidden bg-white pt-16">
             @include('admin.layouts.sidebar')
-            <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div>
+            {{-- <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div> --}}
             <div id="main-content" class="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64">
                 <main>
                     <div class="pt-6 px-4">

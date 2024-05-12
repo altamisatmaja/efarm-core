@@ -33,6 +33,7 @@ use App\Http\Controllers\Customer\AuthCustomerController;
 use App\Http\Controllers\Customer\CheckOutController;
 use App\Http\Controllers\Customer\DashboardCustomerController;
 use App\Http\Controllers\Customer\GoogleSocialiteController;
+use App\Http\Controllers\Customer\OrderCustomerController;
 use App\Http\Controllers\Customer\RegisterCustomerController;
 use App\Http\Controllers\Customer\VerificationController;
 use App\Http\Controllers\Partner\AccountPartnerController;
@@ -246,6 +247,9 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
     Route::get('checkout/{slug_product}', [CheckOutController::class, 'index'])->name('customer.checkout');
     Route::post('checkout/', [CheckoutController::class, 'store'])->name('customer.checkout.store');
     Route::get('checkout/show/{reference}', [CheckoutController::class, 'show'])->name('customer.checkout.show');
+
+
+    Route::get('personal/order', [OrderCustomerController::class, 'index'])->name('customer.order.list');
 
     // route customer for account
     Route::get('personal/account/edit', [DashboardCustomerController::class, 'account'])->name('customer.account.edit');
