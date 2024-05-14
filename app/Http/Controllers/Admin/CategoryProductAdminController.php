@@ -12,7 +12,8 @@ class CategoryProductAdminController extends Controller
 {
     public function add()
     {
-        return view('admin.pages.category_product.create');
+        $slug = 'Tambah Kategori';
+        return view('admin.pages.category_product.create', compact('slug'));
     }
 
     public function list()

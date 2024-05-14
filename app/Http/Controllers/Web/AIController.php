@@ -24,6 +24,7 @@ class AIController extends Controller
 
         $userLatitude = $location->lat;
         $userLongitude = $location->lon;
+        dd($userLatitude);
 
         return response()->json(['lat' => $userLatitude, 'long' => $userLongitude]);
     }

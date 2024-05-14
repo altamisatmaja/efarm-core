@@ -41,7 +41,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('checkout/callback', [TripayCallbackController::class, 'handle']);
 
 Route::get('/product/nearest', [AIApiController::class, 'index']);
-    Route::get('/product/nearest/ai', [AIController::class, 'fetchData']);
+Route::get('/product/nearest/ai', [AIController::class, 'fetchData']);
 
 Route::group([
     'middleware' => 'api',

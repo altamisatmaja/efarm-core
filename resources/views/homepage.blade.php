@@ -156,7 +156,7 @@
                 </div>
         </section>
         <div class="container px-6 py-10 mx-auto md:py-16">
-            <div class="flex flex-col space-y-6 md:flex-row md:items-center md:space-x-3">
+            <div class="flex flex-col space-y-6 md:flex-row md:space-x-3">
                 <div class="w-full">
                     <div class="max-w-2xl">
                         <h1 class="text-5xl font-bold tracking-wide text-textbase">
@@ -165,10 +165,10 @@
                         <p class="mt-2 font-medium text-xl text-textbase">
                             Pilih dan raih peternakan ideal bersama kami
                         </p>
-                        <div class="grid gap-2 mt-8 sm:grid-cols-3">
+                        <div class="grid gap-4 mt-8 sm:grid-cols-3">
                             <div class="flex items-center justify-center text-gray-800">
                                 <button
-                                    class="flex w-full bg-primarybase py-3 px-4 rounded-lg ring-1 ring-primarybase">
+                                    class="flex  w-full bg-primarybase py-3 px-4 rounded-lg ring-1 ring-primarybase">
                                     <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -179,8 +179,7 @@
                                 </button>
                             </div>
                             <div class="flex items-center justify-center text-gray-800">
-                                <button
-                                    class="flex w-full bg-white py-3 px-4 rounded-lg ring-1 ring-primarybase">
+                                <button class="flex  w-full bg-white py-3 px-4 rounded-lg ring-1 ring-primarybase">
                                     <svg width="35" height="25" viewBox="0 0 31 25" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -191,8 +190,7 @@
                                 </button>
                             </div>
                             <div class="flex items-center justify-center text-gray-800">
-                                <button
-                                    class="flex w-full bg-white py-3 px-4 rounded-lg ring-1 ring-primarybase">
+                                <button class="flex  w-full bg-white py-3 px-4 rounded-lg ring-1 ring-primarybase">
                                     <svg width="35" height="25" viewBox="0 0 51 25" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -203,11 +201,31 @@
                                 </button>
                             </div>
                         </div>
+                        <div
+                            class="relative flex mt-10 flex-col bg-sekunderbase ring-1 ring-primarybase w-full mb-4 rounded-lg">
+                            <div class="bg-sekunderbase rounded-lg">
+                                <div class="py-8 px-10">
+                                    <div class="flex flex-wrap items-center">
+                                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2.77778 11.1111C2.01389 11.1111 1.35995 10.8391 0.815972 10.2951C0.271991 9.75116 0 9.09722 0 8.33333V2.77778C0 2.01389 0.271991 1.35995 0.815972 0.815972C1.35995 0.271991 2.01389 0 2.77778 0H8.33333C9.09722 0 9.75116 0.271991 10.2951 0.815972C10.8391 1.35995 11.1111 2.01389 11.1111 2.77778V8.33333C11.1111 9.09722 10.8391 9.75116 10.2951 10.2951C9.75116 10.8391 9.09722 11.1111 8.33333 11.1111H2.77778ZM2.77778 25C2.01389 25 1.35995 24.728 0.815972 24.184C0.271991 23.64 0 22.9861 0 22.2222V16.6667C0 15.9028 0.271991 15.2488 0.815972 14.7049C1.35995 14.1609 2.01389 13.8889 2.77778 13.8889H8.33333C9.09722 13.8889 9.75116 14.1609 10.2951 14.7049C10.8391 15.2488 11.1111 15.9028 11.1111 16.6667V22.2222C11.1111 22.9861 10.8391 23.64 10.2951 24.184C9.75116 24.728 9.09722 25 8.33333 25H2.77778ZM16.6667 11.1111C15.9028 11.1111 15.2488 10.8391 14.7049 10.2951C14.1609 9.75116 13.8889 9.09722 13.8889 8.33333V2.77778C13.8889 2.01389 14.1609 1.35995 14.7049 0.815972C15.2488 0.271991 15.9028 0 16.6667 0H22.2222C22.9861 0 23.64 0.271991 24.184 0.815972C24.728 1.35995 25 2.01389 25 2.77778V8.33333C25 9.09722 24.728 9.75116 24.184 10.2951C23.64 10.8391 22.9861 11.1111 22.2222 11.1111H16.6667ZM16.6667 25C15.9028 25 15.2488 24.728 14.7049 24.184C14.1609 23.64 13.8889 22.9861 13.8889 22.2222V16.6667C13.8889 15.9028 14.1609 15.2488 14.7049 14.7049C15.2488 14.1609 15.9028 13.8889 16.6667 13.8889H22.2222C22.9861 13.8889 23.64 14.1609 24.184 14.7049C24.728 15.2488 25 15.9028 25 16.6667V22.2222C25 22.9861 24.728 23.64 24.184 24.184C23.64 24.728 22.9861 25 22.2222 25H16.6667ZM2.77778 8.33333H8.33333V2.77778H2.77778V8.33333ZM16.6667 8.33333H22.2222V2.77778H16.6667V8.33333ZM16.6667 22.2222H22.2222V16.6667H16.6667V22.2222ZM2.77778 22.2222H8.33333V16.6667H2.77778V22.2222Z"
+                                                fill="#444444" />
+                                        </svg>
+                                        <p class="text-3xl ml-2 font-semibold text-textbase leading-sm">
+                                            Semua layanan eFarm
+                                        </p>
+                                    </div>
+                                    <p class="text-xl text-textbase leading-sm mt-2">
+                                        Pelajari lebih lanjut semua layanan eFarm untuk mengembangkan ternak Anda
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="w-4/6 px-4">
-                    <div
-                        class="relative flex flex-col bg-white ring-1 ring-primarybase w-full mb-4 shadow-lg rounded-lg">
+                    <div class="relative flex flex-col bg-white ring-1 ring-primarybase w-full mb-10 rounded-lg">
                         <div class="bg-gray-50 rounded-lg">
                             <div class="relative flex">
                                 <img src="{{ asset('cardcover.png') }}" alt="montaña" class="w-full bg-cover" />
@@ -233,6 +251,143 @@
                                             d="M21.8407 11.7976H1.79759C1.28827 11.7976 0.861346 11.6253 0.516807 11.2808C0.172269 10.9362 0 10.5093 0 10C0 9.49068 0.172269 9.06375 0.516807 8.71922C0.861346 8.37468 1.28827 8.20241 1.79759 8.20241H21.8407L16.7176 3.07927C16.3581 2.71976 16.1858 2.30032 16.2008 1.82096C16.2158 1.3416 16.388 0.922164 16.7176 0.562646C17.0771 0.203128 17.504 0.0158787 17.9984 0.000898796C18.4927 -0.0140811 18.9196 0.158188 19.2792 0.517706L27.5031 8.74169C27.6829 8.92144 27.8102 9.11618 27.8851 9.3259C27.96 9.53562 27.9975 9.76032 27.9975 10C27.9975 10.2397 27.96 10.4644 27.8851 10.6741C27.8102 10.8838 27.6829 11.0786 27.5031 11.2583L19.2792 19.4823C18.9196 19.8418 18.4927 20.0141 17.9984 19.9991C17.504 19.9841 17.0771 19.7969 16.7176 19.4374C16.388 19.0778 16.2158 18.6584 16.2008 18.179C16.1858 17.6997 16.3581 17.2802 16.7176 16.9207L21.8407 11.7976Z"
                                             fill="#AAC14C" />
                                     </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative flex flex-col bg-white ring-1 ring-primarybase w-full mb-10 rounded-lg">
+                        <div class="bg-gray-50 rounded-lg">
+                            <div class="relative flex">
+                                <img src="{{ asset('cardcover.png') }}" alt="montaña" class="w-full bg-cover" />
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <img src="{{ asset('efarm-partner-logo.png') }}" alt="montaña"
+                                        class="" />
+                                </div>
+                            </div>
+                            <div class="py-8 px-10">
+                                <p class="text-3xl font-semibold text-textbase leading-sm">
+                                    Partner
+                                </p>
+                                <p class="text-xl text-textbase leading-sm mt-2">
+                                    Memberikan pengalaman yang baik dalam hal belanja! 🤩
+                                </p>
+                                <div class="flex flex-wrap items-center mt-2 cursor-pointer">
+                                    <a href="" class="flex text-primarybase font-semibold text-xl mr-3">
+                                        Pelajari selengkapnya
+                                    </a>
+                                    <svg width="28" height="20" viewBox="0 0 28 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M21.8407 11.7976H1.79759C1.28827 11.7976 0.861346 11.6253 0.516807 11.2808C0.172269 10.9362 0 10.5093 0 10C0 9.49068 0.172269 9.06375 0.516807 8.71922C0.861346 8.37468 1.28827 8.20241 1.79759 8.20241H21.8407L16.7176 3.07927C16.3581 2.71976 16.1858 2.30032 16.2008 1.82096C16.2158 1.3416 16.388 0.922164 16.7176 0.562646C17.0771 0.203128 17.504 0.0158787 17.9984 0.000898796C18.4927 -0.0140811 18.9196 0.158188 19.2792 0.517706L27.5031 8.74169C27.6829 8.92144 27.8102 9.11618 27.8851 9.3259C27.96 9.53562 27.9975 9.76032 27.9975 10C27.9975 10.2397 27.96 10.4644 27.8851 10.6741C27.8102 10.8838 27.6829 11.0786 27.5031 11.2583L19.2792 19.4823C18.9196 19.8418 18.4927 20.0141 17.9984 19.9991C17.504 19.9841 17.0771 19.7969 16.7176 19.4374C16.388 19.0778 16.2158 18.6584 16.2008 18.179C16.1858 17.6997 16.3581 17.2802 16.7176 16.9207L21.8407 11.7976Z"
+                                            fill="#AAC14C" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- component -->
+                    <!--
+  Welcome to Tailwind Play, the official Tailwind CSS playground!
+
+  Everything here works just like it does when you're running Tailwind locally
+  with a real build pipeline. You can customize your config file, use features
+  like `@apply`, or even add third-party plugins.
+
+  Feel free to play with this example if you're just learning, or trash it and
+  start from scratch if you know enough to be dangerous. Have fun!
+-->
+                    <div
+                        class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
+                        <div class="w-full items-center mx-auto max-w-screen-lg">
+                            <div class="group grid w-full grid-cols-2">
+                                <div
+                                    class="relative flex before:block before:absolute before:h-1/6 before:w-2 before:bg-stone-200 before:top-0 before:right-0 before:rounded-lg  before:transition-all group-hover:before:bg-orange-300 overflow-hidden">
+                                    <div
+                                        class="absolute bottom-0 right-0 bg-blue-500 w-4/6 overflow-hidden flex flex-col justify-center rounded-xl group-hover:bg-sky-600 transition-all shadow-2xl">
+                                        <img src="https://picsum.photos/800/800" alt="">
+                                    </div>
+
+                                    <div class="h-2/3 rounded-xl overflow-hidden">
+                                        <img src="https://picsum.photos/800/800" class="h-full" alt="">
+                                    </div>
+                                    <a class="-rotate-90 font-bold mt-2 mb-8 r gap-2 h-16 text-2xl leading-7"
+                                        href="">
+                                        <span>25 ans <br> D'expérience</span>
+                                    </a>
+                                    <a class="absolute h-20 bg-blue-500 w-20 flex items-center justify-center rounded-full bottom-10 left-10 text-white before:block before:absolute before:h-20 before:w-20 before:bg-sky-100 before:rounded-full group-hover:before:animate-ping before:-z-10 hover:bg-sky-600"
+                                        href="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div>
+                                    <div class="pl-12">
+                                        <h2 class="text-5xl font-medium mb-6">Cost-Effective heating and Air
+                                            conditioning</h2>
+                                        <h3 class="text-2xl font-medium mb-6">Creating the perfect temperature all year
+                                            round</h3>
+                                        <p class="mb-6 text-gray-400">energy efficient, stylish & silent both providing
+                                            cooling and heating. At Zero Degree AC Limited we only use the best brands.
+                                        </p>
+                                        <h3 class="mb-4 font-semibold text-xl text-gray-400">Conditioning installation
+                                            packages</h3>
+                                        <div class="grid grid-cols-2 gap-6 justify-between mb-3">
+                                            <a href="" class="flex items-center gap-3 hover:text-blue-300">
+                                                <span
+                                                    class="h-10 w-10 rounded-full bg-blue-300 flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                        class="w-6 h-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="m4.5 12.75 6 6 9-13.5" />
+                                                    </svg>
+                                                </span>
+                                                <span class="font-semibold">Service</span>
+                                            </a>
+                                            <a href="" class="flex items-center gap-3 hover:text-blue-300">
+                                                <span
+                                                    class="h-10 w-10 rounded-full bg-blue-300 flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                        class="w-6 h-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="m4.5 12.75 6 6 9-13.5" />
+                                                    </svg>
+                                                </span>
+                                                <span class="font-semibold">installation</span>
+                                            </a>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-6 justify-between mb-3">
+                                            <a href="" class="flex items-center gap-3 hover:text-blue-300">
+                                                <span
+                                                    class="h-10 w-10 rounded-full bg-blue-300 flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                        class="w-6 h-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="m4.5 12.75 6 6 9-13.5" />
+                                                    </svg>
+                                                </span>
+                                                <span class="font-semibold">Gold Membership</span>
+                                            </a>
+                                            <a href="" class="flex items-center gap-3 hover:text-blue-300">
+                                                <span
+                                                    class="h-10 w-10 rounded-full bg-blue-300 flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                        class="w-6 h-6">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="m4.5 12.75 6 6 9-13.5" />
+                                                    </svg>
+                                                </span>
+                                                <span class="font-semibold">Maintenance</span>
+                                            </a>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>

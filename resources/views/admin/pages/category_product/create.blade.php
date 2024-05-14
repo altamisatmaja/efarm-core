@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Dashboard | Category')
+@section('title', 'Dashboard | '.$slug)
 
 @section('content')
     <section class="w-full px-4 mx-auto">

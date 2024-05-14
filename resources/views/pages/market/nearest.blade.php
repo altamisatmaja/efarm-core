@@ -273,7 +273,7 @@
                 crossDomain: true,
                 headers: {
                     "accept": "application/json",
-                    "Access-Control-Allow-Origin": "*, *",
+                    "Access-Control-Allow-Origin": "*",
                 },
                 success: function(data) {
                     let row = '';

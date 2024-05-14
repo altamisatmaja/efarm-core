@@ -68,56 +68,83 @@ Route::get('/', function () {
 
 Route::get('/get-location', [AIController::class, 'getLocation']);
 Route::get('/find-nearest-product', [AIController::class, 'findNearestProductView']);
+Route::get('/show-user-location-data', [LocationController::class, 'index']);
 
-Route::get('/layanan', [PageWebController::class, 'layanan'])->name('homepage.layanan');
 
-Route::get('show-user-location-data', [LocationController::class, 'index']);
 
+/**
+ * Route handling for Front End
+ */
 Route::get('/', [PageWebController::class, 'index']);
 Route::get('/partner', [PageWebController::class, 'partner'])->name('homepage.partner');
 Route::get('/about', [PageWebController::class, 'about'])->name('homepage.about');
+Route::get('/layanan', [PageWebController::class, 'layanan'])->name('homepage.layanan');
+
+
+/**
+ * Route handling for Front End Market
+ */
 Route::get('/market', [PageWebController::class, 'market'])->name('homepage.market');
 Route::get('/market/buy', [PageWebController::class, 'buy'])->name('homepage.market.buy');
 Route::get('/market/buy/{slug}', [PageWebController::class, 'by_categorytypelivestocks'])->name('homepage.market.farm');
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}', [PageWebController::class, 'livestock'])->name('homepage.market.farm.livestock');
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}/{slug_product}', [PageWebController::class, 'product'])->name('homepage.market.farm.product');
 
-Route::get('/nearest/product/fetch', [AIController::class, 'fetchData']);
-
+/**
+ * Route handling for AI
+ */
 Route::get('/market/nearest', [AIApiController::class, 'nearest_view'])->name('homepage.market.nearest');
+
+
+/**
+ * Route for verify Email
+ */
 Route::get('verify-email/{id}/{hash}', [RegisterCustomerController::class, 'show'])
     ->middleware(['throttle:6,1'])
     ->name('verification.verify');
 
-// route partner for submission
+/**
+ * Route for submission partner
+ */
 Route::get('partner/submission', [SubmissionController::class, 'submission'])->name('partner.submission');
 Route::get('verify-email/{id}/{hash}', [PartnerAdminController::class, 'verify'])
     ->middleware(['throttle:6,1'])
     ->name('verification.verify');
 
-// route customer google auth
+/**
+ * Route for google login customer
+ */
 Route::get('auth/google', [GoogleSocialiteController::class, 'redirectToGoogle'])->name('customer.google');
 Route::get('/login/google/callback', [GoogleSocialiteController::class, 'handleCallback']);
-// Route::get('customer/register', [RegisterCustomerController::class, 'index'])
-//     ->name('register.customer');
 
+
+/**
+ * Route for customer Auth
+ */
 Route::post('customer/register/account', [RegisterCustomerController::class, 'store'])
     ->name('register.customer.account');
-
 Route::post('partner/verify/account', [PartnerAdminController::class, 'verify'])
     ->name('partner.verify.account');
 
 Route::middleware('guest')->group(function () {
-    /** Callback Payment Gateway */
+    
+    /**
+     * Route for callback after payment gateway
+     */
     Route::post('checkout/callback', [TripayCallbackController::class, 'handle']);
 
-    /** Register Customer */
+    /**
+     * Route for register customer and verify
+     */
     Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
     Route::get('customer/register', [AuthCustomerController::class, 'register_view'])->name('customer.register');
     Route::post('customer/login', [AuthCustomerController::class, 'login']);
     Route::get('customer/verify-email/{id}', [RegisterCustomerController::class, 'verify_email'])->name('customer.verify.email');
     Route::put('customer/verify-email/success/{id}', [RegisterCustomerController::class, 'email_verified'])->name('customer.verify.success');
 
+    /**
+     * Laravel breeze
+     */
     Route::get('register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
@@ -128,7 +155,9 @@ Route::middleware('guest')->group(function () {
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-    /** How breeze send new verif password */
+    /**
+     * Breeze handling
+     */
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
 
@@ -141,37 +170,66 @@ Route::middleware('guest')->group(function () {
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.update');
 
-    /** Ending of breeze send new verif passowrd */
+    /**
+     * Route for Login Admin
+     */
     Route::get('admin/login', [AuthAdminController::class, 'index'])
         ->name('admin.login');
     Route::post('admin/login', [AuthAdminController::class, 'store']);
 
-    // route for partner
+    /**
+     * Route for Login Partner
+     */
     Route::get('partner/login', [AuthPartnerController::class, 'index'])->name('partner.login');
     Route::post('partner/login', [AuthPartnerController::class, 'login'])->name('partner.login.store');
 });
 
 Route::middleware('auth')->group(function () {
+    /**
+     * Route for verify email handling
+     */
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
         ->name('verification.notice');
     Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
         ->middleware('throttle:6,1')
         ->name('verification.send');
 
+    /**
+     * Route for confirm password
+     */
     Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
         ->name('password.confirm');
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
+    /**
+     * Route for confirm logout
+     */
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
 
+
+/*
+ * |--------------------------------------------------------------------------
+ * | Admin Routes
+ * |--------------------------------------------------------------------------
+ * |
+ * | Semua routes untuk admin
+ * |
+ */ 
+
+
 Route::middleware(['auth', 'role:Admin'])->group(function () {
-    // route dashboard admin
+    
+    /**
+     * Route for dashboard admin
+     */
     Route::get('admin/dashboard', [DashboardAdminController::class, 'index'])->name('admin.dashboard');
 
-    // route admin for categoryproducts
+    /**
+     * Route for categoryproduct admin
+     */
     Route::get('admin/category', [CategoryProductAdminController::class, 'list'])->name('admin.category.list');
     Route::get('admin/category/add', [CategoryProductAdminController::class, 'add'])->name('admin.category.add');
     Route::post('admin/category/create', [CategoryProductAdminController::class, 'store'])->name('admin.category.store');
@@ -179,7 +237,9 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::put('admin/category/update/{slug_kategori_product}', [CategoryProductAdminController::class, 'update'])->name('admin.category.update');
     Route::delete('admin/category/delete/{slug_kategori_product}', [CategoryProductAdminController::class, 'destroy'])->name('admin.category.destroy');
 
-    // route admin for typelivestock
+    /**
+     * Route for typelivestock admin
+     */
     Route::get('admin/typelivestock', [TypeLivestockAdminController::class, 'index'])->name('admin.typelivestock.list');
     Route::get('admin/typelivestock/add', [TypeLivestockAdminController::class, 'create'])->name('admin.typelivestock.create');
     Route::post('admin/typelivestock/create', [TypeLivestockAdminController::class, 'store'])->name('admin.typelivestock.add');
@@ -187,7 +247,9 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::put('admin/typelivestock/update/{slug_typelivestocks}', [TypeLivestockAdminController::class, 'update'])->name('admin.typelivestock.update');
     Route::delete('admin/typelivestock/delete/{slug_typelivestocks}', [TypeLivestockAdminController::class, 'destroy'])->name('admin.typelivestock.destroy');
 
-    // route admin for typelivestock
+    /**
+     * Route for categorytypelivestock admin
+     */
     Route::get('admin/categorylivestock', [CategoryLivestockAdminController::class, 'list'])->name('admin.categorylivestock.list');
     Route::get('admin/categorylivestock/add', [CategoryLivestockAdminController::class, 'add'])->name('admin.categorylivestock.add');
     Route::post('admin/categorylivestock/create', [CategoryLivestockAdminController::class, 'store'])->name('admin.categorylivestock.store');
@@ -195,28 +257,38 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::put('admin/categorylivestock/update/{slug}', [CategoryLivestockAdminController::class, 'update'])->name('admin.categorylivestock.update');
     Route::delete('admin/categorylivestock/delete/{slug}', [CategoryLivestockAdminController::class, 'destroy'])->name('admin.categorylivestock.destroy');
 
-    // route admin for get all product
+    /**
+     * Route for product admin
+     */
     Route::get('admin/product', [ProductAdminController::class, 'index'])->name('admin.product.list');
     Route::get('admin/product/show/{slug_product}', [ProductAdminController::class, 'show'])->name('admin.product.show');
     Route::put('admin/products/status/{slug_product}', [ProductAdminController::class, 'status_handling'])->name('admin.product.status');
 
-    // route admin for partner
+    /**
+     * Route for partner admin
+     */
     Route::get('admin/partner', [PartnerAdminController::class, 'list'])->name('admin.partner');
     Route::get('admin/partner/show/{id}', [PartnerAdminController::class, 'show'])->name('admin.partner.show');
     Route::get('admin/partner/submission', [PartnerAdminController::class, 'submission'])->name('admin.partner.from.submission');
     Route::get('admin/partner/verified', [PartnerAdminController::class, 'verified'])->name('admin.partner.from.verified');
     Route::put('admin/partner/handle_status/{id}', [PartnerAdminController::class, 'handle_status'])->name('admin.partner.from.handle_status');
 
-    // route admin for testimoni
+    /**
+     * Route for testimonial admin
+     */
     Route::get('admin/testimoni', [TestimonialAdminController::class, 'list'])->name('admin.testimoni.list');
     Route::delete('admin/testimoni/delete/{id}', [TestimonialAdminController::class, 'destroy'])->name('admin.testimoni.destroy');
     Route::get('admin/testimoni/show/{id}', [TestimonialAdminController::class, 'show'])->name('admin.testimoni.show');
 
-    // route admin for review
+    /**
+     * Route for review or rating admin
+     */
     Route::get('admin/review', [ReviewAdminController::class, 'list'])->name('admin.review.list');
     Route::delete('admin/review/destroy/{id}', [ReviewAdminController::class, 'destroy'])->name('admin.review.destroy');
 
-    // route admin for pesanan
+    /**
+     * Route for order admin
+     */
     Route::get('admin/order', [OrderController::class, 'list'])->name('admin.order.master');
     Route::get('admin/order/new', [OrderController::class, 'order_new_view'])->name('admin.order.new');
     Route::get('admin/order/confirmed', [OrderController::class, 'order_confirmed_view'])->name('admin.order.confirmed');
@@ -225,38 +297,84 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('admin/order/accepted', [OrderController::class, 'order_accepted_view'])->name('admin.order.accepted');
     Route::get('admin/order/end', [OrderController::class, 'order_end_view'])->name('admin.order.end');
 
-    // route admin for report
+    /**
+     * Route for laporan admin
+     */
     Route::get('admin/report', [ReportController::class, 'index'])->name('admin.report.list');
 
-    // route admin for payment
+    /**
+     * Route for payment admin
+     */
     Route::get('admin/payment', [PaymentController::class, 'list'])->name('admin.payment.list');
 
-    // route admin for read account customer
+    /**
+     * Route for account admin
+     */
     Route::get('admin/account/customer', [CustomerAccountController::class, 'index'])->name('admin.customer.account');
     Route::put('admin/account/customer/status/{id}', [CustomerAccountController::class, 'status_handling'])->name('admin.customer.status');
 
-    /** Logout admin */
+    /**
+     * Route for logout Admin 
+     */
     Route::get('admin/logout', [AuthAdminController::class, 'destroy'])->name('admin.logout');
 });
 
-Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
-    Route::get('personal/account', [DashboardCustomerController::class, 'index'])->name('customer.account');
 
+
+/*
+ * |--------------------------------------------------------------------------
+ * | Pelanggan Routes
+ * |--------------------------------------------------------------------------
+ * |
+ * | Semua routes untuk pelanggan
+ * |
+ */ 
+
+
+Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
+    /**
+     * Route for account customer
+     */
+    Route::get('personal/account', [DashboardCustomerController::class, 'index'])->name('customer.account');
+    Route::get('personal/order', [OrderCustomerController::class, 'index'])->name('customer.order.list');
+    Route::get('personal/account/edit', [DashboardCustomerController::class, 'account'])->name('customer.account.edit');
+    Route::get('personal/account/information', [DashboardCustomerController::class, 'information'])->name('customer.account.information');
+    Route::get('personal/account/address', [DashboardCustomerController::class, 'address'])->name('customer.account.address');
+
+
+    /**
+     * Route for checkout customer
+     */
     Route::get('checkout/{slug_product}', [CheckOutController::class, 'index'])->name('customer.checkout');
     Route::post('checkout/', [CheckoutController::class, 'store'])->name('customer.checkout.store');
     Route::get('checkout/show/{reference}', [CheckoutController::class, 'show'])->name('customer.checkout.show');
 
-    Route::get('personal/order', [OrderCustomerController::class, 'index'])->name('customer.order.list');
-
-    // route customer for account
-    Route::get('personal/account/edit', [DashboardCustomerController::class, 'account'])->name('customer.account.edit');
-    Route::get('personal/account/information', [DashboardCustomerController::class, 'information'])->name('customer.account.information');
-    Route::get('personal/account/address', [DashboardCustomerController::class, 'address'])->name('customer.account.address');
+    /**
+     * Route for logout customer
+     */
     Route::get('customer/logout', [AuthCustomerController::class, 'logout'])->name('customer.logout');
 });
 
+
+
+/*
+ * |--------------------------------------------------------------------------
+ * | Partner Routes
+ * |--------------------------------------------------------------------------
+ * |
+ * | Semua routes untuk partner
+ * |
+ */ 
+
 Route::middleware(['auth', 'role:Partner'])->group(function () {
+    /**
+     * Route for dashboard partner
+     */
     Route::get('partner/dashboard', [DashboardPartnerController::class, 'index'])->name('partner.dashboard');
+
+    /**
+     * Rouee for account partner
+     */
     Route::get('partner/account', [AccountPartnerController::class, 'index'])->name('partner.account');
     Route::get('partner/account/edit', [AccountPartnerController::class, 'account_edit_view'])->name('partner.account.edit');
     Route::put('partner/account/update', [AccountPartnerController::class, 'update_account'])->name('partner.account.update');
@@ -266,12 +384,16 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     Route::put('partner/account/address/update', [AccountPartnerController::class, 'update_address'])->name('partner.account.address.update');
     Route::get('partner/account/rekening', [AccountPartnerController::class, 'rekening_view'])->name('partner.account.rekening');
 
-    // route partner for product
+    /**
+     * Route for product partner
+     */
     Route::get('partner/product', [PagePartnerController::class, 'product_index'])->name('partner.product.list');
     Route::get('partner/product/add', [PagePartnerController::class, 'product_create'])->name('partner.product.add');
     Route::get('partner/product/{slug_product}/edit', [PagePartnerController::class, 'product_edit'])->name('partner.product.edit');
 
-    // route partner for farm
+    /**
+     * Route for farm partner
+     */
     Route::get('partner/farm', [FarmPartnerController::class, 'list'])->name('partner.farm.list');
     Route::get('partner/farm/add', [FarmPartnerController::class, 'create'])->name('partner.farm.create');
     Route::post('partner/farm/add', [FarmPartnerController::class, 'store'])->name('partner.farm.store');
@@ -279,12 +401,16 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     Route::put('partner/farm/update/{slug_farm}', [FarmPartnerController::class, 'edit'])->name('partner.farm.edit');
     Route::delete('partner/farm/destroy/{slug_farm}', [FarmPartnerController::class, 'destroy'])->name('partner.farm.destroy');
 
-    // route partner for testimonial
+    /**
+     * Route for testimonial partner
+     */
     Route::get('partner/testimonial', [TestimonialPartnerController::class, 'list'])->name('partner.testimonial.list');
     Route::get('partner/testimonial/show/{slug_testimonial}', [TestimonialPartnerController::class, 'show'])->name('partner.testimonial.show');
     Route::get('partner/testimonial/reply/{id}', [PagePartnerController::class, 'testimonial_reply'])->name('partner.testimonial.reply');
 
-    // route partner for order
+    /**
+     * Route for order partner
+     */
     Route::get('partner/order', [OrderPartnerController::class, 'order'])->name('partner.order.master');
     Route::get('partner/order/new', [OrderPartnerController::class, 'order_new_view'])->name('partner.order.new');
     Route::get('partner/order/confirmed', [OrderPartnerController::class, 'order_confirmed_view'])->name('partner.order.confirmed');
@@ -293,14 +419,22 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     Route::get('partner/order/accepted', [OrderPartnerController::class, 'order_accepted_view'])->name('partner.order.accepted');
     Route::get('partner/order/end', [OrderPartnerController::class, 'order_end_view'])->name('partner.order.end');
 
-    /** Route for handling status */
+    /**
+     * Route for confirm partner
+     */
     Route::put('partner/confirm/order/new/{id}', [OrderPartnerController::class, 'status_new_to_confirm'])->name('partner.confirm.status.order.new');
     Route::put('partner/confirm/order/confirm/{id}', [OrderPartnerController::class, 'status_confirm_to_packed'])->name('partner.confirm.status.order.confirmed');
     Route::put('partner/confirm/order/packed/{id}', [OrderPartnerController::class, 'status_packed_to_sent'])->name('partner.confirm.status.order.packed');
 
-    // route partner for report
+    /**
+     * Route for reporting transaction partner
+     */
     Route::get('partner/report', [PagePartnerController::class, 'report'])->name('partner.report.list');
     Route::get('partner/report/{id}', [PagePartnerController::class, 'report_detail'])->name('partner.report.detail');
 
+    
+    /**
+     * Route for logout
+     */
     Route::get('partner/logout', [AuthPartnerController::class, 'logout'])->name('partner.logout');
 });
