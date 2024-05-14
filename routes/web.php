@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProductAdminController;
 use App\Http\Controllers\Admin\ReviewAdminController;
 use App\Http\Controllers\Admin\TestimonialAdminController;
 use App\Http\Controllers\Admin\TypeLivestockAdminController;
+use App\Http\Controllers\Api\AIApiController;
 use App\Http\Controllers\Web\AIController;
 use App\Http\Controllers\Api\CategoryLivestockController;
 use App\Http\Controllers\Api\CategoryProductController;
@@ -68,7 +69,7 @@ Route::get('/', function () {
 Route::get('/get-location', [AIController::class, 'getLocation']);
 Route::get('/find-nearest-product', [AIController::class, 'findNearestProductView']);
 
-
+Route::get('/layanan', [PageWebController::class, 'layanan'])->name('homepage.layanan');
 
 Route::get('show-user-location-data', [LocationController::class, 'index']);
 
@@ -84,7 +85,7 @@ Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}/{slug_
 
 Route::get('/nearest/product/fetch', [AIController::class, 'fetchData']);
 
-// Route::get('/market/nearest', [AIController::class, 'nearest_view'])->name('homepage.market.nearest');
+Route::get('/market/nearest', [AIApiController::class, 'nearest_view'])->name('homepage.market.nearest');
 Route::get('verify-email/{id}/{hash}', [RegisterCustomerController::class, 'show'])
     ->middleware(['throttle:6,1'])
     ->name('verification.verify');

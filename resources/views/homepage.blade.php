@@ -29,7 +29,7 @@
         {{-- hero --}}
         <div class="relative h-[40rem] isolate overflow-hidden bg-primarybase">
             <div class="absolute top-0 w-full h-full bg-center bg-cover"
-                style="background-image: url('{{ asset('heroimage.png') }}');">
+                style="background-image: url('{{ asset('heroimg.png') }}');">
                 <span id="blackOverlay" class="w-full h-full absolute opacity-25 bg-black"></span>
             </div>
             <div class="absolute left-[calc(50%-4rem)] top-10 -z-10 transform-gpu blur-3xl sm:left-[calc(50%-18rem)] lg:left-48 lg:top-[calc(50%-30rem)] xl:left-[calc(50%-24rem)]"
@@ -113,6 +113,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="w-full md:w-4/12 px-4">
                         <div class="relative flex flex-col min-w-0 bg-white w-full mb-8 shadow-lg rounded-lg">
                             <div class="w-full flex justify-center">
@@ -136,7 +137,26 @@
                         </div>
                     </div>
                 </div>
+                <div class="mt-10 w-full flex justify-center">
+                    <div class="bg-primarybase w-full px-10 h-1/2-screen rounded-2xl">
+                        <h1 class="justify-center flex my-10 font-bold text-4xl text-textbase">Dipercaya oleh</h1>
+                        <div class="flex justify-between my-10">
+                            <img src="{{ asset('ipb.png') }}" alt="">
+                            <img src="{{ asset('unej.png') }}" alt="">
+                            <img src="{{ asset('pemerintah.png') }}" alt="">
+                            <img src="{{ asset('pemerintah2.png') }}" alt="">
+                        </div>
+                        <div class="flex gap-x-7 mx-auto w-full justify-center my-10">
+                            <p class="text-textbase text-lg font-semibold">✅ Pencatatan Aktivitas</p>
+                            <p class="text-textbase text-lg font-semibold">✅ Teknologi AI</p>
+                            <p class="text-textbase text-lg font-semibold">✅ Jual Beli</p>
+                            <p class="text-textbase text-lg font-semibold">✅ Keamanan</p>
+                        </div>
+                    </div>
+                </div>
+                
         </section>
+
     </div>
     @include('includes.footer')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

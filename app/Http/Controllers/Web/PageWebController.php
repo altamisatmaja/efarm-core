@@ -95,4 +95,8 @@ class PageWebController extends Controller
     {
         return view('pages.partner.index');
     }
+
+    public function layanan(){
+        return view('pages.layanan.index');
+    }
 }

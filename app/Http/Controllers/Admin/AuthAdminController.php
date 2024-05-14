@@ -22,21 +22,6 @@ class AuthAdminController extends Controller
      * @param  \App\Http\Requests\Auth\LoginRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    // public function store(LoginRequest $request) {
-    //     $credentials = $request->only('email', 'password');
-
-    //     if (Auth::attempt($credentials)) {
-    //         $request->session()->regenerate();
-    //         if (Auth::user()->user_role === 'Admin') {
-    //             return redirect()->route('admin.dashboard')->with('status', 'Anda berhasil login');
-    //         } else {
-    //             Auth::logout();
-    //             return redirect()->back()->with('status', 'Anda bukan admin!');
-    //         }
-    //     }
-
-    //     return redirect()->route('admin.login')->with('status', 'Email atau password salah.');
-    // }
 
     public function store(LoginRequest $request){
         $request->authenticate();

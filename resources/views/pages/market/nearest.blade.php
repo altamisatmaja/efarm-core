@@ -73,7 +73,7 @@
         <div class="flex mx-auto justify-center">
         <div class="flex flex-row pt-6 px-6 pb-4">
             <div class="w-3/12 mr-8">
-                <div class="bg-white relative rounded-xl shadow-lg mb-6 px-4 py-4 mb-2">
+                {{-- <div class="bg-white relative rounded-xl shadow-lg mb-6 px-4 py-4 mb-2">
                     <a href="" class="inline-block text-gray-600 hover:text-black w-full">
                         <span class="material-icons-outlined font-semibold  float-left">Kategori</span>
                     </a>
@@ -106,7 +106,7 @@
                         </ul>
                     </li>
                 @endforeach
-                </div>
+                </div> --}}
                 <div class="bg-white
         relative rounded-xl shadow-lg mb-6 px-4 py-4">
     <a href="" class="inline-block text-gray-600 hover:text-black w-full">
@@ -268,12 +268,12 @@
     <script>
         $(function() {
             $.ajax({
-                url: 'http://127.0.0.1:5000/nearest',
+                url: 'http://127.0.0.1:5000/product/5/16/',
                 method: 'GET',
                 crossDomain: true,
                 headers: {
                     "accept": "application/json",
-                    "Access-Control-Allow-Origin": "*"
+                    "Access-Control-Allow-Origin": "*, *",
                 },
                 success: function(data) {
                     let row = '';

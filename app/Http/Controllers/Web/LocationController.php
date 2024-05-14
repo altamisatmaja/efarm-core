@@ -28,7 +28,7 @@ class LocationController extends Controller
     {
         $nearestProducts = [];
 
-        $products = Product::all();
+        $products = Product::with('partner')->get();
         foreach ($products as $product) {
             foreach ($product->partner as $partner) {
                 $distance = $this->calculateEuclideanDistance($userLatitude, $userLongitude, $partner->latitude, $partner->longitude);
@@ -42,6 +42,7 @@ class LocationController extends Controller
             }
         }
 
+        // dd($nearestProducts);
         usort($nearestProducts, function ($a, $b) {
             return $a['distance'] <=> $b['distance'];
         });
