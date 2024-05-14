@@ -1,4 +1,4 @@
-<style>
+{{-- <style>
     .blurred-background {
         backdrop-filter: blur(10px);
     }
@@ -14,7 +14,7 @@
     .hover-target:hover {
         display: block;
     }
-</style>
+</style> --}}
 
 <div class="sticky top-0 z-50 border-b">
     <div>
@@ -230,48 +230,45 @@
                         <div @click.away="isOpen = false" @keydown.escape="isOpen = false"
                             x-show.transition.opacity="isOpen"
                             class="absolute mt-3 transform bg-white rounded-md shadow-lg -translate-x-3/4 min-w-max">
-                            <div class="p-4 text-lg font-medium border-b">Web apps & services</div>
                             <ul class="flex flex-col p-2 my-3 space-y-3">
                                 <li>
                                     <a href="#"
                                         class="flex items-start px-2 py-1 space-x-2 rounded-md hover:bg-gray-100">
-                                        <span class="block mt-1">
-                                            <svg class="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
-                                                <path fill="#fff"
-                                                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                                            </svg>
-                                        </span>
-                                        <span class="flex flex-col">
-                                            <span class="text-lg">Atlassian</span>
-                                            <span class="text-sm text-gray-400">Lorem ipsum dolor sit.</span>
-                                        </span>
+                                        <div class="items-center flex">
+                                            <img src="{{ asset('efarm-partner-logo.png') }}" alt="montaña"
+                                                class="h-5 mr-4" />
+                                            <span class="flex flex-col">
+                                                <span class="text-textbase text-lg font-semibold">Partner</span>
+                                                <span class="text-textbase text-sm">Jual hewan ternak Anda</span>
+                                            </span>
+                                        </div>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#"
                                         class="flex items-start px-2 py-1 space-x-2 rounded-md hover:bg-gray-100">
-                                        <span class="block mt-1">
-                                            <svg class="w-6 h-6 text-gray-500" xmlns="http://www.w3.org/2000/svg"
-                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-                                            </svg>
-                                        </span>
-                                        <span class="flex flex-col">
-                                            <span class="text-lg">Slack</span>
-                                            <span class="text-sm text-gray-400">Lorem ipsum, dolor sit amet consectetur
-                                                adipisicing elit.</span>
-                                        </span>
+                                        <div class="items-center flex">
+                                            <img src="{{ asset('efarm-market.png') }}" alt="montaña"
+                                                class="h-5 mr-4" />
+                                            <span class="flex flex-col">
+                                                <span class="text-textbase text-lg font-semibold">Market</span>
+                                                <span class="text-textbase text-sm">Mulai beli ternak</span>
+                                            </span>
+                                        </div>
                                     </a>
                                 </li>
                             </ul>
-                            <div class="flex items-center justify-center p-4 text-blue-700 underline border-t">
-                                <a href="#">Show all apps</a>
-                            </div>
+                            <a href="#">
+                                <div class="p-4 text-lg font-medium border-t">
+                                    <div class="items-center flex">
+                                        <img src="{{ asset('efarm-layanan.png') }}" alt="montaña"
+                                            class="h-5 mr-4" />
+                                        <span class="flex flex-col">
+                                            <span class="text-textbase text-lg font-semibold">Semua Layanan</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <a href="{{ route('homepage.market') }}">
@@ -294,14 +291,14 @@
                     <div class="flex">
                         <a href="{{ route('customer.login') }}" class="cursor-pointer">
                             <button
-                                class="middle none center mr-4 rounded-lg bg-primarybase py-2 px-9 font-sans text-md font-bold text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:opacity-50 disabled:shadow-none"
+                                class="middle none center mr-4 rounded-lg border border-primarybase py-2 px-9 text-white font-sans text-md font-bold bg-primarybase transition-all hover:bg-white hover:text-primarybase focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                 style="outline: none;" data-ripple-light="true">
                                 Masuk
                             </button>
                         </a>
                         <a href="{{ route('customer.register') }}" class="cursor-pointer">
                             <button
-                                class="middle none center mr-4 rounded-lg border hover:border-white border-primarybase py-2 px-9 text-primarybase font-sans text-md font-bold primarybase-white shadow-md shadow-blue-500/20 transition-all hover:bg-primarybase hover:text-white hover:shadow-lg focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                class="middle none center mr-4 rounded-lg border border-primarybase py-2 px-9 text-primarybase font-sans text-md font-bold primarybase-white transition-all hover:bg-primarybase hover:text-white focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                                 style="outline: none;" data-ripple-light="true">
                                 Daftar
                             </button>
@@ -323,12 +320,12 @@
         if (scrollPosition > 100) {
             var blurAmount = scrollPosition / 100;
             navbar.style.backdropFilter = "blur(" + blurAmount + "px)";
-            bgScrollNoAuth.classList.remove('bg-white');
-            layananNoAuth.classList.replace('text-textbase', 'text-white');
+            // bgScrollNoAuth.classList.remove('bg-white');
+            // layananNoAuth.classList.replace('text-textbase', 'text-white');
         } else {
             bgScrollNoAuth.classList.add('bg-white');
             navbar.style.backdropFilter = "none";
-            layananNoAuth.classList.replace('text-white', 'text-textbase');
+            // layananNoAuth.classList.replace('text-white', 'text-textbase');
         }
     });
 
