@@ -1438,6 +1438,14 @@ select {
   margin-left: 2rem;
   margin-right: 2rem;
 }
+.my-32 {
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+}
+.my-44 {
+  margin-top: 11rem;
+  margin-bottom: 11rem;
+}
 .-mb-\[34px\] {
   margin-bottom: -34px;
 }
@@ -1623,6 +1631,12 @@ select {
 }
 .mb-12 {
   margin-bottom: 3rem;
+}
+.-mt-\[3rem\] {
+  margin-top: -3rem;
+}
+.-mt-\[5rem\] {
+  margin-top: -5rem;
 }
 .box-content {
   box-sizing: content-box;
@@ -1819,6 +1833,18 @@ select {
 }
 .min-h-screen {
   min-height: 100vh;
+}
+.min-h-full {
+  min-height: 100%;
+}
+.min-h-72 {
+  min-height: 18rem;
+}
+.min-h-64 {
+  min-height: 16rem;
+}
+.min-h-20 {
+  min-height: 5rem;
 }
 .w-0 {
   width: 0px;
@@ -5357,6 +5383,11 @@ select {
     margin-right: 5rem;
   }
 
+  .lg\:mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .lg\:-ml-36 {
     margin-left: -9rem;
   }
@@ -5473,6 +5504,10 @@ select {
     max-width: 36rem;
   }
 
+  .lg\:max-w-4xl {
+    max-width: 56rem;
+  }
+
   .lg\:flex-1 {
     flex: 1 1 0%;
   }
@@ -5515,6 +5550,10 @@ select {
 
   .lg\:items-center {
     align-items: center;
+  }
+
+  .lg\:justify-start {
+    justify-content: flex-start;
   }
 
   .lg\:justify-center {
