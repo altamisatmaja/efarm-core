@@ -14,14 +14,12 @@ class LocationController extends Controller
         $userIp = $request->ip();
         $location = GeoIP::getLocation($userIp);
 
-        $userLatitude = $location->lat;
-        $userLongitude = $location->lon;
-        $radius = 10;
-
-        $nearestProduct = $this->aStarAlgorithm($userLatitude, $userLongitude, $radius);
-        dd($nearestProduct);
-
-        return $nearestProduct;
+        $data = [
+            'lat' => $location->lat,
+            'lot' => $location->lon
+        ];
+        dd($data);
+        return $data;
     }
 
     private function aStarAlgorithm($userLatitude, $userLongitude, $radius)

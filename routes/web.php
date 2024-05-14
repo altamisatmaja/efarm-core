@@ -66,10 +66,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/get-location', [AIController::class, 'getLocation']);
-Route::get('/find-nearest-product', [AIController::class, 'findNearestProductView']);
-Route::get('/show-user-location-data', [LocationController::class, 'index']);
-
+Route::get('/ai', [AIController::class, 'index']);
 
 
 /**

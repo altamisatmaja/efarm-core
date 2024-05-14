@@ -42,6 +42,7 @@ Route::post('checkout/callback', [TripayCallbackController::class, 'handle']);
 
 Route::get('/product/nearest', [AIApiController::class, 'index']);
 Route::get('/product/nearest/ai', [AIController::class, 'fetchData']);
+Route::get('/product/nearest/ai/test', [AIApiController::class, 'getProduct']);
 
 Route::group([
     'middleware' => 'api',
