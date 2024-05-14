@@ -57,7 +57,7 @@ module.exports = {
                     900: '#164E63'
                   },
                 'primarybase' : '#AAC14C',
-                'sekunder': '#EAEFD2',
+                'sekunderbase': '#EAEFD2',
                 'textbase' : '#444444',
             },
         },

@@ -258,7 +258,7 @@
                                     </a>
                                 </li>
                             </ul>
-                            <a href="#">
+                            <a href="{{ route('homepage.layanan') }}">
                                 <div class="p-4 text-lg font-medium border-t">
                                     <div class="items-center flex">
                                         <img src="{{ asset('efarm-layanan.png') }}" alt="montaña"

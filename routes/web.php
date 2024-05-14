@@ -73,7 +73,6 @@ Route::get('/layanan', [PageWebController::class, 'layanan'])->name('homepage.la
 
 Route::get('show-user-location-data', [LocationController::class, 'index']);
 
-
 Route::get('/', [PageWebController::class, 'index']);
 Route::get('/partner', [PageWebController::class, 'partner'])->name('homepage.partner');
 Route::get('/about', [PageWebController::class, 'about'])->name('homepage.about');
