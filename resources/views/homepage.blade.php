@@ -155,20 +155,21 @@
                     </div>
                 </div>
         </section>
-        <div class="container px-6 py-10 mx-auto md:py-16">
+
+        <div x-data="{ openTab: 1 }" class="container px-6 py-10 h-screen mx-auto md:py-5">
             <div class="flex flex-col space-y-6 md:flex-row md:space-x-3">
                 <div class="w-full">
                     <div class="max-w-2xl">
                         <h1 class="text-5xl font-bold tracking-wide text-textbase">
-                            Layanan kami yang kami sediakan untuk Anda!
+                            Layanan yang kami sediakan untuk Anda!
                         </h1>
                         <p class="mt-2 font-medium text-xl text-textbase">
                             Pilih dan raih peternakan ideal bersama kami
                         </p>
                         <div class="grid gap-4 mt-8 sm:grid-cols-3">
                             <div class="flex items-center justify-center text-gray-800">
-                                <button
-                                    class="flex  w-full bg-primarybase py-3 px-4 rounded-lg ring-1 ring-primarybase">
+                                <button x-on:click="openTab = 1"
+                                    class="flex w-full bg-primarybase py-3 px-4 rounded-lg ring-1 ring-primarybase">
                                     <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -179,7 +180,8 @@
                                 </button>
                             </div>
                             <div class="flex items-center justify-center text-gray-800">
-                                <button class="flex  w-full bg-white py-3 px-4 rounded-lg ring-1 ring-primarybase">
+                                <button x-on:click="openTab = 2"
+                                    class="flex  w-full bg-white py-3 px-4 rounded-lg ring-1 ring-primarybase">
                                     <svg width="35" height="25" viewBox="0 0 31 25" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -190,7 +192,8 @@
                                 </button>
                             </div>
                             <div class="flex items-center justify-center text-gray-800">
-                                <button class="flex  w-full bg-white py-3 px-4 rounded-lg ring-1 ring-primarybase">
+                                <button x-on:click="openTab = 3"
+                                    class="flex  w-full bg-white py-3 px-4 rounded-lg ring-1 ring-primarybase">
                                     <svg width="35" height="25" viewBox="0 0 51 25" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -224,11 +227,77 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="w-4/6 px-4">
-                    <div class="relative flex flex-col bg-white ring-1 ring-primarybase w-full mb-10 rounded-lg">
+                    <div x-show="openTab === 1">
+                        <div class="relative flex flex-col bg-white ring-1 ring-primarybase w-full mb-10 rounded-lg">
+                            <div class="bg-gray-50 rounded-lg">
+                                <div class="relative flex">
+                                    <img src="{{ asset('cardcover.png') }}" alt="montaña"
+                                        class="w-full bg-cover" />
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <img src="{{ asset('efarm-partner-logo.png') }}" alt="montaña"
+                                            class="" />
+                                    </div>
+                                </div>
+                                <div class="py-8 px-10">
+                                    <p class="text-3xl font-semibold text-textbase leading-sm">
+                                        Partner
+                                    </p>
+                                    <p class="text-xl text-textbase leading-sm mt-2">
+                                        Memberikan pengalaman yang baik dalam hal belanja! 🤩
+                                    </p>
+                                    <div class="flex flex-wrap items-center mt-2 cursor-pointer">
+                                        <a href="" class="flex text-primarybase font-semibold text-xl mr-3">
+                                            Pelajari selengkapnya
+                                        </a>
+                                        <svg width="28" height="20" viewBox="0 0 28 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M21.8407 11.7976H1.79759C1.28827 11.7976 0.861346 11.6253 0.516807 11.2808C0.172269 10.9362 0 10.5093 0 10C0 9.49068 0.172269 9.06375 0.516807 8.71922C0.861346 8.37468 1.28827 8.20241 1.79759 8.20241H21.8407L16.7176 3.07927C16.3581 2.71976 16.1858 2.30032 16.2008 1.82096C16.2158 1.3416 16.388 0.922164 16.7176 0.562646C17.0771 0.203128 17.504 0.0158787 17.9984 0.000898796C18.4927 -0.0140811 18.9196 0.158188 19.2792 0.517706L27.5031 8.74169C27.6829 8.92144 27.8102 9.11618 27.8851 9.3259C27.96 9.53562 27.9975 9.76032 27.9975 10C27.9975 10.2397 27.96 10.4644 27.8851 10.6741C27.8102 10.8838 27.6829 11.0786 27.5031 11.2583L19.2792 19.4823C18.9196 19.8418 18.4927 20.0141 17.9984 19.9991C17.504 19.9841 17.0771 19.7969 16.7176 19.4374C16.388 19.0778 16.2158 18.6584 16.2008 18.179C16.1858 17.6997 16.3581 17.2802 16.7176 16.9207L21.8407 11.7976Z"
+                                                fill="#AAC14C" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="relative flex flex-col bg-white ring-1 ring-primarybase w-full mb-10 rounded-lg">
+                            <div class="bg-gray-50 rounded-lg">
+                                <div class="relative flex">
+                                    <img src="{{ asset('cardcover.png') }}" alt="montaña"
+                                        class="w-full bg-cover" />
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <img src="{{ asset('efarm-partner-logo.png') }}" alt="montaña"
+                                            class="" />
+                                    </div>
+                                </div>
+                                <div class="py-8 px-10">
+                                    <p class="text-3xl font-semibold text-textbase leading-sm">
+                                        Market
+                                    </p>
+                                    <p class="text-xl text-textbase leading-sm mt-2">
+                                        Memberikan pengalaman yang baik dalam hal belanja! 🤩
+                                    </p>
+                                    <div class="flex flex-wrap items-center mt-2 cursor-pointer">
+                                        <a href="" class="flex text-primarybase font-semibold text-xl mr-3">
+                                            Pelajari selengkapnya
+                                        </a>
+                                        <svg width="28" height="20" viewBox="0 0 28 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M21.8407 11.7976H1.79759C1.28827 11.7976 0.861346 11.6253 0.516807 11.2808C0.172269 10.9362 0 10.5093 0 10C0 9.49068 0.172269 9.06375 0.516807 8.71922C0.861346 8.37468 1.28827 8.20241 1.79759 8.20241H21.8407L16.7176 3.07927C16.3581 2.71976 16.1858 2.30032 16.2008 1.82096C16.2158 1.3416 16.388 0.922164 16.7176 0.562646C17.0771 0.203128 17.504 0.0158787 17.9984 0.000898796C18.4927 -0.0140811 18.9196 0.158188 19.2792 0.517706L27.5031 8.74169C27.6829 8.92144 27.8102 9.11618 27.8851 9.3259C27.96 9.53562 27.9975 9.76032 27.9975 10C27.9975 10.2397 27.96 10.4644 27.8851 10.6741C27.8102 10.8838 27.6829 11.0786 27.5031 11.2583L19.2792 19.4823C18.9196 19.8418 18.4927 20.0141 17.9984 19.9991C17.504 19.9841 17.0771 19.7969 16.7176 19.4374C16.388 19.0778 16.2158 18.6584 16.2008 18.179C16.1858 17.6997 16.3581 17.2802 16.7176 16.9207L21.8407 11.7976Z"
+                                                fill="#AAC14C" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div x-show="openTab === 2" class="relative flex flex-col bg-white ring-1 ring-primarybase w-full mb-10 rounded-lg">
                         <div class="bg-gray-50 rounded-lg">
                             <div class="relative flex">
-                                <img src="{{ asset('cardcover.png') }}" alt="montaña" class="w-full bg-cover" />
+                                <img src="{{ asset('cardcover.png') }}" alt="montaña"
+                                    class="w-full bg-cover" />
                                 <div class="absolute inset-0 flex items-center justify-center">
                                     <img src="{{ asset('efarm-partner-logo.png') }}" alt="montaña"
                                         class="" />
@@ -255,10 +324,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="relative flex flex-col bg-white ring-1 ring-primarybase w-full mb-10 rounded-lg">
+                    <div x-show="openTab === 3" class="relative flex flex-col bg-white ring-1 ring-primarybase w-full mb-10 rounded-lg">
                         <div class="bg-gray-50 rounded-lg">
                             <div class="relative flex">
-                                <img src="{{ asset('cardcover.png') }}" alt="montaña" class="w-full bg-cover" />
+                                <img src="{{ asset('cardcover.png') }}" alt="montaña"
+                                    class="w-full bg-cover" />
                                 <div class="absolute inset-0 flex items-center justify-center">
                                     <img src="{{ asset('efarm-partner-logo.png') }}" alt="montaña"
                                         class="" />
@@ -266,7 +336,7 @@
                             </div>
                             <div class="py-8 px-10">
                                 <p class="text-3xl font-semibold text-textbase leading-sm">
-                                    Partner
+                                    Market
                                 </p>
                                 <p class="text-xl text-textbase leading-sm mt-2">
                                     Memberikan pengalaman yang baik dalam hal belanja! 🤩
@@ -286,10 +356,276 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-        <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative flex justify-center mb-4 font-bold mt-6">
+                <h1 class="font-bold text-textbase text-5xl md:text-5xl lg:text-6xl">
+                    Cari hewan ternak terdekat Anda
+                </h1>
+            </div>
+            <main class="w-full mt-16">
+                <div class="container">
+                    <div class="grid gap-3 grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
+
+                        <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                            <div class="flex items-end justify-end h-52 w-full bg-cover relative"
+                                style="background-image: url('https://assets2.rumah-bumn.id/produk/product-16067182096361.jpg')">
+                                <p class="absolute right-2 top-2 bg-primarybase rounded-lg p-2 cursor-pointer group">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
+                                        class="text-white" width="24">
+                                        <path fill="white"
+                                            d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h440q17 0 28.5 11.5T760-320q0 17-11.5 28.5T720-280H280q-45 0-68-39.5t-2-78.5l54-98-144-304H80q-17 0-28.5-11.5T40-840q0-17 11.5-28.5T80-880h65q11 0 21 6t15 17l27 57Zm134 280h280-280Z" />
+                                    </svg>
+                                </p>
+                            </div>
+
+                            <div class="px-5 py-3">
+                                <h3 class="text-gray-700 text-lg font-semibold">Kambing Jawa Asli</h3>
+                                <div>
+                                    <h2 class="text-primarybase text-lg font-semibold">Rp 2.000.000</h2>
+                                    <div class="flex gap-2">
+                                        <div class="px-4 py-1 rounded-md bg-primarybase">
+                                            <p class="text-white text-sm">Jantan</p>
+                                        </div>
+                                        <div class="px-4 py-1 rounded-md bg-primarybase">
+                                            <p class="text-white text-sm">Boer</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700 text-md font-medium mt-4">Jawa Timur</p>
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor"
+                                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <p class="text-gray-700 text-sm font-medium">(3)</p>
+                                    </div>
+                                    <p class="text-gray-700 text-sm font-medium mb-4">200 Terjual</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                            <div class="flex items-end justify-end h-52 w-full bg-cover relative"
+                                style="background-image: url('https://assets2.rumah-bumn.id/produk/product-16067182096361.jpg')">
+                                <p class="absolute right-2 top-2 bg-primarybase rounded-lg p-2 cursor-pointer group">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
+                                        class="text-white" width="24">
+                                        <path fill="white"
+                                            d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h440q17 0 28.5 11.5T760-320q0 17-11.5 28.5T720-280H280q-45 0-68-39.5t-2-78.5l54-98-144-304H80q-17 0-28.5-11.5T40-840q0-17 11.5-28.5T80-880h65q11 0 21 6t15 17l27 57Zm134 280h280-280Z" />
+                                    </svg>
+                                </p>
+                            </div>
+
+                            <div class="px-5 py-3">
+                                <h3 class="text-gray-700 text-lg font-semibold">Kambing Jawa Asli</h3>
+                                <div>
+                                    <h2 class="text-primarybase text-lg font-semibold">Rp 2.000.000</h2>
+                                    <div class="flex gap-2">
+                                        <div class="px-4 py-1 rounded-md bg-primarybase">
+                                            <p class="text-white text-sm">Jantan</p>
+                                        </div>
+                                        <div class="px-4 py-1 rounded-md bg-primarybase">
+                                            <p class="text-white text-sm">Boer</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700 text-md font-medium mt-4">Jawa Timur</p>
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor"
+                                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <p class="text-gray-700 text-sm font-medium">(3)</p>
+                                    </div>
+                                    <p class="text-gray-700 text-sm font-medium mb-4">200 Terjual</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                            <div class="flex items-end justify-end h-52 w-full bg-cover relative"
+                                style="background-image: url('https://assets2.rumah-bumn.id/produk/product-16067182096361.jpg')">
+                                <p class="absolute right-2 top-2 bg-primarybase rounded-lg p-2 cursor-pointer group">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
+                                        class="text-white" width="24">
+                                        <path fill="white"
+                                            d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h440q17 0 28.5 11.5T760-320q0 17-11.5 28.5T720-280H280q-45 0-68-39.5t-2-78.5l54-98-144-304H80q-17 0-28.5-11.5T40-840q0-17 11.5-28.5T80-880h65q11 0 21 6t15 17l27 57Zm134 280h280-280Z" />
+                                    </svg>
+                                </p>
+                            </div>
+
+                            <div class="px-5 py-3">
+                                <h3 class="text-gray-700 text-lg font-semibold">Kambing Jawa Asli</h3>
+                                <div>
+                                    <h2 class="text-primarybase text-lg font-semibold">Rp 2.000.000</h2>
+                                    <div class="flex gap-2">
+                                        <div class="px-4 py-1 rounded-md bg-primarybase">
+                                            <p class="text-white text-sm">Jantan</p>
+                                        </div>
+                                        <div class="px-4 py-1 rounded-md bg-primarybase">
+                                            <p class="text-white text-sm">Boer</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700 text-md font-medium mt-4">Jawa Timur</p>
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor"
+                                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <p class="text-gray-700 text-sm font-medium">(3)</p>
+                                    </div>
+                                    <p class="text-gray-700 text-sm font-medium mb-4">200 Terjual</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+                            <div class="flex items-end justify-end h-52 w-full bg-cover relative"
+                                style="background-image: url('https://assets2.rumah-bumn.id/produk/product-16067182096361.jpg')">
+                                <p class="absolute right-2 top-2 bg-primarybase rounded-lg p-2 cursor-pointer group">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
+                                        class="text-white" width="24">
+                                        <path fill="white"
+                                            d="M280-80q-33 0-56.5-23.5T200-160q0-33 23.5-56.5T280-240q33 0 56.5 23.5T360-160q0 33-23.5 56.5T280-80Zm400 0q-33 0-56.5-23.5T600-160q0-33 23.5-56.5T680-240q33 0 56.5 23.5T760-160q0 33-23.5 56.5T680-80ZM246-720l96 200h280l110-200H246Zm-38-80h590q23 0 35 20.5t1 41.5L692-482q-11 20-29.5 31T622-440H324l-44 80h440q17 0 28.5 11.5T760-320q0 17-11.5 28.5T720-280H280q-45 0-68-39.5t-2-78.5l54-98-144-304H80q-17 0-28.5-11.5T40-840q0-17 11.5-28.5T80-880h65q11 0 21 6t15 17l27 57Zm134 280h280-280Z" />
+                                    </svg>
+                                </p>
+                            </div>
+
+                            <div class="px-5 py-3">
+                                <h3 class="text-gray-700 text-lg font-semibold">Kambing Jawa Asli</h3>
+                                <div>
+                                    <h2 class="text-primarybase text-lg font-semibold">Rp 2.000.000</h2>
+                                    <div class="flex gap-2">
+                                        <div class="px-4 py-1 rounded-md bg-primarybase">
+                                            <p class="text-white text-sm">Jantan</p>
+                                        </div>
+                                        <div class="px-4 py-1 rounded-md bg-primarybase">
+                                            <p class="text-white text-sm">Boer</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-gray-700 text-md font-medium mt-4">Jawa Timur</p>
+                                    <div class="flex items-center">
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <svg class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor"
+                                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                            </path>
+                                        </svg>
+                                        <p class="text-gray-700 text-sm font-medium">(3)</p>
+                                    </div>
+                                    <p class="text-gray-700 text-sm font-medium mb-4">200 Terjual</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-2 sm:py-5">
             <div class="w-full items-center mx-auto max-w-screen-lg">
                 <div class="group grid w-full grid-cols-2">
                     <div class="">
@@ -316,18 +652,24 @@
                                 berhasil memiliki 1000 lebih partner yang tersebar diseluruh wilayah Indonesia</h3>
                             <div class="grid grid-cols-2 gap-6 justify-between mb-3">
                                 <div>
-                                    <div class="flex items-center py-2 px-2 justify-center gap-3 w-full bg-sekunderbase rounded-lg">
-                                        <p class="font-semibold justify-center text-textbase flex items-center">Service</p>
+                                    <div
+                                        class="flex items-center py-2 px-2 justify-center gap-3 w-full bg-sekunderbase rounded-lg">
+                                        <p class="font-semibold justify-center text-textbase flex items-center">Service
+                                        </p>
                                     </div>
-                                    <p class="flex my-2 text-textbase font-bold text-6xl justify-center items-center gap-3">
+                                    <p
+                                        class="flex my-2 text-textbase font-bold text-6xl justify-center items-center gap-3">
                                         1023+
                                     </p>
                                 </div>
                                 <div>
-                                    <div class="flex items-center py-2 px-2 justify-center gap-3 w-full bg-sekunderbase rounded-lg">
-                                        <p class="font-semibold justify-center text-textbase flex items-center">Penjualan 2023</p>
+                                    <div
+                                        class="flex items-center py-2 px-2 justify-center gap-3 w-full bg-sekunderbase rounded-lg">
+                                        <p class="font-semibold justify-center text-textbase flex items-center">
+                                            Penjualan 2023</p>
                                     </div>
-                                    <p class="flex my-2 text-textbase font-bold text-6xl justify-center items-center gap-3">
+                                    <p
+                                        class="flex my-2 text-textbase font-bold text-6xl justify-center items-center gap-3">
                                         40232+
                                     </p>
                                 </div>
@@ -337,8 +679,324 @@
                 </div>
             </div>
         </div>
+
+        <section id="testimonies" class="py-5 bg-white">
+            <div class="max-w-6xl mx-8 md:mx-10 lg:mx-20 xl:mx-auto">
+                <div
+                    class="transition duration-500 ease-in-out transform scale-100 translate-x-0 translate-y-0 opacity-100">
+                    <div class="mb-12 space-y-5 md:mb-16 md:text-center">
+                        <h1 class="block font-bold text-textbase text-5xl md:text-5xl lg:text-6xl">
+                            Apa kata <span class="text-primarybase">Partner kami?</span>
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="grid xs:grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+                    <ul class="space-y-8">
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/kanyewest" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1276461929934942210/cqNhNk6v_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Kanye West">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Kanye West</h3>
+                                                <p class="text-base text-md">Rapper &amp; Entrepreneur</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Find God.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/tim_cook" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Tim Cook">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Tim Cook</h3>
+                                                <p class="text-base text-md">CEO of Apple</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Diam quis enim lobortis
+                                            scelerisque
+                                            fermentum dui faucibus in ornare. Donec pretium vulputate sapien nec
+                                            sagittis
+                                            aliquam malesuada bibendum.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/kanyewest" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1276461929934942210/cqNhNk6v_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Kanye West">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Kanye West</h3>
+                                                <p class="text-base text-md">Rapper &amp; Entrepreneur</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Find God.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/tim_cook" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Tim Cook">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Tim Cook</h3>
+                                                <p class="text-base text-md">CEO of Apple</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Diam quis enim lobortis
+                                            scelerisque
+                                            fermentum dui faucibus in ornare. Donec pretium vulputate sapien nec
+                                            sagittis
+                                            aliquam malesuada bibendum.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+
+                    <ul class="hidden space-y-8 sm:block">
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/paraga" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1375285353146327052/y6jeByyD_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Parag Agrawal">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Parag Agrawal</h3>
+                                                <p class="text-base text-md">CEO of Twitter</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Enim neque volutpat ac
+                                            tincidunt vitae
+                                            semper. Mattis aliquam faucibus purus in massa tempor. Neque vitae tempus
+                                            quam
+                                            pellentesque nec. Turpis cursus in hac habitasse platea dictumst.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/tim_cook" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Tim Cook">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Tim Cook</h3>
+                                                <p class="text-base text-md">CEO of Apple</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Diam quis enim lobortis
+                                            scelerisque
+                                            fermentum dui faucibus in ornare. Donec pretium vulputate sapien nec
+                                            sagittis
+                                            aliquam malesuada bibendum.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/paraga" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1375285353146327052/y6jeByyD_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Parag Agrawal">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Parag Agrawal</h3>
+                                                <p class="text-base text-md">CEO of Twitter</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Enim neque volutpat ac
+                                            tincidunt vitae
+                                            semper. Mattis aliquam faucibus purus in massa tempor. Neque vitae tempus
+                                            quam
+                                            pellentesque nec. Turpis cursus in hac habitasse platea dictumst.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/tim_cook" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Tim Cook">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Tim Cook</h3>
+                                                <p class="text-base text-md">CEO of Apple</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Diam quis enim lobortis
+                                            scelerisque
+                                            fermentum dui faucibus in ornare. Donec pretium vulputate sapien nec
+                                            sagittis
+                                            aliquam malesuada bibendum.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+
+                    <ul class="hidden space-y-8 lg:block">
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/satyanadella" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1221837516816306177/_Ld4un5A_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Satya Nadella">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Satya Nadella</h3>
+                                                <p class="text-base text-md">CEO of Microsoft</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Tortor dignissim convallis
+                                            aenean et
+                                            tortor at. At ultrices mi tempus imperdiet nulla malesuada. Id cursus metus
+                                            aliquam
+                                            eleifend mi. Quis ipsum suspendisse ultrices gravida dictum fusce ut.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/dan_schulman" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/516916920482672641/3jCeLgFb_400x400.jpeg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Dan Schulman">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Dan Schulman</h3>
+                                                <p class="text-base text-md">CEO of PayPal</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Quam pellentesque nec nam
+                                            aliquam sem
+                                            et tortor consequat id. Enim sit amet venenatis urna cursus.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/satyanadella" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1221837516816306177/_Ld4un5A_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Satya Nadella">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Satya Nadella</h3>
+                                                <p class="text-base text-md">CEO of Microsoft</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Tortor dignissim convallis
+                                            aenean et
+                                            tortor at. At ultrices mi tempus imperdiet nulla malesuada. Id cursus metus
+                                            aliquam
+                                            eleifend mi. Quis ipsum suspendisse ultrices gravida dictum fusce ut.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/dan_schulman" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/516916920482672641/3jCeLgFb_400x400.jpeg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Dan Schulman">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Dan Schulman</h3>
+                                                <p class="text-base text-md">CEO of PayPal</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Quam pellentesque nec nam
+                                            aliquam sem
+                                            et tortor consequat id. Enim sit amet venenatis urna cursus.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </section>
     </div>
     @include('includes.footer')
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {

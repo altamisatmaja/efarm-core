@@ -1,10 +1,7 @@
 <div class="relative mt-44">
     <div class="absolute top-0 left-0 right-0 container mx-auto z-10" style="transform: translateY(-50%);">
-        {{-- <img class="h-96 w-full rounded-xl object-cover lg:w-full"
-            src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" />
-             --}}
         <div class="relative flex flex-col bg-white w-full h-64 rounded-lg">
-            <div class="bg-gray-50  rounded-3xl">
+            <div class="bg-white rounded-4xl">
                 <div class="px-14 py-10 flex flex-col">
                     <p class="text-5xl font-bold text-textbase">
                         Butuh bantuan?

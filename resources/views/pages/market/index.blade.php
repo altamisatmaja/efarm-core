@@ -214,19 +214,6 @@
                                                     $total_rating = 0;
 
                                                     $total_rating += $review->rating;
-
-                                                    // $total_reviews = count($review);
-
-                                                    // if ($total_reviews != 0) {
-                                                    //     $hasil_reviews = number_format(
-                                                    //         $total_rating / $total_reviews,
-                                                    //         2,
-                                                    //     );
-                                                    // } else {
-                                                    //     $hasil_reviews = 0;
-                                                    // }
-                                                    // $banyak_reviewers = count($reviews);
-
                                                 @endphp
                                                 <div>
                                                     @for ($i = 1; $i <= 5; $i++)
