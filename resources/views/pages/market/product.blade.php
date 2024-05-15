@@ -578,6 +578,7 @@
                     <div class="h-px w-full bg-slate-400"></div>
                 </div>
             </div>
+            
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="relative flex items-end font-bold mt-6">
                     <h2 class="text-2xl">Hewan ternak lain</h2>

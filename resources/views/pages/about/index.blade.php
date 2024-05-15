@@ -22,107 +22,332 @@
     <div>
         @include('includes.navbar')
         <!-- component -->
-        <div class="relative isolate overflow-hidden bg-primarybase">
-            <svg class="absolute inset-0 -z-10 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
-                aria-hidden="true">
-                <defs>
-                    <pattern id="983e3e4c-de6d-4c3f-8d64-b9761d1534cc" width="200" height="200" x="50%" y="-1"
-                        patternUnits="userSpaceOnUse">
-                        <path d="M.5 200V.5H200" fill="none" />
-                    </pattern>
-                </defs>
-                <svg x="50%" y="-1" class="overflow-visible fill-gray-800/20">
-                    <path d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M200 800h201v201h-201Z"
-                        stroke-width="0" />
-                </svg>
-                <rect width="100%" height="100%" stroke-width="0"
-                    fill="url(#983e3e4c-de6d-4c3f-8d64-b9761d1534cc)" />
-            </svg>
-            <div class="absolute left-[calc(50%-4rem)] top-10 -z-10 transform-gpu blur-3xl sm:left-[calc(50%-18rem)] lg:left-48 lg:top-[calc(50%-30rem)] xl:left-[calc(50%-24rem)]"
-                aria-hidden="true">
-                <div class="aspect-[1108/632] w-[69.25rem] bg-gradient-to-r from-[#80caff] to-[#4f46e5] opacity-20"
-                    style="clip-path: polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)">
+        <div class="text-white mt-24 container mx-auto p-8 overflow-hidden md:rounded-lg md:p-10 lg:p-12">
+
+            <div class="grid gap-8 md:grid-cols-2 ">
+                <div class="flex flex-col  justify-center">
+                    <p class="self-start inline font-sans text-xl font-medium text-textbase">
+                        Tentang eFarm
+                    </p>
+                    <h2 class="text-4xl font-bold text-textbase">eFarm, Teman peternakanmu</h2>
+                    <div class="h-6"></div>
+                    <p class="font-serif text-xl text-textbase md:pr-10">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magnam
+                        autem, a recusandae vero praesentium qui impedit doloremque
+                        molestias necessitatibus.
+                    </p>
+                    <div class="h-8"></div>
+                    <div class="grid grid-cols-2 gap-4 pt-8 ">
+                        <div>
+                            <p class="font-semibold text-textbase">Partner</p>
+                            <div class="h-4"></div>
+                            <p class="font-serif text-textbase">
+                                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                                Delectus labor.
+                            </p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-textbase">Market</p>
+                            <div class="h-4"></div>
+                            <p class="font-serif text-textbase">
+                                Ipsum dolor sit, amet consectetur adipisicing elit. Delectus
+                                amet consectetur.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="-mr-24 rounded-lg md:rounded-l-full bg-gradient-to-br from-gray-900 to-black h-96">
+                    </div>
                 </div>
             </div>
-            <div class="mx-auto max-w-7xl px-9 pb-24 sm:pb-32 lg:flex lg:px-16 lg:py-32">
-                <div class="mx-auto max-w-2xl flex-shrink-0 lg:mx-0 lg:max-w-xl lg:pt-8">
-                    <h1 class="mt-10 text-4xl font-bold tracking-tight text-white sm:text-6xl">Menyediakan Layanan Sesuai Kebutuhan Anda</h1>
-                    <p class="mt-6 text-lg leading-8 text-white">Kelola peternakan, jual hewan ternak, beli hewan ternak dengan berbagai layanan yang tersedia di eFarm</p>
-                    <div class="mt-10 flex items-center gap-x-6">
-                        <a href="#"
-                            class="rounded-md bg-orange-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400">Jadi Partner</a>
-                        <a href="#" class="text-sm font-semibold leading-6 text-white">Pelajari Lebih Lanjut <span
-                                aria-hidden="true">→</span></a>
+
+            <div class="h-32 md:h-40"></div>
+
+            <p class="text-4xl">
+                <span class="text-textbase font-semibold text-6xl">Dibangun oleh kelompok PPL E08 dengan Mitranya adalah
+                    Ternak Express</span>
+            </p>
+
+            <main class="flex flex-col items-center justify-center mt-32">
+                <header class="container">
+                    <!-- Navbar -->
+                    <nav
+                        class="flex justify-between md:justify-around py-4 bg-white/80 backdrop-blur-md shadow-md w-full px-10 fixed top-0 left-0 right-0 z-10 px-8 md:px-3">
+                        <!-- Logo Container -->
+                        <div class="flex items-center">
+                            <!-- Logo -->
+                            <a class="cursor-pointer">
+                                <h3 class="text-2xl font-medium text-blue-500">
+                                    <img class="h-10"
+                                        src="https://stackoverflow.design/assets/img/logos/so/logo-stackoverflow.svg"
+                                        alt="Store Logo" />
+                                </h3>
+                            </a>
+                        </div>
+
+                        <!-- Links Section -->
+                        <div
+                            class="items-center md:space-x-8 justify-center justify-items-start md:justify-items-center md:flex md:pt-2 w-full left-0 top-16 px-5 md:px-10 py-3 md:py-0 border-t md:border-t-0">
+                            <a
+                                class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300">
+                                Home
+                            </a>
+
+                            <a
+                                class="flex text-gray-600 cursor-pointer transition-colors duration-300 font-semibold text-blue-600">
+                                Themes
+                            </a>
+
+                            <a
+                                class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300">
+                                Developers
+                            </a>
+
+                            <a
+                                class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300">
+                                Pricing
+                            </a>
+
+                            <a
+                                class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300">
+                                Blog
+                            </a>
+
+                            <a
+                                class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300">
+                                About Us
+                            </a>
+                        </div>
+
+                        <!-- Auth Links -->
+                        <div class="flex items-center space-x-5 hidden md:flex">
+                            <!-- Register -->
+                            <a
+                                class="flex text-gray-600 hover:text-blue-500 cursor-pointer transition-colors duration-300">
+                                <svg class="fill-current h-5 w-5 mr-2 mt-0.5" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24"
+                                    height="24" viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 0L11.34 .03L15.15 3.84L16.5 2.5C19.75 4.07 22.09 7.24 22.45 11H23.95C23.44 4.84 18.29 0 12 0M12 4C10.07 4 8.5 5.57 8.5 7.5C8.5 9.43 10.07 11 12 11C13.93 11 15.5 9.43 15.5 7.5C15.5 5.57 13.93 4 12 4M12 6C12.83 6 13.5 6.67 13.5 7.5C13.5 8.33 12.83 9 12 9C11.17 9 10.5 8.33 10.5 7.5C10.5 6.67 11.17 6 12 6M.05 13C.56 19.16 5.71 24 12 24L12.66 23.97L8.85 20.16L7.5 21.5C4.25 19.94 1.91 16.76 1.55 13H.05M12 13C8.13 13 5 14.57 5 16.5V18H19V16.5C19 14.57 15.87 13 12 13M12 15C14.11 15 15.61 15.53 16.39 16H7.61C8.39 15.53 9.89 15 12 15Z" />
+                                </svg>
+
+                                Register
+                            </a>
+
+                            <!-- Login -->
+                            <a
+                                class="flex text-gray-600 cursor-pointer transition-colors duration-300 font-semibold text-blue-600">
+                                <svg class="fill-current h-5 w-5 mr-2 mt-0.5" xmlns="http://www.w3.org/2000/svg"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24"
+                                    height="24" viewBox="0 0 24 24">
+                                    <path
+                                        d="M10,17V14H3V10H10V7L15,12L10,17M10,2H19A2,2 0 0,1 21,4V20A2,2 0 0,1 19,22H10A2,2 0 0,1 8,20V18H10V20H19V4H10V6H8V4A2,2 0 0,1 10,2Z" />
+                                </svg>
+
+                                Login
+                            </a>
+                        </div>
+
+                        <!-- Hamberger Menu -->
+                        <button class="w-10 h-10 md:hidden justify-self-end rounded-full hover:bg-gray-100">
+                            <svg class="mx-auto" xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24"
+                                viewBox="0 0 24 24">
+                                <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+                            </svg>
+                        </button>
+                    </nav>
+                </header>
+
+                <!-- Parallax Background -->
+                <section
+                    class="flex flex-col w-full h-[500px] bg-blur bg-cover bg-fixed bg-center flex justify-center items-center rounded-3xl"
+                    style="
+                        background-image: url({{ asset('images/herofixed.png') }});
+                    ">
+                    <h1 class="text-primarybase text-7xl font-bold mt-20 mb-10">
+                        eFarm
+                    </h1>
+
+                    <span class="text-center font-bold my-20 text-white/90">
+                        <a href="https://egoistdeveloper.github.io/twcss-to-sass-playground/" target="_blank"
+                            class="text-primarybase hover:text-white">
+                            Jadi Partner
+                        </a>
+
+                        <a href="https://unsplash.com/photos/8Pm_A-OHJGg" target="_blank"
+                            class="text-primarybase hover:text-white">
+                            Jual Beli Hewan Ruminansia
+                        </a>
+
+                    </span>
+                </section>
+
+                
+            </main>
+
+        </div>
+
+
+        <div class="text-white mt-24 container mx-auto p-8 overflow-hidden md:rounded-lg md:p-10 lg:p-12">
+            <div class="mx-auto px-4 md:px-8">
+                <div class="mb-4 flex items-center justify-between gap-8 sm:mb-8 md:mb-12 flex-col">
+                    <div class="flex items-center flex-col">
+                        <h2 class="text-6xl font-bold text-gray-800 lg:text-6xl ">Dokumentasi eFarm</h2>
+                        <p class="max-w-screen text-xl mt-3 text-gray-500 ">
+                            Ini adalah aktivitas, kemitraan, produk, penjalanan, dan sejarah dari eFarm
+                        </p>
                     </div>
+
                 </div>
-                <div
-                    class="mx-auto -mt-20 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
-                    <div class="max-w-2xl flex-none sm:max-w-5xl lg:max-w-none">
-                        <img src="{{ asset('aboutheader.png') }}" alt="efarm"
-                            width="1700" height="1242"
-                            class="w-[45rem] rounded-md bg-white/5 shadow-2xl ring-1 ring-white/10">
-                    </div>
+
+                <div class="grid grid-cols-3 gap-4 sm:grid-cols-3 md:gap-6 xl:gap-8">
+                    <!-- image - start -->
+                    <a href="#"
+                        class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80">
+                        <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600"
+                            loading="lazy" alt="Photo by Minh Pham"
+                            class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
+
+                        <div
+                            class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
+                        </div>
+
+                        <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">VR</span>
+                    </a>
+                    <!-- image - end -->
+
+                    <!-- image - start -->
+                    <a href="#"
+                        class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:col-span-2 md:h-80">
+                        <img src="https://images.unsplash.com/photo-1542759564-7ccbb6ac450a?auto=format&q=75&fit=crop&w=1000"
+                            loading="lazy" alt="Photo by Magicle"
+                            class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
+
+                        <div
+                            class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
+                        </div>
+
+                        <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">Tech</span>
+                    </a>
+                    <!-- image - end -->
+
+                    <!-- image - start -->
+                    <a href="#"
+                        class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:col-span-2 md:h-80">
+                        <img src="https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?auto=format&q=75&fit=crop&w=1000"
+                            loading="lazy" alt="Photo by Martin Sanchez"
+                            class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
+
+                        <div
+                            class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
+                        </div>
+
+                        <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">Dev</span>
+                    </a>
+                    <!-- image - end -->
+
+                    <!-- image - start -->
+                    <a href="#"
+                        class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80">
+                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&q=75&fit=crop&w=600"
+                            loading="lazy" alt="Photo by Lorenzo Herrera"
+                            class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
+
+                        <div
+                            class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
+                        </div>
+
+                        <span
+                            class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">Retro</span>
+                    </a>
+                    <!-- image - end -->
                 </div>
             </div>
         </div>
         <!-- component -->
-<div class="bg-white py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-16 sm:gap-y-24 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-        <div class="lg:pr-4">
-          <div class="relative overflow-hidden rounded-3xl bg-gray-900 px-6 pb-9 pt-64 shadow-2xl sm:px-12 lg:max-w-lg lg:px-8 lg:pb-8 xl:px-10 xl:pb-10">
-            <img class="absolute inset-0 h-full w-full object-cover brightness-125 saturate-0" src="https://images.unsplash.com/photo-1630569267625-157f8f9d1a7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2669&q=80" alt="">
-            <div class="absolute inset-0 bg-gray-900 mix-blend-multiply"></div>
-            <div class="absolute left-1/2 top-1/2 -ml-16 -translate-x-1/2 -translate-y-1/2 transform-gpu blur-3xl" aria-hidden="true">
-              <div class="aspect-[1097/845] w-[68.5625rem] bg-gradient-to-tr from-[#ff4694] to-[#776fff] opacity-40" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+        <div class="text-white mt-24 container mx-auto p-8 overflow-hidden md:rounded-lg md:p-10 lg:p-12">
+            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+                <div class="mt-8 overflow-hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2">
+                        <div class="p-6 mr-2 bg-white sm:rounded-lg">
+                            <h1 class="text-4xl sm:text-5xl text-primarybase  font-bold tracking-tight">
+                                Lebih dekat dengan kami
+                            </h1>
+                            <p class="text-normal text-lg sm:text-2xl font-medium text-gray-600 mt-2">
+                                Isi feedback untuk perbaikan kedepannya
+                            </p>
+
+                            <div class="flex items-center  mt-8 text-gray-600">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
+                                    class="w-8 h-8 text-primarybase">
+                                    <path  class="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                <div class="text-primarybase ml-4 text-md tracking-wide font-semibold w-40">
+                                    Bekasi,
+                                    Jawa Barat
+                                </div>
+                            </div>
+
+                            <div class="flex items-center mt-4 text-gray-600">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
+                                    class="w-8 h-8 text-primarybase">
+                                    <path text-primarybase stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                                <div class="ml-4 text-md text-primarybase tracking-wide font-semibold w-40">
+                                    +62 89610085665
+                                </div>
+                            </div>
+
+                            <div class="flex items-center mt-2 text-primarybase">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24"
+                                    class="w-8 h-8 text-primarybase">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <div class="ml-4 text-md tracking-wide font-semibold w-40">
+                                    ternakexpressindonesia.com
+                                </div>
+                            </div>
+                        </div>
+
+                        <form class="p-6 flex flex-col justify-center">
+                            <div class="flex flex-col">
+                                <label for="name" class="hidden">Full Name</label>
+                                <input type="name" name="name" id="name" placeholder="Nama Lengkap"
+                                    class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-textbase text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
+                            </div>
+
+                            <div class="flex flex-col mt-2">
+                                <label for="email" class="hidden">Email</label>
+                                <input type="email" name="email" id="email" placeholder="Email"
+                                    class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-textbase text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
+                            </div>
+
+                            <div class="flex flex-col mt-2">
+                                <label for="tel" class="hidden">Nomor Hp</label>
+                                <input type="tel" name="tel" id="tel" placeholder="Telephone Number"
+                                    class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-textbase text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
+                            </div>
+
+                            <button type="submit"
+                                class="md:w-32 bg-primarybase hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300">
+                                Submit
+                            </button>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <figure class="relative isolate">
-              <svg viewBox="0 0 162 128" fill="none" aria-hidden="true" class="absolute -left-2 -top-4 -z-10 h-32 stroke-white/20">
-                <path id="0ef284b8-28c2-426e-9442-8655d393522e" d="M65.5697 118.507L65.8918 118.89C68.9503 116.314 71.367 113.253 73.1386 109.71C74.9162 106.155 75.8027 102.28 75.8027 98.0919C75.8027 94.237 75.16 90.6155 73.8708 87.2314C72.5851 83.8565 70.8137 80.9533 68.553 78.5292C66.4529 76.1079 63.9476 74.2482 61.0407 72.9536C58.2795 71.4949 55.276 70.767 52.0386 70.767C48.9935 70.767 46.4686 71.1668 44.4872 71.9924L44.4799 71.9955L44.4726 71.9988C42.7101 72.7999 41.1035 73.6831 39.6544 74.6492C38.2407 75.5916 36.8279 76.455 35.4159 77.2394L35.4047 77.2457L35.3938 77.2525C34.2318 77.9787 32.6713 78.3634 30.6736 78.3634C29.0405 78.3634 27.5131 77.2868 26.1274 74.8257C24.7483 72.2185 24.0519 69.2166 24.0519 65.8071C24.0519 60.0311 25.3782 54.4081 28.0373 48.9335C30.703 43.4454 34.3114 38.345 38.8667 33.6325C43.5812 28.761 49.0045 24.5159 55.1389 20.8979C60.1667 18.0071 65.4966 15.6179 71.1291 13.7305C73.8626 12.8145 75.8027 10.2968 75.8027 7.38572C75.8027 3.6497 72.6341 0.62247 68.8814 1.1527C61.1635 2.2432 53.7398 4.41426 46.6119 7.66522C37.5369 11.6459 29.5729 17.0612 22.7236 23.9105C16.0322 30.6019 10.618 38.4859 6.47981 47.558L6.47976 47.558L6.47682 47.5647C2.4901 56.6544 0.5 66.6148 0.5 77.4391C0.5 84.2996 1.61702 90.7679 3.85425 96.8404L3.8558 96.8445C6.08991 102.749 9.12394 108.02 12.959 112.654L12.959 112.654L12.9646 112.661C16.8027 117.138 21.2829 120.739 26.4034 123.459L26.4033 123.459L26.4144 123.465C31.5505 126.033 37.0873 127.316 43.0178 127.316C47.5035 127.316 51.6783 126.595 55.5376 125.148L55.5376 125.148L55.5477 125.144C59.5516 123.542 63.0052 121.456 65.9019 118.881L65.5697 118.507Z" />
-                <use href="#0ef284b8-28c2-426e-9442-8655d393522e" x="86" />
-              </svg>
-              <blockquote class="mt-6 text-xl font-semibold leading-8 text-white">
-                <p>“"What happens is not as important as how you react to what happens." "The journey of a thousand miles begins with one step." "The only true wisdom is in knowing you know nothing." "Just as treasures are uncovered from the earth, so virtue appears from good deeds, and wisdom appears from a pure and peaceful mind..”</p>
-              </blockquote>
-              <figcaption class="mt-6 text-sm leading-6 text-gray-300"><strong class="font-semibold text-white">Shehab Najib,</strong> ceo of ISREN</figcaption>
-            </figure>
-          </div>
         </div>
-        <div>
-          <div class="text-base leading-7 text-gray-700 lg:max-w-lg">
-            <p class="text-base font-semibold leading-7 text-yellow-400">wisdom values</p>
-            <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Peaceful minds</h1>
-            <div class="max-w-xl">
-              <p class="mt-6">You won't ever have a peaceful mind unless you have a peace ful life and equal times you have a time with your religion then time for fun then time for work and study.</p>
-              <p class="mt-8">You want to have a peaceful day try ignoring problems that are blamed on you but you are sure you didn't do the mistake.</p>
-              <p class="mt-8">Try dividing your life days into equal times and do every thing on it's time.</p>
-            </div>
-          </div>
-          <dl class="mt-10 grid grid-cols-2 gap-8 border-t border-gray-900/10 pt-10 sm:grid-cols-4">
-            <div>
-              <dt class="text-sm font-semibold leading-6 text-gray-600">Founded</dt>
-              <dd class="mt-2 text-3xl font-bold leading-10 tracking-tight text-gray-900">end of 2023</dd>
-            </div>
-            <div>
-              <dt class="text-sm font-semibold leading-6 text-gray-600">Employees</dt>
-              <dd class="mt-2 text-3xl font-bold leading-10 tracking-tight text-gray-900">uncounted</dd>
-            </div>
-            <div>
-              <dt class="text-sm font-semibold leading-6 text-gray-600">Countries</dt>
-              <dd class="mt-2 text-3xl font-bold leading-10 tracking-tight text-gray-900">2</dd>
-            </div>
-            <div>
-              <dt class="text-sm font-semibold leading-6 text-gray-600">Raised</dt>
-              <dd class="mt-2 text-3xl font-bold leading-10 tracking-tight text-gray-900">$1.5K</dd>
-            </div>
-          </dl>
-          <div class="mt-10 flex">
-            <a href="#" class="text-base font-semibold leading-7 text-yellow-500">Learn more about our company <span aria-hidden="true">&rarr;</span></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        @include('includes.footer')
     </div>
 </body>
 

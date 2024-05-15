@@ -74,7 +74,7 @@ Route::get('/ai', [AIController::class, 'index']);
  */
 Route::get('/', [PageWebController::class, 'index']);
 Route::get('/partner', [PageWebController::class, 'partner'])->name('homepage.partner');
-Route::get('/about', [PageWebController::class, 'about'])->name('homepage.about');
+Route::get('/tentang', [PageWebController::class, 'about'])->name('homepage.about');
 Route::get('/layanan', [PageWebController::class, 'layanan'])->name('homepage.layanan');
 
 

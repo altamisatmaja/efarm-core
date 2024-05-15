@@ -25,18 +25,60 @@
 <body>
     <div>
         @include('includes.navbar')
-        <!-- component -->
-        <section class="pt-24 bg-white">
-            <div class="px-12 mx-auto max-w-7xl">
-                <div class="w-full px-16 mx-auto xl:w-9/12 md:text-center">
-                    <h1
-                        class="mb-8 text-4xl font-bold leading-none tracking-normal text-gray-900 md:text-6xl md:tracking-tight">
-                        Jual hewan ternak Anda bersama kami
+        <section
+            class="relative overflow-hidden bg-gradient-to-b from-green-50 via-transparent to-transparent pb-12 pt-20 sm:pb-16 sm:pt-32 lg:pb-24 xl:pb-32 xl:pt-40">
+            <div class="relative z-10">
+                <div
+                    class="absolute inset-x-0 top-1/2 -z-10 flex -translate-y-1/2 justify-center overflow-hidden [mask-image:radial-gradient(50%_45%_at_50%_55%,white,transparent)]">
+                    <svg class="h-[60rem] w-[100rem] flex-none stroke-green-600 opacity-20" aria-hidden="true">
+                        <defs>
+                            <pattern id="e9033f3e-f665-41a6-84ef-756f6778e6fe" width="200" height="200" x="50%"
+                                y="50%" patternUnits="userSpaceOnUse" patternTransform="translate(-100 0)">
+                                <path d="M.5 200V.5H200" fill="none"></path>
+                            </pattern>
+                        </defs>
+                        <svg x="50%" y="50%" class="overflow-visible fill-green-50">
+                            <path d="M-300 0h201v201h-201Z M300 200h201v201h-201Z" stroke-width="0"></path>
+                        </svg>
+                        <rect width="100%" height="100%" stroke-width="0"
+                            fill="url(#e9033f3e-f665-41a6-84ef-756f6778e6fe)">
+                        </rect>
+                    </svg>
+                </div>
+            </div>
+            <div class="relative z-20 mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl text-center">
+                    <h1 class="block font-bold text-textbase text-5xl md:text-5xl lg:text-6xl">
+                        Jual <span class="text-primarybase">Hewan ternak</span> Anda bersama kami!
                     </h1>
-                    <p class="px-0 mb-8 text-lg text-gray-600 md:text-xl lg:px-24">
-                        Start gaining the traction you've always wanted with our next-level templates and designs.
-                        Crafted to help you tell your story.
-                    </p>
+                    <div class="mt-5 max-w-3xl">
+                        <p class="text-lg text-textbase">Kelola peternakan, jual hewan ternak, beli hewan ternak
+                            dengan berbagai layanan yang tersedia di eFarm.</p>
+                    </div>
+                    <div class="mt-12 grid grid-cols-2 gap-8 sm:grid-cols-2 sm:gap-0 sm:gap-x-4">
+                        <a href="{{ route('partner.submission') }}"
+                            class="flex flex-row items-center justify-center gap-x-2 rounded-lg text-white px-10 py-3 bg-primarybase">
+                            <svg class="h-[30px] text-white" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 64 64" stroke-width="3" stroke="#000000" fill="none">
+                                <path d="M14,39.87,24.59,50.51s33-14,31.23-42.29C55.82,8.22,29.64,4.28,14,39.87Z">
+                                </path>
+                                <path d="M44.69,9.09a12.3,12.3,0,0,0,3.48,6.73,12.31,12.31,0,0,0,7,3.52"></path>
+                                <circle cx="39.46" cy="24.56" r="6.2"></circle>
+                                <path
+                                    d="M14.89,37.82l-5.3.68a.27.27,0,0,1-.28-.37l3.93-9a2.65,2.65,0,0,1,1.88-1.53l6.59-1.38">
+                                </path>
+                                <path
+                                    d="M26.55,49.4l-.69,5.3a.27.27,0,0,0,.37.28l9-3.92a2.69,2.69,0,0,0,1.53-1.89l1.38-6.59">
+                                </path>
+                                <path d="M22.21,48.13c-2.37,7.41-14.1,7.78-14.1,7.78S8,44.51,15.76,41.67"></path>
+                            </svg>
+                            Daftar sebagai Partner
+                        </a>
+                        <a href="#demo"
+                            class="flex flex-row items-center justify-center gap-x-2 rounded-lg border border-primarybase px-10 py-3 text-primarybase">Masuk
+                            sebagai Partner →
+                        </a>
+                    </div>
                 </div>
                 <div class="w-full mx-auto mt-16 px-16 text-center md:w-10/12">
                     <div class="relative z-0 w-full mt-8">
@@ -52,563 +94,760 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
 
-        <section class="relative px-16 py-32 lg:py-36 bg-white">
+
+        <section class="flex flex-col py-20">
+            <h1 class="block font-bold text-textbase text-center text-5xl md:text-5xl lg:text-6xl">
+                Rekam Jejak <span class="text-primarybase ">eFarm</span>
+            </h1>
             <div
-                class="mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 flex flex-col lg:flex-row gap-10 lg:gap-12">
-                <div class="absolute w-full lg:w-1/2 inset-y-0 lg:right-0 hidden lg:block">
-                    <span
-                        class="absolute -left-6 md:left-4 top-24 lg:top-28 w-24 h-24 rotate-90 skew-x-12 rounded-3xl bg-green-400 blur-xl opacity-60 lg:opacity-95 lg:block hidden"></span>
-                    <span
-                        class="absolute right-4 bottom-12 w-24 h-24 rounded-3xl bg-blue-600 blur-xl opacity-80"></span>
-                </div>
-                <span
-                    class="w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-blue-600 to-green-400 absolute -top-5 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90"></span>
+                class="mt-10 grid md:grid-cols-4 lg:grid-cols-4 gap-y-5 lg:gap-y-0 gap-x-5 place-items-center w-full mx-auto max-w-7xl px-5">
                 <div
-                    class="relative flex flex-col items-center text-center lg:text-left lg:py-7 xl:py-8 
-                    lg:items-start lg:max-w-none max-w-3xl mx-auto lg:mx-0 lg:flex-1 lg:w-1/2">
-
-                    <h1
-                        class="text-3xl leading-tight sm:text-4xl md:text-5xl xl:text-6xl
-                    font-bold text-gray-900">
-                        Social Media <span
-                            class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-blue-600 via-30% to-green-600">Marketing</span>
-                        is the Best Ever.
-                    </h1>
-                    <p class="mt-8 text-gray-700">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores repellat perspiciatis
-                        aspernatur
-                        quis voluptatum porro incidunt,
-                        libero sequi quos eos velit
-                    </p>
-                    <div class="mt-10  w-full flex max-w-md mx-auto lg:mx-0">
-                        <div class="flex sm:flex-row flex-col gap-5 w-full">
-                        </div>
+                    class="flex flex-col justify-center items-center bg-[#FFF6F3] px-4 h-[126px] w-[100%] md:w-[281px] md:h-[192px] rounded-lg justify-self-center">
+                    <div class="flex flex-row justify-center items-center">
+                        <svg class="w-[35px] h-[35px] md:w-[50px] md:h-[50px]" viewBox="0 0 50 50" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M39.37 18.432c0 3.058-.906 5.862-2.466 8.203a14.728 14.728 0 0 1-10.079 6.367c-.717.127-1.455.19-2.214.19-.759 0-1.497-.063-2.214-.19a14.728 14.728 0 0 1-10.078-6.368 14.692 14.692 0 0 1-2.467-8.202c0-8.16 6.6-14.76 14.76-14.76s14.759 6.6 14.759 14.76Z"
+                                stroke="#AAC14C" stroke-width="3.473" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path
+                                d="m44.712 38.17-3.431.83a2.063 2.063 0 0 0-1.539 1.572l-.728 3.122c-.09.384-.281.734-.554 1.012a2.068 2.068 0 0 1-.992.564c-.375.09-.768.073-1.134-.052a2.078 2.078 0 0 1-.938-.653l-9.92-11.64-9.92 11.661a2.078 2.078 0 0 1-.938.653 2.038 2.038 0 0 1-1.134.052 2.067 2.067 0 0 1-.992-.563 2.137 2.137 0 0 1-.554-1.012l-.728-3.123a2.13 2.13 0 0 0-.55-1.01 2.06 2.06 0 0 0-.988-.562L6.24 38.19a2.073 2.073 0 0 1-.956-.533 2.14 2.14 0 0 1-.563-.953 2.175 2.175 0 0 1-.015-1.113c.091-.366.276-.7.536-.97l8.11-8.284a14.672 14.672 0 0 0 4.307 4.281 14.34 14.34 0 0 0 5.634 2.134 12.29 12.29 0 0 0 2.183.191c.749 0 1.477-.063 2.184-.19 4.138-.617 7.694-3.017 9.94-6.416l8.11 8.285c1.144 1.147.583 3.165-.998 3.547Zm-18.03-26.532 1.227 2.507c.167.34.603.68.998.743l2.226.383c1.414.233 1.747 1.296.727 2.336l-1.726 1.764c-.29.297-.457.87-.353 1.295l.499 2.188c.395 1.721-.5 2.4-1.996 1.487l-2.08-1.253a1.434 1.434 0 0 0-1.372 0l-2.08 1.253c-1.497.892-2.392.234-1.996-1.487l.499-2.188c.083-.403-.063-.998-.354-1.295l-1.726-1.764c-1.019-1.04-.686-2.081.728-2.336l2.225-.383c.375-.063.811-.403.977-.743l1.227-2.507c.604-1.36 1.685-1.36 2.35 0Z"
+                                stroke="#AAC14C" stroke-width="3.473" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                        </svg>
+                        <p class="font-bold text-3xl sm:text-4xl lg:text-5xl text-textbase leading-9 text-primary ml-2">412+</p>
                     </div>
-                </div>
-                <div class="flex flex-1 lg:w-1/2 lg:h-auto relative lg:max-w-none lg:mx-0 mx-auto max-w-3xl">
-                    <img src="https://agencex-astro.vercel.app/images/image1.webp" alt="Hero image" width="2350"
-                        height="2359"
-                        class="lg:absolute lg:w-full lg:h-full rounded-3xl object-cover lg:max-h-none max-h-96">
-                </div>
-            </div>
-        </section>
-
-        <section class="relative px-16 py-32 lg:py-36 bg-white">
-            <div
-                class="mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 flex flex-col lg:flex-row gap-10 lg:gap-12">
-                <div class="absolute w-full lg:w-1/2 inset-y-0 lg:right-0 hidden lg:block">
-                    <span
-                        class="absolute -left-6 md:left-4 top-24 lg:top-28 w-24 h-24 rotate-90 skew-x-12 rounded-3xl bg-green-400 blur-xl opacity-60 lg:opacity-95 lg:block hidden"></span>
-                    <span
-                        class="absolute right-4 bottom-12 w-24 h-24 rounded-3xl bg-blue-600 blur-xl opacity-80"></span>
-                </div>
-                <span
-                    class="w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-blue-600 to-green-400 absolute -top-5 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90"></span>
-                <div class="flex flex-1 lg:w-1/2 lg:h-auto relative lg:max-w-none lg:mx-0 mx-auto max-w-3xl">
-                    <img src="https://agencex-astro.vercel.app/images/image1.webp" alt="Hero image" width="2350"
-                        height="2359"
-                        class="lg:absolute lg:w-full lg:h-full rounded-3xl object-cover lg:max-h-none max-h-96">
+                    <p class="font-semibold text-lg sm:text-lg leading-6 mt-3 md:mt-6 text-textbase text-center">Partner</p>
                 </div>
                 <div
-                    class="relative flex flex-col items-center text-center lg:text-left lg:py-7 xl:py-8 
-                    lg:items-start lg:max-w-none max-w-3xl mx-auto lg:mx-0 lg:flex-1 lg:w-1/2">
-
-                    <h1
-                        class="text-3xl leading-tight sm:text-4xl md:text-5xl xl:text-6xl
-                    font-bold text-gray-900">
-                        Social Media <span
-                            class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-blue-600 via-30% to-green-600">Marketing</span>
-                        is the Best Ever.
-                    </h1>
-                    <p class="mt-8 text-gray-700">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores repellat perspiciatis
-                        aspernatur
-                        quis voluptatum porro incidunt,
-                        libero sequi quos eos velit
+                    class="flex flex-col justify-center items-center bg-[#FFF6F3] px-4 h-[126px] w-[100%] md:w-[281px] md:h-[192px] rounded-lg justify-self-center">
+                    <div class="flex flex-row justify-center items-center">
+                        <svg class="w-[35px] h-[35px] md:w-[50px] md:h-[50px]" viewBox="0 0 51 50" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#a)">
+                                <path
+                                    d="m26.91 5.776 4.483 10.683a1.544 1.544 0 0 0 1.287.942l11.474.992a1.544 1.544 0 0 1 .876 2.715L36.325 28.7a1.559 1.559 0 0 0-.49 1.523l2.61 11.296a1.544 1.544 0 0 1-2.295 1.677l-9.86-5.982a1.53 1.53 0 0 0-1.59 0l-9.861 5.982a1.544 1.544 0 0 1-2.295-1.677l2.609-11.296a1.56 1.56 0 0 0-.49-1.523l-8.705-7.593a1.544 1.544 0 0 1 .876-2.715l11.474-.992a1.544 1.544 0 0 0 1.287-.942l4.483-10.683a1.544 1.544 0 0 1 2.833 0Z"
+                                    stroke="#AAC14C" stroke-width="4.341" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="a">
+                                    <path fill="#fff" d="M.8.2h49.4v49.4H.8z"></path>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <p class="font-bold text-3xl sm:text-4xl lg:text-5xl leading-9 text-textbase text-primary ml-2">4.9</p>
+                    </div>
+                    <p class="font-semibold text-lg sm:text-lg leading-6 mt-3 md:mt-6 text-textbase text-center">Rating di Google Maps
                     </p>
-                    <div class="mt-10  w-full flex max-w-md mx-auto lg:mx-0">
-                        <div class="flex sm:flex-row flex-col gap-5 w-full">
-                        </div>
+                </div>
+                <div
+                    class="flex flex-col justify-center items-center bg-[#FFF6F3] px-4 h-[126px] w-[100%] md:w-[281px] md:h-[192px] rounded-lg justify-self-center">
+                    <div class="flex flex-row justify-center items-center">
+                        <svg class="w-[35px] h-[35px] md:w-[50px] md:h-[50px]" viewBox="0 0 50 50" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#a)" stroke="#AAC14C" stroke-width="3.473" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M10.811 39.091c-1.775-1.775-.598-5.505-1.5-7.69-.939-2.255-4.377-4.089-4.377-6.5 0-2.413 3.438-4.246 4.376-6.502.903-2.182-.274-5.914 1.501-7.69 1.776-1.775 5.508-.598 7.69-1.5 2.266-.939 4.09-4.377 6.501-4.377 2.412 0 4.246 3.438 6.501 4.376 2.185.903 5.915-.274 7.69 1.501 1.776 1.776.598 5.506 1.502 7.69.937 2.266 4.376 4.09 4.376 6.501 0 2.412-3.439 4.246-4.377 6.501-.903 2.185.274 5.915-1.5 7.69-1.776 1.776-5.506.598-7.69 1.501-2.256.938-4.09 4.377-6.502 4.377s-4.245-3.439-6.5-4.377c-2.183-.903-5.915.275-7.69-1.5Z">
+                                </path>
+                                <path d="m17.281 26.444 4.632 4.631L32.718 20.27"></path>
+                            </g>
+                            <defs>
+                                <clipPath id="a">
+                                    <path fill="#fff" d="M.3.2h49.4v49.4H.3z"></path>
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        <p class="font-bold text-3xl sm:text-4xl lg:text-5xl leading-9 text-textbase text-primary ml-2">1000+</p>
                     </div>
+                    <p class="font-semibold text-lg sm:text-lg leading-6 mt-3 text-textbase md:mt-6 text-center">Total Pelanggan
+                    </p>
+                </div>
+                <div
+                    class="flex flex-col justify-center items-center bg-[#FFF6F3] px-4 h-[126px] w-[100%] md:w-[281px] md:h-[192px] rounded-lg justify-self-center">
+                    <div class="flex flex-row justify-center items-center">
+                        <svg class="w-[35px] h-[35px] md:w-[50px] md:h-[50px]" viewBox="0 0 51 50" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M45.571 12.006 27.046 30.531l-7.719-7.718L5.434 36.706" stroke="#AAC14C"
+                                stroke-width="4.341" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M45.569 24.356v-12.35h-12.35" stroke="#AAC14C" stroke-width="4.341"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        <p class="font-bold text-3xl sm:text-4xl lg:text-5xl leading-9 text-textbase text-primary ml-2">40%+</p>
+                    </div>
+                    <p class="font-semibold text-lg sm:text-lg leading-6 mt-3 md:mt-6 text-textbase text-center">Pelanggan 2023</p>
                 </div>
             </div>
         </section>
 
-        <!-- component -->
-        <section>
-            <div class="py-16">
-                <div class="mx-auto px-6 max-w-6xl text-gray-500">
-                    <div class="relative">
-                        <div class="relative z-10 grid gap-3 grid-cols-6">
-                            <div
-                                class="col-span-full lg:col-span-2 overflow-hidden flex relative p-8 rounded-xl bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-900">
-                                <div class="size-fit m-auto relative">
-                                    <div class="relative h-24 w-56 flex items-center">
-                                        <svg class="absolute inset-0 size-full text-gray-400 dark:text-gray-600"
-                                            viewBox="0 0 254 104" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M112.891 97.7022C140.366 97.0802 171.004 94.6715 201.087 87.5116C210.43 85.2881 219.615 82.6412 228.284 78.2473C232.198 76.3179 235.905 73.9942 239.348 71.3124C241.85 69.2557 243.954 66.7571 245.555 63.9408C249.34 57.3235 248.281 50.5341 242.498 45.6109C239.033 42.7237 235.228 40.2703 231.169 38.3054C219.443 32.7209 207.141 28.4382 194.482 25.534C184.013 23.1927 173.358 21.7755 162.64 21.2989C161.376 21.3512 160.113 21.181 158.908 20.796C158.034 20.399 156.857 19.1682 156.962 18.4535C157.115 17.8927 157.381 17.3689 157.743 16.9139C158.104 16.4588 158.555 16.0821 159.067 15.8066C160.14 15.4683 161.274 15.3733 162.389 15.5286C179.805 15.3566 196.626 18.8373 212.998 24.462C220.978 27.2494 228.798 30.4747 236.423 34.1232C240.476 36.1159 244.202 38.7131 247.474 41.8258C254.342 48.2578 255.745 56.9397 251.841 65.4892C249.793 69.8582 246.736 73.6777 242.921 76.6327C236.224 82.0192 228.522 85.4602 220.502 88.2924C205.017 93.7847 188.964 96.9081 172.738 99.2109C153.442 101.949 133.993 103.478 114.506 103.79C91.1468 104.161 67.9334 102.97 45.1169 97.5831C36.0094 95.5616 27.2626 92.1655 19.1771 87.5116C13.839 84.5746 9.1557 80.5802 5.41318 75.7725C-0.54238 67.7259 -1.13794 59.1763 3.25594 50.2827C5.82447 45.3918 9.29572 41.0315 13.4863 37.4319C24.2989 27.5721 37.0438 20.9681 50.5431 15.7272C68.1451 8.8849 86.4883 5.1395 105.175 2.83669C129.045 0.0992292 153.151 0.134761 177.013 2.94256C197.672 5.23215 218.04 9.01724 237.588 16.3889C240.089 17.3418 242.498 18.5197 244.933 19.6446C246.627 20.4387 247.725 21.6695 246.997 23.615C246.455 25.1105 244.814 25.5605 242.63 24.5811C230.322 18.9961 217.233 16.1904 204.117 13.4376C188.761 10.3438 173.2 8.36665 157.558 7.52174C129.914 5.70776 102.154 8.06792 75.2124 14.5228C60.6177 17.8788 46.5758 23.2977 33.5102 30.6161C26.6595 34.3329 20.4123 39.0673 14.9818 44.658C12.9433 46.8071 11.1336 49.1622 9.58207 51.6855C4.87056 59.5336 5.61172 67.2494 11.9246 73.7608C15.2064 77.0494 18.8775 79.925 22.8564 82.3236C31.6176 87.7101 41.3848 90.5291 51.3902 92.5804C70.6068 96.5773 90.0219 97.7419 112.891 97.7022Z"
-                                                fill="currentColor"></path>
-                                        </svg>
-                                        <span
-                                            class="w-fit block mx-auto text-5xl font-semibold text-transparent bg-clip-text bg-gradient-to-br from-blue-300 to-pink-600 dark:from-blue-400 dark:to-pink-400">100%</span>
-                                    </div>
-                                    <h2 class="mt-6 text-center font-semibold text-gray-950 dark:text-white text-3xl">
-                                        Customizable</h2>
-                                </div>
-                            </div>
-                            <div
-                                class="col-span-full sm:col-span-3 lg:col-span-2 overflow-hidden relative p-8 rounded-xl bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-900">
-                                <div>
-                                    <div
-                                        class="relative aspect-square rounded-full size-32 flex border mx-auto dark:bg-white/5 dark:border-white/10 before:absolute before:-inset-2 before:border dark:before:border-white/5 dark:before:bg-white/5 before:rounded-full">
-                                        <svg class="w-24 m-auto h-fit" viewBox="0 0 212 143" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path class="text-gray-400 dark:text-gray-600"
-                                                d="M44.0209 55.3542C43.1945 54.7639 42.6916 54.0272 42.5121 53.1442C42.3327 52.2611 42.5995 51.345 43.3125 50.3958C50.632 40.3611 59.812 32.5694 70.8525 27.0208C81.8931 21.4722 93.668 18.6979 106.177 18.6979C118.691 18.6979 130.497 21.3849 141.594 26.7587C152.691 32.1326 161.958 39.8936 169.396 50.0417C170.222 51.1042 170.489 52.0486 170.196 52.875C169.904 53.7014 169.401 54.4097 168.688 55C167.979 55.5903 167.153 55.8571 166.208 55.8004C165.264 55.7437 164.438 55.2408 163.729 54.2917C157.236 45.0833 148.885 38.0307 138.675 33.1337C128.466 28.2368 117.633 25.786 106.177 25.7812C94.7257 25.7812 83.9827 28.2321 73.948 33.1337C63.9132 38.0354 55.5903 45.0881 48.9792 54.2917C48.2709 55.3542 47.4445 55.9444 46.5 56.0625C45.5556 56.1806 44.7292 55.9444 44.0209 55.3542ZM126.188 142.656C113.91 139.587 103.875 133.476 96.0834 124.325C88.2917 115.173 84.3959 103.988 84.3959 90.7708C84.3959 84.8681 86.5209 79.9097 90.7709 75.8958C95.0209 71.8819 100.156 69.875 106.177 69.875C112.198 69.875 117.333 71.8819 121.583 75.8958C125.833 79.9097 127.958 84.8681 127.958 90.7708C127.958 94.6667 129.434 97.9439 132.385 100.602C135.337 103.261 138.819 104.588 142.833 104.583C146.847 104.583 150.271 103.256 153.104 100.602C155.938 97.9486 157.354 94.6714 157.354 90.7708C157.354 77.0764 152.337 65.566 142.302 56.2396C132.267 46.9132 120.285 42.25 106.354 42.25C92.4237 42.25 80.441 46.9132 70.4063 56.2396C60.3716 65.566 55.3542 77.0174 55.3542 90.5937C55.3542 93.4271 55.621 96.9687 56.1546 101.219C56.6882 105.469 57.9562 110.427 59.9584 116.094C60.3125 117.156 60.2842 118.101 59.8734 118.927C59.4625 119.753 58.7825 120.344 57.8334 120.698C56.8889 121.052 55.9752 121.024 55.0921 120.613C54.2091 120.202 53.5881 119.522 53.2292 118.573C51.4584 113.969 50.1905 109.395 49.4255 104.853C48.6605 100.31 48.2756 95.6158 48.2709 90.7708C48.2709 75.0694 53.9682 61.9062 65.363 51.2812C76.7577 40.6562 90.3624 35.3437 106.177 35.3437C122.115 35.3437 135.809 40.6562 147.26 51.2812C158.712 61.9062 164.438 75.0694 164.438 90.7708C164.438 96.6736 162.343 101.601 158.155 105.554C153.966 109.506 148.859 111.485 142.833 111.49C136.813 111.49 131.649 109.513 127.342 105.561C123.035 101.608 120.88 96.6783 120.875 90.7708C120.875 86.875 119.43 83.5978 116.54 80.9392C113.65 78.2805 110.196 76.9536 106.177 76.9583C102.163 76.9583 98.7089 78.2876 95.8142 80.9462C92.9195 83.6049 91.4745 86.8797 91.4792 90.7708C91.4792 102.222 94.8745 111.785 101.665 119.458C108.456 127.132 117.22 132.503 127.958 135.573C129.021 135.927 129.729 136.517 130.083 137.344C130.438 138.17 130.497 139.056 130.26 140C130.024 140.826 129.552 141.535 128.844 142.125C128.135 142.715 127.25 142.892 126.188 142.656ZM67.0417 18.3437C66.0973 18.934 65.1528 19.0828 64.2084 18.79C63.2639 18.4972 62.5556 17.8762 62.0834 16.9271C61.6112 15.9826 61.4931 15.1279 61.7292 14.3629C61.9653 13.5979 62.5556 12.9179 63.5 12.3229C70.1112 8.78125 77.0174 6.06597 84.2188 4.17708C91.4202 2.28819 98.7396 1.34375 106.177 1.34375C113.733 1.34375 121.111 2.25986 128.313 4.09208C135.514 5.92431 142.479 8.54986 149.208 11.9687C150.271 12.559 150.892 13.2674 151.071 14.0937C151.251 14.9201 151.161 15.7465 150.802 16.5729C150.448 17.3993 149.858 18.0486 149.031 18.5208C148.205 18.9931 147.201 18.934 146.021 18.3437C139.764 15.1563 133.299 12.7078 126.627 10.9983C119.954 9.28889 113.138 8.43181 106.177 8.42708C99.3299 8.42708 92.6007 9.22514 85.9896 10.8212C79.3785 12.4174 73.0625 14.9249 67.0417 18.3437ZM87.9375 140.177C80.9723 132.858 75.6314 125.392 71.915 117.78C68.1987 110.167 66.3381 101.164 66.3334 90.7708C66.3334 80.0278 70.2292 70.9658 78.0209 63.585C85.8125 56.2042 95.198 52.5161 106.177 52.5208C117.156 52.5208 126.601 56.2112 134.51 63.5921C142.42 70.9729 146.375 80.0325 146.375 90.7708C146.375 91.8333 146.052 92.6904 145.405 93.3421C144.758 93.9937 143.901 94.3172 142.833 94.3125C141.889 94.3125 141.063 93.989 140.354 93.3421C139.646 92.6951 139.292 91.8381 139.292 90.7708C139.292 81.9167 136.014 74.5099 129.46 68.5504C122.906 62.591 115.145 59.6089 106.177 59.6042C97.2049 59.6042 89.503 62.5862 83.0713 68.5504C76.6396 74.5146 73.4214 81.9214 73.4167 90.7708C73.4167 100.333 75.0695 108.451 78.375 115.123C81.6806 121.796 86.5209 128.494 92.8959 135.219C93.6042 135.927 93.9584 136.753 93.9584 137.698C93.9584 138.642 93.6042 139.469 92.8959 140.177C92.1875 140.885 91.3612 141.24 90.4167 141.24C89.4723 141.24 88.6459 140.885 87.9375 140.177ZM141.417 128.135C130.91 128.135 121.789 124.594 114.054 117.51C106.319 110.427 102.454 101.514 102.458 90.7708C102.458 89.8264 102.784 89 103.436 88.2917C104.088 87.5833 104.942 87.2292 106 87.2292C107.063 87.2292 107.92 87.5833 108.571 88.2917C109.223 89 109.546 89.8264 109.542 90.7708C109.542 99.625 112.729 106.885 119.104 112.552C125.479 118.219 132.917 121.052 141.417 121.052C142.125 121.052 143.129 120.993 144.427 120.875C145.726 120.757 147.083 120.58 148.5 120.344C149.563 120.108 150.479 120.256 151.248 120.79C152.018 121.324 152.519 122.119 152.75 123.177C152.986 124.122 152.809 124.948 152.219 125.656C151.629 126.365 150.861 126.837 149.917 127.073C147.792 127.663 145.934 127.989 144.342 128.05C142.751 128.112 141.776 128.14 141.417 128.135Z"
-                                                fill="currentColor"></path>
-                                            <g clip-path="url(#clip0_0_1)">
-                                                <path
-                                                    d="M44.0209 55.3542C43.1945 54.7639 42.6916 54.0272 42.5121 53.1442C42.3327 52.2611 42.5995 51.345 43.3125 50.3958C50.632 40.3611 59.812 32.5694 70.8525 27.0208C81.8931 21.4722 93.668 18.6979 106.177 18.6979C118.691 18.6979 130.497 21.3849 141.594 26.7587C152.691 32.1326 161.958 39.8936 169.396 50.0417C170.222 51.1042 170.489 52.0486 170.196 52.875C169.904 53.7014 169.401 54.4097 168.688 55C167.979 55.5903 167.153 55.8571 166.208 55.8004C165.264 55.7437 164.438 55.2408 163.729 54.2917C157.236 45.0833 148.885 38.0307 138.675 33.1337C128.466 28.2368 117.633 25.786 106.177 25.7812C94.7257 25.7812 83.9827 28.2321 73.948 33.1337C63.9132 38.0354 55.5903 45.0881 48.9792 54.2917C48.2709 55.3542 47.4445 55.9444 46.5 56.0625C45.5556 56.1806 44.7292 55.9444 44.0209 55.3542ZM126.188 142.656C113.91 139.587 103.875 133.476 96.0834 124.325C88.2917 115.173 84.3959 103.988 84.3959 90.7708C84.3959 84.8681 86.5209 79.9097 90.7709 75.8958C95.0209 71.8819 100.156 69.875 106.177 69.875C112.198 69.875 117.333 71.8819 121.583 75.8958C125.833 79.9097 127.958 84.8681 127.958 90.7708C127.958 94.6667 129.434 97.9439 132.385 100.602C135.337 103.261 138.819 104.588 142.833 104.583C146.847 104.583 150.271 103.256 153.104 100.602C155.938 97.9486 157.354 94.6714 157.354 90.7708C157.354 77.0764 152.337 65.566 142.302 56.2396C132.267 46.9132 120.285 42.25 106.354 42.25C92.4237 42.25 80.441 46.9132 70.4063 56.2396C60.3716 65.566 55.3542 77.0174 55.3542 90.5937C55.3542 93.4271 55.621 96.9687 56.1546 101.219C56.6882 105.469 57.9562 110.427 59.9584 116.094C60.3125 117.156 60.2842 118.101 59.8734 118.927C59.4625 119.753 58.7825 120.344 57.8334 120.698C56.8889 121.052 55.9752 121.024 55.0921 120.613C54.2091 120.202 53.5881 119.522 53.2292 118.573C51.4584 113.969 50.1905 109.395 49.4255 104.853C48.6605 100.31 48.2756 95.6158 48.2709 90.7708C48.2709 75.0694 53.9682 61.9062 65.363 51.2812C76.7577 40.6562 90.3624 35.3437 106.177 35.3437C122.115 35.3437 135.809 40.6562 147.26 51.2812C158.712 61.9062 164.438 75.0694 164.438 90.7708C164.438 96.6736 162.343 101.601 158.155 105.554C153.966 109.506 148.859 111.485 142.833 111.49C136.813 111.49 131.649 109.513 127.342 105.561C123.035 101.608 120.88 96.6783 120.875 90.7708C120.875 86.875 119.43 83.5978 116.54 80.9392C113.65 78.2805 110.196 76.9536 106.177 76.9583C102.163 76.9583 98.7089 78.2876 95.8142 80.9462C92.9195 83.6049 91.4745 86.8797 91.4792 90.7708C91.4792 102.222 94.8745 111.785 101.665 119.458C108.456 127.132 117.22 132.503 127.958 135.573C129.021 135.927 129.729 136.517 130.083 137.344C130.438 138.17 130.497 139.056 130.26 140C130.024 140.826 129.552 141.535 128.844 142.125C128.135 142.715 127.25 142.892 126.188 142.656ZM67.0417 18.3437C66.0973 18.934 65.1528 19.0828 64.2084 18.79C63.2639 18.4972 62.5556 17.8762 62.0834 16.9271C61.6112 15.9826 61.4931 15.1279 61.7292 14.3629C61.9653 13.5979 62.5556 12.9179 63.5 12.3229C70.1112 8.78125 77.0174 6.06597 84.2188 4.17708C91.4202 2.28819 98.7396 1.34375 106.177 1.34375C113.733 1.34375 121.111 2.25986 128.313 4.09208C135.514 5.92431 142.479 8.54986 149.208 11.9687C150.271 12.559 150.892 13.2674 151.071 14.0937C151.251 14.9201 151.161 15.7465 150.802 16.5729C150.448 17.3993 149.858 18.0486 149.031 18.5208C148.205 18.9931 147.201 18.934 146.021 18.3437C139.764 15.1563 133.299 12.7078 126.627 10.9983C119.954 9.28889 113.138 8.43181 106.177 8.42708C99.3299 8.42708 92.6007 9.22514 85.9896 10.8212C79.3785 12.4174 73.0625 14.9249 67.0417 18.3437ZM87.9375 140.177C80.9723 132.858 75.6314 125.392 71.915 117.78C68.1987 110.167 66.3381 101.164 66.3334 90.7708C66.3334 80.0278 70.2292 70.9658 78.0209 63.585C85.8125 56.2042 95.198 52.5161 106.177 52.5208C117.156 52.5208 126.601 56.2112 134.51 63.5921C142.42 70.9729 146.375 80.0325 146.375 90.7708C146.375 91.8333 146.052 92.6904 145.405 93.3421C144.758 93.9937 143.901 94.3172 142.833 94.3125C141.889 94.3125 141.063 93.989 140.354 93.3421C139.646 92.6951 139.292 91.8381 139.292 90.7708C139.292 81.9167 136.014 74.5099 129.46 68.5504C122.906 62.591 115.145 59.6089 106.177 59.6042C97.2049 59.6042 89.503 62.5862 83.0713 68.5504C76.6396 74.5146 73.4214 81.9214 73.4167 90.7708C73.4167 100.333 75.0695 108.451 78.375 115.123C81.6806 121.796 86.5209 128.494 92.8959 135.219C93.6042 135.927 93.9584 136.753 93.9584 137.698C93.9584 138.642 93.6042 139.469 92.8959 140.177C92.1875 140.885 91.3612 141.24 90.4167 141.24C89.4723 141.24 88.6459 140.885 87.9375 140.177ZM141.417 128.135C130.91 128.135 121.789 124.594 114.054 117.51C106.319 110.427 102.454 101.514 102.458 90.7708C102.458 89.8264 102.784 89 103.436 88.2917C104.088 87.5833 104.942 87.2292 106 87.2292C107.063 87.2292 107.92 87.5833 108.571 88.2917C109.223 89 109.546 89.8264 109.542 90.7708C109.542 99.625 112.729 106.885 119.104 112.552C125.479 118.219 132.917 121.052 141.417 121.052C142.125 121.052 143.129 120.993 144.427 120.875C145.726 120.757 147.083 120.58 148.5 120.344C149.563 120.108 150.479 120.256 151.248 120.79C152.018 121.324 152.519 122.119 152.75 123.177C152.986 124.122 152.809 124.948 152.219 125.656C151.629 126.365 150.861 126.837 149.917 127.073C147.792 127.663 145.934 127.989 144.342 128.05C142.751 128.112 141.776 128.14 141.417 128.135Z"
-                                                    fill="url(#paint0_linear_0_1)"></path>
-                                            </g>
-                                            <path class="text-blue-600 dark:text-blue-500" d="M3 72H209"
-                                                stroke="currentColor" stroke-width="6" stroke-linecap="round"></path>
-                                            <defs>
-                                                <linearGradient id="paint0_linear_0_1" x1="106.385" y1="1.34375"
-                                                    x2="106" y2="72" gradientUnits="userSpaceOnUse">
-                                                    <stop stop-color="white" stop-opacity="0"
-                                                        style="stop-color:none;stop-opacity:0;"></stop>
-                                                    <stop class="text-blue-600 dark:text-blue-500" offset="1"
-                                                        stop-color="currentColor"></stop>
-                                                </linearGradient>
-                                                <clipPath id="clip0_0_1">
-                                                    <rect width="129" height="72" fill="white"
-                                                        style="fill:white;fill-opacity:1;" transform="translate(41)">
-                                                    </rect>
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </div>
-                                    <div class="mt-6 text-center relative z-10 space-y-2">
-                                        <h2
-                                            class="text-lg font-medium text-gray-800 transition group-hover:text-purple-950 dark:text-white">
-                                            Secure by default</h2>
-                                        <p class="dark:text-gray-300 text-gray-700">Provident fugit and vero voluptate.
-                                            magnam magni doloribus dolores voluptates a sapiente nisi.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="col-span-full sm:col-span-3 lg:col-span-2 overflow-hidden relative p-8 rounded-xl bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-900">
-                                <div>
-                                    <div class="pt-6 lg:px-6">
-                                        <svg class="w-full" viewBox="0 0 386 123" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <rect width="386" height="123" rx="10"></rect>
-                                            <g clip-path="url(#clip0_0_106)">
-                                                <circle class="text-blue-600 dark:text-blue-500" cx="29"
-                                                    cy="29" r="15" fill="currentColor"></circle>
-                                                <path d="M29 23V35" stroke="white" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round"></path>
-                                                <path d="M35 29L29 35L23 29" stroke="white" stroke-width="2"
-                                                    stroke-linecap="round" stroke-linejoin="round"></path>
-                                                <path
-                                                    d="M55.2373 32H58.7988C61.7383 32 63.4404 30.1816 63.4404 27.0508V27.0371C63.4404 23.9404 61.7246 22.1357 58.7988 22.1357H55.2373V32ZM56.7686 30.6807V23.4551H58.6279C60.6719 23.4551 61.8818 24.7881 61.8818 27.0576V27.0713C61.8818 29.3613 60.6924 30.6807 58.6279 30.6807H56.7686ZM69.4922 32.1436C71.666 32.1436 72.999 30.6875 72.999 28.2949V28.2812C72.999 25.8887 71.6592 24.4326 69.4922 24.4326C67.3184 24.4326 65.9785 25.8955 65.9785 28.2812V28.2949C65.9785 30.6875 67.3115 32.1436 69.4922 32.1436ZM69.4922 30.9062C68.2139 30.9062 67.4961 29.9424 67.4961 28.2949V28.2812C67.4961 26.6338 68.2139 25.6699 69.4922 25.6699C70.7637 25.6699 71.4883 26.6338 71.4883 28.2812V28.2949C71.4883 29.9355 70.7637 30.9062 69.4922 30.9062ZM76.9111 32H78.4219L79.9531 26.4629H80.0693L81.6074 32H83.1318L85.1758 24.5762H83.7061L82.3799 30.3047H82.2637L80.7324 24.5762H79.3242L77.793 30.3047H77.6836L76.3506 24.5762H74.8604L76.9111 32ZM87.6934 32H89.1768V27.6455C89.1768 26.4492 89.8535 25.7041 90.9404 25.7041C92.0273 25.7041 92.54 26.3125 92.54 27.543V32H94.0166V27.1943C94.0166 25.4238 93.1006 24.4326 91.4395 24.4326C90.3594 24.4326 89.6484 24.9111 89.2861 25.7041H89.1768V24.5762H87.6934V32ZM97.1562 32H98.6396V21.6641H97.1562V32ZM104.992 32.1436C107.166 32.1436 108.499 30.6875 108.499 28.2949V28.2812C108.499 25.8887 107.159 24.4326 104.992 24.4326C102.818 24.4326 101.479 25.8955 101.479 28.2812V28.2949C101.479 30.6875 102.812 32.1436 104.992 32.1436ZM104.992 30.9062C103.714 30.9062 102.996 29.9424 102.996 28.2949V28.2812C102.996 26.6338 103.714 25.6699 104.992 25.6699C106.264 25.6699 106.988 26.6338 106.988 28.2812V28.2949C106.988 29.9355 106.264 30.9062 104.992 30.9062ZM113.307 32.123C114.291 32.123 115.07 31.6992 115.508 30.9473H115.624V32H117.094V26.9209C117.094 25.3623 116.041 24.4326 114.175 24.4326C112.486 24.4326 111.317 25.2461 111.14 26.4629L111.133 26.5107H112.562L112.568 26.4834C112.746 25.957 113.286 25.6562 114.106 25.6562C115.111 25.6562 115.624 26.1074 115.624 26.9209V27.5771L113.614 27.6934C111.844 27.8027 110.846 28.5752 110.846 29.9014V29.915C110.846 31.2617 111.892 32.123 113.307 32.123ZM112.322 29.8535V29.8398C112.322 29.1699 112.787 28.8008 113.812 28.7393L115.624 28.623V29.2588C115.624 30.2158 114.811 30.9404 113.703 30.9404C112.903 30.9404 112.322 30.5371 112.322 29.8535ZM122.893 32.123C123.932 32.123 124.745 31.6445 125.176 30.8311H125.292V32H126.769V21.6641H125.292V25.752H125.176C124.779 24.9521 123.911 24.4463 122.893 24.4463C121.006 24.4463 119.816 25.9297 119.816 28.2812V28.2949C119.816 30.626 121.026 32.123 122.893 32.123ZM123.316 30.8584C122.072 30.8584 121.327 29.8877 121.327 28.2949V28.2812C121.327 26.6885 122.072 25.7178 123.316 25.7178C124.547 25.7178 125.312 26.6953 125.312 28.2812V28.2949C125.312 29.8809 124.554 30.8584 123.316 30.8584Z"
-                                                    fill="currentColor"></path>
-                                                <path
-                                                    d="M268.324 34H269.906V21.3174H268.333L264.958 23.7432V25.4131L268.184 23.0752H268.324V34ZM280.363 34H281.91V31.3721H283.712V29.957H281.91V21.3174H279.616C277.841 23.9629 275.898 27.0566 274.185 29.9307V31.3721H280.363V34ZM275.802 29.9658V29.8604C277.182 27.5312 278.843 24.9121 280.267 22.7852H280.372V29.9658H275.802ZM286.162 37.2256H287.296L288.676 32.2246H286.927L286.162 37.2256ZM296.672 34.2109C299.212 34.2109 301.075 32.6465 301.075 30.5283V30.5107C301.075 28.709 299.818 27.5576 297.973 27.3994V27.3643C299.555 27.0303 300.662 25.958 300.662 24.3936V24.376C300.662 22.4512 299.071 21.1064 296.654 21.1064C294.281 21.1064 292.646 22.4863 292.444 24.5518L292.436 24.6396H293.956L293.965 24.5518C294.097 23.2686 295.16 22.4775 296.654 22.4775C298.201 22.4775 299.071 23.2422 299.071 24.5693V24.5869C299.071 25.8525 298.017 26.7842 296.505 26.7842H294.984V28.1201H296.575C298.351 28.1201 299.467 28.9902 299.467 30.5459V30.5635C299.467 31.9082 298.333 32.8398 296.672 32.8398C294.984 32.8398 293.833 31.9785 293.71 30.7305L293.701 30.6426H292.181L292.189 30.748C292.356 32.752 294.053 34.2109 296.672 34.2109ZM310.434 34H311.98V31.3721H313.782V29.957H311.98V21.3174H309.687C307.911 23.9629 305.969 27.0566 304.255 29.9307V31.3721H310.434V34ZM305.872 29.9658V29.8604C307.252 27.5312 308.913 24.9121 310.337 22.7852H310.442V29.9658H305.872ZM323.297 34H324.826V28.1289C324.826 26.793 325.767 25.7119 327.006 25.7119C328.201 25.7119 328.975 26.4414 328.975 27.5664V34H330.504V27.9092C330.504 26.7051 331.374 25.7119 332.692 25.7119C334.028 25.7119 334.67 26.4062 334.67 27.8037V34H336.199V27.4521C336.199 25.4658 335.118 24.3584 333.185 24.3584C331.875 24.3584 330.794 25.0176 330.284 26.0195H330.144C329.704 25.0352 328.808 24.3584 327.524 24.3584C326.285 24.3584 325.389 24.9473 324.967 25.9668H324.826V24.5254H323.297V34ZM344.67 34.167C347.069 34.167 348.643 32.2246 348.643 29.2715V29.2539C348.643 26.2832 347.078 24.3584 344.67 24.3584C343.369 24.3584 342.235 25.0088 341.717 26.0195H341.576V20.7637H340.047V34H341.576V32.4883H341.717C342.297 33.543 343.352 34.167 344.67 34.167ZM344.318 32.8135C342.596 32.8135 341.541 31.46 341.541 29.2715V29.2539C341.541 27.0654 342.596 25.7119 344.318 25.7119C346.05 25.7119 347.078 27.0479 347.078 29.2539V29.2715C347.078 31.4775 346.05 32.8135 344.318 32.8135ZM352.016 37.1641H353.545V32.5059H353.686C354.204 33.5166 355.338 34.167 356.639 34.167C359.047 34.167 360.611 32.2422 360.611 29.2715V29.2539C360.611 26.3008 359.038 24.3584 356.639 24.3584C355.32 24.3584 354.266 24.9824 353.686 26.0371H353.545V24.5254H352.016V37.1641ZM356.287 32.8135C354.564 32.8135 353.51 31.46 353.51 29.2715V29.2539C353.51 27.0654 354.564 25.7119 356.287 25.7119C358.019 25.7119 359.047 27.0479 359.047 29.2539V29.2715C359.047 31.4775 358.019 32.8135 356.287 32.8135ZM367.254 34.167C369.407 34.167 371.051 32.998 371.051 31.3105V31.293C371.051 29.9395 370.189 29.166 368.405 28.7354L366.946 28.3838C365.83 28.1113 365.355 27.707 365.355 27.0654V27.0479C365.355 26.2129 366.182 25.6328 367.307 25.6328C368.449 25.6328 369.188 26.1514 369.39 26.8984H370.893C370.682 25.3516 369.302 24.3584 367.315 24.3584C365.303 24.3584 363.791 25.5449 363.791 27.1182V27.127C363.791 28.4893 364.591 29.2627 366.366 29.6846L367.834 30.0361C369.003 30.3174 369.486 30.7656 369.486 31.4072V31.4248C369.486 32.2861 368.581 32.8926 367.307 32.8926C366.094 32.8926 365.338 32.374 365.083 31.583H363.519C363.694 33.1475 365.145 34.167 367.254 34.167Z"
-                                                    fill="currentColor"></path>
-                                            </g>
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M3 123C3 123 14.3298 94.153 35.1282 88.0957C55.9266 82.0384 65.9333 80.5508 65.9333 80.5508C65.9333 80.5508 80.699 80.5508 92.1777 80.5508C103.656 80.5508 100.887 63.5348 109.06 63.5348C117.233 63.5348 117.217 91.9728 124.78 91.9728C132.343 91.9728 142.264 78.03 153.831 80.5508C165.398 83.0716 186.825 91.9728 193.761 91.9728C200.697 91.9728 206.296 63.5348 214.07 63.5348C221.844 63.5348 238.653 93.7771 244.234 91.9728C249.814 90.1684 258.8 60 266.19 60C272.075 60 284.1 88.057 286.678 88.0957C294.762 88.2171 300.192 72.9284 305.423 72.9284C312.323 72.9284 323.377 65.2437 335.553 63.5348C347.729 61.8259 348.218 82.07 363.639 80.5508C367.875 80.1335 372.949 82.2017 376.437 87.1008C379.446 91.3274 381.054 97.4325 382.521 104.647C383.479 109.364 382.521 123 382.521 123"
-                                                fill="url(#paint0_linear_0_106)" style=""></path>
-                                            <path class="text-blue-600 dark:text-blue-500"
-                                                d="M3 121.077C3 121.077 15.3041 93.6691 36.0195 87.756C56.7349 81.8429 66.6632 80.9723 66.6632 80.9723C66.6632 80.9723 80.0327 80.9723 91.4656 80.9723C102.898 80.9723 100.415 64.2824 108.556 64.2824C116.696 64.2824 117.693 92.1332 125.226 92.1332C132.759 92.1332 142.07 78.5115 153.591 80.9723C165.113 83.433 186.092 92.1332 193 92.1332C199.908 92.1332 205.274 64.2824 213.017 64.2824C220.76 64.2824 237.832 93.8946 243.39 92.1332C248.948 90.3718 257.923 60.5 265.284 60.5C271.145 60.5 283.204 87.7182 285.772 87.756C293.823 87.8746 299.2 73.0802 304.411 73.0802C311.283 73.0802 321.425 65.9506 333.552 64.2824C345.68 62.6141 346.91 82.4553 362.27 80.9723C377.629 79.4892 383 106.605 383 106.605"
-                                                stroke="currentColor" stroke-width="3"></path>
-                                            <defs>
-                                                <linearGradient id="paint0_linear_0_106" x1="3"
-                                                    y1="60" x2="3" y2="123"
-                                                    gradientUnits="userSpaceOnUse">
-                                                    <stop class="text-blue-300 dark:text-blue-600/30"
-                                                        stop-color="currentColor"></stop>
-                                                    <stop class="text-white dark:text-transparent" offset="1"
-                                                        stop-color="currentColor" stop-opacity="0.103775"></stop>
-                                                </linearGradient>
-                                                <clipPath id="clip0_0_106">
-                                                    <rect width="358" height="30" fill="white"
-                                                        style="fill:white;fill-opacity:1;"
-                                                        transform="translate(14 14)"></rect>
-                                                </clipPath>
-                                            </defs>
-                                        </svg>
-                                    </div>
-                                    <div class="mt-14 text-center relative z-10 space-y-2">
-                                        <h2
-                                            class="text-lg font-medium text-gray-800 transition group-hover:text-purple-950 dark:text-white">
-                                            Faster than light</h2>
-                                        <p class="dark:text-gray-300 text-gray-700">Provident fugit vero voluptate.
-                                            magnam magni doloribus dolores voluptates inventore nisi.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="col-span-full lg:col-span-3 overflow-hidden relative p-8 rounded-xl bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-900">
-                                <div class="grid sm:grid-cols-2">
-                                    <div class="flex flex-col justify-between relative z-10 space-y-12 lg:space-y-6">
-                                        <div
-                                            class="relative aspect-square rounded-full size-12 flex border dark:bg-white/5 dark:border-white/10 before:absolute before:-inset-2 before:border dark:before:border-white/5 dark:before:bg-white/5 before:rounded-full">
-                                            <svg class="size-6 m-auto" xmlns="http://www.w3.org/2000/svg"
-                                                width="1em" height="1em" viewBox="0 0 24 24">
-                                                <path fill="none" stroke="currentColor" stroke-linejoin="round"
-                                                    d="M5.5 7c2 0 6.5-3 6.5-3s4.5 3 6.5 3v4.5C18.5 18 12 20 12 20s-6.5-2-6.5-8.5z">
-                                                </path>
-                                            </svg>
-                                        </div>
-                                        <div class="space-y-2">
-                                            <h2
-                                                class="text-lg font-medium text-gray-800 transition group-hover:text-purple-950 dark:text-white">
-                                                Faster than light</h2>
-                                            <p class="dark:text-gray-300 text-gray-700">Provident fugit vero voluptate.
-                                                Voluptates a sapiente inventore nisi.</p>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="overflow-hidden relative mt-6 sm:mt-auto h-fit -mb-[34px] -mr-[34px] sm:ml-6 py-6 p-6 border rounded-tl-lg dark:bg-white/5 dark:border-white/10">
-                                        <div class="absolute flex gap-1 top-2 left-3">
-                                            <span
-                                                class="block size-2 rounded-full border dark:border-white/10 dark:bg-white/10"></span>
-                                            <span
-                                                class="block size-2 rounded-full border dark:border-white/10 dark:bg-white/10"></span>
-                                            <span
-                                                class="block size-2 rounded-full border dark:border-white/10 dark:bg-white/10"></span>
-                                        </div>
-                                        <svg class="w-full sm:w-[150%]" viewBox="0 0 366 231" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M0.148438 231V179.394L1.92188 180.322L2.94482 177.73L4.05663 183.933L6.77197 178.991L7.42505 184.284L9.42944 187.985L11.1128 191.306V155.455L13.6438 153.03V145.122L14.2197 142.829V150.454V154.842L15.5923 160.829L17.0793 172.215H19.2031V158.182L20.7441 153.03L22.426 148.111V142.407L24.7471 146.86V128.414L26.7725 129.918V120.916L28.1492 118.521L28.4653 127.438L29.1801 123.822L31.0426 120.525V130.26L32.3559 134.71L34.406 145.122V137.548L35.8982 130.26L37.1871 126.049L38.6578 134.71L40.659 138.977V130.26V126.049L43.7557 130.26V123.822L45.972 112.407L47.3391 103.407V92.4726L49.2133 98.4651V106.053L52.5797 89.7556L54.4559 82.7747L56.1181 87.9656L58.9383 89.7556V98.4651L60.7617 103.407L62.0545 123.822L63.8789 118.066L65.631 122.082L68.5479 114.229L70.299 109.729L71.8899 118.066L73.5785 123.822V130.26L74.9446 134.861L76.9243 127.87L78.352 134.71V138.977L80.0787 142.407V152.613L83.0415 142.407V130.26L86.791 123.822L89.0121 116.645V122.082L90.6059 127.87L92.3541 131.77L93.7104 123.822L95.4635 118.066L96.7553 122.082V137.548L99.7094 140.988V131.77L101.711 120.525L103.036 116.645V133.348L104.893 136.218L106.951 140.988L108.933 134.71L110.797 130.26L112.856 140.988V148.111L115.711 152.613L117.941 145.122L119.999 140.988V148.111L123.4 152.613L125.401 158.182L130.547 150.454V156.566L131.578 155.455L134.143 158.182L135.594 168.136L138.329 158.182L140.612 160.829L144.681 169.5L147.011 155.455L148.478 151.787L151.02 152.613L154.886 145.122L158 143.412L159.406 140.637L159.496 133.348L162.295 127.87V122.082L163.855 116.645V109.729L164.83 104.407L166.894 109.729L176.249 98.4651L178.254 106.169L180.77 98.4651V81.045L182.906 69.1641L184.8 56.8669L186.477 62.8428L187.848 79.7483L188.849 106.169L191.351 79.7483L193.485 75.645V98.4651L196.622 94.4523L198.623 87.4228V79.7483L200.717 75.645L202.276 81.045V89.3966L203.638 113.023L205.334 99.8037L207.164 94.4523L208.982 98.4651V102.176L211.267 107.64L212.788 81.045L214.437 66.0083L216.19 62.8428L217.941 56.8669V73.676V79.7483L220.28 75.645L222.516 66.0083V73.676H226.174V84.8662L228.566 98.4651L230.316 75.645L233.61 94.4523V104.25L236.882 102.176L239.543 113.023L241.057 98.4651L243.604 94.4523L244.975 106.169L245.975 87.4228L247.272 89.3966L250.732 84.8662L251.733 96.7549L254.644 94.4523L257.452 99.8037L259.853 91.3111L261.193 84.8662L264.162 75.645L265.808 87.4228L267.247 58.4895L269.757 66.0083L276.625 13.5146L273.33 58.4895L276.25 67.6563L282.377 20.1968L281.37 58.4895V66.0083L283.579 75.645L286.033 56.8669L287.436 73.676L290.628 77.6636L292.414 84.8662L294.214 61.3904L296.215 18.9623L300.826 0.947876L297.531 56.8669L299.973 62.8428L305.548 22.0598L299.755 114.956L301.907 105.378L304.192 112.688V94.9932L308.009 80.0829L310.003 94.9932L311.004 102.127L312.386 105.378L315.007 112.688L316.853 98.004L318.895 105.378L321.257 94.9932L324.349 100.81L325.032 80.0829L327.604 61.5733L329.308 82.3223L333.525 52.7986L334.097 52.145L334.735 55.6812L337.369 59.8108V73.676L340.743 87.9656L343.843 96.3728L348.594 82.7747L349.607 81.045L351 89.7556L352.611 96.3728L355.149 94.9932L356.688 102.176L359.396 108.784L360.684 111.757L365 95.7607V231H148.478H0.148438Z"
-                                                fill="url(#paint0_linear_0_705)"></path>
-                                            <path class="text-blue-600 dark:text-blue-500"
-                                                d="M1 179.796L4.05663 172.195V183.933L7.20122 174.398L8.45592 183.933L10.0546 186.948V155.455L12.6353 152.613V145.122L15.3021 134.71V149.804V155.455L16.6916 160.829L18.1222 172.195V158.182L19.8001 152.613L21.4105 148.111V137.548L23.6863 142.407V126.049L25.7658 127.87V120.525L27.2755 118.066L29.1801 112.407V123.822L31.0426 120.525V130.26L32.3559 134.71L34.406 145.122V137.548L35.8982 130.26L37.1871 126.049L38.6578 134.71L40.659 138.977V130.26V126.049L43.7557 130.26V123.822L45.972 112.407L47.3391 103.407V92.4726L49.2133 98.4651V106.053L52.5797 89.7556L54.4559 82.7747L56.1181 87.9656L58.9383 89.7556V98.4651L60.7617 103.407L62.0545 123.822L63.8789 118.066L65.631 122.082L68.5479 114.229L70.299 109.729L71.8899 118.066L73.5785 123.822V130.26L74.9446 134.861L76.9243 127.87L78.352 134.71V138.977L80.0787 142.407V152.613L83.0415 142.407V130.26L86.791 123.822L89.0121 116.645V122.082L90.6059 127.87L92.3541 131.77L93.7104 123.822L95.4635 118.066L96.7553 122.082V137.548L99.7094 140.988V131.77L101.711 120.525L103.036 116.645V133.348L104.893 136.218L106.951 140.988L108.933 134.71L110.797 130.26L112.856 140.988V148.111L115.711 152.613L117.941 145.122L119.999 140.988L121.501 148.111L123.4 152.613L125.401 158.182L127.992 152.613L131.578 146.76V155.455L134.143 158.182L135.818 164.629L138.329 158.182L140.612 160.829L144.117 166.757L146.118 155.455L147.823 149.804L151.02 152.613L154.886 145.122L158.496 140.988V133.348L161.295 127.87V122.082L162.855 116.645V109.729L164.83 103.407L166.894 109.729L176.249 98.4651L178.254 106.169L180.77 98.4651V81.045L182.906 69.1641L184.8 56.8669L186.477 62.8428L187.848 79.7483L188.849 106.169L191.351 79.7483L193.485 75.645V98.4651L196.622 94.4523L198.623 87.4228V79.7483L200.717 75.645L202.276 81.045V89.3966L203.638 113.023L205.334 99.8037L207.164 94.4523L208.982 98.4651V102.176L211.267 107.64L212.788 81.045L214.437 66.0083L216.19 62.8428L217.941 56.8669V73.676V79.7483L220.28 75.645L222.516 66.0083V73.676H226.174V84.8662L228.566 98.4651L230.316 75.645L233.61 94.4523V104.25L236.882 102.176L239.543 113.023L241.057 98.4651L243.604 94.4523L244.975 106.169L245.975 87.4228L247.272 89.3966L250.732 84.8662L251.733 96.7549L254.644 94.4523L257.452 99.8037L259.853 91.3111L261.193 84.8662L264.162 75.645L265.808 87.4228L267.247 58.4895L269.757 66.0083L276.625 13.5146L273.33 58.4895L276.25 67.6563L282.377 20.1968L281.37 58.4895V66.0083L283.579 75.645L286.033 56.8669L287.436 73.676L290.628 77.6636L292.414 84.8662L294.214 61.3904L296.215 18.9623L300.826 0.947876L297.531 56.8669L299.973 62.8428L305.548 22.0598L299.755 114.956L301.907 105.378L304.192 112.688V94.9932L308.009 80.0829L310.003 94.9932L311.004 102.127L312.386 105.378L315.007 112.688L316.853 98.004L318.895 105.378L321.257 94.9932L324.349 100.81L325.032 80.0829L327.604 61.5733L329.357 74.9864L332.611 52.6565L334.352 48.5552L335.785 55.2637L338.377 59.5888V73.426L341.699 87.5181L343.843 93.4347L347.714 82.1171L350.229 78.6821L351.974 89.7556L353.323 94.9932L355.821 93.4347L357.799 102.127L360.684 108.794L363.219 98.004L365 89.7556"
-                                                stroke="currentColor" stroke-width="2"></path>
-                                            <defs>
-                                                <linearGradient id="paint0_linear_0_705" x1="0.85108"
-                                                    y1="0.947876" x2="0.85108" y2="230.114"
-                                                    gradientUnits="userSpaceOnUse">
-                                                    <stop class="text-blue-500/20 dark:text-blue-500/50"
-                                                        stop-color="currentColor"></stop>
-                                                    <stop class="text-transparent" offset="1"
-                                                        stop-color="currentColor" stop-opacity="0.01"></stop>
-                                                </linearGradient>
-                                            </defs>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                class="col-span-full lg:col-span-3 overflow-hidden relative p-8 rounded-xl bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-900">
-                                <div class="h-full grid sm:grid-cols-2">
-                                    <div class="flex flex-col justify-between relative z-10 space-y-12 lg:space-y-6">
-                                        <div
-                                            class="relative aspect-square rounded-full size-12 flex border dark:bg-white/5 dark:border-white/10 before:absolute before:-inset-2 before:border dark:before:border-white/5 dark:before:bg-white/5 before:rounded-full">
-                                            <svg class="size-6 m-auto" xmlns="http://www.w3.org/2000/svg"
-                                                width="1em" height="1em" viewBox="0 0 24 24">
-                                                <g fill="none">
-                                                    <path stroke="currentColor"
-                                                        d="M9 6a3 3 0 1 0 6 0a3 3 0 0 0-6 0zm-4.562 7.902a3 3 0 1 0 3 5.195a3 3 0 0 0-3-5.196zm15.124 0a2.999 2.999 0 1 1-2.998 5.194a2.999 2.999 0 0 1 2.998-5.194z">
-                                                    </path>
-                                                    <path fill="currentColor" fill-rule="evenodd"
-                                                        d="M9.003 6.125a2.993 2.993 0 0 1 .175-1.143a8.507 8.507 0 0 0-5.031 4.766a8.5 8.5 0 0 0-.502 4.817a3 3 0 0 1 .902-.723a7.498 7.498 0 0 1 4.456-7.717m5.994 0a7.499 7.499 0 0 1 4.456 7.717a2.998 2.998 0 0 1 .902.723a8.5 8.5 0 0 0-5.533-9.583a3 3 0 0 1 .175 1.143m2.536 13.328a3.002 3.002 0 0 1-1.078-.42a7.501 7.501 0 0 1-8.91 0l-.107.065a3 3 0 0 1-.971.355a8.5 8.5 0 0 0 11.066 0"
-                                                        clip-rule="evenodd"></path>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div class="space-y-2">
-                                            <h2
-                                                class="text-lg font-medium text-gray-800 transition group-hover:text-purple-950 dark:text-white">
-                                                Keep your loved ones safe</h2>
-                                            <p class="dark:text-gray-300 text-gray-700">Voluptate. magnam magni
-                                                doloribus dolores voluptates a sapiente inventore nisi.</p>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="mt-6 relative sm:-mr-[--card-padding] sm:-my-8 before:absolute before:w-px before:inset-0 before:mx-auto before:bg-gray-200 dark:before:bg-gray-800">
-                                        <div class="relative space-y-6 py-6 flex flex-col justify-center h-full">
-                                            <div
-                                                class="flex items-center justify-end gap-2 w-[calc(50%+0.875rem)] relative">
-                                                <span
-                                                    class="h-fit text-xs block px-2 py-1 shadow-sm border rounded-md dark:bg-gray-800 dark:border-white/5 dark:text-white">Glodie</span>
-                                                <div class="size-7 ring-4 ring-white dark:ring-[--card-dark-bg]">
-                                                    <img class="rounded-full  border border-gray-950/5 dark:border-white/5 size-full"
-                                                        src="https://pbs.twimg.com/profile_images/1585976646468763648/OlbJkLL0_400x400.jpg"
-                                                        alt="" />
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center gap-2 ml-[calc(50%-1rem)] relative">
-                                                <div class="size-8 ring-4 ring-white dark:ring-[--card-dark-bg]">
-                                                    <img class="rounded-full  border border-gray-950/5 dark:border-white/5 size-full"
-                                                        src="https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/124.jpg"
-                                                        alt="" />
-                                                </div>
-                                                <span
-                                                    class="h-fit text-xs block px-2 py-1 shadow-sm border rounded-md dark:bg-gray-800 dark:border-white/5 dark:text-white">M.
-                                                    Irung</span>
-                                            </div>
-                                            <div
-                                                class="flex items-center justify-end gap-2 w-[calc(50%+0.875rem)] relative">
-                                                <span
-                                                    class="h-fit text-xs block px-2 py-1 shadow-sm border rounded-md dark:bg-gray-800 dark:border-white/5 dark:text-white">B.
-                                                    Ng</span>
-                                                <div class="size-7 ring-4 ring-white dark:ring-[--card-dark-bg]">
-                                                    <img class="rounded-full  border border-gray-950/5 dark:border-white/5 size-full"
-                                                        src="https://pbs.twimg.com/profile_images/1585976646468763648/OlbJkLL0_400x400.jpg"
-                                                        alt="" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <section id="testimonies" class="my-32 bg-white">
+            <div class="max-w-6xl mx-8 md:mx-10 lg:mx-20 xl:mx-auto">
+                <div
+                    class="transition duration-500 ease-in-out transform scale-100 translate-x-0 translate-y-0 opacity-100">
+                    <div class="mb-12 space-y-5 md:mb-16 md:text-center">
+                        <h1 class="block font-bold text-textbase text-5xl py-5 md:text-5xl lg:text-6xl">
+                            Apa kata <span class="text-primarybase">Partner kami?</span>
+                        </h1>
                     </div>
+                </div>
+
+                <div class="grid xs:grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+                    <ul class="space-y-8">
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/kanyewest" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1276461929934942210/cqNhNk6v_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Kanye West">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Kanye West</h3>
+                                                <p class="text-base text-md">Rapper &amp; Entrepreneur</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Find God.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/tim_cook" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Tim Cook">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Tim Cook</h3>
+                                                <p class="text-base text-md">CEO of Apple</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Diam quis enim lobortis
+                                            scelerisque
+                                            fermentum dui faucibus in ornare. Donec pretium vulputate sapien nec
+                                            sagittis
+                                            aliquam malesuada bibendum.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/kanyewest" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1276461929934942210/cqNhNk6v_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Kanye West">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Kanye West</h3>
+                                                <p class="text-base text-md">Rapper &amp; Entrepreneur</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Find God.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/tim_cook" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Tim Cook">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Tim Cook</h3>
+                                                <p class="text-base text-md">CEO of Apple</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Diam quis enim lobortis
+                                            scelerisque
+                                            fermentum dui faucibus in ornare. Donec pretium vulputate sapien nec
+                                            sagittis
+                                            aliquam malesuada bibendum.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <ul class="hidden space-y-8 sm:block">
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/paraga" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1375285353146327052/y6jeByyD_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Parag Agrawal">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Parag Agrawal</h3>
+                                                <p class="text-base text-md">CEO of Twitter</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Enim neque volutpat ac
+                                            tincidunt vitae
+                                            semper. Mattis aliquam faucibus purus in massa tempor. Neque vitae tempus
+                                            quam
+                                            pellentesque nec. Turpis cursus in hac habitasse platea dictumst.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/tim_cook" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Tim Cook">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Tim Cook</h3>
+                                                <p class="text-base text-md">CEO of Apple</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Diam quis enim lobortis
+                                            scelerisque
+                                            fermentum dui faucibus in ornare. Donec pretium vulputate sapien nec
+                                            sagittis
+                                            aliquam malesuada bibendum.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/paraga" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1375285353146327052/y6jeByyD_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Parag Agrawal">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Parag Agrawal</h3>
+                                                <p class="text-base text-md">CEO of Twitter</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Enim neque volutpat ac
+                                            tincidunt vitae
+                                            semper. Mattis aliquam faucibus purus in massa tempor. Neque vitae tempus
+                                            quam
+                                            pellentesque nec. Turpis cursus in hac habitasse platea dictumst.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/tim_cook" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1535420431766671360/Pwq-1eJc_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Tim Cook">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Tim Cook</h3>
+                                                <p class="text-base text-md">CEO of Apple</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Diam quis enim lobortis
+                                            scelerisque
+                                            fermentum dui faucibus in ornare. Donec pretium vulputate sapien nec
+                                            sagittis
+                                            aliquam malesuada bibendum.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+
+                    <ul class="hidden space-y-8 lg:block">
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/satyanadella" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1221837516816306177/_Ld4un5A_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Satya Nadella">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Satya Nadella</h3>
+                                                <p class="text-base text-md">CEO of Microsoft</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Tortor dignissim convallis
+                                            aenean et
+                                            tortor at. At ultrices mi tempus imperdiet nulla malesuada. Id cursus metus
+                                            aliquam
+                                            eleifend mi. Quis ipsum suspendisse ultrices gravida dictum fusce ut.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/dan_schulman" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/516916920482672641/3jCeLgFb_400x400.jpeg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Dan Schulman">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Dan Schulman</h3>
+                                                <p class="text-base text-md">CEO of PayPal</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Quam pellentesque nec nam
+                                            aliquam sem
+                                            et tortor consequat id. Enim sit amet venenatis urna cursus.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/satyanadella" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/1221837516816306177/_Ld4un5A_400x400.jpg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Satya Nadella">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Satya Nadella</h3>
+                                                <p class="text-base text-md">CEO of Microsoft</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Tortor dignissim convallis
+                                            aenean et
+                                            tortor at. At ultrices mi tempus imperdiet nulla malesuada. Id cursus metus
+                                            aliquam
+                                            eleifend mi. Quis ipsum suspendisse ultrices gravida dictum fusce ut.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="text-sm leading-6">
+                            <div class="relative group">
+                                <div
+                                    class="absolute transition rounded-lg opacity-25 -inset-1 bg-primarybase blur duration-400 group-hover:opacity-100 group-hover:duration-200">
+                                </div><a href="https://twitter.com/dan_schulman" class="cursor-pointer">
+                                    <div
+                                        class="relative p-6 space-y-6 leading-none rounded-lg bg-sekunderbase ring-1 ring-gray-900/5">
+                                        <div class="flex items-center space-x-4"><img
+                                                src="https://pbs.twimg.com/profile_images/516916920482672641/3jCeLgFb_400x400.jpeg"
+                                                class="w-12 h-12 bg-center bg-cover border rounded-full"
+                                                alt="Dan Schulman">
+                                            <div>
+                                                <h3 class="text-lg font-semibold text-textbase">Dan Schulman</h3>
+                                                <p class="text-base text-md">CEO of PayPal</p>
+                                            </div>
+                                        </div>
+                                        <p class="leading-normal text-textbase text-md">Quam pellentesque nec nam
+                                            aliquam sem
+                                            et tortor consequat id. Enim sit amet venenatis urna cursus.</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
         </section>
-        <!-- component -->
-        <section>
-            <div class="text-white py-8">
-                <div class="container mx-auto flex flex-col items-start md:flex-row my-12 md:my-24">
-                    <div class="flex flex-col w-full sticky md:top-36 lg:w-1/3 mt-2 md:mt-12 px-8">
-                        <p class="ml-2 text-black uppercase tracking-loose">Working Process</p>
-                        <p class="text-3xl md:text-4xl leading-normal md:leading-relaxed mb-2">Working Process of Fest
-                        </p>
-                        <p class="text-sm md:text-base text-black mb-4">
-                            Here’s your guide to the tech fest 2021 process. Go through all the steps to know the exact
-                            process of the
-                            fest.
-                        </p>
-                        <a href="#"
-                            class="text-black bg-transparent mr-auto hover:bg-yellow-300  hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-black hover:border-transparent">
-                            Explore Now</a>
-                    </div>
-                    <div class="ml-0 md:ml-12 lg:w-2/3 sticky">
-                        <ol>
-                            <li class="border-l-2 border-primarybase">
-                                <div class="md:flex flex-start">
-                                    <div
-                                        class="bg-primarybase w-6 h-6 flex items-center justify-center rounded-full -ml-3.5">
-                                        <svg aria-hidden="true" focusable="false" data-prefix="fas"
-                                            class="text-white w-3 h-3" role="img"
-                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                            <path fill="currentColor"
-                                                d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm64-192c0-8.8 7.2-16 16-16h288c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16v-64zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                    <div class="block p-6 rounded-lg shadow-lg bg-gray-100 max-w-md ml-6 mb-10">
-                                        <div class="flex justify-between mb-4">
-                                            <a href="#!"
-                                                class="font-semibold text-black hover:text-purple-700 focus:text-purple-800 duration-300 transition ease-in-out text-sm">Mengisi
-                                                formulir pengajuan</a>
-                                        </div>
-                                        <p class="text-gray-700 mb-6">Lorem ipsum dolor sit amet, consectetur
-                                            adipiscing
-                                            elit. Quisque scelerisque diam non nisi semper, et elementum lorem ornare.
-                                            Maecenas placerat facilisis mollis. Duis sagittis ligula in sodales
-                                            vehicula.</p>
-                                        <a href="{{ route('partner.submission') }}">
-                                            <button type="button"
-                                                class="inline-block px-4 py-1.5 bg-primarybase text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                                                data-mdb-ripple="true">Pengajuan</button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="border-l-2 border-green-600">
-                                <div class="md:flex flex-start">
-                                    <div
-                                        class="bg-green-600 w-6 h-6 flex items-center justify-center rounded-full -ml-3.5">
-                                        <svg aria-hidden="true" focusable="false" data-prefix="fas"
-                                            class="text-white w-3 h-3" role="img"
-                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                            <path fill="currentColor"
-                                                d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm64-192c0-8.8 7.2-16 16-16h288c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16v-64zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                    <div class="block p-6 rounded-lg shadow-lg bg-gray-100 max-w-md ml-6 mb-10">
-                                        <div class="flex justify-between mb-4">
-                                            <a href="#!"
-                                                class="font-semibold text-black hover:text-purple-700 focus:text-purple-800 duration-300 transition ease-in-out text-sm">Validasi
-                                                oleh admin</a>
-                                        </div>
-                                        <p class="text-gray-700 mb-6">Libero expedita explicabo eius fugiat quia
-                                            aspernatur autem laudantium error architecto recusandae natus sapiente sit
-                                            nam eaque, consectetur porro molestiae ipsam an deleniti.</p>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="border-l-2 border-green-600">
-                                <div class="md:flex flex-start">
-                                    <div
-                                        class="bg-green-600 w-6 h-6 flex items-center justify-center rounded-full -ml-3.5">
-                                        <svg aria-hidden="true" focusable="false" data-prefix="fas"
-                                            class="text-white w-3 h-3" role="img"
-                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                                            <path fill="currentColor"
-                                                d="M0 464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V192H0v272zm64-192c0-8.8 7.2-16 16-16h288c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16v-64zM400 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48H48C21.5 64 0 85.5 0 112v48h448v-48c0-26.5-21.5-48-48-48z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                    <div class="block p-6 rounded-lg shadow-lg bg-gray-100 max-w-md ml-6 mb-10">
-                                        <div class="flex justify-between mb-4">
-                                            <a href="#!"
-                                                class="font-semibold text-black hover:text-purple-700 focus:text-purple-800 duration-300 transition ease-in-out text-sm">Bergabung
-                                                menjadi Partner</a>
-                                        </div>
-                                        <p class="text-gray-700 mb-6">Voluptatibus temporibus esse illum eum
-                                            aspernatur,
-                                            fugiat suscipit natus! Eum corporis illum nihil officiis tempore. Excepturi
-                                            illo natus libero sit doloremque, laborum molestias rerum pariatur quam
-                                            ipsam necessitatibus incidunt, explicabo.</p>
-                                        <a href="{{ route('partner.login') }}">
-                                            <button type="button"
-                                                class="inline-block px-4 py-1.5 bg-primarybase text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-                                                data-mdb-ripple="true">Masuk sebagai partner</button>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ol>
-                    </div>
+
+
+
+        <section class="bg-gray-50 py-12 pb-32 sm:py-10 lg:py-10 xl:py-10">
+            <div class="mx-auto max-w-7xl ">
+                <div class="text-center">
+                    <p class="text-lg font-semibold text-textbase">Cara menjadi Partner eFarm?</p>
+                    <h2 class="mt-6 text-6xl font-bold tracking-tight text-textbase sm:text-4xl lg:text-5xl">Hanya 4 langkah, <span class="text-primarybase">tanpa ribet</span> 
+                    </h2>
+                    <p class="mx-auto mt-4 max-w-2xl text-lg font-normal text-textbase lg:text-xl lg:leading-8">
+                        Isi formulir, validasi, jadi Partner, mulai berjualan 🤩
+                    </p>
                 </div>
+                <ul
+                    class="mx-auto mt-12 grid max-w-7xl xs:grid-cols-1 md:grid-cols-4 gap-10 sm:mt-16 lg:mt-20 lg:max-w-7xl lg:grid-cols-4">
+                    <li class="flex-start group relative flex lg:flex-col">
+                        <span
+                            class="absolute left-[18px] top-14 h-[calc(100%_-_32px)] w-px bg-gray-300 lg:right-0 lg:left-auto lg:top-[18px] lg:h-px lg:w-[calc(100%_-_72px)]"
+                            aria-hidden="true"></span>
+                        <div
+                            class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-gray-50 transition-all duration-200 group-hover:border-white group-hover:bg-textbase">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 text-textbase group-hover:text-white">
+                                <path
+                                    d="M21 12C21 13.6569 16.9706 15 12 15C7.02944 15 3 13.6569 3 12M21 5C21 6.65685 16.9706 8 12 8C7.02944 8 3 6.65685 3 5M21 5C21 3.34315 16.9706 2 12 2C7.02944 2 3 3.34315 3 5M21 5V19C21 20.6569 16.9706 22 12 22C7.02944 22 3 20.6569 3 19V5"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-6 lg:ml-0 lg:mt-10">
+                            <h3
+                                class="text-xl font-bold text-textbase before:mb-2 before:block before:font-mono before:text-sm before:text-textbase">
+                                Isi formulir
+                            </h3>
+                            <h4 class="mt-2 text-base text-textbase">Sesuaikan isi formulir dengan kondisi di Lapangan
+                            </h4>
+                        </div>
+                    </li>
+                    <li class="flex-start group relative flex lg:flex-col">
+                        <span
+                            class="absolute left-[18px] top-14 h-[calc(100%_-_32px)] w-px bg-gray-300 lg:right-0 lg:left-auto lg:top-[18px] lg:h-px lg:w-[calc(100%_-_72px)]"
+                            aria-hidden="true"></span>
+                        <div
+                            class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-gray-50 transition-all duration-200 group-hover:border-white group-hover:bg-textbase">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 text-textbase group-hover:text-white">
+                                <path
+                                    d="M2 3L2 21M22 3V21M11.8 20H12.2C13.8802 20 14.7202 20 15.362 19.673C15.9265 19.3854 16.3854 18.9265 16.673 18.362C17 17.7202 17 16.8802 17 15.2V8.8C17 7.11984 17 6.27976 16.673 5.63803C16.3854 5.07354 15.9265 4.6146 15.362 4.32698C14.7202 4 13.8802 4 12.2 4H11.8C10.1198 4 9.27976 4 8.63803 4.32698C8.07354 4.6146 7.6146 5.07354 7.32698 5.63803C7 6.27976 7 7.11984 7 8.8V15.2C7 16.8802 7 17.7202 7.32698 18.362C7.6146 18.9265 8.07354 19.3854 8.63803 19.673C9.27976 20 10.1198 20 11.8 20Z"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-6 lg:ml-0 lg:mt-10">
+                            <h3
+                                class="text-xl font-bold text-textbase before:mb-2 before:block before:font-mono before:text-sm before:text-textbase">
+                                Menunggu validasi
+                            </h3>
+                            <h4 class="mt-2 text-base text-textbase">Proses dilakukan oleh Admin</h4>
+                        </div>
+                    </li>
+                    <li class="flex-start group relative flex lg:flex-col">
+                        <span
+                            class="absolute left-[18px] top-14 h-[calc(100%_-_32px)] w-px bg-gray-300 lg:right-0 lg:left-auto lg:top-[18px] lg:h-px lg:w-[calc(100%_-_72px)]"
+                            aria-hidden="true"></span>
+                        <div
+                            class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-gray-50 transition-all duration-200 group-hover:border-white group-hover:bg-textbase">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 text-textbase group-hover:text-white">
+                                <path
+                                    d="M22 12C22 17.5228 17.5228 22 12 22M22 12C22 6.47715 17.5228 2 12 2M22 12C22 9.79086 17.5228 8 12 8C6.47715 8 2 9.79086 2 12M22 12C22 14.2091 17.5228 16 12 16C6.47715 16 2 14.2091 2 12M12 22C6.47715 22 2 17.5228 2 12M12 22C14.2091 22 16 17.5228 16 12C16 6.47715 14.2091 2 12 2M12 22C9.79086 22 8 17.5228 8 12C8 6.47715 9.79086 2 12 2M2 12C2 6.47715 6.47715 2 12 2"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-6 lg:ml-0 lg:mt-10">
+                            <h3
+                                class="text-xl font-bold text-textbase before:mb-2 before:block before:font-mono before:text-sm before:text-gray-500">
+                                Pengajuan divalidasi
+                            </h3>
+                            <h4 class="mt-2 text-base text-textbase">Selamat Anda berhasil jadi partner kami</h4>
+                        </div>
+                    </li>
+                    <li class="flex-start group relative flex lg:flex-col">
+                        <div
+                            class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-gray-50 transition-all duration-200 group-hover:border-white group-hover:bg-textbase">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 text-gray-600 group-hover:text-white">
+                                <path
+                                    d="M5.50049 10.5L2.00049 7.9999L3.07849 6.92193C3.964 6.03644 4.40676 5.5937 4.9307 5.31387C5.39454 5.06614 5.90267 4.91229 6.42603 4.86114C7.01719 4.80336 7.63117 4.92617 8.85913 5.17177L10.5 5.49997M18.4999 13.5L18.8284 15.1408C19.0742 16.3689 19.1971 16.983 19.1394 17.5743C19.0883 18.0977 18.9344 18.6059 18.6867 19.0699C18.4068 19.5939 17.964 20.0367 17.0783 20.9224L16.0007 22L13.5007 18.5M7 16.9998L8.99985 15M17.0024 8.99951C17.0024 10.1041 16.107 10.9995 15.0024 10.9995C13.8979 10.9995 13.0024 10.1041 13.0024 8.99951C13.0024 7.89494 13.8979 6.99951 15.0024 6.99951C16.107 6.99951 17.0024 7.89494 17.0024 8.99951ZM17.1991 2H16.6503C15.6718 2 15.1826 2 14.7223 2.11053C14.3141 2.20853 13.9239 2.37016 13.566 2.5895C13.1623 2.83689 12.8164 3.18282 12.1246 3.87469L6.99969 9C5.90927 10.0905 5.36406 10.6358 5.07261 11.2239C4.5181 12.343 4.51812 13.6569 5.07268 14.776C5.36415 15.3642 5.90938 15.9094 6.99984 16.9998V16.9998C8.09038 18.0904 8.63565 18.6357 9.22386 18.9271C10.343 19.4817 11.6569 19.4817 12.7761 18.9271C13.3643 18.6356 13.9095 18.0903 15 16.9997L20.1248 11.8745C20.8165 11.1827 21.1624 10.8368 21.4098 10.4331C21.6291 10.0753 21.7907 9.6851 21.8886 9.27697C21.9991 8.81664 21.9991 8.32749 21.9991 7.34918V6.8C21.9991 5.11984 21.9991 4.27976 21.6722 3.63803C21.3845 3.07354 20.9256 2.6146 20.3611 2.32698C19.7194 2 18.8793 2 17.1991 2Z"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                        <div class="ml-6 lg:ml-0 lg:mt-10">
+                            <h3
+                                class="text-xl font-bold text-textbase before:mb-2 before:block before:font-mono before:text-sm before:text-gray-500">
+                                Mulai berjualan!
+                            </h3>
+                            <h4 class="mt-2 text-base text-textbase">Sebarluaskan pasar ternak Anda
+                            </h4>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </section>
-        <!-- End Hero -->
-        <div class="h-screen max-w-5xl px-2 py-3 mx-auto mt-32 tracking-wide md:px-4 md:mt-44">
-            <!-- Title -->
-            <div class="flex justify-center text-3xl">Paling sering ditanyakan</div>
-            <!-- End Title -->
 
-            <!-- Accordion -->
-            <div class="grid gap-3 py-8 text-lg leading-6 text-gray-800 md:gap-8 md:grid-cols-2">
-                <div class="space-y-3">
-                    <!-- 1 -->
-                    <div x-data="accordion(1)"
-                        class="relative transition-all duration-700 border rounded-xl hover:shadow-2xl">
-                        <div @click="handleClick()" class="w-full p-4 text-left cursor-pointer">
-                            <div class="flex items-center justify-between">
-                                <span class="tracking-wide">What is x-data ?</span>
-                                <span :class="handleRotate()"
-                                    class="transition-transform duration-500 transform fill-current ">
-                                    <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div x-ref="tab" :style="handleToggle()"
-                            class="relative overflow-hidden transition-all duration-700 max-h-0">
-                            <div class="px-6 pb-4 text-gray-600">
-                                Declare a new Alpine component and its data for a block of HTML </div>
-                        </div>
-                    </div>
-                    <!-- End 1 -->
-
-                    <!-- 2 -->
-                    <div x-data="accordion(2)"
-                        class="relative transition-all duration-700 border rounded-xl hover:shadow-2xl">
-                        <div @click="handleClick()" class="w-full p-4 text-left cursor-pointer">
-                            <div class="flex items-center justify-between">
-                                <span class="tracking-wide">What is x-bind ?</span>
-                                <span :class="handleRotate()"
-                                    class="transition-transform duration-500 transform fill-current ">
-                                    <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div x-ref="tab" :style="handleToggle()"
-                            class="relative overflow-hidden transition-all duration-700 max-h-0">
-                            <div class="px-6 pb-4 text-gray-600">
-                                Dynamically set HTML attributes on an element.
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End 2 -->
-                </div>
-
-                <div class="space-y-3">
-                    <!-- 3 -->
-                    <div x-data="accordion(3)"
-                        class="relative transition-all duration-700 border rounded-xl hover:shadow-2xl">
-                        <div @click="handleClick()" class="w-full p-4 text-left cursor-pointer">
-                            <div class="flex items-center justify-between">
-                                <span class="tracking-wide">What is $store ?</span>
-                                <span :class="handleRotate()"
-                                    class="transition-transform duration-500 transform fill-current ">
-                                    <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div x-ref="tab" :style="handleToggle()"
-                            class="relative overflow-hidden transition-all duration-700 max-h-0">
-                            <div class="px-6 pb-4 text-gray-600">
-                                Access a global store registered using Alpine.store(...)
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End 3 -->
-
-                    <!-- 4 -->
-                    <div x-data="accordion(4)"
-                        class="relative transition-all duration-700 border rounded-xl hover:shadow-2xl">
-                        <div @click="handleClick()" class="w-full p-4 text-left cursor-pointer">
-                            <div class="flex items-center justify-between">
-                                <span class="tracking-wide">What is x-on ?</span>
-                                <span :class="handleRotate()"
-                                    class="transition-transform duration-500 transform fill-current ">
-                                    <svg class="w-5 h-5 fill-current" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                    </svg>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div x-ref="tab" :style="handleToggle()"
-                            class="relative overflow-hidden transition-all duration-700 max-h-0">
-                            <div class="px-6 pb-4 text-gray-600">
-                                Listen for browser events on an element
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End 4 -->
-                </div>
+        <div class="py-24 px-8 max-w-7xl mx-auto flex flex-col md:flex-row gap-12">
+            <div class="flex flex-col text-left basis-1/2">
+                <p class="inline-block text-textbase font-semibold text-primary mb-4">Pertanyaan dari calon Partner</p>
+                <p class="sm:text-4xl text-4xl text-textbase font-bold text-base-content">Paling sering ditanyakan</p>
             </div>
-            <!-- End Accordion -->
+            <ul class="basis-1/2">
+                <li>
+                    <button
+                        class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
+                        aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span class="flex-1 text-textbase text-base-content">Bagaimana melakukan pendaftaran?</span>
+                        <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center transition duration-200 ease-out false"></rect>
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center rotate-90 transition duration-200 ease-out false">
+                            </rect>
+                        </svg>
+                    </button>
+                    <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
+                        style="transition: max-height 0.3s ease-in-out 0s;">
+                        <div class="pb-5 leading-relaxed">
+                            <div class="space-y-2 leading-relaxed">We prioritize the security of your insurance
+                                information. We use advanced encryption and strict data protection measures to ensure
+                                your data is safe and confidential.</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button
+                        class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
+                        aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span class="flex-1 text-textbase text-base-content">Bagaiamana sistem keuntunga?</span>
+                        <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center transition duration-200 ease-out false"></rect>
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center rotate-90 transition duration-200 ease-out false">
+                            </rect>
+                        </svg>
+                    </button>
+                    <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
+                        style="transition: max-height 0.3s ease-in-out 0s;">
+                        <div class="pb-5 leading-relaxed">
+                            <div class="space-y-2 leading-relaxed">Our insurance plans are customizable. You can tailor
+                                your coverage to meet your specific needs and budget.</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button
+                        class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
+                        aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center transition duration-200 ease-out false"></rect>
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center rotate-90 transition duration-200 ease-out false">
+                            </rect>
+                        </svg>
+                    </button>
+                    <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
+                        style="transition: max-height 0.3s ease-in-out 0s;">
+                        <div class="pb-5 leading-relaxed">
+                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
+                                claims, depending on the policy terms and conditions. Please refer to your policy
+                                documents for details.</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button
+                        class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
+                        aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center transition duration-200 ease-out false"></rect>
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center rotate-90 transition duration-200 ease-out false">
+                            </rect>
+                        </svg>
+                    </button>
+                    <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
+                        style="transition: max-height 0.3s ease-in-out 0s;">
+                        <div class="pb-5 leading-relaxed">
+                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
+                                claims, depending on the policy terms and conditions. Please refer to your policy
+                                documents for details.</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button
+                        class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
+                        aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center transition duration-200 ease-out false"></rect>
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center rotate-90 transition duration-200 ease-out false">
+                            </rect>
+                        </svg>
+                    </button>
+                    <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
+                        style="transition: max-height 0.3s ease-in-out 0s;">
+                        <div class="pb-5 leading-relaxed">
+                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
+                                claims, depending on the policy terms and conditions. Please refer to your policy
+                                documents for details.</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button
+                        class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
+                        aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center transition duration-200 ease-out false"></rect>
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center rotate-90 transition duration-200 ease-out false">
+                            </rect>
+                        </svg>
+                    </button>
+                    <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
+                        style="transition: max-height 0.3s ease-in-out 0s;">
+                        <div class="pb-5 leading-relaxed">
+                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
+                                claims, depending on the policy terms and conditions. Please refer to your policy
+                                documents for details.</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button
+                        class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
+                        aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center transition duration-200 ease-out false"></rect>
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center rotate-90 transition duration-200 ease-out false">
+                            </rect>
+                        </svg>
+                    </button>
+                    <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
+                        style="transition: max-height 0.3s ease-in-out 0s;">
+                        <div class="pb-5 leading-relaxed">
+                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
+                                claims, depending on the policy terms and conditions. Please refer to your policy
+                                documents for details.</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button
+                        class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
+                        aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center transition duration-200 ease-out false"></rect>
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center rotate-90 transition duration-200 ease-out false">
+                            </rect>
+                        </svg>
+                    </button>
+                    <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
+                        style="transition: max-height 0.3s ease-in-out 0s;">
+                        <div class="pb-5 leading-relaxed">
+                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
+                                claims, depending on the policy terms and conditions. Please refer to your policy
+                                documents for details.</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button
+                        class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
+                        aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center transition duration-200 ease-out false"></rect>
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center rotate-90 transition duration-200 ease-out false">
+                            </rect>
+                        </svg>
+                    </button>
+                    <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
+                        style="transition: max-height 0.3s ease-in-out 0s;">
+                        <div class="pb-5 leading-relaxed">
+                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
+                                claims, depending on the policy terms and conditions. Please refer to your policy
+                                documents for details.</div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button
+                        class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
+                        aria-expanded="false" onclick="toggleFAQ(this)">
+                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center transition duration-200 ease-out false"></rect>
+                            <rect y="7" width="16" height="2" rx="1"
+                                class="transform origin-center rotate-90 transition duration-200 ease-out false">
+                            </rect>
+                        </svg>
+                    </button>
+                    <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
+                        style="transition: max-height 0.3s ease-in-out 0s;">
+                        <div class="pb-5 leading-relaxed">
+                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
+                                claims, depending on the policy terms and conditions. Please refer to your policy
+                                documents for details.</div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
-        <!-- End Layout -->
         @include('includes.footer')
     </div>
 
     <script>
+        function toggleFAQ(button) {
+            const content = button.nextElementSibling;
+            button.setAttribute("aria-expanded", button.getAttribute("aria-expanded") === "false" ? "true" : "false");
+            content.style.maxHeight = button.getAttribute("aria-expanded") === "true" ? content.scrollHeight + "px" : "0";
+        }
         // Faq
         document.addEventListener("alpine:init", () => {
             Alpine.store("accordion", {

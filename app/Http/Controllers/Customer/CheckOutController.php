@@ -49,7 +49,7 @@ class CheckOutController extends Controller
         // Membuat pesanan baru
         $order = Order::create([
             'id_user' => auth()->user()->id,
-            'status' => 'Dikemas',
+            'status' => 'Baru',
             'pengiriman' => 'Pengiriman Internal',
             'catatan' => 'Testing',
             'reference' => $reference->data->reference,

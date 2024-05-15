@@ -28,22 +28,20 @@
                 <div class="relative z-10 pb-10">
                     <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
                         <div class="max-w-2xl text-center mx-auto">
-                            <!-- Title -->
                             <div class="mt-5 max-w-2xl">
                                 <h1 class="block font-bold text-textbase text-5xl md:text-5xl lg:text-6xl">
                                     Menyediakan Layanan Sesuai Kebutuhan <span class="text-primarybase">Anda</span>
                                 </h1>
                             </div>
-                            <!-- End Title -->
 
                             <div class="mt-5 max-w-3xl">
                                 <p class="text-lg text-textbase">Kelola peternakan, jual hewan ternak, beli hewan ternak
                                     dengan berbagai layanan yang tersedia di eFarm.</p>
                             </div>
-                            <!-- End Buttons -->
                         </div>
                     </div>
                 </div>
+
                 <ul role="list" class="grid xs:grid-cols-1 gap-6 px-8 sm:grid-cols-2 lg:grid-cols-2">
                     <div class="w-full px-4">
                         <div
@@ -120,19 +118,16 @@
             <div class="relative z-10 pb-10">
                 <div class="w-full mx-auto lg:px-4 py-10 lg:py-10">
                     <div class="max-w-2xl text-center mx-auto">
-                        <!-- Title -->
                         <div class="mt-5 max-w-2xl">
                             <h1 class="block font-bold text-textbase text-5xl md:text-5xl lg:text-6xl">
                                 Berbagai produk yang tersedia di eFarm
                             </h1>
                         </div>
-                        <!-- End Title -->
 
                         <div class="mt-5 max-w-3xl">
                             <p class="text-lg text-textbase">Kelola peternakan, jual hewan ternak, beli hewan ternak
                                 dengan berbagai layanan yang tersedia di eFarm.</p>
                         </div>
-                        <!-- End Buttons -->
                     </div>
                 </div>
                 <div class="container mx-auto py-16 text-center">

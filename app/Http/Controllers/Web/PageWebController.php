@@ -10,11 +10,18 @@ use App\Models\Livestock;
 use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class PageWebController extends Controller
 {
     public function index()
     {
+        // $baseurlapi =  env('BASE_URL_AI');
+        // Masih statis
+        // $endpoint = '/product/6/4/';
+        // $response = Http::get($baseurlapi . $endpoint);
+        // $response = json_decode($response);
+
         return view('homepage');
     }
 

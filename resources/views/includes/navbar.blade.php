@@ -1,21 +1,3 @@
-{{-- <style>
-    .blurred-background {
-        backdrop-filter: blur(10px);
-    }
-
-    .hover-trigger .hover-target {
-        display: none;
-    }
-
-    .hover-trigger:hover .hover-target {
-        display: block;
-    }
-
-    .hover-target:hover {
-        display: block;
-    }
-</style> --}}
-
 <div class="sticky top-0 z-50 border-b">
     <div>
         <div class="w-full bg-primarybase h-6 flex justify-center items-center">
@@ -43,6 +25,7 @@
                             </span>
                             <div id="dropdown-menu"
                                 class="absolute shadow-lg -bottom-28 left-0 w-full h-max p-2 bg-white border border-zinc-200 rounded-lg flex flex-col gap-2">
+                                <a href="{{ route('homepage.market') }}">
                                 <span class="flex flex-row gap-2 items-center hover:bg-zinc-100 p-2 rounded-lg">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                         viewBox="0 0 24 24">
@@ -51,6 +34,8 @@
                                     </svg>
                                     <p>Market</p>
                                 </span>
+                            </a>
+                            <a href="{{ route('partner.submission') }}">
                                 <span class="flex flex-row gap-2 items-center hover:bg-zinc-100 p-2 rounded-lg">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                         viewBox="0 0 24 24">
@@ -59,6 +44,7 @@
                                     </svg>
                                     <p>Partner</p>
                                 </span>
+                            </a>
                             </div>
                         </button>
                     </div>
@@ -232,7 +218,7 @@
                             class="absolute mt-3 transform bg-white rounded-md shadow-lg -translate-x-3/4 min-w-max">
                             <ul class="flex flex-col p-2 my-3 space-y-3">
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ route('homepage.partner') }}"
                                         class="flex items-start px-2 py-1 space-x-2 rounded-md hover:bg-gray-100">
                                         <div class="items-center flex">
                                             <img src="{{ asset('efarm-partner-logo.png') }}" alt="montaña"
@@ -245,7 +231,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="{{ route('homepage.market') }}"
                                         class="flex items-start px-2 py-1 space-x-2 rounded-md hover:bg-gray-100">
                                         <div class="items-center flex">
                                             <img src="{{ asset('efarm-market.png') }}" alt="montaña"
