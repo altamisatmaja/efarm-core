@@ -81,10 +81,12 @@ Route::get('/layanan', [PageWebController::class, 'layanan'])->name('homepage.la
 /**
  * Route handling for Front End Market
  */
+
 Route::get('/market', [PageWebController::class, 'market'])->name('homepage.market');
 Route::get('/market/buy', [PageWebController::class, 'buy'])->name('homepage.market.buy');
 Route::get('/market/buy/{slug}', [PageWebController::class, 'by_categorytypelivestocks'])->name('homepage.market.farm');
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}', [PageWebController::class, 'livestock'])->name('homepage.market.farm.livestock');
+Route::get('/market/buy/kategori/{slug_kategori_product}', [PageWebController::class, 'category'])->name('homepage.market.category');
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}/{slug_product}', [PageWebController::class, 'product'])->name('homepage.market.farm.product');
 
 /**

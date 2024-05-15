@@ -268,7 +268,7 @@
     <script>
         $(function() {
             $.ajax({
-                url: 'https://example.ai.ternakexpessindonesia.com/product/5/16/',
+                url: 'https://example.ai.ternakexpessindonesia.com/product/6.8899/109.3807/',
                 method: 'GET',
                 crossDomain: true,
                 headers: {

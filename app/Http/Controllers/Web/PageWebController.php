@@ -41,6 +41,17 @@ class PageWebController extends Controller
         return view('pages.market.livestock', compact('products', 'slug_kategori_product', 'slug_category_livestock'));
     }
 
+    public function category($slug_kategori_product)
+    {
+        $id_kategori_product = CategoryProduct::where('slug_kategori_product', $slug_kategori_product)->value('id');
+
+        // $livestock = CategoryLivestock::where('slug', $slug_category_livestock)->first();
+
+        // $products = Product::where('id_kategori', $livestock->id)->get();
+
+        return view('pages.market.livestock');
+    }
+
     public function product($slug_kategori_product, $slug_category_livestock, $slug_product)
     {
         $product = Product::with('typelivestocks', 'gender_livestocks', 'partner', 'categoryproduct', 'categorylivestocks')->where('slug_product', $slug_product)->first();
