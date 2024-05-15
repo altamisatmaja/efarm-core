@@ -268,7 +268,7 @@
     <script>
         $(function() {
             $.ajax({
-                url: 'http://127.0.0.1:5000/product/5/16/',
+                url: 'https://example.ai.ternakexpessindonesia.com/product/5/16/',
                 method: 'GET',
                 crossDomain: true,
                 headers: {
