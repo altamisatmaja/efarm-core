@@ -66,7 +66,6 @@ class TripayController extends Controller
             'signature' => hash_hmac('sha256', $merchantCode . $merchantRef . $amount, $privateKey)
         ];
 
-        
 
         $curl = curl_init();
 

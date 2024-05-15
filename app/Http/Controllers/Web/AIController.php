@@ -11,14 +11,15 @@ class AIController extends Controller
 {
     public function index(Request $request){
         $locationData = $this->getLocations($request);
-        
         $latitude = $locationData['lat'];
-        $longitude = $locationData['lon'];
-        $url = 'http://127.0.0.1:5000/product/'.$latitude.'/'.$longitude.'/';
-        $response = Http::get($url);
-        dd($response);
+        $longitude = $locationData['lot'];
+        $baseurlapi =  env('BASE_URL_AI');
+
+        // $url = $baseurlapi.'/'.$latitude.'/'.$longitude.'/';
+        // $response = Http::get($url);
+        // dd($response);
         // dd($url);
-        dd($this->fetchDataAI($latitude, $longitude));
+        dd($this->fetchDataAI($baseurlapi, $latitude, $longitude));
         
         // return $this->fetchDataAI($latitude, $longitude);
     }
@@ -35,14 +36,21 @@ class AIController extends Controller
         return $data;
     }
     
-    public function fetchDataAI($latitude, $longitude){
-        $url = 'http://127.0.0.1:5000/product/'.$latitude.'/'.$longitude.'/';
+    public function fetchDataAI($baseurlapi, $latitude, $longitude){
+        // $locationData = $this->getLocations($request);
+        // $latitude = $locationData['lat'];
+        // $longitude = $locationData['lot'];
+        // $baseurlapi =  env('BASE_URL_AI');
+        $url = $baseurlapi.'/product/'.$latitude.'/'.$longitude.'/';
+        // dd($url);
 
         try {
             $response = Http::get($url);
+            // dd(json_decode($response));
 
             if ($response->successful()) {
                 $data = $response->json();
+                dd($data);
                 return response()->json($data);
             } else {
                 return response()->json([

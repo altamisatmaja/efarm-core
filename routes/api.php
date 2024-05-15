@@ -57,8 +57,6 @@ Route::group([
     /**
      * Route api for AI
      */
-    
-    
     // route api for customer
     Route::post('/customer/login', [AuthCustomerController::class, 'login']);
     Route::post('/customer/register', [CustomerController::class, 'register']);

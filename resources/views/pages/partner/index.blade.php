@@ -74,7 +74,7 @@
                             </svg>
                             Daftar sebagai Partner
                         </a>
-                        <a href="#demo"
+                        <a href="{{ route('partner.login') }}"
                             class="flex flex-row items-center justify-center gap-x-2 rounded-lg border border-primarybase px-10 py-3 text-primarybase">Masuk
                             sebagai Partner →
                         </a>

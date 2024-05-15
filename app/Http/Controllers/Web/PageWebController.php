@@ -16,7 +16,7 @@ class PageWebController extends Controller
 {
     public function index()
     {
-        // $baseurlapi =  env('BASE_URL_AI');
+        $baseurlapi =  env('BASE_URL_AI');
         // Masih statis
         // $endpoint = '/product/6/4/';
         // $response = Http::get($baseurlapi . $endpoint);
