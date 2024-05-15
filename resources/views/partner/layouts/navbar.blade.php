@@ -24,7 +24,7 @@
 </script>
 
 @auth
-    <nav class="p-4 md:py-5 xl:px-0 md:container md:mx-w-7xl md:mx-auto">
+    <nav class="p-4 z-50 md:py-5 xl:px-0 md:container md:mx-w-7xl md:mx-auto">
         <div class="hidden lg:flex lg:justify-between lg:items-center">
             <a href="{{ route('partner.dashboard') }}" class="flex items-start gap-2 group">
                 <img src="{{ asset('efarm-partner.png') }}" alt="" class="w-28">

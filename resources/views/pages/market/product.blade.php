@@ -291,28 +291,28 @@
                                         <img class="h-12 w-12 rounded-full"
                                             src="/uploads/{{ $partner->foto_profil }}" alt="">
                                         <div class="ml-2 flex flex-col">
-                                            <h3 class="text-lg text-gray-800 font-medium">{{ $partner->nama_partner }}</h3>
-                                            <span class="text-gray-600">Peternakan {{ $partner->nama_perusahaan_partner }}</span>
-                                            {{-- <div
+                                            <h3 class="text-lg text-gray-800 font-medium">{{ $partner->nama_partner }}
+                                            </h3>
+                                            <span class="text-gray-600">Peternakan
+                                                {{ $partner->nama_perusahaan_partner }}</span>
+
+                                            <div
                                                 class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
-                                                <p class="text-gray-600 w-full">Bergabung pada {{ $partner->created_at->diffForHumans() }}</p>
-                                                <p class="w-full">Peternakan 2 Tahun berdiri</p>
-                                            </div> --}}
-                                            <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
                                                 <p class="text-gray-600">
                                                     Bergabung pada
                                                 </p>
-                                                    <p>
-                                                        {{ $partner->created_at->diffForHumans() }}
-                                                    </p>
+                                                <p>
+                                                    {{ $partner->created_at->diffForHumans() }}
+                                                </p>
                                             </div>
-                                            <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
+                                            <div
+                                                class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
                                                 <p class="text-gray-600">
                                                     Lama peternakan berdiri
                                                 </p>
-                                                    <p>
-                                                        {{ $partner->lama_peternakan_berdiri }} tahun
-                                                    </p>
+                                                <p>
+                                                    {{ $partner->lama_peternakan_berdiri }} tahun
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -333,7 +333,7 @@
                             <div class="flex flex-col">
                                 <div class="h-px  bg-slate-400"></div>
                             </div>
-                            @endforeach
+                        @endforeach
                     </div>
 
                     {{-- for checkout --}}
@@ -373,10 +373,12 @@
                                     class="mt-3 hover:shadow-form w-full border hover:bg-primarybase hover:text-white border-primarybase rounded-md py-3 px-8 text-center text-base font-semibold text-primarybase">
                                     Tambah ke wishlist
                                 </button>
-                                <button
-                                    class="mt-3 hover:shadow-form w-full border bg-primarybase hover:bg-primarybase hover:text-white border-white rounded-md py-3 px-8 text-center text-base font-semibold text-white">
-                                    Beli sekarang
-                                </button>
+                                <a href="{{ route('customer.checkout', $product->slug_product) }}">
+                                    <button
+                                        class="mt-3 hover:shadow-form w-full border bg-primarybase hover:bg-primarybase hover:text-white border-white rounded-md py-3 px-8 text-center text-base font-semibold text-white">
+                                        Beli sekarang
+                                    </button>
+                                </a r>
                                 <div class="grid grid-cols-2 divide-x mt-2">
                                     <div class="flex items-center justify-center">Chat</div>
                                     <div class="flex items-center justify-center">Share</div>
@@ -578,7 +580,7 @@
                     <div class="h-px w-full bg-slate-400"></div>
                 </div>
             </div>
-            
+
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="relative flex items-end font-bold mt-6">
                     <h2 class="text-2xl">Hewan ternak lain</h2>

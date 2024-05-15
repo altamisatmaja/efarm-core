@@ -9,16 +9,24 @@ use App\Models\OrderDetail;
 use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckOutController extends Controller
 {
     public function index($slug_product)
     {
-        $tripay = new TripayController();
-        $channels = $tripay->getPaymentChannels();
-        $product = Product::with('typelivestocks', 'gender_livestocks', 'partner', 'categoryproduct', 'categorylivestocks')->where('slug_product', $slug_product)->first();
-        // dd($channels, 'abc');
-        return view('pages.market.checkout', compact('channels', 'product'));
+        try {
+            if (Auth::check()) {
+                $tripay = new TripayController();
+                $channels = $tripay->getPaymentChannels();
+                $product = Product::with('typelivestocks', 'gender_livestocks', 'partner', 'categoryproduct', 'categorylivestocks')->where('slug_product', $slug_product)->first();
+                return view('pages.market.checkout', compact('channels', 'product'));
+            } else {
+                return redirect()->back()->with('error', 'Terjadi kesalahan');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 
     public function show($reference)

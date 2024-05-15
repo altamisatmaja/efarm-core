@@ -327,6 +327,10 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
  * |
  */ 
 
+ /**
+ * Route for checkout customer
+ */
+Route::get('checkout/{slug_product}', [CheckOutController::class, 'index'])->name('customer.checkout');
 
 Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
     /**
@@ -342,7 +346,7 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
     /**
      * Route for checkout customer
      */
-    Route::get('checkout/{slug_product}', [CheckOutController::class, 'index'])->name('customer.checkout');
+    
     Route::post('checkout/', [CheckoutController::class, 'store'])->name('customer.checkout.store');
     Route::get('checkout/show/{reference}', [CheckoutController::class, 'show'])->name('customer.checkout.show');
 
