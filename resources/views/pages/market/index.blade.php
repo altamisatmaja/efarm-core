@@ -291,11 +291,6 @@
         </div>
     </main>
     </section>
-
-
-
-
-
     </div>
     </div>
     <script src="chrome-extension://kgejglhpjiefppelpmljglcjbhoiplfn/shadydom.js"></script>
