@@ -152,7 +152,7 @@
                             <img src="{{ asset('uploads/' . ($partner->foto_profil ?? 'user.jpeg')) }}"
                                 class="w-6 h-6 rounded-full" alt="Foto Profil">
                             <span class="font-semibold text-textbase">
-                                {{ $partner->username }}
+                                {{ $partner->nama_partner }}
                             </span>
                         </div>
                     </a>

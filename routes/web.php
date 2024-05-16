@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ReviewAdminController;
 use App\Http\Controllers\Admin\TestimonialAdminController;
 use App\Http\Controllers\Admin\TypeLivestockAdminController;
 use App\Http\Controllers\Api\AIApiController;
+use App\Http\Controllers\Partner\ReportPartnerController;
 use App\Http\Controllers\Web\AIController;
 use App\Http\Controllers\Api\CategoryLivestockController;
 use App\Http\Controllers\Api\CategoryProductController;
@@ -433,8 +434,8 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     /**
      * Route for reporting transaction partner
      */
-    Route::get('partner/report', [PagePartnerController::class, 'report'])->name('partner.report.list');
-    Route::get('partner/report/{id}', [PagePartnerController::class, 'report_detail'])->name('partner.report.detail');
+    Route::get('partner/report', [ReportPartnerController::class, 'index'])->name('partner.report.list');
+    Route::get('partner/report/{id}', [ReportPartnerController::class, 'show'])->name('partner.report.detail');
 
     
     /**

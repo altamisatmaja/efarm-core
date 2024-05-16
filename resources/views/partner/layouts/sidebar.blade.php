@@ -15,7 +15,7 @@
                 <div class="p-6 text-center">
                     <h4
                         class="mb-2 mt-6 block font-sans text-2xl font-semibold leading-snug tracking-normal text-textbase antialiased">
-                        Altamis Atmaja
+                        {{ $partner->nama_partner }}
                     </h4>
                     <p
                         class="text-textbase text-xl font-semibold leading-relaxed antialiased">
