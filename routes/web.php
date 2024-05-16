@@ -435,7 +435,7 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
      * Route for reporting transaction partner
      */
     Route::get('partner/report', [ReportPartnerController::class, 'index'])->name('partner.report.list');
-    Route::get('partner/report/{id}', [ReportPartnerController::class, 'show'])->name('partner.report.detail');
+    Route::get('partner/report/{reference}', [ReportPartnerController::class, 'show'])->name('partner.report.detail');
 
     
     /**

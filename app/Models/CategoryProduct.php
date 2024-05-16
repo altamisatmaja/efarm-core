@@ -20,4 +20,9 @@ class CategoryProduct extends Model
     public function categorylivestock() {
         return $this->hasMany(CategoryLivestock::class, 'id_kategori_produk');
     }
+
+    public function products() {
+        return $this->belongsTo(Product::class, 'id_kategori');
+    }
+    
 }
