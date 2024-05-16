@@ -4,13 +4,26 @@
 
 @section('content')
     <!-- component -->
+    
     <section class="container px-4 mx-auto">
         @if (session('status'))
             {{ session('status') }}
         @endif
         <div class="flex flex-col">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                <div class="flex flex-wrap mb-3 items-center">
+                    <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                        <h3 class="font-semibold text-xl">Kelola Peternakan</h3>
+                    </div>
+                    <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                        <a href="{{ route('partner.farm.create') }}">
+                            <button
+                                class="bg-primarybase text-white active:bg-primarybase text-md font-semibold px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                                type="button">Tambah hewan</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="inline-block w-full py-2 align-middle">
                     <div class="overflow-hidden border border-gray-200  md:rounded-lg">
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50 ">

@@ -25,6 +25,7 @@ class Farm extends Model
         'id_kategori_hewan',
         'nama_hewan',
         'kode_hewan',
+        'slug_farm',
     ];
 
     public function type_livestocks(){

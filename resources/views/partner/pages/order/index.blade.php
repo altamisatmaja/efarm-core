@@ -39,11 +39,6 @@
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
                                         Purchase
                                     </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
-                                        Aksi
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200 ">
@@ -84,19 +79,6 @@
                                     </td>
                                     <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
                                         Monthly subscription</td>
-                                    <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                        <div class="flex items-center gap-x-6">
-                                            <button
-                                                class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Archive
-                                            </button>
-
-                                            <button
-                                                class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Download
-                                            </button>
-                                        </div>
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>

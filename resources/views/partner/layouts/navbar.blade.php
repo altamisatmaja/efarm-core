@@ -103,17 +103,6 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/partner/order/accepted"
-                                class="p-4 block text-gray-600 text-base rounded flex items-center gap-2 hover:bg-gray-100">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7" />
-                                </svg>
-                                Order diterima
-                            </a>
-                        </li>
-                        <li>
                             <a href="/partner/order/end"
                                 class="p-4 block text-gray-600 text-base rounded flex items-center gap-2 hover:bg-gray-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"

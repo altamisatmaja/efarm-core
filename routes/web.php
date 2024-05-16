@@ -84,9 +84,10 @@ Route::get('/layanan', [PageWebController::class, 'layanan'])->name('homepage.la
 
 Route::get('/market', [PageWebController::class, 'market'])->name('homepage.market');
 Route::get('/market/buy', [PageWebController::class, 'buy'])->name('homepage.market.buy');
+Route::get('/market/buy/murah', [PageWebController::class, 'cheap'])->name('homepage.market.cheap');
 Route::get('/market/buy/{slug}', [PageWebController::class, 'by_categorytypelivestocks'])->name('homepage.market.farm');
-Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}', [PageWebController::class, 'livestock'])->name('homepage.market.farm.livestock');
 Route::get('/market/buy/kategori/{slug_kategori_product}', [PageWebController::class, 'category'])->name('homepage.market.category');
+Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}', [PageWebController::class, 'livestock'])->name('homepage.market.farm.livestock');
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}/{slug_product}', [PageWebController::class, 'product'])->name('homepage.market.farm.product');
 
 /**
@@ -399,7 +400,7 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
      */
     Route::get('partner/farm', [FarmPartnerController::class, 'list'])->name('partner.farm.list');
     Route::get('partner/farm/add', [FarmPartnerController::class, 'create'])->name('partner.farm.create');
-    Route::post('partner/farm/add', [FarmPartnerController::class, 'store'])->name('partner.farm.store');
+    Route::post('partner/farm/store', [FarmPartnerController::class, 'store'])->name('partner.farm.store');
     Route::get('partner/farm/edit/{slug_farm}', [FarmPartnerController::class, 'update'])->name('partner.farm.update');
     Route::put('partner/farm/update/{slug_farm}', [FarmPartnerController::class, 'edit'])->name('partner.farm.edit');
     Route::delete('partner/farm/destroy/{slug_farm}', [FarmPartnerController::class, 'destroy'])->name('partner.farm.destroy');

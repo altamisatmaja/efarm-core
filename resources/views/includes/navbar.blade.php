@@ -13,40 +13,64 @@
                         <img class="rounded-lg w-32" src="{{ asset('logo.png') }}" alt="efarm logo" />
                     </a>
                     <div class="ml-8 flex">
-                        <button id="dropdown-button"
-                            class="relative group transition-all duration-200 focus:overflow-visible w-max h-max p-3 overflow-hidden flex flex-row items-center justify-center bg-white gap-2 rounded-lg">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960"
-                                width="24">
-                                <path
-                                    d="M160-240q-17 0-28.5-11.5T120-280q0-17 11.5-28.5T160-320h640q17 0 28.5 11.5T840-280q0 17-11.5 28.5T800-240H160Zm0-200q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520h640q17 0 28.5 11.5T840-480q0 17-11.5 28.5T800-440H160Zm0-200q-17 0-28.5-11.5T120-680q0-17 11.5-28.5T160-720h640q17 0 28.5 11.5T840-680q0 17-11.5 28.5T800-640H160Z" />
-                            </svg>
-                            <span class="font-semibold text-textbase">
-                                Kategori
-                            </span>
-                            <div id="dropdown-menu"
-                                class="absolute shadow-lg -bottom-28 left-0 w-full h-max p-2 bg-white border border-zinc-200 rounded-lg flex flex-col gap-2">
-                                <a href="{{ route('homepage.market') }}">
-                                <span class="flex flex-row gap-2 items-center hover:bg-zinc-100 p-2 rounded-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                        viewBox="0 0 24 24">
-                                        <path fill="currentColor"
-                                            d="M12 5q-.425 0-.712-.288T11 4V2q0-.425.288-.712T12 1q.425 0 .713.288T13 2v2q0 .425-.288.713T12 5m4.95 2.05q-.275-.275-.275-.687t.275-.713l1.4-1.425q.3-.3.712-.3t.713.3q.275.275.275.7t-.275.7L18.35 7.05q-.275.275-.7.275t-.7-.275M20 13q-.425 0-.713-.288T19 12q0-.425.288-.712T20 11h2q.425 0 .713.288T23 12q0 .425-.288.713T22 13zm-8 10q-.425 0-.712-.288T11 22v-2q0-.425.288-.712T12 19q.425 0 .713.288T13 20v2q0 .425-.288.713T12 23M5.65 7.05l-1.425-1.4q-.3-.3-.3-.725t.3-.7q.275-.275.7-.275t.7.275L7.05 5.65q.275.275.275.7t-.275.7q-.3.275-.7.275t-.7-.275m12.7 12.725l-1.4-1.425q-.275-.3-.275-.712t.275-.688q.275-.275.688-.275t.712.275l1.425 1.4q.3.275.288.7t-.288.725q-.3.3-.725.3t-.7-.3M2 13q-.425 0-.712-.288T1 12q0-.425.288-.712T2 11h2q.425 0 .713.288T5 12q0 .425-.288.713T4 13zm2.225 6.775q-.275-.275-.275-.7t.275-.7L5.65 16.95q.275-.275.687-.275t.713.275q.3.3.3.713t-.3.712l-1.4 1.4q-.3.3-.725.3t-.7-.3M12 18q-2.5 0-4.25-1.75T6 12q0-2.5 1.75-4.25T12 6q2.5 0 4.25 1.75T18 12q0 2.5-1.75 4.25T12 18m0-2q1.65 0 2.825-1.175T16 12q0-1.65-1.175-2.825T12 8q-1.65 0-2.825 1.175T8 12q0 1.65 1.175 2.825T12 16m0-4" />
-                                    </svg>
-                                    <p>Market</p>
+                        <div x-data="{ isOpen: false }">
+                            <button @click="isOpen = !isOpen"
+                                class="relative group transition-all duration-200 focus:overflow-visible w-max h-max p-3 overflow-hidden flex flex-row items-center justify-center gap-2 rounded-lg">
+                                <span class="layanan-nonauth font-semibold text-textbase">
+                                    Layanan
                                 </span>
-                            </a>
-                            <a href="{{ route('partner.submission') }}">
-                                <span class="flex flex-row gap-2 items-center hover:bg-zinc-100 p-2 rounded-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                        viewBox="0 0 24 24">
-                                        <path fill="currentColor"
-                                            d="M12 5q-.425 0-.712-.288T11 4V2q0-.425.288-.712T12 1q.425 0 .713.288T13 2v2q0 .425-.288.713T12 5m4.95 2.05q-.275-.275-.275-.687t.275-.713l1.4-1.425q.3-.3.712-.3t.713.3q.275.275.275.7t-.275.7L18.35 7.05q-.275.275-.7.275t-.7-.275M20 13q-.425 0-.713-.288T19 12q0-.425.288-.712T20 11h2q.425 0 .713.288T23 12q0 .425-.288.713T22 13zm-8 10q-.425 0-.712-.288T11 22v-2q0-.425.288-.712T12 19q.425 0 .713.288T13 20v2q0 .425-.288.713T12 23M5.65 7.05l-1.425-1.4q-.3-.3-.3-.725t.3-.7q.275-.275.7-.275t.7.275L7.05 5.65q.275.275.275.7t-.275.7q-.3.275-.7.275t-.7-.275m12.7 12.725l-1.4-1.425q-.275-.3-.275-.712t.275-.688q.275-.275.688-.275t.712.275l1.425 1.4q.3.275.288.7t-.288.725q-.3.3-.725.3t-.7-.3M2 13q-.425 0-.712-.288T1 12q0-.425.288-.712T2 11h2q.425 0 .713.288T5 12q0 .425-.288.713T4 13zm2.225 6.775q-.275-.275-.275-.7t.275-.7L5.65 16.95q.275-.275.687-.275t.713.275q.3.3.3.713t-.3.712l-1.4 1.4q-.3.3-.725.3t-.7-.3M12 18q-2.5 0-4.25-1.75T6 12q0-2.5 1.75-4.25T12 6q2.5 0 4.25 1.75T18 12q0 2.5-1.75 4.25T12 18m0-2q1.65 0 2.825-1.175T16 12q0-1.65-1.175-2.825T12 8q-1.65 0-2.825 1.175T8 12q0 1.65 1.175 2.825T12 16m0-4" />
-                                    </svg>
-                                    <p>Partner</p>
-                                </span>
-                            </a>
+                                <svg class="rotate-90 group-focus:rotate-180" xmlns="http://www.w3.org/2000/svg"
+                                    width="22" height="22" viewBox="0 0 24 24">
+                                    <path fill="currentColor"
+                                        d="m12 10.8l-3.9 3.9q-.275.275-.7.275t-.7-.275q-.275-.275-.275-.7t.275-.7l4.6-4.6q.3-.3.7-.3t.7.3l4.6 4.6q.275.275.275.7t-.275.7q-.275.275-.7.275t-.7-.275z" />
+                                </svg>
+                            </button>
+    
+                            <!-- Dropdown -->
+                            <div @click.away="isOpen = false" @keydown.escape="isOpen = false"
+                                x-show.transition.opacity="isOpen"
+                                class="absolute mt-3 transform bg-white rounded-md shadow-lg -translate-x-3/4 min-w-max">
+                                <ul class="flex flex-col p-2 my-3 space-y-3">
+                                    <li>
+                                        <a href="{{ route('homepage.partner') }}"
+                                            class="flex items-start px-2 py-1 space-x-2 rounded-md hover:bg-gray-100">
+                                            <div class="items-center flex">
+                                                <img src="{{ asset('efarm-partner-logo.png') }}" alt="montaña"
+                                                    class="h-5 mr-4" />
+                                                <span class="flex flex-col">
+                                                    <span class="text-textbase text-lg font-semibold">Partner</span>
+                                                    <span class="text-textbase text-sm">Jual hewan ternak Anda</span>
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('homepage.market') }}"
+                                            class="flex items-start px-2 py-1 space-x-2 rounded-md hover:bg-gray-100">
+                                            <div class="items-center flex">
+                                                <img src="{{ asset('efarm-market.png') }}" alt="montaña"
+                                                    class="h-5 mr-4" />
+                                                <span class="flex flex-col">
+                                                    <span class="text-textbase text-lg font-semibold">Market</span>
+                                                    <span class="text-textbase text-sm">Mulai beli ternak</span>
+                                                </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <a href="{{ route('homepage.layanan') }}">
+                                    <div class="p-4 text-lg font-medium border-t">
+                                        <div class="items-center flex">
+                                            <img src="{{ asset('efarm-layanan.png') }}" alt="montaña"
+                                                class="h-5 mr-4" />
+                                            <span class="flex flex-col">
+                                                <span class="text-textbase text-lg font-semibold">Semua Layanan</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                        </button>
+                        </div>
                     </div>
                 </div>
                 <div class="w-full flex justify-center items-center">
@@ -82,51 +106,59 @@
                             </span>
                         </div>
                         <div class="mx-6 flex">
-                            <button id="dropdown-button-akun"
-                                class="relative ring-1 ring-primarybase group transition-all duration-200 w-max h-max p-2.5 flex flex-row items-center justify-center bg-white gap-2 rounded-lg">
-                                <img src="https://randomuser.me/api/portraits/men/12.jpg"
-                                    class="w-auto h-6 rounded-full" alt="fotoprofil" />
-                                <span class="font-semibold text-textbase">
-                                    {{ auth()->user()->nama }}
-                                </span>
-                                <svg :class="{ 'rotate-180 duration-300': open, 'duration-300': !open }"
-                                    class="text-gray-400 -rotate-90 ml-2 h-5 w-5 group-hover:text-gray-500"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                <div id="dropdown-menu-akun"
-                                    class="absolute shadow-lg -bottom-40 left-0 w-full h-max p-2 bg-white border border-zinc-200 rounded-lg flex flex-col gap-2">
-                                    <a href="{{ route('customer.account') }}">
-                                        <span class="flex flex-row gap-2 items-center hover:bg-zinc-100 p-2 rounded-lg">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                                viewBox="0 0 24 24">
-                                                <path fill="currentColor"
-                                                    d="M12 5q-.425 0-.712-.288T11 4V2q0-.425.288-.712T12 1q.425 0 .713.288T13 2v2q0 .425-.288.713T12 5m4.95 2.05q-.275-.275-.275-.687t.275-.713l1.4-1.425q.3-.3.712-.3t.713.3q.275.275.275.7t-.275.7L18.35 7.05q-.275.275-.7.275t-.7-.275M20 13q-.425 0-.713-.288T19 12q0-.425.288-.712T20 11h2q.425 0 .713.288T23 12q0 .425-.288.713T22 13zm-8 10q-.425 0-.712-.288T11 22v-2q0-.425.288-.712T12 19q.425 0 .713.288T13 20v2q0 .425-.288.713T12 23M5.65 7.05l-1.425-1.4q-.3-.3-.3-.725t.3-.7q.275-.275.7-.275t.7.275L7.05 5.65q.275.275.275.7t-.275.7q-.3.275-.7.275t-.7-.275m12.7 12.725l-1.4-1.425q-.275-.3-.275-.712t.275-.688q.275-.275.688-.275t.712.275l1.425 1.4q.3.275.288.7t-.288.725q-.3.3-.725.3t-.7-.3M2 13q-.425 0-.712-.288T1 12q0-.425.288-.712T2 11h2q.425 0 .713.288T5 12q0 .425-.288.713T4 13zm2.225 6.775q-.275-.275-.275-.7t.275-.7L5.65 16.95q.275-.275.687-.275t.713.275q.3.3.3.713t-.3.712l-1.4 1.4q-.3.3-.725.3t-.7-.3M12 18q-2.5 0-4.25-1.75T6 12q0-2.5 1.75-4.25T12 6q2.5 0 4.25 1.75T18 12q0 2.5-1.75 4.25T12 18m0-2q1.65 0 2.825-1.175T16 12q0-1.65-1.175-2.825T12 8q-1.65 0-2.825 1.175T8 12q0 1.65 1.175 2.825T12 16m0-4" />
-                                            </svg>
-                                            <p>Profil</p>
-                                        </span>
+                            <div x-data="{ isOpen: false }">
+                                <button @click="isOpen = !isOpen"
+                                    class="relative group transition-all duration-200 focus:overflow-visible w-max h-max p-3 overflow-hidden flex flex-row items-center justify-center gap-2 rounded-lg">
+                                    <span class="layanan-nonauth font-semibold text-textbase">
+                                        {{ auth()->user()->nama }}
+                                    </span>
+                                </button>
+        
+                                <!-- Dropdown -->
+                                <div @click.away="isOpen = false" @keydown.escape="isOpen = false"
+                                    x-show.transition.opacity="isOpen"
+                                    class="absolute mt-3 transform bg-white rounded-md shadow-lg -translate-x-3/4 min-w-max">
+                                    <ul class="flex flex-col p-2 my-3 space-y-3">
+                                        <li>
+                                            <a href="{{ route('homepage.partner') }}"
+                                                class="flex items-start px-2 py-1 space-x-2 rounded-md hover:bg-gray-100">
+                                                <div class="items-center flex">
+                                                    <img src="{{ asset('efarm-partner-logo.png') }}" alt="montaña"
+                                                        class="h-5 mr-4" />
+                                                    <span class="flex flex-col">
+                                                        <span class="text-textbase text-lg font-semibold">Partner</span>
+                                                        <span class="text-textbase text-sm">Jual hewan ternak Anda</span>
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('homepage.market') }}"
+                                                class="flex items-start px-2 py-1 space-x-2 rounded-md hover:bg-gray-100">
+                                                <div class="items-center flex">
+                                                    <img src="{{ asset('efarm-market.png') }}" alt="montaña"
+                                                        class="h-5 mr-4" />
+                                                    <span class="flex flex-col">
+                                                        <span class="text-textbase text-lg font-semibold">Market</span>
+                                                        <span class="text-textbase text-sm">Mulai beli ternak</span>
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <a href="{{ route('homepage.layanan') }}">
+                                        <div class="p-4 text-lg font-medium border-t">
+                                            <div class="items-center flex">
+                                                <img src="{{ asset('efarm-layanan.png') }}" alt="montaña"
+                                                    class="h-5 mr-4" />
+                                                <span class="flex flex-col">
+                                                    <span class="text-textbase text-lg font-semibold">Semua Layanan</span>
+                                                </span>
+                                            </div>
+                                        </div>
                                     </a>
-                                    <span class="flex flex-row gap-2 items-center hover:bg-zinc-100 p-2 rounded-lg">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                            viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M12 5q-.425 0-.712-.288T11 4V2q0-.425.288-.712T12 1q.425 0 .713.288T13 2v2q0 .425-.288.713T12 5m4.95 2.05q-.275-.275-.275-.687t.275-.713l1.4-1.425q.3-.3.712-.3t.713.3q.275.275.275.7t-.275.7L18.35 7.05q-.275.275-.7.275t-.7-.275M20 13q-.425 0-.713-.288T19 12q0-.425.288-.712T20 11h2q.425 0 .713.288T23 12q0 .425-.288.713T22 13zm-8 10q-.425 0-.712-.288T11 22v-2q0-.425.288-.712T12 19q.425 0 .713.288T13 20v2q0 .425-.288.713T12 23M5.65 7.05l-1.425-1.4q-.3-.3-.3-.725t.3-.7q.275-.275.7-.275t.7.275L7.05 5.65q.275.275.275.7t-.275.7q-.3.275-.7.275t-.7-.275m12.7 12.725l-1.4-1.425q-.275-.3-.275-.712t.275-.688q.275-.275.688-.275t.712.275l1.425 1.4q.3.275.288.7t-.288.725q-.3.3-.725.3t-.7-.3M2 13q-.425 0-.712-.288T1 12q0-.425.288-.712T2 11h2q.425 0 .713.288T5 12q0 .425-.288.713T4 13zm2.225 6.775q-.275-.275-.275-.7t.275-.7L5.65 16.95q.275-.275.687-.275t.713.275q.3.3.3.713t-.3.712l-1.4 1.4q-.3.3-.725.3t-.7-.3M12 18q-2.5 0-4.25-1.75T6 12q0-2.5 1.75-4.25T12 6q2.5 0 4.25 1.75T18 12q0 2.5-1.75 4.25T12 18m0-2q1.65 0 2.825-1.175T16 12q0-1.65-1.175-2.825T12 8q-1.65 0-2.825 1.175T8 12q0 1.65 1.175 2.825T12 16m0-4" />
-                                        </svg>
-                                        <p>Pesanan</p>
-                                    </span>
-                                    <span class="flex flex-row gap-2 items-center hover:bg-zinc-100 p-2 rounded-lg">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                            viewBox="0 0 24 24">
-                                            <path fill="currentColor"
-                                                d="M12 21q-3.775 0-6.387-2.613T3 12q0-3.45 2.25-5.988T11 3.05q.325-.05.575.088t.4.362q.15.225.163.525t-.188.575q-.425.65-.638 1.375T11.1 7.5q0 2.25 1.575 3.825T16.5 12.9q.775 0 1.538-.225t1.362-.625q.275-.175.563-.162t.512.137q.25.125.388.375t.087.6q-.35 3.45-2.937 5.725T12 21m0-2q2.2 0 3.95-1.213t2.55-3.162q-.5.125-1 .2t-1 .075q-3.075 0-5.238-2.163T9.1 7.5q0-.5.075-1t.2-1q-1.95.8-3.163 2.55T5 12q0 2.9 2.05 4.95T12 19m-.25-6.75" />
-                                        </svg>
-                                        <p>Logout</p>
-                                    </span>
                                 </div>
-                            </button>
+                            </div>
                         </div>
                         <a href="{{ route('customer.logout') }}">
                             <div
@@ -146,7 +178,7 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full flex justify-center p-3 items-center">
+            <div class="bg-white w-full flex justify-center p-3 items-center">
                 <a href="/">
                     <div class="px-5">
                         <p class="font-semibold text-textbase">Home</p>
@@ -175,16 +207,11 @@
                         <p class="font-semibold text-textbase">Terdekat</p>
                     </div>
                 </a>
-                <a href="{{ route('homepage.about') }}">
-                    <div class="px-5">
-                        <p class="font-semibold text-textbase">Termurah</p>
-                    </div>
-                </a>
                 @php
                     $categoryproduct = App\Models\CategoryProduct::all();
                 @endphp
                 @foreach ($categoryproduct as $category)
-                    <a href="{{ route('homepage.about') }}">
+                    <a href="{{ route('homepage.market.category', $category->slug_kategori_product) }}">
                         <div class="px-5">
                             <p class="font-semibold text-textbase">{{ $category->nama_kategori_product }}</p>
                         </div>
@@ -297,23 +324,23 @@
 </div>
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script>
-    window.addEventListener('scroll', function() {
-        var scrollPosition = window.scrollY;
-        var navbar = document.querySelector('.sticky');
-        var bgScrollNoAuth = document.querySelector('.sticky-nonauth');
-        var layananNoAuth = document.querySelector('.layanan-nonauth');
+    // window.addEventListener('scroll', function() {
+    //     var scrollPosition = window.scrollY;
+    //     var navbar = document.querySelector('.sticky');
+    //     var bgScrollNoAuth = document.querySelector('.sticky-nonauth');
+    //     var layananNoAuth = document.querySelector('.layanan-nonauth');
 
-        if (scrollPosition > 100) {
-            var blurAmount = scrollPosition / 100;
-            navbar.style.backdropFilter = "blur(" + blurAmount + "px)";
-            // bgScrollNoAuth.classList.remove('bg-white');
-            // layananNoAuth.classList.replace('text-textbase', 'text-white');
-        } else {
-            bgScrollNoAuth.classList.add('bg-white');
-            navbar.style.backdropFilter = "none";
-            // layananNoAuth.classList.replace('text-white', 'text-textbase');
-        }
-    });
+    //     if (scrollPosition > 100) {
+    //         var blurAmount = scrollPosition / 100;
+    //         navbar.style.backdropFilter = "blur(" + blurAmount + "px)";
+    //         // bgScrollNoAuth.classList.remove('bg-white');
+    //         // layananNoAuth.classList.replace('text-textbase', 'text-white');
+    //     } else {
+    //         bgScrollNoAuth.classList.add('bg-white');
+    //         navbar.style.backdropFilter = "none";
+    //         // layananNoAuth.classList.replace('text-white', 'text-textbase');
+    //     }
+    // });
 
     const dropdownButton = document.getElementById('dropdown-button');
     const dropdownButtonAkun = document.getElementById('dropdown-button-akun');

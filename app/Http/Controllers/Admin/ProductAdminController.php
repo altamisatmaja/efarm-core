@@ -20,6 +20,7 @@ class ProductAdminController extends Controller
         $id_products = Product::where('slug_product', $slug_product)->first()->id;
         $reviews = Review::where('id_product', $id_products)->get();
         $total_rating = 0;
+        
         foreach ($reviews as $review) {
             $total_rating += $review->rating;
         }

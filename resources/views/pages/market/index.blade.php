@@ -112,7 +112,7 @@
                                             <img class="w-full h-full object-cover" src="/uploads/{{ $categorylivestocks->gambar_kategori_hewan }}" alt="" />
                                         </div>
                                     </div>
-                                    <div class="absolute flex justify-center bottom-0 mb-3">
+                                    {{-- <div class="absolute flex justify-center bottom-0 mb-3">
                                         <div class="flex bg-white px-4 py-1 space-x-5 rounded-lg overflow-hidden shadow">
                                             <p class="flex items-center font-medium text-gray-800">
                                                 <svg class="w-5 h-5 fill-current mr-2" xmlns="http://www.w3.org/2000/svg"
@@ -144,16 +144,13 @@
                                                 3
                                             </p>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
 
                                 <div class="mt-4">
                                     <h2 class="font-semibold text-xl md:text-lg text-gray-800 line-clamp-1" title="New York">
                                         {{ $categorylivestocks->nama_kategori_hewan }}
                                     </h2>
-                                    <p class="mt-2 text-sm text-gray-800 line-clamp-1" title="New York, NY 10004, United States">
-                                        {{ $categorylivestocks->deskripsi_kategori_hewan }}
-                                    </p>
                                 </div>
 
                             </div>

@@ -37,7 +37,12 @@ class FarmPartnerController extends Controller
     public function create()
     {
         $partner = Auth::user();
-        return view('partner.pages.farm.create', compact('partner'));
+        $typelivestocks = TypeLivestock::all();
+        $genderlivestocks = GenderLivestock::all();
+        $conditionlivestock = ConditionLivestock::all();
+        $categorylivestock = CategoryLivestock::all();
+        
+        return view('partner.pages.farm.create', compact('typelivestocks', 'genderlivestocks', 'conditionlivestock', 'categorylivestock', 'partner'));
     }
 
     /**
@@ -78,6 +83,7 @@ class FarmPartnerController extends Controller
     {
         $user = Auth::user();
         $partner = Partner::where('id_user', $user->id)->first();
+        // dd($request->all());
 
         $validator = Validator::make($request->all(), [
             'id_kondisi_hewan' => 'required',
