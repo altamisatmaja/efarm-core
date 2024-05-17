@@ -49,6 +49,9 @@
 @section('content')
     <!-- component -->
     <section class="container px-4 mx-auto">
+        @if (session('success'))
+                <p>{{ session('success') }}</p>
+            @endif
         <div class="flex flex-col">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="rounded-t mb-0 px-4 py-3 border-0">
@@ -134,7 +137,55 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                                
+                                @foreach ($productdata as $product)
+                                    <tr>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $loop->iteration }}</td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $product['created_at']->format('d F Y') }}</td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $product['nama_product'] }}</td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $product['harga_product'] }}</td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $product['gambar_hewan'] }}</td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $product['nama_kategori_product'] }}</td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $product['nama_jenis_hewan'] }}</td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $product['nama_gender'] }}</td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $product['lahir_hewan'] }} bulan
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $product['berat_hewan_ternak'] }} kg</td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $product['stok_hewan_ternak'] }} ekor</td>
+                                        <td class="px-4 py-4 text-sm text-gray-500">
+                                            {{ $product['terjual'] }}</td>
+                                        <td class="px-4 py-4 text-sm">
+                                            <div class="flex flex-wrap items-center gap-x-6">
+                                                <a href="{{ route('partner.product.edit', $product['slug_product']) }}">
+                                                    <button
+                                                        class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                        Edit
+                                                    </button>
+                                                </a>
+                                                <form onsubmit="return confirm('Apakah Anda Yakin ?');"
+                                                    action="{{ route('partner.product.destroy', $product['slug_product']) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit"
+                                                        class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                        Hapus
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -182,6 +233,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @push('js')
-       å
+        å
     @endpush
 @endsection

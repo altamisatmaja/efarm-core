@@ -6,8 +6,10 @@
     <div id="" class="container mx-auto p-4">
         <div class="bg-white shadow rounded-lg p-6">
             @if (session('errors'))
-                
                 <p>{{ session('errors') }}</p>
+            @endif
+            @if (session('success'))
+                <p>{{ session('success') }}</p>
             @endif
             <h1 class="text-xl font-semibold mb-4 text-gray-900">Formulir pengajuan partner</h1>
             <p class="text-gray-600  mb-6">Silahkan diisi dengan kesesuaian data yang ada

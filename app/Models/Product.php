@@ -12,6 +12,25 @@ class Product extends Model
 
     protected $guarded = [];
 
+    protected $fillable = [
+            'harga_product',
+            'id_kategori',
+            'nama_product',
+            'diskon',
+            'id_partner',
+            'gambar_hewan',
+            'id_jenis_gender_hewan',
+            'lahir_hewan',
+            'berat_hewan_ternak',
+            'stok_hewan_ternak',
+            'terjual',
+            'deskripsi_product',
+            'id_typelivestocks',
+            'slug_product',
+            'id_category_livestocks',
+            'pengiriman',
+    ];
+
     public function typelivestocks() : HasMany {
         return $this->hasMany(TypeLivestock::class, 'id', 'id_typelivestocks');
     }

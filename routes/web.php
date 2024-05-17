@@ -396,7 +396,7 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     Route::get('partner/product', [ProductPartnerController::class, 'index'])->name('partner.product.list');
     Route::get('partner/product/add', [ProductPartnerController::class, 'create'])->name('partner.product.add');
     Route::post('partner/product/store', [ProductPartnerController::class, 'store'])->name('partner.product.store');
-    Route::get('partner/product/{slug_product}/edit', [ProductPartnerController::class, 'edit'])->name('partner.product.edit');
+    Route::get('partner/product/{slug_product}/edit', [ProductPartnerController::class, 'show'])->name('partner.product.edit');
     Route::put('partner/product/{slug_product}/update', [ProductPartnerController::class, 'update'])->name('partner.product.update');
     Route::delete('partner/product/{slug_product}/delete', [ProductPartnerController::class, 'destroy'])->name('partner.product.destroy');
 
