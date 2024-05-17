@@ -3,112 +3,263 @@
 @section('title', 'Dashboard | Order')
 
 @section('content')
-    <div class="flex w-3/4 flex-col h-screen px-16 py-10 mx-auto">
-        <div class="flex pb-4">
-            <h1 class="text-2xl font-semibold text-textbase">Pengaturan</h1>
-        </div>
-        <div class="flex">
-            <img class="rounded-2xl border-zinc-700 w-20 h-20" alt="potoprofil" <img
-            src="/uploads/{{ $partner->foto_profil }}" />
-            <div class="w-full text-gray-500 px-4">
-                <p class="text-lg font-semibold space-x-1 inline-block overflow-hidden whitespace-nowrap text-ellipsis">
-                    <span class="text-textbase">Halo</span><span class="font-extralight text-textbase">{{ $partner->nama_partner }} 👋</span>
-                </p>
-                <p>Bergabung sejak, {{ $partner->created_at->diffForHumans() }}</p>
-            </div>
-        </div>
-        <div x-data="{ openTab: 1 }" class="py-4">
-            <div class="">
-                <div class="mb-4 flex space-x-4  bg-white rounded-lg">
-                    <button x-on:click="openTab = 1" :class="{ 'bg-primarybase text-white': openTab === 1 }"
-                        class="flex-1 py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue transition-all duration-300">Personal</button>
-                    <button x-on:click="openTab = 2" :class="{ 'bg-primarybase text-white': openTab === 2 }"
-                        class="flex-1 py-2 px-4 rounded-md focus:outline-none focus:shadow-outline-blue transition-all duration-300">Rekening</button>
-                </div>
-
-                <div x-show="openTab === 1" class="transition-all duration-300 w-full">
-                    <div class="space-x-2">
-                        <div class="grid gap-x-3 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-2 lg:grid-cols-3 lg:gap-x-6 lg:gap-y-2">
-                            <a href="/partner/account/edit">
-                                <div
-                                    class="mb-6 h-full rounded-lg bg-white p-6 border border-gray-400 hover:bg-gray-100 hover:shadow-3xl">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center">
-                                            <div class="">
-                                                <svg xmlns="http://www.w3.org/2000/svg" height="40"
-                                                    viewBox="0 -960 960 960" width="40" stroke="currentColor"
-                                                    fill="currentColor" class="text-primarybase">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M433-80q-27 0-46.5-18T363-142l-9-66q-13-5-24.5-12T307-235l-62 26q-25 11-50 2t-39-32l-47-82q-14-23-8-49t27-43l53-40q-1-7-1-13.5v-27q0-6.5 1-13.5l-53-40q-21-17-27-43t8-49l47-82q14-23 39-32t50 2l62 26q11-8 23-15t24-12l-9-66q4-26 23.5-44t46.5-18h94q27 0 46.5 18t23.5 44l9 66q13 5 24.5 12t22.5 15l62-26q25-11 50-2t39 32l47 82q14 23 8 49t-27 43l-53 40q1 7 1 13.5v27q0 6.5-2 13.5l53 40q21 17 27 43t-8 49l-48 82q-14 23-39 32t-50-2l-60-26q-11 8-23 15t-24 12l-9 66q-4 26-23.5 44T527-80h-94Zm7-80h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 42q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 64q-5 15-7 30t-2 32q0 16 2 31t7 30l-86 65 39 68 99-42q22 23 48.5 38.5T427-266l13 106Zm42-180q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm-2-140Z" />
-                                                </svg>
-                                                <h3 class="my-2 text-xl font-semibold text-gray-900">Informasi Akun</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="my-2 text-md font-normal text-gray-500">Ini mencakup username, email,
-                                        dan kata sandi Anda</p>
-                                </div>
-                            </a>
-
-                            <a href="/partner/account/information">
-                                <div
-                                    class="mb-6 h-full rounded-lg bg-white p-6 border border-gray-400 hover:bg-gray-100 hover:shadow-3xl">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center">
-                                            <div class="">
-                                                <svg xmlns="http://www.w3.org/2000/svg" height="40"
-                                                    viewBox="0 -960 960 960" width="40"stroke="currentColor"
-                                                    fill="currentColor" class="text-primarybase">
-                                                    <path
-                                                        d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-240v-32q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v32q0 33-23.5 56.5T720-160H240q-33 0-56.5-23.5T160-240Zm80 0h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z" />
-                                                </svg>
-                                                <h3 class="my-2 text-xl font-semibold text-gray-900">Biodata diri</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="my-2 text-md font-normal text-gray-500">Ini mencakup nomor handphone,
-                                        tanggal
-                                        lahir dan nama lengkap Anda</p>
-                                </div>
-                            </a>
-
-
-                            <a href="/partner/account/address">
-                                <div
-                                    class="mb-6 h-full rounded-lg bg-white p-6 border border-gray-400 hover:bg-gray-100 hover:shadow-3xl">
-                                    <div class="flex items-center justify-between">
-                                        <div class="flex items-center">
-                                            <div class="">
-                                                <svg xmlns="http://www.w3.org/2000/svg" height="40"
-                                                    viewBox="0 -960 960 960" width="40"stroke="currentColor"
-                                                    fill="currentColor" class="text-primarybase">
-                                                    <path
-                                                        d="M480-186q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 79q-14 0-28-5t-25-15q-65-60-115-117t-83.5-110.5q-33.5-53.5-51-103T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 45-17.5 94.5t-51 103Q698-301 648-244T533-127q-11 10-25 15t-28 5Zm0-453Zm0 80q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Z" />
-                                                </svg>
-                                                <h3 class="my-2 text-xl font-semibold text-gray-900">Alamat</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <p class="my-2 text-md font-normal text-gray-500">Ini mencakup alamat lengkap Anda
-                                        yang
-                                        digunakan untuk pengiriman barang</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div x-show="openTab === 2"
-                    class="transition-all duration-300 bg-white p-4 rounded-lg shadow-md border-l-4 border-blue-600">
-                    <h2 class="text-2xl font-semibold mb-2 text-blue-600">Cart</h2>
-                    <p class="text-gray-700">Proin non velit ac purus malesuada venenatis sit amet eget lacus. Morbi
-                        quis
-                        purus id ipsum ultrices aliquet Morbi quis.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    @push('js')
+<div class="bg-gray-100">
+    <div class="w-full text-white bg-main-color">
+           <div x-data="{ open: false }"
+               class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+               <div class="p-4 flex flex-row items-center justify-between">
+                   <a href="#"
+                       class="text-lg font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">example
+                       profile</a>
+                   <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
+                       <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+                           <path x-show="!open" fill-rule="evenodd"
+                               d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                               clip-rule="evenodd"></path>
+                           <path x-show="open" fill-rule="evenodd"
+                               d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                               clip-rule="evenodd"></path>
+                       </svg>
+                   </button>
+               </div>
+               <nav :class="{'flex': open, 'hidden': !open}"
+                   class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
+                   <div @click.away="open = false" class="relative" x-data="{ open: false }">
+                       <button @click="open = !open"
+                           class="flex flex-row items-center space-x-2 w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent hover:bg-blue-800 md:w-auto md:inline md:mt-0 md:ml-4 hover:bg-gray-200 focus:bg-blue-800 focus:outline-none focus:shadow-outline">
+                           <span>Jane Doe</span>
+                           <img class="inline h-6 rounded-full"
+                               src="https://avatars2.githubusercontent.com/u/24622175?s=60&amp;v=4">
+                           <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}"
+                               class="inline w-4 h-4 transition-transform duration-200 transform">
+                               <path fill-rule="evenodd"
+                                   d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                   clip-rule="evenodd"></path>
+                           </svg>
+                       </button>
+                       <div x-show="open" x-transition:enter="transition ease-out duration-100"
+                           x-transition:enter-start="transform opacity-0 scale-95"
+                           x-transition:enter-end="transform opacity-100 scale-100"
+                           x-transition:leave="transition ease-in duration-75"
+                           x-transition:leave-start="transform opacity-100 scale-100"
+                           x-transition:leave-end="transform opacity-0 scale-95"
+                           class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
+                           <div class="py-2 bg-white text-blue-800 text-sm rounded-sm border border-main-color shadow-sm">
+                               <a class="block px-4 py-2 mt-2 text-sm bg-white md:mt-0 focus:text-gray-900 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                   href="#">Settings</a>
+                               <a class="block px-4 py-2 mt-2 text-sm bg-white md:mt-0 focus:text-gray-900 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                   href="#">Help</a>
+                               <div class="border-b"></div>
+                               <a class="block px-4 py-2 mt-2 text-sm bg-white md:mt-0 focus:text-gray-900 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                                   href="#">Logout</a>
+                           </div>
+                       </div>
+                   </div>
+               </nav>
+           </div>
+       </div>
+       <!-- End of Navbar -->
+   
+       <div class="container mx-auto my-5 p-5">
+           <div class="md:flex no-wrap md:-mx-2 ">
+               <!-- Left Side -->
+               <div class="w-full md:w-3/12 md:mx-2">
+                   <!-- Profile Card -->
+                   <div class="bg-white p-3 border-t-4 border-green-400">
+                       <div class="image overflow-hidden">
+                           <img class="h-auto w-full mx-auto"
+                               src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
+                               alt="">
+                       </div>
+                       <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">Jane Doe</h1>
+                       <h3 class="text-gray-600 font-lg text-semibold leading-6">Owner at Her Company Inc.</h3>
+                       <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">Lorem ipsum dolor sit amet
+                           consectetur adipisicing elit.
+                           Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur non deserunt</p>
+                       <ul
+                           class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
+                           <li class="flex items-center py-3">
+                               <span>Status</span>
+                               <span class="ml-auto"><span
+                                       class="bg-green-500 py-1 px-2 rounded text-white text-sm">Active</span></span>
+                           </li>
+                           <li class="flex items-center py-3">
+                               <span>Member since</span>
+                               <span class="ml-auto">Nov 07, 2016</span>
+                           </li>
+                       </ul>
+                   </div>
+                   <!-- End of profile card -->
+                   <div class="my-4"></div>
+                   <!-- Friends card -->
+                   <div class="bg-white p-3 hover:shadow">
+                       <div class="flex items-center space-x-3 font-semibold text-gray-900 text-xl leading-8">
+                           <span class="text-green-500">
+                               <svg class="h-5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                   viewBox="0 0 24 24" stroke="currentColor">
+                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                       d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                               </svg>
+                           </span>
+                           <span>Similar Profiles</span>
+                       </div>
+                       <div class="grid grid-cols-3">
+                           <div class="text-center my-2">
+                               <img class="h-16 w-16 rounded-full mx-auto"
+                                   src="https://cdn.australianageingagenda.com.au/wp-content/uploads/2015/06/28085920/Phil-Beckett-2-e1435107243361.jpg"
+                                   alt="">
+                               <a href="#" class="text-main-color">Kojstantin</a>
+                           </div>
+                           <div class="text-center my-2">
+                               <img class="h-16 w-16 rounded-full mx-auto"
+                                   src="https://avatars2.githubusercontent.com/u/24622175?s=60&amp;v=4"
+                                   alt="">
+                               <a href="#" class="text-main-color">James</a>
+                           </div>
+                           <div class="text-center my-2">
+                               <img class="h-16 w-16 rounded-full mx-auto"
+                                   src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
+                                   alt="">
+                               <a href="#" class="text-main-color">Natie</a>
+                           </div>
+                           <div class="text-center my-2">
+                               <img class="h-16 w-16 rounded-full mx-auto"
+                                   src="https://bucketeer-e05bbc84-baa3-437e-9518-adb32be77984.s3.amazonaws.com/public/images/f04b52da-12f2-449f-b90c-5e4d5e2b1469_361x361.png"
+                                   alt="">
+                               <a href="#" class="text-main-color">Casey</a>
+                           </div>
+                       </div>
+                   </div>
+                   <!-- End of friends card -->
+               </div>
+               <!-- Right Side -->
+               <div class="w-full md:w-9/12 mx-2 h-64">
+                   <!-- Profile tab -->
+                   <!-- About Section -->
+                   <div class="bg-white p-3 shadow-sm rounded-sm">
+                       <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+                           <span clas="text-green-500">
+                               <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                   stroke="currentColor">
+                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                       d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                               </svg>
+                           </span>
+                           <span class="tracking-wide">About</span>
+                       </div>
+                       <div class="text-gray-700">
+                           <div class="grid md:grid-cols-2 text-sm">
+                               <div class="grid grid-cols-2">
+                                   <div class="px-4 py-2 font-semibold">First Name</div>
+                                   <div class="px-4 py-2">Jane</div>
+                               </div>
+                               <div class="grid grid-cols-2">
+                                   <div class="px-4 py-2 font-semibold">Last Name</div>
+                                   <div class="px-4 py-2">Doe</div>
+                               </div>
+                               <div class="grid grid-cols-2">
+                                   <div class="px-4 py-2 font-semibold">Gender</div>
+                                   <div class="px-4 py-2">Female</div>
+                               </div>
+                               <div class="grid grid-cols-2">
+                                   <div class="px-4 py-2 font-semibold">Contact No.</div>
+                                   <div class="px-4 py-2">+11 998001001</div>
+                               </div>
+                               <div class="grid grid-cols-2">
+                                   <div class="px-4 py-2 font-semibold">Current Address</div>
+                                   <div class="px-4 py-2">Beech Creek, PA, Pennsylvania</div>
+                               </div>
+                               <div class="grid grid-cols-2">
+                                   <div class="px-4 py-2 font-semibold">Permanant Address</div>
+                                   <div class="px-4 py-2">Arlington Heights, IL, Illinois</div>
+                               </div>
+                               <div class="grid grid-cols-2">
+                                   <div class="px-4 py-2 font-semibold">Email.</div>
+                                   <div class="px-4 py-2">
+                                       <a class="text-blue-800" href="mailto:jane@example.com">jane@example.com</a>
+                                   </div>
+                               </div>
+                               <div class="grid grid-cols-2">
+                                   <div class="px-4 py-2 font-semibold">Birthday</div>
+                                   <div class="px-4 py-2">Feb 06, 1998</div>
+                               </div>
+                           </div>
+                       </div>
+                       <button
+                           class="block w-full text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">Show
+                           Full Information</button>
+                   </div>
+                   <!-- End of about section -->
+   
+                   <div class="my-4"></div>
+   
+                   <!-- Experience and education -->
+                   <div class="bg-white p-3 shadow-sm rounded-sm">
+   
+                       <div class="grid grid-cols-2">
+                           <div>
+                               <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+                                   <span clas="text-green-500">
+                                       <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                           stroke="currentColor">
+                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                               d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                       </svg>
+                                   </span>
+                                   <span class="tracking-wide">Experience</span>
+                               </div>
+                               <ul class="list-inside space-y-2">
+                                   <li>
+                                       <div class="text-teal-600">Owner at Her Company Inc.</div>
+                                       <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                                   </li>
+                                   <li>
+                                       <div class="text-teal-600">Owner at Her Company Inc.</div>
+                                       <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                                   </li>
+                                   <li>
+                                       <div class="text-teal-600">Owner at Her Company Inc.</div>
+                                       <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                                   </li>
+                                   <li>
+                                       <div class="text-teal-600">Owner at Her Company Inc.</div>
+                                       <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                                   </li>
+                               </ul>
+                           </div>
+                           <div>
+                               <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8 mb-3">
+                                   <span clas="text-green-500">
+                                       <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                           stroke="currentColor">
+                                           <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
+                                           <path fill="#fff"
+                                               d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                               d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                                       </svg>
+                                   </span>
+                                   <span class="tracking-wide">Education</span>
+                               </div>
+                               <ul class="list-inside space-y-2">
+                                   <li>
+                                       <div class="text-teal-600">Masters Degree in Oxford</div>
+                                       <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                                   </li>
+                                   <li>
+                                       <div class="text-teal-600">Bachelors Degreen in LPU</div>
+                                       <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                                   </li>
+                               </ul>
+                           </div>
+                       </div>
+                       <!-- End of Experience and education grid -->
+                   </div>
+                   <!-- End of profile tab -->
+               </div>
+           </div>
+       </div>
+   </div>    @push('js')
         <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
     @endpush
 @endsection
