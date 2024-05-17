@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ReviewAdminController;
 use App\Http\Controllers\Admin\TestimonialAdminController;
 use App\Http\Controllers\Admin\TypeLivestockAdminController;
 use App\Http\Controllers\Api\AIApiController;
+use App\Http\Controllers\Partner\ProductPartnerController;
 use App\Http\Controllers\Partner\ReportPartnerController;
 use App\Http\Controllers\Web\AIController;
 use App\Http\Controllers\Api\CategoryLivestockController;
@@ -392,9 +393,12 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     /**
      * Route for product partner
      */
-    Route::get('partner/product', [PagePartnerController::class, 'product_index'])->name('partner.product.list');
-    Route::get('partner/product/add', [PagePartnerController::class, 'product_create'])->name('partner.product.add');
-    Route::get('partner/product/{slug_product}/edit', [PagePartnerController::class, 'product_edit'])->name('partner.product.edit');
+    Route::get('partner/product', [ProductPartnerController::class, 'index'])->name('partner.product.list');
+    Route::get('partner/product/add', [ProductPartnerController::class, 'create'])->name('partner.product.add');
+    Route::post('partner/product/store', [ProductPartnerController::class, 'store'])->name('partner.product.store');
+    Route::get('partner/product/{slug_product}/edit', [ProductPartnerController::class, 'edit'])->name('partner.product.edit');
+    Route::put('partner/product/{slug_product}/update', [ProductPartnerController::class, 'update'])->name('partner.product.update');
+    Route::delete('partner/product/{slug_product}/delete', [ProductPartnerController::class, 'destroy'])->name('partner.product.destroy');
 
     /**
      * Route for farm partner
@@ -409,6 +413,7 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     /**
      * Route for testimonial partner
      */
+    
     Route::get('partner/testimonial', [TestimonialPartnerController::class, 'list'])->name('partner.testimonial.list');
     Route::get('partner/testimonial/show/{slug_testimonial}', [TestimonialPartnerController::class, 'show'])->name('partner.testimonial.show');
     Route::get('partner/testimonial/reply/{id}', [PagePartnerController::class, 'testimonial_reply'])->name('partner.testimonial.reply');
@@ -435,7 +440,7 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
      * Route for reporting transaction partner
      */
     Route::get('partner/report', [ReportPartnerController::class, 'index'])->name('partner.report.list');
-    Route::get('partner/report/{reference}', [ReportPartnerController::class, 'show'])->name('partner.report.detail');
+    // Route::get('partner/report/{reference}', [ReportPartnerController::class, 'show'])->name('partner.report.detail');
 
     
     /**

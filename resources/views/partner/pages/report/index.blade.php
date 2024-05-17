@@ -46,12 +46,6 @@
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
                                         Total
                                     </th>
-
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
-                                        Aksi
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200 ">
@@ -93,7 +87,7 @@
                                         </td>
                                         <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $report['kuantitas'] }}</td>
                                         <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $report['total_untung'] }}</td>
-                                        <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                        {{-- <td class="px-4 py-4 text-sm whitespace-nowrap">
                                             <a href="{{ route('partner.report.detail', $report['reference']) }}">
                                                 <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -106,7 +100,7 @@
                                                     </svg>
                                                 </div>
                                             </a>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             </tbody>

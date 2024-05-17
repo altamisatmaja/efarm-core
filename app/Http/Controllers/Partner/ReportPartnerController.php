@@ -40,10 +40,10 @@ class ReportPartnerController extends Controller
         return view('partner.pages.report.index', compact('partner', 'reportdata'));
     }
 
-    public function show($reference)
-    {
-        $user = Auth::user();
-        $partner = Partner::where('id_user', $user->id)->first();
-        return view('partner.pages.report.detail', compact('partner'));
-    }
+    // public function show($reference)
+    // {
+    //     $user = Auth::user();
+    //     $partner = Partner::where('id_user', $user->id)->first();
+    //     return view('partner.pages.report.detail', compact('partner'));
+    // }
 }
