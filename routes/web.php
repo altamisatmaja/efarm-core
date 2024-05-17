@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ReviewAdminController;
 use App\Http\Controllers\Admin\TestimonialAdminController;
 use App\Http\Controllers\Admin\TypeLivestockAdminController;
 use App\Http\Controllers\Api\AIApiController;
+use App\Http\Controllers\Customer\LacakCustomerController;
 use App\Http\Controllers\Partner\ProductPartnerController;
 use App\Http\Controllers\Partner\ReportPartnerController;
 use App\Http\Controllers\Web\AIController;
@@ -39,6 +40,7 @@ use App\Http\Controllers\Customer\GoogleSocialiteController;
 use App\Http\Controllers\Customer\OrderCustomerController;
 use App\Http\Controllers\Customer\RegisterCustomerController;
 use App\Http\Controllers\Customer\VerificationController;
+use App\Http\Controllers\Customer\CartCustomerController;
 use App\Http\Controllers\Partner\AccountPartnerController;
 use App\Http\Controllers\Partner\AuthPartnerController;
 use App\Http\Controllers\Partner\DashboardPartnerController;
@@ -341,12 +343,30 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
     /**
      * Route for account customer
      */
-    Route::get('personal/account', [DashboardCustomerController::class, 'index'])->name('customer.account');
+    Route::get('personal', [DashboardCustomerController::class, 'index'])->name('customer.dashboard');
+    Route::get('personal/account', [DashboardCustomerController::class, 'account'])->name('customer.account');
     Route::get('personal/order', [OrderCustomerController::class, 'index'])->name('customer.order.list');
     Route::get('personal/account/edit', [DashboardCustomerController::class, 'account'])->name('customer.account.edit');
     Route::get('personal/account/information', [DashboardCustomerController::class, 'information'])->name('customer.account.information');
     Route::get('personal/account/address', [DashboardCustomerController::class, 'address'])->name('customer.account.address');
 
+    /**
+     * Route for cart custome
+     */
+    Route::get('personal/keranjang', [CartCustomerController::class, 'index'])->name('customer.cart');
+    Route::get('personal/keranjang/{slug_product}', [CartCustomerController::class, 'show'])->name('customer.cart.show');
+    Route::delete('personal/keranjang/destroy/{slug_product}', [CartCustomerController::class, 'destryo'])->name('customer.cart.destroy');
+
+    /**
+     * Route for lacak
+     */
+
+    Route:: get('personal/lacak', [LacakCustomerController::class, 'index'])->name('customer.lacak');
+    Route:: get('personal/lacak/new', [LacakCustomerController::class, 'lacak_new'])->name('customer.lacak.new');
+    Route:: get('personal/lacak/confirmed', [LacakCustomerController::class, 'lacak_confirmed'])->name('customer.lacak.confirmed');
+    Route:: get('personal/lacak/packed', [LacakCustomerController::class, 'lacak_packed'])->name('customer.lacak.packed');
+    Route:: get('personal/lacak/sent', [LacakCustomerController::class, 'lacak_sent'])->name('customer.lacak.sent');
+    Route:: get('personal/lacak/end', [LacakCustomerController::class, 'lacak_end'])->name('customer.lacak.end');
 
     /**
      * Route for checkout customer
