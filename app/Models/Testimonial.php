@@ -11,6 +11,16 @@ class Testimonial extends Model
 
     protected $guarded = [];
 
+    protected $fillable = [
+        'nama_testimoni',
+        'deskripsi',
+        'gambar',
+        'id_user',
+        'id_products',
+        'membantu',
+        'slug_testimonial'
+    ];
+
     public function product(){
         return $this->belongsTo(Product::class, 'id_products', 'id');
     }

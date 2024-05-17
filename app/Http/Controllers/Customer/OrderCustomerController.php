@@ -24,8 +24,10 @@ class OrderCustomerController extends Controller
             ];
         }
 
-        // dd($allorders);
-
         return view('customer.pages.order.index', compact('allorders'));
+    }
+
+    public function show($slug_product){
+        return view('customer.pages.order.show');
     }
 }

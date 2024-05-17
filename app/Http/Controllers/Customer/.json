@@ -1,0 +1,289 @@
+[
+    {
+        "id": 1,
+        "id_user": 2,
+        "id_product": 59,
+        "created_at": null,
+        "updated_at": null,
+        "user": [
+            {
+                "id": 2,
+                "nama": "Pelanggan eFarm",
+                "username": "pelanggan",
+                "email": "pelanggan@gmail.com",
+                "email_verified_at": "2024-03-26 06:31:51",
+                "password": "$2y$10$MM/6aElc8UAs4boAW6MxXebmZ5zPg3.OT5y/JnhhwCgRIPq7qq3jO",
+                "two_factor_secret": null,
+                "two_factor_recovery_codes": null,
+                "two_factor_confirmed_at": null,
+                "konfirmasi_password": "$2y$10$KfO6BcBtXUfKQiir6gOySus/aed8xrW8mfO4BizLlgtp0pbJSZTB6",
+                "alamat_lengkap": "Jember",
+                "id_user_role": 2,
+                "remember_token": null,
+                "google_id": null,
+                "current_team_id": null,
+                "profile_photo_path": "17114349094.jpeg",
+                "created_at": "2024-03-26T06:31:51.000000Z",
+                "updated_at": "2024-05-07T18:09:41.000000Z",
+                "social_type": null,
+                "social_id": null,
+                "user_role": "Pelanggan",
+                "provinsi_user": null,
+                "kabupaten_user": null,
+                "kecamatan_user": null,
+                "kelurahan_user": null,
+                "latitude": null,
+                "longitude": null,
+                "no_telp": null,
+                "status": "Aktif"
+            }
+        ],
+        "product": [
+            {
+                "id": 59,
+                "harga_product": 73489,
+                "id_kategori": 2,
+                "nama_product": "Hewan Jawa",
+                "diskon": 0,
+                "created_at": "2024-04-06T18:55:29.000000Z",
+                "updated_at": "2024-04-06T18:55:29.000000Z",
+                "id_partner": 7,
+                "gambar_hewan": "17107921807.jpeg",
+                "id_jenis_gender_hewan": 2,
+                "lahir_hewan": 1,
+                "berat_hewan_ternak": "20",
+                "stok_hewan_ternak": 8,
+                "terjual": 4,
+                "deskripsi_product": "Lorem ipsum, atau ringkasnya lipsum, adalah teks standar",
+                "id_typelivestocks": 11,
+                "slug_product": "hewan-jawa-3",
+                "status": "Aktif",
+                "id_category_livestocks": 2,
+                "pengiriman": "Pengiriman Internal",
+                "typelivestocks": [
+                    {
+                        "id": 11,
+                        "nama_jenis_hewan": "Kambing Etawah",
+                        "id_category_livestocks": 3,
+                        "deskripsi_jenis_hewan": "Juga dikenal sebagai kambing Peranakan Etawah, kambing ini merupakan hasil persilangan antara kambing Kacang lokal dengan kambing Boer atau kambing Peranakan Boer",
+                        "created_at": "2024-03-27T08:33:24.000000Z",
+                        "updated_at": "2024-05-04T14:24:56.000000Z",
+                        "slug_typelivestocks": "kambing-etawah",
+                        "gambar_livestocks": "17148326965.png"
+                    }
+                ],
+                "gender_livestocks": [
+                    {
+                        "id": 2,
+                        "nama_gender": "Betina",
+                        "deskripsi": "Kambing pebetina",
+                        "created_at": "2024-03-28T07:41:21.000000Z",
+                        "updated_at": "2024-03-28T07:41:21.000000Z"
+                    }
+                ],
+                "partner": [
+                    {
+                        "id": 7,
+                        "id_user": 41,
+                        "nama_partner": "adada",
+                        "nama_perusahaan_partner": "cacaca",
+                        "provinsi_partner": "33",
+                        "kabupaten_partner": "3314",
+                        "kecamatan_partner": "331414",
+                        "kelurahan_partner": "3314142007",
+                        "alamat_partner": "acaacac",
+                        "foto_profil": "17122604598.jpeg",
+                        "created_at": "2024-04-04T19:54:20.000000Z",
+                        "updated_at": "2024-04-05T11:33:47.000000Z",
+                        "foto_peternakan": "17122604599.jpeg",
+                        "lama_peternakan_berdiri": 8,
+                        "latitude": "-6.3859385",
+                        "longitude": "111.3720686",
+                        "status": "Sudah diverifikasi",
+                        "tanggal_lahir": "2024-04-03 00:00:00",
+                        "jenis_kelamin": "Laki-laki",
+                        "no_hp": null,
+                        "nama_pemilik_rekening": null,
+                        "nomor_rekening": null,
+                        "id_bank": null
+                    }
+                ],
+                "categoryproduct": [
+                    {
+                        "id": 2,
+                        "nama_kategori_product": "Hewan Aqiqah",
+                        "deskripsi_kategori_product": "Hewan aqiqah adalah hewan ternak yang disembelih sebagai bagian dari tradisi aqiqah dalam agama Islam",
+                        "gambar_kategori_product": "user.jpeg",
+                        "created_at": "2024-03-27T03:46:31.000000Z",
+                        "updated_at": "2024-03-27T03:46:31.000000Z",
+                        "slug_kategori_product": "hewan-aqiqah"
+                    }
+                ],
+                "reviews": [],
+                "testimonial": [
+                    {
+                        "id": 3,
+                        "nama_testimoni": "Sapi1aaccca",
+                        "deskripsi": "Sapisapiadadadaad",
+                        "gambar": "17119044054.jpeg",
+                        "created_at": "2024-03-31T17:00:05.000000Z",
+                        "updated_at": "2024-03-31T17:03:30.000000Z",
+                        "id_user": 4,
+                        "id_products": 59,
+                        "membantu": 2,
+                        "slug_testimonial": "sapii"
+                    },
+                    {
+                        "id": 4,
+                        "nama_testimoni": "Sapi1aaccca",
+                        "deskripsi": "Sapisapiadadadaad",
+                        "gambar": "17119044054.jpeg",
+                        "created_at": "2024-03-31T17:00:05.000000Z",
+                        "updated_at": "2024-03-31T17:03:30.000000Z",
+                        "id_user": 4,
+                        "id_products": 59,
+                        "membantu": 2,
+                        "slug_testimonial": "sapii"
+                    },
+                    {
+                        "id": 5,
+                        "nama_testimoni": "Sapi1aaccca",
+                        "deskripsi": "Sapisapiadadadaad",
+                        "gambar": "17119044054.jpeg",
+                        "created_at": "2024-03-31T17:00:05.000000Z",
+                        "updated_at": "2024-03-31T17:03:30.000000Z",
+                        "id_user": 4,
+                        "id_products": 59,
+                        "membantu": 2,
+                        "slug_testimonial": "sapii"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "id_user": 2,
+        "id_product": 60,
+        "created_at": null,
+        "updated_at": null,
+        "user": [
+            {
+                "id": 2,
+                "nama": "Pelanggan eFarm",
+                "username": "pelanggan",
+                "email": "pelanggan@gmail.com",
+                "email_verified_at": "2024-03-26 06:31:51",
+                "password": "$2y$10$MM/6aElc8UAs4boAW6MxXebmZ5zPg3.OT5y/JnhhwCgRIPq7qq3jO",
+                "two_factor_secret": null,
+                "two_factor_recovery_codes": null,
+                "two_factor_confirmed_at": null,
+                "konfirmasi_password": "$2y$10$KfO6BcBtXUfKQiir6gOySus/aed8xrW8mfO4BizLlgtp0pbJSZTB6",
+                "alamat_lengkap": "Jember",
+                "id_user_role": 2,
+                "remember_token": null,
+                "google_id": null,
+                "current_team_id": null,
+                "profile_photo_path": "17114349094.jpeg",
+                "created_at": "2024-03-26T06:31:51.000000Z",
+                "updated_at": "2024-05-07T18:09:41.000000Z",
+                "social_type": null,
+                "social_id": null,
+                "user_role": "Pelanggan",
+                "provinsi_user": null,
+                "kabupaten_user": null,
+                "kecamatan_user": null,
+                "kelurahan_user": null,
+                "latitude": null,
+                "longitude": null,
+                "no_telp": null,
+                "status": "Aktif"
+            }
+        ],
+        "product": [
+            {
+                "id": 60,
+                "harga_product": 58773,
+                "id_kategori": 1,
+                "nama_product": "Hewan Jawa",
+                "diskon": 0,
+                "created_at": "2024-04-06T18:55:29.000000Z",
+                "updated_at": "2024-04-06T18:55:29.000000Z",
+                "id_partner": 4,
+                "gambar_hewan": "17107921807.jpeg",
+                "id_jenis_gender_hewan": 2,
+                "lahir_hewan": 1,
+                "berat_hewan_ternak": "32",
+                "stok_hewan_ternak": 5,
+                "terjual": 3,
+                "deskripsi_product": "Lorem ipsum, atau ringkasnya lipsum, adalah teks standar",
+                "id_typelivestocks": 2,
+                "slug_product": "hewan-jawa-4",
+                "status": "Aktif",
+                "id_category_livestocks": 3,
+                "pengiriman": "Pengiriman Internal",
+                "typelivestocks": [
+                    {
+                        "id": 2,
+                        "nama_jenis_hewan": "Sapi Madura",
+                        "id_category_livestocks": 1,
+                        "deskripsi_jenis_hewan": "Sapi ini berasal dari Pulau Madura dan memiliki ciri khas berupa tanduk panjang yang melengkung ke belakang",
+                        "created_at": "2024-03-26T13:36:27.000000Z",
+                        "updated_at": "2024-03-26T13:36:27.000000Z",
+                        "slug_typelivestocks": "sapi-madura",
+                        "gambar_livestocks": "user.jpeg"
+                    }
+                ],
+                "gender_livestocks": [
+                    {
+                        "id": 2,
+                        "nama_gender": "Betina",
+                        "deskripsi": "Kambing pebetina",
+                        "created_at": "2024-03-28T07:41:21.000000Z",
+                        "updated_at": "2024-03-28T07:41:21.000000Z"
+                    }
+                ],
+                "partner": [
+                    {
+                        "id": 4,
+                        "id_user": 51,
+                        "nama_partner": "adada",
+                        "nama_perusahaan_partner": "dadad",
+                        "provinsi_partner": "JAWA TIMUR",
+                        "kabupaten_partner": "KAB. NGAWI",
+                        "kecamatan_partner": "Paron",
+                        "kelurahan_partner": "Paron",
+                        "alamat_partner": "adadada",
+                        "foto_profil": "17123476555.png",
+                        "created_at": "2024-04-05T20:07:35.000000Z",
+                        "updated_at": "2024-04-05T20:07:35.000000Z",
+                        "foto_peternakan": "17123476559.png",
+                        "lama_peternakan_berdiri": 7,
+                        "latitude": "-7.385963",
+                        "longitude": "111.3720504",
+                        "status": "Belum terverifikasi",
+                        "tanggal_lahir": "2024-01-12 00:00:00",
+                        "jenis_kelamin": "Laki-laki",
+                        "no_hp": null,
+                        "nama_pemilik_rekening": null,
+                        "nomor_rekening": null,
+                        "id_bank": null
+                    }
+                ],
+                "categoryproduct": [
+                    {
+                        "id": 1,
+                        "nama_kategori_product": "Hewan Ternak",
+                        "deskripsi_kategori_product": "Hewan ternak adalah hewan yang dibudidayakan oleh manusia untuk berbagai tujuan",
+                        "gambar_kategori_product": "user.jpeg",
+                        "created_at": "2024-03-26T06:35:09.000000Z",
+                        "updated_at": "2024-04-29T03:17:04.000000Z",
+                        "slug_kategori_product": "hewan-ternak"
+                    }
+                ],
+                "reviews": [],
+                "testimonial": []
+            }
+        ]
+    }
+]

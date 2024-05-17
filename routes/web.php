@@ -345,20 +345,24 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
      */
     Route::get('personal', [DashboardCustomerController::class, 'index'])->name('customer.dashboard');
     Route::get('personal/account', [DashboardCustomerController::class, 'account'])->name('customer.account');
-    Route::get('personal/order', [OrderCustomerController::class, 'index'])->name('customer.order.list');
     Route::get('personal/account/edit', [DashboardCustomerController::class, 'account'])->name('customer.account.edit');
     Route::get('personal/account/information', [DashboardCustomerController::class, 'information'])->name('customer.account.information');
     Route::get('personal/account/address', [DashboardCustomerController::class, 'address'])->name('customer.account.address');
-
+    
     /**
-     * Route for cart custome
+     * Route for order customer
+     */
+    Route::get('personal/order', [OrderCustomerController::class, 'index'])->name('customer.order.list');
+    Route::get('personal/order/show/{slug_produc}', [OrderCustomerController::class, 'show'])->name('customer.order.show');
+    /**
+     * Route for cart customer
      */
     Route::get('personal/keranjang', [CartCustomerController::class, 'index'])->name('customer.cart');
     Route::get('personal/keranjang/{slug_product}', [CartCustomerController::class, 'show'])->name('customer.cart.show');
     Route::delete('personal/keranjang/destroy/{slug_product}', [CartCustomerController::class, 'destryo'])->name('customer.cart.destroy');
 
     /**
-     * Route for lacak
+     * Route for lacak customer
      */
 
     Route:: get('personal/lacak', [LacakCustomerController::class, 'index'])->name('customer.lacak');

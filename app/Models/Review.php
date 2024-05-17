@@ -12,6 +12,13 @@ class Review extends Model
 
     protected $guarded = [];
 
+    protected $fillable = [
+        'id_product',
+        'id_user',
+        'review',
+        'rating',
+    ];
+
     public function products()
     {
         return $this->belongsTo(Product::class, 'id_product', 'id');
