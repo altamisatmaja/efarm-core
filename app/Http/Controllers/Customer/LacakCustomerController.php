@@ -107,4 +107,13 @@ class LacakCustomerController extends Controller
         return view('customer.pages.lacak.end');
     }
 
+    public function handle_status(Request $request, Order $order)
+    {
+        $order->update([
+            'status' => $request->status
+        ]);
+
+        return response()->json(['message' => 'success', 'data' => $order]);
+    }
+
 }

@@ -153,7 +153,7 @@ class PartnerController extends Controller
             'alamat_partner' => 'required',
             'foto_profil' => 'required',
         ]);
-
+        
         if($validator->fails()){
             return response()->json([
                 $validator->errors(), 422

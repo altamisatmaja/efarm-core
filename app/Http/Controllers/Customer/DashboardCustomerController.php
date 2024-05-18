@@ -17,6 +17,7 @@ class DashboardCustomerController extends Controller
         $user = Auth::user();
         return view('customer.dashboard', compact('user'));
     }
+    
     public function account(){
         $user = Auth::user();
         return view('customer.profile.account', compact('user'));
