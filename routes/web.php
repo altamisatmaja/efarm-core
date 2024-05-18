@@ -359,7 +359,8 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
      */
     Route::get('personal/keranjang', [CartCustomerController::class, 'index'])->name('customer.cart');
     Route::get('personal/keranjang/{slug_product}', [CartCustomerController::class, 'show'])->name('customer.cart.show');
-    Route::delete('personal/keranjang/destroy/{slug_product}', [CartCustomerController::class, 'destryo'])->name('customer.cart.destroy');
+    Route::post('personal/keranjang/store/{slug_product}', [CartCustomerController::class, 'show'])->name('customer.cart.store');
+    Route::delete('personal/keranjang/destroy/{id}', [CartCustomerController::class, 'destryo'])->name('customer.cart.destroy');
 
     /**
      * Route for lacak customer
