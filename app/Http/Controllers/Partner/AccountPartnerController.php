@@ -45,6 +45,20 @@ class AccountPartnerController extends Controller
         return view('partner.pages.profile.rekening', compact('partner'));
     }
 
+    public function rekening_store(Request $request){
+        $partner = Auth::user()->partner;
+        
+        $request->validate([
+            'nomor_rekening' => 'required',
+            'nama_bank' => 'required',
+            'nama_pemilik_rekening' => 'required',
+        ]);
+
+        $partner->create($request->all());
+
+        return redirect()->back()->with('success', 'Data rekening berhasil ditambahkan');
+    }
+
     /**
      * Ubah data akun partner
      */

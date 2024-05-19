@@ -13,8 +13,10 @@ use App\Http\Controllers\Admin\TypeLivestockAdminController;
 use App\Http\Controllers\Api\AIApiController;
 use App\Http\Controllers\Customer\Account\AccountCustomerController;
 use App\Http\Controllers\Customer\LacakCustomerController;
+use App\Http\Controllers\Customer\ReviewCustomerController;
 use App\Http\Controllers\Partner\ProductPartnerController;
 use App\Http\Controllers\Partner\ReportPartnerController;
+use App\Http\Controllers\Partner\TestimonialReplyPartnerController;
 use App\Http\Controllers\Web\AIController;
 use App\Http\Controllers\Api\CategoryLivestockController;
 use App\Http\Controllers\Api\CategoryProductController;
@@ -360,13 +362,14 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
      */
     Route::get('personal/order', [OrderCustomerController::class, 'index'])->name('customer.order.list');
     Route::get('personal/order/show/{slug_produc}', [OrderCustomerController::class, 'show'])->name('customer.order.show');
+
     /**
      * Route for cart customer
      */
     Route::get('personal/keranjang', [CartCustomerController::class, 'index'])->name('customer.cart');
     Route::get('personal/keranjang/{slug_product}', [CartCustomerController::class, 'show'])->name('customer.cart.show');
-    Route::post('personal/keranjang/store/{slug_product}', [CartCustomerController::class, 'show'])->name('customer.cart.store');
-    Route::delete('personal/keranjang/destroy/{id}', [CartCustomerController::class, 'destryo'])->name('customer.cart.destroy');
+    Route::post('personal/keranjang/store/{slug_product}', [CartCustomerController::class, 'store'])->name('customer.cart.store');
+    Route::delete('personal/keranjang/destroy/{id}', [CartCustomerController::class, 'destroy'])->name('customer.cart.destroy');
 
     /**
      * Route for lacak customer
@@ -378,12 +381,20 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
     Route:: get('personal/lacak/packed', [LacakCustomerController::class, 'lacak_packed'])->name('customer.lacak.packed');
     Route:: get('personal/lacak/sent', [LacakCustomerController::class, 'lacak_sent'])->name('customer.lacak.sent');
     Route:: get('personal/lacak/end', [LacakCustomerController::class, 'lacak_end'])->name('customer.lacak.end');
+    Route:: put('personal/lacak/status/{id}', [LacakCustomerController::class, 'handle_status'])->name('customer.lacak.status');
+
+    /**
+     * Route for review customer
+     */
+    Route:: get('personal/review/{id}', [ReviewCustomerController::class, 'index'])->name('customer.review');
+    Route:: post('personal/review/product/{id}', [ReviewCustomerController::class, 'store'])->name('customer.review.store');
+
 
     /**
      * Route for checkout customer
      */
     
-    Route::post('checkout/', [CheckoutController::class, 'store'])->name('customer.checkout.store');
+    Route::post('checkout', [CheckoutController::class, 'store'])->name('customer.checkout.store');
     Route::get('checkout/show/{reference}', [CheckoutController::class, 'show'])->name('customer.checkout.show');
 
     /**
@@ -420,6 +431,7 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     Route::get('partner/account/address', [AccountPartnerController::class, 'address_view'])->name('partner.account.address');
     Route::put('partner/account/address/update', [AccountPartnerController::class, 'update_address'])->name('partner.account.address.update');
     Route::get('partner/account/rekening', [AccountPartnerController::class, 'rekening_view'])->name('partner.account.rekening');
+    Route::get('partner/account/rekening/store', [AccountPartnerController::class, 'rekening_store'])->name('partner.account.rekening.store');
 
     /**
      * Route for product partner
@@ -448,6 +460,8 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     Route::get('partner/testimonial', [TestimonialPartnerController::class, 'list'])->name('partner.testimonial.list');
     Route::get('partner/testimonial/show/{slug_testimonial}', [TestimonialPartnerController::class, 'show'])->name('partner.testimonial.show');
     Route::get('partner/testimonial/reply/{id}', [PagePartnerController::class, 'testimonial_reply'])->name('partner.testimonial.reply');
+    Route::post('partner/testimonial/replying', [TestimonialReplyPartnerController::class, 'store'])->name('partner.testimonial.reply.store');
+    Route::post('partner/testimonial/update', [TestimonialReplyPartnerController::class, 'update'])->name('partner.testimonial.reply.update');
 
     /**
      * Route for order partner

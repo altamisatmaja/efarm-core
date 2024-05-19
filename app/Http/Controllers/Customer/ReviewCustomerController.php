@@ -3,12 +3,21 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class ReviewCustomerController extends Controller
 {
+    public function index($id) {
+        try {
+            $product = Product::where('id', $id)->first();
+            return view('customer.pages.review.show', compact('product'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
+    }
     public function store(Request $request){
         try {
             $validator = Validator::make($request->all(),[

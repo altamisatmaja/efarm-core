@@ -36,11 +36,11 @@ class TestimonialReplyPartnerController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
-    public function show($id_testimonial){
-        $testimonial = Testimonial::where('id', $id_testimonial)->first();
+    // public function show($id_testimonial){
+    //     $testimonial = Testimonial::where('id', $id_testimonial)->first();
 
-        return;
-    }
+    //     return view('partner.pages.testimonialreply.show', compact('testimonial'));
+    // }
 
     public function update(Request $request){
         try {

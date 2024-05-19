@@ -40,7 +40,7 @@ class LacakCustomerController extends Controller
             ];
         }
 
-        return view('customer.pages.lacak.new');
+        return view('customer.pages.lacak.new', compact('allorders'));
     }
 
     public function lacak_confirmed(){
@@ -56,7 +56,7 @@ class LacakCustomerController extends Controller
                 'order_details' => $orderDetails,
             ];
         }
-        return view('customer.pages.lacak.confirmed');
+        return view('customer.pages.lacak.confirmed', compact('allorders'));
     }
 
     public function lacak_packed(){
@@ -72,7 +72,7 @@ class LacakCustomerController extends Controller
                 'order_details' => $orderDetails,
             ];
         }
-        return view('customer.pages.lacak.packed');
+        return view('customer.pages.lacak.packed', compact('allorders'));
     }
 
     public function lacak_sent(){
@@ -88,7 +88,7 @@ class LacakCustomerController extends Controller
                 'order_details' => $orderDetails,
             ];
         }
-        return view('customer.pages.lacak.sent');
+        return view('customer.pages.lacak.sent', compact('allorders'));
     }
 
     public function lacak_end(){
@@ -107,13 +107,15 @@ class LacakCustomerController extends Controller
         return view('customer.pages.lacak.end');
     }
 
-    public function handle_status(Request $request, Order $order)
+    public function handle_status(Request $request, $id)
     {
+        $message = $request->message;
+        $order = Order::where('id', $id)->first();
         $order->update([
             'status' => $request->status
         ]);
 
-        return response()->json(['message' => 'success', 'data' => $order]);
+        return redirect()->back()->with('success', $message);
     }
 
 }
