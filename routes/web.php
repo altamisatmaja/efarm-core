@@ -145,7 +145,7 @@ Route::middleware('guest')->group(function () {
      */
     Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
     Route::get('customer/register', [AuthCustomerController::class, 'register_view'])->name('customer.register');
-    Route::post('customer/login', [AuthCustomerController::class, 'login']);
+    Route::post('customer/login/store', [AuthCustomerController::class, 'login'])->name('customer.login.store');
     Route::get('customer/verify-email/{id}', [RegisterCustomerController::class, 'verify_email'])->name('customer.verify.email');
     Route::put('customer/verify-email/success/{id}', [RegisterCustomerController::class, 'email_verified'])->name('customer.verify.success');
 
@@ -348,7 +348,7 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
      */
     Route::get('personal', [DashboardCustomerController::class, 'index'])->name('customer.dashboard');
 
-    Route::get('personal/account', [AccountCustomerController::class, 'index'])->name('customer.account.detail');
+    Route::get('personal/account', [AccountCustomerController::class, 'index'])->name('customer.account');
     Route::get('personal/account/detail', [AccountCustomerController::class, 'account'])->name('customer.account.detail');
     Route::get('personal/account/information', [AccountCustomerController::class, 'information'])->name('customer.account.information');
     Route::get('personal/account/address', [AccountCustomerController::class, 'address'])->name('customer.account.address');

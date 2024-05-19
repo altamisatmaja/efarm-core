@@ -16,22 +16,23 @@ class AccountCustomerController extends Controller
 
     public function index(){
         $user = Auth::user();
-        return view('customer.pages.profile.index', compact('user'));
+        
+        return view('customer.profile.index', compact('user'));
     }
 
     public function address(){
         $user = Auth::user();
-        return view('customer.pages.profile.address', compact('user'));
+        return view('customer.profile.address', compact('user'));
     }
 
     public function information(){
         $user = Auth::user();
-        return view('customer.pages.profile.information', compact('user'));
+        return view('customer.profile.information', compact('user'));
     }
 
     public function account(){
         $user = Auth::user();
-        return view('customer.pages.profile.account', compact('user'));
+        return view('customer.profile.account', compact('user'));
     }
 
     public function update_address_account(Request $request){

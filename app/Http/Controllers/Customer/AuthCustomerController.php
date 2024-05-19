@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 use App\Services\EmailVerificationService;
+use App\Http\Requests\Auth\LoginRequest;
 
 class AuthCustomerController extends Controller
 {
@@ -25,32 +26,37 @@ class AuthCustomerController extends Controller
         return view('customer.auth.register');
     }
 
-    public function login(Request $request)
+     /**
+     * Handle an incoming authentication request.
+     *
+     * @param  \App\Http\Requests\Auth\LoginRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+
+    public function login(LoginRequest $request)
     {
-        $this->validate($request, [
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-
-        $credentials = $request->only(['email', 'password']);
-
-        if (auth()->attempt($credentials)) {
-            $user = auth()->user();
-            if($user->id_user_role == 2){
-                $token = Auth::guard('api')->attempt($credentials);
-                cookie()->queue(cookie('token', $token, 120));
-                return response()->json([
-                    'success' => true,
-                    'message' => 'Login berhasil',
-                    'token' => $token,
-                ]);
-            }   
+        $request->authenticate();
+        $request->session()->regenerate();
+    
+        $redirectTo = '';
+    
+        if(Auth::check()) {
+            switch (Auth::user()->user_role) {
+                case 'Pelanggan':
+                    $redirectTo = 'customer.dashboard';
+                    break;
+            }
+        } else {
+            $loginRoute = '';
+            switch ($request->input('user_role')) {
+                case 'Pelanggan':
+                    $loginRoute = 'customer.login';
+                    break;
+            }
+            return redirect()->route($loginRoute)->with('status', 'Invalid credentials.');
         }
     
-        return response()->json([
-            'success' => false,
-            'message' => 'Email atau password salah'
-        ]);
+        return redirect()->route($redirectTo);
     }
     
 

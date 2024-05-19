@@ -34,7 +34,8 @@
                                 Selamat datang pengguna 👋
                             </h1>
                         </div>
-                        <form class="form-customer-login space-y-4 md:space-y-6" action="{{ route('customer.login') }}" method="POST">
+                        <form class="space-y-4 md:space-y-6" action="{{ route('customer.login.store') }}" method="POST">
+                            @csrf
                             <div>
                                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your
                                     email</label>
