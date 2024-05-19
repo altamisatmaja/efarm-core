@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ReviewAdminController;
 use App\Http\Controllers\Admin\TestimonialAdminController;
 use App\Http\Controllers\Admin\TypeLivestockAdminController;
 use App\Http\Controllers\Api\AIApiController;
+use App\Http\Controllers\Customer\Account\AccountCustomerController;
 use App\Http\Controllers\Customer\LacakCustomerController;
 use App\Http\Controllers\Partner\ProductPartnerController;
 use App\Http\Controllers\Partner\ReportPartnerController;
@@ -344,10 +345,15 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
      * Route for account customer
      */
     Route::get('personal', [DashboardCustomerController::class, 'index'])->name('customer.dashboard');
-    Route::get('personal/account', [DashboardCustomerController::class, 'account'])->name('customer.account');
-    Route::get('personal/account/edit', [DashboardCustomerController::class, 'account'])->name('customer.account.edit');
-    Route::get('personal/account/information', [DashboardCustomerController::class, 'information'])->name('customer.account.information');
-    Route::get('personal/account/address', [DashboardCustomerController::class, 'address'])->name('customer.account.address');
+
+    Route::get('personal/account', [AccountCustomerController::class, 'index'])->name('customer.account.detail');
+    Route::get('personal/account/detail', [AccountCustomerController::class, 'account'])->name('customer.account.detail');
+    Route::get('personal/account/information', [AccountCustomerController::class, 'information'])->name('customer.account.information');
+    Route::get('personal/account/address', [AccountCustomerController::class, 'address'])->name('customer.account.address');
+
+    Route::get('personal/account/detail/update/', [AccountCustomerController::class, 'update_detail_account'])->name('customer.update.account');
+    Route::get('personal/account/information/update/', [AccountCustomerController::class, 'update_information_account'])->name('customer.update.information');
+    Route::get('personal/account/address/update/', [AccountCustomerController::class, 'update_address_account'])->name('customer.update.address');
     
     /**
      * Route for order customer
