@@ -17,10 +17,10 @@ class OrderCustomerController extends Controller
         $allorders = [];
 
         foreach ($orders as $order) {
-            $orderDetails = OrderDetail::where('id_order', $order->id)->get();
+            $orderDetails = OrderDetail::with('partner', 'product')->where('id_order', $order->id)->get();
             $allorders[] = [
                 'order' => $order,
-                'order_details' => $orderDetails,
+                'order_details' => $orderDetails
             ];
         }
 

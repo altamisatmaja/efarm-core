@@ -17,19 +17,19 @@ class LacakCustomerController extends Controller
         $allorders = [];
 
         foreach ($orders as $order) {
-            $orderDetails = OrderDetail::where('id_order', $order->id)->get();
+            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->get();
             $allorders[] = [
                 'order' => $order,
                 'order_details' => $orderDetails,
             ];
         }
-        return view('customer.pages.lacak.index');
+        return view('customer.pages.lacak.index', compact('allorders'));
     }
   
     public function lacak_new(){
         $user = auth()->user();
 
-        $orders = Order::where('id_user', $user->id)->where('status','Baru')->get();
+        $orders = Order::where('id_user', $user->id)->where('status','Baru')->where('status_pembayaran', 'Paid')->get();
         $allorders = [];
 
         foreach ($orders as $order) {
@@ -46,7 +46,7 @@ class LacakCustomerController extends Controller
     public function lacak_confirmed(){
         $user = auth()->user();
 
-        $orders = Order::where('id_user', $user->id)->where('status','Dikonfirmasi')->get();
+        $orders = Order::where('id_user', $user->id)->where('status','Dikonfirmasi')->where('status_pembayaran', 'Paid')->get();
         $allorders = [];
 
         foreach ($orders as $order) {
@@ -62,7 +62,7 @@ class LacakCustomerController extends Controller
     public function lacak_packed(){
         $user = auth()->user();
 
-        $orders = Order::where('id_user', $user->id)->where('status','Dikemas')->get();
+        $orders = Order::where('id_user', $user->id)->where('status','Dikemas')->where('status_pembayaran', 'Paid')->get();
         $allorders = [];
 
         foreach ($orders as $order) {
@@ -72,13 +72,14 @@ class LacakCustomerController extends Controller
                 'order_details' => $orderDetails,
             ];
         }
+
         return view('customer.pages.lacak.packed', compact('allorders'));
     }
 
     public function lacak_sent(){
         $user = auth()->user();
 
-        $orders = Order::where('id_user', $user->id)->where('status','Dikirim')->get();
+        $orders = Order::where('id_user', $user->id)->where('status','Dikirim')->where('status_pembayaran', 'Paid')->get();
         $allorders = [];
 
         foreach ($orders as $order) {
@@ -104,7 +105,7 @@ class LacakCustomerController extends Controller
                 'order_details' => $orderDetails,
             ];
         }
-        return view('customer.pages.lacak.end');
+        return view('customer.pages.lacak.end', compact('allorders'));
     }
 
     public function handle_status(Request $request, $id)

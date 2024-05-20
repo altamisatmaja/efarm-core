@@ -349,13 +349,14 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
     Route::get('personal', [DashboardCustomerController::class, 'index'])->name('customer.dashboard');
 
     Route::get('personal/account', [AccountCustomerController::class, 'index'])->name('customer.account');
+
     Route::get('personal/account/detail', [AccountCustomerController::class, 'account'])->name('customer.account.detail');
     Route::get('personal/account/information', [AccountCustomerController::class, 'information'])->name('customer.account.information');
     Route::get('personal/account/address', [AccountCustomerController::class, 'address'])->name('customer.account.address');
 
-    Route::get('personal/account/detail/update/', [AccountCustomerController::class, 'update_detail_account'])->name('customer.update.account');
-    Route::get('personal/account/information/update/', [AccountCustomerController::class, 'update_information_account'])->name('customer.update.information');
-    Route::get('personal/account/address/update/', [AccountCustomerController::class, 'update_address_account'])->name('customer.update.address');
+    Route::post('personal/account/detail/update/', [AccountCustomerController::class, 'update_detail_account'])->name('customer.update.account');
+    Route::post('personal/account/information/update/', [AccountCustomerController::class, 'update_information_account'])->name('customer.update.information');
+    Route::post('personal/account/address/update/', [AccountCustomerController::class, 'update_address_account'])->name('customer.update.address');
     
     /**
      * Route for order customer

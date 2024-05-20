@@ -1,9 +1,9 @@
-@extends('customer.layouts.app')
+@extends('customer.profile.layouts.index')
 
-@section('title', 'Personal | Biodata')
+@section('title', 'Personal | Informasi')
 
-@section('content')
-    <div class="flex w-3/4 flex-col px-16 py-10 mx-auto">
+@section('account')
+    <div class="flex w-full flex-col py-10 mx-auto">
         <div class="flex items-center space-x-2 text-gray-400 text-sm">
             <a href="/personal/account" class="hover:underline hover:text-gray-600">Pengaturan</a>
             <span>

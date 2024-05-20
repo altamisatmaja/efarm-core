@@ -17,7 +17,7 @@ class AccountCustomerController extends Controller
     public function index(){
         $user = Auth::user();
         
-        return view('customer.profile.index', compact('user'));
+        return view('customer.profile.layouts.index', compact('user'));
     }
 
     public function address(){
