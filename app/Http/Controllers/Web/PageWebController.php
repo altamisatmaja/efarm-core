@@ -25,16 +25,6 @@ class PageWebController extends Controller
         return view('homepage');
     }
 
-    public function buy()
-    {
-        return view('pages.market.buy');
-    }
-
-    public function cheap()
-    {
-        return view('pages.market.cheap');
-    }
-
     public function livestock($slug_kategori_product, $slug_category_livestock)
     {
         return view('pages.market.livestock');

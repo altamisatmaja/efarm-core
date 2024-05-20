@@ -73,8 +73,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/ai', [AIController::class, 'index']);
-
 
 /**
  * Route handling for Front End
@@ -90,8 +88,6 @@ Route::get('/layanan', [PageWebController::class, 'layanan'])->name('homepage.la
  */
 
 Route::get('/market', [PageWebController::class, 'market'])->name('homepage.market');
-Route::get('/market/buy', [PageWebController::class, 'buy'])->name('homepage.market.buy');
-Route::get('/market/buy/murah', [PageWebController::class, 'cheap'])->name('homepage.market.cheap');
 
 Route::get('/market/buy/{slug}', [PageWebController::class, 'by_categorytypelivestocks'])->name('homepage.market.farm');
 Route::get('/market/buy/kategori/{slug_kategori_product}', [PageWebController::class, 'category'])->name('homepage.market.category');
