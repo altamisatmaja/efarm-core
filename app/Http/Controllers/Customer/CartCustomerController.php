@@ -13,9 +13,10 @@ class CartCustomerController extends Controller
 {
     public function index(){
         $user = auth()->user();
-        $cart = Cart::with('user', 'product')->with('product.typelivestocks')->with('product.gender_livestocks')->with('product.partner')->with('product.categoryproduct')->with('product.reviews')->with('product.testimonial')->where('id_user', $user->id)->get();
-        // dd(json_encode($cart));
-        return view('customer.pages.cart.index');
+        $cart = Cart::with('user', 'product')->with('product.typelivestocks')->with('product.categorylivestocks')->with('product.gender_livestocks')->with('product.partner')->with('product.categoryproduct')->with('product.reviews')->with('product.testimonial')->where('id_user', $user->id)->get();
+
+        $totalcart = count($cart);
+        return view('customer.pages.cart.index', compact('cart', 'totalcart'));
     }
 
     public function show($slug_product){
@@ -52,7 +53,7 @@ class CartCustomerController extends Controller
         }
     }
 
-    public function destroy($id){
+    public function destroy(Request $request, $id){
         try {
             $cart = Cart::findOrFail($id);
 
