@@ -20,29 +20,33 @@
                                 class="md:hidden w-full h-full object-center object-cover" />
                         </div>
                         <div class="md:pl-3 w-full flex flex-col justify-between">
-                            <p class="text-xs leading-3 text-gray-800 md:pt-0 pt-4">RF293</p>
-                            <p class="text-xs leading-3 text-gray-600 pt-2">Height: 10 inches</p>
-                            <p class="text-xs leading-3 text-gray-600 py-4">Color: Black</p>
-                            <p class="w-96 text-xs leading-3 text-gray-600">Composition: 100% calf leather</p>
-                            <div class="flex items-center justify-between pt-5">
-                                <div class="flex itemms-center">
-                                    @foreach ($carts->product as $product)
-                                        @foreach ($product->categoryproduct as $categoryproduct)
-                                            @foreach ($product->categorylivestocks as $categorylivestock)
-                                                <a href="{{ route('homepage.market.farm.product', [$categoryproduct->slug_kategori_product, $categorylivestock->slug, $product->slug_product]) }}" class="text-xs leading-3 underline text-gray-800 cursor-pointer">Beli</a>
+                            @foreach ($carts->product as $products)
+                                <p class="text-xs leading-3 text-gray-800 md:pt-0 pt-4">{{ $products->nama_product }}</p>
+                                <p class="text-xs leading-3 text-gray-600 pt-2">Height: 10 inches</p>
+                                <p class="text-xs leading-3 text-gray-600 py-4">Color: Black</p>
+                                <p class="w-96 text-xs leading-3 text-gray-600">Composition: 100% calf leather</p>
+                                <div class="flex items-center justify-between pt-5">
+                                    <div class="flex itemms-center">
+                                        @foreach ($carts->product as $product)
+                                            @foreach ($product->categoryproduct as $categoryproduct)
+                                                @foreach ($product->categorylivestocks as $categorylivestock)
+                                                    <a href="{{ route('homepage.market.farm.product', [$categoryproduct->slug_kategori_product, $categorylivestock->slug, $product->slug_product]) }}"
+                                                        class="text-xs leading-3 underline text-gray-800 cursor-pointer">Beli</a>
                                                 @endforeach
                                             @endforeach
                                         @endforeach
-                                    <form action="{{ route('customer.cart.destroy', $carts->id_product) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit""
-                                            class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Hapus
-                                        </button>
-                                    </form>
+                                        <form action="{{ route('customer.cart.destroy', $carts->id_product) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit""
+                                                class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Hapus
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <p class="text-base font-black leading-none text-gray-800">Rp. 2.000.000</p>
                                 </div>
-                                <p class="text-base font-black leading-none text-gray-800">Rp. 2.000.000</p>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                 @endforeach
