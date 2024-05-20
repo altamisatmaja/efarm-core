@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Tymon\JWTAuth\Contracts\Providers\Auth;
 
 class CartCustomerController extends Controller
 {
@@ -24,34 +25,39 @@ class CartCustomerController extends Controller
         return view('customer.pages.cart.show');
     }
 
-    public function store(Request $request, $slug_product){
+    public function store(Request $request, $id){
         try {
+            if (!auth()->check()) {
+                return redirect()->route('customer.login')->with('error', 'Anda harus login terlebih dahulu untuk menambahkan ke keranjang.');
+            }
+    
             $user = auth()->user();
-
+    
             $validator = Validator::make($request->all(), [
                 'id_product' => 'required'
             ]);
-
+    
             if ($validator->fails()){
                 return response()->json(
                     $validator->errors(), 422
                 );
             }
-
+    
             $input = $request->all();
-            $input['id_product'] = $user->id;
+            $input['id_user'] = $user->id;
             $cart = Cart::create($input);
-
+    
             if ($cart) {
                 return redirect()->route('customer.cart')->with('success', 'Data keranjang berhasil ditambahkan');
             } else {
                 return redirect()->back()->with('errors', 'Data gagal produk berhasil dilisting');
             }
-
+    
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
+    
 
     public function destroy(Request $request, $id){
         try {

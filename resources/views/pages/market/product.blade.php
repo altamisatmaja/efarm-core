@@ -369,10 +369,14 @@
                                     <p class="text-gray-700">@currency($product->harga_product)</p>
                                 </div>
                                 <hr class="my-4" />
-                                <button
-                                    class="mt-3 hover:shadow-form w-full border hover:bg-primarybase hover:text-white border-primarybase rounded-md py-3 px-8 text-center text-base font-semibold text-primarybase">
-                                    Tambah ke wishlist
-                                </button>
+                                <form action="{{ route('customer.cart.store', $product->id) }}" method="POST">
+                                    @csrf
+                                    <input hidden value="{{ $product->id }}" name="id_product" type="text">
+                                    <button type="submit""
+                                        class="mt-3 hover:shadow-form w-full border hover:bg-primarybase hover:text-white border-primarybase rounded-md py-3 px-8 text-center text-base font-semibold text-primarybase">
+                                        Tambah ke wishlist
+                                    </button>
+                                </form>
                                 <a href="{{ route('customer.checkout', $product->slug_product) }}">
                                     <button
                                         class="mt-3 hover:shadow-form w-full border bg-primarybase hover:bg-primarybase hover:text-white border-white rounded-md py-3 px-8 text-center text-base font-semibold text-white">

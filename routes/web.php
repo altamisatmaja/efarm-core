@@ -92,10 +92,13 @@ Route::get('/layanan', [PageWebController::class, 'layanan'])->name('homepage.la
 Route::get('/market', [PageWebController::class, 'market'])->name('homepage.market');
 Route::get('/market/buy', [PageWebController::class, 'buy'])->name('homepage.market.buy');
 Route::get('/market/buy/murah', [PageWebController::class, 'cheap'])->name('homepage.market.cheap');
+
 Route::get('/market/buy/{slug}', [PageWebController::class, 'by_categorytypelivestocks'])->name('homepage.market.farm');
 Route::get('/market/buy/kategori/{slug_kategori_product}', [PageWebController::class, 'category'])->name('homepage.market.category');
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}', [PageWebController::class, 'livestock'])->name('homepage.market.farm.livestock');
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}/{slug_product}', [PageWebController::class, 'product'])->name('homepage.market.farm.product');
+
+Route::post('/market/keranjang/{id_product}', [CartCustomerController::class , 'store'])->name('customer.cart.store');
 
 /**
  * Route handling for AI
@@ -369,7 +372,7 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
      */
     Route::get('personal/keranjang', [CartCustomerController::class, 'index'])->name('customer.cart');
     Route::get('personal/keranjang/{slug_product}', [CartCustomerController::class, 'show'])->name('customer.cart.show');
-    Route::post('personal/keranjang/store/{slug_product}', [CartCustomerController::class, 'store'])->name('customer.cart.store');
+    // Route::post('personal/keranjang/store/{slug_product}', [CartCustomerController::class, 'store'])->name('customer.cart.store');
     Route::delete('personal/keranjang/destroy/{id}', [CartCustomerController::class, 'destroy'])->name('customer.cart.destroy');
 
     /**
