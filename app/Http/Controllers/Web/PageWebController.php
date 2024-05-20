@@ -195,15 +195,67 @@ class PageWebController extends Controller
 
     public function market()
     {
-        // $response = Http::get('https://example.ai.ternakexpessindonesia.com/product/6.8899/109.3807/');
+        $products = Product::with('categorylivestocks', 'categoryproduct', 'gender_livestocks', 'partner', 'testimonial', 'reviews', 'typelivestocks')->orderBy('created_at', 'desc')->take(4)->get();
+
+        foreach ($products as $product) {
+            $reviews = $product->reviews;
+    
+            $total_rating = 0;
+            $total_reviews = count($reviews);
+    
+            foreach ($reviews as $review) {
+                $total_rating += $review->rating;
+            }
+    
+            $average_rating = ($total_reviews != 0) ? number_format($total_rating / $total_reviews, 2) : 0;
+    
+            $product->average_rating = $average_rating;
+            $product->total_reviews = $total_reviews;
+    
+            $genderlivestock = '';
+            foreach($product->gender_livestocks as $genders){
+                $genderlivestock .= $genders->nama_gender;
+            }
+    
+            $product->gender = $genderlivestock;
+    
+            $slug_category_livestock = '';
+            foreach($product->categorylivestocks as $categorylivestock){
+                $slug_category_livestock .= $categorylivestock->slug;
+            }
+    
+            $product->slug_category_livestock = $slug_category_livestock;
+    
+            $slug_category_product = '';
+            foreach ($product->categoryproduct as $categoryproducts) {
+                $slug_category_product .= $categoryproducts->slug_kategori_product;
+            }
+    
+            $product->slug_category_product = $slug_category_product;
+    
+            $slug_typelivestock = '';
+            $nama_jenis_hewan = '';
+            foreach ($product->typelivestocks as $typelivestock) {
+                $slug_typelivestock .= $typelivestock->slug_typelivestocks;
+                $nama_jenis_hewan .= $typelivestock->nama_jenis_hewan;
+            }
+    
+            $product->slug_typelivestock = $slug_typelivestock;
+            $product->nama_jenis_hewan = $nama_jenis_hewan;
+    
+            $lokasi = '';
+            foreach($product->partner as $partners){
+                $lokasi .= $partners->provinsi_partner;
+            }
+    
+            $product->lokasi = $lokasi;
+        }
 
         $categoryproduct = CategoryProduct::all();
         $categorylivestock = CategoryLivestock::all();
         $livestock = Livestock::all();
-        $product = Product::orderBy('created_at', 'desc')->limit(8)->with('categorylivestocks', 'categoryproduct', 'gender_livestocks', 'typelivestocks', 'partner', 'testimonial', 'reviews')->get();
-        // $reviews = Review::all();
 
-        return view('pages.market.index', compact('categoryproduct', 'categorylivestock', 'livestock', 'product'));
+        return view('pages.market.index', compact('categoryproduct', 'categorylivestock', 'livestock', 'products'));
     }
 
     public function about()

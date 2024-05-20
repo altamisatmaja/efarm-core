@@ -206,7 +206,7 @@
                     <!-- image - start -->
                     <a href="#"
                         class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80">
-                        <img src="https://images.unsplash.com/photo-1593508512255-86ab42a8e620?auto=format&q=75&fit=crop&w=600"
+                        <img src="https://assets.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2023/03/16/Screenshot-138-2778996270.png"
                             loading="lazy" alt="Photo by Minh Pham"
                             class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
 
@@ -214,14 +214,14 @@
                             class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
                         </div>
 
-                        <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">VR</span>
+                        <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">Kambing</span>
                     </a>
                     <!-- image - end -->
 
                     <!-- image - start -->
                     <a href="#"
                         class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:col-span-2 md:h-80">
-                        <img src="https://images.unsplash.com/photo-1542759564-7ccbb6ac450a?auto=format&q=75&fit=crop&w=1000"
+                        <img src="https://awsimages.detik.net.id/community/media/visual/2023/08/23/kandang-kambing-mewah-di-tuban-2_169.jpeg?w=650"
                             loading="lazy" alt="Photo by Magicle"
                             class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
 
@@ -229,14 +229,14 @@
                             class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
                         </div>
 
-                        <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">Tech</span>
+                        <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">Kandang</span>
                     </a>
                     <!-- image - end -->
 
                     <!-- image - start -->
                     <a href="#"
                         class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:col-span-2 md:h-80">
-                        <img src="https://images.unsplash.com/photo-1610465299996-30f240ac2b1c?auto=format&q=75&fit=crop&w=1000"
+                        <img src="https://kominfo.jatimprov.go.id/uploads/images/IMG-20240311-WA0050.jpg"
                             loading="lazy" alt="Photo by Martin Sanchez"
                             class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
 
@@ -244,14 +244,14 @@
                             class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
                         </div>
 
-                        <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">Dev</span>
+                        <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">Mitra</span>
                     </a>
                     <!-- image - end -->
 
                     <!-- image - start -->
                     <a href="#"
                         class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:h-80">
-                        <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&q=75&fit=crop&w=600"
+                        <img src="https://cdn.rri.co.id/berita/48/images/1677338816561-Bupati_Banyuwangi_Ipuk_Fiestiandani_(Kanan)_Saat_Meninjau_Peternakan_Kambing/1677338816561-Bupati_Banyuwangi_Ipuk_Fiestiandani_(Kanan)_Saat_Meninjau_Peternakan_Kambing.jpg"
                             loading="lazy" alt="Photo by Lorenzo Herrera"
                             class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
 
@@ -260,14 +260,14 @@
                         </div>
 
                         <span
-                            class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">Retro</span>
+                            class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">Aktivitas</span>
                     </a>
                     <!-- image - end -->
                 </div>
             </div>
         </div>
         <!-- component -->
-        <div class="text-white mt-24 container mx-auto p-8 overflow-hidden md:rounded-lg md:p-10 lg:p-12">
+        {{-- <div class="text-white mt-24 container mx-auto p-8 overflow-hidden md:rounded-lg md:p-10 lg:p-12">
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="mt-8 overflow-hidden">
                     <div class="grid grid-cols-1 md:grid-cols-2">
@@ -323,30 +323,30 @@
                             <div class="flex flex-col">
                                 <label for="name" class="hidden">Full Name</label>
                                 <input type="name" name="name" id="name" placeholder="Nama Lengkap"
-                                    class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-textbase text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
+                                    class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-textbase text-gray-800 font-semibold focus:border-green-500 focus:outline-none">
                             </div>
 
                             <div class="flex flex-col mt-2">
                                 <label for="email" class="hidden">Email</label>
                                 <input type="email" name="email" id="email" placeholder="Email"
-                                    class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-textbase text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
+                                    class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-textbase text-gray-800 font-semibold focus:border-green-500 focus:outline-none">
                             </div>
 
                             <div class="flex flex-col mt-2">
                                 <label for="tel" class="hidden">Nomor Hp</label>
                                 <input type="tel" name="tel" id="tel" placeholder="Telephone Number"
-                                    class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-textbase text-gray-800 font-semibold focus:border-indigo-500 focus:outline-none">
+                                    class="w-100 mt-2 py-3 px-3 rounded-lg bg-white border border-textbase text-gray-800 font-semibold focus:border-green-500 focus:outline-none">
                             </div>
 
                             <button type="submit"
-                                class="md:w-32 bg-primarybase hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-indigo-500 transition ease-in-out duration-300">
+                                class="md:w-32 bg-primarybase hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-green-500 transition ease-in-out duration-300">
                                 Submit
                             </button>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         @include('includes.footer')
     </div>
 </body>
