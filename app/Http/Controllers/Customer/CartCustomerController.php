@@ -55,14 +55,14 @@ class CartCustomerController extends Controller
 
     public function destroy(Request $request, $id){
         try {
-            $cart = Cart::findOrFail($id);
+            $cart = Cart::where('id_product', $id)->first();
 
             if ($cart) {
                 $cart->delete();
 
                 return redirect()->route('customer.cart')->with('success', 'Data keranjang berhasil ditambahkan');
             } else {
-                return redirect()->back()->with('errors', 'Data gagal produk berhasil dilisting');
+                return redirect()->back()->with('errors', 'Data gagal produk dilisting');
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());

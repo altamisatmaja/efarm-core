@@ -39,7 +39,8 @@
                                             method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit""
+                                            <input hidden value="{{ $carts->id_product }}" name="id" type="text">
+                                            <button type="submit"
                                                 class="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Hapus
                                             </button>
                                         </form>
