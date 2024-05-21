@@ -1380,6 +1380,10 @@ select {
   margin-top: 11rem;
   margin-bottom: 11rem;
 }
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
 .-ml-1 {
   margin-left: -0.25rem;
 }
@@ -4333,6 +4337,10 @@ select {
 .peer:checked ~ .peer-checked\:border-gray-700 {
   --tw-border-opacity: 1;
   border-color: rgb(55 65 81 / var(--tw-border-opacity));
+}
+.peer:checked ~ .peer-checked\:border-primarybase {
+  --tw-border-opacity: 1;
+  border-color: rgb(170 193 76 / var(--tw-border-opacity));
 }
 .peer:checked ~ .peer-checked\:bg-blue-50 {
   --tw-bg-opacity: 1;

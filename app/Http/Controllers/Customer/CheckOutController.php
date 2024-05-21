@@ -13,16 +13,30 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckOutController extends Controller
 {
-    public function index($slug_product)
+    public function pre(Request $request){
+        $kuantitas = $request->kuantitas;
+        $random = $request->random;
+        $slug_product = $request->slug_product;
+
+        return redirect()->route('customer.checkout', [
+            'slug_product' => $slug_product,
+            'kuantitas' => $kuantitas,
+            'random' => $random,
+        ]);
+    }
+
+    public function index($slug_product, $kuantitas, $random)
     {
         try {
             if (Auth::check()) {
                 $tripay = new TripayController();
                 $channels = $tripay->getPaymentChannels();
                 $product = Product::with('typelivestocks', 'gender_livestocks', 'partner', 'categoryproduct', 'categorylivestocks')->where('slug_product', $slug_product)->first();
-                return view('pages.market.checkout', compact('channels', 'product'));
+                $total_harga = $kuantitas * $product->harga_product;
+
+                return view('pages.market.checkout', compact('channels', 'product', 'kuantitas', 'random', 'total_harga'));
             } else {
-                return redirect()->back()->with('error', 'Terjadi kesalahan');
+                return redirect()->route('customer.login');
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
