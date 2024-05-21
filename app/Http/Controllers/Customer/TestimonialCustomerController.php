@@ -27,7 +27,6 @@ class TestimonialCustomerController extends Controller
             'gambar',
             'id_user',
             'id_products',
-            'membantu',
             'slug_testimonial'
             ]);
 
@@ -37,20 +36,20 @@ class TestimonialCustomerController extends Controller
 
             $input = $request->except(['_token', '_method']);
 
-            if ($request->has('gambar_hewan')) {
-                $gambar = $request->file('gambar_hewan');
+            if ($request->has('gambar')) {
+                $gambar = $request->file('gambar');
                 $nama_gambar = time() . rand(1, 9) . '.' . $gambar->getClientOriginalExtension();
                 $gambar->move('uploads', $nama_gambar);
-                $input['gambar_hewan'] = $nama_gambar;
+                $input['gambar'] = $nama_gambar;
             }
 
             $slug = $this->generateSlug($input['nama_testimoni']);
 
-            $input['slug_product'] = $slug;
+            $input['slug_testimonial'] = $slug;
             $testimonial = Testimonial::create($input);
 
             if ($testimonial) {
-                return redirect()->back()->with('success', 'Data testimoni berhasil ditambahkan');
+                return redirect()->route('customer.lacak.end')->with('success', 'Data testimoni berhasil ditambahkan');
             } else {
                 return redirect()->back()->with('errors', 'Data gagal testimoni berhasil ditambahkan');
             }

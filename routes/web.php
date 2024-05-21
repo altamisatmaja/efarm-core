@@ -390,7 +390,7 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
      */
 
     Route::get ('personal/testimonial/show/{slug_product}', [TestimonialCustomerController::class, 'index'])->name('testimonial.show');
-    Route::get ('personal/testimonial/store', [TestimonialCustomerController::class, 'store'])->name('testimonial.store');
+    Route::post ('personal/testimonial/store', [TestimonialCustomerController::class, 'store'])->name('testimonial.store');
 
     /**
      * Route for review customer
