@@ -86,7 +86,7 @@ class TripayController extends Controller
 
         curl_close($curl);
 
-        // dd($reponse);
+        // dd($response);
         $response = json_decode($response);
         // $response = $response->data;
         // dd($response);

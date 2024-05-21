@@ -120,39 +120,39 @@
                                     class="absolute mt-3 transform bg-white rounded-md shadow-lg -translate-x-3/4 min-w-max">
                                     <ul class="flex flex-col p-2 my-3 space-y-3">
                                         <li>
-                                            <a href="{{ route('homepage.partner') }}"
+                                            <a href="{{ route('customer.account') }}"
                                                 class="flex items-start px-2 py-1 space-x-2 rounded-md hover:bg-gray-100">
                                                 <div class="items-center flex">
                                                     <img src="{{ asset('efarm-partner-logo.png') }}" alt="montaña"
                                                         class="h-5 mr-4" />
                                                     <span class="flex flex-col">
-                                                        <span class="text-textbase text-lg font-semibold">Partner</span>
-                                                        <span class="text-textbase text-sm">Jual hewan ternak Anda</span>
+                                                        <span class="text-textbase text-lg font-semibold">Pengaturan Akun</span>
+                                                        <span class="text-textbase text-sm">Ubah informasi Anda</span>
                                                     </span>
                                                 </div>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('homepage.market') }}"
+                                            <a href="{{ route('customer.lacak') }}"
                                                 class="flex items-start px-2 py-1 space-x-2 rounded-md hover:bg-gray-100">
                                                 <div class="items-center flex">
                                                     <img src="{{ asset('efarm-market.png') }}" alt="montaña"
                                                         class="h-5 mr-4" />
                                                     <span class="flex flex-col">
-                                                        <span class="text-textbase text-lg font-semibold">Market</span>
-                                                        <span class="text-textbase text-sm">Mulai beli ternak</span>
+                                                        <span class="text-textbase text-lg font-semibold">Pesanan</span>
+                                                        <span class="text-textbase text-sm">Lacak pesanan Anda</span>
                                                     </span>
                                                 </div>
                                             </a>
                                         </li>
                                     </ul>
-                                    <a href="{{ route('homepage.layanan') }}">
+                                    <a href="{{ route('customer.dashboard') }}">
                                         <div class="p-4 text-lg font-medium border-t">
                                             <div class="items-center flex">
                                                 <img src="{{ asset('efarm-layanan.png') }}" alt="montaña"
                                                     class="h-5 mr-4" />
                                                 <span class="flex flex-col">
-                                                    <span class="text-textbase text-lg font-semibold">Semua Layanan</span>
+                                                    <span class="text-textbase text-lg font-semibold">Dashboard</span>
                                                 </span>
                                             </div>
                                         </div>

@@ -10,9 +10,9 @@ use Illuminate\Support\Facades\Validator;
 
 class ReviewCustomerController extends Controller
 {
-    public function index($id) {
+    public function index($slug_product) {
         try {
-            $product = Product::where('id', $id)->first();
+            $product = Product::where('slug_product', $slug_product)->first();
             return view('customer.pages.review.show', compact('product'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
@@ -36,7 +36,7 @@ class ReviewCustomerController extends Controller
             $review = Review::create($input);
 
             if($review){
-                return redirect()->back()->with('success', 'Data review berhasil ditambahkan');
+                return redirect()->route('customer.lacak.end')->with('success', 'Data review berhasil ditambahkan');
             }  else {
                 return redirect()->back()->with('errors', 'Data review gagal ditambahkan');
             }

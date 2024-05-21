@@ -362,7 +362,7 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
      * Route for order customer
      */
     Route::get('personal/order', [OrderCustomerController::class, 'index'])->name('customer.order.list');
-    Route::get('personal/order/show/{slug_produc}', [OrderCustomerController::class, 'show'])->name('customer.order.show');
+    Route::get('personal/order/show/{slug_product}', [OrderCustomerController::class, 'show'])->name('customer.order.show');
 
     /**
      * Route for cart customer
@@ -385,10 +385,14 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
     Route:: put('personal/lacak/status/{id}', [LacakCustomerController::class, 'handle_status'])->name('customer.lacak.status');
 
     /**
+     * Route for review testimonial
+     */
+
+    /**
      * Route for review customer
      */
-    Route:: get('personal/review/{id}', [ReviewCustomerController::class, 'index'])->name('customer.review');
-    Route:: post('personal/review/product/{id}', [ReviewCustomerController::class, 'store'])->name('customer.review.store');
+    Route:: get('personal/review/{slug_product}', [ReviewCustomerController::class, 'index'])->name('customer.review');
+    Route:: post('personal/review/product', [ReviewCustomerController::class, 'store'])->name('customer.review.store');
 
 
     /**

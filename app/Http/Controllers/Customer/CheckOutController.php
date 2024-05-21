@@ -47,8 +47,18 @@ class CheckOutController extends Controller
     {
         $tripay = new TripayController();
         $detail = $tripay->detailTransaction($reference);
-        // dd($detail);
-        return view('pages.market.finally', compact('detail'));
+        $instruksi = $detail->instructions;
+        $orderitems = $detail->order_items;
+
+        // dd(json_encode($orderitems));
+
+        $order = Order::where('merchant_ref', $detail->merchant_ref)->first();
+        $orderdetail = OrderDetail::where('id_order', $order->id)->first();
+        $products = Product::with('categorylivestocks', 'categoryproduct', 'gender_livestocks', 'partner', 'testimonial', 'reviews', 'typelivestocks')->where('id', $orderdetail->id_product)->first();
+
+
+
+        return view('pages.market.finally', compact('detail', 'instruksi', 'products', 'orderitems'));
     }
 
     public function store(Request $request)
@@ -61,6 +71,7 @@ class CheckOutController extends Controller
         $harga_product = $product->harga_product;
         $nama_product = $product->nama_product;
         $gambar_hewan = $product->gambar_hewan;
+        $slug_product = $request->slug_product;
 
         $harga_total = $harga_product * $kuantitas;
 
@@ -88,10 +99,13 @@ class CheckOutController extends Controller
             'kuantitas_total' => $kuantitas,
             'id_order' => $id_order,
             'diskon' => 0,
+            'metode_pembayaran' => $method
         ]);
 
         // dd($product->harga_product);
 
-        return redirect()->route('customer.checkout.show', ['reference' => $reference->data->reference]);
+        return redirect()->route('customer.checkout.show', [
+            $reference->data->reference
+        ]);
     }
 }

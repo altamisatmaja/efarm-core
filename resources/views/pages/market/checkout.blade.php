@@ -20,7 +20,7 @@
                 <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
                     <div class="flex flex-col rounded-lg bg-white sm:flex-row">
                         <img class="m-2 h-24 w-28 rounded-md border object-cover object-center"
-                            src="https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                            src="/uploads/{{ $product->gambar_hewan }}"
                             alt="" />
                         <div class="flex w-full flex-col px-4 py-4">
                             @foreach ($product->typelivestocks as $typelivestock)
@@ -39,16 +39,20 @@
                     <div class="">
                         <!-- Total -->
                         <div class="mt-6 border-t border-b py-2">
-                            <div class="flex items-center justify-between">
-                                <p class="text-sm font-medium text-gray-900">Subtotal</p>
-                                <p class="font-semibold text-gray-900">@currency($total_harga)</p>
+                            <div class="flex mt-2 items-center justify-between">
+                                <p class="text-sm font-medium text-gray-900">Kuantitas</p>
+                                <p class="font-semibold text-gray-900">{{ $kuantitas }} ekor</p>
                             </div>
-                            <div class="flex items-center justify-between">
-                                <p class="text-sm font-medium text-gray-900">Shipping</p>
-                                <p class="font-medium text-gray-900">*Disesuaikan oleh Partner</p>
+                            <div class="flex mt-2 items-center justify-between">
+                                <p class="text-sm font-medium text-gray-900">Harga produk</p>
+                                <p class="font-semibold text-gray-900">@currency($product->harga_product)</p>
+                            </div>
+                            <div class="flex mt-2 items-center justify-between">
+                                <p class="text-sm font-medium text-gray-900">Pengiriman</p>
+                                <p class="font-medium text-gray-500">*Disesuaikan oleh Partner</p>
                             </div>
                         </div>
-                        <div class="mt-6 flex items-center justify-between">
+                        <div class="mt-6 flex mt-2 items-center justify-between">
                             <p class="text-sm font-medium text-gray-900">Total</p>
                             <p class="text-2xl font-semibold text-gray-900">@currency($total_harga)</p>
                         </div>
@@ -75,11 +79,11 @@
                         @csrf
                         @foreach ($channels as $channel)
                             @if ($channel->active)
-                            {{-- <input type="text" name="method" value="{{ $channel->code }}"> --}}
                             <div class="relative w-full lg:w-full">
                                     <input hidden type="text" name="product_id" value="{{ $product->id }}">
+                                    <input hidden type="text" name="slug_product" value="{{ $product->slug_product }}">
                                     <input value="{{ $channel->code }}" class="peer hidden" id="radio_{{ $loop->iteration }}_payment" type="radio" name="method" />
-                                    <input hidden type="text" name="kuantitas" id="kuantitas" value="2">
+                                    <input hidden type="text" name="kuantitas" id="kuantitas" value="{{ $kuantitas }}">
                                     <span
                                         class="peer-checked:border-blue-500 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
 

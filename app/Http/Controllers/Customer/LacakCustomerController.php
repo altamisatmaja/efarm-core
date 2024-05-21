@@ -99,12 +99,15 @@ class LacakCustomerController extends Controller
         $allorders = [];
 
         foreach ($orders as $order) {
-            $orderDetails = OrderDetail::where('id_order', $order->id)->get();
+            $orderDetails = OrderDetail::with('product')->where('id_order', $order->id)->get();
             $allorders[] = [
                 'order' => $order,
                 'order_details' => $orderDetails,
+                'slug_product' => $orderDetails[0]['product']['slug_product'],
             ];
         }
+
+        // dd($allorders);
         return view('customer.pages.lacak.end', compact('allorders'));
     }
 
