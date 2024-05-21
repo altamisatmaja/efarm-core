@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -10,6 +11,14 @@ use Illuminate\Support\Facades\Validator;
 
 class TestimonialCustomerController extends Controller
 {
+    public function index($slug_product) {
+        try {
+            $product = Product::where('slug_product', $slug_product)->first();
+            return view('customer.pages.testimonial.show', compact('product'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
+    }
     public function store(Request $request){
         try {
             $validator = Validator::make($request->all(), [

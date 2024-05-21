@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\AIApiController;
 use App\Http\Controllers\Customer\Account\AccountCustomerController;
 use App\Http\Controllers\Customer\LacakCustomerController;
 use App\Http\Controllers\Customer\ReviewCustomerController;
+use App\Http\Controllers\Customer\TestimonialCustomerController;
 use App\Http\Controllers\Partner\ProductPartnerController;
 use App\Http\Controllers\Partner\ReportPartnerController;
 use App\Http\Controllers\Partner\TestimonialReplyPartnerController;
@@ -387,6 +388,9 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
     /**
      * Route for review testimonial
      */
+
+    Route::get ('personal/testimonial/show/{slug_product}', [TestimonialCustomerController::class, 'index'])->name('testimonial.show');
+    Route::get ('personal/testimonial/store', [TestimonialCustomerController::class, 'store'])->name('testimonial.store');
 
     /**
      * Route for review customer
