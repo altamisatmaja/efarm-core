@@ -9,10 +9,12 @@ class TestimonialReply extends Model
 {
     use HasFactory;
 
+    protected $table = 'testimonial_reply';
+
     protected $guarded = [];
 
     protected $fillable = [
-        'id_user',
+        'id_partner',
         'id_testimonial',
         'pesan_reply',
     ];

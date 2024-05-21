@@ -3,7 +3,6 @@
 @section('title', 'Dashboard | Testimonial')
 
 @section('content')
-
     <section class="container px-4 mx-auto">
         <div class="flex flex-col">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -108,11 +107,12 @@
                                                         Lihat
                                                     </button>
                                                 </a>
-
+                                                <a href="{{ route('partner.testimonial.reply', [$testimonial->product->slug_product, $testimonial->slug_testimonial]) }}">
                                                 <button
                                                     class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
                                                     Balas
                                                 </button>
+                                            </a>
                                             </div>
                                         </td>
                                     </tr>

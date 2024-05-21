@@ -468,7 +468,7 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     
     Route::get('partner/testimonial', [TestimonialPartnerController::class, 'list'])->name('partner.testimonial.list');
     Route::get('partner/testimonial/show/{slug_testimonial}', [TestimonialPartnerController::class, 'show'])->name('partner.testimonial.show');
-    Route::get('partner/testimonial/reply/{id}', [PagePartnerController::class, 'testimonial_reply'])->name('partner.testimonial.reply');
+    Route::get('partner/testimonial/reply/{slug_product}/{slug_testimonial}', [TestimonialReplyPartnerController::class, 'reply'])->name('partner.testimonial.reply');
     Route::post('partner/testimonial/replying', [TestimonialReplyPartnerController::class, 'store'])->name('partner.testimonial.reply.store');
     Route::post('partner/testimonial/update', [TestimonialReplyPartnerController::class, 'update'])->name('partner.testimonial.reply.update');
 
