@@ -331,7 +331,74 @@
                                 </div>
                             </div>
                         @endforeach
+
+                        <div class="w-full mx-auto">
+                            <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
+                            <div class="flex flex-col justify-start items-start w-full">
+                                <div class="flex text-2xl font-semibold">
+                                    <h1>Testimoni dari pembeli lain</h1>
+                                </div>
+                            </div>
+
+                            @foreach ($testimonials as $testimonial)
+                                <div class='flex flex-col items-center justify-center'>
+                                    <div class="rounded-xl mt-5 w-full bg-white">
+                                        <div class="flex w-full items-center justify-between pb-3">
+                                            <div class="flex items-center space-x-3">
+                                                <div
+                                                    class="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://i.pravatar.cc/32')]">
+                                                </div>
+                                                <div class="text-lg font-bold text-slate-700">
+                                                    {{ $testimonial->user->nama }}</div>
+                                            </div>
+                                            <div class="flex items-center space-x-8">
+                                                <button
+                                                    class="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold">{{ $testimonial->created_at->diffForHumans() }}</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-4 mb-6">
+                                            <div class="mb-3 text-xl font-bold">{{ $testimonial->nama_testimoni }}
+                                            </div>
+                                            <div class="text-sm text-neutral-600">{{ $testimonial->deskripsi }}</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                @if ($testimonial->testimonial_reply)
+                                        <div class='flex flex-col items-start justify-center'>
+                                            <p class="text-textbase font-medium items-start w-full">Balasan dari
+                                                penjual</p>
+                                            <div class="ml-8 rounded-xl mt-5 w-full bg-white">
+                                                <div class="flex w-full items-center justify-between pb-3">
+                                                    <div class="flex items-center space-x-3">
+                                                        <div
+                                                            class="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://i.pravatar.cc/32')]">
+                                                        </div>
+                                                        <div class="text-lg font-bold text-slate-700">
+                                                            {{ $testimonial->user->nama }}</div>
+                                                    </div>
+                                                    <div class="flex items-center space-x-8">
+                                                        <button
+                                                            class="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold">{{ $testimonial->created_at->diffForHumans() }}</button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mt-4 mb-6">
+                                                    <div class="mb-3 text-xl font-bold">
+                                                        {{ $testimonial->nama_testimoni }}</div>
+                                                    <div class="text-sm text-neutral-600">
+                                                        {{ $testimonial->deskripsi }}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                            @endforeach
+
+                        </div>
                     </div>
+
+
 
                     {{-- for checkout --}}
                     <div class="w-full md:w-4/12 bg-white md:block mb-2">
@@ -359,8 +426,10 @@
                                                     class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
                                                     <span class="m-auto text-2xl font-thin">+</span>
                                                 </button>
-                                                <input hidden name="random" value="{{ now()->timestamp }}" type="text">
-                                                <input hidden name="slug_product" value="{{ $product->slug_product }}" type="text">
+                                                <input hidden name="random" value="{{ now()->timestamp }}"
+                                                    type="text">
+                                                <input hidden name="slug_product"
+                                                    value="{{ $product->slug_product }}" type="text">
                                             </div>
                                         </div>
                                         <p class="text-gray-700">Stok 2222</p>
@@ -373,10 +442,10 @@
                                     <hr class="my-4" />
 
                                     {{-- <a href="{{ route('customer.checkout', [$product->slug_product]) }}"> --}}
-                                        <button type="submit"
-                                            class="mt-3 hover:shadow-form w-full border bg-primarybase hover:bg-primarybase hover:text-white border-white rounded-md py-3 px-8 text-center text-base font-semibold text-white">
-                                            Beli sekarang
-                                        </button>
+                                    <button type="submit"
+                                        class="mt-3 hover:shadow-form w-full border bg-primarybase hover:bg-primarybase hover:text-white border-white rounded-md py-3 px-8 text-center text-base font-semibold text-white">
+                                        Beli sekarang
+                                    </button>
                                     {{-- </a> --}}
                                 </form>
 
@@ -401,120 +470,7 @@
 
 
             <!-- component -->
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <!--- more free and premium Tailwind CSS components at https://tailwinduikit.com/ --->
-                <div class="flex flex-col justify-start items-start w-full">
-                    <div class="p-8 flex text-2xl font-semibold">
-                        <h1>Testimoni dari pembeli lain</h1>
-                    </div>
-                </div>
-                <div class="flex flex-col justify-start items-start w-full space-y-8">
-                    <div class="w-full flex justify-start items-start flex-col p-8">
-                        <div class="flex items-center">
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                            </svg>
-                            <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                            </svg>
-                            <svg class="w-5 h-5 text-gray-300 dark:text-gray-500" fill="currentColor"
-                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                </path>
-                                <p class="ml-3 text-sm leading-none text-gray-600 ">14 July 2021</p>
-                            </svg>
-                        </div>
-                        <div class="mt-6 flex justify-start items-center flex-row space-x-2.5">
-                            <div>
-                                <img src="https://randomuser.me/api/portraits/men/12.jpg"
-                                    class="w-auto h-10 rounded-full" alt="fotoprofil" />
-                            </div>
-                            <div class="flex flex-col justify-start items-start space-y-2">
-                                <p class="text-base font-medium leading-none text-gray-800 ">a***4</p>
-                            </div>
-                        </div>
-                        <p class="text-xl md:text-2xl mt-2 font-medium leading-normal text-gray-800">Kambingnya sehat
-                            dan mantap</p>
-                        <div id="menu" class="md:block">
-                            <p class="mt-3 text-base leading-normal text-gray-600  w-full md:w-9/12 xl:w-5/6">
-                                When you want to decorate your home, the idea of choosing a decorative theme can seem
-                                daunting. Some themes seem to have an endless amount of pieces, while others can feel
-                                hard to accomplish</p>
-                            <div class="hidden md:flex mt-6 flex-row justify-start items-start space-x-4">
-                                <div class="">
-                                    <img src="https://i.ibb.co/QXzVpHp/vincent-wachowiak-8g-Cm-EBVl6a-I-unsplash-1.png"
-                                        alt="chair-1" />
-                                </div>
-                            </div>
-                            <div class="md:hidden carousel pt-8 cursor-none"
-                                data-flickity='{ "wrapAround": true,"pageDots": false }'>
-                                <div class="carousel-cell">
-                                    <div class="md:w-full h-full relative">
-                                        <img src="https://i.ibb.co/QXzVpHp/vincent-wachowiak-8g-Cm-EBVl6a-I-unsplash-1.png"
-                                            alt="bag" class="w-full h-full object-fit object-cover" />
-                                    </div>
-                                </div>
-                                <div class="carousel-cell">
-                                    <div class="md:w-full h-full relative">
-                                        <img src="https://i.ibb.co/znYKsbc/vincent-wachowiak-z-P316-KSOX0-E-unsplash-1.png"
-                                            alt="shoes" class="w-full h-full object-fit object-cover" />
-                                    </div>
-                                </div>
-                                <div class="carousel-cell">
-                                    <div class="md:w-full h-full relative">
-                                        <img src="https://i.ibb.co/QXzVpHp/vincent-wachowiak-8g-Cm-EBVl6a-I-unsplash-1.png"
-                                            alt="wallet" class="w-full h-full object-fit object-cover" />
-                                    </div>
-                                </div>
-                                <div class="carousel-cell">
-                                    <div class="md:w-full h-full relative">
-                                        <img src="https://i.ibb.co/znYKsbc/vincent-wachowiak-z-P316-KSOX0-E-unsplash-1.png"
-                                            alt="wallet" class="w-full h-full object-fit object-cover" />
-                                    </div>
-                                </div>
-                                <div class="carousel-cell">
-                                    <div class="md:w-full h-full relative">
-                                        <img src="https://i.ibb.co/QXzVpHp/vincent-wachowiak-8g-Cm-EBVl6a-I-unsplash-1.png"
-                                            alt="wallet" class="w-full h-full object-fit object-cover" />
-                                    </div>
-                                </div>
-                                <div class="carousel-cell">
-                                    <div class="md:w-full h-full relative">
-                                        <img src="https://i.ibb.co/znYKsbc/vincent-wachowiak-z-P316-KSOX0-E-unsplash-1.png"
-                                            alt="wallet" class="w-full h-full object-fit object-cover" />
-                                    </div>
-                                </div>
-                                <div class="carousel-cell"></div>
-                            </div>
 
-                        </div>
-                    </div>
-                </div>
-
-                {{-- baris --}}
-                <div class="flex px-8 flex-col">
-                    <div class="h-px w-full bg-slate-400"></div>
-                </div>
-            </div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="relative flex items-end font-bold mt-6">

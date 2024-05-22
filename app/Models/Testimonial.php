@@ -28,4 +28,8 @@ class Testimonial extends Model
     public function user(){
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
+
+    public function testimonial_reply(){
+        return $this->belongsTo(TestimonialReply::class, 'id', 'id_testimonial');
+    }
 }

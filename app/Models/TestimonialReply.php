@@ -26,4 +26,11 @@ class TestimonialReply extends Model
     public function user(){
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
+    public function partner(){
+        return $this->belongsTo(Partner::class, 'id_partner', 'id');
+    }
+
+    public function testimonial(){
+        return $this->belongsTo(Testimonial::class, 'id_testimonial', 'id');
+    }
 }
