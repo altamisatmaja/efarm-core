@@ -44,7 +44,7 @@
         </div>
         <form action="{{ route('partner.testimonial.reply.store') }}" method="POST">
             @csrf
-            <input name="id_testimonial" value="{{ $testimonials->id }}" type="number">
+            <input hidden name="id_testimonial" value="{{ $testimonials->id }}" type="number">
             <div class="mb-5">
                 <label for="deskripsi" class="mb-3 block text-base font-medium text-[#07074D]">
                     Masukkan deskripsi testimoni anda

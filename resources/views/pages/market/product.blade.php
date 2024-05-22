@@ -392,6 +392,8 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    @else
+                                        <p class="text-textbase">Belum ada testimoni</p>
                                     @endif
                             @endforeach
 
