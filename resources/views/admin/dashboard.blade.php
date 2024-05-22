@@ -3,7 +3,7 @@
 @section('title', 'Dashboard | Admin')
 
 @section('content')
-    <div class="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+    <div class="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
         <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
@@ -184,6 +184,7 @@
                                     <div>
                                         <p
                                             class="text-xs font-normal align-middle text-center items-center text-gray-600">
+                                            {{ $partner->nama_partner }}
                                         </p>
                                     </div>
                                 </div>

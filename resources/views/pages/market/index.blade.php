@@ -74,32 +74,32 @@
             <main>
                 <section class="relative z-10 bg-opacity-90 py-10">
                     <div class="container mx-auto flex flex-col lg:flex-row">
-                        <div style="background-image: url('{{ asset('images/herofixed.png') }}')" class=" relative lg:w-2/3 rounded-xl bg-secondary-lite bg-cover p-8 md:p-16">
-                            <p class="max-w-sm text-white text-3xl md:text-4xl font-semibold">Nikmati pembelian kambing tanpa ribet, cukup scan, dapat kambing</p>
-                            <p class="max-w-xs pr-10 text-white font-semibold mt-8">Cari kambing terdekat Anda dan lakukan pembelian!</p>
+                        <div style="background-image: url('{{ asset('images/hero-satu.png') }}')" class=" relative lg:w-2/3 rounded-xl bg-secondary-lite bg-cover p-8 md:p-16">
+                            <p class="max-w-sm text-textbase text-3xl md:text-4xl font-semibold">Nikmati pembelian kambing tanpa ribet, cukup scan, dapat kambing</p>
+                            <p class="max-w-xs pr-10 text-textbase font-semibold mt-8">Cari kambing terdekat Anda dan lakukan pembelian!</p>
                             <a href="" class="mt-20 flex bg-primarybase w-1/4 items-center justify-center text-white font-semibold py-2 rounded-md">Beli
                                 sekarang</a>
                             <div class="absolute bottom-8 right-8 md:bottom-5 md:right-5 flex">
-                               
+
                             </div>
                         </div>
                         <!-- right -->
-                        <div style="background-image: url('{{ asset('images/herofixed.png') }}')" 
+                        <div style="background-image: url('{{ asset('images/hero-dua.png') }}')"
                             class=" lg:mt-0 relative md:mt-2 xs:mt-2 lg:ml-6 lg:w-1/3 rounded-xl bg-primary-lite bg-cover p-8 md:p-16">
                             <div class="max-w-sm">
-                                <p class="text-3xl md:text-4xl text-white font-bold">Hewan terdekat Anda</p>
-                                <p class="mt-8 font-semibold text-white ">Untuk hewan qurban<br />Kambing atau sapi</p>
+                                <p class="text-3xl md:text-4xl text-textbase font-bold">Hewan terdekat Anda</p>
+                                <p class="mt-8 font-semibold text-textbase ">Untuk hewan qurban<br />Kambing atau sapi</p>
                                 <a href="" class="absolute bottom-8 bg-primarybase text-white font-semibold px-8 py-2 rounded">Beli sekarang</a>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <section class="container mx-auto pt-2 bg-white">
+                <section class="my-10 container mx-auto pt-2 bg-white">
                     <div class="relative flex items-end font-bold">
-                        <h2 class="text-2xl">Lihat berdasarkan jenis hewan</h2>
+                        <h2 class="text-2xl text-textbase">Lihat berdasarkan jenis hewan</h2>
                     </div>
-                    
+
                     <div class="grid xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
                     @foreach ($categorylivestock as $categorylivestocks)
                     <div class="relative mx-auto w-full">
@@ -112,23 +112,23 @@
                                             <img class="w-full h-full object-cover" src="/uploads/{{ $categorylivestocks->gambar_kategori_hewan }}" alt="" />
                                         </div>
                                     </div>
-                                   
+
                                 </div>
 
                                 <div class="mt-4">
-                                    <h2 class="font-semibold text-xl md:text-lg text-gray-800 line-clamp-1" title="New York">
+                                    <h2 class="font-semibold text-xl md:text-lg text-textbase line-clamp-1" title="New York">
                                         {{ $categorylivestocks->nama_kategori_hewan }}
                                     </h2>
                                 </div>
 
                             </div>
                         </a>
-                    </div> @endforeach 
+                    </div> @endforeach
                 </div>
-                
+
                 <div class="relative
-        flex items-end font-bold mt-6">
-    <h2 class="text-2xl">Lihat berdasarkan kategori</h2>
+        flex items-end font-bold my-10">
+    <h2 class="text-2xl text-textbase">Lihat berdasarkan kategori</h2>
     </div>
 
     <div class="grid lg:grid-cols-4 md:grid-cols-4 xs:grid-cols-1 gap-6 mt-4">
@@ -149,7 +149,7 @@
                         </div>
 
                         <div class="mt-4">
-                            <h2 class="font-semibold text-xl md:text-lg text-gray-800 line-clamp-1" title="New York">
+                            <h2 class="font-semibold text-xl md:text-lg text-textbase line-clamp-1" title="New York">
                                 {{ $categoryproducts->nama_kategori_product }}
                             </h2>
                         </div>
@@ -161,9 +161,9 @@
     </div>
     <div class="relative
         flex items-end font-bold mt-6">
-        <h2 class="text-2xl">Hewan terbaru</h2>
+        <h2 class="text-2xl text-textbase">Hewan terbaru</h2>
     </div>
-    <main class="w-full">
+    <main class="w-full my-10">
         <div class="container">
             <div class="grid gap-3 grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
                 @foreach ($products as $product)
