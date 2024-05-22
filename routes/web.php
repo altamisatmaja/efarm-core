@@ -134,7 +134,7 @@ Route::post('partner/verify/account', [PartnerAdminController::class, 'verify'])
     ->name('partner.verify.account');
 
 Route::middleware('guest')->group(function () {
-    
+
     /**
      * Route for callback after payment gateway
      */
@@ -224,11 +224,11 @@ Route::middleware('auth')->group(function () {
  * |
  * | Semua routes untuk admin
  * |
- */ 
+ */
 
 
 Route::middleware(['auth', 'role:Admin'])->group(function () {
-    
+
     /**
      * Route for dashboard admin
      */
@@ -250,7 +250,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('admin/typelivestock', [TypeLivestockAdminController::class, 'index'])->name('admin.typelivestock.list');
     Route::get('admin/typelivestock/add', [TypeLivestockAdminController::class, 'create'])->name('admin.typelivestock.create');
     Route::post('admin/typelivestock/create', [TypeLivestockAdminController::class, 'store'])->name('admin.typelivestock.add');
-    Route::get('admin/typelivestock/edit/{slug_typelivestocks}', [TypeLivestockAdminController::class, 'show'])->name('admin.typelivestock.edit');
+    Route::get('admin/typelivestock/edit/{slug_typelivestocks}', [TypeLivestockAdminController::class, 'edit'])->name('admin.typelivestock.edit');
     Route::put('admin/typelivestock/update/{slug_typelivestocks}', [TypeLivestockAdminController::class, 'update'])->name('admin.typelivestock.update');
     Route::delete('admin/typelivestock/delete/{slug_typelivestocks}', [TypeLivestockAdminController::class, 'destroy'])->name('admin.typelivestock.destroy');
 
@@ -321,7 +321,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::put('admin/account/customer/status/{id}', [CustomerAccountController::class, 'status_handling'])->name('admin.customer.status');
 
     /**
-     * Route for logout Admin 
+     * Route for logout Admin
      */
     Route::get('admin/logout', [AuthAdminController::class, 'destroy'])->name('admin.logout');
 });
@@ -335,7 +335,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
  * |
  * | Semua routes untuk pelanggan
  * |
- */ 
+ */
 
  /**
  * Route for checkout customer
@@ -358,7 +358,7 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
     Route::post('personal/account/detail/update/', [AccountCustomerController::class, 'update_detail_account'])->name('customer.update.account');
     Route::post('personal/account/information/update/', [AccountCustomerController::class, 'update_information_account'])->name('customer.update.information');
     Route::post('personal/account/address/update/', [AccountCustomerController::class, 'update_address_account'])->name('customer.update.address');
-    
+
     /**
      * Route for order customer
      */
@@ -402,7 +402,7 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
     /**
      * Route for checkout customer
      */
-    
+
     Route::post('checkout', [CheckoutController::class, 'store'])->name('customer.checkout.store');
     Route::get('checkout/show/{reference}', [CheckoutController::class, 'show'])->name('customer.checkout.show');
 
@@ -421,7 +421,7 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
  * |
  * | Semua routes untuk partner
  * |
- */ 
+ */
 
 Route::middleware(['auth', 'role:Partner'])->group(function () {
     /**
@@ -465,7 +465,7 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     /**
      * Route for testimonial partner
      */
-    
+
     Route::get('partner/testimonial', [TestimonialPartnerController::class, 'list'])->name('partner.testimonial.list');
     Route::get('partner/testimonial/show/{slug_testimonial}', [TestimonialPartnerController::class, 'show'])->name('partner.testimonial.show');
     Route::get('partner/testimonial/reply/{slug_product}/{slug_testimonial}', [TestimonialReplyPartnerController::class, 'reply'])->name('partner.testimonial.reply');
@@ -496,7 +496,7 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     Route::get('partner/report', [ReportPartnerController::class, 'index'])->name('partner.report.list');
     // Route::get('partner/report/{reference}', [ReportPartnerController::class, 'show'])->name('partner.report.detail');
 
-    
+
     /**
      * Route for logout
      */

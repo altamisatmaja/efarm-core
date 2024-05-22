@@ -26,7 +26,7 @@
 
             <div class="grid gap-8 md:grid-cols-2 ">
                 <div class="flex flex-col  justify-center">
-                    <p class="self-start inline font-sans text-xl font-medium text-textbase">
+                    <p class="self-start inline text-xl font-semibold text-textbase">
                         Tentang eFarm
                     </p>
                     <h2 class="text-4xl font-bold text-textbase">eFarm, Teman peternakanmu</h2>

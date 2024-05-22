@@ -8,46 +8,89 @@
             <div class="w-full flex justify-center items-center">
                 <div class="w-full bg-whitemx-auto rounded">
                     <div class="py-4 text-left px-6">
-                        @if (session('success'))
-                            <div class="bg-green-200 px-4 py-2 rounded-md text-green-800">
-                                {{ session('success') }}
-                            </div>
-                        @endif
                         @if (session('error'))
-                            <div class="bg-green-200 px-4 py-2 rounded-md text-green-800">
-                                {{ session('error') }}
+                            <div id="successMessage"
+                                class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
+                                <div class="relative w-full max-w-screen-md rounded-lg bg-red-500 px-4 py-4 text-base text-white"
+                                    data-dismissible="alert">
+                                    <div class="absolute top-4 left-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                            aria-hidden="true" class="mt-px h-6 w-6">
+                                            <path fill-rule="evenodd"
+                                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="ml-8 mr-12">
+                                        <h5
+                                            class="block font-sans text-xl font-semibold leading-snug tracking-normal text-white antialiased">
+                                            Gagal
+                                        </h5>
+                                        <p
+                                            class="mt-2 block font-sans text-base font-normal leading-relaxed text-white antialiased">
+                                            {{ session('error') }}
+                                        </p>
+                                    </div>
+                                    <div data-dismissible-target="alert" data-ripple-dark="true"
+                                        class="absolute top-3 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20">
+                                        <div role="button" class="w-max rounded-lg p-1">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M6 18L18 6M6 6l12 12">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         @endif
                         <div class="flex justify-between items-center pb-3">
-                            <p class="text-2xl font-bold">Tambah kategori produk</p>
+                            <p class="text-2xl font-bold">Tambah jenis hewan</p>
                         </div>
                         <form class=""
-                            action="{{ route('admin.typelivestock.update', $categorylivestock->slug_typelivestocks) }}"
+                            action="{{ route('admin.typelivestock.update', $typelivestocks->slug_typelivestocks) }}"
                             method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="mb-5">
                                 <label for="nama_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
-                                    Masukkan nama kategori product
+                                    Masukkan nama jenis hewan
                                 </label>
-                                <input value="{{ $categorylivestock->nama_jenis_hewan }}" type="text"
-                                    name="nama_jenis_hewan" id="nama_jenis_hewan"
-                                    placeholder="Masukkan nama jenis hewan"
+                                <input value="{{ $typelivestocks->nama_jenis_hewan }}" type="text"
+                                    name="nama_jenis_hewan" id="nama_jenis_hewan" placeholder="Masukkan nama jenis hewan"
                                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                             </div>
                             @error('nama_jenis_hewan')
                                 <span class="text-red-500">{{ $message }}</span>
                             @enderror
                             <div class="mb-6 pt-4">
-                                <label for="deskripsi_jenis_hewan"
-                                    class="mb-3 block text-base font-medium text-[#07074D]">
+                                <label for="deskripsi_jenis_hewan" class="mb-3 block text-base font-medium text-[#07074D]">
                                     Masukkan deskripsi kategori product
                                 </label>
-                                <textarea name="deskripsi_jenis_hewan" id="deskripsi_jenis_hewan"
-                                    placeholder="Masukkan deskripsi kategori product"
-                                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">{{ $categorylivestock->deskripsi_jenis_hewan }}</textarea>
+                                <textarea name="deskripsi_jenis_hewan" id="deskripsi_jenis_hewan" placeholder="Masukkan deskripsi kategori product"
+                                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">{{ $typelivestocks->deskripsi_jenis_hewan }}</textarea>
                             </div>
                             @error('deskripsi_jenis_hewan')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
+                            <div class="mb-5">
+                                <label for="id_category_livestocks" class="mb-3 block text-base font-medium text-[#07074D]">
+                                    Pilih nama jenis hewan
+                                </label>
+                                <div>
+                                    <select name="id_category_livestocks" id="id_category_livestocks"
+                                        class="id_category_livestocks border p-2 rounded w-full">
+                                        <option value="">Pilih jenis hewan</option>
+                                        @foreach ($categorylivestocks as $categorylivestock)
+                                            <option value="{{ $categorylivestock->id }}"
+                                                {{ $categorylivestock->id == $typelivestocks->id_category_livestocks ? 'selected' : '' }}>
+                                                {{ $categorylivestock->nama_kategori_hewan }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            @error('id_category_livestocks')
                                 <span class="text-red-500">{{ $message }}</span>
                             @enderror
                             <div class="mb-6 pt-4">
@@ -55,8 +98,8 @@
                                     Upload gambar
                                 </label>
                                 <div class="mb-8">
-                                    <input type="file" name="gambar_livestocks" id="gambar_livestocks"
-                                        class="sr-only" onchange="validateImage(this)" />
+                                    <input type="file" name="gambar_livestocks" id="gambar_livestocks" class="sr-only"
+                                        onchange="validateImage(this)" />
                                     <label for="gambar_livestocks"
                                         class="relative flex min-h-[200px] items-center justify-center rounded-md border border-dashed border-[#e0e0e0] p-12 text-center">
                                         <div>
@@ -93,10 +136,10 @@
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @push('js')
-        @if ($categorylivestock->gambar_livestocks && !$errors->has('gambar_livestocks'))
+        @if ($typelivestocks->gambar_livestocks && !$errors->has('gambar_livestocks'))
             <script>
                 $(document).ready(function() {
-                    var fileName = "{{ $categorylivestock->gambar_livestocks }}";
+                    var fileName = "{{ $typelivestocks->gambar_livestocks }}";
                     $('#image-preview').html(`
                 <div class="mb-5 rounded-md border border-[#e0e0e0] py-4 px-8">
                     <div class="flex items-center justify-between">
@@ -156,18 +199,14 @@
                     reader.readAsDataURL(file);
                 }
             }
+            document.addEventListener('DOMContentLoaded', function() {
+                var successMessage = document.getElementById('successMessage');
 
-            function submitForm() {
-                var fileInput = document.getElementById('gambar_livestocks');
-                var file = fileInput.files[0];
-                var fileType = file.type.split('/').shift();
-
-                if (fileType !== 'image') {
-                    document.getElementById('file-error').innerHTML = 'Gambar kategori produk harus berupa file gambar.';
-                } else {
-                    document.getElementById('category-form').submit();
-                }
-            }
+                // Sembunyikan pesan sukses saat diklik
+                successMessage.addEventListener('click', function() {
+                    successMessage.style.display = 'none';
+                });
+            });
         </script>
     @endpush
 @endsection

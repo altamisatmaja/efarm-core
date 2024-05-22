@@ -137,17 +137,6 @@
                 }
             }
 
-            function submitForm() {
-                var fileInput = document.getElementById('gambar_kategori_hewan');
-                var file = fileInput.files[0];
-                var fileType = file.type.split('/').shift();
-
-                if (fileType !== 'image') {
-                    document.getElementById('file-error').innerHTML = 'Gambar kategori produk harus berupa file gambar.';
-                } else {
-                    document.getElementById('category-form').submit();
-                }
-            }
         </script>
     @endpush
 @endsection
