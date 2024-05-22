@@ -10,7 +10,7 @@
                 <div class="rounded-t mb-0 px-4 py-3 border-0">
                     <div class="flex flex-wrap items-center">
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                            <h3 class="font-semibold text-base text-blueGray-700">Product</h3>
+                            <h3 class="font-semibold text-xl  text-textbase">Product</h3>
                         </div>
                     </div>
                 </div>
@@ -40,11 +40,6 @@
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
-                                        Diskon
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
                                         Gambar
                                     </th>
 
@@ -56,11 +51,6 @@
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
                                         Jenis Hewan
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
-                                        Deskripsi
                                     </th>
 
                                     <th scope="col"
@@ -116,12 +106,6 @@
                                                 <h2 class="text-sm font-normal">@currency($products->harga_product)</h2>
                                             </div>
                                         </td>
-                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                            <div
-                                                class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60">
-                                                <h2 class="text-sm font-normal">@currency($products->diskon)</h2>
-                                            </div>
-                                        </td>
                                         <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap align-middle">
                                             <div class="flex gap-1 flex-col items-center justify-center">
                                                 <img class="object-cover w-14 h-14 rounded-lg"
@@ -138,12 +122,9 @@
                                                 {{ $typelivestock->nama_jenis_hewan }}
                                             @endforeach
                                         </td>
-                                        <td class="px-4 py-4 text-sm text-gray-500">
-                                            {{ $products->deskripsi_product }}
-                                        </td>
                                         <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                            @foreach ($products->gender_livestocks as $gender_livestockss)
-                                                {{ $gender_livestockss->nama_gender }}
+                                            @foreach ($products->gender_livestocks as $gender_livestock)
+                                                {{ $gender_livestock->nama_gender }}
                                             @endforeach
                                         </td>
                                         <td class="px-4 py-4 text-sm text-gray-500">
@@ -161,12 +142,14 @@
                                                 @foreach ($products->partner as $partner)
                                                     <img class="object-cover w-8 h-8 rounded-lg"
                                                         src="/uploads/{{ $partner->foto_profil }}" alt="">
-                                                @endforeach
+
                                                 <div>
                                                     <p
                                                         class="text-xs font-normal align-middle text-center items-center text-gray-600">
+                                                        {{ $partner->nama_partner }}
                                                     </p>
                                                 </div>
+                                                @endforeach
                                             </div>
                                         </td>
                                         <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
@@ -193,42 +176,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="flex items-center justify-between mt-6">
-            <a href="#"
-                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-                </svg>
-
-                <span>
-                    previous
-                </span>
-            </a>
-
-            <div class="items-center hidden md:flex gap-x-3">
-                <a href="#" class="px-2 py-1 text-sm text-blue-500 rounded-md ">1</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">2</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">3</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">...</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">12</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">13</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">14</a>
-            </div>
-
-            <a href="#"
-                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
-                <span>
-                    Next
-                </span>
-
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                </svg>
-            </a>
         </div>
     </section>
 
