@@ -10,6 +10,7 @@ class ReviewAdminController extends Controller
 {
     public function list(){
         $review = Review::with('products', 'user')->get();
+        // dd($review);
 
         return view('admin.pages.review.list', compact('review'));
     }
@@ -20,7 +21,7 @@ class ReviewAdminController extends Controller
 
             if ($review){
                 $review->delete();
-                return redirect()->route('admin.review.destroy')->with('success', 'Data berhasil dihapus');
+                return redirect()->back()->with('success', 'Data berhasil dihapus');
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan:'. $e->getMessage());
