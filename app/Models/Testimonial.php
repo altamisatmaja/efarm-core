@@ -21,6 +21,16 @@ class Testimonial extends Model
         'slug_testimonial'
     ];
 
+    protected static function boot()
+{
+    parent::boot();
+
+    static::deleting(function ($testimonial) {
+        $testimonial->testimonial_reply()->delete();
+    });
+}
+
+
     public function product(){
         return $this->belongsTo(Product::class, 'id_products', 'id');
     }

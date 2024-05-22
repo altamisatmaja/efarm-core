@@ -40,11 +40,15 @@ class TestimonialAdminController extends Controller
             $product = Product::where('id', $testimonials->id_products)->first();
             $user = User::where('id', $testimonials->id_user)->first();
             $reviews = Review::where('id_product', $product->id)->get();
+
             $total_rating = 0;
+            // $ratings = 0;
             foreach ($reviews as $review) {
                 $total_rating += $review->rating;
+                $ratings = $review->rating;
             }
 
+            // dd($ratings);
             $total_reviews = count($reviews);
 
             if ($total_reviews != 0) {

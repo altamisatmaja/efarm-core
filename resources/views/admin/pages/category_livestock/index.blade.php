@@ -128,7 +128,7 @@
 
                     <div class="flex flex-wrap items-center">
                         <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                            <h3 class="font-semibold text-xl">Kategori jenis hewan</h3>
+                            <h3 class="font-semibold text-textbase text-xl">Kategori jenis hewan</h3>
                         </div>
                         <a href="{{ route('admin.categorylivestock.add') }}">
                             <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
