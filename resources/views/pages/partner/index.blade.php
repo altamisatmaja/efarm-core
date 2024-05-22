@@ -503,7 +503,7 @@
             <div class="mx-auto max-w-7xl ">
                 <div class="text-center">
                     <p class="text-lg font-semibold text-textbase">Cara menjadi Partner eFarm?</p>
-                    <h2 class="mt-6 text-6xl font-bold tracking-tight text-textbase sm:text-4xl lg:text-5xl">Hanya 4 langkah, <span class="text-primarybase">tanpa ribet</span> 
+                    <h2 class="mt-6 text-6xl font-bold tracking-tight text-textbase sm:text-4xl lg:text-5xl">Hanya 4 langkah, <span class="text-primarybase">tanpa ribet</span>
                     </h2>
                     <p class="mx-auto mt-4 max-w-2xl text-lg font-normal text-textbase lg:text-xl lg:leading-8">
                         Isi formulir, validasi, jadi Partner, mulai berjualan 🤩
@@ -612,7 +612,7 @@
                     <button
                         class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
                         aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span class="flex-1 text-textbase text-base-content">Bagaimana melakukan pendaftaran?</span>
+                        <span class="flex-1 text-textbase text-base-content">Bagaimana cara memesan hewan ternak di platform ini?</span>
                         <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect y="7" width="16" height="2" rx="1"
@@ -625,9 +625,7 @@
                     <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
                         style="transition: max-height 0.3s ease-in-out 0s;">
                         <div class="pb-5 leading-relaxed">
-                            <div class="space-y-2 leading-relaxed">We prioritize the security of your insurance
-                                information. We use advanced encryption and strict data protection measures to ensure
-                                your data is safe and confidential.</div>
+                            <div class="space-y-2 leading-relaxed">Pengguna dapat memesan hewan ternak melalui platform kami dengan cara mendaftar sebagai pengguna, memilih hewan yang diinginkan, dan melakukan pembayaran melalui fitur payment secara online</div>
                         </div>
                     </div>
                 </li>
@@ -635,7 +633,8 @@
                     <button
                         class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
                         aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span class="flex-1 text-textbase text-base-content">Bagaiamana sistem keuntunga?</span>
+                        <span class="flex-1 text-textbase text-base-content">Apakah ada jaminan kesehatan dan kebersihan hewan yang dibeli?
+                        </span>
                         <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect y="7" width="16" height="2" rx="1"
@@ -648,8 +647,7 @@
                     <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
                         style="transition: max-height 0.3s ease-in-out 0s;">
                         <div class="pb-5 leading-relaxed">
-                            <div class="space-y-2 leading-relaxed">Our insurance plans are customizable. You can tailor
-                                your coverage to meet your specific needs and budget.</div>
+                            <div class="space-y-2 leading-relaxed">Kami memastikan bahwa semua hewan yang kami jual telah melewati proses pemeriksaan kesehatan yang ketat oleh tenaga profesional. Kami juga memastikan kebersihan dan kesejahteraan hewan sebelum pengiriman</div>
                         </div>
                     </div>
                 </li>
@@ -657,7 +655,7 @@
                     <button
                         class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
                         aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <span class="flex-1 text-textbase text-base-content">Bagaimana proses pengiriman hewan yang telah pengguna pesan?</span>
                         <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect y="7" width="16" height="2" rx="1"
@@ -670,9 +668,7 @@
                     <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
                         style="transition: max-height 0.3s ease-in-out 0s;">
                         <div class="pb-5 leading-relaxed">
-                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
-                                claims, depending on the policy terms and conditions. Please refer to your policy
-                                documents for details.</div>
+                            <div class="space-y-2 leading-relaxed">Setelah pembayaran dikonfirmasi, partner akan mengatur pengiriman hewan tersebut sesuai dengan permintaan Anda. Kami bekerja sama dengan penyedia jasa pengiriman terpercaya untuk memastikan hewan tiba dengan aman dan tepat waktu</div>
                         </div>
                     </div>
                 </li>
@@ -680,7 +676,8 @@
                     <button
                         class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
                         aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <span class="flex-1 text-textbase text-base-content">Bagaimana saya bisa menjadi mitra atau penjual di platform ini?
+                        </span>
                         <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect y="7" width="16" height="2" rx="1"
@@ -693,9 +690,7 @@
                     <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
                         style="transition: max-height 0.3s ease-in-out 0s;">
                         <div class="pb-5 leading-relaxed">
-                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
-                                claims, depending on the policy terms and conditions. Please refer to your policy
-                                documents for details.</div>
+                            <div class="space-y-2 leading-relaxed">Untuk menjadi mitra atau penjual di platform kami, Anda dapat mendaftar melalui fitur <span class="font-semibold text-primarybase"><a href="{{ route('partner.submission') }}">Daftar sebagai Partner</a></span> di website kami. Tim kami akan menghubungi Anda untuk proses selanjutnya</div>
                         </div>
                     </div>
                 </li>
@@ -703,7 +698,7 @@
                     <button
                         class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
                         aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <span class="flex-1 text-textbase text-base-content">Apakah ada persyaratan khusus untuk menjadi mitra atau penjual?                        </span>
                         <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect y="7" width="16" height="2" rx="1"
@@ -716,9 +711,7 @@
                     <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
                         style="transition: max-height 0.3s ease-in-out 0s;">
                         <div class="pb-5 leading-relaxed">
-                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
-                                claims, depending on the policy terms and conditions. Please refer to your policy
-                                documents for details.</div>
+                            <div class="space-y-2 leading-relaxed">Kami meminta calon mitra atau penjual untuk memenuhi persyaratan tertentu, termasuk memiliki izin usaha yang sah dan mematuhi standar kesejahteraan hewan yang ditetapkan</div>
                         </div>
                     </div>
                 </li>
@@ -726,7 +719,7 @@
                     <button
                         class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
                         aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <span class="flex-1 text-textbase text-base-content">Bagaimana cara saya mengelola dan memperbarui produk yang saya jual di platform ini?</span>
                         <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect y="7" width="16" height="2" rx="1"
@@ -739,9 +732,7 @@
                     <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
                         style="transition: max-height 0.3s ease-in-out 0s;">
                         <div class="pb-5 leading-relaxed">
-                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
-                                claims, depending on the policy terms and conditions. Please refer to your policy
-                                documents for details.</div>
+                            <div class="space-y-2 leading-relaxed">Setelah Anda menjadi mitra atau penjual, Anda akan memiliki akses ke dashboard khusus di mana Anda dapat mengelola inventaris produk Anda, termasuk pembaruan harga, stok, dan deskripsi produk</div>
                         </div>
                     </div>
                 </li>
@@ -749,7 +740,7 @@
                     <button
                         class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
                         aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <span class="flex-1 text-textbase text-base-content">Apa manfaat menjadi mitra atau partner di platform ini?                        </span>
                         <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect y="7" width="16" height="2" rx="1"
@@ -762,9 +753,7 @@
                     <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
                         style="transition: max-height 0.3s ease-in-out 0s;">
                         <div class="pb-5 leading-relaxed">
-                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
-                                claims, depending on the policy terms and conditions. Please refer to your policy
-                                documents for details.</div>
+                            <div class="space-y-2 leading-relaxed">Sebagai mitra atau partner, Anda akan mendapatkan akses ke pasar yang lebih luas dan mendapat eksposur lebih besar bagi produk Anda. Selain itu, kami juga menyediakan dukungan pemasaran dan promosi untuk membantu meningkatkan penjualan Anda</div>
                         </div>
                     </div>
                 </li>
@@ -772,7 +761,7 @@
                     <button
                         class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
                         aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <span class="flex-1 text-textbase text-base-content">Apakah ada biaya atau komisi yang perlu saya bayarkan sebagai mitra atau partner?</span>
                         <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect y="7" width="16" height="2" rx="1"
@@ -785,9 +774,8 @@
                     <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
                         style="transition: max-height 0.3s ease-in-out 0s;">
                         <div class="pb-5 leading-relaxed">
-                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
-                                claims, depending on the policy terms and conditions. Please refer to your policy
-                                documents for details.</div>
+                            <div class="space-y-2 leading-relaxed">
+                                Kami tidak mengenakan biaya pendaftaran atau biaya bulanan kepada mitra atau partner kami. Kami mengambil komisi yang wajar dari setiap transaksi yang berhasil dilakukan melalui platform kami</div>
                         </div>
                     </div>
                 </li>
@@ -795,7 +783,7 @@
                     <button
                         class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
                         aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <span class="flex-1 text-textbase text-base-content">Apakah saya bisa menentukan harga sendiri untuk produk yang saya jual di platform ini?</span>
                         <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect y="7" width="16" height="2" rx="1"
@@ -808,9 +796,7 @@
                     <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
                         style="transition: max-height 0.3s ease-in-out 0s;">
                         <div class="pb-5 leading-relaxed">
-                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
-                                claims, depending on the policy terms and conditions. Please refer to your policy
-                                documents for details.</div>
+                            <div class="space-y-2 leading-relaxed">Ya, sebagai mitra atau partner, Anda memiliki kendali penuh atas penetapan harga produk Anda. Namun, kami mendorong Anda untuk menetapkan harga yang bersaing dan sesuai dengan pasar</div>
                         </div>
                     </div>
                 </li>
@@ -818,7 +804,7 @@
                     <button
                         class="relative flex gap-2 items-center w-full py-5 text-base font-semibold text-left border-t md:text-lg border-base-content/10"
                         aria-expanded="false" onclick="toggleFAQ(this)">
-                        <span class="flex-1 text-textbase text-base-content">Apakah eFarm aman?</span>
+                        <span class="flex-1 text-textbase text-base-content">Apakah saya bisa menjadi mitra atau partner di platform ini jika saya berlokasi di luar wilayah operasional saat ini?</span>
                         <svg class="flex-shrink-0 w-4 h-4 ml-auto fill-current" viewBox="0 0 16 16"
                             xmlns="http://www.w3.org/2000/svg">
                             <rect y="7" width="16" height="2" rx="1"
@@ -831,9 +817,7 @@
                     <div class="transition-all duration-300 ease-in-out max-h-0 overflow-hidden"
                         style="transition: max-height 0.3s ease-in-out 0s;">
                         <div class="pb-5 leading-relaxed">
-                            <div class="space-y-2 leading-relaxed">There may be a waiting period for certain insurance
-                                claims, depending on the policy terms and conditions. Please refer to your policy
-                                documents for details.</div>
+                            <div class="space-y-2 leading-relaxed">Kami terbuka untuk bekerja sama dengan mitra di berbagai wilayah. Jika Anda berlokasi di luar wilayah operasional saat ini, silakan hubungi tim kami untuk mendiskusikan kemungkinan kerja sama dan pengiriman produk ke wilayah Anda</div>
                         </div>
                     </div>
                 </li>

@@ -103,7 +103,7 @@
     <div class=" bg-white">
         <div class="max-w-7xl px-4 mx-auto text-black">
             <div class="text-center flex justify-between items-center">
-                <h3 class="text-xl font-semibold text-primarybase">Media Sosial</h3>
+                <h3 class="text-lg font-medium text-primarybase">Media Sosial</h3>
                 <div class="flex justify-center">
                     <div class="flex items-center w-auto rounded-lg px-4 py-2">
                         <div class="flex space-x-6">

@@ -77,7 +77,7 @@
                         <div style="background-image: url('{{ asset('images/hero-satu.png') }}')" class=" relative lg:w-2/3 rounded-xl bg-secondary-lite bg-cover p-8 md:p-16">
                             <p class="max-w-sm text-textbase text-3xl md:text-4xl font-semibold">Nikmati pembelian kambing tanpa ribet, cukup scan, dapat kambing</p>
                             <p class="max-w-xs pr-10 text-textbase font-semibold mt-8">Cari kambing terdekat Anda dan lakukan pembelian!</p>
-                            <a href="" class="mt-20 flex bg-primarybase w-1/4 items-center justify-center text-white font-semibold py-2 rounded-md">Beli
+                            <a href="{{ route('homepage.market.nearest') }}" class="mt-20 flex bg-primarybase w-1/4 items-center justify-center text-white font-semibold py-2 rounded-md">Beli
                                 sekarang</a>
                             <div class="absolute bottom-8 right-8 md:bottom-5 md:right-5 flex">
 
@@ -89,7 +89,7 @@
                             <div class="max-w-sm">
                                 <p class="text-3xl md:text-4xl text-textbase font-bold">Hewan terdekat Anda</p>
                                 <p class="mt-8 font-semibold text-textbase ">Untuk hewan qurban<br />Kambing atau sapi</p>
-                                <a href="" class="absolute bottom-8 bg-primarybase text-white font-semibold px-8 py-2 rounded">Beli sekarang</a>
+                                <a href="{{ route('homepage.market.nearest') }}" class="absolute bottom-8 bg-primarybase text-white font-semibold px-8 py-2 rounded">Beli sekarang</a>
                             </div>
                         </div>
                     </div>
