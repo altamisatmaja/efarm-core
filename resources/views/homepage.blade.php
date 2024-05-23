@@ -31,7 +31,7 @@
                 style="background-image: url('{{ asset('images/herofixed.png') }}');">
                 <span id="blackOverlay" class="w-full h-full absolute opacity-25 bg-black"></span>
             </div>
-            
+
             <div  class="container px-6 py-10 h-screen mx-auto md:py-5">
                 <div class="flex flex-col space-y-6 md:flex-row md:space-x-3">
                     <div class="w-full">
@@ -40,8 +40,7 @@
                                 class="relative flex mt-10 flex-col bg-sekunderbase ring-1 ring-primarybase w-full mb-4 rounded-lg">
                                 <div class="bg-sekunderbase rounded-lg">
                                     <div class="py-8 px-10">
-                                        <h1 class="text-4xl font-bold tracking-tight text-textbase sm:text-6xl">Menyediakan Layanan
-                                            Sesuai Kebutuhan Anda</h1>
+                                        <h1 class="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-textbase pr-3 text-4xl font-bold tracking-tight text-textbase sm:text-6xl">Beli hewan ternak dari rumah</h1>
                                         <p class="mt-3 text-xl leading-8 text-textbase">Kelola peternakan, jual hewan ternak, beli
                                             hewan
                                             ternak dengan berbagai layanan yang tersedia di eFarm</p>
@@ -53,7 +52,7 @@
                                             <a href="{{ route('homepage.partner') }}"
                                                 class="rounded-md bg-white cursor-pointer ring-1 ring-primarybase px-5 py-2.5 text-sm font-semibold leading-6 text-primarybase">Jadi
                                                 Partner</a>
-                
+
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +61,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
 
 

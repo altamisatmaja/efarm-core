@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\DashboardAdminController;
 use App\Http\Controllers\Admin\OrderProductAdminController;
 use App\Http\Controllers\Admin\PartnerAdminController;
 use App\Http\Controllers\Admin\ProductAdminController;
+use App\Http\Controllers\Admin\ReportAdminController;
 use App\Http\Controllers\Admin\ReviewAdminController;
 use App\Http\Controllers\Admin\TestimonialAdminController;
 use App\Http\Controllers\Admin\TypeLivestockAdminController;
@@ -306,7 +307,8 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     /**
      * Route for laporan admin
      */
-    Route::get('admin/report', [ReportController::class, 'index'])->name('admin.report.list');
+    Route::get('admin/report', [ReportAdminController::class, 'index'])->name('admin.report.list');
+    Route::post('admin/report', [ReportAdminController::class, 'range'])->name('admin.report.range');
 
     /**
      * Route for payment admin
