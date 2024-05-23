@@ -3,8 +3,8 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
-use Closure;
 use Illuminate\Support\Facades\Auth;
+use Closure;
 
 class Role
 {
@@ -22,24 +22,27 @@ class Role
                 return $next($request);
             }
         }
-    
+
         $currentUserRole = Auth::check() ? Auth::user()->user_role : null;
-    
+
         $redirectTo = '';
-    
+
         switch ($currentUserRole) {
             case 'Admin':
                 $redirectTo = 'admin.login';
+                $message = 'Anda bukan Admin!';
                 break;
             case 'Partner':
                 $redirectTo = 'partner.login';
+                $message = 'Anda bukan Partner!';
                 break;
             default:
                 $redirectTo = 'login';
+                $message = 'Anda bukan pelanggan!';
                 break;
         }
-    
+
         Auth::logout();
-        return redirect()->route($redirectTo)->with('status', 'You are not authorized to access this page.');    
+        return redirect()->route($redirectTo)->with('status', $message);
     }
 }

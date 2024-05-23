@@ -41,17 +41,6 @@ class PartnerAdminController extends Controller
         return view('admin.pages.partner.verified', compact('partner'));
     }
 
-    /**
-     * Handling status for verif
-     */
-    public function handle_status(Request $request ,$id){
-        try {
-            $partner = Partner::findOrFail($id);
-            dd($partner);
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Terjadi kesalahan:'. $e->getMessage());
-        }
-    }
 
     public function nonactive(Request $request, $id){
         try {
@@ -79,7 +68,7 @@ class PartnerAdminController extends Controller
                 'status' => 'Sudah diverifikasi',
             ]);
 
-            return redirect()->back()->with('success', 'Partner telah diverifikasi, silahkan menghubungi partner');
+            return redirect()->back()->with('success', 'Akun berhasil diverifikasi');
         } else {
             return redirect()->back()->with('error', 'Akun gagal diverifikasi');
         }

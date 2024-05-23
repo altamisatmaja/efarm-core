@@ -18,7 +18,7 @@
             <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
                 <img class="w-56 mr-2" src="{{ asset('logo.svg') }}" alt="logo">
             </a>
-            @if ($errors->any())
+            @if (session('status'))
                 <div
                     class='flex items-center text-white w-full sm:max-w-md bg-red-400 shadow-md rounded-lg overflow-hidden mx-auto mb-7'>
                     <div class='w-10 border-r px-2'>
@@ -32,7 +32,7 @@
 
                     <div class='flex items-center px-2 py-3'>
                         <div class='mx-3'>
-                            <p>{{ $errors->first() }}</p>
+                            <p>{{ session('status') }}</p>
                         </div>
                     </div>
                 </div>
@@ -47,26 +47,26 @@
                     <form class="form-login user space-y-4 md:space-y-6" action="{{ route('admin.login') }}" method="POST">
                         @csrf
                         <div>
-                            <label for="email" class="block mb-2 text-sm font-medium text-textbase">Email
+                            <label for="email" class="block mb-2 text-lg font-medium text-textbase">Email
                                 anda</label>
                             <input type="email" name="email" id="email"
-                                class="email bg-gray-50 border border-gray-300 text-textbase sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 -gray-600"
+                                class="email bg-gray-50 border border-gray-300 text-textbase sm:text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 -gray-600"
                                 placeholder="pengguna@gmail.com" required="">
                         </div>
                         @error('email')
-                            <div class="alert alert-danger">{{ $message }}</div>
+                            <div class="text-red-500 font-semibold text-lg">{{ $message }}</div>
                         @enderror
 
                         <div>
-                            <label for="password" class="block mb-2 text-sm font-medium text-textbase">Password</label>
+                            <label for="password" class="block mb-2 text-lg font-medium text-textbase">Password</label>
                             <input type="password" name="password" id="password" placeholder="••••••••" required=""
-                                class="password bg-gray-50 border border-gray-300 text-textbase sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 -gray-600">
+                                class="password bg-gray-50 border border-gray-300 text-textbase sm:text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 -gray-600">
                         </div>
                         @error('password')
-                            <div class="alert alert-danger">{{ $message }}</div>
+                            <div class="text-red-500 font-semibold text-lg">{{ $message }}</div>
                         @enderror
                         <button type="submit"
-                            class="w-full text-white bg-primarybase hover:bg-primarybase focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masuk</button>
+                            class="w-full text-white bg-primarybase hover:bg-primarybase focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-lg px-5 py-2.5 text-center">Masuk</button>
                     </form>
                 </div>
             </div>

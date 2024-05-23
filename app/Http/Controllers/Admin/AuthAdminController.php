@@ -3,18 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthAdminController extends Controller
 {
     public function index()
     {
+        if (Auth::check() && Auth::user()->role == 'Admin') {
+            return redirect()->route('admin.dashboard');
+        }
+
         return view('admin.auth.login');
     }
-    
 
     /**
      * Handle an incoming authentication request.
@@ -22,33 +25,26 @@ class AuthAdminController extends Controller
      * @param  \App\Http\Requests\Auth\LoginRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
+    public function store(LoginRequest $request)
+    {
+        $credentials = $request->only('email', 'password');
 
-    public function store(LoginRequest $request){
-        $request->authenticate();
-        $request->session()->regenerate();
-    
-        $redirectTo = '';
-    
-        if(Auth::check()) {
-            switch (Auth::user()->user_role) {
-                case 'Admin':
-                    $redirectTo = 'admin.dashboard';
-                    break;
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            if (Auth::user()->user_role == 'Admin') {
+                return redirect()->route('admin.dashboard');
+            } else {
+                Auth::guard('web')->logout();
+                return redirect()->route('admin.login')->with('status', 'Anda bukan admin!');
             }
-        } else {
-            $loginRoute = '';
-            switch ($request->input('user_role')) {
-                case 'Admin':
-                    $loginRoute = 'admin.login';
-                    break;
-            }
-            return redirect()->route($loginRoute)->with('status', 'Invalid credentials.');
         }
-    
-        return redirect()->route($redirectTo);
+
+        return redirect()->route('admin.login')->with([
+            'status' => 'Email atau password anda salah!',
+        ]);
     }
-    
-     /**
+
+    /**
      * Destroy an authenticated session.
      *
      * @param  \Illuminate\Http\Request  $request
