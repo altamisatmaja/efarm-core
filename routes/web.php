@@ -20,6 +20,7 @@ use App\Http\Controllers\Customer\TestimonialCustomerController;
 use App\Http\Controllers\Partner\ProductPartnerController;
 use App\Http\Controllers\Partner\ReportPartnerController;
 use App\Http\Controllers\Partner\TestimonialReplyPartnerController;
+use App\Http\Controllers\PaymentAdminController;
 use App\Http\Controllers\Web\AIController;
 use App\Http\Controllers\Api\CategoryLivestockController;
 use App\Http\Controllers\Api\CategoryProductController;
@@ -313,7 +314,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     /**
      * Route for payment admin
      */
-    Route::get('admin/payment', [PaymentController::class, 'list'])->name('admin.payment.list');
+    // Route::get('admin/payment', [PaymentAdminController::class, 'list'])->name('admin.payment.list');
 
     /**
      * Route for account admin

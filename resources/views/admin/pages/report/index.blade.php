@@ -9,7 +9,7 @@
 @section('title', 'Dashboard | Laporan')
 
 @section('content')
-    <section class="container mx-auto px-4 pb-5 w-full">
+    <section class="container mx-auto px-4 pb-5g w-full">
         <div class="flex flex-col">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -17,27 +17,24 @@
                     <h2 class="font-medium mt-5 text-textbase text-xl">Silahkan pilih jangkauan hari</h2>
                     <form action="{{ route('admin.report.range') }}" method="POST">
                         @csrf
-                        <div class="flex flex-wrap w-full">
-                            <div class="pr-5">
-                                <label for="dari" class="text-lg mt-3 font-medium text-textbase block mb-2">Dari</label>
-                                <input class="rounded-lg" type="date" name="dari" id="dari"
+                        <div class="grid gap-6 mb-6 lg:grid-cols-4 mt-2">
+                            <div>
+                                <label for="dari" class="block mb-2 text-lg font-medium text-textbase ">Dari</label>
+                                <input class="rounded-lg w-full" type="date" name="dari" id="dari"
                                     value="{{ request()->input('dari') }}">
                             </div>
-                            <div class="pr-5">
-                                <label for="sampai"
-                                    class="text-lg mt-3 font-medium text-textbase block mb-2">Sampai</label>
-                                <input class="rounded-lg" type="date" name="sampai" id="sampai"
+                            <div>
+                                <label for="last_name" class="block mb-2 text-lg font-medium text-textbase ">Last name</label>
+                                <input class="rounded-lg w-full" type="date" name="sampai" id="sampai"
                                     value="{{ request()->input('sampai') }}">
                             </div>
-                            <div class="pr-5">
-                                <label hidden for="submit"
-                                    class="text-lg mt-3 invisible font-medium text-textbase block mb-2">Sampai</label>
+                            <div>
+                                <label for="submit" class="block mb-2 text-lg font-medium text-textbase invisible">Cari</label>
                                 <button type="submit"
                                     class="justify-center w-full flex text-lg px-10 font-semibold bg-primarybase border border-1 border-primarybase text-white py-1.5 rounded-lg">Cari</button>
                             </div>
-                            <div class="pr-5">
-                                <label hidden for="submit"
-                                    class="text-lg mt-3 invisible font-medium text-textbase block mb-2">Sampai</label>
+                            <div>
+                                <label for="button" class="block mb-2 text-lg font-medium text-textbase invisible">Bersihkan</label>
                                 <a href="{{ route('admin.report.list') }}">
                                     <button type="button"
                                         class="justify-center w-full flex text-lg px-10 font-semibold bg-white border-1 border border-primarybase text-primarybase py-1.5 rounded-lg">Bersihkan</button>

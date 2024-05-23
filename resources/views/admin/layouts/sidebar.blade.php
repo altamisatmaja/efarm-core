@@ -178,18 +178,17 @@
                             <span class="ml-3 flex-1 whitespace-nowrap">Laporan</span>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('admin.payment.list') }}"
                             class="text-base text-gray-900 font-normal rounded-lg hover:bg-primarybase hover:text-white flex items-center p-2 group ">
-                            <svg class="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-white transition duration-75"
-                                fill="currentColor" xmlns="http://www.w3.org/2000/svg" height="24"
-                                viewBox="0 -960 960 960" width="24">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                width="24px" fill="currentColor" class="text-gray-500 group-hover:text-white">
                                 <path
-                                    d="M320-600q17 0 28.5-11.5T360-640q0-17-11.5-28.5T320-680q-17 0-28.5 11.5T280-640q0 17 11.5 28.5T320-600Zm0 160q17 0 28.5-11.5T360-480q0-17-11.5-28.5T320-520q-17 0-28.5 11.5T280-480q0 17 11.5 28.5T320-440Zm0 160q17 0 28.5-11.5T360-320q0-17-11.5-28.5T320-360q-17 0-28.5 11.5T280-320q0 17 11.5 28.5T320-280ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h407q16 0 30.5 6t25.5 17l154 154q11 11 17 25.5t6 30.5v407q0 33-23.5 56.5T760-120H200Zm0-80h560v-400H640q-17 0-28.5-11.5T600-640v-120H200v560Zm0-560v160-160 560-560Z" />
+                                d="M560-440q-50 0-85-35t-35-85q0-50 35-85t85-35q50 0 85 35t35 85q0 50-35 85t-85 35ZM280-320q-33 0-56.5-23.5T200-400v-320q0-33 23.5-56.5T280-800h560q33 0 56.5 23.5T920-720v320q0 33-23.5 56.5T840-320H280Zm80-80h400q0-33 23.5-56.5T840-480v-160q-33 0-56.5-23.5T760-720H360q0 33-23.5 56.5T280-640v160q33 0 56.5 23.5T360-400Zm440 240H120q-33 0-56.5-23.5T40-240v-440h80v440h680v80ZM280-400v-320 320Z" />
                             </svg>
                             <span class="ml-3 flex-1 whitespace-nowrap">Pembayaran</span>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
                 <div class="space-y-2 pt-2">
                     <a href="{{ route('admin.logout') }}"
