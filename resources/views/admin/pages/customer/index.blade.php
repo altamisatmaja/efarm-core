@@ -8,7 +8,10 @@
         <div class="flex flex-col">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-                    @if (session('error'))
+                    <div class="relative w-full mb-5 max-w-full flex-grow flex-1">
+                        <h3 class="font-semibold text-textbase text-xl">Daftar pelanggan</h3>
+                    </div>
+                    @if (session('success'))
                         <div id="successMessage"
                             class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
                             <div class="relative w-full max-w-screen-md rounded-lg bg-green-500 px-4 py-4 text-base text-white"
@@ -25,6 +28,43 @@
                                     <h5
                                         class="block font-sans text-xl font-semibold leading-snug tracking-normal text-white antialiased">
                                         Berhasil
+                                    </h5>
+                                    <p
+                                        class="mt-2 block font-sans text-base font-normal leading-relaxed text-white antialiased">
+                                        {{ session('success') }}
+                                    </p>
+                                </div>
+                                <div data-dismissible-target="alert" data-ripple-dark="true"
+                                    class="absolute top-3 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20">
+                                    <div role="button" class="w-max rounded-lg p-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
+                    @if (session('error'))
+                        <div id="successMessage"
+                            class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
+                            <div class="relative w-full max-w-screen-md rounded-lg bg-red-500 px-4 py-4 text-base text-white"
+                                data-dismissible="alert">
+                                <div class="absolute top-4 left-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                        aria-hidden="true" class="mt-px h-6 w-6">
+                                        <path fill-rule="evenodd"
+                                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div class="ml-8 mr-12">
+                                    <h5
+                                        class="block font-sans text-xl font-semibold leading-snug tracking-normal text-white antialiased">
+                                        Gagal
                                     </h5>
                                     <p
                                         class="mt-2 block font-sans text-base font-normal leading-relaxed text-white antialiased">
@@ -49,7 +89,7 @@
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th scope="col"
-                                        class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-textbase">
                                         <div class="flex items-center gap-x-3">
                                             <button class="flex items-center gap-x-2">
                                                 <span>No</span>
@@ -71,27 +111,27 @@
                                     </th>
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-textbase">
                                         Tanggal bergabung
                                     </th>
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-textbase">
                                         Status
                                     </th>
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-textbase">
                                         Pelanggan
                                     </th>
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-textbase">
                                         Alamat
                                     </th>
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-textbase">
                                         Aksi
                                     </th>
                                 </tr>
@@ -101,24 +141,33 @@
                                     <tr>
                                         <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                             <div class="inline-flex items-center gap-x-3">
-
                                                 <span>{{ $loop->iteration }}</span>
                                             </div>
                                         </td>
-                                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">Jan 6, 2022</td>
+                                        <td class="px-4 py-4 text-sm text-textbase whitespace-nowrap">Jan 6, 2022</td>
                                         <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                            <div
-                                                class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-emerald-500 bg-emerald-100/60">
-                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" stroke-width="1.5"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-
-                                                <h2 class="text-sm font-normal">{{ $user->status }}</h2>
-                                            </div>
+                                            @if ($user->status == 'Aktif')
+                                                <div
+                                                    class="inline-flex items-center px-5 py-1 text-textbase rounded-full gap-x-2 bg-yellow-100/60">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                                        viewBox="0 -960 960 960" width="24px" fill="#AAC14C">
+                                                        <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
+                                                    </svg>
+                                                    <h2 class="text-sm font-normal">{{ $user->status }}</h2>
+                                                </div>
+                                            @else
+                                                <div
+                                                    class="inline-flex items-center px-5 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                                        viewBox="0 -960 960 960" width="24px" fill="#EA3323">
+                                                        <path
+                                                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                                                    </svg>
+                                                    <h2 class="text-sm font-normal">{{ $user->status }}</h2>
+                                                </div>
+                                            @endif
                                         </td>
-                                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        <td class="px-4 py-4 text-sm text-textbase whitespace-nowrap">
                                             <div class="flex items-center gap-x-2">
                                                 <img class="object-cover w-8 h-8 rounded-full"
                                                     src="/uploads/{{ $user->profile_photo_path }}" alt="">
@@ -128,23 +177,23 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        <td class="px-4 py-4 text-sm text-textbase whitespace-nowrap">
                                             {{ $user->alamat_lengkap }}</td>
-                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                                <form onsubmit="return confirm('Apakah anda yakin?')"
-                                                    action="{{ route('admin.customer.status', $user->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <input type="hidden" name="status" value="{{ $user->status == 'Aktif' ? 'Tidak Aktif' : 'Aktif' }}">
-                                                    <div class="flex items-center gap-x-6">
-                                                        <button type="submit"
-                                                            class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                            {{ $user->status == 'Aktif' ? 'Nonaktifkan' : 'Aktifkan' }}
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </td>
-                                            
+                                        <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                            <form onsubmit="return confirm('Apakah anda yakin?')"
+                                                action="{{ route('admin.customer.status', $user->id) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <input type="hidden" name="status"
+                                                    value="{{ $user->status == 'Aktif' ? 'Tidak Aktif' : 'Aktif' }}">
+                                                <div class="flex items-center gap-x-6">
+                                                    <button type="submit"
+                                                        class="text-primarybase transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
+                                                        {{ $user->status == 'Aktif' ? 'Nonaktifkan' : 'Aktifkan' }}
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -159,7 +208,17 @@
         </div>
 
     </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @push('js')
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var successMessage = document.getElementById('successMessage');
+
+                // Sembunyikan pesan sukses saat diklik
+                successMessage.addEventListener('click', function() {
+                    successMessage.style.display = 'none';
+                });
+            });
+        </script>
     @endpush
 @endsection
