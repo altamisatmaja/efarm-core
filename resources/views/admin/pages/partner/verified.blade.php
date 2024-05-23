@@ -205,10 +205,10 @@
                                                 <a href="{{ route('admin.partner.show', $partners->id) }}">
                                                     <button
                                                         class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                        Lihat Detail
+                                                        Detail
                                                     </button>
                                                 </a>
-                                                @if ($partners->status == 'Sudah diverifikasi')
+                                                {{-- @if ($partners->status == 'Sudah diverifikasi')
                                                 <form
                                                     action="{{ route('admin.partner.from.nonactive.update', $partners->id) }}"
                                                     method="POST">
@@ -230,7 +230,7 @@
                                                         Aktfikan
                                                     </button>
                                                 </form>
-                                                @endif
+                                                @endif --}}
                                             </div>
                                         </td>
                                     </tr>

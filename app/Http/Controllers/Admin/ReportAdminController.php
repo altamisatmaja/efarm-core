@@ -13,12 +13,11 @@ class ReportAdminController extends Controller
     public function index()
     {
         $reports = DB::table('orders_details')
-            ->join('products', 'products.id', '=', 'orders_details.id_product')
-            ->join('partners', 'partners.id', '=', 'orders_details.id_partner')
-            ->join('orders', 'orders.id', '=', 'orders_details.id_order')
-            ->select(DB::raw('partners.nama_partner as nama_partner, products.id as id_product, nama_product, harga_product, orders_details.kuantitas_total as total_qty, orders.created_at as order_created_at'))
-            ->groupBy('id_product', 'nama_product', 'harga_product', 'products.id', 'nama_partner', 'kuantitas_total', 'order_created_at')
-            ->orderBy('order_created_at', 'ASC')
+            ->leftJoin('products', 'products.id', '=', 'orders_details.id_product')
+            ->leftJoin('partners', 'partners.id', '=', 'orders_details.id_partner')
+            ->leftJoin('orders', 'orders.id', '=', 'orders_details.id_order')
+            ->select(DB::raw('partners.nama_partner as nama_partner, products.id as id_product, nama_product, harga_product, orders_details.kuantitas_total as total_qty, orders_details.harga_total as total_harga,orders_details.created_at as created_at'))
+            ->orderBy('orders_details.created_at', 'ASC')
             ->get();
 
         return view('admin.pages.report.index', compact('reports'));
@@ -27,14 +26,13 @@ class ReportAdminController extends Controller
     public function range(Request $request)
     {
         $reports = DB::table('orders_details')
-            ->join('products', 'products.id', '=', 'orders_details.id_product')
-            ->join('partners', 'partners.id', '=', 'orders_details.id_partner')
-            ->join('orders', 'orders.id', '=', 'orders_details.id_order')
-            ->select(DB::raw('partners.nama_partner as nama_partner, products.id as id_product, nama_product, harga_product, orders_details.kuantitas_total as total_qty, orders_details.harga_total as total_harga, orders.created_at as order_created_at, partners.nama_partner'))
+        ->leftJoin('products', 'products.id', '=', 'orders_details.id_product')
+        ->leftJoin('partners', 'partners.id', '=', 'orders_details.id_partner')
+        ->leftJoin('orders', 'orders.id', '=', 'orders_details.id_order')
+        ->select(DB::raw('partners.nama_partner as nama_partner, products.id as id_product, nama_product, harga_product, orders_details.kuantitas_total as total_qty, orders_details.harga_total as total_harga,orders_details.created_at as created_at'))
             ->whereRaw("date(orders_details.created_at) >= '$request->dari'")
             ->whereRaw("date(orders_details.created_at) <= '$request->sampai'")
-            ->groupBy('id_product', 'nama_product', 'harga_product', 'products.id', 'nama_partner', 'kuantitas_total', 'order_created_at', 'harga_total')
-            ->orderBy('order_created_at', 'ASC')
+            ->orderBy('orders_details.created_at', 'ASC')
             ->get();
 
         return view('admin.pages.report.index', compact('reports'));

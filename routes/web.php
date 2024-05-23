@@ -77,6 +77,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/**
+ * Route for Login Admin
+ */
+// Route::get('admin/login', [AuthAdminController::class, 'index'])
+//     ->name('admin.login');
 
 /**
  * Route handling for Front End

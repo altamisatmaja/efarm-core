@@ -216,24 +216,25 @@
                         action="{{ route('admin.product.status', $product->slug_product) }}">
                         @csrf
                         @method('PUT')
-                        @php
+                        {{-- @php
                             $statusEnum = ['Aktif', 'Tidak Aktif'];
-                        @endphp
+                        @endphp --}}
                         <div class="">
-                            <h2 class="text-3xl mb-5 font-bold text-textbase">
+                            {{-- <h2 class="text-3xl mb-5 font-bold text-textbase">
                                 Ubah status produk?
-                            </h2>
-                            <select name="status" id="status" class="status border p-2 rounded w-full">
+                            </h2> --}}
+                            {{-- <select name="status" id="status" class="status border p-2 rounded w-full">
                                 @foreach ($statusEnum as $item)
                                     <option value="{{ $item }}"
                                         {{ $product->status == $item ? 'selected' : '' }}>{{ $item }}</option>
                                 @endforeach
-                            </select>
+                            </select> --}}
+                            <input type="text" value="Tidak Aktif" hidden name="status">
                         </div>
                         <div class="mt-5">
                             <button type="submit"
                                 class="hover:shadow-form w-full rounded-md bg-primarybase py-3 px-8 text-xl text-center font-semibold text-white outline-none">
-                                Simpan
+                                Hapus
                             </button>
                         </div>
                     </form>

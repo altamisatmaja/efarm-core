@@ -68,9 +68,9 @@ class PartnerAdminController extends Controller
                 'status' => 'Sudah diverifikasi',
             ]);
 
-            return redirect()->back()->with('success', 'Akun berhasil diverifikasi');
+            return redirect()->route('admin.partner')->with('success', 'Akun berhasil diverifikasi');
         } else {
-            return redirect()->back()->with('error', 'Akun gagal diverifikasi');
+            return redirect()->route('admin.partner')->with('error', 'Akun gagal diverifikasi');
         }
     }
     public function active(Request $request, $id) {

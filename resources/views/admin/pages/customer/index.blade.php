@@ -205,21 +205,24 @@
                                         </td>
                                         <td class="px-4 py-4 text-sm text-textbase whitespace-nowrap">
                                             {{ $user->alamat_lengkap }}</td>
-                                        <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                            <form onsubmit="return confirm('Apakah anda yakin?')"
-                                                action="{{ route('admin.customer.status', $user->id) }}" method="POST">
-                                                @csrf
-                                                @method('PUT')
-                                                <input type="hidden" name="status"
-                                                    value="{{ $user->status == 'Aktif' ? 'Tidak Aktif' : 'Aktif' }}">
-                                                <div class="flex items-center gap-x-6">
-                                                    <button type="submit"
-                                                        class="text-primarybase transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
-                                                        {{ $user->status == 'Aktif' ? 'Nonaktifkan' : 'Aktifkan' }}
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        </td>
+                                            <td class="px-4 py-4 text-sm whitespace-nowrap">
+                                                <form
+                                                    @if($user->status == 'Aktif')
+                                                        onsubmit="return confirm('Apakah yakin dinonaktifkan?')"
+                                                    @elseif($user->status == 'Tidak Aktif')
+                                                        onsubmit="return confirm('Apakah yakin diaktifkan?')"
+                                                    @endif
+                                                    action="{{ route('admin.customer.status', $user->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <input type="hidden" name="status" value="{{ $user->status == 'Aktif' ? 'Tidak Aktif' : 'Aktif' }}">
+                                                    <div class="flex items-center gap-x-6">
+                                                        <button type="submit" class="text-primarybase transition-colors duration-200 hover:text-yellow-500 focus:outline-none">
+                                                            {{ $user->status == 'Aktif' ? 'Nonaktifkan' : 'Aktifkan' }}
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </td>
                                     </tr>
                                 @endforeach
                             </tbody>

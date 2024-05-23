@@ -205,10 +205,10 @@
                                                 <a href="{{ route('admin.partner.show', $partners->id) }}">
                                                     <button
                                                         class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                        Lihat Detail
+                                                        Detail
                                                     </button>
                                                 </a>
-                                                <form
+                                                {{-- <form
                                                     action="{{ route('admin.partner.from.verified.update', $partners->id) }}"
                                                     method="POST">
                                                     @csrf
@@ -217,7 +217,7 @@
                                                         class="text-primarybase transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
                                                         Verifikasi
                                                     </button>
-                                                </form>
+                                                </form> --}}
                                             </div>
                                         </td>
                                     </tr>
