@@ -4,13 +4,50 @@
 
 @section('content')
     <!-- component -->
-    <section class="text-gray-700 w-full  bg-white">
+    <section class="text-textbase w-full">
         <div class="container px-2 py-2 mx-auto">
+            <div class="pb-5">
+                <ol class="flex items-center gap-4">
+                    <li>
+                        <div
+                            class="flex items-center text-lg font-medium opacity-60 transition-all duration-300 hover:text-primarybase">
+                            <svg class="mr-2.5 h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+                            </svg>
+                            <a href="{{ route('admin.dashboard') }}">Beranda </a>
+                        </div>
+                    </li>
+                    <li class="inline-flex">
+                        <div
+                            class="flex items-center gap-2 text-lg font-medium opacity-60 transition-all duration-300 hover:text-primarybase">
+                            <svg class="h-3 w-3 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m1 9 4-4-4-4" />
+                            </svg>
+                            <a href="{{ route('admin.typelivestock.list') }}"> Jenis hewan </a>
+                        </div>
+                    </li>
+                    <li class="inline-flex">
+                        <div
+                            class="flex items-center gap-2 text-lg font-medium opacity-60 transition-all duration-300 hover:text-primarybase">
+                            <svg class="h-3 w-3 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m1 9 4-4-4-4" />
+                            </svg>
+                            <a class="" href="{{ route('admin.product.show', $product->slug_product) }}"> Detail produk <span class="lowercase">{{ $product->nama_product }}</span> </a>
+                        </div>
+                    </li>
+                </ol>
+            </div>
             <div class="flex justify-between items-center pb-3">
                 <p class="text-3xl font-bold mb-5">Detail produk {{ $product->nama_product }}</p>
             </div>
             <div class="lg:w-full mx-auto flex flex-wrap">
-                <img alt="ecommerce" class="lg:w-1/2 w-full object-cover object-center rounded "
+                <img alt="ecommerce" class="lg:w-1/2 w-full object-cover object-center rounded-xl "
                     src="/uploads/{{ $product->gambar_hewan }}">
 
                 <div class="md:flex-1 items-center lg:pl-10 xs:pl-0 sm:pl-0 md:pl-0">
@@ -71,7 +108,7 @@
                         </div>
                     </div>
 
-                    <div class="mt-5 bg-white w-full rounded-lg">
+                    <div class="mt-5 w-full rounded-lg">
                         <div class="">
                             <h2 class="text-3xl mb-3 font-bold text-textbase">
                                 Detail produk
@@ -123,7 +160,7 @@
             </div>
             <div class="w-full   flex flex-col py-10 ">
                 @foreach ($product->partner as $partners)
-                    <div class="bg-white  rounded-lg">
+                    <div class=" rounded-lg">
                         <h2 class="text-3xl mb-3 font-bold text-textbase">
                             Detail partner
                         </h2>
