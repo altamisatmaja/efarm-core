@@ -28,12 +28,17 @@ class PartnerAdminController extends Controller
 
     public function submission(){
         $partner = Partner::with('users')->where('status', 'Belum terverifikasi')->get();
-        
+
         return view('admin.pages.partner.submission', compact('partner'));
     }
 
     public function verified(){
-        return view('admin.pages.partner.verified');
+        $partner = Partner::with('users')
+                  ->where('status', 'Sudah diverifikasi')
+                  ->orWhere('status', 'Dinonaktifkan')
+                  ->get();
+
+        return view('admin.pages.partner.verified', compact('partner'));
     }
 
     /**
@@ -52,61 +57,44 @@ class PartnerAdminController extends Controller
         try {
             $partner = Partner::findOrFail($id);
 
-            if($partner){
-                $validator = Validator::make($request->all(), [
-                    'status' => 'required'
+            if ($partner) {
+                $partner->update([
+                    'status' => 'Dinonaktifkan',
                 ]);
 
-                
+                return redirect()->route('admin.partner.from.verified')->with('success', 'Partner telah dinonaktifkan, silahkan menghubungi partner');
+            } else {
+                return redirect()->route('admin.partner.from.verified')->with('error', 'Akun gagal dinonaktifkan');
             }
-
-            return redirect('admin.partner')->with('success', 'Partner telah diverifikasi, kontak partner supaya melakukan pengecekan di email yang terdaftar');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: '.$e->getMessage());
         }
     }
 
-    public function verify(Request $request) {
-        $user = User::where('email', $request->email)->first();
-        $id = $request->route('id');
-    
-        if ($user) {
-            $user->update([
-                'username' => $request->nama,
-                'nama' => $request->username,
-                'password' => $request->password,
-                'email_verified_at' => now(),
+    public function verify(Request $request, $id) {
+        $partner = Partner::findOrFail($id);
+
+        if ($partner) {
+            $partner->update([
+                'status' => 'Sudah diverifikasi',
             ]);
-            
-    
-            Auth::login($user);
-    
-            return redirect()->route('customer.verify.email', ['id' => $id])->with('status', 'Akun berhasil diperbarui');
+
+            return redirect()->back()->with('success', 'Partner telah diverifikasi, silahkan menghubungi partner');
         } else {
-            return redirect()->route('customer.verify.email', ['id' => $id])->with('status', 'Akun tidak ditemukan');
+            return redirect()->back()->with('error', 'Akun gagal diverifikasi');
         }
     }
-    
+    public function active(Request $request, $id) {
+        $partner = Partner::findOrFail($id);
 
-    public function verify_partner(Request $request)
-    {
-        $id = $request->route('id');
-        $hash = $request->route('hash');
+        if ($partner) {
+            $partner->update([
+                'status' => 'Sudah diverifikasi',
+            ]);
 
-        $user = User::findOrFail($id);
-
-        if (!hash_equals((string) $hash, sha1($user->getEmailForVerification()))) {
-            abort(403);
+            return redirect()->route('admin.partner.from.verified')->with('success', 'Partner telah diaktifkan, silahkan menghubungi partner');
+        } else {
+            return redirect()->route('admin.partner.from.verified')->with('error', 'Akun gagal diaktifkan');
         }
-
-        if ($user->hasVerifiedEmail()) {
-            return redirect('/');
-        }
-
-        if ($user->markEmailAsVerified()) {
-            event(new Verified($user));
-        }
-
-        return redirect()->route('partner.verify.email')->with('status', 'Email berhasil diverifikasi');
     }
 }

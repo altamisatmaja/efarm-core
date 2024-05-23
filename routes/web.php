@@ -114,9 +114,6 @@ Route::get('verify-email/{id}/{hash}', [RegisterCustomerController::class, 'show
  * Route for submission partner
  */
 Route::get('partner/submission', [SubmissionController::class, 'submission'])->name('partner.submission');
-Route::get('verify-email/{id}/{hash}', [PartnerAdminController::class, 'verify'])
-    ->middleware(['throttle:6,1'])
-    ->name('verification.verify');
 
 /**
  * Route for google login customer
@@ -130,8 +127,8 @@ Route::get('/login/google/callback', [GoogleSocialiteController::class, 'handleC
  */
 Route::post('customer/register/account', [RegisterCustomerController::class, 'store'])
     ->name('register.customer.account');
-Route::post('partner/verify/account', [PartnerAdminController::class, 'verify'])
-    ->name('partner.verify.account');
+// Route::post('partner/verify/account', [PartnerAdminController::class, 'verify'])
+//     ->name('partner.verify.account');
 
 Route::middleware('guest')->group(function () {
 
@@ -278,7 +275,9 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('admin/partner/show/{id}', [PartnerAdminController::class, 'show'])->name('admin.partner.show');
     Route::get('admin/partner/submission', [PartnerAdminController::class, 'submission'])->name('admin.partner.from.submission');
     Route::get('admin/partner/verified', [PartnerAdminController::class, 'verified'])->name('admin.partner.from.verified');
-    Route::put('admin/partner/handle_status/{id}', [PartnerAdminController::class, 'handle_status'])->name('admin.partner.from.handle_status');
+    Route::put('admin/partner/verify/{id}', [PartnerAdminController::class, 'verify'])->name('admin.partner.from.verified.update');
+    Route::put('admin/partner/nonactive/{id}', [PartnerAdminController::class, 'nonactive'])->name('admin.partner.from.nonactive.update');
+    Route::put('admin/partner/active/{id}', [PartnerAdminController::class, 'active'])->name('admin.partner.from.active.update');
 
     /**
      * Route for testimonial admin

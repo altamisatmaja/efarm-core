@@ -4,102 +4,138 @@
 
 @section('content')
     <!-- component -->
-    <div class="flex flex-col justify-center items-center py-4">
+    <div class="flex flex-col">
         <div
-            class="relative flex flex-col items-center rounded-[20px]  mx-auto bg-white bg-clip-border shadow-3xl shadow-shadow-500 dark:!bg-navy-800 dark:!shadow-none p-3">
-            <div class="mt-2 mb-8 w-full">
-                <h4 class="px-2 text-xl font-bold text-navy-700">
-                    General Information
+            class="flex flex-col items-center dark:!bg-navy-800 dark:!shadow-none p-3">
+            <div class="mt-2 mb-8">
+                <h4 class="text-3xl font-bold text-textbase">
+                    Data pengajuan akun partner 👋
                 </h4>
-                <p class="mt-2 px-2 text-base text-gray-600">
-                    As we live, our hearts turn colder. Cause pain is what we go through
-                    as we become older. We get insulted by others, lose trust for those
-                    others. We get back stabbed by friends. It becomes harder for us to
-                    give others a hand. We get our heart broken by people we love, even
-                    that we give them all...
-                </p>
             </div>
-            <div class="grid grid-cols-2 gap-4 px-2 w-full">
+            <div class="grid grid-cols-2 gap-10 w-full">
                 <div
-                    class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500">
-                    <p class="text-sm text-gray-600">Education</p>
-                    <p class="text-base font-medium text-navy-700">
+                    class="flex flex-col items-start justify-center rounded-2xl py-4 shadow-3xl shadow-shadow-500">
+                    <p class="text-xl font-semibold text-textbase">Nama partner</p>
+                    <p class="text-lg mt-2 font-medium text-textbase">
                         {{ $partner->nama_partner }}
                     </p>
                 </div>
 
                 <div
-                    class="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500">
-                    <p class="text-sm text-gray-600">Languages</p>
-                    <p class="text-base font-medium text-navy-700">
-                        English, Spanish, Italian
+                    class="flex flex-col justify-center rounded-2xl py-4 shadow-3xl shadow-shadow-500">
+                    <p class="text-xl font-semibold text-textbase">Nama Perusahaan partner</p>
+                    <p class="text-lg mt-2 font-medium text-textbase">
+                        {{ $partner->nama_perusahaan_partner }}
                     </p>
                 </div>
 
                 <div
-                    class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500">
-                    <p class="text-sm text-gray-600">Department</p>
-                    <p class="text-base font-medium text-navy-700">
-                        Product Design
+                    class="flex flex-col items-start justify-center rounded-2xl py-4 shadow-3xl shadow-shadow-500">
+                    <p class="text-xl font-semibold text-textbase">Provinsi partner</p>
+                    <p class="text-lg mt-2 font-medium text-textbase">
+                        {{ $partner->provinsi_partner }}
                     </p>
                 </div>
 
                 <div
-                    class="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500">
-                    <p class="text-sm text-gray-600">Work History</p>
-                    <p class="text-base font-medium text-navy-700">
-                        English, Spanish, Italian
+                    class="flex flex-col items-start justify-center rounded-2xl py-4 shadow-3xl shadow-shadow-500">
+                    <p class="text-xl font-semibold text-textbase">Kabupaten partner</p>
+                    <p class="text-lg mt-2 font-medium text-textbase">
+                        {{ $partner->kabupaten_partner }}
                     </p>
                 </div>
 
                 <div
-                    class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500">
-                    <p class="text-sm text-gray-600">Organization</p>
-                    <p class="text-base font-medium text-navy-700">
-                        Simmmple Web LLC
+                    class="flex flex-col items-start justify-center rounded-2xl py-4 shadow-3xl shadow-shadow-500">
+                    <p class="text-xl font-semibold text-textbase">Kecamatan partner</p>
+                    <p class="text-lg mt-2 font-medium text-textbase">
+                        {{ $partner->kecamatan_partner }}
                     </p>
                 </div>
 
                 <div
-                    class="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500">
-                    <p class="text-sm text-gray-600">Birthday</p>
-                    <p class="text-base font-medium text-navy-700">
-                        20 July 1986
+                    class="flex flex-col items-start justify-center rounded-2xl py-4 shadow-3xl shadow-shadow-500">
+                    <p class="text-xl font-semibold text-textbase">Kelurahan partner</p>
+                    <p class="text-lg mt-2 font-medium text-textbase">
+                        {{ $partner->kelurahan_partner }}
                     </p>
                 </div>
 
                 <div
-                    class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500">
-                    <p class="text-sm text-gray-600">Foto Profil</p>
-                    <img src="https://cdn.pixabay.com/photo/2023/08/15/11/47/mushroom-8191823_1280.jpg" alt="Featured Image 1" class="rounded-t-xl"/>
+                    class="flex flex-col items-start justify-center rounded-2xl py-4 shadow-3xl shadow-shadow-500">
+                    <p class="text-xl font-semibold text-textbase">Alamat partner</p>
+                    <p class="text-lg mt-2 font-medium text-textbase">
+                        {{ $partner->alamat_partner }}
+                    </p>
+                </div>
+
+
+                <div
+                    class="flex flex-col items-start justify-center rounded-2xl py-4 shadow-3xl shadow-shadow-500">
+                    <p class="text-xl font-semibold text-textbase">Tanggal lahir partner</p>
+                    <p class="text-lg mt-2 font-medium text-textbase">
+                        {{ $partner->tanggal_lahir }}
+                    </p>
+                </div>
+
+
+                <div
+                    class="flex flex-col items-start justify-center rounded-2xl py-4 shadow-3xl shadow-shadow-500">
+                    <p class="text-xl font-semibold text-textbase">Lama peternakan partner</p>
+                    <p class="text-lg mt-2 font-medium text-textbase">
+                        {{ $partner->lama_peternakan_berdiri }}
+                    </p>
                 </div>
 
                 <div
-                    class="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500">
-                    <p class="text-sm text-gray-600">Foto peternakan</p>
-                    <img src="https://cdn.pixabay.com/photo/2023/08/15/11/47/mushroom-8191823_1280.jpg" alt="Featured Image 1" class="rounded-t-xl"/>
+                    class="flex flex-col items-start justify-center rounded-2xl py-4 shadow-3xl shadow-shadow-500">
+                    <p class="text-xl font-semibold text-textbase">Jenis kelamin</p>
+                    <p class="text-lg mt-2 font-medium text-textbase">
+                        {{ $partner->jenis_kelamin }}
+                    </p>
+                </div>
+
+                <div
+                    class="flex flex-col items-start justify-center rounded-2xl py-4 shadow-3xl shadow-shadow-500">
+                    <p class="text-xl font-semibold text-textbase">Nomor Handphone</p>
+                    <p class="text-lg mt-2 font-medium text-textbase">
+                        {{ $partner->no_hp }}
+                    </p>
+                </div>
+
+                <div
+                    class="flex flex-col items-start justify-center rounded-2xl py-4 shadow-3xl shadow-shadow-500">
+                    <p class="text-xl font-semibold text-textbase">Latitude dan Longitude Partner</p>
+                    <p class="text-lg mt-2 font-medium text-textbase">
+                        {{ $partner->latitude }} dan {{ $partner->longitude }}
+                    </p>
+                </div>
+
+                <div
+                    class="flex flex-col rounded-2xl py-4">
+                    <p class="text-xl font-semibold mb-3 text-textbase">Foto Profil</p>
+                    <img src="/uploads/{{ $partner->foto_profil }}"
+                        alt="fotoprofil-partner" class="lg:w-full w-full object-cover object-center rounded" />
+                </div>
+
+                <div
+                    class="flex flex-col rounded-2xl py-4">
+                    <p class="text-xl font-semibold mb-3 text-textbase">Foto peternakan</p>
+                    <img src="/uploads/{{ $partner->foto_peternakan }}"
+                        alt="fotopeternakan-partner" class="lg:w-full w-full object-cover object-center rounded" />
                 </div>
             </div>
         </div>
-        <form action="{{ route('partner.verify.account') }}" method="POST">
-            @csrf
-                <input value="{{ $partner->users->nama }}" type="text" name="nama" id="nama"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="name@company.com" required="">
-                <input value="{{ $partner->users->username }}" type="text" name="username" id="username"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="name@company.com" required="">
-                <input value="{{ $partner->users->email }}" type="email" name="email" id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    placeholder="name@company.com" required="">
-                <input value="{{ $partner->users->password }}" type="password" name="password" id="password" placeholder="••••••••"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                    required="">
-            <button type="submit" class="w-full bg-primarybase px-3 text-white py-3 rounded-lg">Verfikasi</button>
-        </form>
+        <div class="w-full mb-10 px-2">
+            <form class="w-full" action="{{ route('admin.partner.from.verified.update', $partner->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <button type="submit" class="justify-center w-full flex text-xl font-semibold bg-primarybase text-white py-3 rounded-lg">Verifikasi</button>
+            </form>
+        </div>
+
     </div>
 
-    <!-- Ripple Effect from cdn -->
     <script src="https://unpkg.com/@material-tailwind/html@latest/scripts/ripple.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @push('js')

@@ -6,14 +6,18 @@
     <!-- component -->
     <section class="container px-4 mx-auto">
         <div class="flex flex-col">
+
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                    <div class="relative w-full mb-5 max-w-full flex-grow flex-1">
+                        <h3 class="font-semibold text-textbase text-xl">Daftar partner</h3>
+                    </div>
                     <div class="overflow-hidden border border-gray-200 md:rounded-lg">
                         <table class="min-w-full divide-y divide-gray-200 ">
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th scope="col"
-                                        class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-textbase">
                                         <div class="flex items-center gap-x-3">
                                             <button class="flex items-center gap-x-2">
                                                 <span>No</span>
@@ -21,27 +25,27 @@
                                     </th>
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
-                                        Tanggal
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-textbase">
+                                        Tanggal bergabung
                                     </th>
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-textbase">
                                         Status
                                     </th>
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-textbase">
                                         Nama Partner
                                     </th>
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-textbase">
                                         Alamat
                                     </th>
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
+                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-textbase">
                                         Aksi
                                     </th>
 
@@ -50,31 +54,46 @@
                             <tbody class="bg-white divide-y divide-gray-200 ">
                                 @foreach ($partner as $partners)
                                     <tr>
-                                        <td class="px-4 py-4 text-sm text-gray-500 text-center">{{ $loop->iteration }}</td>
-                                        <td class="px-4 py-4 text-sm text-gray-500 text-center">
+                                        <td class="px-4 py-4 text-sm text-textbaser">{{ $loop->iteration }}</td>
+                                        <td class="px-4 py-4 text-sm text-textbaser">
                                             {{ $partners->created_at->diffForHumans() }}
                                         </td>
-                                        <td class="px-4 py-4 text-sm text-gray-500 text-center">
-                                            {{ $partners->status }}
+                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                            @if ($partners->status == 'Sudah diverifikasi')
+                                                <div
+                                                    class="inline-flex items-center px-5 py-1 text-textbase rounded-full gap-x-2 bg-yellow-100/60">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                                        viewBox="0 -960 960 960" width="24px" fill="#AAC14C">
+                                                        <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
+                                                    </svg>
+                                                    <h2 class="text-sm font-normal">{{ $partners->status }}</h2>
+                                                </div>
+                                            @else
+                                                <div
+                                                    class="inline-flex items-center px-5 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                                        viewBox="0 -960 960 960" width="24px" fill="#EA3323">
+                                                        <path
+                                                            d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                                                    </svg>
+                                                    <h2 class="text-sm font-normal">{{ $partners->status }}</h2>
+                                                </div>
+                                            @endif
                                         </td>
-                                        <td class="px-4 py-4 text-sm text-gray-500 text-center">
+                                        <td class="px-4 py-4 text-sm text-textbaser">
                                             {{ $partners->nama_partner }}
                                         </td>
-                                        <td class="px-4 py-4 text-sm text-gray-500 text-center">
-                                            {{ $partners->alamat_partner }}, {{ $partners->kelurahan_partner }}, {{ $partners->kecamatan_partner }}, {{ $partners->kabupaten_partner }}, {{ $partners->provinsi_alamat }}
+                                        <td class="px-4 py-4 text-sm text-textbaser">
+                                            {{ $partners->alamat_partner }}, {{ $partners->kelurahan_partner }},
+                                            {{ $partners->kecamatan_partner }}, {{ $partners->kabupaten_partner }},
+                                            {{ $partners->provinsi_alamat }}
                                         </td>
-                                        <td class="px-4 py-4 text-sm whitespace-nowrap text-gray-500">
+                                        <td class=" text-textbase text-sm whitespace-nowrap">
                                             <a href="{{ route('admin.partner.show', $partners->id) }}">
-                                                <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                                    </svg>
-                                                </div>
+                                                <button
+                                                    class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
+                                                    Lihat Detail
+                                                </button>
                                             </a>
                                         </td>
                                     </tr>
