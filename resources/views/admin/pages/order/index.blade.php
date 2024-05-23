@@ -1,12 +1,15 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Dashboard | Order')
+@section('title', 'Dashboard | Semua Order')
 
 @section('content')
     <section class="container mx-auto">
         <div class="flex flex-col">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+
+                    <h3 class="font-semibold text-textbase text-xl mb-5">Semua order</h3>
+
                     <div class="overflow-hidden border border-gray-200 md:rounded-lg">
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
@@ -50,16 +53,100 @@
 
                                     <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
-                                        Sub Total
-                                    </th>
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
-                                        Action
+                                        Partner
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                {{-- Ignored, really --}}
+                            <tbody class="bg-white divide-y divide-gray-200 ">
+                                @foreach ($allorders as $allorder)
+                                    <tr>
+                                        <td class="px-4 py-4 text-sm text-textbaser">{{ $loop->iteration }}</td>
+                                        <td class="px-4 py-4 text-sm text-textbaser">
+                                            {{ $allorder['order']['created_at']->diffForHumans() }}
+                                        </td>
+                                        <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                                            @if ($allorder['order']['status'] == 'Baru')
+                                                <div
+                                                    class="inline-flex items-center px-5 py-1 text-textbase rounded-full gap-x-2 bg-yellow-100/60">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                                        viewBox="0 -960 960 960" width="24px" fill="#444444">
+                                                        <path
+                                                            d="M160-160v-516L82-846l72-34 94 202h464l94-202 72 34-78 170v516H160Zm240-280h160q17 0 28.5-11.5T600-480q0-17-11.5-28.5T560-520H400q-17 0-28.5 11.5T360-480q0 17 11.5 28.5T400-440ZM240-240h480v-358H240v358Zm0 0v-358 358Z" />
+                                                    </svg>
+                                                    <h2 class="text-md font-normal">{{ $allorder['order']['status'] }}</h2>
+                                                </div>
+                                            @elseif($allorder['order']['status'] == 'Dikonfirmasi')
+                                                <div
+                                                    class="inline-flex items-center px-5 py-1 text-textbase rounded-full gap-x-2 bg-yellow-100/60">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                                        viewBox="0 -960 960 960" width="24px" fill="#444444">
+                                                        <path
+                                                            d="m691-150 139-138-42-42-97 95-39-39-42 43 81 81ZM240-600h480v-80H240v80ZM720-40q-83 0-141.5-58.5T520-240q0-83 58.5-141.5T720-440q83 0 141.5 58.5T920-240q0 83-58.5 141.5T720-40ZM120-80v-680q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v267q-19-9-39-15t-41-9v-243H200v562h243q5 31 15.5 59T486-86l-6 6-60-60-60 60-60-60-60 60-60-60-60 60Zm120-200h203q3-21 9-41t15-39H240v80Zm0-160h284q38-37 88.5-58.5T720-520H240v80Zm-40 242v-562 562Z" />
+                                                    </svg>
+                                                    <h2 class="text-sm font-normal">{{ $allorder['order']['status'] }}</h2>
+                                                </div>
+                                            @elseif($allorder['order']['status'] == 'Dikemas')
+                                                <div
+                                                    class="inline-flex items-center px-5 py-1 text-textbase rounded-full gap-x-2 bg-yellow-100/60">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                                        viewBox="0 -960 960 960" width="24px" fill="#444444">
+                                                        <path
+                                                            d="M440-183v-274L200-596v274l240 139Zm80 0 240-139v-274L520-457v274Zm-80 92L160-252q-19-11-29.5-29T120-321v-318q0-22 10.5-40t29.5-29l280-161q19-11 40-11t40 11l280 161q19 11 29.5 29t10.5 40v318q0 22-10.5 40T800-252L520-91q-19 11-40 11t-40-11Zm200-528 77-44-237-137-78 45 238 136Zm-160 93 78-45-237-137-78 45 237 137Z" />
+                                                    </svg>
+                                                    <h2 class="text-sm font-normal">{{ $allorder['order']['status'] }}</h2>
+                                                </div>
+                                            @elseif($allorder['order']['status'] == 'Dikirim')
+                                                <div
+                                                    class="inline-flex items-center px-5 py-1 text-textbase rounded-full gap-x-2 bg-yellow-100/60">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                                        viewBox="0 -960 960 960" width="24px" fill="#444444">
+                                                        <path
+                                                            d="M240-160q-50 0-85-35t-35-85H40v-440q0-33 23.5-56.5T120-800h560v160h120l120 160v200h-80q0 50-35 85t-85 35q-50 0-85-35t-35-85H360q0 50-35 85t-85 35Zm0-80q17 0 28.5-11.5T280-280q0-17-11.5-28.5T240-320q-17 0-28.5 11.5T200-280q0 17 11.5 28.5T240-240ZM120-360h32q17-18 39-29t49-11q27 0 49 11t39 29h272v-360H120v360Zm600 120q17 0 28.5-11.5T760-280q0-17-11.5-28.5T720-320q-17 0-28.5 11.5T680-280q0 17 11.5 28.5T720-240Zm-40-200h170l-90-120h-80v120ZM360-540Z" />
+                                                    </svg>
+                                                    <h2 class="text-sm font-normal">{{ $allorder['order']['status'] }}</h2>
+                                                </div>
+                                            @else
+                                                <div
+                                                    class="inline-flex items-center px-5 py-1 text-textbase rounded-full gap-x-2 bg-yellow-100/60">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" height="24px"
+                                                        viewBox="0 -960 960 960" width="24px" fill="#444444">
+                                                        <path
+                                                            d="M680-119q-8 0-16-2t-15-7l-120-70q-14-8-21.5-21.5T500-249v-141q0-16 7.5-29.5T529-441l120-70q7-5 15-7t16-2q8 0 15.5 2.5T710-511l120 70q14 8 22 21.5t8 29.5v141q0 16-8 29.5T830-198l-120 70q-7 4-14.5 6.5T680-119ZM400-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM80-160v-112q0-33 17-62t47-44q51-26 115-44t141-18h14q6 0 12 2-8 18-13.5 37.5T404-360h-4q-71 0-127.5 18T180-306q-9 5-14.5 14t-5.5 20v32h252q6 21 16 41.5t22 38.5H80Zm320-400q33 0 56.5-23.5T480-640q0-33-23.5-56.5T400-720q-33 0-56.5 23.5T320-640q0 33 23.5 56.5T400-560Zm0-80Zm12 400Zm174-166 94 55 94-55-94-54-94 54Zm124 208 90-52v-110l-90 53v109Zm-150-52 90 53v-109l-90-53v109Z" />
+                                                    </svg>
+                                                    <h2 class="text-sm font-normal">{{ $allorder['order']['status'] }}</h2>
+                                                </div>
+                                            @endif
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            <div class="flex items-center gap-x-2">
+                                                <img class="object-cover w-8 h-8 rounded-full"
+                                                    src="/uploads/{{ $allorder['order']['user']['profile_photo_path'] }}"
+                                                    alt="">
+                                                <div>
+                                                    <h2 class="text-sm font-medium text-gray-800 ">
+                                                        {{ $allorder['order']['user']['nama'] }}</h2>
+                                                    <p class="text-xs font-normal text-gray-600 ">
+                                                        {{ $allorder['order']['user']['alamat_lengkap'] }}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-4 text-sm text-textbaser">
+                                            <div class="flex items-center gap-x-2">
+                                                <img class="object-cover w-8 h-8 rounded-full"
+                                                    src="/uploads/{{ $allorder['order_details'][0]['partner'][0]['foto_profil'] }}"
+                                                    alt="">
+                                                <div>
+                                                    <h2 class="text-sm font-medium text-gray-800 ">
+                                                        {{ $allorder['order_details'][0]['partner'][0]['nama_partner'] }}
+                                                    </h2>
+                                                    <p class="text-xs font-normal text-gray-600 ">
+                                                        {{ $allorder['order_details'][0]['partner'][0]['provinsi_partner'] }}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -67,155 +154,8 @@
             </div>
         </div>
 
-        <div class="flex items-center justify-between mt-6">
-            <a href="#"
-                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-                </svg>
-
-                <span>
-                    previous
-                </span>
-            </a>
-
-            <div class="items-center hidden md:flex gap-x-3">
-                <a href="#" class="px-2 py-1 text-sm text-blue-500 rounded-md bg-blue-100/60">1</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">2</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">3</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">...</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">12</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">13</a>
-                <a href="#" class="px-2 py-1 text-sm text-gray-500 rounded-md hover:bg-gray-100">14</a>
-            </div>
-
-            <a href="#"
-                class="flex items-center px-5 py-2 text-sm text-gray-700 capitalize transition-colors duration-200 bg-white border rounded-md gap-x-2 hover:bg-gray-100">
-                <span>
-                    Next
-                </span>
-
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-5 h-5 rtl:-scale-x-100">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-                </svg>
-            </a>
-        </div>
     </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @push('js')
-        <script>
-            $(function() {
-                // Read data
-                $.ajax({
-                    url: '/api/order',
-                    success: function({
-                        data
-                    }) {
-                        let row = '';
-
-                        data.map(function(val, index) {
-                            var createdAtDate = new Date(val.created_at);
-
-                            var options = {
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric',
-                                // hour: 'numeric',
-                                // minute: 'numeric',
-                                // second: 'numeric',
-                                // timeZoneName: 'short'
-                            };
-                            var formattedDate = createdAtDate.toLocaleDateString('id-ID',
-                                options);
-
-                            const rupiah = (angka) => {
-                                return new Intl.NumberFormat("id-ID", {
-                                    style: "currency",
-                                    currency: "IDR"
-                                }).format(angka);
-                            }
-
-                            row += `
-                            <tr>
-                                    <td
-                                        class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                        <div class="inline-flex items-center gap-x-3">
-                                            <span>${index+1}</span>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">${formattedDate}</td>
-                                    <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                                        <div
-                                            class="inline-flex items-center px-3 py-1 text-red-500 rounded-full gap-x-2 bg-red-100/60">
-                                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M9 3L3 9M3 3L9 9" stroke="currentColor" stroke-width="1.5"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg>
-
-                                            <h2 class="text-sm font-normal">${val.status}</h2>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        <div class="flex items-center gap-x-2">
-                                            <img class="object-cover w-8 h-8 rounded-full"
-                                                src="/uploads/${val.user.profile_photo_path}"
-                                                alt="">
-                                            <div>
-                                                <h2 class="text-sm font-medium text-gray-800 ">${val.user.nama}
-                                                </h2>
-                                                <p class="text-xs font-normal text-gray-600 ">
-                                                    ${val.user.alamat_lengkap}</p>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">${rupiah(val.sub_total)}</td>
-                                    <td class="px-4 py-4 text-sm whitespace-nowrap">
-                                        <div class="flex items-center gap-x-6">
-                                            <a data-id="${val.id}">
-                                            <button
-                                                class="text-gray-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Lihat detail
-                                            </button>
-                                        </a>
-                                        <a data-id="${val.id}" class="konfirmasi-order">
-                                            <button 
-                                                class="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                                                Konfirmasi
-                                            </button>
-                                        </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            `;
-                        });
-                        $('tbody').append(row);
-                    }
-                });
-
-                // Konfirmasi pesanan
-                $(document).on('click', '.konfirmasi-order', function(){
-                    const id = $(this).data('id');
-                    const token = localStorage.getItem('token-efarm');
-
-                    $.ajax({
-                        url: '/api/order/status/' + id,
-                        type: 'POST',
-                        data : {
-                            status : 'Dikemas'
-                        },
-                        headers: {
-                            "Authorization": "Bearer" + token,
-                        },
-                        success : function(data){
-                            alert('Pesanan berhasil dikonfirmasi');
-                            location.reload();
-                        }
-                    })
-                })
-            })
-        </script>
     @endpush
 @endsection

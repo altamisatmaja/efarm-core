@@ -23,9 +23,10 @@ class LacakCustomerController extends Controller
                 'order_details' => $orderDetails,
             ];
         }
+
         return view('customer.pages.lacak.index', compact('allorders'));
     }
-  
+
     public function lacak_new(){
         $user = auth()->user();
 

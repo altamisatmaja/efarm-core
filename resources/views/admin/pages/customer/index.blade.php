@@ -144,7 +144,7 @@
                                                 <span>{{ $loop->iteration }}</span>
                                             </div>
                                         </td>
-                                        <td class="px-4 py-4 text-sm text-textbase whitespace-nowrap">Jan 6, 2022</td>
+                                        <td class="px-4 py-4 text-sm text-textbase whitespace-nowrap">{{ $user->created_at->diffForHumans() }}</td>
                                         <td class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                                             @if ($user->status == 'Aktif')
                                                 <div

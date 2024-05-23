@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryLivestockAdminController;
 use App\Http\Controllers\Admin\CategoryProductAdminController;
 use App\Http\Controllers\Admin\CustomerAccountController;
 use App\Http\Controllers\Admin\DashboardAdminController;
+use App\Http\Controllers\Admin\OrderProductAdminController;
 use App\Http\Controllers\Admin\PartnerAdminController;
 use App\Http\Controllers\Admin\ProductAdminController;
 use App\Http\Controllers\Admin\ReviewAdminController;
@@ -295,13 +296,12 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     /**
      * Route for order admin
      */
-    Route::get('admin/order', [OrderController::class, 'list'])->name('admin.order.master');
-    Route::get('admin/order/new', [OrderController::class, 'order_new_view'])->name('admin.order.new');
-    Route::get('admin/order/confirmed', [OrderController::class, 'order_confirmed_view'])->name('admin.order.confirmed');
-    Route::get('admin/order/packed', [OrderController::class, 'order_packed_view'])->name('admin.order.packed');
-    Route::get('admin/order/sent', [OrderController::class, 'order_sent_view'])->name('admin.order.sent');
-    Route::get('admin/order/accepted', [OrderController::class, 'order_accepted_view'])->name('admin.order.accepted');
-    Route::get('admin/order/end', [OrderController::class, 'order_end_view'])->name('admin.order.end');
+    Route::get('admin/order', [OrderProductAdminController::class, 'index'])->name('admin.order.master');
+    Route::get('admin/order/new', [OrderProductAdminController::class, 'order_new'])->name('admin.order.new');
+    Route::get('admin/order/confirmed', [OrderProductAdminController::class, 'order_confirmed'])->name('admin.order.confirmed');
+    Route::get('admin/order/packed', [OrderProductAdminController::class, 'order_packed'])->name('admin.order.packed');
+    Route::get('admin/order/sent', [OrderProductAdminController::class, 'order_sent'])->name('admin.order.sent');
+    Route::get('admin/order/end', [OrderProductAdminController::class, 'order_end'])->name('admin.order.end');
 
     /**
      * Route for laporan admin
