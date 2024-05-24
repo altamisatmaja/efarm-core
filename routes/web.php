@@ -468,7 +468,7 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     Route::post('partner/product/store', [ProductPartnerController::class, 'store'])->name('partner.product.store');
     Route::get('partner/product/{slug_product}/edit', [ProductPartnerController::class, 'show'])->name('partner.product.edit');
     Route::put('partner/product/{slug_product}/update', [ProductPartnerController::class, 'update'])->name('partner.product.update');
-    Route::delete('partner/product/{slug_product}/delete', [ProductPartnerController::class, 'destroy'])->name('partner.product.destroy');
+    Route::put('partner/product/{slug_product}/delete', [ProductPartnerController::class, 'destroy'])->name('partner.product.destroy');
 
     /**
      * Route for farm partner

@@ -193,15 +193,27 @@ class ProductPartnerController extends Controller
         }
     }
 
-    public function destroy($slug_product)
+    public function destroy(Request $request, $slug_product)
     {
         try {
             $product = Product::where('slug_product', $slug_product)->first();
 
             if ($product) {
-                File::delete('uploads/' . $product->gambar_hewan);
+                // dd($product);
+                // $validator = Validator::make($request->all(), [
+                //     'status' => 'required'
+                // ], [
+                //     'status' => 'Status wajib diisi'
+                // ]);
 
-                $product->delete();
+                // if ($validator->fails()){
+                //     return redirect()->back()->withErrors($validator)->withInput();
+                // }
+
+                // $input = $request->except(['_token', '_method' ]);
+                $product->update([
+                    'status' => 'Tidak Aktif',
+                ]);
 
                 return redirect()->route('partner.product.list')->with('success', 'Data berhasil dihapus');
             } else {

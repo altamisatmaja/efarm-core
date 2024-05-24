@@ -29,6 +29,7 @@ class Product extends Model
             'slug_product',
             'id_category_livestocks',
             'pengiriman',
+            'status',
     ];
 
     public function typelivestocks() : HasMany {
@@ -60,5 +61,5 @@ class Product extends Model
         return $this->hasMany(Review::class, 'id_product', 'id');
     }
 
-    
+
 }

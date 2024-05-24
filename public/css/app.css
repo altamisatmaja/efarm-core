@@ -1392,6 +1392,10 @@ select {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
+.-mx-2 {
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+}
 .-ml-1 {
   margin-left: -0.25rem;
 }
@@ -3972,6 +3976,9 @@ select {
 }
 .focus\:overflow-visible:focus {
   overflow: visible;
+}
+.focus\:border:focus {
+  border-width: 1px;
 }
 .focus\:border-\[\#6A64F1\]:focus {
   --tw-border-opacity: 1;
