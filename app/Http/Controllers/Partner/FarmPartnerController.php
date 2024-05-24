@@ -43,7 +43,9 @@ class FarmPartnerController extends Controller
      */
     public function create()
     {
-        $partner = Auth::user();
+        $user = Auth::user();
+
+        $partner = Partner::where('id_user', $user->id)->first();
         $typelivestocks = TypeLivestock::all();
         $genderlivestocks = GenderLivestock::all();
         $conditionlivestock = ConditionLivestock::all();

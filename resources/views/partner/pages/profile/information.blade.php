@@ -3,7 +3,7 @@
 @section('title', 'Dashboard | Order')
 
 @section('content')
-    <div class="flex items-center justify-center">
+    <div class="flex items-center justify-center mt-2">
         @if (session('success'))
             <div id="successMessage"
                 class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">

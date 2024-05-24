@@ -52,6 +52,7 @@ class ProductPartnerController extends Controller
     {
         $user = Auth::user();
         $partner = Partner::where('id_user', $user->id)->first();
+
         $categoryproduct = CategoryProduct::all();
         $typelivestocks = TypeLivestock::all();
         $gender_livestocks = GenderLivestock::all();
