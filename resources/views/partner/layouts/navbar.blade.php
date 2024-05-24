@@ -6,6 +6,14 @@
     * {
         font-family: 'Montserrat';
     }
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        background-color: white;
+    }
+
 </style>
 <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 

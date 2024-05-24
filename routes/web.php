@@ -453,8 +453,9 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
 
     Route::get('partner/account/address', [AccountPartnerController::class, 'address_view'])->name('partner.account.address');
     Route::put('partner/account/address/update', [AccountPartnerController::class, 'update_address'])->name('partner.account.address.update');
+
     Route::get('partner/account/rekening', [AccountPartnerController::class, 'rekening_view'])->name('partner.account.rekening');
-    Route::get('partner/account/rekening/store', [AccountPartnerController::class, 'rekening_store'])->name('partner.account.rekening.store');
+    Route::put('partner/account/rekening/store', [AccountPartnerController::class, 'rekening_store'])->name('partner.account.rekening.store');
 
     /**
      * Route for product partner

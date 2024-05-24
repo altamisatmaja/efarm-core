@@ -27,6 +27,11 @@ class Partner extends Model
         'status',
         'tanggal_lahir',
         'jenis_kelamin',
+        'nomor_rekening',
+        'nama_bank',
+        'nama_pemilik_rekening',
+        'change_at',
+        'diubah',
     ];
 
     public function users(){

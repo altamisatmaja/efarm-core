@@ -2052,6 +2052,9 @@ select {
 .cursor-pointer {
   cursor: pointer;
 }
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
 .select-none {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -2490,6 +2493,10 @@ select {
 .border-zinc-200 {
   --tw-border-opacity: 1;
   border-color: rgb(228 228 231 / var(--tw-border-opacity));
+}
+.border-gray-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(107 114 128 / var(--tw-border-opacity));
 }
 .border-r-textbase {
   --tw-border-opacity: 1;
@@ -3172,6 +3179,12 @@ select {
 }
 .normal-case {
   text-transform: none;
+}
+.italic {
+  font-style: italic;
+}
+.not-italic {
+  font-style: normal;
 }
 .leading-3 {
   line-height: .75rem;
