@@ -39,9 +39,19 @@ class AppServiceProvider extends ServiceProvider
             $dob = \Carbon\Carbon::createFromFormat('Y-m-d', $value);
             $now = \Carbon\Carbon::now();
             $age = $dob->diffInYears($now);
-
             return $age >= $parameters[0];
         });
+
+
+        Validator::extend('not_zero', function ($attribute, $value, $parameters, $validator) {
+            return $value != 0;
+        });
+
+        Validator::extend('no_css_injection', function ($attribute, $value, $parameters, $validator) {
+            $pattern = '/<style.*>|<\/style>|style=|expression\(|url\(|javascript:|@import|@charset|@namespace|@media|@import|@font-face|style\s*{.*}/i';
+            return !preg_match($pattern, $value);
+        });
+
 
 
         Paginator::defaultView('vendor.pagination.tailwind');
