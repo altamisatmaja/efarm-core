@@ -241,21 +241,21 @@
             <form class="w-full" action="{{ route('admin.partner.from.verified.update', $partner->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <button type="submit" class="justify-center w-full flex text-xl font-semibold bg-primarybase text-white py-3 rounded-lg">
+                <button onclick="return alert('Apakah anda yakin?')" type="submit" class="justify-center w-full flex text-xl font-semibold bg-primarybase text-white py-3 rounded-lg">
                     Verifikasi</button>
             </form>
             @elseif($partner->status == 'Dinonaktifkan')
             <form class="w-full" action="{{ route('admin.partner.from.active.update', $partner->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <button type="submit" class="justify-center w-full flex text-xl font-semibold bg-primarybase text-white py-3 rounded-lg">
+                <button onclick="return alert('Apakah anda yakin?')" type="submit" class="justify-center w-full flex text-xl font-semibold bg-primarybase text-white py-3 rounded-lg">
                     Aktifkan</button>
             </form>
             @else
             <form class="w-full" action="{{ route('admin.partner.from.nonactive.update', $partner->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <button type="type" class="justify-center w-full flex text-xl font-semibold bg-primarybase text-white py-3 rounded-lg">
+                <button onclick="return alert('Apakah anda yakin?')" type="type" class="justify-center w-full flex text-xl font-semibold bg-primarybase text-white py-3 rounded-lg">
                     Nonaktifkan</button>
             </form>
 

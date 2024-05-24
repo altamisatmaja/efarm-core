@@ -11,13 +11,13 @@
 </head>
 
 <body class="relative antialiased bg-white">
-    <div>
-        @include('partner.layouts.navbar')
-        <div class="flex min-h-screen flex-row bg-gray-100 text-gray-800">
-            @include('partner.layouts.sidebar')
-            <main class="main -ml-48 flex flex-grow flex-col p-4 transition-all duration-150 ease-in md:ml-0">
+    <div class="min-h-screen bg-gray-50/50">
+        @include('partner.layouts.sidebar')
+        <div class="xl:ml-72">
+            @include('partner.layouts.navbar')
+            <div class="px-5">
                 @yield('content')
-            </main>
+            </div>
         </div>
     </div>
     @stack('js')

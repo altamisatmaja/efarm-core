@@ -1,547 +1,390 @@
 @extends('partner.layouts.app')
 
-@section('title', 'Dashboard | Partner')
+@section('title', 'Dashboard | List Product')
 
 @section('content')
-    <!-- component -->
-    <div class="">
-        <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
-            <div class="flex items-start rounded-xl bg-white p-4 shadow-lg">
-                <div class="flex h-12 w-12 items-center justify-center rounded-full border border-blue-100 bg-blue-50">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-400" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
-                    </svg>
-                </div>
-
-                <div class="ml-4">
-                    <h2 class="font-semibold">574 Messages</h2>
-                    <p class="mt-2 text-sm text-gray-500">Last opened 4 days ago</p>
-                </div>
-            </div>
-
-            <div class="flex items-start rounded-xl bg-white p-4 shadow-lg">
-                <div class="flex h-12 w-12 items-center justify-center rounded-full border border-orange-100 bg-orange-50">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-orange-400" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                </div>
-
-                <div class="ml-4">
-                    <h2 class="font-semibold">1823 Users</h2>
-                    <p class="mt-2 text-sm text-gray-500">Last checked 3 days ago</p>
-                </div>
-            </div>
-            <div class="flex items-start rounded-xl bg-white p-4 shadow-lg">
-                <div class="flex h-12 w-12 items-center justify-center rounded-full border border-red-100 bg-red-50">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-400" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                    </svg>
-                </div>
-
-                <div class="ml-4">
-                    <h2 class="font-semibold">548 Posts</h2>
-                    <p class="mt-2 text-sm text-gray-500">Last authored 1 day ago</p>
-                </div>
-            </div>
-        </div>
-        <!-- component -->
-        <div class="flex flex-wrap -mx-3 mb-5">
-            <div class="w-full max-w-full px-3 mb-6  mx-auto">
+    <div>
+        <ol class="flex items-center gap-4">
+            <li>
                 <div
-                    class=" flex-[1_auto] flex flex-col break-words min-w-0 bg-clip-border rounded-[.95rem] bg-white mt-5">
-                    <div
-                        class=" flex flex-col min-w-0 break-words border border-dashed bg-clip-border rounded-2xl border-stone-200 bg-light/30">
-                        <!-- card header -->
-                        <div
-                            class="px-9 pt-5 flex justify-between items-stretch flex-wrap min-h-[70px] pb-0 bg-transparent">
-                            <h3
-                                class="flex flex-col items-start justify-center m-2 ml-0 font-medium text-xl/tight text-dark">
-                                <span class="mr-3 font-semibold text-dark">Projects Deliveries</span>
-                                <span class="mt-1 font-medium text-secondary-dark text-lg/normal">All projects from the
-                                    Loopple team</span>
-                            </h3>
-                            <div class="relative flex flex-wrap items-center my-2">
-                                <a href="javascript:void(0)"
-                                    class="inline-block text-[.925rem] font-medium leading-normal text-center align-middle cursor-pointer rounded-2xl transition-colors duration-150 ease-in-out text-light-inverse bg-light-dark border-light shadow-none border-0 py-2 px-5 hover:bg-secondary active:bg-light focus:bg-light">
-                                    See other projects </a>
+                    class="flex items-center text-lg font-medium transition-all duration-300 hover:text-blue-600">
+                    <svg class="mr-2.5 h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+                    </svg>
+                    <a href="#" class="text-md">Beranda </a>
+                </div>
+            </li>
+        </ol>
+    </div>
+    <div class="mt-12">
+        <div class="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
+            <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+                <div
+                    class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                        class="w-6 h-6 text-white">
+                        <path d="M12 7.5a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z"></path>
+                        <path fill-rule="evenodd"
+                            d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 14.625v-9.75zM8.25 9.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM18.75 9a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V9.75a.75.75 0 00-.75-.75h-.008zM4.5 9.75A.75.75 0 015.25 9h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H5.25a.75.75 0 01-.75-.75V9.75z"
+                            clip-rule="evenodd"></path>
+                        <path
+                            d="M2.25 18a.75.75 0 000 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 00-.75-.75H2.25z">
+                        </path>
+                    </svg>
+                </div>
+                <div class="p-4 text-right">
+                    <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
+                        Today's Money</p>
+                    <h4
+                        class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
+                        $53k</h4>
+                </div>
+                <div class="border-t border-blue-gray-50 p-4">
+                    <p class="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
+                        <strong class="text-green-500">+55%</strong>&nbsp;than last week
+                    </p>
+                </div>
+            </div>
+            <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+                <div
+                    class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-pink-600 to-pink-400 text-white shadow-pink-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                        class="w-6 h-6 text-white">
+                        <path fill-rule="evenodd"
+                            d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </div>
+                <div class="p-4 text-right">
+                    <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
+                        Today's Users</p>
+                    <h4
+                        class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
+                        2,300</h4>
+                </div>
+                <div class="border-t border-blue-gray-50 p-4">
+                    <p class="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
+                        <strong class="text-green-500">+3%</strong>&nbsp;than last month
+                    </p>
+                </div>
+            </div>
+            <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+                <div
+                    class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-green-600 to-green-400 text-white shadow-green-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                        class="w-6 h-6 text-white">
+                        <path
+                            d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z">
+                        </path>
+                    </svg>
+                </div>
+                <div class="p-4 text-right">
+                    <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
+                        New Clients</p>
+                    <h4
+                        class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
+                        3,462</h4>
+                </div>
+                <div class="border-t border-blue-gray-50 p-4">
+                    <p class="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
+                        <strong class="text-red-500">-2%</strong>&nbsp;than yesterday
+                    </p>
+                </div>
+            </div>
+            <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+                <div
+                    class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-orange-600 to-orange-400 text-white shadow-orange-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                        class="w-6 h-6 text-white">
+                        <path
+                            d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z">
+                        </path>
+                    </svg>
+                </div>
+                <div class="p-4 text-right">
+                    <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
+                        Sales</p>
+                    <h4
+                        class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
+                        $103,430</h4>
+                </div>
+                <div class="border-t border-blue-gray-50 p-4">
+                    <p class="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
+                        <strong class="text-green-500">+5%</strong>&nbsp;than yesterday
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <div class="">
+                <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-6">
+                    <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex-shrink-0">
+                                <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">$45,385</span>
+                                <h3 class="text-base font-normal text-gray-500">Sales this week</h3>
+                            </div>
+                            <div class="flex items-center justify-end flex-1 text-green-500 text-base font-bold">
+                                12.5%
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
                             </div>
                         </div>
-                        <!-- end card header -->
-                        <!-- card body  -->
-                        <div class="flex-auto block py-8 pt-6 px-9">
-                            <div class="overflow-x-auto">
-                                <table class="w-full my-0 align-middle text-dark border-neutral-200">
-                                    <thead class="align-bottom">
-                                        <tr class="font-semibold text-[0.95rem] text-secondary-dark">
-                                            <th class="pb-3 text-start min-w-[175px]">TASK</th>
-                                            <th class="pb-3 text-end min-w-[100px]">OWNER</th>
-                                            <th class="pb-3 text-end min-w-[100px]">PROGRESS</th>
-                                            <th class="pb-3 pr-12 text-end min-w-[175px]">STATUS</th>
-                                            <th class="pb-3 pr-12 text-end min-w-[100px]">DEADLINE</th>
-                                            <th class="pb-3 text-end min-w-[50px]">DETAILS</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="border-b border-dashed last:border-b-0">
-                                            <td class="p-3 pl-0">
-                                                <div class="flex items-center">
-                                                    <div class="inline-block shrink-0 rounded-2xl me-3">
-                                                        <img src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/riva-dashboard-tailwind/img/img-49-new.jpg"
-                                                            class="w-[50px] h-[50px] inline-block shrink-0 rounded-2xl"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="flex flex-col justify-start">
-                                                        <a href="javascript:void(0)"
-                                                            class="mb-1 font-semibold transition-colors duration-200 ease-in-out text-lg/normal text-secondary-inverse hover:text-primary">
-                                                            Social Media API </a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="p-3 pr-0 text-end">
-                                                <span class="font-semibold text-light-inverse text-md/normal">Olivia
-                                                    Cambell</span>
-                                            </td>
-                                            <td class="p-3 pr-0 text-end">
-                                                <span
-                                                    class="text-center align-baseline inline-flex px-2 py-1 mr-auto items-center font-semibold text-base/none text-success bg-success-light rounded-lg">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                        class="w-5 h-5 mr-1">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-                                                    </svg> 6.5% </span>
-                                            </td>
-                                            <td class="p-3 pr-12 text-end">
-                                                <span
-                                                    class="text-center align-baseline inline-flex px-4 py-3 mr-auto items-center font-semibold text-[.95rem] leading-none text-primary bg-primary-light rounded-lg">
-                                                    In Progress </span>
-                                            </td>
-                                            <td class="pr-0 text-start">
-                                                <span
-                                                    class="font-semibold text-light-inverse text-md/normal">2023-08-23</span>
-                                            </td>
-                                            <td class="p-3 pr-0 text-end">
-                                                <button
-                                                    class="ml-auto text-secondary-dark bg-light-dark hover:text-primary flex items-center h-[25px] w-[25px] text-base font-medium leading-normal text-center align-middle cursor-pointer rounded-2xl transition-colors duration-200 ease-in-out shadow-none border-0 justify-center">
-                                                    <span
-                                                        class="flex items-center justify-center p-0 m-0 leading-none shrink-0 ">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                            class="w-4 h-4">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                                                        </svg>
-                                                    </span>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-dashed last:border-b-0">
-                                            <td class="p-3 pl-0">
-                                                <div class="flex items-center">
-                                                    <div class="inline-block shrink-0 rounded-2xl me-3">
-                                                        <img src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/riva-dashboard-tailwind/img/img-40-new.jpg"
-                                                            class="w-[50px] h-[50px] inline-block shrink-0 rounded-2xl"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="flex flex-col justify-start">
-                                                        <a href="javascript:void(0)"
-                                                            class="mb-1 font-semibold transition-colors duration-200 ease-in-out text-lg/normal text-secondary-inverse hover:text-primary">
-                                                            Geolocation App </a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="p-3 pr-0 text-end">
-                                                <span class="font-semibold text-light-inverse text-md/normal">Luca
-                                                    Micloe</span>
-                                            </td>
-                                            <td class="p-3 pr-0 text-end">
-                                                <span
-                                                    class="text-center align-baseline inline-flex px-2 py-1 mr-auto items-center font-semibold text-base/none text-danger bg-danger-light rounded-lg">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                        class="w-5 h-5 mr-1">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M2.25 6L9 12.75l4.286-4.286a11.948 11.948 0 014.306 6.43l.776 2.898m0 0l3.182-5.511m-3.182 5.51l-5.511-3.181" />
-                                                    </svg> 2.7% </span>
-                                            </td>
-                                            <td class="p-3 pr-12 text-end">
-                                                <span
-                                                    class="text-center align-baseline inline-flex px-4 py-3 mr-auto items-center font-semibold text-[.95rem] leading-none text-light-inverse bg-light rounded-lg">
-                                                    Under Review </span>
-                                            </td>
-                                            <td class="pr-0 text-start">
-                                                <span
-                                                    class="font-semibold text-light-inverse text-md/normal">2024-04-11</span>
-                                            </td>
-                                            <td class="p-3 pr-0 text-end">
-                                                <button
-                                                    class="ml-auto relative text-secondary-dark bg-light-dark hover:text-primary flex items-center h-[25px] w-[25px] text-base font-medium leading-normal text-center align-middle cursor-pointer rounded-2xl transition-colors duration-200 ease-in-out shadow-none border-0 justify-center">
-                                                    <span
-                                                        class="flex items-center justify-center p-0 m-0 leading-none shrink-0 ">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                            class="w-4 h-4">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                                                        </svg>
-                                                    </span>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-dashed last:border-b-0">
-                                            <td class="p-3 pl-0">
-                                                <div class="flex items-center">
-                                                    <div class="relative inline-block shrink-0 rounded-2xl me-3">
-                                                        <img src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/riva-dashboard-tailwind/img/img-39-new.jpg"
-                                                            class="w-[50px] h-[50px] inline-block shrink-0 rounded-2xl"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="flex flex-col justify-start">
-                                                        <a href="javascript:void(0)"
-                                                            class="mb-1 font-semibold transition-colors duration-200 ease-in-out text-lg/normal text-secondary-inverse hover:text-primary">
-                                                            iOS Login <span class="text-sm">(Morra)</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="p-3 pr-0 text-end">
-                                                <span class="font-semibold text-light-inverse text-md/normal">Bianca
-                                                    Winson</span>
-                                            </td>
-                                            <td class="p-3 pr-0 text-end">
-                                                <span
-                                                    class="text-center align-baseline inline-flex px-2 py-1 mr-auto items-center font-semibold text-base/none text-success bg-success-light rounded-lg">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                        class="w-5 h-5 mr-1">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-                                                    </svg> 6.8% </span>
-                                            </td>
-                                            <td class="p-3 pr-12 text-end">
-                                                <span
-                                                    class="text-center align-baseline inline-flex px-4 py-3 mr-auto items-center font-semibold text-[.95rem] leading-none text-primary bg-primary-light rounded-lg">
-                                                    In Progress </span>
-                                            </td>
-                                            <td class="pr-0 text-start">
-                                                <span
-                                                    class="font-semibold text-light-inverse text-md/normal">2024-02-10</span>
-                                            </td>
-                                            <td class="p-3 pr-0 text-end">
-                                                <button
-                                                    class="ml-auto relative text-secondary-dark bg-light-dark hover:text-primary flex items-center h-[25px] w-[25px] text-base font-medium leading-normal text-center align-middle cursor-pointer rounded-2xl transition-colors duration-200 ease-in-out shadow-none border-0 justify-center">
-                                                    <span
-                                                        class="flex items-center justify-center p-0 m-0 leading-none shrink-0 ">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                            class="w-4 h-4">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                                                        </svg>
-                                                    </span>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-dashed last:border-b-0">
-                                            <td class="p-3 pl-0">
-                                                <div class="flex items-center">
-                                                    <div class="relative inline-block shrink-0 rounded-2xl me-3">
-                                                        <img src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/riva-dashboard-tailwind/img/img-47-new.jpg"
-                                                            class="w-[50px] h-[50px] inline-block shrink-0 rounded-2xl"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="flex flex-col justify-start">
-                                                        <a href="javascript:void(0)"
-                                                            class="mb-1 font-semibold transition-colors duration-200 ease-in-out text-lg/normal text-secondary-inverse hover:text-primary">
-                                                            Axios Menu </a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="p-3 pr-0 text-end">
-                                                <span class="font-semibold text-light-inverse text-md/normal">Roberto
-                                                    Alliton</span>
-                                            </td>
-                                            <td class="p-3 pr-0 text-end">
-                                                <span
-                                                    class="text-center align-baseline inline-flex px-2 py-1 mr-auto items-center font-semibold text-base/none text-success bg-success-light rounded-lg">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                        class="w-5 h-5 mr-1">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-                                                    </svg> 4.5% </span>
-                                            </td>
-                                            <td class="p-3 pr-12 text-end">
-                                                <span
-                                                    class="text-center align-baseline inline-flex px-4 py-3 mr-auto items-center font-semibold text-[.95rem] leading-none text-success bg-success-light rounded-lg">
-                                                    Done </span>
-                                            </td>
-                                            <td class="pr-0 text-start">
-                                                <span
-                                                    class="font-semibold text-light-inverse text-md/normal">2023-05-31</span>
-                                            </td>
-                                            <td class="p-3 pr-0 text-end">
-                                                <button
-                                                    class="ml-auto relative text-secondary-dark bg-light-dark hover:text-primary flex items-center h-[25px] w-[25px] text-base font-medium leading-normal text-center align-middle cursor-pointer rounded-2xl transition-colors duration-200 ease-in-out shadow-none border-0 justify-center">
-                                                    <span
-                                                        class="flex items-center justify-center p-0 m-0 leading-none shrink-0 ">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                            class="w-4 h-4">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                                                        </svg>
-                                                    </span>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr class="border-b border-dashed last:border-b-0">
-                                            <td class="p-3 pl-0">
-                                                <div class="flex items-center">
-                                                    <div class="relative inline-block shrink-0 rounded-2xl me-3">
-                                                        <img src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/riva-dashboard-tailwind/img/img-48-new.jpg"
-                                                            class="w-[50px] h-[50px] inline-block shrink-0 rounded-2xl"
-                                                            alt="">
-                                                    </div>
-                                                    <div class="flex flex-col justify-start">
-                                                        <a href="javascript:void(0)"
-                                                            class="mb-1 font-semibold transition-colors duration-200 ease-in-out text-lg/normal text-secondary-inverse hover:text-primary">
-                                                            Resto Aperto </a>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="p-3 pr-0 text-end">
-                                                <span class="font-semibold text-light-inverse text-md/normal">Michael
-                                                    Kenny</span>
-                                            </td>
-                                            <td class="p-3 pr-0 text-end">
-                                                <span
-                                                    class="text-center align-baseline inline-flex px-2 py-1 mr-auto items-center font-semibold text-base/none text-danger bg-danger-light rounded-lg">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                        class="w-5 h-5 mr-1">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M2.25 6L9 12.75l4.286-4.286a11.948 11.948 0 014.306 6.43l.776 2.898m0 0l3.182-5.511m-3.182 5.51l-5.511-3.181" />
-                                                    </svg> 1% </span>
-                                            </td>
-                                            <td class="p-3 pr-12 text-end">
-                                                <span
-                                                    class="text-center align-baseline inline-flex px-4 py-3 mr-auto items-center font-semibold text-[.95rem] leading-none text-warning bg-warning-light rounded-lg">
-                                                    Postponed </span>
-                                            </td>
-                                            <td class="pr-0 text-start">
-                                                <span
-                                                    class="font-semibold text-light-inverse text-md/normal">2023-05-15</span>
-                                            </td>
-                                            <td class="p-3 pr-0 text-end">
-                                                <button
-                                                    class="ml-auto relative text-secondary-dark bg-light-dark hover:text-primary flex items-center h-[25px] w-[25px] text-base font-medium leading-normal text-center align-middle cursor-pointer rounded-2xl transition-colors duration-200 ease-in-out shadow-none border-0 justify-center">
-                                                    <span
-                                                        class="flex items-center justify-center p-0 m-0 leading-none shrink-0 ">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                            class="w-4 h-4">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                                                        </svg>
-                                                    </span>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        <div id="main-chart"></div>
+                    </div>
+                    <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+                        <div class="mb-4 flex items-center justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Latest Transactions</h3>
+                                <span class="text-base font-normal text-gray-500">This is a list of latest
+                                    transactions</span>
                             </div>
+                            <div class="flex-shrink-0">
+                                <a href="#"
+                                    class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2">View all</a>
+                            </div>
+                        </div>
+                        <div class="flex flex-col mt-8">
+                            <div class="overflow-x-auto rounded-lg">
+                                <div class="align-middle inline-block min-w-full">
+                                    <div class="shadow overflow-hidden sm:rounded-lg">
+                                        <table class="min-w-full divide-y divide-gray-200">
+                                            <thead class="bg-gray-50">
+                                                <tr>
+                                                    <th scope="col"
+                                                        class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                        Transaction
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                        Date & Time
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                        Amount
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="bg-white">
+                                                <tr>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                        Payment from <span class="font-semibold">Bonnie Green</span>
+                                                    </td>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                        Apr 23 ,2021
+                                                    </td>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                        $2300
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-gray-50">
+                                                    <td
+                                                        class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
+                                                        Payment refund to <span class="font-semibold">#00910</span>
+                                                    </td>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                        Apr 23 ,2021
+                                                    </td>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                        -$670
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                        Payment failed from <span class="font-semibold">#087651</span>
+                                                    </td>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                        Apr 18 ,2021
+                                                    </td>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                        $234
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-gray-50">
+                                                    <td
+                                                        class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
+                                                        Payment from <span class="font-semibold">Lana Byrd</span>
+                                                    </td>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                        Apr 15 ,2021
+                                                    </td>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                        $5000
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                        Payment from <span class="font-semibold">Jese Leos</span>
+                                                    </td>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                        Apr 15 ,2021
+                                                    </td>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                        $2300
+                                                    </td>
+                                                </tr>
+                                                <tr class="bg-gray-50">
+                                                    <td
+                                                        class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
+                                                        Payment from <span class="font-semibold">THEMESBERG LLC</span>
+                                                    </td>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                        Apr 11 ,2021
+                                                    </td>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                        $560
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                                        Payment from <span class="font-semibold">Lana Lysle</span>
+                                                    </td>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                                        Apr 6 ,2021
+                                                    </td>
+                                                    <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                                        $1437
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
+                    <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold leading-none text-gray-900">Latest Customers</h3>
+                            <a href="#"
+                                class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg inline-flex items-center p-2">
+                                View all
+                            </a>
+                        </div>
+                        <div class="flow-root">
+                            <ul role="list" class="divide-y divide-gray-200">
+                                <li class="py-3 sm:py-4">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0">
+                                            <img class="h-8 w-8 rounded-full"
+                                                src="https://demo.themesberg.com/windster/images/users/neil-sims.png"
+                                                alt="Neil image">
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-sm font-medium text-gray-900 truncate">
+                                                Neil Sims
+                                            </p>
+                                            <p class="text-sm text-gray-500 truncate">
+                                                <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                    data-cfemail="17727a767e7b57607e7973646372653974787a">[email&#160;protected]</a>
+                                            </p>
+                                        </div>
+                                        <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                                            $320
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="py-3 sm:py-4">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0">
+                                            <img class="h-8 w-8 rounded-full"
+                                                src="https://demo.themesberg.com/windster/images/users/bonnie-green.png"
+                                                alt="Neil image">
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-sm font-medium text-gray-900 truncate">
+                                                Bonnie Green
+                                            </p>
+                                            <p class="text-sm text-gray-500 truncate">
+                                                <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                    data-cfemail="d4b1b9b5bdb894a3bdbab0a7a0b1a6fab7bbb9">[email&#160;protected]</a>
+                                            </p>
+                                        </div>
+                                        <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                                            $3467
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="py-3 sm:py-4">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0">
+                                            <img class="h-8 w-8 rounded-full"
+                                                src="https://demo.themesberg.com/windster/images/users/michael-gough.png"
+                                                alt="Neil image">
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-sm font-medium text-gray-900 truncate">
+                                                Michael Gough
+                                            </p>
+                                            <p class="text-sm text-gray-500 truncate">
+                                                <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                    data-cfemail="57323a363e3b17203e3933242332257934383a">[email&#160;protected]</a>
+                                            </p>
+                                        </div>
+                                        <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                                            $67
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="py-3 sm:py-4">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0">
+                                            <img class="h-8 w-8 rounded-full"
+                                                src="https://demo.themesberg.com/windster/images/users/thomas-lean.png"
+                                                alt="Neil image">
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-sm font-medium text-gray-900 truncate">
+                                                Thomes Lean
+                                            </p>
+                                            <p class="text-sm text-gray-500 truncate">
+                                                <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                    data-cfemail="284d45494144685f41464c5b5c4d5a064b4745">[email&#160;protected]</a>
+                                            </p>
+                                        </div>
+                                        <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                                            $2367
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="pt-3 sm:pt-4 pb-0">
+                                    <div class="flex items-center space-x-4">
+                                        <div class="flex-shrink-0">
+                                            <img class="h-8 w-8 rounded-full"
+                                                src="https://demo.themesberg.com/windster/images/users/lana-byrd.png"
+                                                alt="Neil image">
+                                        </div>
+                                        <div class="flex-1 min-w-0">
+                                            <p class="text-sm font-medium text-gray-900 truncate">
+                                                Lana Byrd
+                                            </p>
+                                            <p class="text-sm text-gray-500 truncate">
+                                                <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                    data-cfemail="a2c7cfc3cbcee2d5cbccc6d1d6c7d08cc1cdcf">[email&#160;protected]</a>
+                                            </p>
+                                        </div>
+                                        <div class="inline-flex items-center text-base font-semibold text-gray-900">
+                                            $367
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- component -->
-        <ul role="list" class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
-                <div class="flex w-full items-center justify-between space-x-6 p-6">
-                    <div class="flex-1 truncate">
-                        <div class="flex items-center space-x-3">
-                            <h3 class="truncate text-sm font-medium text-gray-900">Shehab Najib</h3>
-                            <span
-                                class="inline-flex flex-shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-blue-600 ring-1 ring-inset ring-green-600/20">Creator</span>
-                        </div>
-                        <p class="mt-1 truncate text-sm text-gray-500">Acount owner</p>
-                    </div>
-                    <img class="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
-                        src="https://qph.cf2.quoracdn.net/main-thumb-554097988-200-xietklpojlcioqxaqgcyykzfxblvoqrb.jpeg"
-                        alt="">
-                </div>
-                <div>
-                    <div class="-mt-px flex divide-x divide-gray-200">
-                        <div class="flex w-0 flex-1">
-                            <a href="howpossible17@example.com"
-                                class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true">
-                                    <path
-                                        d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
-                                    <path
-                                        d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
-                                </svg>
-                                Email
-                            </a>
-                        </div>
-                        <div class="-ml-px flex w-0 flex-1">
-                            <a href="tel:+1-202-555-0170"
-                                class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                Call
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
-                <div class="flex w-full items-center justify-between space-x-6 p-6">
-                    <div class="flex-1 truncate">
-                        <div class="flex items-center space-x-3">
-                            <h3 class="truncate text-sm font-medium text-gray-900">Najib gafar</h3>
-                            <span
-                                class="inline-flex flex-shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-red-600 ring-1 ring-inset ring-green-600/20">Admin</span>
-                        </div>
-                        <p class="mt-1 truncate text-sm text-gray-500">Web developer</p>
-                    </div>
-                    <img class="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
-                        src="https://pbs.twimg.com/profile_images/1489655257022218241/MiFYA0m0_400x400.jpg"
-                        alt="">
-                </div>
-                <div>
-                    <div class="-mt-px flex divide-x divide-gray-200">
-                        <div class="flex w-0 flex-1">
-                            <a href="najibgafar@example.com"
-                                class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true">
-                                    <path
-                                        d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
-                                    <path
-                                        d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
-                                </svg>
-                                Email
-                            </a>
-                        </div>
-                        <div class="-ml-px flex w-0 flex-1">
-                            <a href="tel:+1-202-555-0170"
-                                class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                Call
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
-                <div class="flex w-full items-center justify-between space-x-6 p-6">
-                    <div class="flex-1 truncate">
-                        <div class="flex items-center space-x-3">
-                            <h3 class="truncate text-sm font-medium text-gray-900">Abu ubaidah</h3>
-                            <span
-                                class="inline-flex flex-shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-gray-600 ring-1 ring-inset ring-green-600/20">leader
-                                helper</span>
-                        </div>
-                        <p class="mt-1 truncate text-sm text-gray-500">Master</p>
-                    </div>
-                    <img class="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
-                        src="https://mediaaws.almasryalyoum.com/news/medium/2023/12/14/2275040_0.jpeg" alt="">
-                </div>
-                <div>
-                    <div class="-mt-px flex divide-x divide-gray-200">
-                        <div class="flex w-0 flex-1">
-                            <a href="abuubaidah@example.com"
-                                class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true">
-                                    <path
-                                        d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
-                                    <path
-                                        d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
-                                </svg>
-                                Email
-                            </a>
-                        </div>
-                        <div class="-ml-px flex w-0 flex-1">
-                            <a href="tel:+1-202-555-0170"
-                                class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                Call
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
-                <div class="flex w-full items-center justify-between space-x-6 p-6">
-                    <div class="flex-1 truncate">
-                        <div class="flex items-center space-x-3">
-                            <h3 class="truncate text-sm font-medium text-gray-900">Yahya sinwar</h3>
-                            <span
-                                class="inline-flex flex-shrink-0 items-center rounded-full bg-green-50 px-1.5 py-0.5 text-xs font-medium text-green-600 ring-1 ring-inset ring-green-500">head
-                                leader</span>
-                        </div>
-                        <p class="mt-1 truncate text-sm text-gray-500">Leader</p>
-                    </div>
-                    <img class="h-10 w-10 flex-shrink-0 rounded-full bg-gray-300"
-                        src="https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2023-10/231015-Yahya-Sinwar-Hamas-mb-0731-95501d.jpg"
-                        alt="">
-                </div>
-                <div>
-                    <div class="-mt-px flex divide-x divide-gray-200">
-                        <div class="flex w-0 flex-1">
-                            <a href="yahyasinwar@example.com"
-                                class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true">
-                                    <path
-                                        d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
-                                    <path
-                                        d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z" />
-                                </svg>
-                                Email
-                            </a>
-                        </div>
-                        <div class="-ml-px flex w-0 flex-1">
-                            <a href="tel:+1-202-555-0170"
-                                class="relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900">
-                                <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"
-                                    aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                                Call
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <!-- More people... -->
-        </ul>
+        </main>
     </div>
+    @push('js')
+    @endpush
 @endsection

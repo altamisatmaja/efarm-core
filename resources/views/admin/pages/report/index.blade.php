@@ -9,7 +9,7 @@
 @section('title', 'Dashboard | Laporan')
 
 @section('content')
-    <section class="container mx-auto px-4 w-full">
+    <section class="container mx-auto px-4 w-full pb-5">
         <div class="pb-5">
             <ol class="flex items-center gap-4">
                 <li>
