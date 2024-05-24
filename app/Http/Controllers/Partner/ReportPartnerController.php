@@ -15,10 +15,12 @@ class ReportPartnerController extends Controller
         $user = Auth::user();
         $partner = Partner::where('id_user', $user->id)->first();
         // dd($partner);
-        $report = OrderDetail::with('product.categoryproduct', 'partner', 'order.user')->where('id_partner', $partner->id)->get();
+        $report = OrderDetail::with('product.categoryproduct', 'partner', 'order.user', 'order')->where('id_partner', $partner->id)->get();
+
+        // dd($report);
         $reportdata = $report->map(function ($report) {
             return [
-                'reference' => $report->order->reference,
+                'reference' => $report->order->reference ?? 'tidak ditemukan',
                 'status' => $report->order->status,
                 'pengiriman' => $report->order->pengiriman,
                 'catatan' => $report->order->catatan,
