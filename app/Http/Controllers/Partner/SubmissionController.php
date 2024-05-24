@@ -128,21 +128,7 @@ class SubmissionController extends Controller
 
             $id_user = $user->id;
 
-            if($request->has('foto_profil')){
-                $gambar = $request->file('foto_profil');
-                $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
-                $gambar->move('uploads', $nama_gambar);
-                $partner['foto_profil'] = $nama_gambar;
-            }
-
-            if($request->has('foto_peternakan')){
-                $gambar = $request->file('foto_peternakan');
-                $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
-                $gambar->move('uploads', $nama_gambar);
-                $partner['foto_peternakan'] = $nama_gambar;
-            }
-
-            $partner = Partner::create([
+            $input = [
                 'id_user' => $id_user,
                 'nama_partner' => $request->nama_partner,
                 'nama_perusahaan_partner' => $request->nama_perusahaan_partner,
@@ -159,7 +145,23 @@ class SubmissionController extends Controller
                 'status' => $request->status,
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,
-            ]);
+            ];
+
+            if($request->has('foto_profil')){
+                $gambar = $request->file('foto_profil');
+                $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
+                $gambar->move('uploads', $nama_gambar);
+                $input['foto_profil'] = $nama_gambar;
+            }
+
+            if($request->has('foto_peternakan')){
+                $gambar = $request->file('foto_peternakan');
+                $nama_gambar = time().rand(1,9).'.'.$gambar->getClientOriginalExtension();
+                $gambar->move('uploads', $nama_gambar);
+                $input['foto_peternakan'] = $nama_gambar;
+            }
+
+            $partner = Partner::create($input);
 
             if ($partner) {
                 return redirect()->back()->with('success', 'Berhasil mengajukan sebagai partner, silahkan menunggu validasi dari admin');

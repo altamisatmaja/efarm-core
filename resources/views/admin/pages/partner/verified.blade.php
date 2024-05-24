@@ -198,7 +198,7 @@
                                         <td class="px-4 py-4 text-sm text-gray-500 text-center">
                                             {{ $partners->alamat_partner }}, {{ $partners->kelurahan_partner }},
                                             {{ $partners->kecamatan_partner }}, {{ $partners->kabupaten_partner }},
-                                            {{ $partners->provinsi_alamat }}
+                                            {{ $partners->provinsi_partner }}
                                         </td>
                                         <td class="px-4 py-4 text-sm whitespace-nowrap">
                                             <div class="flex items-center gap-x-6">

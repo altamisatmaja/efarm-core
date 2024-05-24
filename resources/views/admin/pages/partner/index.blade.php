@@ -184,7 +184,7 @@
                                         <td class="px-4 py-4 text-sm text-textbaser">
                                             {{ $partners->alamat_partner }}, {{ $partners->kelurahan_partner }},
                                             {{ $partners->kecamatan_partner }}, {{ $partners->kabupaten_partner }},
-                                            {{ $partners->provinsi_alamat }}
+                                            {{ $partners->provinsi_partner }}
                                         </td>
                                         <td class=" text-textbase text-sm whitespace-nowrap">
                                             <a href="{{ route('admin.partner.show', $partners->id) }}">
