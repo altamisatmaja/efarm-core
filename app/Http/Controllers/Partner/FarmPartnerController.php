@@ -25,8 +25,15 @@ class FarmPartnerController extends Controller
      */
     public function list()
     {
-        $partner = Auth::user();
-        $farms = Farm::with(['type_livestocks', 'gender_livestocks', 'partner', 'condition_livestock', 'category_livestock'])->get();
+        $user = Auth::user();
+        $partner = Partner::where('id_user', $user->id)->first();
+        $farms = Farm::with(['type_livestocks', 'gender_livestocks', 'partner', 'condition_livestock', 'category_livestock'])->where('id_partner', $partner->id)->get();
+        // dd($farms);
+        $farmdata = $farms->map(function ($farms){
+            return [
+                'nama_jenis_hewan' => $farms->type_livestocks->nama_jenis_hewan,
+            ];
+        });
 
         return view('partner.pages.farm.index', compact('farms', 'partner'));
     }
@@ -41,7 +48,7 @@ class FarmPartnerController extends Controller
         $genderlivestocks = GenderLivestock::all();
         $conditionlivestock = ConditionLivestock::all();
         $categorylivestock = CategoryLivestock::all();
-        
+
         return view('partner.pages.farm.create', compact('typelivestocks', 'genderlivestocks', 'conditionlivestock', 'categorylivestock', 'partner'));
     }
 
@@ -52,14 +59,14 @@ class FarmPartnerController extends Controller
     {
         $user = Auth::user();
         $partner = Partner::where('id_user', $user->id)->first();
-        $farm = Farm::where('slug_farm', $slug_farm)->first();
+        $farm = Farm::with(['type_livestocks', 'gender_livestocks', 'partner', 'condition_livestock', 'category_livestock'])->where('slug_farm', $slug_farm)->first();
         $partnerid = $farm->id;
 
         $typelivestocks = TypeLivestock::all();
         $genderlivestocks = GenderLivestock::all();
         $conditionlivestock = ConditionLivestock::all();
         $categorylivestock = CategoryLivestock::all();
-    
+
         return view('partner.pages.farm.edit', compact('partner', 'farm', 'partnerid', 'typelivestocks', 'genderlivestocks', 'conditionlivestock', 'categorylivestock'));
     }
 
@@ -81,36 +88,40 @@ class FarmPartnerController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
-        $partner = Partner::where('id_user', $user->id)->first();
-        // dd($request->all());
+        try {
+            $user = Auth::user();
+            $partner = Partner::where('id_user', $user->id)->first();
+            // dd($request->all());
 
-        $validator = Validator::make($request->all(), [
-            'id_kondisi_hewan' => 'required',
-            'id_jenis_gender_hewan' => 'required',
-            'id_jenis_hewan' => 'required',
-            'lahir_hewan' => 'required|date',
-            'deskripsi_hewan' => 'required',
-            'berat_badan_hewan' => 'required|numeric',
-            'id_kategori_hewan' => 'required',
-            'nama_hewan' => 'required',
-            'kode_hewan' => 'required',
-        ]);
+            $validator = Validator::make($request->all(), [
+                'id_kondisi_hewan' => 'required',
+                'id_jenis_gender_hewan' => 'required',
+                'id_jenis_hewan' => 'required',
+                'lahir_hewan' => 'required|date',
+                'deskripsi_hewan' => 'required',
+                'berat_badan_hewan' => 'required|numeric',
+                'id_kategori_hewan' => 'required',
+                'nama_hewan' => 'required',
+                'kode_hewan' => 'required',
+            ]);
 
-        if ($validator->fails()) {
-            return redirect()
-                ->back()
-                ->withErrors($validator)
-                ->withInput();
+            if ($validator->fails()) {
+                return redirect()
+                    ->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
+            $data = $request->all();
+            $data['id_partner'] = $partner->id;
+            $data['slug_farm'] = $this->generateSlug($request->nama_hewan, $request->kode_hewan);
+
+            Farm::create($data);
+
+            return redirect()->route('partner.farm.list')->with('success', 'Data hewan telah berhasil ditambahkan!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
-
-        $data = $request->all();
-        $data['id_partner'] = $partner->id;
-        $data['slug_farm'] = $this->generateSlug($request->nama_hewan, $request->kode_hewan);
-
-        Farm::create($data);
-
-        return redirect()->route('partner.farm.list')->with('success', 'Data hewan telah berhasil ditambahkan!');
     }
 
     /**
@@ -118,31 +129,35 @@ class FarmPartnerController extends Controller
      */
     public function edit(Request $request, $slug_farm)
     {
-        $user = Auth::user();
-        $partner = Partner::where('id_user', $user->id)->first();
+        try {
+            $user = Auth::user();
+            $partner = Partner::where('id_user', $user->id)->first();
 
-        $validator = Validator::make($request->all(), [
-            'lahir_hewan' => 'required|date',
-            'deskripsi_hewan' => 'required',
-            'nama_hewan' => 'required',
-            'kode_hewan' => 'required',
-        ]);
+            $validator = Validator::make($request->all(), [
+                'lahir_hewan' => 'required|date',
+                'deskripsi_hewan' => 'required',
+                'nama_hewan' => 'required',
+                'kode_hewan' => 'required',
+            ]);
 
-        if ($validator->fails()) {
-            return redirect()
-                ->back()
-                ->withErrors($validator)
-                ->withInput();
+            if ($validator->fails()) {
+                return redirect()
+                    ->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
+            $data = $request->all();
+            $data['id_partner'] = $partner->id;
+            $data['slug_farm'] = $this->generateSlug($request->nama_hewan, $request->kode_hewan);
+
+            $farm = Farm::where('slug_farm', $slug_farm)->firstOrFail();
+            $farm->update($data);
+
+            return redirect()->route('partner.farm.list')->with('success', 'Data hewan telah berhasil diubah!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
-
-        $data = $request->all();
-        $data['id_partner'] = $partner->id;
-        $data['slug_farm'] = $this->generateSlug($request->nama_hewan, $request->kode_hewan);
-
-        $farm = Farm::where('slug_farm', $slug_farm)->firstOrFail();
-        $farm->update($data);
-
-        return redirect()->route('partner.farm.list')->with('status', 'Data hewan telah berhasil ditambahkan!');
     }
 
     /**
@@ -168,7 +183,7 @@ class FarmPartnerController extends Controller
      */
     public function generateSlug($nama_hewan, $kode_hewan)
     {
-        $slug_farm = strtolower($nama_hewan.'-'.$kode_hewan);
+        $slug_farm = strtolower($nama_hewan . '-' . $kode_hewan);
         $slug_farm = str_replace(' ', '-', $slug_farm);
         return $slug_farm;
     }

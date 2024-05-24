@@ -20,13 +20,13 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
                         <label for="nama_hewan">Nama Hewan *</label>
-                        <input value="{{ $farm->nama_hewan }}" name="nama_hewan" id="nama_hewan" type="text" placeholder="Nama Partner"
-                            class="border p-2 rounded w-full">
+                        <input value="{{ $farm->nama_hewan }}" name="nama_hewan" id="nama_hewan" type="text"
+                            placeholder="Nama Partner" class="border p-2 rounded w-full">
                     </div>
                     <div>
                         <label for="kode_hewan">Kode hewan *</label>
-                        <input value="{{ $farm->kode_hewan }}" name="kode_hewan" id="kode_hewan" type="text" placeholder="Masukkan nama peternakan"
-                            class="border p-2 rounded w-full">
+                        <input value="{{ $farm->kode_hewan }}" name="kode_hewan" id="kode_hewan" type="text"
+                            placeholder="Masukkan nama peternakan" class="border p-2 rounded w-full">
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -34,6 +34,7 @@
                         <label for="id_kategori_hewan">Kategori Hewan *</label>
                         <select name="id_kategori_hewan" id="id_kategori_hewan"
                             class="id_kategori_hewan border p-2 rounded w-full">
+                            <option value="">Pilih Kategori</option>
                             @foreach ($categorylivestock as $categorylivestocks)
                                 <option value="{{ $categorylivestocks->id }}"
                                     {{ $categorylivestocks->id == $farm->id_kategori_hewan ? 'selected' : '' }}>
@@ -44,10 +45,11 @@
                     </div>
                     <div>
                         <label for="id_jenis_hewan">Jenis Hewan *</label>
-                        <select name="id_jenis_hewan" id="id_jenis_hewan"
-                            class="id_jenis_hewan border p-2 rounded w-full">
+                        <select name="id_jenis_hewan" id="id_jenis_hewan" class="id_jenis_hewan border p-2 rounded w-full">
+                            <option value="">Pilih jenis hewan</option>
                             @foreach ($typelivestocks as $typelivestock)
                                 <option value="{{ $typelivestock->id }}"
+                                    data-category-id="{{ $typelivestock->id_category_livestocks }}"
                                     {{ $typelivestock->id == $farm->id_jenis_hewan ? 'selected' : '' }}>
                                     {{ $typelivestock->nama_jenis_hewan }}
                                 </option>
@@ -55,6 +57,7 @@
                         </select>
                     </div>
                 </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
                         <label for="id_jenis_gender_hewan">Jenis Gender Hewan *</label>
@@ -83,19 +86,19 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
                         <label for="lahir_hewan">Lahir hewan *</label>
-                        <input name="lahir_hewan" id="lahir_hewan" value="{{ \Carbon\Carbon::parse($farm->lahir_hewan)->format('Y-m-d') }}"  type="date" placeholder="Nama Partner"
-                            class="border p-2 rounded w-full">
+                        <input name="lahir_hewan" id="lahir_hewan"
+                            value="{{ \Carbon\Carbon::parse($farm->lahir_hewan)->format('Y-m-d') }}" type="date"
+                            placeholder="Nama Partner" class="border p-2 rounded w-full">
                     </div>
                     <div>
                         <label for="slug_farm">Slug *</label>
-                        <input readonly value="{{ $farm->slug_farm }}" name="slug_farm" id="slug_farm" type="text" placeholder="Masukkan nama peternakan"
-                            class="border p-2 rounded w-full">
+                        <input readonly value="{{ $farm->slug_farm }}" name="slug_farm" id="slug_farm" type="text"
+                            placeholder="Masukkan nama peternakan" class="border p-2 rounded w-full">
                     </div>
                 </div>
                 <div class="mb-4">
                     <label for="deskripsi_hewan">Deskripsi Hewan</label>
-                    <textarea name="deskripsi_hewan" id="deskripsi_hewan" type="text"
-                        class="border p-2 rounded w-full">{{ $farm->deskripsi_hewan }}</textarea>
+                    <textarea name="deskripsi_hewan" id="deskripsi_hewan" type="text" class="border p-2 rounded w-full">{{ $farm->deskripsi_hewan }}</textarea>
                 </div>
 
                 <div>
@@ -107,4 +110,31 @@
             </form>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var selectedCategoryId = $('#id_kategori_hewan').val();
+            $('#id_jenis_hewan option').each(function() {
+                var typeCategoryId = $(this).data('category-id');
+                if (selectedCategoryId == "" || typeCategoryId == selectedCategoryId) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+
+            $('#id_kategori_hewan').change(function() {
+                var selectedCategoryId = $(this).val();
+                $('#id_jenis_hewan option').each(function() {
+                    var typeCategoryId = $(this).data('category-id');
+                    if (selectedCategoryId == "" || typeCategoryId == selectedCategoryId) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+                $('#id_jenis_hewan').val('');
+            });
+        });
+    </script>
 @endsection

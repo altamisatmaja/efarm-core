@@ -36,17 +36,21 @@
                                 Product</label>
                             <select name="id_kategori" id="id_kategori" class="border p-2 rounded w-full">
                                 @foreach ($categoryproduct as $category)
-                                    <option value="{{ $category->id  }}" {{ $products->id_kategori == $category->id ? 'selected' : '' }}>{{ $category->nama_kategori_product }}</option>
+                                    <option value="{{ $category->id }}"
+                                        {{ $products->id_kategori == $category->id ? 'selected' : '' }}>
+                                        {{ $category->nama_kategori_product }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div>
                             <label for="id_category_livestocks">Kategori Hewan *</label>
                             <select name="id_category_livestocks" id="id_category_livestocks"
-                            class="id_category_livestocks border p-2 rounded w-full">
-                            <option value="">Pilih Kategori</option>
-                            @foreach ($categorylivestock as $category)
-                                <option value="{{ $category->id  }}" {{ $products->id_category_livestocks == $category->id ? 'selected' : '' }}>{{ $category->nama_kategori_hewan }}</option>
+                                class="id_category_livestocks border p-2 rounded w-full">
+                                <option value="">Pilih Kategori</option>
+                                @foreach ($categorylivestock as $category)
+                                    <option value="{{ $category->id }}"
+                                        {{ $products->id_category_livestocks == $category->id ? 'selected' : '' }}>
+                                        {{ $category->nama_kategori_hewan }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -56,21 +60,23 @@
                                 class="id_typelivestocks border p-2 rounded w-full">
                                 <option value="">Pilih Jenis Hewan</option>
                                 @foreach ($typelivestocks as $type)
-                                    <option value="{{ $type->id }}" {{ $products->id_typelivestocks == $type->id ? 'selected' : '' }}
+                                    <option value="{{ $type->id }}"
+                                        {{ $products->id_typelivestocks == $type->id ? 'selected' : '' }}
                                         data-category-id="{{ $type->id_category_livestocks }}">
                                         {{ $type->nama_jenis_hewan }}
                                     </option>
                                 @endforeach
                             </select>
                         </div>
-
                     </div>
                     <div class="mb-4">
                         <label for="id_jenis_gender_hewan" class="text-sm font-medium text-gray-700 block mb-2">Jenis
                             Hewan Ternak</label>
                         <select id="id_jenis_gender_hewan" name="id_jenis_gender_hewan" class="border p-2 rounded w-full">
                             @foreach ($gender_livestocks as $gender)
-                                <option value="{{ $gender->id }}" {{ $gender->id == $products->id_jenis_gender_hewan ? 'selected' : '' }}>{{ $gender->nama_gender }}</option>
+                                <option value="{{ $gender->id }}"
+                                    {{ $gender->id == $products->id_jenis_gender_hewan ? 'selected' : '' }}>
+                                    {{ $gender->nama_gender }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -100,39 +106,40 @@
                     <div class="mb-4">
                         <label for="deskripsi_product" class="text-sm font-medium text-gray-700 block mb-2">Deskripsi
                             Product</label>
-                        <textarea  id="deskripsi_product" name="deskripsi_product" rows="6" placeholder="Masukkan deskripsi product"
+                        <textarea id="deskripsi_product" name="deskripsi_product" rows="6" placeholder="Masukkan deskripsi product"
                             class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500">{{ $products->deskripsi_product }}</textarea>
                     </div>
                     <div class="mb-4 hidden">
                         <label for="terjual" class="text-sm font-medium text-gray-700 block mb-2">Terjual</label>
-                        <input value="{{ $products->terjual }}" type="number" value="0" name="terjual" id="terjual" placeholder="0" readonly
-                            class="border p-2 rounded w-full">
+                        <input value="{{ $products->terjual }}" type="number" value="0" name="terjual" id="terjual"
+                            placeholder="0" readonly class="border p-2 rounded w-full">
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                         <div>
                             <label for="diskon" class="text-sm font-medium text-gray-700 block mb-2">Diskon</label>
-                            <input value="{{ $products->diskon }}" type="number" id="diskon" name="diskon" placeholder="Diskon"
-                                class="border p-2 rounded w-full">
+                            <input value="{{ $products->diskon }}" type="number" id="diskon" name="diskon"
+                                placeholder="Diskon" class="border p-2 rounded w-full">
                         </div>
                         <div>
                             <label for="berat_hewan_ternak" class="text-sm font-medium text-gray-700 block mb-2">Berat
                                 Hewan</label>
-                            <input value="{{ $products->berat_hewan_ternak }}" type="number" id="berat_hewan_ternak" name="berat_hewan_ternak"
-                                placeholder="Berat dalam kg" class="border p-2 rounded w-full">
+                            <input value="{{ $products->berat_hewan_ternak }}" type="number" id="berat_hewan_ternak"
+                                name="berat_hewan_ternak" placeholder="Berat dalam kg" class="border p-2 rounded w-full">
                         </div>
                         <div>
                             <label for="stok_hewan_ternak" class="text-sm font-medium text-gray-700 block mb-2">Stok
                                 hewan</label>
-                            <input value="{{ $products->stok_hewan_ternak }}" type="number" id="stok_hewan_ternak" name="stok_hewan_ternak"
-                                placeholder="Stok hewan" class="border p-2 rounded w-full">
+                            <input value="{{ $products->stok_hewan_ternak }}" type="number" id="stok_hewan_ternak"
+                                name="stok_hewan_ternak" placeholder="Stok hewan" class="border p-2 rounded w-full">
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                         <div>
                             <label for="lahir_hewan" class="text-sm font-medium text-gray-700 block mb-2">Lahir
                                 hewan</label>
-                            <input value="{{ $products->lahir_hewan }}" type="number" id="lahir_hewan" name="lahir_hewan"
-                                placeholder="Lahir hewan dalam bulan" class="border p-2 rounded w-full">
+                            <input value="{{ $products->lahir_hewan }}" type="number" id="lahir_hewan"
+                                name="lahir_hewan" placeholder="Lahir hewan dalam bulan"
+                                class="border p-2 rounded w-full">
                         </div>
                     </div>
                     <div class="mb-4 hidden">

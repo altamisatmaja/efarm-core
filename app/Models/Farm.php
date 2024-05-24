@@ -29,7 +29,7 @@ class Farm extends Model
     ];
 
     public function type_livestocks(){
-        return $this->belongsTo(TypeLivestock::class, 'id_kondisi_hewan', 'id');
+        return $this->belongsTo(TypeLivestock::class, 'id_jenis_hewan', 'id');
     }
 
     public function gender_livestocks(){
@@ -43,7 +43,7 @@ class Farm extends Model
     public function condition_livestock(){
         return $this->belongsTo(ConditionLivestock::class, 'id_kondisi_hewan', 'id');
     }
-    
+
 
     public function category_livestock(){
         return $this->belongsTo(CategoryLivestock::class, 'id_kategori_hewan', 'id');
