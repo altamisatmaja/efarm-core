@@ -75,7 +75,7 @@
                 </div>
             </div>
         @endif
-        <div class="mx-auto w-full ">
+        <div class="mx-auto w-full mb-5">
             <div class="mb-5">
                 <h3 class="font-semibold text-2xl text-textbase">Informasi pribadi anda 👋</h3>
             </div>
@@ -118,33 +118,41 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
                         <label for="provinsi_partner">Provinsi *</label>
-                        <select name="provinsi_partner" id="provinsi_partner"
-                            class="provinsi_partner border p-2 rounded w-full">
-                            <option data-id="1" value="JAWA TIMUR">Pilih provinsi</option>
-                        </select>
+                        <input value="{{ $partner->provinsi_partner }}" type="text" id="provinsi_partner"
+                            name="provinsi_partner" placeholder="provinsi_partner"
+                            class="border border-textbase p-2 rounded w-full font-medium text-lg">
+                        @error('provinsi_partner')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div>
                         <label for="kabupaten_partner">Kabupaten *</label>
-                        <select disabled name="kabupaten_partner" id="kabupaten_partner"
-                            class="kabupaten_partner border p-2 rounded w-full">
-                            <option data-id="1" value="KAB. NGAWI">Pilih kabupaten</option>
-                        </select>
+                        <input value="{{ $partner->kabupaten_partner }}" type="text" id="kabupaten_partner"
+                            name="kabupaten_partner" placeholder="kabupaten_partner"
+                            class="border border-textbase p-2 rounded w-full font-medium text-lg">
+                        @error('kabupaten_partner')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
                         <label for="kecamatan_partner">Kecamatan *</label>
-                        <select disabled name="kecamatan_partner" id="kecamatan_partner"
-                            class="kecamatan_partner border p-2 rounded w-full">
-                            <option data-id="1" value="Paron">Pilih kecamatan</option>
-                        </select>
+                        <input value="{{ $partner->kecamatan_partner }}" type="text" id="kecamatan_partner"
+                            name="kecamatan_partner" placeholder="kecamatan_partner"
+                            class="border border-textbase p-2 rounded w-full font-medium text-lg">
+                        @error('kecamatan_partner')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div>
                         <label for="kelurahan_partner">kelurahan *</label>
-                        <select disabled name="kelurahan_partner" id="kelurahan_partner"
-                            class="kelurahan_partner border p-2 rounded w-full">
-                            <option data-id="1" value="1">Pilih kelurahan</option>
-                        </select>
+                        <input value="{{ $partner->kelurahan_partner }}" type="text" id="kelurahan_partner"
+                            name="kelurahan_partner" placeholder="kelurahan_partner"
+                            class="border border-textbase p-2 rounded w-full font-medium text-lg">
+                        @error('kelurahan_partner')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-5">
