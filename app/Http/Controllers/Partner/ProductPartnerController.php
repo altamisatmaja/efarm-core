@@ -81,9 +81,7 @@ class ProductPartnerController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return response()->json(
-                    $validator->errors(), 422
-                );
+                return redirect()->back()->withErrors($validator)->withInput();
             }
 
             $input = $request->all();
@@ -109,7 +107,7 @@ class ProductPartnerController extends Controller
                 return redirect()->back()->with('errors', 'Data gagal produk berhasil dilisting');
             }
         } catch (\Exception $e) {
-            throw $e;
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
 

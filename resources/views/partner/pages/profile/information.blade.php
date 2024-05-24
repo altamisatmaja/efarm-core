@@ -115,12 +115,44 @@
                         <span class="text-red-500">{{ $message }}</span>
                     @enderror
                 </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label for="provinsi_partner">Provinsi *</label>
+                        <select name="provinsi_partner" id="provinsi_partner"
+                            class="provinsi_partner border p-2 rounded w-full">
+                            <option data-id="1" value="JAWA TIMUR">Pilih provinsi</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="kabupaten_partner">Kabupaten *</label>
+                        <select disabled name="kabupaten_partner" id="kabupaten_partner"
+                            class="kabupaten_partner border p-2 rounded w-full">
+                            <option data-id="1" value="KAB. NGAWI">Pilih kabupaten</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label for="kecamatan_partner">Kecamatan *</label>
+                        <select disabled name="kecamatan_partner" id="kecamatan_partner"
+                            class="kecamatan_partner border p-2 rounded w-full">
+                            <option data-id="1" value="Paron">Pilih kecamatan</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="kelurahan_partner">kelurahan *</label>
+                        <select disabled name="kelurahan_partner" id="kelurahan_partner"
+                            class="kelurahan_partner border p-2 rounded w-full">
+                            <option data-id="1" value="1">Pilih kelurahan</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="mb-5">
                     <label for="alamat_partner" class="font-semibold text-lg text-textbase block mb-2">
                         Alamat partner
                     </label>
-                    <input value="{{ $partner->alamat_partner }}" type="text" name="alamat_partner" id="alamat_partner"
-                        placeholder="5" min="0"
+                    <input value="{{ $partner->alamat_partner }}" type="text" name="alamat_partner"
+                        id="alamat_partner" placeholder="5" min="0"
                         class="w-full appearance-none rounded-md border border-textbase bg-white py-3 px-6 font-medium text-lg text-textbase outline-none focus:border-primarybase " />
                     @error('alamat_partner')
                         <span class="text-red-500">{{ $message }}</span>
@@ -151,10 +183,249 @@
         <script>
             $(function() {
                 $('#dismiss-button').click(function(e) {
-                    e.preventDefault(); // menghentikan default
+                    e.preventDefault();
                     $('#alert-dissmiss').addClass('hidden');
                 });
             });
+
+            $(function() {
+                // get provinsi
+                $(document).ready(function() {
+                    $.ajax({
+                        url: `https://ibnux.github.io/data-indonesia/provinsi.json`,
+                        method: 'GET',
+                        success: function(response) {
+                            console.log(response);
+
+                            let row = '';
+
+                            const selectprovinsi = $('.provinsi_partner');
+                            selectprovinsi.empty();
+
+                            selectprovinsi.append($('<option>', {
+                                value: '',
+                                'data-id': '',
+                                text: 'Pilih provinsi'
+                            }));
+
+                            response.map(function(data) {
+                                // console.log(data);
+                                selectprovinsi.append($('<option>', {
+                                    'data-id': data.id,
+                                    value: data.nama,
+                                    text: data.nama,
+                                }))
+                            });
+
+                            $("select.provinsi_partner").change(function() {
+                                document.getElementById("kabupaten_partner")
+                                    .removeAttribute("disabled");
+                                var selectprovince = $(this).children("option:selected")
+                                    .attr('data-id');
+                                var valofselectprovince = $(this).children(
+                                        "option:selected")
+                                    .val();
+
+                                console.log(selectprovince);
+                                console.log(valofselectprovince);
+
+                                $.ajax({
+                                    url: `https://ibnux.github.io/data-indonesia/kabupaten/${selectprovince}.json`,
+                                    method: 'GET',
+                                    success: function(response) {
+                                        console.log(response);
+
+                                        let row = '';
+
+                                        const selectkabupaten = $(
+                                            '.kabupaten_partner');
+                                        selectkabupaten.empty();
+
+                                        selectkabupaten.append($('<option>', {
+                                            value: '',
+                                            'data-id': '',
+                                            text: 'Pilih kabupaten'
+                                        }));
+
+                                        response.map(function(data) {
+                                            // console.log(data);
+                                            selectkabupaten.append($(
+                                                '<option>', {
+                                                    value: data
+                                                        .nama,
+                                                    'data-id': data
+                                                        .id,
+                                                    text: data
+                                                        .nama,
+                                                }))
+                                        });
+
+                                        $("select.kabupaten_partner").change(
+                                            function() {
+                                                document.getElementById(
+                                                        "kecamatan_partner")
+                                                    .removeAttribute(
+                                                        "disabled");
+                                                var selectkabupaten = $(
+                                                        this).children(
+                                                        "option:selected")
+                                                    .attr('data-id');
+
+                                                console.log(
+                                                    selectkabupaten);
+
+                                                $.ajax({
+                                                    url: `https://ibnux.github.io/data-indonesia/kecamatan/${selectkabupaten}.json`,
+                                                    method: 'GET',
+                                                    success: function(
+                                                        response
+                                                    ) {
+                                                        console
+                                                            .log(
+                                                                response
+                                                            );
+
+                                                        let row =
+                                                            '';
+
+                                                        const
+                                                            selectkecamatan =
+                                                            $(
+                                                                '.kecamatan_partner'
+                                                            );
+                                                        selectkecamatan
+                                                            .empty();
+
+                                                        selectkecamatan
+                                                            .append(
+                                                                $('<option>', {
+                                                                    value: '',
+                                                                    'data-id': '',
+                                                                    text: 'Pilih kecamatan'
+                                                                })
+                                                            );
+
+                                                        response
+                                                            .map(
+                                                                function(
+                                                                    data
+                                                                ) {
+                                                                    // console.log(data);
+                                                                    selectkecamatan
+                                                                        .append(
+                                                                            $('<option>', {
+                                                                                value: data
+                                                                                    .nama,
+                                                                                'data-id': data
+                                                                                    .id,
+                                                                                text: data
+                                                                                    .nama,
+                                                                            })
+                                                                        )
+                                                                }
+                                                            );
+
+                                                        $("select.kecamatan_partner")
+                                                            .change(
+                                                                function() {
+                                                                    document
+                                                                        .getElementById(
+                                                                            "kelurahan_partner"
+                                                                        )
+                                                                        .removeAttribute(
+                                                                            "disabled"
+                                                                        );
+                                                                    var selectkec =
+                                                                        $(
+                                                                            this
+                                                                        )
+                                                                        .children(
+                                                                            "option:selected"
+                                                                        )
+                                                                        .attr(
+                                                                            'data-id'
+                                                                        );
+                                                                    console
+                                                                        .log(
+                                                                            `Ini data id kecamtan: ${selectkec}`
+                                                                        );
+
+                                                                    // ini yang diterusin al
+                                                                    $.ajax({
+                                                                        url: `https://ibnux.github.io/data-indonesia/kelurahan/${selectkec}.json`,
+                                                                        method: 'GET',
+                                                                        success: function(
+                                                                            response
+                                                                        ) {
+                                                                            console
+                                                                                .log(
+                                                                                    response
+                                                                                );
+
+                                                                            let row =
+                                                                                '';
+
+                                                                            const
+                                                                                selectkelurahan =
+                                                                                $(
+                                                                                    '.kelurahan_partner'
+                                                                                );
+                                                                            selectkelurahan
+                                                                                .empty();
+
+                                                                            selectkelurahan
+                                                                                .append(
+                                                                                    $('<option>', {
+                                                                                        value: '',
+                                                                                        'data-id': '',
+                                                                                        text: 'Pilih kelurahan',
+                                                                                    })
+                                                                                );
+
+                                                                            response
+                                                                                .map(
+                                                                                    function(
+                                                                                        data
+                                                                                    ) {
+                                                                                        console
+                                                                                            .log(
+                                                                                                data
+                                                                                            );
+                                                                                        selectkelurahan
+                                                                                            .append(
+                                                                                                $('<option>', {
+                                                                                                    value: data
+                                                                                                        .nama,
+                                                                                                    'data-id': data
+                                                                                                        .id,
+                                                                                                    text: data
+                                                                                                        .nama,
+                                                                                                })
+                                                                                            )
+                                                                                    }
+                                                                                )
+                                                                        }
+                                                                    })
+                                                                }
+                                                            );
+                                                    }
+                                                })
+                                            });
+
+                                    },
+                                    error: function(xhr, status, error) {
+                                        console.error(status, error);
+                                    }
+                                });
+
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            console.error(status, error);
+                        }
+                    });
+                });
+            })
         </script>
     @endpush
 @endsection

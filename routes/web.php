@@ -92,6 +92,10 @@ Route::get('/tentang', [PageWebController::class, 'about'])->name('homepage.abou
 Route::get('/layanan', [PageWebController::class, 'layanan'])->name('homepage.layanan');
 
 
+Route::get('get-kabupaten', [LocationController::class, 'getKabupaten']);
+Route::get('get-kecamatan', [LocationController::class, 'getKecamatan']);
+Route::get('get-kelurahan', [LocationController::class, 'getKelurahan']);
+
 /**
  * Route handling for Front End Market
  */
@@ -122,6 +126,7 @@ Route::get('verify-email/{id}/{hash}', [RegisterCustomerController::class, 'show
  * Route for submission partner
  */
 Route::get('partner/submission', [SubmissionController::class, 'submission'])->name('partner.submission');
+Route::post('partner/submission', [SubmissionController::class, 'store'])->name('partner.submission.store');
 
 /**
  * Route for google login customer

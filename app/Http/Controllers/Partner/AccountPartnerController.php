@@ -34,6 +34,7 @@ class AccountPartnerController extends Controller
     public function information_view(){
         $user = Auth::user();
         $partner = Partner::where('id_user', $user->id)->first();
+        dd(json_encode($partner));
         return view('partner.pages.profile.information', compact('partner'));
     }
 
