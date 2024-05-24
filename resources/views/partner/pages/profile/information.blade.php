@@ -3,71 +3,144 @@
 @section('title', 'Dashboard | Order')
 
 @section('content')
-    <div class="flex items-center justify-center p-12">
-        <div class="mx-auto w-full max-w-[550px]">
-            @if (session('success'))
-                <div id="alert-dissmiss"
-                    class="font-regular mb-4 flex flex-wrap justify-between items-center w-full rounded-lg bg-green-500 p-4 text-base leading-5 text-white opacity-100"
+    <div class="flex items-center justify-center">
+        @if (session('success'))
+            <div id="successMessage"
+                class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
+                <div class="relative w-full max-w-screen-md rounded-lg bg-green-500 px-4 py-4 text-base text-white"
                     data-dismissible="alert">
-                    <div class="mr-12 items-center">{{ session('success') }}</div>
-                    <div id="dismiss-button"
-                        class="top-2.5 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20"
-                        data-dismissible-target="alert">
-                        <button role="button" class="w-max rounded-lg p-1" data-alert-dimissible="true">
+                    <div class="absolute top-4 left-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                            class="mt-px h-6 w-6">
+                            <path fill-rule="evenodd"
+                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-8 mr-12">
+                        <h5
+                            class="block font-sans text-xl font-semibold leading-snug tracking-normal text-white antialiased">
+                            Berhasil
+                        </h5>
+                        <p class="mt-2 block font-sans text-base font-normal leading-relaxed text-white antialiased">
+                            {{ session('success') }}
+                        </p>
+                    </div>
+                    <div data-dismissible-target="alert" data-ripple-dark="true"
+                        class="absolute top-3 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20">
+                        <div role="button" class="w-max rounded-lg p-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
+                                </path>
                             </svg>
-                        </button>
+                        </div>
                     </div>
                 </div>
-            @endif
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div id="successMessage"
+                class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
+                <div class="relative w-full max-w-screen-md rounded-lg bg-red-500 px-4 py-4 text-base text-white"
+                    data-dismissible="alert">
+                    <div class="absolute top-4 left-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                            class="mt-px h-6 w-6">
+                            <path fill-rule="evenodd"
+                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-8 mr-12">
+                        <h5
+                            class="block font-sans text-xl font-semibold leading-snug tracking-normal text-white antialiased">
+                            Gagal
+                        </h5>
+                        <p class="mt-2 block font-sans text-base font-normal leading-relaxed text-white antialiased">
+                            {{ session('error') }}
+                        </p>
+                    </div>
+                    <div data-dismissible-target="alert" data-ripple-dark="true"
+                        class="absolute top-3 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20">
+                        <div role="button" class="w-max rounded-lg p-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+        <div class="mx-auto w-full ">
+            <div class="mb-5">
+                <h3 class="font-semibold text-2xl text-textbase">Informasi pribadi anda 👋</h3>
+            </div>
             <form action="{{ route('partner.account.information.update') }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                     <div>
-                        <label for="nama_partner" class="text-sm font-medium text-gray-700 block mb-2">Nama Partner</label>
-                        <input value="{{ $partners->nama_partner }}" type="text" id="nama_partner" name="nama_partner"
-                            placeholder="Nama parnter" class="border p-2 rounded w-full">
+                        <label for="nama_partner" class=" text-lg font-semibold text-textbase block mb-2">Nama
+                            Partner</label>
+                        <input value="{{ $partner->nama_partner }}" type="text" id="nama_partner" name="nama_partner"
+                            placeholder="Nama parnter"
+                            class="border border-textbase font-medium text-lg p-2 rounded w-full">
+                        @error('nama_partner')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div>
-                        <label for="nama_perusahaan_partner" class="text-sm font-medium text-gray-700 block mb-2">Nama
+                        <label for="nama_perusahaan_partner" class="font-semibold text-lg text-textbase block mb-2">Nama
                             perusahaan partner</label>
-                        <input value="{{ $partners->nama_perusahaan_partner }}" type="text" id="nama_perusahaan_partner"
+                        <input value="{{ $partner->nama_perusahaan_partner }}" type="text" id="nama_perusahaan_partner"
                             name="nama_perusahaan_partner" placeholder="nama_perusahaan_partner"
-                            class="border p-2 rounded w-full">
+                            class="border border-textbase p-2 rounded w-full font-medium text-lg">
+                        @error('nama_perusahaan_partner')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-5">
-                    <label for="lama_peternakan_berdiri" class="text-sm font-medium text-gray-700 block mb-2">
+                    <label for="lama_peternakan_berdiri" class="font-semibold text-lg text-textbase block mb-2">
                         Lama peternakan berdiri
                     </label>
-                    <input value="{{ $partners->lama_peternakan_berdiri }}" type="number" name="lama_peternakan_berdiri"
+                    <input value="{{ $partner->lama_peternakan_berdiri }}" type="number" name="lama_peternakan_berdiri"
                         id="lama_peternakan_berdiri" placeholder="Lama peternakan berdiri" min="0"
-                        class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                        class="w-full appearance-none rounded-md border border-textbase bg-white py-3 px-6 font-medium text-lg text-textbase outline-none focus:border-primarybase " />
+                    @error('lama_peternakan_berdiri')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-5">
-                    <label for="alamat_partner" class="text-sm font-medium text-gray-700 block mb-2">
+                    <label for="alamat_partner" class="font-semibold text-lg text-textbase block mb-2">
                         Alamat partner
                     </label>
-                    <input value="{{ $partners->alamat_partner }}" type="text" name="alamat_partner" id="alamat_partner"
+                    <input value="{{ $partner->alamat_partner }}" type="text" name="alamat_partner" id="alamat_partner"
                         placeholder="5" min="0"
-                        class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                        class="w-full appearance-none rounded-md border border-textbase bg-white py-3 px-6 font-medium text-lg text-textbase outline-none focus:border-primarybase " />
+                    @error('alamat_partner')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-5">
-                    <label for="no_hp" class="text-sm font-medium text-gray-700 block mb-2">
+                    <label for="no_hp" class="font-semibold text-lg text-textbase block mb-2">
                         Nomor Handphone
                     </label>
-                    <input value="{{ $partners->no_hp }}" type="text" name="no_hp" id="no_hp"
+                    <input value="{{ $partner->no_hp }}" type="text" name="no_hp" id="no_hp"
                         placeholder="Masukkan nomor hp anda" min="0"
-                        class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                        class="w-full appearance-none rounded-md border border-textbase bg-white py-3 px-6 font-medium text-lg text-textbase outline-none focus:border-primarybase " />
+                    @error('no_hp')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
-
                 <div>
-                    <button type="submit""
+                    <button type="submit" onclick="return confirm('Apakah anda yakin ingin mengubah?')"
                         class="w-full hover:shadow-form rounded-md bg-primarybase py-3 px-8 text-center text-base font-semibold text-white outline-none">
-                        Submit
+                        Simpan
                     </button>
                 </div>
             </form>

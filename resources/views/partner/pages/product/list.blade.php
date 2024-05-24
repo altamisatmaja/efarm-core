@@ -147,8 +147,12 @@
                                             {{ $product['nama_product'] }}</td>
                                         <td class="px-4 py-4 text-sm text-gray-500">
                                             {{ $product['harga_product'] }}</td>
-                                        <td class="px-4 py-4 text-sm text-gray-500">
-                                            {{ $product['gambar_hewan'] }}</td>
+                                            <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap align-middle">
+                                                <div class="flex gap-1 flex-col items-center justify-center">
+                                                    <img class="object-cover w-14 h-14 rounded-lg"
+                                                        src="/uploads/{{ $product['gambar_hewan'] }}" alt="">
+                                                </div>
+                                            </td>
                                         <td class="px-4 py-4 text-sm text-gray-500">
                                             {{ $product['nama_kategori_product'] }}</td>
                                         <td class="px-4 py-4 text-sm text-gray-500">
