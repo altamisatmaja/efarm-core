@@ -1,6 +1,6 @@
 @extends('partner.layouts.app')
 
-@section('title', 'Dashboard | Order')
+@section('title', 'Dashboard | Password')
 
 @section('content')
     <div class="flex w-full flex-col mb-5">
@@ -77,75 +77,42 @@
         @endif
         <div
             class="relative flex flex-col bg-white bg-clip-border shadow-3xl shadow-shadow-500 dark:!bg-navy-800 dark:!shadow-none">
-            <form action="{{ route('partner.account.rekening.store') }}" method="POST">
+            <form action="{{ route('partner.account.password.store') }}" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="mt-2 mb-4 w-full">
                     <div class="mb-3">
-                        <h3 class="font-semibold text-2xl text-textbase">Informasi rekening anda 👋</h3>
+                        <h3 class="font-semibold text-2xl text-textbase">Ubah password akun anda 👋</h3>
                     </div>
                     <p class="text-lg text-textbase">
-                        Informasi rekening digunakan untuk pencairan dana dan hanya bisa diubah sekali. Jika terdapat
-                        kesalahan pengisian, silahkan menghubungi <span class="italic">Customer Service</span> ya!
+                        Hati-hati dalam mengubah password ya!
                     </p>
                 </div>
                 <div class="grid grid-cols-2 gap-4 w-full">
                     <div
                         class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
-                        <label for="nama_bank" class=" text-lg font-semibold text-textbase block mb-2">Nama Bank</label>
-                        <select name="nama_bank" id="nama_bank" class="border @if($partner->diubah == 'Sudah diubah') border-gray-400 @else border-textbase @endif py-2.5 px-2 rounded w-full" @if ($partner->diubah == 'Sudah diubah') disabled readonly @endif>
-                            @foreach ($bank as $banks)
-                                <option value="{{ $banks['name'] }}">{{ $banks['name'] }}</option>
-                            @endforeach
-                        </select>
-                        @error('nama_bank')
+                        <label for="password" class=" text-lg font-semibold text-textbase block mb-2">Password</label>
+                        <input name="password" id="password"
+                            class="border border-textbase font-medium text-lg p-2 rounded w-full" type="password">
+                        @error('password')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
 
                     <div
                         class="flex flex-col justify-center rounded-2xl bg-white bg-clip-border py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
-                        <label for="nama_pemilik_rekening" class=" text-lg font-semibold text-textbase block mb-2">Nama
-                            Pemilik Rekening</label>
-                        <input name="nama_pemilik_rekening" id="nama_pemilik_rekening"
-                            class="border @if($partner->diubah == 'Sudah diubah') border-gray-400 @else border-textbase @endif font-medium text-lg p-2 rounded w-full" type="text"
-                            value="{{ $partner->nama_pemilik_rekening }}" @if ($partner->diubah == 'Sudah diubah') disabled readonly @endif>
-                        @error('nama_pemilik_rekening')
+                        <label for="konfirmasi_password" class=" text-lg font-semibold text-textbase block mb-2">Konfirmasi password</label>
+                        <input name="konfirmasi_password" id="konfirmasi_password"
+                            class="border border-textbase font-medium text-lg p-2 rounded w-full" type="password">
+                        @error('konfirmasi_password')
                             <span class="text-red-500">{{ $message }}</span>
                         @enderror
                     </div>
-
                 </div>
-                <div
-                    class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">
-                    <label for="nomor_rekening" class=" text-lg font-semibold text-textbase block mb-2">Nomor
-                        Rekening</label>
-                    <input name="nomor_rekening" id="nomor_rekening"
-                        class="border @if($partner->diubah == 'Sudah diubah') border-gray-400 @else border-textbase @endif font-medium text-lg p-2 rounded w-full" type="number"
-                        value="{{ $partner->nomor_rekening }}" @if ($partner->diubah == 'Sudah diubah') disabled readonly @endif>
-                    @error('nomor_rekening')
-                        <span class="text-red-500">{{ $message }}</span>
-                    @enderror
-                    @if ($partner->diubah == 'Sudah diubah')
-                        <button type="button"
-                            class="mt-4 px-4 w-full py-2 rounded bg-gray-300 text-white cursor-not-allowed focus:outline-none transition-colors"
-                            disabled>
-                            Ubah
-                        </button>
-                    @else
-                        <button type="submit"
-                            class="mt-4 px-4 w-full py-2 rounded bg-primarybase text-white hover:bg-primarybase focus:outline-none transition-colors">
-                            Ubah
-                        </button>
-                    @endif
-                </div>
-                @if ($partner->change_at)
-                <p class="text-lg text-textbase">
-                    * Data sudah diubah pada {{ $changeat }}
-                </p>
-            @else
-                <p></p>
-            @endif
+                <button type="submit"
+                    class="mt-4 px-4 w-full py-2 rounded bg-primarybase text-white hover:bg-primarybase focus:outline-none transition-colors">
+                    Ubah
+                </button>
             </form>
         </div>
     </div>

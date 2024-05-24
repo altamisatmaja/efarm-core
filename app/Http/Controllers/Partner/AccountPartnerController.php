@@ -47,6 +47,12 @@ class AccountPartnerController extends Controller
         return view('partner.pages.profile.address', compact('partner', 'partners'));
     }
 
+    public function password_view(){
+        $partner = Auth::user();
+        $partners = Auth::user()->partner;
+        return view('partner.pages.profile.password', compact('partner', 'partners'));
+    }
+
     public function rekening_view(){
         $user = Auth::user();
         $partner = Partner::where('id_user', $user->id)->first();
@@ -126,17 +132,35 @@ class AccountPartnerController extends Controller
         }
     }
 
-    public function update_password(Request $request){
-        $request->validate([
-            'password' => 'required',
-        ]);
+    public function password_store(Request $request){
+        try {
+            $user = Auth::user();
+            $partner = Partner::where('id_user', $user->id)->first();
 
+            $validator = Validator::make($request->all(), [
+                'password' => 'required|min:6|no_css_injection',
+                'konfirmasi_password' => 'required|min:6|same:password|no_css_injection',
+            ], [
+                'password.no_css_injection' => 'Dilarang keras mengisi script',
+                'konfirmasi_password.no_css_injection' => 'Dilarang keras mengisi script',
+                'password.required' => 'Password wajib diisi',
+                'password.min' => 'Panjang password minimal 6 karakter',
+                'konfirmasi_password.min' => 'Panjang konfirmasi password minimal 6 karakter',
+                'konfirmasi_password.same' => 'Masukkan Konfirmasi password sesuai dengan password',
+            ]);
 
-        $user = Auth::user();
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
 
-        $user->update($request->all());
+            $user->update([
+                'password' => bcrypt($request->password)
+            ]);
 
-        return redirect()->back()->with('success', 'Password berhasil di ubah');
+            return redirect()->back()->with('success', 'Password berhasil diubah!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 
     /**

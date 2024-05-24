@@ -457,6 +457,9 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
     Route::get('partner/account/rekening', [AccountPartnerController::class, 'rekening_view'])->name('partner.account.rekening');
     Route::put('partner/account/rekening/store', [AccountPartnerController::class, 'rekening_store'])->name('partner.account.rekening.store');
 
+    Route::get('partner/account/password', [AccountPartnerController::class, 'password_view'])->name('partner.account.password');
+    Route::put('partner/account/password/update', [AccountPartnerController::class, 'password_store'])->name('partner.account.password.store');
+
     /**
      * Route for product partner
      */

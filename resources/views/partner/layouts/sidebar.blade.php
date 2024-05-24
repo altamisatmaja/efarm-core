@@ -102,6 +102,21 @@
                     Authentikasi</p>
             </li>
             <li>
+                <a aria-current="page" class="active" href="{{ route('partner.account.password') }}">
+                    <button
+                        class="middle none  font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
+                        type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px"
+                            fill="#ffffff">
+                            <path
+                                d="M80-200v-80h800v80H80Zm46-242-52-30 34-60H40v-60h68l-34-58 52-30 34 58 34-58 52 30-34 58h68v60h-68l34 60-52 30-34-60-34 60Zm320 0-52-30 34-60h-68v-60h68l-34-58 52-30 34 58 34-58 52 30-34 58h68v60h-68l34 60-52 30-34-60-34 60Zm320 0-52-30 34-60h-68v-60h68l-34-58 52-30 34 58 34-58 52 30-34 58h68v60h-68l34 60-52 30-34-60-34 60Z" />
+                        </svg>
+                        <p class="block antialiased text-lg leading-relaxed  font-semibold capitalize">
+                            Password</p>
+                    </button>
+                </a>
+            </li>
+            <li>
                 <a aria-current="page" class="active" href="{{ route('partner.logout') }}">
                     <button
                         class="middle none  font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"

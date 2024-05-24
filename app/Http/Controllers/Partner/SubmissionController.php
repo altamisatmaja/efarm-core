@@ -122,7 +122,7 @@ class SubmissionController extends Controller
                 'nama' => $request->nama,
                 'username' => $request->username,
                 'email' => $request->email,
-                'password' => $request->password,
+                'password' => bcrypt($request->password),
                 'email_verified_at' => now()
             ]);
 
