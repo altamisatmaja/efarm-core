@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -19,22 +20,23 @@ class RegisterCustomerController extends Controller
         return view('customer.auth.register');
     }
 
-    public function email_verified(Request $request, $id){
+    public function emailVerified(LoginRequest $request, $id) {
         $user = User::findOrFail($id);
-    
-        // $input = $request->only(['email_verified_at']);
-        // $input['email_verified_at'] = now();
-        
-        // Melakukan update data
-        // $verify = $user->update($input);
+
         $user->email_verified_at = now();
-        $p = $user->save();
-        
-        if ($p){
-            return redirect()->back();
+        $user->save();
+
+        $request->authenticate();
+        $request->session()->regenerate();
+
+        if (Auth::check()) {
+            return redirect()->route('customer.account')->with('success', 'Akun berhasil diverifikasi!');
+        } else {
+            return redirect()->route('login')->with('error', 'Gagal melakukan autentikasi setelah verifikasi email.');
         }
     }
-    
+
+
 
     public function store(Request $request)
     {
@@ -52,7 +54,7 @@ class RegisterCustomerController extends Controller
         return redirect()->route('customer.verify.email')->with('status', 'Akun berhasil dibuat, silahkan verifikasi');
     }
 
-    public function verify_email(Request $request, $id)
+    public function verify_email(Request $request, $id, $hash)
     {
         $user = User::find($id);
         return view('verify', compact('user'));
@@ -62,25 +64,33 @@ class RegisterCustomerController extends Controller
     {
         $id = $request->route('id');
         $hash = $request->route('hash');
-    
+
         $user = User::findOrFail($id);
-    
-        // Check if the hash matches
-        if (!hash_equals((string) $hash, sha1($user->getEmailForVerification()))) {
-            abort(403);
-        }
-    
-        // Mark the email as verified
-        if (!$user->hasVerifiedEmail()) {
+
+        if ($user) {
             $user->email_verified_at = now();
             $user->save();
-    
-            // Trigger 'verified' event
-            event(new Verified($user));
-    
-            // Redirect with 'id' parameter
-            return redirect()->route('customer.verify.email', $id)->with('status', 'Email berhasil diverifikasi');
+
+            return redirect()->route('customer.auth.verified', $hash);
+        } else {
+            return redirect()->route('verification.notice')->with('error', 'Token ekspires.');
         }
+
+        // Auth::guard('web')->login($verify);
+
+        // return redirect()->route('customer.verify.email', $user->id);
+        // if (!hash_equals((string) $hash, sha1($user->getEmailForVerification()))) {
+        //     abort(403);
+        // }
+
+        // if (!$user->hasVerifiedEmail()) {
+        //     $user->email_verified_at = now();
+        //     $user->save();
+
+        //     event(new Verified($user));
+
+        //     return redirect()->route('customer.verify.email', $id)->with('status', 'Email berhasil diverifikasi');
+        // }
     }
-    
+
 }

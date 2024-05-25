@@ -25,35 +25,40 @@ class AuthPartnerController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function login(LoginRequest $request)
-{
-    $credentials = $request->only('email', 'password');
+    {
+        $credentials = $request->only('email', 'password');
 
-    if (Auth::attempt($credentials)) {
-        $request->session()->regenerate();
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
-        $user = Auth::user();
+            $user = Auth::user();
 
-        if ($user->user_role === 'Partner') {
-            if ($user->partner->status === 'Sudah diverifikasi') {
-                return redirect()->route('partner.dashboard')->with('status', 'Anda berhasil login');
-            } elseif ($user->partner->status === 'Nonaktifkan') {
-                Auth::logout();
-                return redirect()->route('partner.login')->with('status', 'Akun Anda telah dinonaktifkan');
-            }  elseif ($user->partner->status === 'Belum diverifikasi') {
-                Auth::logout();
-                return redirect()->route('partner.login')->with('status', 'Akun belum diverifikasi');
+            if ($user->user_role == 'Partner') {
+                $partner = Partner::where('id_user', $user->id)->first();
+
+                if ($partner) {
+                    if ($partner->status == 'Sudah diverifikasi') {
+                        return redirect()->route('partner.dashboard')->with('status', 'Anda berhasil login');
+                    } elseif ($partner->status == 'Belum terverifikasi') {
+                        Auth::guard('web')->logout();
+                        return redirect()->route('partner.login')->with('status', 'Anda belum diverifikasi');
+                    } else {
+                        Auth::guard('web')->logout();
+                        return redirect()->route('partner.login')->with('status', 'Akun anda dinonaktifkan');
+                    }
+                } else {
+                    Auth::guard('web')->logout();
+                    return redirect()->route('partner.login')->with('status', 'Anda belum diverifikasi');
+                }
             } else {
-                Auth::logout();
-                return redirect()->route('partner.login')->with('status', 'Status akun Anda belum diverifikasi.');
+                Auth::guard('web')->logout();
+                return redirect()->route('home')->with('status', 'Anda tidak memiliki akses ke halaman ini');
             }
-        } else {
-            Auth::logout();
-            return redirect()->route('partner.login')->with('status', 'Anda bukan partner.');
         }
+        return redirect()->route('partner.login')->with('status', 'Email atau password salah.');
     }
 
-    return redirect()->route('partner.login')->with('status', 'Email atau password salah.');
-}
+
 
 
     protected function respondWithToken($token)

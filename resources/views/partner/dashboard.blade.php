@@ -36,7 +36,7 @@
                 </div>
                 <div class="border-t border-blue-gray-50 p-4">
                     <p class="block antialiased  text-base leading-relaxed font-normal text-blue-gray-600">
-                        Keseluruahan pendapatan dari awal hingga sekarang 🤩
+                        Keseluruhan pendapatan dari awal hingga sekarang 🤩
                     </p>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                 </div>
                 <div class="border-t border-blue-gray-50 p-4">
                     <p class="block antialiased  text-base leading-relaxed font-normal text-blue-gray-600">
-                        Keseluruahan pesanan dari awal hingga sekarang 💸
+                        Keseluruhan pesanan dari awal hingga sekarang 💸
                     </p>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="border-t border-blue-gray-50 p-4">
                     <p class="block antialiased  text-base leading-relaxed font-normal text-blue-gray-600">
-                        Keseluruahan hewan ternak yang terjual dari awal hingga sekarang 🐑
+                        Keseluruhan hewan ternak yang terjual dari awal hingga sekarang 🐑
                     </p>
                 </div>
             </div>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="border-t border-blue-gray-50 p-4">
                     <p class="block antialiased  text-base leading-relaxed font-normal text-blue-gray-600">
-                        Keseluruahan produk yang anda listing dan sedang aktif 🛍
+                        Keseluruhan produk yang anda listing dan sedang aktif 🛍
                     </p>
                 </div>
             </div>
@@ -137,22 +137,31 @@
                                                     </th>
                                                 </tr>
                                             </thead>
-                                            <tbody class="bg-white">
-                                                @foreach ($allorderss as $allorder)
+                                            <tbody class="">
+                                                @if ($reportdata->empty())
                                                     <tr>
-                                                        <td class="p-4 whitespace-nowrap text-sm font-normal text-textbase">
-                                                            Pembelian <span
-                                                                class="font-semibold">{{ $allorder['order_details'][0]['product']['nama_product'] }}</span>
-                                                        </td>
-                                                        <td class="p-4 whitespace-nowrap text-sm font-normal text-textbase">
-                                                            {{ $allorder['order']['created_at']->diffForHumans() }}
-                                                        </td>
-                                                        <td
-                                                            class="p-4 whitespace-nowrap text-sm font-semibold text-textbase">
-                                                            @currency($allorder['order_details'][0]['harga_total'])
-                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm font-normal text-textbase"
+                                                            colspan="3">Tidak ada pesanan yang tersedia.</td>
                                                     </tr>
-                                                @endforeach
+                                                @else
+                                                    @foreach ($reportdata as $report)
+                                                        <tr>
+                                                            <td
+                                                                class="p-4 whitespace-nowrap text-sm font-normal text-textbase">
+                                                                    Pembelian <span
+                                                                        class="font-semibold">{{ $report['nama_produk'] }}</span>
+                                                            </td>
+                                                            <td
+                                                                class="p-4 whitespace-nowrap text-sm font-normal text-textbase">
+                                                                {{ date('D, m, Y', strtotime($report['dipesan_pada'])) }}
+                                                            </td>
+                                                            <td
+                                                                class="p-4 whitespace-nowrap text-sm font-semibold text-textbase">
+                                                                @currency($report['total_untung'])
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
                                             </tbody>
                                         </table>
                                     </div>
@@ -189,24 +198,33 @@
                                                 </tr>
                                             </thead>
                                             <tbody class="bg-white">
-                                                @foreach ($productbaru as $product)
+                                                @if ($productbaru->isEmpty())
                                                     <tr>
-                                                        <td class="p-4 whitespace-nowrap text-sm font-normal text-textbase">
-                                                            {{ $product['nama_product'] }}
-                                                        </td>
-                                                        <td
-                                                            class="p-4 whitespace-nowrap text-sm font-normal text-textbase">
-                                                            <div class="flex gap-1 flex-col items-center">
-                                                                <img class="object-cover w-14 h-14 rounded-lg"
-                                                                    src="/uploads/{{ $product['gambar_hewan'] }}" alt="">
-                                                            </div>
-                                                        </td>
-                                                        <td
-                                                            class="p-4 whitespace-nowrap text-sm font-semibold text-textbase">
-                                                            @currency($product['harga_product'])
-                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm font-normal text-textbase"
+                                                            colspan="3">Tidak ada produk yang tersedia.</td>
                                                     </tr>
-                                                @endforeach
+                                                @else
+                                                    @foreach ($productbaru as $product)
+                                                        <tr>
+                                                            <td
+                                                                class="p-4 whitespace-nowrap text-sm font-normal text-textbase">
+                                                                {{ $product['nama_product'] }}
+                                                            </td>
+                                                            <td
+                                                                class="p-4 whitespace-nowrap text-sm font-normal text-textbase">
+                                                                <div class="flex gap-1 flex-col items-center">
+                                                                    <img class="object-cover w-14 h-14 rounded-lg"
+                                                                        src="/uploads/{{ $product['gambar_hewan'] }}"
+                                                                        alt="">
+                                                                </div>
+                                                            </td>
+                                                            <td
+                                                                class="p-4 whitespace-nowrap text-sm font-semibold text-textbase">
+                                                                @currency($product['harga_product'])
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                @endif
                                             </tbody>
                                         </table>
                                     </div>

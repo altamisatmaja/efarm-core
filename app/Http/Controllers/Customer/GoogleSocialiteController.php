@@ -17,39 +17,35 @@ class GoogleSocialiteController extends Controller
     }
 
     public function handleCallback(Request $request)
-    {
-        try {
-            $user = Socialite::driver('google')->user();
-            $userexists = User::where('social_id', $user->id)->first();
+{
+    try {
+        $user = Socialite::driver('google')->user();
+        $userExists = User::where('social_id', $user->id)->first();
 
-            if ($userexists) {
-                Auth::login($userexists);
-                $token = Auth::guard('api')->login($userexists);
-                echo "<script>
-                    localStorage.setItem('token-customer', '" . $token . "');
-                    window.location.href = '/personal/account';
-                </script>";
-            } else {
-                $emptyuser = User::create([
-                    'nama' => $user->name,
-                    'username' => $user->name,
-                    'email' => $user->email,
-                    'social_id' => $user->id,
-                    'id_user_role' => 3,
-                    'social_type' => 'google',
-                    'password' => bcrypt($user->password),
-                    'konfirmasi_password' => bcrypt($user->password),
-                ]);
+        if ($userExists) {
+            $request->session()->regenerate();
+            Auth::guard('web')->login($userExists);
+            return redirect('/personal/account');
+        } else {
+            $newUser = User::create([
+                'nama' => $user->name,
+                'username' => $user->name,
+                'email' => $user->email,
+                'social_id' => $user->id,
+                'email_verified_at' => now(),
+                'user_role' => 'Pelanggan',
+                'id_user_role' => 3,
+                'social_type' => 'google',
+                'password' => bcrypt($user->password),
+            ]);
 
-                Auth::login($emptyuser);
-                $token = Auth::guard('api')->login($emptyuser);
-                echo "<script>
-                    localStorage.setItem('token-customer', '" . $token . "');
-                    window.location.href = '/personal/account';
-                </script>";
-            }
-        } catch (Exception $e) {
-            dd($e->getMessage());
+            Auth::guard('web')->login($newUser);
+            $request->session()->regenerate();
+            return redirect('/personal/account');
         }
+    } catch (Exception $e) {
+        dd($e->getMessage());
     }
+}
+
 }

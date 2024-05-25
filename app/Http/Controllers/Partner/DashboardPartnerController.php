@@ -31,6 +31,30 @@ class DashboardPartnerController extends Controller
             ];
         }
 
+        $report = OrderDetail::with('product.categoryproduct', 'partner', 'order.user', 'order')->where('id_partner', $partner->id)->take(5)->get();
+
+
+        $reportdata = $report->map(function ($report) {
+            return [
+                'reference' => $report->order->reference ?? 'tidak ditemukan',
+                'status' => $report->order->status,
+                'pengiriman' => $report->order->pengiriman,
+                'catatan' => $report->order->catatan,
+                'total_untung' => $report->harga_total,
+                'kuantitas' => $report->kuantitas_total,
+                'nama_pembeli' => $report->order->user->nama,
+                'gambar_pembeli' => $report->order->user->profile_photo_path,
+                'lokasi_pengiriman' => $report->order->user->kabupaten_user,
+                'nama_produk' => $report->product->nama_product,
+                'gambar_produk' => $report->product->gambar_hewan,
+                'nama_kategori_produk' => $report->product->categoryproduct->first()->nama_kategori_product,
+                'harga_produk' => $report->product->harga_product,
+                'dipesan_pada' => $report->order->created_at,
+            ];
+        });
+
+        // dd($report);
+
         $product = Product::with('typelivestocks', 'gender_livestocks', 'categoryproduct', 'categorylivestocks', 'testimonial', 'reviews')->where('id_partner', $partner->id)->where('status', 'Aktif')->get();
 
         $productdata = $product->map(function ($product) {
@@ -72,22 +96,8 @@ class DashboardPartnerController extends Controller
 
         $total_product = count($productdata);
 
-
-        $orderss = Order::with('user')->get();
-        $allorderss = [];
-
-        foreach ($orderss as $order) {
-            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->where('id_partner', $partner->id)->get();
-            $allorderss[] = [
-                'order' => $order,
-                'order_details' => $orderDetails,
-            ];
-        }
-
-        $limaorder = array_slice($allorders, 0, 5);
-
         $productbaru = $productdata->take(5);
 
-        return view('partner.dashboard', compact('partner', 'user', 'allorders', 'total_keuntungan', 'total_hewan_ternak', 'total_order', 'total_product', 'limaorder', 'allorderss', 'productbaru'));
+        return view('partner.dashboard', compact('partner', 'user', 'allorders', 'total_keuntungan', 'total_hewan_ternak', 'total_order', 'total_product', 'productbaru', 'reportdata'));
     }
 }

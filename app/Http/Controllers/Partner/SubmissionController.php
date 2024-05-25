@@ -8,11 +8,16 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Torann\GeoIP\Facades\GeoIP;
 
 class SubmissionController extends Controller
 {
-    public function submission()
+    public function submission(Request $request)
     {
+        $locationData = $this->getLocations($request);
+        $latitude = $locationData['lat'];
+        $longitude = $locationData['lot'];
+
         $provinsiResponse = Http::get('https://ibnux.github.io/data-indonesia/provinsi.json');
         if ($provinsiResponse->successful()) {
             $provinsi = $provinsiResponse->json();
@@ -20,7 +25,7 @@ class SubmissionController extends Controller
             $provinsi = [];
         }
 
-        return view('pages.partner.submission', compact('provinsi'));
+        return view('pages.partner.submission', compact('provinsi', 'latitude', 'longitude'));
     }
 
     public function getKabupaten(Request $request)
@@ -50,6 +55,18 @@ class SubmissionController extends Controller
         return response()->json($kelurahan);
     }
 
+    public function getLocations(Request $request)
+    {
+        $userIp = $request->ip();
+        $location = GeoIP::getLocation($userIp);
+
+        $data = [
+            'lat' => $location->lat,
+            'lot' => $location->lon
+        ];
+        return $data;
+    }
+
     public function store(Request $request) {
         try {
             $validator = Validator::make($request->all(), [
@@ -68,8 +85,8 @@ class SubmissionController extends Controller
                 'foto_profil' => 'required|image|mimes:jpg,png,jpeg,webp',
                 'foto_peternakan' => 'required|image|mimes:jpg,png,jpeg,webp',
                 'lama_peternakan_berdiri' => 'required|not_zero|numeric',
-                'latitude' => 'required',
-                'longitude' => 'required',
+                // 'latitude' => 'required',
+                // 'longitude' => 'required',
                 'status' => 'required',
                 'tanggal_lahir' => 'required|minimum_age:18',
                 'jenis_kelamin' => 'required',
@@ -91,6 +108,7 @@ class SubmissionController extends Controller
                 'email.unique' => 'Email sudah pernah didaftarkan',
                 'password.required' => 'Password wajib diisi',
                 'password.min' => 'Panjang password minimal 6 karakter',
+                'konfirmasi_password.required' => 'Konfirmasi password wajib diisi',
                 'konfirmasi_password.min' => 'Panjang konfirmasi password minimal 6 karakter',
                 'konfirmasi_password.same' => 'Masukkan Konfirmasi password sesuai dengan password',
                 'nama_partner.required' => 'Nama partner wajib diisi',
@@ -118,11 +136,16 @@ class SubmissionController extends Controller
                 return redirect()->back()->withErrors($validator)->withInput();
             }
 
+            $locationData = $this->getLocations($request);
+            $latitude = $locationData['lat'];
+            $longitude = $locationData['lot'];
+
             $user = User::create([
                 'nama' => $request->nama,
                 'username' => $request->username,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
+                'user_role' => 'Partner',
                 'email_verified_at' => now()
             ]);
 
@@ -140,8 +163,8 @@ class SubmissionController extends Controller
                 'foto_profil' => $request->foto_profil,
                 'foto_peternakan' => $request->foto_peternakan,
                 'lama_peternakan_berdiri' => $request->lama_peternakan_berdiri,
-                'latitude' => $request->latitude,
-                'longitude' => $request->longitude,
+                'latitude' => $latitude,
+                'longitude' => $longitude,
                 'status' => $request->status,
                 'tanggal_lahir' => $request->tanggal_lahir,
                 'jenis_kelamin' => $request->jenis_kelamin,

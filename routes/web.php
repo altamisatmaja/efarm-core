@@ -77,6 +77,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('customer/success/verify/{hash}', function () {
+    return view('customer.auth.verify');
+})->name('customer.auth.verified');
+
 /**
  * Route for Login Admin
  */
@@ -154,7 +158,7 @@ Route::middleware('guest')->group(function () {
      * Route for register customer and verify
      */
     Route::get('customer/login', [AuthCustomerController::class, 'index'])->name('customer.login');
-    Route::get('customer/register', [AuthCustomerController::class, 'register_view'])->name('customer.register');
+    Route::get('customer/register/not_user', [AuthCustomerController::class, 'register_view'])->name('customer.register');
     Route::post('customer/login/store', [AuthCustomerController::class, 'login'])->name('customer.login.store');
     Route::get('customer/verify-email/{id}', [RegisterCustomerController::class, 'verify_email'])->name('customer.verify.email');
     Route::put('customer/verify-email/success/{id}', [RegisterCustomerController::class, 'email_verified'])->name('customer.verify.success');
@@ -162,7 +166,7 @@ Route::middleware('guest')->group(function () {
     /**
      * Laravel breeze
      */
-    Route::get('register', [RegisteredUserController::class, 'create'])
+    Route::get('customer/register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);

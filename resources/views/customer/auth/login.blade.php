@@ -61,7 +61,7 @@
                                         <label for="remember" class="text-gray-500 ">Remember me</label>
                                     </div>
                                 </div>
-                                <a href="#" class="text-sm font-medium text-primary-600 hover:underline">Forgot
+                                <a href="{{ route('password.request') }}" class="text-sm font-medium text-primary-600 hover:underline">Lupa
                                     password?</a>
                             </div>
                             <button type="submit"
