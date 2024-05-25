@@ -44,11 +44,14 @@ class TestimonialReplyPartnerController extends Controller
     }
 
     public function reply($slug_product, $slug_testimonial){
-        $partner = Auth::user();
-        $testimonials = Testimonial::with('product')->where('slug_testimonial', $slug_testimonial)->first();
-        // dd($testimonials);
+        $user = Auth::user();
 
-        return view('partner.pages.testimonialreply.show', compact('testimonials', 'partner'));
+        $partner = Partner::where('id_user', $user->id)->first();
+        $testimonials = Testimonial::with('product')->where('slug_testimonial', $slug_testimonial)->first();
+        $testimonialsreply = TestimonialReply::where('id_testimonial', $testimonials->id)->first();
+        // dd($testimonialsreply);
+
+        return view('partner.pages.testimonialreply.show', compact('testimonials', 'partner', 'testimonialsreply'));
     }
 
     public function update(Request $request){

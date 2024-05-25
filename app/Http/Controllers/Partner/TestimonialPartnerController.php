@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Partner;
 
 use App\Http\Controllers\Controller;
+use App\Models\Partner;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,10 +19,11 @@ class TestimonialPartnerController extends Controller
      */
 
     public function list(){
-        $partner = Auth::user();
+        $user = Auth::user();
+
+        $partner = Partner::where('id_user', $user->id)->first();
         $testimonials = Testimonial::with(['user', 'product'])->paginate(5);
-        // dd($testimonials->products);
-        
+
         return view('partner.pages.testimonial.index', compact('testimonials', 'partner'));
     }
 
