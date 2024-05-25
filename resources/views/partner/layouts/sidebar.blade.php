@@ -11,12 +11,12 @@
         <div class="flex flex-col items-center my-4">
             <div class="flex flex-wrap px-2">
                 <div class="mr-2 flex-1">
-                    <img src="https://lh3.googleusercontent.com/a/AGNmyxbSlMgTRzE3_SMIxpDAhpNad-_CN5_tmph1NQ1KhA=s96-c"
+                    <img src="/uploads/{{ $partner->foto_profil }}"
                         class="relative object-cover shrink-0 h-12 w-12 z-10 rounded-xl">
                 </div>
                 <div>
                     <p class="text-lg font-bold text-white">
-                        Prajwal Hallale
+                        {{ $partner->nama_partner }}
                     </p>
                     <div class="text-white font-semibold text-md">
                         Partner
@@ -99,7 +99,7 @@
         <ul class="mb-4 flex flex-col gap-1">
             <li class="mx-3.5 mt-4 mb-2">
                 <p class="block antialiased  text-sm leading-normal text-white font-bold uppercase">
-                    Authentikasi</p>
+                    Autentikasi</p>
             </li>
             <li>
                 <a aria-current="page" class="active" href="{{ route('partner.account.password') }}">
