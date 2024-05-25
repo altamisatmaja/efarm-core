@@ -6,8 +6,7 @@
     <div>
         <ol class="flex items-center gap-4">
             <li>
-                <div
-                    class="flex items-center text-lg font-medium transition-all duration-300 hover:text-blue-600">
+                <div class="flex items-center text-lg font-medium transition-all duration-300 hover:text-blue-600">
                     <svg class="mr-2.5 h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                         viewBox="0 0 20 20">
                         <path
@@ -20,82 +19,72 @@
     </div>
     <div class="mt-12">
         <div class="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
-            <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+            <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-textbase shadow-md">
                 <div
-                    class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                        class="w-6 h-6 text-white">
-                        <path d="M12 7.5a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z"></path>
-                        <path fill-rule="evenodd"
-                            d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 14.625v-9.75zM8.25 9.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM18.75 9a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V9.75a.75.75 0 00-.75-.75h-.008zM4.5 9.75A.75.75 0 015.25 9h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H5.25a.75.75 0 01-.75-.75V9.75z"
-                            clip-rule="evenodd"></path>
+                    class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-yellow-300 text-white  absolute -mt-4 grid h-16 w-16 place-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px"
+                        fill="#ffff">
                         <path
-                            d="M2.25 18a.75.75 0 000 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 00-.75-.75H2.25z">
-                        </path>
+                            d="M212.31-140Q182-140 161-161q-21-21-21-51.31v-535.38Q140-778 161-799q21-21 51.31-21h535.38Q778-820 799-799q21 21 21 51.31v535.38Q820-182 799-161q-21 21-51.31 21H212.31ZM324.6-550q-12.75 0-21.37 8.63-8.61 8.62-8.61 21.37v200q0 12.75 8.63 21.37 8.62 8.63 21.38 8.63 12.75 0 21.37-8.63 8.61-8.62 8.61-21.37v-200q0-12.75-8.62-21.37-8.63-8.63-21.39-8.63Zm155.39-120q-12.76 0-21.37 8.63Q450-652.75 450-640v320q0 12.75 8.63 21.37 8.63 8.63 21.38 8.63 12.76 0 21.37-8.63Q510-307.25 510-320v-320q0-12.75-8.63-21.37-8.63-8.63-21.38-8.63Zm155.38 240q-12.75 0-21.37 8.63-8.61 8.62-8.61 21.37v80q0 12.75 8.62 21.37 8.63 8.63 21.39 8.63 12.75 0 21.37-8.63 8.61-8.62 8.61-21.37v-80q0-12.75-8.63-21.37-8.62-8.63-21.38-8.63Z" />
                     </svg>
                 </div>
                 <div class="p-4 text-right">
-                    <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-                        Today's Money</p>
-                    <h4
-                        class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                        $53k</h4>
+                    <p class="block antialiased  text-sm leading-normal font-normal text-blue-gray-600">
+                        Total pendapatan</p>
+                    <h4 class="block antialiased tracking-normal  text-2xl font-semibold leading-snug text-blue-gray-900">
+                        @currency($total_keuntungan)</h4>
                 </div>
                 <div class="border-t border-blue-gray-50 p-4">
-                    <p class="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                        <strong class="text-green-500">+55%</strong>&nbsp;than last week
+                    <p class="block antialiased  text-base leading-relaxed font-normal text-blue-gray-600">
+                        Keseluruahan pendapatan dari awal hingga sekarang 🤩
                     </p>
                 </div>
             </div>
-            <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+            <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-textbase shadow-md">
                 <div
-                    class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-pink-600 to-pink-400 text-white shadow-pink-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                        class="w-6 h-6 text-white">
-                        <path fill-rule="evenodd"
-                            d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </div>
-                <div class="p-4 text-right">
-                    <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-                        Today's Users</p>
-                    <h4
-                        class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                        2,300</h4>
-                </div>
-                <div class="border-t border-blue-gray-50 p-4">
-                    <p class="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                        <strong class="text-green-500">+3%</strong>&nbsp;than last month
-                    </p>
-                </div>
-            </div>
-            <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
-                <div
-                    class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-green-600 to-green-400 text-white shadow-green-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                        class="w-6 h-6 text-white">
+                    class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-red-400 text-white absolute -mt-4 grid h-16 w-16 place-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px"
+                        fill="#ffff">
                         <path
-                            d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z">
-                        </path>
+                            d="m692.92-225.77-21.61-21.61q-7.08-7.08-16.89-7.08-9.8 0-16.88 7.08-7.08 7.07-7.08 16.57t7.08 16.58l36.69 36.69q8.23 8.23 18.89 8.23 10.65 0 18.88-8.23l90.46-88.84q7.08-7.08 7.27-16.7.19-9.61-7.27-17.07-7.08-7.08-17.08-7.08-10 0-17.07 7.08l-75.39 74.38Zm-18.31-379.62q12.77 0 21.39-8.61 8.61-8.62 8.61-21.38 0-12.77-8.61-21.39-8.62-8.61-21.39-8.61H285.39q-12.77 0-21.39 8.61-8.61 8.62-8.61 21.39 0 12.76 8.61 21.38 8.62 8.61 21.39 8.61h389.22ZM720-57.69q-74.92 0-127.46-52.54Q540-162.77 540-237.69q0-74.92 52.54-127.46 52.54-52.54 127.46-52.54 74.92 0 127.46 52.54Q900-312.61 900-237.69q0 74.92-52.54 127.46Q794.92-57.69 720-57.69Zm-580-50.39v-639.61q0-29.92 21.19-51.12Q182.39-820 212.31-820h535.38q29.92 0 51.12 21.19Q820-777.61 820-747.69v212.31q0 14.69-12.08 23.84-12.08 9.16-26.77 5.31-29.54-6.23-59.5-7.12-29.96-.88-59.73 3.35H285.39q-12.77 0-21.39 8.62-8.61 8.61-8.61 21.38t8.61 21.38q8.62 8.62 21.39 8.62h258.23q-23.54 18.92-42.27 42.96-18.73 24.04-31.66 52.43h-184.3q-12.77 0-21.39 8.61-8.61 8.62-8.61 21.38 0 12.77 8.61 21.39 8.62 8.61 21.39 8.61h165.69q-3.16 13.08-4.62 26.04-1.46 12.96-1.46 27.43 0 22.53 4.04 44.65 4.04 22.11 10.5 44.04 3.84 9.07-3.81 14.61-7.65 5.54-14.5-.54l-6.46-4.92q-5.23-4.46-11.69-4.46-6.46 0-11.69 4.46l-33.54 28.15q-5.23 4.47-11.7 4.47-6.46 0-11.69-4.47l-33.54-28.15q-5.23-4.46-11.69-4.46-6.46 0-11.69 4.46L264-115.16q-5.23 4.47-11.69 4.47-6.46 0-11.69-4.47l-33.54-28.15q-5.23-4.46-11.69-4.46-6.47 0-11.7 4.46l-31.61 28.15q-1.16.77-12.08 7.08Z" />
                     </svg>
                 </div>
                 <div class="p-4 text-right">
-                    <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-                        New Clients</p>
-                    <h4
-                        class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                        3,462</h4>
+                    <p class="block antialiased  text-sm leading-normal font-normal text-blue-gray-600">
+                        Total pesanan</p>
+                    <h4 class="block antialiased tracking-normal  text-2xl font-semibold leading-snug text-blue-gray-900">
+                        {{ $total_order }}</h4>
                 </div>
                 <div class="border-t border-blue-gray-50 p-4">
-                    <p class="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                        <strong class="text-red-500">-2%</strong>&nbsp;than yesterday
+                    <p class="block antialiased  text-base leading-relaxed font-normal text-blue-gray-600">
+                        Keseluruahan pesanan dari awal hingga sekarang 💸
                     </p>
                 </div>
             </div>
-            <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
+            <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-textbase shadow-md">
                 <div
-                    class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-orange-600 to-orange-400 text-white shadow-orange-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+                    class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-green-400 text-white  absolute -mt-4 grid h-16 w-16 place-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px"
+                        fill="#ffff">
+                        <path
+                            d="M202.92-130q-30.3 0-51.3-21-21-21-21-51.31v-319.54q-24.16-19.84-36.27-51.5-12.12-31.65-.5-68.34l40.46-132.16q8-25.23 27.15-40.69Q180.62-830 207.23-830h546q26.62 0 45.46 14.77 18.85 14.77 27.46 40.62l41.23 132.92q11.62 36.69-.5 68.11-12.11 31.43-36.27 52.5v318.77q0 30.31-21 51.31-21 21-51.3 21H202.92Zm365.7-420q32.77 0 49.27-20.04t13.5-43.04L607.08-770h-96.47v158q0 25.23 17.08 43.62Q544.77-550 568.62-550Zm-180 0q27.61 0 44.8-18.38 17.2-18.39 17.2-43.62v-158h-96.47l-24.3 158.46q-3.24 21.31 13.38 41.43Q359.85-550 388.62-550Zm-178 0q22.23 0 38.23-15.5 16-15.5 19.77-38.96L292.15-770h-84.92q-6.54 0-10.38 2.88-3.85 2.89-5.77 8.66l-38.47 130.15q-7.92 25.77 7.47 52.04Q175.46-550 210.62-550Zm540 0q32.46 0 49.69-25.5 17.23-25.5 8.31-52.81l-40.47-130.92q-1.92-5.77-5.76-8.27-3.85-2.5-10.39-2.5h-82.92l23.53 165.54q3.77 23.46 19.77 38.96t38.24 15.5Z" />
+                    </svg>
+                </div>
+                <div class="p-4 text-right">
+                    <p class="block antialiased  text-sm leading-normal font-normal text-blue-gray-600">
+                        Total hewan terjual</p>
+                    <h4 class="block antialiased tracking-normal  text-2xl font-semibold leading-snug text-blue-gray-900">
+                        {{ $total_hewan_ternak }}</h4>
+                </div>
+                <div class="border-t border-blue-gray-50 p-4">
+                    <p class="block antialiased  text-base leading-relaxed font-normal text-blue-gray-600">
+                        Keseluruahan hewan ternak yang terjual dari awal hingga sekarang 🐑
+                    </p>
+                </div>
+            </div>
+            <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-textbase shadow-md">
+                <div
+                    class="bg-clip-border mx-4 rounded-xl overflow-hidden bg-orange-400 text-white  absolute -mt-4 grid h-16 w-16 place-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
                         class="w-6 h-6 text-white">
                         <path
@@ -104,15 +93,14 @@
                     </svg>
                 </div>
                 <div class="p-4 text-right">
-                    <p class="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
-                        Sales</p>
-                    <h4
-                        class="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
-                        $103,430</h4>
+                    <p class="block antialiased  text-sm leading-normal font-normal text-blue-gray-600">
+                        Total produk aktif</p>
+                    <h4 class="block antialiased tracking-normal  text-2xl font-semibold leading-snug text-blue-gray-900">
+                        {{ $total_product }}</h4>
                 </div>
                 <div class="border-t border-blue-gray-50 p-4">
-                    <p class="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
-                        <strong class="text-green-500">+5%</strong>&nbsp;than yesterday
+                    <p class="block antialiased  text-base leading-relaxed font-normal text-blue-gray-600">
+                        Keseluruahan produk yang anda listing dan sedang aktif 🛍
                     </p>
                 </div>
             </div>
@@ -120,35 +108,12 @@
 
         <main>
             <div class="">
-                <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-6">
-                    <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex-shrink-0">
-                                <span class="text-2xl sm:text-3xl leading-none font-bold text-gray-900">$45,385</span>
-                                <h3 class="text-base font-normal text-gray-500">Sales this week</h3>
-                            </div>
-                            <div class="flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-                                12.5%
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div id="main-chart"></div>
-                    </div>
+                <div class="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-2 gap-6">
                     <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
                         <div class="mb-4 flex items-center justify-between">
                             <div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-2">Latest Transactions</h3>
-                                <span class="text-base font-normal text-gray-500">This is a list of latest
-                                    transactions</span>
-                            </div>
-                            <div class="flex-shrink-0">
-                                <a href="#"
-                                    class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2">View all</a>
+                                <h3 class="text-xl font-bold text-textbase mb-2">Pembeli terakhir</h3>
+                                <span class="text-base font-normal text-textbase">Lima pembeli terakhir</span>
                             </div>
                         </div>
                         <div class="flex flex-col mt-8">
@@ -159,100 +124,89 @@
                                             <thead class="bg-gray-50">
                                                 <tr>
                                                     <th scope="col"
-                                                        class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                        Transaction
+                                                        class="p-4 text-left text-xs font-medium text-textbase uppercase tracking-wider">
+                                                        Transaksi
                                                     </th>
                                                     <th scope="col"
-                                                        class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                        Date & Time
+                                                        class="p-4 text-left text-xs font-medium text-textbase uppercase tracking-wider">
+                                                        Tanggal
                                                     </th>
                                                     <th scope="col"
-                                                        class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                        Amount
+                                                        class="p-4 text-left text-xs font-medium text-textbase uppercase tracking-wider">
+                                                        Pembelian
                                                     </th>
                                                 </tr>
                                             </thead>
                                             <tbody class="bg-white">
+                                                @foreach ($allorderss as $allorder)
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap text-sm font-normal text-textbase">
+                                                            Pembelian <span
+                                                                class="font-semibold">{{ $allorder['order_details'][0]['product']['nama_product'] }}</span>
+                                                        </td>
+                                                        <td class="p-4 whitespace-nowrap text-sm font-normal text-textbase">
+                                                            {{ $allorder['order']['created_at']->diffForHumans() }}
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-semibold text-textbase">
+                                                            @currency($allorder['order_details'][0]['harga_total'])
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
+                        <div class="mb-4 flex items-center justify-between">
+                            <div>
+                                <h3 class="text-xl font-bold text-textbase mb-2">Produk terbaru</h3>
+                                <span class="text-base font-normal text-textbase">Lima produk terbaru dari anda</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col mt-8">
+                            <div class="overflow-x-auto rounded-lg">
+                                <div class="align-middle inline-block min-w-full">
+                                    <div class="shadow overflow-hidden sm:rounded-lg">
+                                        <table class="min-w-full divide-y divide-gray-200">
+                                            <thead class="bg-gray-50">
                                                 <tr>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                        Payment from <span class="font-semibold">Bonnie Green</span>
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                        Apr 23 ,2021
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                        $2300
-                                                    </td>
+                                                    <th scope="col"
+                                                        class="p-4 text-left text-xs font-medium text-textbase uppercase tracking-wider">
+                                                        Nama produk
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="p-4  text-xs font-medium text-textbase uppercase tracking-wider">
+                                                        Foto produk
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="p-4 text-left text-xs font-medium text-textbase uppercase tracking-wider">
+                                                        Harga
+                                                    </th>
                                                 </tr>
-                                                <tr class="bg-gray-50">
-                                                    <td
-                                                        class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
-                                                        Payment refund to <span class="font-semibold">#00910</span>
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                        Apr 23 ,2021
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                        -$670
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                        Payment failed from <span class="font-semibold">#087651</span>
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                        Apr 18 ,2021
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                        $234
-                                                    </td>
-                                                </tr>
-                                                <tr class="bg-gray-50">
-                                                    <td
-                                                        class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
-                                                        Payment from <span class="font-semibold">Lana Byrd</span>
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                        Apr 15 ,2021
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                        $5000
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                        Payment from <span class="font-semibold">Jese Leos</span>
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                        Apr 15 ,2021
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                        $2300
-                                                    </td>
-                                                </tr>
-                                                <tr class="bg-gray-50">
-                                                    <td
-                                                        class="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
-                                                        Payment from <span class="font-semibold">THEMESBERG LLC</span>
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                        Apr 11 ,2021
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                        $560
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                                        Payment from <span class="font-semibold">Lana Lysle</span>
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                                        Apr 6 ,2021
-                                                    </td>
-                                                    <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                                        $1437
-                                                    </td>
-                                                </tr>
+                                            </thead>
+                                            <tbody class="bg-white">
+                                                @foreach ($productbaru as $product)
+                                                    <tr>
+                                                        <td class="p-4 whitespace-nowrap text-sm font-normal text-textbase">
+                                                            {{ $product['nama_product'] }}
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-normal text-textbase">
+                                                            <div class="flex gap-1 flex-col items-center">
+                                                                <img class="object-cover w-14 h-14 rounded-lg"
+                                                                    src="/uploads/{{ $product['gambar_hewan'] }}" alt="">
+                                                            </div>
+                                                        </td>
+                                                        <td
+                                                            class="p-4 whitespace-nowrap text-sm font-semibold text-textbase">
+                                                            @currency($product['harga_product'])
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -262,126 +216,7 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
-                    <div class="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-xl font-bold leading-none text-gray-900">Latest Customers</h3>
-                            <a href="#"
-                                class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg inline-flex items-center p-2">
-                                View all
-                            </a>
-                        </div>
-                        <div class="flow-root">
-                            <ul role="list" class="divide-y divide-gray-200">
-                                <li class="py-3 sm:py-4">
-                                    <div class="flex items-center space-x-4">
-                                        <div class="flex-shrink-0">
-                                            <img class="h-8 w-8 rounded-full"
-                                                src="https://demo.themesberg.com/windster/images/users/neil-sims.png"
-                                                alt="Neil image">
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="text-sm font-medium text-gray-900 truncate">
-                                                Neil Sims
-                                            </p>
-                                            <p class="text-sm text-gray-500 truncate">
-                                                <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                                    data-cfemail="17727a767e7b57607e7973646372653974787a">[email&#160;protected]</a>
-                                            </p>
-                                        </div>
-                                        <div class="inline-flex items-center text-base font-semibold text-gray-900">
-                                            $320
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="py-3 sm:py-4">
-                                    <div class="flex items-center space-x-4">
-                                        <div class="flex-shrink-0">
-                                            <img class="h-8 w-8 rounded-full"
-                                                src="https://demo.themesberg.com/windster/images/users/bonnie-green.png"
-                                                alt="Neil image">
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="text-sm font-medium text-gray-900 truncate">
-                                                Bonnie Green
-                                            </p>
-                                            <p class="text-sm text-gray-500 truncate">
-                                                <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                                    data-cfemail="d4b1b9b5bdb894a3bdbab0a7a0b1a6fab7bbb9">[email&#160;protected]</a>
-                                            </p>
-                                        </div>
-                                        <div class="inline-flex items-center text-base font-semibold text-gray-900">
-                                            $3467
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="py-3 sm:py-4">
-                                    <div class="flex items-center space-x-4">
-                                        <div class="flex-shrink-0">
-                                            <img class="h-8 w-8 rounded-full"
-                                                src="https://demo.themesberg.com/windster/images/users/michael-gough.png"
-                                                alt="Neil image">
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="text-sm font-medium text-gray-900 truncate">
-                                                Michael Gough
-                                            </p>
-                                            <p class="text-sm text-gray-500 truncate">
-                                                <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                                    data-cfemail="57323a363e3b17203e3933242332257934383a">[email&#160;protected]</a>
-                                            </p>
-                                        </div>
-                                        <div class="inline-flex items-center text-base font-semibold text-gray-900">
-                                            $67
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="py-3 sm:py-4">
-                                    <div class="flex items-center space-x-4">
-                                        <div class="flex-shrink-0">
-                                            <img class="h-8 w-8 rounded-full"
-                                                src="https://demo.themesberg.com/windster/images/users/thomas-lean.png"
-                                                alt="Neil image">
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="text-sm font-medium text-gray-900 truncate">
-                                                Thomes Lean
-                                            </p>
-                                            <p class="text-sm text-gray-500 truncate">
-                                                <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                                    data-cfemail="284d45494144685f41464c5b5c4d5a064b4745">[email&#160;protected]</a>
-                                            </p>
-                                        </div>
-                                        <div class="inline-flex items-center text-base font-semibold text-gray-900">
-                                            $2367
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="pt-3 sm:pt-4 pb-0">
-                                    <div class="flex items-center space-x-4">
-                                        <div class="flex-shrink-0">
-                                            <img class="h-8 w-8 rounded-full"
-                                                src="https://demo.themesberg.com/windster/images/users/lana-byrd.png"
-                                                alt="Neil image">
-                                        </div>
-                                        <div class="flex-1 min-w-0">
-                                            <p class="text-sm font-medium text-gray-900 truncate">
-                                                Lana Byrd
-                                            </p>
-                                            <p class="text-sm text-gray-500 truncate">
-                                                <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                                    data-cfemail="a2c7cfc3cbcee2d5cbccc6d1d6c7d08cc1cdcf">[email&#160;protected]</a>
-                                            </p>
-                                        </div>
-                                        <div class="inline-flex items-center text-base font-semibold text-gray-900">
-                                            $367
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </main>
     </div>

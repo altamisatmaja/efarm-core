@@ -72,7 +72,7 @@
                                 </path>
                                 <path d="M22.21,48.13c-2.37,7.41-14.1,7.78-14.1,7.78S8,44.51,15.76,41.67"></path>
                             </svg>
-                            Daftar sebagai Partner
+                            Jadi Partner
                         </a>
                         <a href="{{ route('partner.login') }}"
                             class="flex flex-row items-center justify-center gap-x-2 rounded-lg border border-primarybase px-10 py-3 text-primarybase">Masuk
