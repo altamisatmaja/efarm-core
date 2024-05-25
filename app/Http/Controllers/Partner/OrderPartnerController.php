@@ -208,7 +208,7 @@ class OrderPartnerController extends Controller
 
             return redirect()->route('partner.order.packed')->with('success', 'Pesanan berhasil dikemas');
         }  else {
-            return redirect()->route('partner.order.confirmed')->with('error', 'Pesanan gagal dikema');
+            return redirect()->route('partner.order.confirmed')->with('error', 'Pesanan gagal dikemas');
         }
     }
 
