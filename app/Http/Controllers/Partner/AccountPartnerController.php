@@ -21,7 +21,7 @@ class AccountPartnerController extends Controller
         $user = Auth::user();
         $partner = Partner::where('id_user', $user->id)->first();
 
-        return view('partner.pages.profile.account', compact('partner'));
+        return view('partner.pages.profile.account', compact('partner', 'user'));
     }
 
     /**
@@ -70,7 +70,7 @@ class AccountPartnerController extends Controller
         $changeat = '';
 
         if ($partner->change_at) {
-            $changeat = Carbon::createFromFormat('Y-m-d H:i:s', $partner->change_at)->format('d M Y');
+            $changeat = Carbon::createFromFormat('Y-m-d H:i:s', $partner->updated_at)->format('d M Y');
         }
 
         return view('partner.pages.profile.rekening', compact('partner', 'bank', 'changeat'));

@@ -445,7 +445,7 @@ Route::middleware(['auth', 'role:Partner'])->group(function () {
      * Rouee for account partner
      */
     Route::get('partner/account', [AccountPartnerController::class, 'index'])->name('partner.account');
-    Route::get('partner/account/edit', [AccountPartnerController::class, 'account_edit_view'])->name('partner.account.edit');
+    Route::get('partner/account/detail', [AccountPartnerController::class, 'account_edit_view'])->name('partner.account.edit');
     Route::put('partner/account/update', [AccountPartnerController::class, 'update_account'])->name('partner.account.update');
 
     Route::get('partner/account/information', [AccountPartnerController::class, 'information_view'])->name('partner.account.information');

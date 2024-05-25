@@ -236,7 +236,7 @@
                                         <td class="px-4 py-4 text-sm text-gray-500">
                                             {{ $loop->iteration }}</td>
                                         <td class="px-4 py-4 text-sm text-gray-500">
-                                            {{ $product['created_at']->format('d F Y') }}</td>
+                                            {{ $product['created_at']->format('d M Y') }}</td>
                                         <td class="px-4 py-4 text-sm text-gray-500">
                                             {{ $product['nama_product'] }}</td>
                                         <td class="px-4 py-4 text-sm text-gray-500">

@@ -261,7 +261,7 @@
                                         {{ $allorder['order']['user']['provinsi_user'] }},
                                         {{ $allorder['order']['user']['kabupaten_user'] }},
                                         {{ $allorder['order']['user']['kecamatan_user'] }},
-                                        {{ $allorder['order']['user']['keluarahan_user'] }},
+                                        {{ $allorder['order']['user']['kelurahan_user'] }},
                                         {{ $allorder['order']['user']['alamat_lengkap'] }}
                                     </td>
                                     <td class="px-4 py-4 text-sm text-textbase">
