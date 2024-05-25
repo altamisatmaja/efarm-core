@@ -1396,6 +1396,10 @@ select {
   margin-left: -0.5rem;
   margin-right: -0.5rem;
 }
+.-mx-6 {
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+}
 .-ml-1 {
   margin-left: -0.25rem;
 }
@@ -2324,6 +2328,9 @@ select {
 }
 .overflow-y-auto {
   overflow-y: auto;
+}
+.overflow-x-hidden {
+  overflow-x: hidden;
 }
 .overflow-y-hidden {
   overflow-y: hidden;
@@ -4338,6 +4345,11 @@ select {
     margin-right: auto;
   }
 
+  .sm\:-mx-4 {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
+
   .sm\:-mr-2 {
     margin-right: -0.5rem;
   }
@@ -5054,6 +5066,11 @@ select {
   .lg\:mx-20 {
     margin-left: 5rem;
     margin-right: 5rem;
+  }
+
+  .lg\:-mx-4 {
+    margin-left: -1rem;
+    margin-right: -1rem;
   }
 
   .lg\:-ml-36 {

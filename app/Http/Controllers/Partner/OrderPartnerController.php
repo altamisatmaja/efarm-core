@@ -25,8 +25,21 @@ class OrderPartnerController extends Controller
      */
     public function order()
     {
-        $partner = Auth::user();
-        return view('partner.pages.order.index', compact('partner'));
+        $user = Auth::user();
+        $partner = Partner::where('id_user', $user->id)->first();
+
+        $orders = Order::with('user')->get();
+        $allorders = [];
+
+        foreach ($orders as $order) {
+            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->where('id_partner', $partner->id)->get();
+            $allorders[] = [
+                'order' => $order,
+                'order_details' => $orderDetails,
+            ];
+        }
+
+        return view('partner.pages.order.index', compact('partner', 'allorders'));
     }
 
     /**
@@ -34,21 +47,21 @@ class OrderPartnerController extends Controller
      */
     public function order_new_view()
     {
-        $partner = Auth::user();
+        $user = Auth::user();
+        $partner = Partner::where('id_user', $user->id)->first();
 
-        $partner_id = Auth::user()->partner->id;
+        $orders = Order::with('user')->where('status', 'Baru')->get();
+        $allorders = [];
 
-        $orders = Order::whereIn('id', function ($query) use ($partner_id) {
-            $query
-                ->select('id_order')
-                ->from('orders_details')
-                ->where('id_partner', $partner_id);
-        })
-            ->where('status', 'Baru')
-            ->with('orders_detail.product')
-            ->get();
+        foreach ($orders as $order) {
+            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->where('id_partner', $partner->id)->get();
+            $allorders[] = [
+                'order' => $order,
+                'order_details' => $orderDetails,
+            ];
+        }
 
-        return view('partner.pages.order.new', compact('partner', 'orders'));
+        return view('partner.pages.order.new', compact('partner', 'allorders'));
     }
 
     /**
@@ -56,20 +69,21 @@ class OrderPartnerController extends Controller
      */
     public function order_confirmed_view()
     {
-        $partner = Auth::user();
+        $user = Auth::user();
+        $partner = Partner::where('id_user', $user->id)->first();
 
-        $partner_id = Auth::user()->partner->id;
+        $orders = Order::with('user')->where('status', 'Dikonfirmasi')->get();
+        $allorders = [];
 
-        $orders = Order::whereIn('id', function ($query) use ($partner_id) {
-            $query
-                ->select('id_order')
-                ->from('orders_details')
-                ->where('id_partner', $partner_id);
-        })
-            ->where('status', 'Dikonfirmasi')
-            ->with('orders_detail.product')
-            ->get();
-        return view('partner.pages.order.confirmed', compact('partner', 'orders'));
+        foreach ($orders as $order) {
+            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->where('id_partner', $partner->id)->get();
+            $allorders[] = [
+                'order' => $order,
+                'order_details' => $orderDetails,
+            ];
+        }
+
+        return view('partner.pages.order.confirmed', compact('partner', 'allorders'));
     }
 
     /**
@@ -77,20 +91,21 @@ class OrderPartnerController extends Controller
      */
     public function order_packed_view()
     {
-        $partner = Auth::user();
+        $user = Auth::user();
+        $partner = Partner::where('id_user', $user->id)->first();
 
-        $partner_id = Auth::user()->partner->id;
+        $orders = Order::with('user')->where('status', 'Dikemas')->get();
+        $allorders = [];
 
-        $orders = Order::whereIn('id', function ($query) use ($partner_id) {
-            $query
-                ->select('id_order')
-                ->from('orders_details')
-                ->where('id_partner', $partner_id);
-        })
-            ->where('status', 'Dikemas')
-            ->with('orders_detail.product')
-            ->get();
-        return view('partner.pages.order.packed', compact('partner', 'orders'));
+        foreach ($orders as $order) {
+            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->where('id_partner', $partner->id)->get();
+            $allorders[] = [
+                'order' => $order,
+                'order_details' => $orderDetails,
+            ];
+        }
+
+        return view('partner.pages.order.packed', compact('partner', 'allorders'));
     }
 
     /**
@@ -98,20 +113,21 @@ class OrderPartnerController extends Controller
      */
     public function order_sent_view()
     {
-        $partner = Auth::user();
+        $user = Auth::user();
+        $partner = Partner::where('id_user', $user->id)->first();
 
-        $partner_id = Auth::user()->partner->id;
+        $orders = Order::with('user')->where('status', 'Dikirim')->get();
+        $allorders = [];
 
-        $orders = Order::whereIn('id', function ($query) use ($partner_id) {
-            $query
-                ->select('id_order')
-                ->from('orders_details')
-                ->where('id_partner', $partner_id);
-        })
-            ->where('status', 'Dikirim')
-            ->with('orders_detail.product')
-            ->get();
-        return view('partner.pages.order.sent', compact('partner', 'orders'));
+        foreach ($orders as $order) {
+            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->where('id_partner', $partner->id)->get();
+            $allorders[] = [
+                'order' => $order,
+                'order_details' => $orderDetails,
+            ];
+        }
+
+        return view('partner.pages.order.sent', compact('partner', 'allorders'));
     }
 
     /**
@@ -140,20 +156,21 @@ class OrderPartnerController extends Controller
      */
     public function order_end_view()
     {
-        $partner = Auth::user();
+        $user = Auth::user();
+        $partner = Partner::where('id_user', $user->id)->first();
 
-        $partner_id = Auth::user()->partner->id;
+        $orders = Order::with('user')->where('status', 'Selesai')->get();
+        $allorders = [];
 
-        $orders = Order::whereIn('id', function ($query) use ($partner_id) {
-            $query
-                ->select('id_order')
-                ->from('orders_details')
-                ->where('id_partner', $partner_id);
-        })
-            ->where('status', 'Selesai')
-            ->with('orders_detail.product')
-            ->get();
-        return view('partner.pages.order.end', compact('partner', 'orders'));
+        foreach ($orders as $order) {
+            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->where('id_partner', $partner->id)->get();
+            $allorders[] = [
+                'order' => $order,
+                'order_details' => $orderDetails,
+            ];
+        }
+
+        return view('partner.pages.order.end', compact('partner', 'allorders'));
     }
 
     /**
@@ -161,16 +178,21 @@ class OrderPartnerController extends Controller
      */
     public function status_new_to_confirm(Request $request, $id)
     {
-        $order = Order::find($id);
+        try {
+            $order = Order::find($id);
 
-        if($order){
-            $order->status = 'Dikonfirmasi';
-            $order->save();
+            if($order->status_pembayaran == 'Paid'){
+                $order->status = 'Dikonfirmasi';
+                $order->save();
 
-            return redirect()->route('partner.order.confirmed')->with('success', 'Pesanan berhasil dikonfirmasi');
-        }  else {
-            return redirect()->route('partner.order.new')->with('error', 'Pesanan gagal dikonfirmasi');
+                return redirect()->route('partner.order.confirmed')->with('success', 'Pesanan berhasil dikonfirmasi');
+            }  else {
+                return redirect()->route('partner.order.new')->with('error', 'Pesanan gagal dikonfirmasi dikarenakan belum dibayar oleh pembeli');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
+
     }
 
     /**
@@ -186,7 +208,7 @@ class OrderPartnerController extends Controller
 
             return redirect()->route('partner.order.packed')->with('success', 'Pesanan berhasil dikemas');
         }  else {
-            return redirect()->route('partner.order.confirmed')->with('error', 'Pesanan gagal dikonfirmasi');
+            return redirect()->route('partner.order.confirmed')->with('error', 'Pesanan gagal dikema');
         }
     }
 
@@ -195,21 +217,19 @@ class OrderPartnerController extends Controller
      */
     public function status_packed_to_sent(Request $request, $id)
     {
-        $order = Order::find($id);
+        try {
+            $order = Order::find($id);
+            if($order){
+                $order->status = 'Dikirim';
+                $order->save();
 
-        if($order){
-            $order->status = 'Dikirim';
-            $order->save();
-
-            return redirect()->route('partner.order.packed')->with('success', 'Pesanan berhasil dikemas');
-        }  else {
-            return redirect()->route('partner.order.confirmed')->with('error', 'Pesanan gagal dikonfirmasi');
+                return redirect()->route('partner.order.packed')->with('success', 'Pesanan berhasil dikirim');
+            }  else {
+                return redirect()->route('partner.order.confirmed')->with('error', 'Pesanan gagal dikirim');
+            }
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
+
     }
-
-
-    /**
-     * Handling status order
-     */
-    public function order_new($id_order) {}
 }

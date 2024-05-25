@@ -100,11 +100,11 @@
                 </div>
             </div>
         @endif
-        <div class="flex flex-col my-5 px-4">
+        <div class="flex flex-col px-4">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="flex flex-wrap mb-3 items-center">
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-                        <h3 class="font-bold text-textbase text-xl">Kelola Peternakan</h3>
+                        <h3 class="font-semibold text-2xl text-textbase">Peternakan 👋</h3>
                     </div>
                     <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                         <a href="{{ route('partner.farm.create') }}">
@@ -114,7 +114,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="inline-block w-full py-2 align-middle">
+                <div class="inline-block w-full py-2 px-4 align-middle">
                     <div class="overflow-hidden border border-gray-200  md:rounded-lg">
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50 ">
