@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use Torann\GeoIP\Facades\GeoIP;
 
 class AccountCustomerController extends Controller
 {
@@ -20,9 +22,32 @@ class AccountCustomerController extends Controller
         return view('customer.profile.layouts.index', compact('user'));
     }
 
-    public function address(){
+    public function address(Request $request){
         $user = Auth::user();
-        return view('customer.profile.address', compact('user'));
+
+        $locationData = $this->getLocations($request);
+        $latitude = $locationData['lat'];
+        $longitude = $locationData['lot'];
+
+        $provinsiResponse = Http::get('https://ibnux.github.io/data-indonesia/provinsi.json');
+        if ($provinsiResponse->successful()) {
+            $provinsi = $provinsiResponse->json();
+        } else {
+            $provinsi = [];
+        }
+        return view('customer.profile.address', compact('user', 'latitude', 'longitude'));
+    }
+
+    public function getLocations(Request $request)
+    {
+        $userIp = $request->ip();
+        $location = GeoIP::getLocation($userIp);
+
+        $data = [
+            'lat' => $location->lat,
+            'lot' => $location->lon
+        ];
+        return $data;
     }
 
     public function information(){
@@ -35,7 +60,7 @@ class AccountCustomerController extends Controller
         return view('customer.profile.account', compact('user'));
     }
 
-    public function update_address_account(Request $request){
+    public function update_address(Request $request){
         try {
             $user = auth()->user();
 
@@ -46,16 +71,15 @@ class AccountCustomerController extends Controller
                 'kelurahan_user' => 'required',
                 'latitude' => 'required',
                 'longitude' => 'required',
-                'alamat_lengkap' => 'required'
             ]);
 
             $input = $request->except(['_token', '_method']);
 
             $user->update($input);
             if ($user) {
-                return redirect()->route('customer.account.address')->with('success', 'Data produk berhasil diubah');
+                return redirect()->back()->with('success', 'Data alamat berhasil diubah');
             } else {
-                return redirect()->back()->with('errors', 'Data gagal produk berhasil diubah');
+                return redirect()->back()->with('errors', 'Data gagal alamat berhasil diubah');
             }
         } catch (\Exception $e) {
             throw $e;

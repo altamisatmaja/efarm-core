@@ -22,7 +22,13 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         'social_id',
         'email_verified_at',
         'social_type',
-        'profile_photo_path'
+        'profile_photo_path',
+        'provinsi_user',
+        'kabupaten_user',
+        'kecamatan_user',
+        'kelurahan_user',
+        'latitude',
+        'longitude',
     ];
 
     /**

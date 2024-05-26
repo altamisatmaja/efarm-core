@@ -373,13 +373,13 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
 
     Route::post('personal/account/detail/update/', [AccountCustomerController::class, 'update_detail_account'])->name('customer.update.account');
     Route::post('personal/account/information/update/', [AccountCustomerController::class, 'update_information_account'])->name('customer.update.information');
-    Route::post('personal/account/address/update/', [AccountCustomerController::class, 'update_address_account'])->name('customer.update.address');
 
     Route::put('personal/account/foto/update/', [AccountCustomerController::class, 'update_foto_profil'])->name('customer.update.foto');
     Route::put('personal/account/email/update/', [AccountCustomerController::class, 'update_email'])->name('customer.update.email');
     Route::put('personal/account/password/update/', [AccountCustomerController::class, 'update_password'])->name('customer.update.password');
     Route::put('personal/account/nama/update/', [AccountCustomerController::class, 'update_nama'])->name('customer.update.nama');
     Route::put('personal/account/notelp/update/', [AccountCustomerController::class, 'update_no_telp'])->name('customer.update.notelp');
+    Route::put('personal/account/address/update/', [AccountCustomerController::class, 'update_address'])->name('customer.update.address');
     /**
      * Route for order customer
      */
