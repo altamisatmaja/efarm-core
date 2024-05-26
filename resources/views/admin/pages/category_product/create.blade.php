@@ -128,6 +128,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     @push('js')
         <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            var successMessage = document.getElementById('successMessage');
+
+            successMessage.addEventListener('click', function() {
+                successMessage.style.display = 'none';
+            });
+        });
+
             $(document).ready(function() {
                 $('#gambar_kategori_product').change(function(e) {
                     var fileName = e.target.files[0].name;

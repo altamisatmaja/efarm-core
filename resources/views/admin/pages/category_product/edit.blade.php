@@ -205,6 +205,14 @@
                     document.getElementById('category-form').submit();
                 }
             }
+
+            document.addEventListener('DOMContentLoaded', function() {
+            var successMessage = document.getElementById('successMessage');
+
+            successMessage.addEventListener('click', function() {
+                successMessage.style.display = 'none';
+            });
+        });
         </script>
     @endpush
 @endsection

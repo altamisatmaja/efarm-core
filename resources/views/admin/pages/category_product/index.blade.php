@@ -265,7 +265,6 @@
             document.addEventListener('DOMContentLoaded', function() {
                 var successMessage = document.getElementById('successMessage');
 
-                // Sembunyikan pesan sukses saat diklik
                 successMessage.addEventListener('click', function() {
                     successMessage.style.display = 'none';
                 });
