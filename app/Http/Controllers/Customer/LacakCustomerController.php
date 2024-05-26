@@ -34,7 +34,7 @@ class LacakCustomerController extends Controller
         $allorders = [];
 
         foreach ($orders as $order) {
-            $orderDetails = OrderDetail::where('id_order', $order->id)->get();
+            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->get();
             $allorders[] = [
                 'order' => $order,
                 'order_details' => $orderDetails,
@@ -51,7 +51,7 @@ class LacakCustomerController extends Controller
         $allorders = [];
 
         foreach ($orders as $order) {
-            $orderDetails = OrderDetail::where('id_order', $order->id)->get();
+            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->get();
             $allorders[] = [
                 'order' => $order,
                 'order_details' => $orderDetails,
@@ -67,7 +67,7 @@ class LacakCustomerController extends Controller
         $allorders = [];
 
         foreach ($orders as $order) {
-            $orderDetails = OrderDetail::where('id_order', $order->id)->get();
+            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->get();
             $allorders[] = [
                 'order' => $order,
                 'order_details' => $orderDetails,
@@ -84,7 +84,7 @@ class LacakCustomerController extends Controller
         $allorders = [];
 
         foreach ($orders as $order) {
-            $orderDetails = OrderDetail::where('id_order', $order->id)->get();
+            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->get();
             $allorders[] = [
                 'order' => $order,
                 'order_details' => $orderDetails,
@@ -100,7 +100,7 @@ class LacakCustomerController extends Controller
         $allorders = [];
 
         foreach ($orders as $order) {
-            $orderDetails = OrderDetail::with('product')->where('id_order', $order->id)->get();
+            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->get();
             $allorders[] = [
                 'order' => $order,
                 'order_details' => $orderDetails,
@@ -120,7 +120,7 @@ class LacakCustomerController extends Controller
             'status' => $request->status
         ]);
 
-        return redirect()->back()->with('success', $message);
+        return redirect()->back()->with('success', 'Pesanan berhasil diselesaikan');
     }
 
 }

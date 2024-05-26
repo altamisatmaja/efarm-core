@@ -55,7 +55,7 @@
                 </div>
                 <div class="hidden md:visible md:flex relative border-t border-white/20">
                     <a href="{{ route('password.request') }}"
-                        class="text-white px-2 md:w-full pr-4   hover:bg-sekunderbase rounded-lg hover:text-textbase cursor-pointer md:px-3 md:py-2 md:font-semibold md:text-lg flex flex-wrap md:items-center"><svg
+                        class="text-white px-2 md:w-full pr-4 mt-3 hover:bg-sekunderbase rounded-lg hover:text-textbase cursor-pointer md:px-3 md:py-2 md:font-semibold md:text-lg flex flex-wrap md:items-center"><svg
                             xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
                             width="24px" fill="currentColor">
                             <path
