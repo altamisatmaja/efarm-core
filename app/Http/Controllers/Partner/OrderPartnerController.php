@@ -28,15 +28,28 @@ class OrderPartnerController extends Controller
         $user = Auth::user();
         $partner = Partner::where('id_user', $user->id)->first();
 
-        $orders = Order::with('user')->get();
-        $allorders = [];
+        if ($partner) {
+            $orders = Order::whereHas('orders_detail', function ($query) use ($partner) {
+                $query->where('id_partner', $partner->id);
+            })->with('user')->get();
 
-        foreach ($orders as $order) {
-            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->where('id_partner', $partner->id)->get();
-            $allorders[] = [
-                'order' => $order,
-                'order_details' => $orderDetails,
-            ];
+            $allorders = [];
+
+            foreach ($orders as $order) {
+                $orderDetails = OrderDetail::with('product', 'partner')
+                    ->where('id_order', $order->id)
+                    ->where('id_partner', $partner->id)
+                    ->get();
+
+                if ($orderDetails->isNotEmpty()) {
+                    $allorders[] = [
+                        'order' => $order,
+                        'order_details' => $orderDetails,
+                    ];
+                }
+            }
+        } else {
+            $allorders = [];
         }
 
         return view('partner.pages.order.index', compact('partner', 'allorders'));
@@ -50,15 +63,28 @@ class OrderPartnerController extends Controller
         $user = Auth::user();
         $partner = Partner::where('id_user', $user->id)->first();
 
-        $orders = Order::with('user')->where('status', 'Baru')->get();
-        $allorders = [];
+        if ($partner) {
+            $orders = Order::whereHas('orders_detail', function ($query) use ($partner) {
+                $query->where('id_partner', $partner->id);
+            })->with('user')->where('status', 'Baru')->get();
 
-        foreach ($orders as $order) {
-            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->where('id_partner', $partner->id)->get();
-            $allorders[] = [
-                'order' => $order,
-                'order_details' => $orderDetails,
-            ];
+            $allorders = [];
+
+            foreach ($orders as $order) {
+                $orderDetails = OrderDetail::with('product', 'partner')
+                    ->where('id_order', $order->id)
+                    ->where('id_partner', $partner->id)
+                    ->get();
+
+                if ($orderDetails->isNotEmpty()) {
+                    $allorders[] = [
+                        'order' => $order,
+                        'order_details' => $orderDetails,
+                    ];
+                }
+            }
+        } else {
+            $allorders = [];
         }
 
         return view('partner.pages.order.new', compact('partner', 'allorders'));
@@ -72,15 +98,28 @@ class OrderPartnerController extends Controller
         $user = Auth::user();
         $partner = Partner::where('id_user', $user->id)->first();
 
-        $orders = Order::with('user')->where('status', 'Dikonfirmasi')->get();
-        $allorders = [];
+        if ($partner) {
+            $orders = Order::whereHas('orders_detail', function ($query) use ($partner) {
+                $query->where('id_partner', $partner->id);
+            })->with('user')->where('status', 'Dikonnfirmasi')->get();
 
-        foreach ($orders as $order) {
-            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->where('id_partner', $partner->id)->get();
-            $allorders[] = [
-                'order' => $order,
-                'order_details' => $orderDetails,
-            ];
+            $allorders = [];
+
+            foreach ($orders as $order) {
+                $orderDetails = OrderDetail::with('product', 'partner')
+                    ->where('id_order', $order->id)
+                    ->where('id_partner', $partner->id)
+                    ->get();
+
+                if ($orderDetails->isNotEmpty()) {
+                    $allorders[] = [
+                        'order' => $order,
+                        'order_details' => $orderDetails,
+                    ];
+                }
+            }
+        } else {
+            $allorders = [];
         }
 
         return view('partner.pages.order.confirmed', compact('partner', 'allorders'));
@@ -94,15 +133,28 @@ class OrderPartnerController extends Controller
         $user = Auth::user();
         $partner = Partner::where('id_user', $user->id)->first();
 
-        $orders = Order::with('user')->where('status', 'Dikemas')->get();
-        $allorders = [];
+        if ($partner) {
+            $orders = Order::whereHas('orders_detail', function ($query) use ($partner) {
+                $query->where('id_partner', $partner->id);
+            })->with('user')->where('status', 'Dikemas')->get();
 
-        foreach ($orders as $order) {
-            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->where('id_partner', $partner->id)->get();
-            $allorders[] = [
-                'order' => $order,
-                'order_details' => $orderDetails,
-            ];
+            $allorders = [];
+
+            foreach ($orders as $order) {
+                $orderDetails = OrderDetail::with('product', 'partner')
+                    ->where('id_order', $order->id)
+                    ->where('id_partner', $partner->id)
+                    ->get();
+
+                if ($orderDetails->isNotEmpty()) {
+                    $allorders[] = [
+                        'order' => $order,
+                        'order_details' => $orderDetails,
+                    ];
+                }
+            }
+        } else {
+            $allorders = [];
         }
 
         return view('partner.pages.order.packed', compact('partner', 'allorders'));
@@ -116,15 +168,28 @@ class OrderPartnerController extends Controller
         $user = Auth::user();
         $partner = Partner::where('id_user', $user->id)->first();
 
-        $orders = Order::with('user')->where('status', 'Dikirim')->get();
-        $allorders = [];
+        if ($partner) {
+            $orders = Order::whereHas('orders_detail', function ($query) use ($partner) {
+                $query->where('id_partner', $partner->id);
+            })->with('user')->where('status', 'Dikirim')->get();
 
-        foreach ($orders as $order) {
-            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->where('id_partner', $partner->id)->get();
-            $allorders[] = [
-                'order' => $order,
-                'order_details' => $orderDetails,
-            ];
+            $allorders = [];
+
+            foreach ($orders as $order) {
+                $orderDetails = OrderDetail::with('product', 'partner')
+                    ->where('id_order', $order->id)
+                    ->where('id_partner', $partner->id)
+                    ->get();
+
+                if ($orderDetails->isNotEmpty()) {
+                    $allorders[] = [
+                        'order' => $order,
+                        'order_details' => $orderDetails,
+                    ];
+                }
+            }
+        } else {
+            $allorders = [];
         }
 
         return view('partner.pages.order.sent', compact('partner', 'allorders'));
@@ -159,15 +224,28 @@ class OrderPartnerController extends Controller
         $user = Auth::user();
         $partner = Partner::where('id_user', $user->id)->first();
 
-        $orders = Order::with('user')->where('status', 'Selesai')->get();
-        $allorders = [];
+        if ($partner) {
+            $orders = Order::whereHas('orders_detail', function ($query) use ($partner) {
+                $query->where('id_partner', $partner->id);
+            })->with('user')->where('status', 'Selesai')->get();
 
-        foreach ($orders as $order) {
-            $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->where('id_partner', $partner->id)->get();
-            $allorders[] = [
-                'order' => $order,
-                'order_details' => $orderDetails,
-            ];
+            $allorders = [];
+
+            foreach ($orders as $order) {
+                $orderDetails = OrderDetail::with('product', 'partner')
+                    ->where('id_order', $order->id)
+                    ->where('id_partner', $partner->id)
+                    ->get();
+
+                if ($orderDetails->isNotEmpty()) {
+                    $allorders[] = [
+                        'order' => $order,
+                        'order_details' => $orderDetails,
+                    ];
+                }
+            }
+        } else {
+            $allorders = [];
         }
 
         return view('partner.pages.order.end', compact('partner', 'allorders'));
