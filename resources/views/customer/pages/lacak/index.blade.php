@@ -4,7 +4,7 @@
 
 @section('track')
     <section class="bg-white antialiased my-4">
-        <div class="mx-auto max-w-screen-xl 2xl:px-0">
+        <div class="mx-auto max-w-screen 2xl:px-0">
             @foreach ($allorders as $allorder)
                 <h2 class="text-xl font-semibold mt-3 text-gray-900  sm:text-2xl">Pesanan Reference
                     #{{ $allorder['order']['reference'] }} ・ {{ $allorder['order']['status_pembayaran'] == 'Paid' ? 'Sudah dibayar' : 'Belum dibayar' }}</h2>

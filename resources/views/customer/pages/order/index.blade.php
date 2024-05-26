@@ -4,7 +4,7 @@
 @section('title', 'Customer | Order')
 
 @section('content')
-    <section class="md:py-0 bg-white text-zinc-900 relative overflow-hidden z-10 w-full">
+    <section class="md:py-0 bg-white text-zinc-900 relative overflow-hidden z-0 w-full">
         <div class="container px-4 mx-auto">
             <div class="flex w-full justify-center mx-auto">
                 <div class="w-full">

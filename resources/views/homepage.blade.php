@@ -1,31 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('includes.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-    <link rel="stylesheet"
-        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <title>eFarm | Jual beli hewan ternak</title>
-    <style>
-        * {
-            font-family: Montserrat;
-        }
+@section('title', 'eFarm | Jual beli hewan')
 
-        .blurred-background {
-            backdrop-filter: blur(8px);
-        }
-    </style>
-</head>
-
-<body>
-    <div>
-        @include('includes.navbar')
-
+@section('content')
         <div class="relative h-[40rem] isolate overflow-hidden bg-primarybase">
             <div class="absolute top-0 w-full h-full bg-center bg-cover"
                 style="background-image: url('{{ asset('images/herofixed.png') }}');">
@@ -995,9 +972,9 @@
             </div>
         </section>
     </div>
-    @include('includes.footer')
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @push('js')
     <script>
         $(document).ready(function() {
             $(window).scroll(function() {
@@ -1013,8 +990,5 @@
             });
         });
     </script>
-
-
-</body>
-
-</html>
+@endpush
+@endsection
