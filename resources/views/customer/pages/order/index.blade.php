@@ -5,15 +5,52 @@
 
 @section('content')
     <section class="md:py-0 bg-white text-zinc-900 relative overflow-hidden z-0 w-full">
-        <div class="container px-4 mx-auto">
-            <div class="flex w-full justify-center mx-auto">
+        <div class="container px-2 mx-auto">
+            <div class="pb-3">
+                <ol class="flex items-center gap-4">
+                    <li class="cursor-pointer">
+                        <div
+                            class="flex items-center text-lg font-medium opacity-60 transition-all duration-300 hover:text-primarybase">
+                            <svg class="mr-2.5 h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                viewBox="0 0 20 20">
+                                <path
+                                    d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+                            </svg>
+                            <a href="{{ route('admin.dashboard') }}">Beranda </a>
+                        </div>
+                    </li>
+                    <li class="inline-flex">
+                        <div
+                            class="flex items-center gap-2 text-lg font-medium opacity-60 transition-all duration-300 hover:text-primarybase">
+                            <svg class="h-3 w-3 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m1 9 4-4-4-4" />
+                            </svg>
+                            <a href="{{ route('customer.order.list') }}"> Dashboard </a>
+                        </div>
+                    </li>
+                    <li class="inline-flex">
+                        <div
+                            class="flex items-center gap-2 text-lg font-medium opacity-60 transition-all duration-300 hover:text-primarybase">
+                            <svg class="h-3 w-3 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m1 9 4-4-4-4" />
+                            </svg>
+                            <a href="{{ route('admin.category.add') }}"> Pesanan </a>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <div class="flex w-full justify-center mx-auto mb-5">
                 <div class="w-full">
                     @foreach ($allorders as $allorder)
                         {{-- {{ $allorder['order_details'] }} --}}
-                        <div class="bg-white shadow-xl p-6 mt-6">
+                        <div class="bg-white ring-1 ring-primarybase rounded-lg p-6 mt-6">
                             <div class="grid grid-cols-12 gap-6 items-center">
                                 <div class="col-span-12 sm:col-span-3">
-                                    <h6 class="text-2xl leading-none font-bold">
+                                    <h6 class="text-2xl leading-none font-bold text-textbase">
                                         {{ $allorder['order']->status_pembayaran == 'Paid' ? 'Sudah dibayar' : 'Belum dibayar' }}
                                     </h6>
                                 </div>
@@ -23,13 +60,12 @@
                                             <p class="mb-1">Order Date: {{ $allorder['order']->created_at }}</p>
                                             <p class="mb-1">
                                                 Order Ref: {{ $allorder['order']->reference }}
-                                                <a href="#!" class="text-primarybase">Copy</a>
                                             </p>
                                         </div>
-                                        <div>
-                                            <a href="#!" class="font-bold hover:text-primarybase ml-3">Order Details
+                                        {{-- <div>
+                                            <a href="#!" class="font-bold hover:text-primarybase ml-3 text-textbase">Detail pesanan
                                                 <i class="fas fa-chevron-right sm:ml-2"></i></a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -48,7 +84,7 @@
                                 </div>
                                 <div class="col-span-12 lg:col-span-2 mt-4">
                                     <div class="flex justify-center items-center h-full">
-                                        <img src="https://cdn.easyfrontend.com/pictures/chair2.png" alt=""
+                                        <img src="/uploads/{{ $allorder['order_details'][0]['product']['gambar_hewan'] }}" alt=""
                                             class="max-w-full h-auto" />
                                     </div>
                                 </div>
@@ -57,12 +93,14 @@
                                         @foreach ($allorder['order_details'] as $products)
                                             <p class="text-lg font-semibold">{{ $products->product->nama_product }}
                                             </p>
-                                        @endforeach
-                                        <p class="my-2">
-                                            US $4.17 <span class="opacity-75 ml-2">*1</span>
-                                        </p>
-
-                                        <i class="fas fa-user-shield opacity-75"></i>
+                                            <p class="my-2 font-semibold text-textbase">
+                                                @currency($products->product->harga_product)<span class="opacity-75 ml-2">*{{ $products['kuantitas_total'] }}</span>
+                                            </p>
+                                            <p class="">{{ $products->partner[0]['nama_partner'] }}</p>
+                                            <p class="text-md font-medium text-textbase">
+                                                Dikirim dari {{ $partners->partner[0]['provinsi_partner'] }}, {{ $partners->partner[0]['kabupaten_partner'] }}, {{ $partners->partner[0]['kecamatan_partner'] }}, {{ $partners->partner[0]['kelurahan_partner'] }}
+                                            </p>
+                                            @endforeach
                                     </div>
                                 </div>
                                 <div class="col-span-12 lg:col-span-3 mt-4">
@@ -70,10 +108,18 @@
                                         @foreach ($allorder['order_details'] as $products)
                                             <h6 class="font-bold">Total: {{ $products['harga_total'] }}</h6>
                                         @endforeach
+                                        @if ($allorder['order']->status_pembayaran == 'Paid')
                                         <button
                                             class="py-2.5 px-5 bg-primarybase text-white hover:bg-opacity-90 w-full rounded-lg mt-2">
-                                            Pay Now
+                                            Bayar sekarang
                                         </button>
+                                        @else
+                                        <button disabled
+                                            class="py-2.5 px-5 bg-sekunderbase text-white hover:bg-opacity-90 w-full rounded-lg mt-2">
+                                            Sudah dibayar
+                                        </button>
+
+                                        @endif
                                         <!-- <button class="btn ezy__epprofile2-outline-btn w-100 rounded-pill mt-2">Delete</button> -->
                                     </div>
                                 </div>
