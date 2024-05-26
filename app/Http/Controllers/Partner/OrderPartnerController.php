@@ -101,7 +101,7 @@ class OrderPartnerController extends Controller
         if ($partner) {
             $orders = Order::whereHas('orders_detail', function ($query) use ($partner) {
                 $query->where('id_partner', $partner->id);
-            })->with('user')->where('status', 'Dikonnfirmasi')->get();
+            })->with('user')->where('status', 'Dikonfirmasi')->get();
 
             $allorders = [];
 

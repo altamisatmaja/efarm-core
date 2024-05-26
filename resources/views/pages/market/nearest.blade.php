@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('includes.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-    <link rel="stylesheet"
-        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <title>eFarm | Market</title>
+@section('title', 'eFarm | Terdekat')
+
+@section('content')
     <style>
         * {
             font-family: Montserrat;
@@ -65,11 +57,7 @@
         }
     </style>
     <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
-</head>
-
-<body>
     <div>
-        @include('includes.navbar')
         <div class="bg-white min-h-screen">
             <div class="flex mx-auto justify-center">
                 <div class="flex flex-row pt-6 px-6 pb-4">
@@ -197,7 +185,7 @@
             </div>
         </div>
     </div>
-    @include('includes.footer')
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         if (!window.ShadyDOM) window.ShadyDOM = {
@@ -295,6 +283,6 @@
             });
         });
     </script>
-</body>
-
-</html>
+    @push('js')
+    @endpush
+@endsection

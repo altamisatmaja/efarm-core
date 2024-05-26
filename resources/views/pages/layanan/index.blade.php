@@ -1,27 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('includes.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-    <link rel="stylesheet"
-        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <title>eFarm | Market</title>
-    <style>
-        * {
-            font-family: Montserrat;
-        }
-    </style>
-    <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
-</head>
+@section('title', 'eFarm | Terdekat')
 
-<body>
+@section('content')
     <div>
-        @include('includes.navbar')
         <div class="bg-white min-h-screen">
 
             <div class="px-28 py-10">
@@ -83,8 +65,7 @@
                                 class="relative flex flex-col bg-white ring-1 ring-primarybase w-full mb-4 shadow-lg rounded-lg">
                                 <div class="bg-gray-50 rounded-lg">
                                     <div class="relative flex">
-                                        <img src="{{ asset('cardcover.png') }}" alt="montaña"
-                                            class="w-full bg-cover" />
+                                        <img src="{{ asset('cardcover.png') }}" alt="montaña" class="w-full bg-cover" />
                                         <div class="absolute inset-0 flex items-center justify-center">
                                             <img src="{{ asset('efarm-partner-logo.png') }}" alt="montaña"
                                                 class="" />
@@ -201,7 +182,6 @@
             </div>
         </div>
     </div>
-    @include('includes.footer')
-</body>
-
-</html>
+    @push('js')
+    @endpush
+@endsection

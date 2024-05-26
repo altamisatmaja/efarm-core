@@ -26,11 +26,6 @@ class PageWebController extends Controller
         return view('homepage');
     }
 
-    public function livestock($slug_kategori_product, $slug_category_livestock)
-    {
-        return view('pages.market.livestock');
-    }
-
     public function category($slug_kategori_product)
 {
     $category = CategoryProduct::where('slug_kategori_product', $slug_kategori_product)->first();

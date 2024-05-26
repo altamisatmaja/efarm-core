@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('includes.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-    <link rel="stylesheet"
-        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <title>eFarm | Login</title>
+@section('title', 'eFarm | Login')
+
+@section('content')
     <style>
         * {
             font-family: Montserrat;
         }
     </style>
-</head>
-
-<body>
     <div>
-        @include('includes.navbar')
         <section class="bg-gray-50">
             <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
@@ -140,6 +127,20 @@
             })
         });
     </script>
-</body>
+    @push('js')
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                var scrollPosition = $(window).scrollTop();
+                var blurTriggerPosition = 200;
 
-</html>
+                if (scrollPosition > blurTriggerPosition) {
+                    $('.sticky').addClass('blurred-background');
+                } else {
+                    $('.sticky').removeClass('blurred-background');
+                }
+            });
+        });
+    </script>
+@endpush
+@endsection

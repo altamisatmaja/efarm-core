@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('includes.app')
 
-<head>
-    <meta charset="UTF-8">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
-    <title>eFarm | Market</title>
+@section('title', 'eFarm | Market')
+
+@section('content')
     <style>
         input[type='number']::-webkit-inner-spin-button,
         input[type='number']::-webkit-outer-spin-button {
@@ -81,34 +76,28 @@
             height: 24px;
         }
     </style>
-
-</head>
-
-<body class="antialiased">
     <div>
-        @include('includes.navbar')
-
         <div class="py-6">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16">
                 <div class="flex items-center space-x-2 text-gray-400 text-sm">
                     <a href="#" class="hover:underline hover:text-gray-600">Market</a>
                     <span>
-                        <svg class="h-5 w-5 leading-none text-gray-300" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg class="h-5 w-5 leading-none text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </span>
                     <a href="#" class="hover:underline hover:text-gray-600">Hewan Ternak</a>
                     <span>
-                        <svg class="h-5 w-5 leading-none text-gray-300" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg class="h-5 w-5 leading-none text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </span>
                     <span>Kambing</span>
                     <span>
-                        <svg class="h-5 w-5 leading-none text-gray-300" xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg class="h-5 w-5 leading-none text-gray-300" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </span>
@@ -288,8 +277,8 @@
                             <div class="sm:flex sm:justify-between py-2">
                                 <div class="flex items-center">
                                     <div class="flex items-start justify-start">
-                                        <img class="h-12 w-12 rounded-full"
-                                            src="/uploads/{{ $partner->foto_profil }}" alt="">
+                                        <img class="h-12 w-12 rounded-full" src="/uploads/{{ $partner->foto_profil }}"
+                                            alt="">
                                         <div class="ml-2 flex flex-col">
                                             <h3 class="text-lg text-gray-800 font-medium">{{ $partner->nama_partner }}
                                             </h3>
@@ -366,35 +355,35 @@
 
                                 </div>
                                 @if ($testimonial->testimonial_reply)
-                                        <div class='flex flex-col items-start justify-center'>
-                                            <p class="text-textbase font-medium items-start w-full">Balasan dari
-                                                penjual</p>
-                                            <div class="ml-8 rounded-xl mt-5 w-full bg-white">
-                                                <div class="flex w-full items-center justify-between pb-3">
-                                                    <div class="flex items-center space-x-3">
-                                                        <div
-                                                            class="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://i.pravatar.cc/32')]">
-                                                        </div>
-                                                        <div class="text-lg font-bold text-slate-700">
-                                                            {{ $testimonial->user->nama }}</div>
+                                    <div class='flex flex-col items-start justify-center'>
+                                        <p class="text-textbase font-medium items-start w-full">Balasan dari
+                                            penjual</p>
+                                        <div class="ml-8 rounded-xl mt-5 w-full bg-white">
+                                            <div class="flex w-full items-center justify-between pb-3">
+                                                <div class="flex items-center space-x-3">
+                                                    <div
+                                                        class="h-8 w-8 rounded-full bg-slate-400 bg-[url('https://i.pravatar.cc/32')]">
                                                     </div>
-                                                    <div class="flex items-center space-x-8">
-                                                        <button
-                                                            class="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold">{{ $testimonial->created_at->diffForHumans() }}</button>
-                                                    </div>
+                                                    <div class="text-lg font-bold text-slate-700">
+                                                        {{ $testimonial->user->nama }}</div>
                                                 </div>
-
-                                                <div class="mt-4 mb-6">
-                                                    <div class="mb-3 text-xl font-bold">
-                                                        {{ $testimonial->nama_testimoni }}</div>
-                                                    <div class="text-sm text-neutral-600">
-                                                        {{ $testimonial->deskripsi }}</div>
+                                                <div class="flex items-center space-x-8">
+                                                    <button
+                                                        class="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold">{{ $testimonial->created_at->diffForHumans() }}</button>
                                                 </div>
                                             </div>
+
+                                            <div class="mt-4 mb-6">
+                                                <div class="mb-3 text-xl font-bold">
+                                                    {{ $testimonial->nama_testimoni }}</div>
+                                                <div class="text-sm text-neutral-600">
+                                                    {{ $testimonial->deskripsi }}</div>
+                                            </div>
                                         </div>
-                                    @else
-                                        <p class="text-textbase">Belum ada testimoni</p>
-                                    @endif
+                                    </div>
+                                @else
+                                    <p class="text-textbase">Belum ada testimoni</p>
+                                @endif
                             @endforeach
 
                         </div>
@@ -415,8 +404,7 @@
                                     @csrf
                                     <div class="mb-2 flex justify-between">
                                         <div class="custom-number-input h-10 w-32">
-                                            <div
-                                                class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                                            <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
                                                 <button data-action="decrement" type="button"
                                                     class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
                                                     <span class="m-auto text-2xl font-thin">-</span>
@@ -430,8 +418,8 @@
                                                 </button>
                                                 <input hidden name="random" value="{{ now()->timestamp }}"
                                                     type="text">
-                                                <input hidden name="slug_product"
-                                                    value="{{ $product->slug_product }}" type="text">
+                                                <input hidden name="slug_product" value="{{ $product->slug_product }}"
+                                                    type="text">
                                             </div>
                                         </div>
                                         <p class="text-gray-700">Stok 2222</p>
@@ -478,7 +466,6 @@
                 <div class="relative flex items-end font-bold mt-6">
                     <h2 class="text-2xl">Hewan ternak lain</h2>
                 </div>
-                {{-- @include('components.new') --}}
             </div>
         </div>
     </div>
@@ -545,6 +532,6 @@
             btn.addEventListener("click", increment);
         });
     </script>
-</body>
-
-</html>
+    @push('js')
+    @endpush
+@endsection

@@ -108,7 +108,6 @@ Route::get('/market', [PageWebController::class, 'market'])->name('homepage.mark
 
 Route::get('/market/buy/{slug}', [PageWebController::class, 'by_categorytypelivestocks'])->name('homepage.market.farm');
 Route::get('/market/buy/kategori/{slug_kategori_product}', [PageWebController::class, 'category'])->name('homepage.market.category');
-Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}', [PageWebController::class, 'livestock'])->name('homepage.market.farm.livestock');
 Route::get('/market/buy/{slug_kategori_product}/{slug_category_livestock}/{slug_product}', [PageWebController::class, 'product'])->name('homepage.market.farm.product');
 
 Route::post('/market/keranjang/{id_product}', [CartCustomerController::class , 'store'])->name('customer.cart.store');

@@ -1,30 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('includes.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-    <link rel="stylesheet"
-        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <title>eFarm | Partner</title>
-    <style>
-        * {
-            font-family: Montserrat;
-        }
+@section('title', 'eFarm | Partner')
 
-        [x-cloak] {
-            display: none !important;
-        }
-    </style>
-</head>
-
-<body>
+@section('content')
     <div>
-        @include('includes.navbar')
         <section
             class="relative overflow-hidden bg-gradient-to-b from-green-50 via-transparent to-transparent pb-12 pt-20 sm:pb-16 sm:pt-32 lg:pb-24 xl:pb-32 xl:pt-40">
             <div class="relative z-10">
@@ -823,7 +802,6 @@
                 </li>
             </ul>
         </div>
-        @include('includes.footer')
     </div>
 
     <script>
@@ -859,8 +837,25 @@
         });
         //  end faq
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @push('js')
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                var scrollPosition = $(window).scrollTop();
+                var blurTriggerPosition = 200;
+
+                // Menambahkan atau menghapus kelas blur sesuai dengan posisi scroll
+                if (scrollPosition > blurTriggerPosition) {
+                    $('.sticky').addClass('blurred-background');
+                } else {
+                    $('.sticky').removeClass('blurred-background');
+                }
+            });
+        });
+    </script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</body>
-
-</html>
+    @endpush
+    @endsection

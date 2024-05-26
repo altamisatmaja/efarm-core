@@ -48,8 +48,9 @@ class AccountPartnerController extends Controller
     }
 
     public function password_view(){
-        $partner = Auth::user();
-        $partners = Auth::user()->partner;
+        $user = Auth::user();
+        $partners = Partner::where('id_user', $user->id)->first();
+        $partner = Partner::where('id_user', $user->id)->first();
         return view('partner.pages.profile.password', compact('partner', 'partners'));
     }
 

@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('includes.app')
 
-<head>
-    <meta charset="UTF-8">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
-    <title>eFarm | Checkout</title>
-</head>
+@section('title', 'eFarm | Checkout')
 
-<body>
+@section('content')
     <div>
-        @include('includes.navbar')
         <div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
             <div class="px-4 pt-8">
                 <p class="text-xl font-medium">Ringkasan Pesanan</p>
@@ -69,7 +60,7 @@
                                 <span class="mt-2 font-semibold">Pengiriman Internal</span>
                             </div>
                         </label>
-                    </div>                    
+                    </div>
                 </form>
             </div>
             <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
@@ -105,6 +96,20 @@
             </div>
         </div>
     </div>
-</body>
+    @push('js')
+    <script>
+        $(document).ready(function() {
+            $(window).scroll(function() {
+                var scrollPosition = $(window).scrollTop();
+                var blurTriggerPosition = 200;
 
-</html>
+                if (scrollPosition > blurTriggerPosition) {
+                    $('.sticky').addClass('blurred-background');
+                } else {
+                    $('.sticky').removeClass('blurred-background');
+                }
+            });
+        });
+    </script>
+@endpush
+@endsection

@@ -1,27 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('includes.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
-    <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-    <link rel="stylesheet"
-        href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <title>eFarm | Partner</title>
-    <style>
-        * {
-            font-family: Montserrat;
-        }
-    </style>
-</head>
+@section('title', 'eFarm | Tentang')
 
-<body>
+@section('content')
     <div>
-        @include('includes.navbar')
-        <!-- component -->
         <div class="text-white mt-24 container mx-auto p-8 overflow-hidden md:rounded-lg md:p-10 lg:p-12">
 
             <div class="grid gap-8 md:grid-cols-2 ">
@@ -117,8 +99,8 @@
                     <!-- image - start -->
                     <a href="#"
                         class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 shadow-lg md:col-span-2 md:h-80">
-                        <img src="https://kominfo.jatimprov.go.id/uploads/images/IMG-20240311-WA0050.jpg"
-                            loading="lazy" alt="Photo by Martin Sanchez"
+                        <img src="https://kominfo.jatimprov.go.id/uploads/images/IMG-20240311-WA0050.jpg" loading="lazy"
+                            alt="Photo by Martin Sanchez"
                             class="absolute inset-0 h-full w-full object-cover object-center transition duration-200 group-hover:scale-110" />
 
                         <div
@@ -140,16 +122,29 @@
                             class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
                         </div>
 
-                        <span
-                            class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">Aktivitas</span>
+                        <span class="relative ml-4 mb-3 inline-block text-sm text-white md:ml-5 md:text-lg">Aktivitas</span>
                     </a>
                     <!-- image - end -->
                 </div>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        @push('js')
+            <script>
+                $(document).ready(function() {
+                    $(window).scroll(function() {
+                        var scrollPosition = $(window).scrollTop();
+                        var blurTriggerPosition = 200;
 
-        @include('includes.footer')
-    </div>
-</body>
-
-</html>
+                        // Menambahkan atau menghapus kelas blur sesuai dengan posisi scroll
+                        if (scrollPosition > blurTriggerPosition) {
+                            $('.sticky').addClass('blurred-background');
+                        } else {
+                            $('.sticky').removeClass('blurred-background');
+                        }
+                    });
+                });
+            </script>
+        @endpush
+    @endsection
