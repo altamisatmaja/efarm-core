@@ -4846,6 +4846,10 @@ select {
     margin-top: -24rem;
   }
 
+  .md\:mt-3 {
+    margin-top: 0.75rem;
+  }
+
   .md\:block {
     display: block;
   }
@@ -5314,6 +5318,10 @@ select {
 
   .md\:font-semibold {
     font-weight: 600;
+  }
+
+  .md\:font-medium {
+    font-weight: 500;
   }
 
   .md\:text-white {
