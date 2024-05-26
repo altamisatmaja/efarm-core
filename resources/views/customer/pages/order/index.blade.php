@@ -45,6 +45,11 @@
             </div>
             <div class="flex w-full justify-center mx-auto mb-5">
                 <div class="w-full">
+                    <div class="mt-2 mb-8 w-full">
+                        <h4 class=" text-2xl font-bold text-textbase">
+                            Pesanan anda 🤩
+                        </h4>
+                    </div>
                     @foreach ($allorders as $allorder)
                         {{-- {{ $allorder['order_details'] }} --}}
                         <div class="bg-white ring-1 ring-primarybase rounded-lg p-6 mt-6">

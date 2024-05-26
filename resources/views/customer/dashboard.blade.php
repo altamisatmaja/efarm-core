@@ -46,7 +46,7 @@
             <div
                 class="relative flex flex-col items-center rounded-[20px] w-full mx-auto bg-white bg-clip-border shadow-3xl shadow-shadow-500">
                 <div class="mt-2 mb-8 w-full">
-                    <h4 class=" text-2xl font-bold text-navy-700">
+                    <h4 class=" text-2xl font-bold text-textbase">
                         Semua informasi Anda 🤩
                     </h4>
                 </div>
@@ -54,7 +54,7 @@
                     <div
                         class="flex flex-col justify-center  py-2 shadow-3xl shadow-shadow-500">
                         <p class="text-sm text-gray-600">Nama</p>
-                        <p class="text-base font-medium text-navy-700">
+                        <p class="text-base font-medium text-textbase">
                             {{ $user->nama }}
                         </p>
                     </div>
@@ -62,14 +62,14 @@
                     <div
                         class="flex flex-col items-start justify-center  bg-white bg-clip-border py-2 shadow-3xl shadow-shadow-500">
                         <p class="text-sm text-gray-600">Nomor telepon</p>
-                        <p class="text-base font-medium text-navy-700">
+                        <p class="text-base font-medium text-textbase">
                             {{ $user->no_telp != NULL ? $user->no_telp : 'Belum diisi' }}
                         </p>
                     </div>
                 </div>
 
                 <div class="mt-4 mb-8 w-full">
-                    <h4 class=" text-2xl font-bold text-navy-700">
+                    <h4 class=" text-2xl font-bold text-textbase">
                         Informasi akun Anda 😁
                     </h4>
                 </div>
@@ -77,7 +77,7 @@
                     <div
                         class="flex flex-col justify-center rounded-2xl bg-white bg-clip-border py-2 shadow-3xl shadow-shadow-500">
                         <p class="text-sm text-gray-600">Username</p>
-                        <p class="text-base font-medium text-navy-700">
+                        <p class="text-base font-medium text-textbase">
                             {{ $user->username }}
                         </p>
                     </div>
@@ -85,14 +85,14 @@
                     <div
                         class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border py-2 shadow-3xl shadow-shadow-500">
                         <p class="text-sm text-gray-600">Email</p>
-                        <p class="text-base font-medium text-navy-700">
+                        <p class="text-base font-medium text-textbase">
                             {{ $user->email }}
                         </p>
                     </div>
                 </div>
 
                 <div class="mt-4 mb-8 w-full">
-                    <h4 class=" text-2xl font-bold text-navy-700">
+                    <h4 class=" text-2xl font-bold text-textbase">
                         Informasi alamat Anda 🤗
                     </h4>
                 </div>
@@ -100,7 +100,7 @@
                     <div
                         class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border py-2 shadow-3xl shadow-shadow-500">
                         <p class="text-sm text-gray-600">Provinsi</p>
-                        <p class="text-base font-medium text-navy-700">
+                        <p class="text-base font-medium text-textbase">
                             {{ $user->provinsi_user != NULL ? $user->provinsi_user : 'Belum diisi' }}
                         </p>
                     </div>
@@ -108,7 +108,7 @@
                     <div
                         class="flex flex-col justify-center rounded-2xl bg-white bg-clip-border py-2 shadow-3xl shadow-shadow-500">
                         <p class="text-sm text-gray-600">Kabupaten</p>
-                        <p class="text-base font-medium text-navy-700">
+                        <p class="text-base font-medium text-textbase">
                             {{ $user->kabupaten_user != NULL ? $user->provinsi_user : 'Belum diisi' }}
                         </p>
                     </div>
@@ -116,7 +116,7 @@
                     <div
                         class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border py-2 shadow-3xl shadow-shadow-500">
                         <p class="text-sm text-gray-600">Kelurahan</p>
-                        <p class="text-base font-medium text-navy-700">
+                        <p class="text-base font-medium text-textbase">
                             {{ $user->kecamatan_user != NULL ? $user->provinsi_user : 'Belum diisi' }}
                         </p>
                     </div>
@@ -124,7 +124,7 @@
                     <div
                         class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border py-2 shadow-3xl shadow-shadow-500">
                         <p class="text-sm text-gray-600">Kelurahan</p>
-                        <p class="text-base font-medium text-navy-700">
+                        <p class="text-base font-medium text-textbase">
                             {{ $user->kelurahan_user != NULL ? $user->provinsi_user : 'Belum diisi' }}
                         </p>
                     </div>
