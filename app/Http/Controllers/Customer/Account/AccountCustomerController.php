@@ -105,6 +105,48 @@ class AccountCustomerController extends Controller
         }
     }
 
+    public function update_nama(Request $request){
+        try {
+            $user = auth()->user();
+
+            $validator = Validator::make($request->all(), [
+                'nama' => 'required',
+            ]);
+
+            $input = $request->except(['_token', '_method']);
+
+            $user->update($input);
+            if ($user) {
+                return redirect()->back()->with('success', 'Data nama berhasil diubah');
+            } else {
+                return redirect()->back()->with('error', 'Data gagal nama berhasil diubah');
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
+    public function update_no_telp(Request $request){
+        try {
+            $user = auth()->user();
+
+            $validator = Validator::make($request->all(), [
+                'no_telp' => 'required',
+            ]);
+
+            $input = $request->except(['_token', '_method']);
+
+            $user->update($input);
+            if ($user) {
+                return redirect()->back()->with('success', 'Data no hp berhasil diubah');
+            } else {
+                return redirect()->back()->with('error', 'Data gagal no hp berhasil diubah');
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
     public function update_password(Request $request){
         try {
             $user = auth()->user();
