@@ -13,7 +13,12 @@ class ReviewCustomerController extends Controller
     public function index($slug_product) {
         try {
             $product = Product::where('slug_product', $slug_product)->first();
-            return view('customer.pages.review.show', compact('product'));
+            $user = auth()->user();
+
+            $review = Review::where('id_product', $product->id)->where('id_user', $user->id)->first();
+            // dd($review);
+            return view('customer.pages.review.show', compact('product', 'review'));
+
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }

@@ -6,7 +6,7 @@
     <div>
         <div class="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
             <div class="px-4 pt-8">
-                <p class="text-xl font-medium">Ringkasan Pesanan</p>
+                <p class="text-xl font-semibold mb-2 text-textbase">Ringkasan Pesanan</p>
                 <p class="text-gray-400">Periksa terlebih dahulu pesanan anda. Kemudian pilih metode pembayaran</p>
                 <div class="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-6">
                     <div class="flex flex-col rounded-lg bg-white sm:flex-row">
@@ -25,49 +25,51 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
-                    <p class="text-xl font-medium">Detail harga</p>
+                <div class="mt-10  px-4 pt-4 lg:mt-0">
+                    <p class="text-xl font-semibold text-textbase">Detail harga</p>
                     <p class="text-gray-400">Selesaikan pembayaran Anda setelah mengecek detail harga.</p>
                     <div class="">
                         <!-- Total -->
                         <div class="mt-6 border-t border-b py-2">
                             <div class="flex mt-2 items-center justify-between">
-                                <p class="text-sm font-medium text-gray-900">Kuantitas</p>
-                                <p class="font-semibold text-gray-900">{{ $kuantitas }} ekor</p>
+                                <p class="text-sm font-medium text-textbase">Kuantitas</p>
+                                <p class="font-semibold text-textbase">{{ $kuantitas }} ekor</p>
                             </div>
                             <div class="flex mt-2 items-center justify-between">
-                                <p class="text-sm font-medium text-gray-900">Harga produk</p>
-                                <p class="font-semibold text-gray-900">@currency($product->harga_product)</p>
+                                <p class="text-sm font-medium text-textbase">Harga produk</p>
+                                <p class="font-semibold text-textbase">@currency($product->harga_product)</p>
                             </div>
                             <div class="flex mt-2 items-center justify-between">
-                                <p class="text-sm font-medium text-gray-900">Pengiriman</p>
+                                <p class="text-sm font-medium text-textbase">Pengiriman</p>
                                 <p class="font-medium text-gray-500">*Disesuaikan oleh Partner</p>
                             </div>
                         </div>
-                        <div class="mt-6 flex mt-2 items-center justify-between">
-                            <p class="text-sm font-medium text-gray-900">Total</p>
-                            <p class="text-2xl font-semibold text-gray-900">@currency($total_harga)</p>
+                        <div class="mt-6 flex  items-center justify-between">
+                            <p class="text-sm font-medium text-textbase">Total</p>
+                            <p class="text-2xl font-semibold text-textbase">@currency($total_harga)</p>
                         </div>
                     </div>
                 </div>
-                <p class="mt-8 text-lg font-medium">Metode pengiriman</p>
-                <form class="mt-5 grid gap-6">
-                    <div class="relative">
-                        <input class="peer hidden" id="radio_1" type="radio" name="radio" checked />
-                        <span
-                            class="peer-checked:border-primarybase absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
-                        <label
-                            class="peer-checked:border-2 peer-checked:border-primarybase peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4 items-center"
-                            for="radio_1">
-                            <img class="w-10 object-contain"
-                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLirWoWV1AiJNfOY69WI9A9VfleBE6W4JbsJHLcYsbtQ&s"
-                                alt="" />
-                            <div class="ml-5">
-                                <span class="mt-2 font-semibold">Pengiriman Internal</span>
-                            </div>
-                        </label>
-                    </div>
-                </form>
+                <div class="mt-10  px-4 lg:mt-0">
+                    <p class="text-xl font-semibold text-textbase">Pengiriman</p>
+                    <form class="mt-5 grid gap-6">
+                        <div class="relative">
+                            <input class="peer hidden" id="radio_1" type="radio" name="radio" checked />
+                            <span
+                                class="peer-checked:border-primarybase flex absolute right-4 top-1/2 box-content h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
+                            <label
+                                class="peer-checked:border-2 peer-checked:border-primarybase flex peer-checked:bg-gray-50  cursor-pointer select-none rounded-lg border border-gray-300 p-4 items-center"
+                                for="radio_1">
+                                <img class="w-10 object-contain"
+                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLirWoWV1AiJNfOY69WI9A9VfleBE6W4JbsJHLcYsbtQ&s"
+                                    alt="" />
+                                <div class="ml-5">
+                                    <span class="mt-2 font-semibold">Pengiriman Internal</span>
+                                </div>
+                            </label>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
                 <p class="text-xl font-semibold mb-3">Pilih metode pembayaran</p>
@@ -97,9 +99,10 @@
                             @endif
                         @endforeach
                     </div>
-                    <label for="catatan" class="block mb-2 text-xl font-semibold  mt-5 text-textbase ">Tambahkan catatan</label>
+                    <label for="catatan" class="block mb-2 text-xl font-semibold  mt-5 text-textbase ">Tambahkan
+                        catatan</label>
                     <textarea id="catatan" rows="4" name="catatan"
-                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
+                        class="block p-2.5 w-full text-sm text-textbase bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 "
                         placeholder="Tambah catatan anda disini..."></textarea>
                     <button type="submit"
                         class="mt-4 mb-8 w-full rounded-md bg-primarybase px-6 py-3 font-medium text-white">Beli</button>
