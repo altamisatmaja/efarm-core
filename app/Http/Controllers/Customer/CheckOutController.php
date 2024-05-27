@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckOutController extends Controller
 {
-    public function pre(Request $request){
+    public function pre(Request $request)
+    {
         $kuantitas = $request->kuantitas;
         $random = $request->random;
         $slug_product = $request->slug_product;
@@ -29,6 +30,16 @@ class CheckOutController extends Controller
     {
         try {
             if (Auth::check()) {
+                $manage_qty = Product::where('slug_product', $slug_product)->first();
+
+                if ($kuantitas > $manage_qty->stok_hewan_ternak) {
+                    return redirect()->back()->with('status', 'Jumlah kuantitas melebihi stok');
+                } elseif ($kuantitas == 0){
+                    return redirect()->back()->with('status', 'Jumlah kuantitas tidak boleh 0');
+                } elseif ($kuantitas < 0){
+                    return redirect()->back()->with('status', 'Jumlah kuantitas tidak boleh kurang dari 0');
+                }
+
                 $tripay = new TripayController();
                 $channels = $tripay->getPaymentChannels();
                 $product = Product::with('typelivestocks', 'gender_livestocks', 'partner', 'categoryproduct', 'categorylivestocks')->where('slug_product', $slug_product)->first();
@@ -55,8 +66,6 @@ class CheckOutController extends Controller
         $order = Order::where('merchant_ref', $detail->merchant_ref)->first();
         $orderdetail = OrderDetail::where('id_order', $order->id)->first();
         $products = Product::with('categorylivestocks', 'categoryproduct', 'gender_livestocks', 'partner', 'testimonial', 'reviews', 'typelivestocks')->where('id', $orderdetail->id_product)->first();
-
-
 
         return view('pages.market.finally', compact('detail', 'instruksi', 'products', 'orderitems'));
     }

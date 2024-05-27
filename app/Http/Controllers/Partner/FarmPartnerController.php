@@ -105,6 +105,16 @@ class FarmPartnerController extends Controller
                 'id_kategori_hewan' => 'required',
                 'nama_hewan' => 'required',
                 'kode_hewan' => 'required',
+            ], [
+                'id_kondisi_hewan.required' => 'Wajib diisi!',
+                'id_jenis_gender_hewan.required' => 'Wajib diisi!',
+                'id_jenis_hewan.required' => 'Wajib diisi!',
+                'lahir_hewan.required' => 'Wajib diisi!',
+                'deskripsi_hewan.required' => 'Wajib diisi!',
+                'berat_badan_hewan.required' => 'Wajib diisi!',
+                'id_kategori_hewan.required' => 'Wajib diisi!',
+                'nama_hewan.required' => 'Wajib diisi!',
+                'kode_hewan.required' => 'Wajib diisi!',
             ]);
 
             if ($validator->fails()) {

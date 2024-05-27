@@ -87,7 +87,9 @@ class PageWebController extends Controller
         $product->lokasi = $lokasi;
     }
 
-    return view('pages.market.categories', compact('products'));
+    $breadcrumbs = $category->nama_kategori_product;
+
+    return view('pages.market.categories', compact('products', 'slug_kategori_product', 'breadcrumbs'));
 }
 
 
@@ -118,9 +120,63 @@ class PageWebController extends Controller
 
         $testimonials = Testimonial::with('testimonial_reply.partner', 'user')->where('id_products', $product->id)->get();
 
+        // For 4 product
+        $productstakes = Product::with('categorylivestocks', 'categoryproduct', 'gender_livestocks', 'partner', 'testimonial', 'reviews', 'typelivestocks')->orderBy('created_at', 'desc')->take(4)->get();
 
+        foreach ($productstakes as $productake) {
+            $reviews = $productake->reviews;
 
-        return view('pages.market.product', compact('product', 'reviews', 'hasil_reviews', 'banyak_reviewers', 'categoryproduct', 'categorylivestock', 'testimonials'));
+            $total_rating = 0;
+            $total_reviews = count($reviews);
+
+            foreach ($reviews as $review) {
+                $total_rating += $review->rating;
+            }
+
+            $average_rating = ($total_reviews != 0) ? number_format($total_rating / $total_reviews, 2) : 0;
+
+            $productake->average_rating = $average_rating;
+            $productake->total_reviews = $total_reviews;
+
+            $genderlivestock = '';
+            foreach($productake->gender_livestocks as $genders){
+                $genderlivestock .= $genders->nama_gender;
+            }
+
+            $productake->gender = $genderlivestock;
+
+            $slug_category_livestock = '';
+            foreach($productake->categorylivestocks as $categorylivestock){
+                $slug_category_livestock .= $categorylivestock->slug;
+            }
+
+            $productake->slug_category_livestock = $slug_category_livestock;
+
+            $slug_category_product = '';
+            foreach ($productake->categoryproduct as $categoryproducts) {
+                $slug_category_product .= $categoryproducts->slug_kategori_product;
+            }
+
+            $productake->slug_category_product = $slug_category_product;
+
+            $slug_typelivestock = '';
+            $nama_jenis_hewan = '';
+            foreach ($productake->typelivestocks as $typelivestock) {
+                $slug_typelivestock .= $typelivestock->slug_typelivestocks;
+                $nama_jenis_hewan .= $typelivestock->nama_jenis_hewan;
+            }
+
+            $productake->slug_typelivestock = $slug_typelivestock;
+            $productake->nama_jenis_hewan = $nama_jenis_hewan;
+
+            $lokasi = '';
+            foreach($productake->partner as $partners){
+                $lokasi .= $partners->provinsi_partner;
+            }
+
+            $productake->lokasi = $lokasi;
+        }
+        return view('pages.market.product', compact('product', 'reviews', 'hasil_reviews', 'banyak_reviewers', 'categoryproduct', 'categorylivestock', 'testimonials', 'productstakes'));
     }
 
     public function farm($slug_kategori_product)
@@ -190,7 +246,9 @@ class PageWebController extends Controller
             $product->lokasi = $lokasi;
         }
 
-        return view('pages.market.farm', compact('products'));
+        // dd($slug);
+
+        return view('pages.market.farm', compact('products', 'categorylivestock', 'slug'));
     }
 
     public function market()

@@ -130,11 +130,17 @@
                         <label for="nama_hewan">Nama hewan *</label>
                         <input name="nama_hewan" id="nama_hewan" type="text" placeholder="Nama Partner"
                             class="border border-textbase font-medium text-lg p-2 rounded w-full">
+                            @error('nama_hewan')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                     </div>
                     <div>
                         <label for="kode_hewan">Kode Hewan *</label>
                         <input name="kode_hewan" id="kode_hewan" type="text"
                             placeholder="Masukkan nama peternakan" class="border border-textbase font-medium text-lg p-2 rounded w-full">
+                            @error('kode_hewan')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -147,6 +153,9 @@
                                 <option value="{{ $category->id }}">{{ $category->nama_kategori_hewan }}</option>
                             @endforeach
                         </select>
+                        @error('id_kategori_hewan')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                     </div>
                     <div>
                         <label for="id_jenis_hewan">Jenis Hewan *</label>
@@ -158,6 +167,9 @@
                                 </option>
                             @endforeach
                         </select>
+                        @error('id_jenis_hewan')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                     </div>
                 </div>
 
@@ -170,11 +182,17 @@
                                 <option value="{{ $gender->id }}">{{ $gender->nama_gender }}</option>
                             @endforeach
                         </select>
+                        @error('id_jenis_gender_hewan')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                     </div>
                     <div>
                         <label for="berat_badan_hewan">Berat hewan *</label>
                         <input type="number" name="berat_badan_hewan" id="berat_badan_hewan" placeholder="Masukkan berat"
                             class="border border-textbase font-medium text-lg p-2 rounded w-full">
+                            @error('berat_badan_hewan')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                     </div>
                 </div>
                 <div class="mb-4">
@@ -182,12 +200,18 @@
                     <textarea id="deskripsi_hewan" name="deskripsi_hewan" rows="4"
                         class="block p-2.5 w-full text-md text-textbase bg-white rounded-lg border border-textbase focus:ring-primarybase focus:border-primarybase "
                         placeholder="Masukkan deskripsi hewan"></textarea>
+                        @error('deskripsi_hewan')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="mb-4">
                     <div>
                         <label for="lahir_hewan">Tanggal lahir hewan *</label>
                         <input type="date" name="lahir_hewan" id="lahir_hewan" placeholder="Masukkan Tanggal lahir"
                             class="border border-textbase font-medium text-lg p-2 rounded w-full">
+                            @error('lahir_hewan')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-4">
@@ -198,6 +222,9 @@
                             <option value="{{ $condition->id }}">{{ $condition->nama_kondisi_hewan }}</option>
                         @endforeach
                     </select>
+                    @error('id_kondisi_hewan')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
                 </div>
                 <div>
                     <button type="submit"

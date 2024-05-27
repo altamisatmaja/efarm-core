@@ -40,7 +40,7 @@
             </div>
         @endif
 
-        @if (session('errors'))
+        {{-- @if (session('errors'))
             <div id="successMessage"
                 class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
                 <div class="relative w-full max-w-screen-md rounded-lg bg-red-500 px-4 py-4 text-base text-white"
@@ -71,7 +71,7 @@
                     </div>
                 </div>
             </div>
-        @endif
+        @endif --}}
         <div class="flex
         flex-1 w-full flex-col items-center justify-center text-center px-4 sm:mt-10 my-10">
             <p rel="noreferrer"

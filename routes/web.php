@@ -146,6 +146,11 @@ Route::post('customer/register/account', [RegisterCustomerController::class, 'st
 // Route::post('partner/verify/account', [PartnerAdminController::class, 'verify'])
 //     ->name('partner.verify.account');
 
+/**
+     * Route for logout customer
+     */
+    Route::get('customer/logout', [AuthCustomerController::class, 'logout'])->name('customer.logout');
+
 Route::middleware('guest')->group(function () {
 
     /**
@@ -426,10 +431,7 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
     Route::post('checkout', [CheckoutController::class, 'store'])->name('customer.checkout.store');
     Route::get('checkout/show/{reference}', [CheckoutController::class, 'show'])->name('customer.checkout.show');
 
-    /**
-     * Route for logout customer
-     */
-    Route::get('customer/logout', [AuthCustomerController::class, 'logout'])->name('customer.logout');
+
 });
 
 

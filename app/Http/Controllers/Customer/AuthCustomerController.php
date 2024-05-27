@@ -53,7 +53,7 @@ class AuthCustomerController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             if (Auth::user()->user_role == 'Pelanggan') {
-                return redirect()->route('customer.account');
+                return redirect()->route('customer.dashboard');
             } else {
                 Auth::guard('web')->logout();
                 return redirect()->route('customer.login')->with('status', 'Anda bukan pelanggan!');
