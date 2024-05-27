@@ -164,7 +164,7 @@
                         <h2 class="mb-2 leading-tight pt-2 tracking-tight font-bold text-textbase text-2xl md:text-3xl">
                             {{ $product->nama_product }}</h2>
                         <div class="flex justify-between item-center">
-                            <p class="text-gray-500 font-medium hidden md:block">
+                            <p class="text-gray-500 font-semibold hidden md:block">
                                 {{ $categorylivestock->nama_kategori_hewan }}</p>
                             <div class="flex justify-between item-center">
                                 <div class="flex mb-4 items-center">
@@ -199,19 +199,19 @@
                                         @endphp
                                         <p class="text-textbase font-bold text-sm ml-1">
                                             {{ $hasil_reviews }}
-                                            <span class="text-gray-500 font-normal">({{ $banyak_reviewers }}
+                                            <span class="text-gray-500 font-semibold">({{ $banyak_reviewers }}
                                                 reviews)</span>
                                         </p>
                                     </span>
                                     <div
-                                        class="ml-8 bg-gray-200 px-3 py-1 rounded-full text-xs font-medium text-textbase hidden md:block">
+                                        class="ml-8 bg-gray-200 px-3 py-1 rounded-full text-xs font-semibold text-textbase hidden md:block">
                                         {{ $product->terjual }} Terjual</div>
                                 </div>
                             </div>
                         </div>
                         <div class="flex items-center space-x-4">
                             <div class="flex-1">
-                                <p class="text-green-500 text-4xl font-semibold">@currency($product->harga_product)</p>
+                                <p class="text-green-500 text-4xl font-bold">@currency($product->harga_product)</p>
                             </div>
                         </div>
                         <div class="max-w-4xl bg-white w-full rounded-lg">
