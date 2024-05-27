@@ -1564,6 +1564,9 @@ select {
 .mt-px {
   margin-top: 1px;
 }
+.-mt-32 {
+  margin-top: -8rem;
+}
 .box-content {
   box-sizing: content-box;
 }
@@ -3998,6 +4001,9 @@ select {
 }
 .focus\:ring-opacity-50:focus {
   --tw-ring-opacity: 0.5;
+}
+.focus\:ring-opacity-75:focus {
+  --tw-ring-opacity: 0.75;
 }
 .focus-visible\:outline:focus-visible {
   outline-style: solid;

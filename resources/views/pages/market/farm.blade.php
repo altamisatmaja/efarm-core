@@ -61,7 +61,7 @@
         <div class="bg-white min-h-screen">
             <div class="flex mx-auto justify-center">
                 <div class="flex flex-row pt-6 px-6 pb-4">
-                    <div class="w-3/12 mr-8">
+                    {{-- <div class="w-3/12 mr-8">
                         <div class="bg-white relative rounded-xl shadow-lg mb-6 px-4 py-4 mb-2">
                             <a href="" class="inline-block text-gray-600 hover:text-black w-full"><span
                                     class="material-icons-outlined font-semibold  float-left">Kisaran harga</span></a>
@@ -102,7 +102,7 @@
                                 </a>
                             </form>
                         </div>
-                    </div>
+                    </div> --}}
                     <main class="w-full">
                         <div class="container">
                             <div class="grid gap-3 grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">

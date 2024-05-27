@@ -12,7 +12,7 @@ use Torann\GeoIP\Facades\GeoIP;
 class AIApiController extends Controller
 {
     public function index(){
-        $products = Product::with('partner')->get();
+        $products = Product::with('partner', 'typelivestocks', 'categoryproduct', 'categorylivestocks')->get();
 
         return response()->json([
             'status' => true,
@@ -21,8 +21,24 @@ class AIApiController extends Controller
         ]);
     }
 
-    public function nearest_view(){
-        return view('pages.market.nearest');
+    public function getLocations(Request $request)
+    {
+        $userIp = $request->ip();
+        $location = GeoIP::getLocation($userIp);
+
+        $data = [
+            'lat' => $location->lat,
+            'lot' => $location->lon
+        ];
+        return $data;
+    }
+
+    public function nearest_view(Request $request){
+        $locationData = $this->getLocations($request);
+        $latitude = $locationData['lat'];
+        $longitude = $locationData['lot'];
+
+        return view('pages.market.nearest', compact('latitude', 'longitude'));
     }
 
     public function getProduct(Request $request)
@@ -30,7 +46,7 @@ class AIApiController extends Controller
         $userIp = $request->ip();
         $location = GeoIP::getLocation($userIp);
         // dd($location);
-        
+
         $latitude = $location['lat'];
         $longitude = $location['lon'];
         $response = Http::get("http://127.0.0.1:5000/product/{$latitude}/{$longitude}/");
