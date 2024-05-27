@@ -85,20 +85,17 @@
                                         value="{{ $kuantitas }}">
                                     <span
                                         class="peer-checked:border-blue-500 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white"></span>
-
-                                    <label2
+                                    <label
                                         class="peer-checked:border-2 peer-checked:border-blue-400 peer-checked:bg-blue-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4 pr-20"
                                         for="radio_{{ $loop->iteration }}_payment">
                                         <img class="w-1/3" src="{{ $channel->icon_url }}" alt="">
                                         <div class="ml-5">
                                             <span class="mt-2 font-semibold">{{ $channel->name }}</span>
                                         </div>
-                                    </label2>
+                                    </label>
                                 </div>
                             @endif
                         @endforeach
-
-
                     </div>
                     <label for="catatan" class="block mb-2 text-xl font-semibold  mt-5 text-textbase ">Tambahkan catatan</label>
                     <textarea id="catatan" rows="4" name="catatan"

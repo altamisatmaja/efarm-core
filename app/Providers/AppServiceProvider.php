@@ -35,6 +35,10 @@ class AppServiceProvider extends ServiceProvider
             return preg_match('/^[a-z0-9]+$/', $value) && !\App\Models\User::whereRaw('LOWER(username) = ?', [strtolower($value)])->exists();
         });
 
+        Validator::extend('email_not_found', function ($attribute, $value, $parameters, $validator){
+            return !\App\Models\User::whereRaw('LOWER(email) = ?', [strtolower($value)])->exists();
+        });
+
         Validator::extend('minimum_age', function ($attribute, $value, $parameters, $validator) {
             $dob = \Carbon\Carbon::createFromFormat('Y-m-d', $value);
             $now = \Carbon\Carbon::now();

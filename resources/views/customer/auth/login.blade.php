@@ -11,51 +11,40 @@
     <div>
         <section class="bg-gray-50">
             <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
+                <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-textbase">
                     <img class="w-56 mr-2" src="{{ asset('logo.svg') }}" alt="logo">
                 </a>
                 <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0">
                     <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <div class="justify-center align-middle items-center flex">
-                            <h1 class="text-xl font-bold leading-tight tracking-tight text-textbase md:text-2xl">
+                            <h1 class="text-2xl font-bold leading-tight tracking-tight text-textbase md:text-2xl">
                                 Selamat datang pengguna 👋
                             </h1>
                         </div>
                         <form class="space-y-4 md:space-y-6" action="{{ route('customer.login.store') }}" method="POST">
                             @csrf
                             <div>
-                                <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your
-                                    email</label>
+                                <label for="email" class="block mb-2 text-md font-medium text-textbase">Email anda</label>
                                 <input type="email" name="email" id="email"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                    class="bg-gray-50 border border-gray-300 text-textbase sm:text-sm rounded-lg focus:ring-primarybase focus:border-primarybase block w-full p-2.5"
                                     placeholder="name@company.com" required="">
                             </div>
                             <div>
-                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+                                <label for="password" class="block mb-2 text-md font-medium text-textbase">Password anda</label>
                                 <input type="password" name="password" id="password" placeholder="••••••••"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
+                                    class="bg-gray-50 border border-gray-300 text-textbase sm:text-sm rounded-lg focus:ring-primarybase focus:border-primarybase block w-full p-2.5"
                                     required="">
                             </div>
                             <div class="flex items-center justify-between">
-                                <div class="flex items-start">
-                                    <div class="flex items-center h-5">
-                                        <input id="remember" aria-describedby="remember" type="checkbox"
-                                            class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 ">
-                                    </div>
-                                    <div class="ml-3 text-sm">
-                                        <label for="remember" class="text-gray-500 ">Remember me</label>
-                                    </div>
-                                </div>
                                 <a href="{{ route('password.request') }}"
-                                    class="text-sm font-medium text-primary-600 hover:underline">Lupa
+                                    class="text-sm font-semibold text-primarybase hover:underline">Lupa
                                     password?</a>
                             </div>
                             <button type="submit"
-                                class="w-full text-white bg-primarybase hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Sign
-                                in</button>
+                                class="w-full text-white bg-primarybase hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-md px-5 py-2.5 text-center">Masuk</button>
                             <p class="text-sm font-light text-gray-500 ">
                                 Belum punya akun? <a href="{{ route('register') }}"
-                                    class="font-medium text-primary-600 hover:underline">Daftar</a>
+                                    class="font-semibold text-primarybase hover:underline">Daftar</a>
                             </p>
                         </form>
                         <a href="{{ route('customer.google') }}"
@@ -76,7 +65,7 @@
                                         fill="#1976D2" />
                                 </svg>
                             </div>
-                            <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Sign in with Google</h1>
+                            <h1 class="px-4 py-3 w-5/6 text-center text-gray-600 font-bold">Login melalui Google</h1>
                         </a>
                     </div>
                 </div>
