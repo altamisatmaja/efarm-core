@@ -114,6 +114,10 @@ class CheckOutController extends Controller
             'metode_pembayaran' => $method
         ]);
 
+        $product->stok_hewan_ternak -= $kuantitas;
+        $product->terjual += $kuantitas;
+        $product->save();
+
         // dd($product->harga_product);
 
         return redirect()->route('customer.checkout.show', [
