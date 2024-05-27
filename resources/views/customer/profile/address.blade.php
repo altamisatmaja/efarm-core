@@ -116,7 +116,7 @@
 
         <div class="mt-2 mb-6 w-full">
             <h4 class=" text-2xl font-bold text-textbase">
-                Pengaturan akun
+                Pengaturan alamat akun
             </h4>
         </div>
         <div class="container mx-auto py-5">
@@ -130,12 +130,18 @@
                             <input name="provinsi_user" id="provinsi_user" type="text"
                                 placeholder="Masukkan provinsi" value="{{ $user->provinsi_user }}"
                                 class="border p-2 rounded w-full">
+                                @error('provinsi_user')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div>
                             <label class="text-lg font-medium text-textbase" for="kabupaten_user">Kabupaten *</label>
                             <input name="kabupaten_user" id="kabupaten_user" type="text"
                                 placeholder="Masukkan kabupaten" value="{{ $user->kabupaten_user }}"
                                 class="border p-2 rounded w-full">
+                                @error('kabupaten_user')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -144,25 +150,36 @@
                             <input name="kecamatan_user" id="kecamatan_user" type="text"
                                 placeholder="Masukkan kecamatan" value="{{ $user->kecamatan_user }}"
                                 class="border p-2 rounded w-full">
+                                @error('kecamatan_user')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div>
-                            <label class="text-lg font-medium text-textbase" for="kelurahan_user">Kelurahan
-                                password *</label>
+                            <label class="text-lg font-medium text-textbase" for="kelurahan_user">Kelurahan *</label>
                             <input name="kelurahan_user" id="kelurahan_user" type="text"
                                 value="{{ $user->kelurahan_user }}" placeholder="Masukkan kelurahan"
                                 class="border p-2 rounded w-full">
+                                @error('kelurahan_user')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                         <div>
                             <label class="text-lg font-medium text-textbase" for="latitude">Latitude *</label>
-                            <input name="latitude" id="latitude" type="text" placeholder=""
+                            <input readonly name="latitude" id="latitude" type="text" placeholder=""
                                 value="{{ $latitude }}" class="border p-2 rounded w-full">
+                                @error('latitude')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div>
                             <label class="text-lg font-medium text-textbase" for="longitude">Longitude *</label>
-                            <input name="longitude" id="longitude" type="text" value="{{ $longitude }}"
+                            <input readonly name="longitude" id="longitude" type="text" value="{{ $longitude }}"
                                 placeholder="" class="border p-2 rounded w-full">
+                                @error('longitude')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
             </div>

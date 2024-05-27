@@ -41,6 +41,9 @@
                     <input value="{{ $partners->alamat_partner }}" type="text" name="alamat_partner" id="alamat_partner"
                         placeholder="5" min="0"
                         class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                        @error('alamat_partner')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div
                     class="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4 shadow-3xl shadow-shadow-500 dark:!bg-navy-700 dark:shadow-none">

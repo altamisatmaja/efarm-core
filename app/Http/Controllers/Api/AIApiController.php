@@ -12,7 +12,7 @@ use Torann\GeoIP\Facades\GeoIP;
 class AIApiController extends Controller
 {
     public function index(){
-        $products = Product::with('partner', 'typelivestocks', 'categoryproduct', 'categorylivestocks')->get();
+        $products = Product::with('partner', 'typelivestocks', 'categoryproduct', 'categorylivestocks')->where('status', 'Aktif')->get();
 
         return response()->json([
             'status' => true,

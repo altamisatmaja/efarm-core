@@ -152,6 +152,9 @@
                                         </span>
                                     </div>
                                 </label>
+                                @error('profile_photo_path')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                             </div>
                         </div>
                     </div>
@@ -181,6 +184,9 @@
                                 <button type="submit"
                                     class="w-1/4 rounded-lg bg-primarybase px-5 ml-4 text-white">Ubah</button>
                             </div>
+                            @error('email')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                         </form>
                     </div>
                     <div class="mb-4">
@@ -195,6 +201,9 @@
                             <button type="submit"
                                 class="w-1/4 rounded-lg bg-primarybase px-5 ml-4 text-white">Ubah</button>
                         </div>
+                        @error('password')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                         </form>
                     </div>
                 </div>

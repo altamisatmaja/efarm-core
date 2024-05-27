@@ -20,6 +20,8 @@ class TestimonialReplyPartnerController extends Controller
             $validator = Validator::make($request->all(), [
                 'id_testimonial' => 'required',
                 'pesan_reply' => 'required',
+            ], [
+                'pesan_reply.required' => 'Wajib diisi!'
             ]);
 
             if ($validator->fails()) {
@@ -34,9 +36,9 @@ class TestimonialReplyPartnerController extends Controller
             $testimonialreply = TestimonialReply::create($input);
 
             if($testimonialreply){
-                return redirect()->back()->with('success', 'Data review berhasil dibalas');
+                return redirect()->back()->with('success', 'Data ulasan berhasil dibalas');
             }  else {
-                return redirect()->back()->with('errors', 'Data review gagal dibalas');
+                return redirect()->back()->with('errors', 'Data ulasan gagal dibalas');
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());

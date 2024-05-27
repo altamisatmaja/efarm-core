@@ -173,6 +173,9 @@
                 @else
                     <textarea placeholder="Yuk, bangun branding peternakan anda dengan membalas ulasan dari pengguna" name="pesan_reply"
                         rows="3" class="p-4 text-gray-500 rounded-lg w-full mb-3"></textarea>
+                        @error('pesan_reply')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                 @endif
 
             </div>

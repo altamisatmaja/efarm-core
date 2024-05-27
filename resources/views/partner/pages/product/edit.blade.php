@@ -134,12 +134,19 @@
                             Produk</label>
                         <input value="{{ $products->nama_product }}" type="text" name="nama_product" id="nama_product"
                             placeholder="Nama product" class="border p-2 rounded w-full">
+                            @error('nama_product')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                     </div>
+
                     <div class="mb-4">
                         <label for="harga_product" class="text-lg font-medium text-textbase block mb-2">Harga
                             Produk</label>
                         <input value="{{ $products->harga_product }}" type="number" name="harga_product" id="harga_product"
                             placeholder="Harga product" class="border p-2 rounded w-full">
+                            @error('harga_product')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <div class="">
@@ -152,6 +159,9 @@
                                         {{ $category->nama_kategori_product }}</option>
                                 @endforeach
                             </select>
+                            @error('id_kategori')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                         </div>
                         <div>
                             <label for="id_category_livestocks">Kategori Hewan *</label>
@@ -164,6 +174,9 @@
                                         {{ $category->nama_kategori_hewan }}</option>
                                 @endforeach
                             </select>
+                            @error('id_category_livestocks')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                         </div>
                         <div>
                             <label for="id_typelivestocks">Jenis Hewan *</label>
@@ -178,10 +191,13 @@
                                     </option>
                                 @endforeach
                             </select>
+                            @error('id_typelivestocks')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                         </div>
                     </div>
                     <div class="mb-4">
-                        <label for="id_jenis_gender_hewan" class="text-lg font-medium text-textbase block mb-2">Jenis
+                        <label for="id_jenis_gender_hewan" class="text-lg font-medium text-textbase block mb-2">Gender
                             Hewan Ternak</label>
                         <select id="id_jenis_gender_hewan" name="id_jenis_gender_hewan" class="border p-2 rounded w-full">
                             @foreach ($gender_livestocks as $gender)
@@ -190,6 +206,9 @@
                                     {{ $gender->nama_gender }}</option>
                             @endforeach
                         </select>
+                        @error('id_jenis_gender_hewan')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                     </div>
                     <div class="mb-4">
                         <label class="mb-5 block text-xl font-semibold text-[#07074D]">
@@ -213,35 +232,53 @@
                                 </div>
                             </label>
                         </div>
+                        @error('gambar_hewan')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                     </div>
                     <div class="mb-4">
                         <label for="deskripsi_product" class="text-lg font-medium text-textbase block mb-2">Deskripsi
                             Product</label>
                         <textarea id="deskripsi_product" name="deskripsi_product" rows="6" placeholder="Masukkan deskripsi product"
                             class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500">{{ $products->deskripsi_product }}</textarea>
+                            @error('deskripsi_product')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="mb-4 hidden">
                         <label for="terjual" class="text-lg font-medium text-textbase block mb-2">Terjual</label>
                         <input value="{{ $products->terjual }}" type="number" value="0" name="terjual" id="terjual"
                             placeholder="0" readonly class="border p-2 rounded w-full">
+                            @error('terjual')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                         <div>
                             <label for="diskon" class="text-lg font-medium text-textbase block mb-2">Diskon</label>
-                            <input value="{{ $products->diskon }}" type="number" id="diskon" name="diskon"
+                            <input value="0" type="number" id="diskon" name="diskon"
                                 placeholder="Diskon" class="border p-2 rounded w-full">
+                                @error('diskon')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div>
                             <label for="berat_hewan_ternak" class="text-lg font-medium text-textbase block mb-2">Berat
                                 Hewan</label>
                             <input value="{{ $products->berat_hewan_ternak }}" type="number" id="berat_hewan_ternak"
                                 name="berat_hewan_ternak" placeholder="Berat dalam kg" class="border p-2 rounded w-full">
+                                @error('berat_hewan_ternak')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div>
                             <label for="stok_hewan_ternak" class="text-lg font-medium text-textbase block mb-2">Stok
                                 hewan</label>
                             <input value="{{ $products->stok_hewan_ternak }}" type="number" id="stok_hewan_ternak"
                                 name="stok_hewan_ternak" placeholder="Stok hewan" class="border p-2 rounded w-full">
+                                @error('stok_hewan_ternak')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -251,6 +288,9 @@
                             <input value="{{ $products->lahir_hewan }}" type="number" id="lahir_hewan"
                                 name="lahir_hewan" placeholder="Lahir hewan dalam bulan"
                                 class="border p-2 rounded w-full">
+                                @error('lahir_hewan')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="mb-4 hidden">

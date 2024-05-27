@@ -79,6 +79,21 @@ class ProductPartnerController extends Controller
                 'terjual' => 'required',
                 'deskripsi_product' => 'required',
                 'id_typelivestocks' => 'required'
+            ],[
+                'harga_product.required' => 'Wajib diisi',
+                'id_kategori.required' => 'Wajib diisi',
+                'nama_product.required' => 'Wajib diisi',
+                'diskon.required' => 'Wajib diisi',
+                'id_partner.required' => 'Wajib diisi',
+                'gambar_hewan.required' => 'Wajib diisi',
+                'gambar_hewan.image' => 'Gambar harus berupa jpg, png, jpeg, webp',
+                'id_jenis_gender_hewan.required' => 'Wajib diisi',
+                'lahir_hewan.required' => 'Wajib diisi',
+                'berat_hewan_ternak.required' => 'Wajib diisi',
+                'stok_hewan_ternak.required' => 'Wajib diisi',
+                'terjual.required' => 'Wajib diisi',
+                'deskripsi_product.required' => 'Wajib diisi',
+                'id_typelivestocks.required' => 'Wajib diisi'
             ]);
 
             if ($validator->fails()) {
@@ -108,7 +123,7 @@ class ProductPartnerController extends Controller
                 return redirect()->back()->with('errors', 'Data gagal produk berhasil dilisting');
             }
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return redirect()->back()->with('errors', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
 
@@ -145,6 +160,7 @@ class ProductPartnerController extends Controller
         // dd($request->all());
         try {
             $product = Product::where('slug_product', $slug_product)->first();
+
             if (!$product) {
                 return redirect()->back()->with('error', 'Data produk tidak ditemukan');
             }
@@ -153,6 +169,7 @@ class ProductPartnerController extends Controller
                 'harga_product' => 'required',
                 'id_kategori' => 'required',
                 'nama_product' => 'required',
+                'kode_hewan' => 'required',
                 'diskon' => 'required',
                 'id_partner' => 'required',
                 'gambar_hewan' => 'required|image|mimes:jpg,png,jpeg,webp',
@@ -163,7 +180,27 @@ class ProductPartnerController extends Controller
                 'terjual' => 'required',
                 'deskripsi_product' => 'required',
                 'id_typelivestocks' => 'required'
+            ],[
+                'harga_product.required' => 'Wajib diisi',
+                'id_kategori.required' => 'Wajib diisi',
+                'nama_product.required' => 'Wajib diisi',
+                'diskon.required' => 'Wajib diisi',
+                'kode_hewan.required' => 'Wajib diisi',
+                'id_partner.required' => 'Wajib diisi',
+                'gambar_hewan.required' => 'Wajib diisi',
+                'gambar_hewan.image' => 'Gambar harus berupa jpg, png, jpeg, webp',
+                'id_jenis_gender_hewan.required' => 'Wajib diisi',
+                'lahir_hewan.required' => 'Wajib diisi',
+                'berat_hewan_ternak.required' => 'Wajib diisi',
+                'stok_hewan_ternak.required' => 'Wajib diisi',
+                'terjual.required' => 'Wajib diisi',
+                'deskripsi_product.required' => 'Wajib diisi',
+                'id_typelivestocks.required' => 'Wajib diisi'
             ]);
+
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
 
             $input = $request->except(['_token', '_method']);
 
@@ -186,10 +223,10 @@ class ProductPartnerController extends Controller
             if ($product) {
                 return redirect()->route('partner.product.list')->with('success', 'Data produk berhasil diubah');
             } else {
-                return redirect()->back()->with('errors', 'Data gagal produk berhasil diubah');
+                return redirect()->back()->with('error', 'Data gagal produk berhasil diubah');
             }
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return redirect()->back()->with('errors', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
 

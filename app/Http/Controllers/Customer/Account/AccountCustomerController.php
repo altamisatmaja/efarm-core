@@ -71,7 +71,18 @@ class AccountCustomerController extends Controller
                 'kelurahan_user' => 'required',
                 'latitude' => 'required',
                 'longitude' => 'required',
+            ], [
+                'provinsi_user.required' => 'Wajib diisi!',
+                'kabupaten_user.required' => 'Wajib diisi!',
+                'kecamatan_user.required' => 'Wajib diisi!',
+                'kelurahan_user.required' => 'Wajib diisi!',
+                'latitude.required' => 'Wajib diisi!',
+                'longitude.required' => 'Wajib diisi!',
             ]);
+
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
 
             $input = $request->except(['_token', '_method']);
 
@@ -93,7 +104,14 @@ class AccountCustomerController extends Controller
             $validator = Validator::make($request->all(), [
                 'nama' => 'required',
                 'no_telp' => 'required',
+            ], [
+                'nama' => 'Wajib diisi',
+                'no_hp' => 'Wajib diisi'
             ]);
+
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
 
             $input = $request->except(['_token', '_method']);
 
@@ -113,8 +131,15 @@ class AccountCustomerController extends Controller
             $user = auth()->user();
 
             $validator = Validator::make($request->all(), [
-                'email' => 'required',
+                'email' => 'required|email',
+            ], [
+                'email.required' => 'Wajib diisi',
+                'email.email' => 'Harus berformat email'
             ]);
+
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
 
             $input = $request->except(['_token', '_method']);
 
@@ -134,8 +159,15 @@ class AccountCustomerController extends Controller
             $user = auth()->user();
 
             $validator = Validator::make($request->all(), [
-                'nama' => 'required',
+                'nama' => 'required|min:6',
+            ], [
+                'nama.required' => 'Wajib diisi!',
+                'nama.min' => 'Minimal terdiri dari 6 karakter!'
             ]);
+
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
 
             $input = $request->except(['_token', '_method']);
 
@@ -155,8 +187,16 @@ class AccountCustomerController extends Controller
             $user = auth()->user();
 
             $validator = Validator::make($request->all(), [
-                'no_telp' => 'required',
+                'no_telp' => 'required|min:10',
+            ], [
+                'no_telp.required' => 'Wajib diisi',
+                'no_telp.min' => 'Minimal 10 karakter'
             ]);
+
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
 
             $input = $request->except(['_token', '_method']);
 
@@ -177,6 +217,8 @@ class AccountCustomerController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'password' => 'required',
+            ], [
+                'password.required' => 'Wajib diisi!'
             ]);
 
             $input = $request->except(['_token', '_method']);
@@ -240,6 +282,8 @@ class AccountCustomerController extends Controller
 
             $validator = Validator::make($request->all(), [
                 'profile_photo_path' => 'required',
+            ], [
+                'profile_photo_path.required' => 'Wajib diisi!'
             ]);
 
             // dd($request->all());

@@ -118,11 +118,17 @@
                         <label for="nama_product" class="text-lg font-medium text-textbase block mb-2">Nama Produk</label>
                         <input type="text" name="nama_product" id="nama_product" placeholder="Nama product"
                             class="border p-2 rounded w-full">
+                            @error('nama_product')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                     </div>
                     <div class="mb-4">
                         <label for="harga_product" class="text-lg font-medium text-textbase block mb-2">Harga Produk</label>
                         <input type="number" name="harga_product" id="harga_product" placeholder="Harga product"
                             class="border p-2 rounded w-full">
+                            @error('harga_product')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                         <div class="">
@@ -133,9 +139,12 @@
                                     <option value="{{ $category->id }}">{{ $category->nama_kategori_product }}</option>
                                 @endforeach
                             </select>
+                            @error('id_kategori')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                         </div>
                         <div>
-                            <label for="id_category_livestocks">Kategori Hewan *</label>
+                            <label for="id_category_livestocks" class="text-lg font-medium text-textbase block mb-2">Kategori Hewan *</label>
                             <select name="id_category_livestocks" id="id_category_livestocks"
                                 class="id_category_livestocks border p-2 rounded w-full">
                                 <option value="">Pilih Kategori</option>
@@ -143,9 +152,12 @@
                                     <option value="{{ $category->id }}">{{ $category->nama_kategori_hewan }}</option>
                                 @endforeach
                             </select>
+                            @error('id_category_livestocks')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                         </div>
                         <div>
-                            <label for="id_typelivestocks">Jenis Hewan *</label>
+                            <label for="id_typelivestocks" class="text-lg font-medium text-textbase block mb-2">Jenis Hewan *</label>
                             <select name="id_typelivestocks" id="id_typelivestocks"
                                 class="id_typelivestocks border p-2 rounded w-full">
                                 <option value="">Pilih Jenis Hewan</option>
@@ -156,11 +168,14 @@
                                     </option>
                                 @endforeach
                             </select>
+                            @error('id_typelivestocks')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                         </div>
 
                     </div>
                     <div class="mb-4">
-                        <label for="id_jenis_gender_hewan" class="text-lg font-medium text-textbase block mb-2">Jenis
+                        <label for="id_jenis_gender_hewan" class="text-lg font-medium text-textbase block mb-2">Gender
                             Hewan Ternak</label>
                         <select id="id_jenis_gender_hewan" name="id_jenis_gender_hewan"
                             class="border p-2 rounded w-full">
@@ -168,6 +183,9 @@
                                 <option value="{{ $gender->id }}">{{ $gender->nama_gender }}</option>
                             @endforeach
                         </select>
+                        @error('id_jenis_gender_hewan')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                     </div>
                     <div class="mb-4">
                         <label class="mb-5 block text-xl font-semibold text-[#07074D]">
@@ -197,16 +215,22 @@
                             Product</label>
                         <textarea id="deskripsi_product" name="deskripsi_product" rows="6" placeholder="Masukkan deskripsi product"
                             class="w-full px-3 py-2 border rounded-md focus:outline-none focus:border-blue-500"></textarea>
+                            @error('deskripsi_product')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="mb-4 hidden">
                         <label for="terjual" class="text-lg font-medium text-textbase block mb-2">Terjual</label>
                         <input type="number" value="0" name="terjual" id="terjual" placeholder="0" readonly
                             class="border p-2 rounded w-full">
+                            @error('terjual')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                        <div>
-                            <label for="diskon" class="text-lg font-medium text-textbase block mb-2">Diskon</label>
-                            <input type="number" id="diskon" name="diskon" placeholder="Diskon"
+                        <div hidden>
+                            <label hidden for="diskon" class="text-lg font-medium text-textbase block mb-2">Diskon</label>
+                            <input type="number" id="diskon" name="diskon" placeholder="Diskon" value="0"
                                 class="border p-2 rounded w-full">
                         </div>
                         <div>
@@ -214,22 +238,37 @@
                                 Hewan</label>
                             <input type="number" id="berat_hewan_ternak" name="berat_hewan_ternak"
                                 placeholder="Berat dalam kg" class="border p-2 rounded w-full">
+                                @error('berat_hewan_ternak')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
                         <div>
                             <label for="stok_hewan_ternak" class="text-lg font-medium text-textbase block mb-2">Stok
                                 hewan</label>
                             <input type="number" id="stok_hewan_ternak" name="stok_hewan_ternak"
                                 placeholder="Stok hewan" class="border p-2 rounded w-full">
+                                @error('stok_hewan_ternak')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div>
+                            <label for="lahir_hewan" class="text-lg font-medium text-textbase block mb-2">Lahir
+                                hewan</label>
+                            <input type="number" id="lahir_hewan" name="lahir_hewan"
+                                placeholder="Lahir hewan dalam bulan" class="border p-2 rounded w-full">
+                                @error('lahir_hewan')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    {{-- <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                         <div>
                             <label for="lahir_hewan" class="text-lg font-medium text-textbase block mb-2">Lahir
                                 hewan</label>
                             <input type="number" id="lahir_hewan" name="lahir_hewan"
                                 placeholder="Lahir hewan dalam bulan" class="border p-2 rounded w-full">
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="mb-4 hidden">
                         <label for="id_partner" class="text-lg font-medium text-textbase block mb-2">Id Partner
                             readonly</label>

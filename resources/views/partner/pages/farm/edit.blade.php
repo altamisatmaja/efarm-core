@@ -130,11 +130,17 @@
                         <label for="nama_hewan">Nama Hewan *</label>
                         <input value="{{ $farm->nama_hewan }}" name="nama_hewan" id="nama_hewan" type="text"
                             placeholder="Nama Partner" class="border p-2 rounded w-full">
+                            @error('nama_hewan')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                     </div>
                     <div>
                         <label for="kode_hewan">Kode hewan *</label>
                         <input value="{{ $farm->kode_hewan }}" name="kode_hewan" id="kode_hewan" type="text"
                             placeholder="Masukkan nama peternakan" class="border p-2 rounded w-full">
+                            @error('kode_hewan')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                     </div>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
@@ -150,6 +156,9 @@
                                 </option>
                             @endforeach
                         </select>
+                        @error('id_kategori_hewan')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                     </div>
                     <div>
                         <label for="id_jenis_hewan">Jenis Hewan *</label>
@@ -164,6 +173,9 @@
                                 </option>
                             @endforeach
                         </select>
+                        @error('id_jenis_hewan')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                     </div>
                 </div>
 
@@ -179,6 +191,9 @@
                                 </option>
                             @endforeach
                         </select>
+                        @error('id_jenis_gender_hewan')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
                     </div>
                     <div>
                         <label for="id_kondisi_hewan">Kondisi Hewan *</label>
@@ -190,16 +205,23 @@
                                 </option>
                             @endforeach
                         </select>
+                        @error('id_kondisi_hewan')
+                        <span class="text-red-500">{{ $message }}</span>
+                    @enderror
                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+
+                <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4">
                     <div>
                         <label for="lahir_hewan">Lahir hewan *</label>
                         <input name="lahir_hewan" id="lahir_hewan"
                             value="{{ \Carbon\Carbon::parse($farm->lahir_hewan)->format('Y-m-d') }}" type="date"
                             placeholder="Nama Partner" class="border p-2 rounded w-full">
+                            @error('lahir_hewan')
+                            <span class="text-red-500">{{ $message }}</span>
+                        @enderror
                     </div>
-                    <div>
+                    <div hidden>
                         <label for="slug_farm">Slug *</label>
                         <input readonly value="{{ $farm->slug_farm }}" name="slug_farm" id="slug_farm" type="text"
                             placeholder="Masukkan nama peternakan" class="border p-2 rounded w-full">
@@ -208,11 +230,15 @@
                 <div class="mb-4">
                     <label for="deskripsi_hewan">Deskripsi Hewan</label>
                     <textarea name="deskripsi_hewan" id="deskripsi_hewan" type="text" class="border p-2 rounded w-full">{{ $farm->deskripsi_hewan }}</textarea>
+                    @error('deskripsi_hewan')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
                 </div>
+
 
                 <div>
                     <button type="submit"
-                        class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                        class="hover:shadow-form w-full rounded-md bg-primarybase py-3 px-8 text-center text-base font-semibold text-white outline-none">
                         Perbarui
                     </button>
                 </div>
