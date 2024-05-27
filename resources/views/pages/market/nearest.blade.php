@@ -112,28 +112,10 @@
                                 <h2 class="text-primarybase text-lg font-semibold">Rp ${val.harga_product}</h2>
                                 <div class="flex gap-2">
                                     <div class="px-4 py-1 rounded-md bg-primarybase">
-                                        <p class="text-white text-sm">Jantan</p>
-                                    </div>
-                                    <div class="px-4 py-1 rounded-md bg-primarybase">
-                                        <p class="text-white text-sm">Boer</p>
+                                        <p class="text-white text-sm">${val.typelivestocks[0].nama_jenis_hewan}</p>
                                     </div>
                                 </div>
-                                <p class="text-gray-700 text-md font-medium mt-4">${val.nama_kategori_hewan}</p>
-                                <div class="flex items-center">`;
-
-                // Adding rating stars
-                for (let i = 0; i < val.rating; i++) {
-                    row += `<svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                            </path>
-                        </svg>`;
-                }
-
-                row += `
-                                    <p class="text-gray-700 text-sm font-medium">(${val.rating})</p>
-                                </div>
+                                <p class="text-gray-700 text-md font-medium mt-4">${val.partner[0].kabupaten_partner}</p>
                                 <p class="text-gray-700 text-sm font-medium mb-4">${val.terjual} Terjual</p>
                             </div>
                         </div>
@@ -149,7 +131,7 @@
                     <h3 class="flex text-6xl font-bold items-center justify-center text-textbase">Ups 🤭</h3>
                     <p class="flex text-xl font-semibold my-2 items-center justify-center text-textbase">
                         Gagal mendapatkan data produk, mohon aktifkan lokasi anda</p>
-                    <button class="mt-4 px-4 py-2 bg-primarybase text-white font-semibold rounded-lg shadow-md hover:bg-primarydarker focus:outline-none focus:ring-2 focus:ring-primarylight focus:ring-opacity-75" onclick="enableLocation()">
+                    <button onclick="return location.reload()" class="mt-4 px-4 py-2 bg-primarybase text-white font-semibold rounded-lg shadow-md hover:bg-primarydarker focus:outline-none focus:ring-2 focus:ring-primarylight focus:ring-opacity-75" onclick="enableLocation()">
                         Aktifkan Lokasi
                     </button>
                 </div>

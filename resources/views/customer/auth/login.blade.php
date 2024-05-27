@@ -31,8 +31,7 @@
                                     placeholder="name@company.com" required="">
                             </div>
                             <div>
-                                <label for="password"
-                                    class="block mb-2 text-sm font-medium text-gray-900">Password</label>
+                                <label for="password" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
                                 <input type="password" name="password" id="password" placeholder="••••••••"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     required="">
@@ -41,14 +40,14 @@
                                 <div class="flex items-start">
                                     <div class="flex items-center h-5">
                                         <input id="remember" aria-describedby="remember" type="checkbox"
-                                            class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 "
-                                            >
+                                            class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 ">
                                     </div>
                                     <div class="ml-3 text-sm">
                                         <label for="remember" class="text-gray-500 ">Remember me</label>
                                     </div>
                                 </div>
-                                <a href="{{ route('password.request') }}" class="text-sm font-medium text-primary-600 hover:underline">Lupa
+                                <a href="{{ route('password.request') }}"
+                                    class="text-sm font-medium text-primary-600 hover:underline">Lupa
                                     password?</a>
                             </div>
                             <button type="submit"
@@ -128,19 +127,19 @@
         });
     </script>
     @push('js')
-    <script>
-        $(document).ready(function() {
-            $(window).scroll(function() {
-                var scrollPosition = $(window).scrollTop();
-                var blurTriggerPosition = 200;
+        <script>
+            $(document).ready(function() {
+                $(window).scroll(function() {
+                    var scrollPosition = $(window).scrollTop();
+                    var blurTriggerPosition = 200;
 
-                if (scrollPosition > blurTriggerPosition) {
-                    $('.sticky').addClass('blurred-background');
-                } else {
-                    $('.sticky').removeClass('blurred-background');
-                }
+                    if (scrollPosition > blurTriggerPosition) {
+                        $('.sticky').addClass('blurred-background');
+                    } else {
+                        $('.sticky').removeClass('blurred-background');
+                    }
+                });
             });
-        });
-    </script>
-@endpush
+        </script>
+    @endpush
 @endsection

@@ -14,8 +14,8 @@
                     <div class="w-full">
                         <div class="max-w-2xl">
                             <div
-                                class="relative flex mt-10 flex-col bg-sekunderbase ring-1 ring-primarybase w-full mb-4 rounded-lg">
-                                <div class="bg-sekunderbase rounded-lg">
+                                class="relative flex mt-10 flex-col bg-white ring-1 ring-primarybase w-full mb-4 rounded-lg">
+                                <div class="bg-white rounded-lg">
                                     <div class="py-8 px-10">
                                         <h1 class="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-textbase pr-3 text-4xl font-bold tracking-tight text-textbase sm:text-6xl">Beli hewan ternak dari rumah</h1>
                                         <p class="mt-3 text-xl leading-8 text-textbase">Kelola peternakan, jual hewan ternak, beli

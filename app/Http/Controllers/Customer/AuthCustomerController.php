@@ -33,32 +33,35 @@ class AuthCustomerController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function login(LoginRequest $request)
-    {
-        $request->authenticate();
-        $request->session()->regenerate();
-    
-        $redirectTo = '';
-    
-        if(Auth::check()) {
-            switch (Auth::user()->user_role) {
-                case 'Pelanggan':
-                    $redirectTo = 'customer.dashboard';
-                    break;
-            }
-        } else {
-            $loginRoute = '';
-            switch ($request->input('user_role')) {
-                case 'Pelanggan':
-                    $loginRoute = 'customer.login';
-                    break;
-            }
-            return redirect()->route($loginRoute)->with('status', 'Invalid credentials.');
-        }
-    
-        return redirect()->route($redirectTo);
-    }
-    
+     public function login(LoginRequest $request)
+     {
+         session()->put('previous_url', url()->previous());
+
+         $request->authenticate();
+         $request->session()->regenerate();
+
+         $redirectTo = '';
+
+         if(Auth::check()) {
+             switch (Auth::user()->user_role) {
+                 case 'Pelanggan':
+                     $redirectTo = 'customer.dashboard';
+                     break;
+             }
+         } else {
+             $loginRoute = '';
+             switch ($request->input('user_role')) {
+                 case 'Pelanggan':
+                     $loginRoute = 'customer.login';
+                     break;
+             }
+             return redirect()->route($loginRoute)->with('status', 'Invalid credentials.');
+         }
+
+         return redirect(session()->pull('previous_url', route($redirectTo)));
+     }
+
+
 
     protected function respondWithToken($token)
     {
@@ -106,12 +109,12 @@ class AuthCustomerController extends Controller
 
     /**
     * Handle account registration request
-    * 
+    *
     * @param Request $request
-    * 
+    *
     * @return \Illuminate\Http\Response
     */
-    public function register_email(Request $request) 
+    public function register_email(Request $request)
     {
     $user = User::create($request->validated());
 

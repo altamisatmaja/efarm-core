@@ -34,10 +34,21 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'username' => 'required|string|max:255|lowercase_unique_alpha_num',
+            'nama' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|min:6',
+            'konfirmasi_password' => 'required|same:password|no_css_injection',
+        ], [
+            'username.required' => 'Wajib diisi',
+            'username.lowercase_unique_alpha_num' => 'Username harus berupa angka, huruf, tanpa spasi, dan tanpa karakter',
+            'nama.required' => 'Wajib diisi',
+            'email.required' => 'Wajib diisi',
+            'password.required' => 'Wajib diisi',
+            'password.min' => 'Minimal terdiri 6 karakter',
+            'konfirmasi_password.required' => 'Wajib diisi',
+            'konfirmasi_password.min' => 'Panjang konfirmasi password minimal 6 karakter',
+            'konfirmasi_password.same' => 'Masukkan Konfirmasi password sesuai dengan password',
         ]);
 
         $user = User::create([
