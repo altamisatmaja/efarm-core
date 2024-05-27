@@ -177,7 +177,7 @@
                                             <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">@currency($report->harga_product)
                                             </td>
                                             <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                                {{ $report->total_harga }} ekor</td>
+                                                @currency($report->total_harga)</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -242,7 +242,7 @@
                                                 @currency($report->harga_product)
                                             </td>
                                             <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                                {{ $report->total_harga }} ekor</td>
+                                                @currency($report->total_harga)</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
