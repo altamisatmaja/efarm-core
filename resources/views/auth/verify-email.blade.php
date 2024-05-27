@@ -1,39 +1,46 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('includes.app')
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
-        </div>
+@section('title', 'eFarm | Verifikasi')
 
-        @if (session('status') == 'verification-link-sent')
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
-            </div>
-        @endif
+@section('content')
+    <div class="bg-white flex my-32 items-center justify-center flex-col">
 
-        <div class="mt-4 flex items-center justify-between">
-            <form method="POST" action="{{ route('verification.send') }}">
-                @csrf
-
-                <div>
-                    <x-button>
-                        {{ __('Resend Verification Email') }}
-                    </x-button>
+        <div class="w-1/2 items-center justify-center flex flex-col ring-1 ring-primarybase px-5 py-5 rounded-xl">
+            <div class="justify-start">
+                <div class="mb-4 text-2xl font-semibold text-textbase">
+                    {{ __('Terima kasih telah mendaftar!🤗') }}
                 </div>
-            </form>
+                <div class="text-md font-medium text-textbase">
+                    {{ __('Sebelum memulai, verifikasi alamat email Anda dengan mengklik tautan yang baru saja kami kirimkan ke email Anda. Jika Anda tidak menerima email tersebut, silahkan kirim ulang') }}
+                </div>
+            </div>
 
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
+            <div class="mt-4 flex items-center gap-x-3 justify-end flex-wrap w-full">
+                <form method="POST" action="{{ route('verification.send') }}">
+                    @csrf
 
-                <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    {{ __('Log Out') }}
-                </button>
-            </form>
+                    <div>
+                        <button class="w-full bg-primarybase px-5 py-3 rounded-lg text-white font-semibold hover:bg-white hover:ring-1 hover:ring-primarybase hover:text-primarybase">
+                            {{ __('Kirim ulang verifikasi') }}
+                        </button>
+                    </div>
+                </form>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <button type="submit" class="text-md text-primarybase bg-white ring-1 ring-primarybase rounded-lg px-7 py-3 hover:bg-primarybase hover:text-white">
+                        {{ __('Keluar') }}
+                    </button>
+                </form>
+            </div>
         </div>
-    </x-auth-card>
-</x-guest-layout>
+        @if (session('status') == 'verification-link-sent')
+                <div class="mt-5 font-semibold text-xl text-green-600">
+                    {{ __('Verifikasi berhasil dikirim ulang') }}
+                </div>
+            @endif
+    </div>
+    @push('js')
+    @endpush
+@endsection

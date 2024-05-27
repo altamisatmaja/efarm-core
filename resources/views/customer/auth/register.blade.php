@@ -32,7 +32,7 @@
                                 <input type="text" name="username" id="username"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     placeholder="Masukkan username anda" required="">
-                                    @error('username')
+                                @error('username')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -41,7 +41,7 @@
                                 <input type="email" name="email" id="email"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     placeholder="name@company.com" required="">
-                                    @error('email')
+                                @error('email')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -50,7 +50,7 @@
                                 <input type="password" name="password" id="password" placeholder="••••••••"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     required="">
-                                    @error('password')
+                                @error('password')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -61,7 +61,7 @@
                                     id="konfirmasi_password"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
                                     required="">
-                                    @error('konfirmasi_password')
+                                @error('konfirmasi_password')
                                     <span class="text-red-500">{{ $message }}</span>
                                 @enderror
                             </div>

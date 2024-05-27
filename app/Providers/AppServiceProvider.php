@@ -52,6 +52,11 @@ class AppServiceProvider extends ServiceProvider
             return !preg_match($pattern, $value);
         });
 
+        Validator::replacer('lowercase_unique_alpha_num', function($message, $attribute, $rule, $parameters) {
+            return str_replace(':attribute', $attribute, 'Username harus berupa angka, huruf, tanpa spasi, dan tanpa karakter.');
+        });
+
+
 
 
         Paginator::defaultView('vendor.pagination.tailwind');

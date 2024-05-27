@@ -72,22 +72,25 @@ class CheckOutController extends Controller
         $nama_product = $product->nama_product;
         $gambar_hewan = $product->gambar_hewan;
         $slug_product = $request->slug_product;
+        $catatan = $request->catatan;
 
         $harga_total = $harga_product * $kuantitas;
 
         $tripay = new TripayController();
         $reference = $tripay->requestTransaction($product, $method, $kuantitas, $harga_product, $nama_product, $gambar_hewan);
-        // dd($reference->data->reference);
+        $metode_pembayaran = $reference->data->payment_method;
+        // dd($catatan);
 
         // Membuat pesanan baru
         $order = Order::create([
             'id_user' => auth()->user()->id,
             'status' => 'Baru',
             'pengiriman' => 'Pengiriman Internal',
-            'catatan' => 'Testing',
+            'catatan' => $catatan,
             'reference' => $reference->data->reference,
             'merchant_ref' => $reference->data->merchant_ref,
             'status_pembayaran' => $reference->data->status,
+            'metode_pembayaran' => $metode_pembayaran,
         ]);
 
         $id_order = $order->id;

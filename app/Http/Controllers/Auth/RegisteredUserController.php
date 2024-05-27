@@ -9,6 +9,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
@@ -33,23 +34,35 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'username' => 'required|string|max:255|lowercase_unique_alpha_num',
-            'nama' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|min:6',
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string|no_css_injection',
+            'username' => 'required|string|lowercase_unique_alpha_num|no_css_injection',
+            'email' => 'required|string|email|unique:users,email|no_css_injection',
+            'password' => 'required|min:6|no_css_injection',
             'konfirmasi_password' => 'required|same:password|no_css_injection',
         ], [
-            'username.required' => 'Wajib diisi',
+            'nama.required' => 'Nama wajib diisi',
+            'nama.string' => 'Nama harus berupa angka dan huruf',
+            'nama.no_css_injection' => 'Dilarang keras mengisi script',
+            'username.no_css_injection' => 'Dilarang keras mengisi script',
+            'password.no_css_injection' => 'Dilarang keras mengisi script',
+            'konfirmasi_password.no_css_injection' => 'Dilarang keras mengisi script',
+            'username.required' => 'Username wajib diisi',
+            'username.string' => 'Username harus berupa angka dan huruf',
             'username.lowercase_unique_alpha_num' => 'Username harus berupa angka, huruf, tanpa spasi, dan tanpa karakter',
-            'nama.required' => 'Wajib diisi',
-            'email.required' => 'Wajib diisi',
-            'password.required' => 'Wajib diisi',
-            'password.min' => 'Minimal terdiri 6 karakter',
-            'konfirmasi_password.required' => 'Wajib diisi',
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Email harus diisi sesuai format email',
+            'email.unique' => 'Email sudah pernah didaftarkan',
+            'password.required' => 'Password wajib diisi',
+            'password.min' => 'Panjang password minimal 6 karakter',
+            'konfirmasi_password.required' => 'Konfirmasi password wajib diisi',
             'konfirmasi_password.min' => 'Panjang konfirmasi password minimal 6 karakter',
             'konfirmasi_password.same' => 'Masukkan Konfirmasi password sesuai dengan password',
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $user = User::create([
             'username' => $request->username,
