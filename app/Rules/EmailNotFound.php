@@ -14,7 +14,6 @@ class EmailNotFound implements Rule
 
     public function passes($attribute, $value)
     {
-        // Check if the email exists in the users table
         return DB::table('users')->where('email', $value)->exists();
     }
 

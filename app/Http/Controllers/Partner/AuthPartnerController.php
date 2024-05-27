@@ -29,11 +29,10 @@ class AuthPartnerController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
             $user = Auth::user();
 
             if ($user->user_role == 'Partner') {
+                $request->session()->regenerate();
                 $partner = Partner::where('id_user', $user->id)->first();
 
                 if ($partner) {
@@ -52,7 +51,7 @@ class AuthPartnerController extends Controller
                 }
             } else {
                 Auth::guard('web')->logout();
-                return redirect()->route('home')->with('status', 'Anda tidak memiliki akses ke halaman ini');
+                return redirect()->route('partner.login')->with('status', 'Anda bukan partner!');
             }
         }
         return redirect()->route('partner.login')->with('status', 'Email atau password salah.');

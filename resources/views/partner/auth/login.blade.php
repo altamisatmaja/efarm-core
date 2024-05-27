@@ -1,18 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('includes.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="{{ asset('logo-notext.svg') }}" />
-    <title>Partner | Masuk</title>
-</head>
+@section('title', 'eFarm | Partner Login')
 
-<body>
+@section('content')
     <div>
-        @include('includes.navbar')
         <section class="">
             <div class="flex flex-col items-center justify-center px-6 my-24 mx-auto max-h-screen lg:py-0">
                 <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900">
@@ -68,7 +59,7 @@
                             @error('password')
                                 <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
-                            
+
                             <button type="submit"
                                 class="w-full text-white bg-primarybase hover:bg-primarybase focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masuk</button>
                         </form>
@@ -77,6 +68,6 @@
             </div>
         </section>
     </div>
-</body>
-
-</html>
+    @push('js')
+    @endpush
+@endsection

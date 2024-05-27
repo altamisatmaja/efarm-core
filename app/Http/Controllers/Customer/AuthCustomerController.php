@@ -3,65 +3,65 @@
 namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
+use App\Services\EmailVerificationService;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
-use App\Services\EmailVerificationService;
-use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Support\Facades\Validator;
 
 class AuthCustomerController extends Controller
 {
     private $service;
-    public function __construct(EmailVerificationService $service){
+
+    public function __construct(EmailVerificationService $service)
+    {
         $this->service = $service;
     }
-    public function index(){
+
+    public function index()
+    {
         return view('customer.auth.login');
     }
 
-    public function register_view(){
+    public function register_view()
+    {
         return view('customer.auth.register');
     }
 
-     /**
+    /**
      * Handle an incoming authentication request.
      *
      * @param  \App\Http\Requests\Auth\LoginRequest  $request
      * @return \Illuminate\Http\RedirectResponse
      */
+    public function login(LoginRequest $request)
+    {
+        $credentials = $request->only('email', 'password');
 
-     public function login(LoginRequest $request)
-     {
-         session()->put('previous_url', url()->previous());
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required|'
+        ]);
 
-         $request->authenticate();
-         $request->session()->regenerate();
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator);
+        }
 
-         $redirectTo = '';
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            if (Auth::user()->user_role == 'Pelanggan') {
+                return redirect()->route('customer.account');
+            } else {
+                Auth::guard('web')->logout();
+                return redirect()->route('customer.login')->with('status', 'Anda bukan pelanggan!');
+            }
+        }
 
-         if(Auth::check()) {
-             switch (Auth::user()->user_role) {
-                 case 'Pelanggan':
-                     $redirectTo = 'customer.dashboard';
-                     break;
-             }
-         } else {
-             $loginRoute = '';
-             switch ($request->input('user_role')) {
-                 case 'Pelanggan':
-                     $loginRoute = 'customer.login';
-                     break;
-             }
-             return redirect()->route($loginRoute)->with('status', 'Invalid credentials.');
-         }
-
-         return redirect(session()->pull('previous_url', route($redirectTo)));
-     }
-
-
+        return redirect()->back()->with('status', 'Email atau password salah!');
+    }
 
     protected function respondWithToken($token)
     {
@@ -72,7 +72,8 @@ class AuthCustomerController extends Controller
         ]);
     }
 
-    public function register(Request $request){
+    public function register(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
             'username' => 'required',
@@ -81,7 +82,7 @@ class AuthCustomerController extends Controller
             'konfirmasi_password' => 'required',
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()) {
             return response()->json([
                 $validator->errors(), 422
             ]);
@@ -92,13 +93,12 @@ class AuthCustomerController extends Controller
 
         $user = User::create($input);
 
-        if($user){
+        if ($user) {
             $this->service->sendVerificationLink($user);
             return response()->json([
                 'data' => $user
             ]);
         }
-
     }
 
     public function logout()
@@ -108,21 +108,20 @@ class AuthCustomerController extends Controller
     }
 
     /**
-    * Handle account registration request
-    *
-    * @param Request $request
-    *
-    * @return \Illuminate\Http\Response
-    */
+     * Handle account registration request
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function register_email(Request $request)
     {
-    $user = User::create($request->validated());
+        $user = User::create($request->validated());
 
-    event(new Registered($user));
+        event(new Registered($user));
 
-    auth()->login($user);
+        auth()->login($user);
 
-    return redirect('/')->with('success', "Account successfully registered.");
+        return redirect('/')->with('success', 'Account successfully registered.');
     }
-
 }
