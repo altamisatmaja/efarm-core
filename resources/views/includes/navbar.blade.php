@@ -93,7 +93,7 @@
 
         </div>
         <div class="flex flex-wrap">
-            @if (Auth::check())
+            @if (Auth::check() && Auth::user()->user_role == 'Pelanggan')
             <div class="hidden md:visible sm:visible md:flex ">
                 <div x-data="{ isOpen: false }">
                     <button @click="isOpen = !isOpen"

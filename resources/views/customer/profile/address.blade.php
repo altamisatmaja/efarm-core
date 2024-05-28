@@ -164,7 +164,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 hidden" >
                         <div>
                             <label class="text-lg font-medium text-textbase" for="latitude">Latitude *</label>
                             <input readonly name="latitude" id="latitude" type="text" placeholder=""
@@ -176,8 +176,18 @@
                         <div>
                             <label class="text-lg font-medium text-textbase" for="longitude">Longitude *</label>
                             <input readonly name="longitude" id="longitude" type="text" value="{{ $longitude }}"
-                                placeholder="" class="border p-2 rounded w-full">
+                                placeholder="Masukkan alamat lengkap" class="border p-2 rounded w-full">
                                 @error('longitude')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-4 mb-4" >
+                        <div>
+                            <label class="text-lg font-medium text-textbase" for="alamat_lengkap">Alamat lengkap *</label>
+                            <input name="alamat_lengkap" id="alamat_lengkap" type="text" placeholder=""
+                                value="{{ $user->alamat_lengkap }}" class="border p-2 rounded w-full">
+                                @error('alamat_lengkap')
                                 <span class="text-red-500">{{ $message }}</span>
                             @enderror
                         </div>
@@ -185,8 +195,8 @@
             </div>
             <div>
                 <button type="submit"
-                    class="hover:shadow-form w-full rounded-md bg-primarybase py-2 px-8 text-center text-xl font-semibold text-white outline-none">
-                    Ubah
+                    class="hover:shadow-form w-full rounded-md mt-3 bg-primarybase py-2 px-8 text-center text-xl font-semibold text-white outline-none">
+                    Simpan
                 </button>
             </div>
             </form>

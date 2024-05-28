@@ -152,7 +152,7 @@
                                             method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <input hidden value="{{ $carts->id_product }}" name="id" type="text">
+                                            <input onclick="Apakah anda yakin untuk menghapus>" hidden value="{{ $carts->id_product }}" name="id" type="text">
                                             <button type="submit"
                                                 class="text-md font-semibold px-8 py-2 bg-white ring-1 ring-primarybase rounded-lg text-primarybase cursor-pointer">Hapus
                                             </button>

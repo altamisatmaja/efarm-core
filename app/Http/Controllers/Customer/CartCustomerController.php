@@ -66,9 +66,9 @@ class CartCustomerController extends Controller
             if ($cart) {
                 $cart->delete();
 
-                return redirect()->route('customer.cart')->with('success', 'Data keranjang berhasil ditambahkan');
+                return redirect()->route('customer.cart')->with('success', 'Data keranjang berhasil dihapus');
             } else {
-                return redirect()->back()->with('error', 'Data gagal produk dilisting');
+                return redirect()->back()->with('error', 'Data keranjang gagal dihapuds');
             }
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());

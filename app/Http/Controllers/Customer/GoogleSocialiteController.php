@@ -25,7 +25,7 @@ class GoogleSocialiteController extends Controller
         if ($userExists) {
             $request->session()->regenerate();
             Auth::guard('web')->login($userExists);
-            return redirect('/personal/account');
+            return redirect('/personal/account/detail');
         } else {
             $newUser = User::create([
                 'nama' => $user->name,
@@ -41,7 +41,7 @@ class GoogleSocialiteController extends Controller
 
             Auth::guard('web')->login($newUser);
             $request->session()->regenerate();
-            return redirect('/personal/account');
+            return redirect('/personal/account/detail');
         }
     } catch (Exception $e) {
         dd($e->getMessage());

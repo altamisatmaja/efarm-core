@@ -31,6 +31,13 @@ class CheckOutController extends Controller
         try {
             if (Auth::check()) {
                 $manage_qty = Product::where('slug_product', $slug_product)->first();
+                $user = auth()->user();
+                if($user->provinsi_user == NULL || $user->kabupaten_user == NULL || $user->kecamatan_user == NULL || $user->kelurahan_user == NULL){
+                    return redirect()->back()->with('alamat', 'Anda belum mempunyai alamat');
+                }
+                if($user->no_telp == NULL){
+                    return redirect()->back()->with('no_telp', 'Anda belum mempunyai nomor telepon');
+                }
 
                 if ($kuantitas > $manage_qty->stok_hewan_ternak) {
                     return redirect()->back()->with('status', 'Jumlah kuantitas melebihi stok');

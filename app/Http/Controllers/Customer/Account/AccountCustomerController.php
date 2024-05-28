@@ -71,6 +71,7 @@ class AccountCustomerController extends Controller
                 'kelurahan_user' => 'required',
                 'latitude' => 'required',
                 'longitude' => 'required',
+                'alamat_lengkap' => 'required',
             ], [
                 'provinsi_user.required' => 'Wajib diisi!',
                 'kabupaten_user.required' => 'Wajib diisi!',
@@ -78,6 +79,7 @@ class AccountCustomerController extends Controller
                 'kelurahan_user.required' => 'Wajib diisi!',
                 'latitude.required' => 'Wajib diisi!',
                 'longitude.required' => 'Wajib diisi!',
+                'alamat_lengkap.required' => 'Wajib diisi!',
             ]);
 
             if ($validator->fails()) {

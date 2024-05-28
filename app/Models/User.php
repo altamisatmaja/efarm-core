@@ -29,6 +29,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         'kelurahan_user',
         'latitude',
         'longitude',
+        'alamat_lengkap',
     ];
 
     /**
