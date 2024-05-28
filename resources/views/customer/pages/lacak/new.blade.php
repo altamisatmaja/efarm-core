@@ -116,7 +116,7 @@
             @foreach ($allorders as $allorder)
                 <h2 class="text-xl font-semibold mt-3 text-textbase  sm:text-2xl">Pesanan Reference
                     #{{ $allorder['order']['reference'] }} ・
-                    {{ $allorder['order']['status_pembayaran'] == 'Paid' ? 'Sudah dibayar' : 'Belum dibayar' }}</h2>
+                    {{ $allorder['order']['status_pembayaran'] != 'Paid' ? 'Belum dibayar' : 'Sudah dibayar' }}</h2>
                 <div class="mt-6 sm:mt-8 lg:flex lg:gap-8">
                     <div
                         class="w-full divide-y divide-gray-200 overflow-hidden rounded-lg border   lg:max-w-xl xl:max-w-2xl">

@@ -13,8 +13,9 @@ class LacakCustomerController extends Controller
     public function index(){
         $user = auth()->user();
 
-        $orders = Order::where('id_user', $user->id)->get();
+        $orders = Order::where('id_user', $user->id)->where('status_pembayaran', 'Paid')->get();
         $allorders = [];
+
 
         foreach ($orders as $order) {
             $orderDetails = OrderDetail::with('product', 'partner')->where('id_order', $order->id)->get();
@@ -23,6 +24,8 @@ class LacakCustomerController extends Controller
                 'order_details' => $orderDetails,
             ];
         }
+
+        // dd($allorders);
 
         return view('customer.pages.lacak.index', compact('allorders'));
     }
