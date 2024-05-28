@@ -57,14 +57,14 @@
                             $difference_in_minutes = round(($current_time - $created_at) / 60);
 
                             if ($difference_in_minutes > 15) {
-                                $allorder['order']->status_pembayaran = 'Expired';
+                                $allorder['order']->status_pembayaran = 'Tidak bisa dibayar';
                             }
                         @endphp
                         <div class="bg-white ring-1 ring-primarybase rounded-lg p-6 mt-6">
                             <div class="grid grid-cols-12 gap-6 items-center">
                                 <div class="col-span-12 sm:col-span-3">
                                     <h6 class="text-2xl leading-none font-bold text-textbase">
-                                        {{ $allorder['order']->status_pembayaran == 'Paid' ? 'Sudah dibayar' : ($allorder['order']->status_pembayaran == 'Expired' ? 'Expired' : 'Belum dibayar') }}
+                                        {{ $allorder['order']->status_pembayaran == 'Paid' ? 'Sudah dibayar' : ($allorder['order']->status_pembayaran == 'Tidak bisa dibayar' ? 'Tidak bisa dibayar' : 'Belum dibayar') }}
                                     </h6>
                                 </div>
                                 <div class="col-span-12 sm:col-span-8 sm:col-start-5 sm:text-end">
