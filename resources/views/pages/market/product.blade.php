@@ -579,7 +579,7 @@
                                     <p class="text-gray-700 text-xl font-semibold">Atur jumlah</p>
                                 </div>
                                 <hr class="my-4" />
-                                @if ($user->provinsi_user == NULL || $user->kabupaten_user == NULL || $user->kecamatan_user == NULL || $user->kelurahan_user == NULL || $user->no_telp == NULL)
+                                @if (!empty($user) && ($user->provinsi_user == NULL || $user->kabupaten_user == NULL || $user->kecamatan_user == NULL || $user->kelurahan_user == NULL || $user->no_telp == NULL || $user->alamat_lengkap == NULL))
                                 <form action="{{ route('customer.checkout.pre') }}" method="POST">
                                     @csrf
                                     <div class="mb-2 flex justify-between items-center">
