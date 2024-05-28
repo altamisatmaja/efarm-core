@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class CheckOutController extends Controller
 {
@@ -26,18 +27,59 @@ class CheckOutController extends Controller
         ]);
     }
 
+    public function update_info_for_checkout(Request $request){
+        try {
+            $user = auth()->user();
+
+            $validator = Validator::make($request->all(), [
+                'provinsi_user' => 'required',
+                'kabupaten_user' => 'required',
+                'kecamatan_user' => 'required',
+                'kelurahan_user' => 'required',
+                'latitude' => 'required',
+                'longitude' => 'required',
+                'alamat_lengkap' => 'required',
+                'no_telp' => 'required',
+            ], [
+                'provinsi_user.required' => 'Wajib diisi!',
+                'kabupaten_user.required' => 'Wajib diisi!',
+                'kecamatan_user.required' => 'Wajib diisi!',
+                'kelurahan_user.required' => 'Wajib diisi!',
+                'latitude.required' => 'Wajib diisi!',
+                'longitude.required' => 'Wajib diisi!',
+                'alamat_lengkap.required' => 'Wajib diisi!',
+                'no_telp.required' => 'Wajib diisi!',
+            ]);
+
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
+
+            $input = $request->except(['_token', '_method']);
+
+            $user->update($input);
+            if ($user) {
+                return redirect()->back()->with('success', 'Data berhasil diubah');
+            } else {
+                return redirect()->back()->with('errors', 'Data gagal diubah');
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
     public function index($slug_product, $kuantitas, $random)
     {
         try {
             if (Auth::check()) {
                 $manage_qty = Product::where('slug_product', $slug_product)->first();
                 $user = auth()->user();
-                if($user->provinsi_user == NULL || $user->kabupaten_user == NULL || $user->kecamatan_user == NULL || $user->kelurahan_user == NULL){
-                    return redirect()->back()->with('alamat', 'Anda belum mempunyai alamat');
-                }
-                if($user->no_telp == NULL){
-                    return redirect()->back()->with('no_telp', 'Anda belum mempunyai nomor telepon');
-                }
+                // if($user->provinsi_user == NULL || $user->kabupaten_user == NULL || $user->kecamatan_user == NULL || $user->kelurahan_user == NULL){
+                //     return redirect()->back()->with('alamat', 'Anda belum mempunyai alamat');
+                // }
+                // if($user->no_telp == NULL){
+                //     return redirect()->back()->with('no_telp', 'Anda belum mempunyai nomor telepon');
+                // }
 
                 if ($kuantitas > $manage_qty->stok_hewan_ternak) {
                     return redirect()->back()->with('status', 'Jumlah kuantitas melebihi stok');

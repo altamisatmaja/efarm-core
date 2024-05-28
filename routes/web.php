@@ -418,6 +418,7 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
     Route::post ('personal/testimonial/store', [TestimonialCustomerController::class, 'store'])->name('testimonial.store');
     Route::put ('personal/testimonial/update/{slug_testimonial}', [TestimonialCustomerController::class, 'update'])->name('testimonial.update.web');
 
+
     /**
      * Route for review customer
      */
@@ -432,7 +433,10 @@ Route::middleware(['auth', 'role:Pelanggan', 'verified'])->group(function () {
     Route::post('checkout', [CheckoutController::class, 'store'])->name('customer.checkout.store');
     Route::get('checkout/show/{reference}', [CheckoutController::class, 'show'])->name('customer.checkout.show');
 
-
+    /**
+     * Checking
+     */
+    Route::put ('personal/address/notelp/update/', [CheckoutController::class, 'update_info_for_checkout'])->name('customer.checkout.validate');
 });
 
 

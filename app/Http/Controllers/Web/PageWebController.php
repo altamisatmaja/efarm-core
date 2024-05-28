@@ -12,6 +12,7 @@ use App\Models\Review;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Torann\GeoIP\Facades\GeoIP;
 
 class PageWebController extends Controller
 {
@@ -93,7 +94,7 @@ class PageWebController extends Controller
 }
 
 
-    public function product($slug_kategori_product, $slug_category_livestock, $slug_product)
+    public function product($slug_kategori_product, $slug_category_livestock, $slug_product, Request $request)
     {
         $product = Product::with('typelivestocks', 'gender_livestocks', 'partner', 'categoryproduct', 'categorylivestocks')->where('slug_product', $slug_product)->first();
 
@@ -176,7 +177,26 @@ class PageWebController extends Controller
 
             $productake->lokasi = $lokasi;
         }
-        return view('pages.market.product', compact('product', 'reviews', 'hasil_reviews', 'banyak_reviewers', 'categoryproduct', 'categorylivestock', 'testimonials', 'productstakes'));
+
+        $locationData = $this->getLocations($request);
+        $latitude = $locationData['lat'];
+        $longitude = $locationData['lot'];
+
+        $user = auth()->user();
+        return view('pages.market.product', compact('product', 'reviews', 'hasil_reviews', 'banyak_reviewers', 'categoryproduct', 'categorylivestock', 'testimonials', 'productstakes', 'user', 'latitude', 'longitude'));
+    }
+
+    public function getLocations(Request $request)
+    {
+
+        $userIp = $request->ip();
+        $location = GeoIP::getLocation($userIp);
+
+        $data = [
+            'lat' => $location->lat,
+            'lot' => $location->lon
+        ];
+        return $data;
     }
 
     public function farm($slug_kategori_product)

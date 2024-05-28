@@ -76,86 +76,157 @@
     </style>
     <div>
         <div class="py-5">
+            @if (session('success'))
+            <div id="successMessageReal"
+                class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
+                <div class="relative w-full max-w-screen-md rounded-lg bg-green-500 px-4 py-4 text-base text-white"
+                    data-dismissible="alert">
+                    <div class="absolute top-4 left-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                            class="mt-px h-6 w-6">
+                            <path fill-rule="evenodd"
+                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-8 mr-12">
+                        <h5
+                            class="block font-sans text-xl font-semibold leading-snug tracking-normal text-white antialiased">
+                            Berhasil
+                        </h5>
+                        <p class="mt-2 block font-sans text-base font-normal leading-relaxed text-white antialiased">
+                            {{ session('success') }}
+                        </p>
+                    </div>
+                    <div data-dismissible-target="alert" data-ripple-dark="true"
+                        class="absolute top-3 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20">
+                        <div role="button" class="w-max rounded-lg p-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        @if (session('errors'))
+            <div id="successMessageReal"
+                class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
+                <div class="relative w-full max-w-screen-md rounded-lg bg-red-500 px-4 py-4 text-base text-white"
+                    data-dismissible="alert">
+                    <div class="absolute top-4 left-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                            class="mt-px h-6 w-6">
+                            <path fill-rule="evenodd"
+                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div class="ml-8 mr-12">
+                        <h5
+                            class="block font-sans text-xl font-semibold leading-snug tracking-normal text-white antialiased">
+                            Gagal
+                        </h5>
+                        <p class="mt-2 block font-sans text-base font-normal leading-relaxed text-white antialiased">
+                            {{ session('errors') }}
+                        </p>
+                    </div>
+                    <div data-dismissible-target="alert" data-ripple-dark="true"
+                        class="absolute top-3 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20">
+                        <div role="button" class="w-max rounded-lg p-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
             @if (session('alamat'))
-            <div id="alamat_alert"
-                class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
-                <div class="relative w-full max-w-screen-md rounded-lg bg-red-500 px-4 py-4 text-base text-white"
-                    data-dismissible="alert">
-                    <div class="absolute top-4 left-4" >
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                            class="mt-px h-6 w-6">
-                            <path fill-rule="evenodd"
-                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <div class="ml-8 mr-12">
-                        <h5
-                            class="block text-xl font-semibold leading-snug tracking-normal text-white antialiased">
-                            Gagal
-                        </h5>
-                        <p class="mt-2 block font-sans text-lg font-normal text-white antialiased">
-                            {{ session('alamat') }}
-                        </p>
-                        <div class="py-3">
-                        <a href="{{ route('customer.account.address') }}" class="px-4 py-2 text-base font-normal rounded-md text-white ring-1 ring-white mt-5 w-full">
-                            Tambah alamat
-                        </a>
-                    </div>
-                    </div>
-                    <div data-dismissible-target="alert" data-ripple-dark="true" id="successMessage"
-                        class="absolute top-3 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20">
-                        <div role="button" class="w-max rounded-lg p-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
-                                </path>
+                <div id="alamat_alert"
+                    class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
+                    <div class="relative w-full max-w-screen-md rounded-lg bg-red-500 px-4 py-4 text-base text-white"
+                        data-dismissible="alert">
+                        <div class="absolute top-4 left-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                                class="mt-px h-6 w-6">
+                                <path fill-rule="evenodd"
+                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                    clip-rule="evenodd"></path>
                             </svg>
+                        </div>
+                        <div class="ml-8 mr-12">
+                            <h5 class="block text-xl font-semibold leading-snug tracking-normal text-white antialiased">
+                                Gagal
+                            </h5>
+                            <p class="mt-2 block font-sans text-lg font-normal text-white antialiased">
+                                {{ session('alamat') }}
+                            </p>
+                            <div class="py-3">
+                                <a href="{{ route('customer.account.address') }}"
+                                    class="px-4 py-2 text-base font-normal rounded-md text-white ring-1 ring-white mt-5 w-full">
+                                    Tambah alamat
+                                </a>
+                            </div>
+                        </div>
+                        <div data-dismissible-target="alert" data-ripple-dark="true" id="successMessage"
+                            class="absolute top-3 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20">
+                            <div role="button" class="w-max rounded-lg p-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
+                                    </path>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        @endif
+            @endif
             @if (session('no_telp'))
-            <div id="no_telp_alert"
-                class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
-                <div class="relative w-full max-w-screen-md rounded-lg bg-red-500 px-4 py-4 text-base text-white"
-                    data-dismissible="alert">
-                    <div class="absolute top-4 left-4" >
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                            class="mt-px h-6 w-6">
-                            <path fill-rule="evenodd"
-                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <div class="ml-8 mr-12">
-                        <h5
-                            class="block text-xl font-semibold leading-snug tracking-normal text-white antialiased">
-                            Gagal
-                        </h5>
-                        <p class="mt-2 block font-sans text-lg font-normal text-white antialiased">
-                            {{ session('no_telp') }}
-                        </p>
-                        <div class="py-3">
-                        <a href="{{ route('customer.account.information') }}" class="px-4 py-2 text-base font-normal rounded-md text-white ring-1 ring-white mt-5 w-full">
-                            Tambah nomor telepon
-                        </a>
-                    </div>
-                    </div>
-                    <div data-dismissible-target="alert" data-ripple-dark="true" id="successMessage"
-                        class="absolute top-3 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20">
-                        <div role="button" class="w-max rounded-lg p-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
-                                </path>
+                <div id="no_telp_alert"
+                    class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
+                    <div class="relative w-full max-w-screen-md rounded-lg bg-red-500 px-4 py-4 text-base text-white"
+                        data-dismissible="alert">
+                        <div class="absolute top-4 left-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                aria-hidden="true" class="mt-px h-6 w-6">
+                                <path fill-rule="evenodd"
+                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                    clip-rule="evenodd"></path>
                             </svg>
+                        </div>
+                        <div class="ml-8 mr-12">
+                            <h5 class="block text-xl font-semibold leading-snug tracking-normal text-white antialiased">
+                                Gagal
+                            </h5>
+                            <p class="mt-2 block font-sans text-lg font-normal text-white antialiased">
+                                {{ session('no_telp') }}
+                            </p>
+                            <div class="py-3">
+                                <a href="{{ route('customer.account.information') }}"
+                                    class="px-4 py-2 text-base font-normal rounded-md text-white ring-1 ring-white mt-5 w-full">
+                                    Tambah nomor telepon
+                                </a>
+                            </div>
+                        </div>
+                        <div data-dismissible-target="alert" data-ripple-dark="true" id="successMessage"
+                            class="absolute top-3 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20">
+                            <div role="button" class="w-max rounded-lg p-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
+                                    </path>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        @endif
+            @endif
             <div class="px-12 container mx-auto">
                 <ol class="flex items-center gap-4">
                     <li>
@@ -197,8 +268,8 @@
                             class="flex items-center gap-2 text-lg font-medium opacity-60 transition-all duration-300 hover:text-primarybase">
                             <svg class="h-3 w-3 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 9 4-4-4-4" />
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 9 4-4-4-4" />
                             </svg>
                             <a href="{{ route('homepage.market.farm', [$categorylivestock->slug]) }}">
                                 {{ $categorylivestock->nama_kategori_hewan }} </a>
@@ -209,8 +280,8 @@
                             class="flex items-center gap-2 text-lg font-medium opacity-60 transition-all duration-300 hover:text-primarybase">
                             <svg class="h-3 w-3 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 9 4-4-4-4" />
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 9 4-4-4-4" />
                             </svg>
                             <a
                                 href="{{ route('homepage.market.farm.product', [$categoryproduct->slug_kategori_product, $categorylivestock->slug, $product->slug_product]) }}">
@@ -306,7 +377,7 @@
                                         Gender hewan
                                     </p>
                                     @foreach ($product->gender_livestocks as $gender)
-                                    <p class="text-textbase font-semibold">
+                                        <p class="text-textbase font-semibold">
                                             {{ $gender->nama_gender }}
                                         </p>
                                     @endforeach
@@ -338,7 +409,7 @@
                                 <div class="md:grid md:grid-cols-2 hover:bg-gray-50 md:space-y-0 space-y-1 py-2">
                                     <p class="text-textbase">
                                         Deskripsi
-                                        <p class="text-textbase font-semibold">
+                                    <p class="text-textbase font-semibold">
                                         {{ $product->deskripsi_product }}
                                     </p>
                                 </div>
@@ -359,7 +430,7 @@
                                         Dikirim dari
                                     </p>
                                     @foreach ($product->partner as $partners)
-                                    <p class="text-textbase font-semibold">
+                                        <p class="text-textbase font-semibold">
                                             {{ $partners->kabupaten_partner }}
                                         </p>
                                     @endforeach
@@ -508,6 +579,7 @@
                                     <p class="text-gray-700 text-xl font-semibold">Atur jumlah</p>
                                 </div>
                                 <hr class="my-4" />
+                                @if ($user->provinsi_user == NULL || $user->kabupaten_user == NULL || $user->kecamatan_user == NULL || $user->kelurahan_user == NULL || $user->no_telp == NULL)
                                 <form action="{{ route('customer.checkout.pre') }}" method="POST">
                                     @csrf
                                     <div class="mb-2 flex justify-between items-center">
@@ -535,15 +607,47 @@
 
                                     </div>
                                     <hr class="my-4" />
+                                    <p class="text-red-500 mt-2">{{ session('status') }}</p>
+                                    <button type="button" id="checkout-button"
+                                        class="mt-3 hover:shadow-form w-full border bg-primarybase hover:bg-primarybase hover:text-white border-white rounded-md py-3 px-8 text-center text-base font-semibold text-white">
+                                        Beli sekarang
+                                    </button>
+                                </form>
+                                @else
+                                <form action="{{ route('customer.checkout.pre') }}" method="POST">
+                                    @csrf
+                                    <div class="mb-2 flex justify-between items-center">
 
-                                    {{-- <a href="{{ route('customer.checkout', [$product->slug_product]) }}"> --}}
+                                        <div class="custom-number-input h-10 w-32">
+                                            <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                                                <button data-action="decrement" type="button"
+                                                    class=" bg-white text-textbase hover:text-gray-700 hover:bg-primarybase h-full w-20 rounded-l cursor-pointer outline-none">
+                                                    <span class="m-auto text-2xl font-thin">-</span>
+                                                </button>
+                                                <input type="number" readonly
+                                                    class="text-center border-primarybase  w-full bg-white font-semibold text-md  flex items-center text-textbase"
+                                                    name="kuantitas" value="0"></input>
+                                                <button data-action="increment" type="button"
+                                                    class="bg-white text-textbase hover:text-gray-700 hover:bg-primarybase h-full w-20 rounded-r cursor-pointer">
+                                                    <span class="m-auto text-2xl font-thin">+</span>
+                                                </button>
+                                                <input hidden name="random" value="{{ now()->timestamp }}"
+                                                    type="text">
+                                                <input hidden name="slug_product" value="{{ $product->slug_product }}"
+                                                    type="text">
+                                            </div>
+                                        </div>
+                                        <p class="text-textbase font-semibold">Stok {{ $product->stok_hewan_ternak }}</p>
+
+                                    </div>
+                                    <hr class="my-4" />
                                     <p class="text-red-500 mt-2">{{ session('status') }}</p>
                                     <button type="submit"
                                         class="mt-3 hover:shadow-form w-full border bg-primarybase hover:bg-primarybase hover:text-white border-white rounded-md py-3 px-8 text-center text-base font-semibold text-white">
                                         Beli sekarang
                                     </button>
-                                    {{-- </a> --}}
                                 </form>
+                                @endif
 
 
                                 <form action="{{ route('customer.cart.store', $product->id) }}" method="POST">
@@ -634,12 +738,117 @@
             </div>
         </div>
     </div>
+    <div id="modal-form-alamat-no-telp"
+    class="modal-form-alamat-no-telp fixed inset-0 z-50 overflow-auto bg-white/40 bg-opacity-50 backdrop-blur-md flex items-center justify-center hidden">
+    <div class="flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl">
+        <div class="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
+            <p class="font-semibold text-lg text-textbase">Tambah data alamat dan nomor telepon</p>
+            <svg class="w-6 h-6 cursor-pointer cancelubah" id="cancelubah" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </div>
+        <div class="flex flex-col px-6 py-5 bg-gray-50">
+            <form class="form-typelivestock-update" action="{{ route('customer.checkout.validate') }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="grid md:grid-cols-2 grid-cols-2 gap-6">
+                    @php
+                        $user = auth()->user();
+                        $fields = [
+                            'provinsi_user' => 'Provinsi',
+                            'kabupaten_user' => 'Kabupaten',
+                            'kecamatan_user' => 'Kecamatan',
+                            'kelurahan_user' => 'Kelurahan',
+                            'alamat_lengkap' => 'Alamat lengkap',
+                            'no_telp' => 'Nomor telepon',
+                            'latitude' => 'Latitude',
+                            'longitude' => 'Longitude',
+                        ];
+                    @endphp
+                    @foreach ($fields as $field => $label)
+                        <div class="">
+                            <label for="{{ $field }}"
+                                class="float-left block font-normal text-gray-400 text-md mb-2">{{ $label }}</label>
+                            <input required type="text" id="{{ $field }}" name="{{ $field }}"
+                                value="{{ old($field, $user->$field ?? '') }}"
+                                placeholder="Masukkan {{ strtolower($label) }}"
+                                class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-700">
+                        </div>
+                    @endforeach
+                    <div class="md:col-span-2">
+                        <button type="submit" id="button-submit-edit"
+                            class="middle none center mr-3 bg-primarybase w-full rounded-lg border hover:bg-white hover:text-primarybase border-primarybase py-4 px-9 font-sans text-xs font-bold uppercase text-white transition-all focus:ring focus:ring-primarybase active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            data-ripple-dark="true">
+                            Simpan
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.getElementById('modal-form-alamat-no-telp');
+            var checkoutButton = document.getElementById('checkout-button');
+            var requiredFields = ['provinsi_user', 'kabupaten_user', 'kecamatan_user', 'kelurahan_user', 'alamat_lengkap', 'no_telp', 'latitude', 'longitude'];
+            var addressFields = ['provinsi_user', 'kabupaten_user', 'kecamatan_user', 'kelurahan_user'];
+            var allFieldsFilled = true;
+            var addressFieldsFilled = true;
+
+            requiredFields.forEach(function(field) {
+                if (!document.getElementById(field).value) {
+                    allFieldsFilled = false;
+                }
+            });
+
+            addressFields.forEach(function(field) {
+                if (!document.getElementById(field).value) {
+                    addressFieldsFilled = false;
+                }
+            });
+
+            checkoutButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                var allFieldsFilled = true; // Reset variable to recheck
+                requiredFields.forEach(function(field) {
+                    if (!document.getElementById(field).value) {
+                        allFieldsFilled = false;
+                    }
+                });
+
+                if (allFieldsFilled) {
+                    // Submit the form to the checkout route
+                    document.querySelector('.form-typelivestock-update').submit();
+                } else {
+                    modal.classList.remove('hidden');
+                }
+            });
+
+            document.getElementById('cancelubah').addEventListener('click', function() {
+                modal.classList.add('hidden');
+            });
+        });
+    </script>
+
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var successMessage = document.getElementById('successMessage');
             var alamat_alert = document.getElementById('alamat_alert');
             successMessage.addEventListener('click', function() {
                 alamat_alert.style.display = 'none';
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var successMessageReal = document.getElementById('successMessageReal');
+            var successMessageReal = document.getElementById('successMessageReal');
+            successMessageReal.addEventListener('click', function() {
+                successMessageReal.style.display = 'none';
             });
         });
 
@@ -686,9 +895,6 @@
                 target.value = value;
             }
         }
-
-
-
 
         function increment(e) {
             const btn = e.target.parentNode.parentElement.querySelector(

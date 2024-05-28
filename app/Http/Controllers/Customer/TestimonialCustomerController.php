@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Validator;
 
 class TestimonialCustomerController extends Controller
 {
-    public function index($slug_product) {
+    public function index($slug_product)
+    {
         try {
             $product = Product::where('slug_product', $slug_product)->first();
             $user = auth()->user();
@@ -23,15 +24,17 @@ class TestimonialCustomerController extends Controller
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
-    public function store(Request $request){
+
+    public function store(Request $request)
+    {
         try {
             $validator = Validator::make($request->all(), [
-            'nama_testimoni',
-            'deskripsi',
-            'gambar',
-            'id_user',
-            'id_products',
-            'slug_testimonial'
+                'nama_testimoni',
+                'deskripsi',
+                'gambar',
+                'id_user',
+                'id_products',
+                'slug_testimonial'
             ]);
 
             if ($validator->fails()) {
@@ -62,7 +65,8 @@ class TestimonialCustomerController extends Controller
         }
     }
 
-    public function update(Request $request, $slug_testimonial){
+    public function update(Request $request, $slug_testimonial)
+    {
         try {
             $testimonial = Testimonial::where('slug_testimonial', $slug_testimonial)->first();
             // dd($testimonial);
@@ -75,13 +79,13 @@ class TestimonialCustomerController extends Controller
                 'deskripsi',
                 'gambar',
                 'slug_testimonial'
-                ]);
+            ]);
 
             if ($validator->fails()) {
                 return redirect()->back()->withErrors($validator)->withInput();
             }
 
-            $input = $request->except(['_token', '_method' ]);
+            $input = $request->except(['_token', '_method']);
 
             if ($request->hasFile('gambar')) {
                 File::delete('uploads/' . $testimonial->gambar);
@@ -121,7 +125,8 @@ class TestimonialCustomerController extends Controller
         }
     }
 
-    public function show($slug_testimoni){
+    public function show($slug_testimoni)
+    {
         $testimonial = Testimonial::where('slug_testimoni', $slug_testimoni)->first();
 
         return $testimonial;
