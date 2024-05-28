@@ -114,6 +114,15 @@
         </div>
         <div class="mx-auto max-w-screen 2xl:px-0">
             @foreach ($allorders as $allorder)
+                @php
+                    $created_at = strtotime($allorder['order']->created_at);
+                    $current_time = strtotime(now());
+                    $difference_in_minutes = round(($current_time - $created_at) / 60);
+
+                    if ($difference_in_minutes > 15) {
+                        $allorder['order']->status_pembayaran = 'Expired';
+                    }
+                @endphp
                 <h2 class="text-xl font-semibold mt-4 text-textbase sm:text-2xl">Pesanan Reference
                     #{{ $allorder['order']['reference'] }} ・
                     {{ $allorder['order']['status_pembayaran'] == 'Paid' ? 'Sudah dibayar' : 'Belum dibayar' }}</h2>
@@ -186,11 +195,6 @@
                             </li>
                         </ol>
 
-                        {{-- <div class="gap-4 sm:flex sm:items-center">
-                            <a href""
-                                class="w-full rounded-lg items-center flex justify-center  border border-gray-200 bg-white px-5  py-2.5 text-sm font-medium text-textbase hover:bg-primarybase cursor-pointer hover:text-white focus:z-10 focus:outline-none focus:ring-4 focus:ring-gray-100">Lihat
-                                detail</a>
-                        </div> --}}
                     </div>
                 </div>
         </div>

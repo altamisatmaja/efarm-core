@@ -11,8 +11,8 @@
                     <li class="cursor-pointer">
                         <div
                             class="flex items-center text-lg font-medium opacity-60 transition-all duration-300 hover:text-primarybase">
-                            <svg class="mr-2.5 h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                viewBox="0 0 20 20">
+                            <svg class="mr-2.5 h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 20 20">
                                 <path
                                     d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
                             </svg>
@@ -51,12 +51,20 @@
                         </h4>
                     </div>
                     @foreach ($allorders as $allorder)
-                        {{-- {{ $allorder['order_details'] }} --}}
+                        @php
+                            $created_at = strtotime($allorder['order']->created_at);
+                            $current_time = strtotime(now());
+                            $difference_in_minutes = round(($current_time - $created_at) / 60);
+
+                            if ($difference_in_minutes > 15) {
+                                $allorder['order']->status_pembayaran = 'Expired';
+                            }
+                        @endphp
                         <div class="bg-white ring-1 ring-primarybase rounded-lg p-6 mt-6">
                             <div class="grid grid-cols-12 gap-6 items-center">
                                 <div class="col-span-12 sm:col-span-3">
                                     <h6 class="text-2xl leading-none font-bold text-textbase">
-                                        {{ $allorder['order']->status_pembayaran == 'Paid' ? 'Sudah dibayar' : 'Belum dibayar' }}
+                                        {{ $allorder['order']->status_pembayaran == 'Paid' ? 'Sudah dibayar' : ($allorder['order']->status_pembayaran == 'Expired' ? 'Expired' : 'Belum dibayar') }}
                                     </h6>
                                 </div>
                                 <div class="col-span-12 sm:col-span-8 sm:col-start-5 sm:text-end">
@@ -67,10 +75,6 @@
                                                 Order Ref: {{ $allorder['order']->reference }}
                                             </p>
                                         </div>
-                                        {{-- <div>
-                                            <a href="#!" class="font-bold hover:text-primarybase ml-3 text-textbase">Detail pesanan
-                                                <i class="fas fa-chevron-right sm:ml-2"></i></a>
-                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
@@ -89,8 +93,8 @@
                                 </div>
                                 <div class="col-span-12 lg:col-span-2 mt-4">
                                     <div class="flex justify-center items-center h-full">
-                                        <img src="/uploads/{{ $allorder['order_details'][0]['product']['gambar_hewan'] }}" alt=""
-                                            class="max-w-full h-auto" />
+                                        <img src="/uploads/{{ $allorder['order_details'][0]['product']['gambar_hewan'] }}"
+                                            alt="" class="max-w-full h-auto" />
                                     </div>
                                 </div>
                                 <div class="col-span-12 lg:col-span-7 lg:mr-8 mt-4">
@@ -99,13 +103,17 @@
                                             <p class="text-lg font-semibold">{{ $products->product->nama_product }}
                                             </p>
                                             <p class="my-2 font-semibold text-textbase">
-                                                @currency($products->product->harga_product)<span class="opacity-75 ml-2">*{{ $products['kuantitas_total'] }}</span>
+                                                @currency($products->product->harga_product)<span
+                                                    class="opacity-75 ml-2">*{{ $products['kuantitas_total'] }}</span>
                                             </p>
                                             <p class="">{{ $products->partner[0]['nama_partner'] }}</p>
                                             <p class="text-md font-medium text-textbase">
-                                                Dikirim dari {{ $partners->partner[0]['provinsi_partner'] }}, {{ $partners->partner[0]['kabupaten_partner'] }}, {{ $partners->partner[0]['kecamatan_partner'] }}, {{ $partners->partner[0]['kelurahan_partner'] }}
+                                                Dikirim dari {{ $partners->partner[0]['provinsi_partner'] }},
+                                                {{ $partners->partner[0]['kabupaten_partner'] }},
+                                                {{ $partners->partner[0]['kecamatan_partner'] }},
+                                                {{ $partners->partner[0]['kelurahan_partner'] }}
                                             </p>
-                                            @endforeach
+                                        @endforeach
                                     </div>
                                 </div>
                                 <div class="col-span-12 lg:col-span-3 mt-4">
@@ -113,19 +121,26 @@
                                         @foreach ($allorder['order_details'] as $products)
                                             <h6 class="font-bold">Total: {{ $products['harga_total'] }}</h6>
                                         @endforeach
-                                        @if ($allorder['order']->status_pembayaran == 'Paid')
-                                        <button
-                                            class="py-2.5 px-5 bg-primarybase text-white hover:bg-opacity-90 w-full rounded-lg mt-2">
-                                            Bayar sekarang
-                                        </button>
-                                        @else
-                                        <button disabled
-                                            class="py-2.5 px-5 bg-sekunderbase text-white hover:bg-opacity-90 w-full rounded-lg mt-2">
-                                            Sudah dibayar
-                                        </button>
 
+                                        @if ($allorder['order']->status_pembayaran != 'Paid')
+                                            @if ($difference_in_minutes > 15)
+                                                <button disabled
+                                                    class="py-2.5 px-5 bg-sekunderbase text-white hover:bg-opacity-90 w-full rounded-lg mt-2">
+                                                    Expired
+                                                </button>
+                                            @else
+                                            <button disabled
+                                                class="py-2.5 px-5 bg-sekunderbase text-white hover:bg-opacity-90 w-full rounded-lg mt-2">
+                                                Sudah dibayar
+                                            </button>
+
+                                            @endif
+                                        @else
+                                        <button
+                                        class="py-2.5 px-5 bg-primarybase text-white hover:bg-opacity-90 w-full rounded-lg mt-2">
+                                        Bayar sekarang
+                                    </button>
                                         @endif
-                                        <!-- <button class="btn ezy__epprofile2-outline-btn w-100 rounded-pill mt-2">Delete</button> -->
                                     </div>
                                 </div>
                             </div>
