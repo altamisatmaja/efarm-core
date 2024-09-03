@@ -23,35 +23,35 @@ module.exports = {
         "shadow-lg",
     ],
     transitionProperty: {
-        'width': 'width'
-      },
-      minWidth: {
-        '20': '20rem'
-      },
+        width: "width",
+    },
+    minWidth: {
+        20: "20rem",
+    },
     theme: {
         extend: {
             keyframes: {
                 typing: {
-                  "0%": {
-                    width: "0%",
-                    visibility: "hidden"
-                  },
-                  "100%": {
-                    width: "100%"
-                  }
+                    "0%": {
+                        width: "0%",
+                        visibility: "hidden",
+                    },
+                    "100%": {
+                        width: "100%",
+                    },
                 },
                 blink: {
-                  "50%": {
-                    borderColor: "transparent"
-                  },
-                  "100%": {
-                    borderColor: "#444444"
-                  }
-                }
-              },
-              animation: {
-                typing: "typing 2s steps(20) infinite alternate, blink .7s infinite"
-              },
+                    "50%": {
+                        borderColor: "transparent",
+                    },
+                    "100%": {
+                        borderColor: "#444444",
+                    },
+                },
+            },
+            animation: {
+                typing: "typing 2s steps(20) infinite alternate, blink .7s infinite",
+            },
             colors: {
                 primary: {
                     50: "#eff6ff",
@@ -67,20 +67,20 @@ module.exports = {
                     950: "#172554",
                 },
                 cyan: {
-                    50: '#ECFEFF',
-                    100: '#CFFAFE',
-                    200: '#A5F3FC',
-                    300: '#67E8F9',
-                    400: '#22D3EE',
-                    500: '#06B6D4',
-                    600: '#0891B2',
-                    700: '#0E7490',
-                    800: '#155E75',
-                    900: '#164E63'
-                  },
-                'primarybase' : '#AAC14C',
-                'sekunderbase': '#EAEFD2',
-                'textbase' : '#444444',
+                    50: "#ECFEFF",
+                    100: "#CFFAFE",
+                    200: "#A5F3FC",
+                    300: "#67E8F9",
+                    400: "#22D3EE",
+                    500: "#06B6D4",
+                    600: "#0891B2",
+                    700: "#0E7490",
+                    800: "#155E75",
+                    900: "#164E63",
+                },
+                primarybase: "#B3172D",
+                sekunderbase: "#EAEFD2",
+                textbase: "#444444",
             },
         },
         fontFamily: {

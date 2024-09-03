@@ -136,6 +136,7 @@ class CheckOutController extends Controller
 
         $tripay = new TripayController();
         $reference = $tripay->requestTransaction($product, $method, $kuantitas, $harga_product, $nama_product, $gambar_hewan);
+        // dd($reference);
         $metode_pembayaran = $reference->data->payment_method;
         // dd($catatan);
 

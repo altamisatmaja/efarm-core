@@ -1,6 +1,6 @@
 @extends('includes.app')
 
-@section('title', 'eFarm | Terdekat')
+@section('title', 'Ternak Express | Terdekat')
 
 @section('content')
     <style>
@@ -64,8 +64,8 @@
                     <li>
                         <div
                             class="flex items-center text-lg font-medium opacity-60 transition-all duration-300 hover:text-primarybase">
-                            <svg class="mr-2.5 h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                viewBox="0 0 20 20">
+                            <svg class="mr-2.5 h-3 w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="currentColor" viewBox="0 0 20 20">
                                 <path
                                     d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
                             </svg>
@@ -113,19 +113,19 @@
     </script>
     <script>
         $(function() {
-    $.ajax({
-        url: 'https://example.ai.ternakexpessindonesia.com/product/{{ $latitude }}/{{ $longitude }}/',
-        method: 'GET',
-        crossDomain: true,
-        headers: {
-            "accept": "application/json",
-            "Access-Control-Allow-Origin": "*",
-        },
-        success: function(data) {
-            let row = '';
-            console.log(data);
-            data.forEach(function(val) {
-                row += `
+            $.ajax({
+                url: 'https://example.ai.ternakexpessindonesia.com/product/{{ $latitude }}/{{ $longitude }}/',
+                method: 'GET',
+                crossDomain: true,
+                headers: {
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin": "*",
+                },
+                success: function(data) {
+                    let row = '';
+                    console.log(data);
+                    data.forEach(function(val) {
+                        row += `
                 <a href="/market/buy/${val.categoryproduct[0].slug_kategori_product}/${val.categorylivestocks[0].slug}/${val.slug_product}">
                     <div class="cursor-pointer w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
                         <div class="flex items-end justify-end h-52 w-full bg-cover relative"
@@ -148,11 +148,11 @@
                     </div>
                 </a>
                 `;
-            });
-            $('.nearest-product').append(row);
-        },
-        error: function(xhr, status, error) {
-            let errorMessage = `
+                    });
+                    $('.nearest-product').append(row);
+                },
+                error: function(xhr, status, error) {
+                    let errorMessage = `
                 <div class="flex items-center h-screen -mt-32 justify-center flex-col">
                     <h3 class="flex text-6xl font-bold items-center justify-center text-textbase">Ups 🤭</h3>
                     <p class="flex text-xl font-semibold my-2 items-center justify-center text-textbase">
@@ -162,12 +162,11 @@
                     </button>
                 </div>
             `;
-            $('#error-nearest-product').append(errorMessage);
-            console.error("AJAX request failed:", error);
-        }
-    });
-});
-
+                    $('#error-nearest-product').append(errorMessage);
+                    console.error("AJAX request failed:", error);
+                }
+            });
+        });
     </script>
     @push('js')
     @endpush

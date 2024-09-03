@@ -1,6 +1,6 @@
 @extends('includes.app')
 
-@section('title', 'eFarm | Market')
+@section('title', 'Ternak Express | Market')
 
 @section('content')
     <style>
@@ -77,84 +77,84 @@
     <div>
         <div class="py-5">
             @if (session('success'))
-            <div id="successMessageReal"
-                class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
-                <div class="relative w-full max-w-screen-md rounded-lg bg-green-500 px-4 py-4 text-base text-white"
-                    data-dismissible="alert">
-                    <div class="absolute top-4 left-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                            class="mt-px h-6 w-6">
-                            <path fill-rule="evenodd"
-                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <div class="ml-8 mr-12">
-                        <h5
-                            class="block font-sans text-xl font-semibold leading-snug tracking-normal text-white antialiased">
-                            Berhasil
-                        </h5>
-                        <p class="mt-2 block font-sans text-base font-normal leading-relaxed text-white antialiased">
-                            {{ session('success') }}
-                        </p>
-                    </div>
-                    <div data-dismissible-target="alert" data-ripple-dark="true"
-                        class="absolute top-3 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20">
-                        <div role="button" class="w-max rounded-lg p-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
-                                </path>
+                <div id="successMessageReal"
+                    class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
+                    <div class="relative w-full max-w-screen-md rounded-lg bg-green-500 px-4 py-4 text-base text-white"
+                        data-dismissible="alert">
+                        <div class="absolute top-4 left-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                                class="mt-px h-6 w-6">
+                                <path fill-rule="evenodd"
+                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                    clip-rule="evenodd"></path>
                             </svg>
+                        </div>
+                        <div class="ml-8 mr-12">
+                            <h5
+                                class="block font-sans text-xl font-semibold leading-snug tracking-normal text-white antialiased">
+                                Berhasil
+                            </h5>
+                            <p class="mt-2 block font-sans text-base font-normal leading-relaxed text-white antialiased">
+                                {{ session('success') }}
+                            </p>
+                        </div>
+                        <div data-dismissible-target="alert" data-ripple-dark="true"
+                            class="absolute top-3 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20">
+                            <div role="button" class="w-max rounded-lg p-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
+                                    </path>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        @endif
+            @endif
 
-        @if (session('errors'))
-            <div id="successMessageReal"
-                class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
-                <div class="relative w-full max-w-screen-md rounded-lg bg-red-500 px-4 py-4 text-base text-white"
-                    data-dismissible="alert">
-                    <div class="absolute top-4 left-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                            class="mt-px h-6 w-6">
-                            <path fill-rule="evenodd"
-                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                    </div>
-                    <div class="ml-8 mr-12">
-                        <h5
-                            class="block font-sans text-xl font-semibold leading-snug tracking-normal text-white antialiased">
-                            Gagal
-                        </h5>
-                        <p class="mt-2 block font-sans text-base font-normal leading-relaxed text-white antialiased">
-                            {{ session('errors') }}
-                        </p>
-                    </div>
-                    <div data-dismissible-target="alert" data-ripple-dark="true"
-                        class="absolute top-3 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20">
-                        <div role="button" class="w-max rounded-lg p-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
-                                </path>
+            @if (session('errors'))
+                <div id="successMessageReal"
+                    class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
+                    <div class="relative w-full max-w-screen-md rounded-lg bg-red-500 px-4 py-4 text-base text-white"
+                        data-dismissible="alert">
+                        <div class="absolute top-4 left-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                aria-hidden="true" class="mt-px h-6 w-6">
+                                <path fill-rule="evenodd"
+                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                    clip-rule="evenodd"></path>
                             </svg>
+                        </div>
+                        <div class="ml-8 mr-12">
+                            <h5
+                                class="block font-sans text-xl font-semibold leading-snug tracking-normal text-white antialiased">
+                                Gagal
+                            </h5>
+                            <p class="mt-2 block font-sans text-base font-normal leading-relaxed text-white antialiased">
+                                {{ session('errors') }}
+                            </p>
+                        </div>
+                        <div data-dismissible-target="alert" data-ripple-dark="true"
+                            class="absolute top-3 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20">
+                            <div role="button" class="w-max rounded-lg p-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
+                                    </path>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        @endif
+            @endif
             @if (session('alamat'))
                 <div id="alamat_alert"
                     class="fixed top-0 left-0 w-full h-full flex justify-center items-center backdrop-blur-md bg-white/30 bg-opacity-50 z-50">
                     <div class="relative w-full max-w-screen-md rounded-lg bg-red-500 px-4 py-4 text-base text-white"
                         data-dismissible="alert">
                         <div class="absolute top-4 left-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
-                                class="mt-px h-6 w-6">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                                aria-hidden="true" class="mt-px h-6 w-6">
                                 <path fill-rule="evenodd"
                                     d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
                                     clip-rule="evenodd"></path>
@@ -217,8 +217,8 @@
                         <div data-dismissible-target="alert" data-ripple-dark="true" id="successMessage"
                             class="absolute top-3 right-3 w-max rounded-lg transition-all hover:bg-white hover:bg-opacity-20">
                             <div role="button" class="w-max rounded-lg p-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                    stroke="currentColor" stroke-width="2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">
                                     </path>
                                 </svg>
@@ -245,8 +245,8 @@
                             class="flex items-center gap-2 text-lg font-medium opacity-60 transition-all duration-300 hover:text-primarybase">
                             <svg class="h-3 w-3 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 9 4-4-4-4" />
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 9 4-4-4-4" />
                             </svg>
                             <a href="{{ route('homepage.market') }}"> Market </a>
                         </div>
@@ -256,8 +256,8 @@
                             class="flex items-center gap-2 text-lg font-medium opacity-60 transition-all duration-300 hover:text-primarybase">
                             <svg class="h-3 w-3 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                 fill="none" viewBox="0 0 6 10">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 9 4-4-4-4" />
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 9 4-4-4-4" />
                             </svg>
                             <a href="{{ route('homepage.market.category', [$categoryproduct->slug_kategori_product]) }}">
                                 {{ $categoryproduct->nama_kategori_product }} </a>
@@ -489,84 +489,87 @@
 
 
                         <div class="w-full mx-auto">
-                            @if (empty($testimonials))
+                            @if (count($testimonials) == 0)
                                 <div class="flex flex-col justify-start items-start w-full">
                                     <div class="flex text-2xl font-semibold">
-                                        <h2 class="text-xl font-semibold my-4 text-textbase">
-                                            Testimoni dari pembeli lain</h2>
-                                    </div>
-                                </div>
-                            @else
-                                <div class="flex flex-col justify-start items-start w-full">
-                                    <div class="flex text-2xl font-semibold">
-                                        <h2 class="text-xl font-semibold my-4 text-textbase">
-                                            Testimoni dari pembeli lain</h2>
+                                        <h2 class="text-xl font-semibold my-4 text-textbase">Testimoni dari pembeli lain
+                                        </h2>
                                     </div>
                                     <p
                                         class="bg-primarybase px-5 py-2 text-center rounded-lg items-center w-full text-lg font-semibold text-white">
                                         Belum ada testimoni 🤭</p>
                                 </div>
-                            @endif
-
-                            @foreach ($testimonials as $testimonial)
-                                <div class='flex flex-col items-center justify-center'>
-                                    <div class="rounded-xl mt-5 w-full bg-white">
-                                        <div class="flex w-full items-center justify-between pb-3">
-                                            <div class="flex items-center space-x-3">
-                                                <img class="h-12 w-12 mr-3 rounded-full"
-                                                    src="/uploads/{{ $testimonial->user->profile_photo_path }}"
-                                                    alt="">
-                                                <div class="text-lg font-bold text-slate-700">
-                                                    {{ $testimonial->user->nama }}</div>
-                                            </div>
-                                            <div class="flex items-center space-x-8">
-                                                <button
-                                                    class="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold">{{ $testimonial->created_at->diffForHumans() }}</button>
-                                            </div>
-                                        </div>
-
-                                        <div class="mt-4 mb-6">
-                                            <div class="mb-3 text-xl font-bold">{{ $testimonial->nama_testimoni }}
-                                            </div>
-                                            <div class="text-sm text-neutral-600">{{ $testimonial->deskripsi }}</div>
-                                        </div>
+                            @else
+                                <div class="flex flex-col justify-start items-start w-full">
+                                    <div class="flex text-2xl font-semibold">
+                                        <h2 class="text-xl font-semibold my-4 text-textbase">Testimoni dari pembeli lain
+                                        </h2>
                                     </div>
-
-                                </div>
-                                @if ($testimonial->testimonial_reply)
-                                    <div class='flex flex-col items-start justify-center'>
-                                        <p class="text-textbase font-medium items-start w-full">Balasan dari
-                                            penjual</p>
-                                        <div class="ml-8 rounded-xl mt-5 w-full bg-white">
-                                            <div class="flex w-full items-center justify-between pb-3">
-                                                <div class="flex items-center space-x-3">
+                                    @foreach ($testimonials as $testimonial)
+                                        <div class='flex flex-col items-center justify-center'>
+                                            <div class="rounded-xl mt-5 w-full bg-white">
+                                                <div class="flex w-full items-center justify-between pb-3">
                                                     <div class="flex items-center space-x-3">
+                                                        <!-- Foto profil pembeli -->
                                                         <img class="h-12 w-12 mr-3 rounded-full"
                                                             src="/uploads/{{ $testimonial->user->profile_photo_path }}"
                                                             alt="">
                                                         <div class="text-lg font-bold text-slate-700">
-                                                            {{ $testimonial->user->nama }}</div>
+                                                            <!-- Nama pembeli -->
+                                                            {{ $testimonial->user->nama }}
+                                                        </div>
                                                     </div>
                                                     <div class="flex items-center space-x-8">
+                                                        <!-- Tanggal testimoni -->
                                                         <button
                                                             class="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold">{{ $testimonial->created_at->diffForHumans() }}</button>
                                                     </div>
                                                 </div>
-
+                                                <!-- Konten testimoni -->
                                                 <div class="mt-4 mb-6">
-                                                    <div class="mb-3 text-xl font-bold">
-                                                        {{ $testimonial->nama_testimoni }}</div>
-                                                    <div class="text-sm text-neutral-600">
-                                                        {{ $testimonial->deskripsi }}</div>
+                                                    <div class="mb-3 text-md font-bold">{{ $testimonial->nama_testimoni }}
+                                                    </div>
+                                                    <div class="text-sm text-neutral-600">{{ $testimonial->deskripsi }}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    @else
-                                        <p class="text-textbase">Belum ada testimoni</p>
-                                @endif
-                            @endforeach
-
+                                        @if ($testimonial->testimonial_reply)
+                                            <div class='flex flex-col items-start justify-center'>
+                                                <p class="text-textbase font-medium items-start w-full">Balasan dari
+                                                    penjual</p>
+                                                <div class="ml-8 rounded-xl mt-5 w-full bg-white flex flex-col">
+                                                    <div class="flex flex-col w-full  justify-between pb-3">
+                                                        <div class="flex  space-x-3">
+                                                            <div class="flex items-center space-x-3">
+                                                                <img class="h-12 w-12 mr-3 rounded-full"
+                                                                    src="/uploads/{{ $testimonial->user->profile_photo_path }}"
+                                                                    alt="">
+                                                                <div class="text-lg font-bold text-slate-700">
+                                                                    {{ $testimonial->user->nama }}</div>
+                                                            </div>
+                                                            <div class="flex items-center space-x-8">
+                                                                <button
+                                                                    class="rounded-2xl border bg-neutral-100 px-3 py-1 text-xs font-semibold">{{ $testimonial->created_at->diffForHumans() }}</button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-4 mb-6 flex flex-col justify-start">
+                                                            <div class="mb-3 text-md font-bold">
+                                                                {{ $testimonial->nama_testimoni }}</div>
+                                                            <div class="text-sm text-neutral-600">
+                                                                {{ $testimonial->deskripsi }}</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @else
+                                            <p class="text-textbase">Belum ada testimoni</p>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            @endif
                         </div>
+
                     </div>
 
 
@@ -579,74 +582,85 @@
                                     <p class="text-gray-700 text-xl font-semibold">Atur jumlah</p>
                                 </div>
                                 <hr class="my-4" />
-                                @if (!empty($user) && ($user->provinsi_user == NULL || $user->kabupaten_user == NULL || $user->kecamatan_user == NULL || $user->kelurahan_user == NULL || $user->no_telp == NULL || $user->alamat_lengkap == NULL))
-                                <form action="{{ route('customer.checkout.pre') }}" method="POST">
-                                    @csrf
-                                    <div class="mb-2 flex justify-between items-center">
+                                @if (
+                                    !empty($user) &&
+                                        ($user->provinsi_user == null ||
+                                            $user->kabupaten_user == null ||
+                                            $user->kecamatan_user == null ||
+                                            $user->kelurahan_user == null ||
+                                            $user->no_telp == null ||
+                                            $user->alamat_lengkap == null))
+                                    <form action="{{ route('customer.checkout.pre') }}" method="POST">
+                                        @csrf
+                                        <div class="mb-2 flex justify-between items-center">
 
-                                        <div class="custom-number-input h-10 w-32">
-                                            <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
-                                                <button data-action="decrement" type="button"
-                                                    class=" bg-white text-textbase hover:text-gray-700 hover:bg-primarybase h-full w-20 rounded-l cursor-pointer outline-none">
-                                                    <span class="m-auto text-2xl font-thin">-</span>
-                                                </button>
-                                                <input type="number" readonly
-                                                    class="text-center border-primarybase  w-full bg-white font-semibold text-md  flex items-center text-textbase"
-                                                    name="kuantitas" value="0"></input>
-                                                <button data-action="increment" type="button"
-                                                    class="bg-white text-textbase hover:text-gray-700 hover:bg-primarybase h-full w-20 rounded-r cursor-pointer">
-                                                    <span class="m-auto text-2xl font-thin">+</span>
-                                                </button>
-                                                <input hidden name="random" value="{{ now()->timestamp }}"
-                                                    type="text">
-                                                <input hidden name="slug_product" value="{{ $product->slug_product }}"
-                                                    type="text">
+                                            <div class="custom-number-input h-10 w-32">
+                                                <div
+                                                    class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                                                    <button data-action="decrement" type="button"
+                                                        class=" bg-white text-textbase hover:text-gray-700 hover:bg-primarybase h-full w-20 rounded-l cursor-pointer outline-none">
+                                                        <span class="m-auto text-2xl font-thin">-</span>
+                                                    </button>
+                                                    <input type="number" readonly
+                                                        class="text-center border-primarybase  w-full bg-white font-semibold text-md  flex items-center text-textbase"
+                                                        name="kuantitas" value="0"></input>
+                                                    <button data-action="increment" type="button"
+                                                        class="bg-white text-textbase hover:text-gray-700 hover:bg-primarybase h-full w-20 rounded-r cursor-pointer">
+                                                        <span class="m-auto text-2xl font-thin">+</span>
+                                                    </button>
+                                                    <input hidden name="random" value="{{ now()->timestamp }}"
+                                                        type="text">
+                                                    <input hidden name="slug_product"
+                                                        value="{{ $product->slug_product }}" type="text">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <p class="text-textbase font-semibold">Stok {{ $product->stok_hewan_ternak }}</p>
+                                            <p class="text-textbase font-semibold">Stok {{ $product->stok_hewan_ternak }}
+                                            </p>
 
-                                    </div>
-                                    <hr class="my-4" />
-                                    <p class="text-red-500 mt-2">{{ session('status') }}</p>
-                                    <button type="button" id="checkout-button"
-                                        class="mt-3 hover:shadow-form w-full border bg-primarybase hover:bg-primarybase hover:text-white border-white rounded-md py-3 px-8 text-center text-base font-semibold text-white">
-                                        Beli sekarang
-                                    </button>
-                                </form>
+                                        </div>
+                                        <hr class="my-4" />
+                                        <p class="text-red-500 mt-2">{{ session('status') }}</p>
+                                        <button type="button" id="checkout-button"
+                                            class="mt-3 hover:shadow-form w-full border bg-primarybase hover:bg-primarybase hover:text-white border-white rounded-md py-3 px-8 text-center text-base font-semibold text-white">
+                                            Beli sekarang
+                                        </button>
+                                    </form>
                                 @else
-                                <form action="{{ route('customer.checkout.pre') }}" method="POST">
-                                    @csrf
-                                    <div class="mb-2 flex justify-between items-center">
+                                    <form action="{{ route('customer.checkout.pre') }}" method="POST">
+                                        @csrf
+                                        <div class="mb-2 flex justify-between items-center">
 
-                                        <div class="custom-number-input h-10 w-32">
-                                            <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
-                                                <button data-action="decrement" type="button"
-                                                    class=" bg-white text-textbase hover:text-gray-700 hover:bg-primarybase h-full w-20 rounded-l cursor-pointer outline-none">
-                                                    <span class="m-auto text-2xl font-thin">-</span>
-                                                </button>
-                                                <input type="number" readonly
-                                                    class="text-center border-primarybase  w-full bg-white font-semibold text-md  flex items-center text-textbase"
-                                                    name="kuantitas" value="0"></input>
-                                                <button data-action="increment" type="button"
-                                                    class="bg-white text-textbase hover:text-gray-700 hover:bg-primarybase h-full w-20 rounded-r cursor-pointer">
-                                                    <span class="m-auto text-2xl font-thin">+</span>
-                                                </button>
-                                                <input hidden name="random" value="{{ now()->timestamp }}"
-                                                    type="text">
-                                                <input hidden name="slug_product" value="{{ $product->slug_product }}"
-                                                    type="text">
+                                            <div class="custom-number-input h-10 w-32">
+                                                <div
+                                                    class="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                                                    <button data-action="decrement" type="button"
+                                                        class=" bg-white text-textbase hover:text-gray-700 hover:bg-primarybase h-full w-20 rounded-l cursor-pointer outline-none">
+                                                        <span class="m-auto text-2xl font-thin">-</span>
+                                                    </button>
+                                                    <input type="number" readonly
+                                                        class="text-center border-primarybase  w-full bg-white font-semibold text-md  flex items-center text-textbase"
+                                                        name="kuantitas" value="0"></input>
+                                                    <button data-action="increment" type="button"
+                                                        class="bg-white text-textbase hover:text-gray-700 hover:bg-primarybase h-full w-20 rounded-r cursor-pointer">
+                                                        <span class="m-auto text-2xl font-thin">+</span>
+                                                    </button>
+                                                    <input hidden name="random" value="{{ now()->timestamp }}"
+                                                        type="text">
+                                                    <input hidden name="slug_product"
+                                                        value="{{ $product->slug_product }}" type="text">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <p class="text-textbase font-semibold">Stok {{ $product->stok_hewan_ternak }}</p>
+                                            <p class="text-textbase font-semibold">Stok {{ $product->stok_hewan_ternak }}
+                                            </p>
 
-                                    </div>
-                                    <hr class="my-4" />
-                                    <p class="text-red-500 mt-2">{{ session('status') }}</p>
-                                    <button type="submit"
-                                        class="mt-3 hover:shadow-form w-full border bg-primarybase hover:bg-primarybase hover:text-white border-white rounded-md py-3 px-8 text-center text-base font-semibold text-white">
-                                        Beli sekarang
-                                    </button>
-                                </form>
+                                        </div>
+                                        <hr class="my-4" />
+                                        <p class="text-red-500 mt-2">{{ session('status') }}</p>
+                                        <button type="submit"
+                                            class="mt-3 hover:shadow-form w-full border bg-primarybase hover:bg-primarybase hover:text-white border-white rounded-md py-3 px-8 text-center text-base font-semibold text-white">
+                                            Beli sekarang
+                                        </button>
+                                    </form>
                                 @endif
 
 
@@ -739,62 +753,66 @@
         </div>
     </div>
     <div id="modal-form-alamat-no-telp"
-    class="modal-form-alamat-no-telp fixed inset-0 z-50 overflow-auto bg-white/40 bg-opacity-50 backdrop-blur-md flex items-center justify-center hidden">
-    <div class="flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl">
-        <div class="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
-            <p class="font-semibold text-lg text-textbase">Tambah data alamat dan nomor telepon</p>
-            <svg class="w-6 h-6 cursor-pointer cancelubah" id="cancelubah" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-        </div>
-        <div class="flex flex-col px-6 py-5 bg-gray-50">
-            <form class="form-typelivestock-update" action="{{ route('customer.checkout.validate') }}" method="POST">
-                @csrf
-                @method('PUT')
-                <div class="grid md:grid-cols-2 grid-cols-2 gap-6">
-                    @php
-                        $user = auth()->user();
-                        $fields = [
-                            'provinsi_user' => 'Provinsi',
-                            'kabupaten_user' => 'Kabupaten',
-                            'kecamatan_user' => 'Kecamatan',
-                            'kelurahan_user' => 'Kelurahan',
-                            'alamat_lengkap' => 'Alamat lengkap',
-                            'no_telp' => 'Nomor telepon',
-                            'latitude' => 'Latitude',
-                            'longitude' => 'Longitude',
-                        ];
-                    @endphp
-                    @foreach ($fields as $field => $label)
-                        <div class="">
-                            <label for="{{ $field }}"
-                                class="float-left block font-normal text-gray-400 text-md mb-2">{{ $label }}</label>
-                            <input required type="text" id="{{ $field }}" name="{{ $field }}"
-                                value="{{ old($field, $user->$field ?? '') }}"
-                                placeholder="Masukkan {{ strtolower($label) }}"
-                                class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-700">
+        class="modal-form-alamat-no-telp fixed inset-0 z-50 overflow-auto bg-white/40 bg-opacity-50 backdrop-blur-md flex items-center justify-center hidden">
+        <div class="flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl">
+            <div class="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg">
+                <p class="font-semibold text-lg text-textbase">Tambah data alamat dan nomor telepon</p>
+                <svg class="w-6 h-6 cursor-pointer cancelubah" id="cancelubah" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </div>
+            <div class="flex flex-col px-6 py-5 bg-gray-50">
+                <form class="form-typelivestock-update" action="{{ route('customer.checkout.validate') }}"
+                    method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="grid md:grid-cols-2 grid-cols-2 gap-6">
+                        @php
+                            $user = auth()->user();
+                            $fields = [
+                                'provinsi_user' => 'Provinsi',
+                                'kabupaten_user' => 'Kabupaten',
+                                'kecamatan_user' => 'Kecamatan',
+                                'kelurahan_user' => 'Kelurahan',
+                                'alamat_lengkap' => 'Alamat lengkap',
+                                'no_telp' => 'Nomor telepon',
+                                'latitude' => 'Latitude',
+                                'longitude' => 'Longitude',
+                            ];
+                        @endphp
+                        @foreach ($fields as $field => $label)
+                            <div class="">
+                                <label for="{{ $field }}"
+                                    class="float-left block font-normal text-gray-400 text-md mb-2">{{ $label }}</label>
+                                <input required type="text" id="{{ $field }}" name="{{ $field }}"
+                                    value="{{ old($field, $user->$field ?? '') }}"
+                                    placeholder="Masukkan {{ strtolower($label) }}"
+                                    class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-700">
+                            </div>
+                        @endforeach
+                        <div class="md:col-span-2">
+                            <button type="submit" id="button-submit-edit"
+                                class="middle none center mr-3 bg-primarybase w-full rounded-lg border hover:bg-white hover:text-primarybase border-primarybase py-4 px-9 font-sans text-xs font-bold uppercase text-white transition-all focus:ring focus:ring-primarybase active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                                data-ripple-dark="true">
+                                Simpan
+                            </button>
                         </div>
-                    @endforeach
-                    <div class="md:col-span-2">
-                        <button type="submit" id="button-submit-edit"
-                            class="middle none center mr-3 bg-primarybase w-full rounded-lg border hover:bg-white hover:text-primarybase border-primarybase py-4 px-9 font-sans text-xs font-bold uppercase text-white transition-all focus:ring focus:ring-primarybase active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                            data-ripple-dark="true">
-                            Simpan
-                        </button>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var modal = document.getElementById('modal-form-alamat-no-telp');
             var checkoutButton = document.getElementById('checkout-button');
-            var requiredFields = ['provinsi_user', 'kabupaten_user', 'kecamatan_user', 'kelurahan_user', 'alamat_lengkap', 'no_telp', 'latitude', 'longitude'];
+            var requiredFields = ['provinsi_user', 'kabupaten_user', 'kecamatan_user', 'kelurahan_user',
+                'alamat_lengkap', 'no_telp', 'latitude', 'longitude'
+            ];
             var addressFields = ['provinsi_user', 'kabupaten_user', 'kecamatan_user', 'kelurahan_user'];
             var allFieldsFilled = true;
             var addressFieldsFilled = true;

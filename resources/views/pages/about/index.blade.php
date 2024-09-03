@@ -1,6 +1,6 @@
 @extends('includes.app')
 
-@section('title', 'eFarm | Tentang')
+@section('title', 'Ternak Express | Tentang')
 
 @section('content')
     <div>
@@ -9,12 +9,13 @@
             <div class="grid gap-8 md:grid-cols-2 ">
                 <div class="flex flex-col  justify-center">
                     <p class="self-start inline text-xl font-semibold text-textbase">
-                        Tentang eFarm 🐑
+                        Tentang Ternak Express 🐑
                     </p>
-                    <h2 class="text-4xl font-bold text-textbase">eFarm, Teman peternakanmu</h2>
+                    <h2 class="text-4xl font-bold text-textbase">Ternak Express, Teman peternakanmu</h2>
                     <div class="h-6"></div>
                     <p class="font-serif text-xl text-textbase md:pr-10">
-                        Dengan eFarm, kebutuhan peternakan Anda akan terpenuhi dengan mudah dan efisien. Kami menyediakan
+                        Dengan Ternak Express, kebutuhan peternakan Anda akan terpenuhi dengan mudah dan efisien. Kami
+                        menyediakan
                         solusi terbaik untuk mendukung peternakan Anda dalam mencapai hasil yang optimal.
                     </p>
                     <div class="h-8"></div>
@@ -48,8 +49,7 @@
             <div class="h-32 md:h-40"></div>
 
             <p class="text-4xl">
-                <span class="text-textbase font-semibold text-6xl">Dibangun oleh kelompok PPL E08 dengan Mitranya adalah
-                    Ternak Express</span>
+                <span class="text-textbase font-semibold text-6xl">Give the best and more Express</span>
             </p>
             <section
                 class="flex flex-col mt-20 w-full h-[500px] bg-blur bg-cover bg-fixed bg-center flex justify-center items-center rounded-3xl"
@@ -57,7 +57,7 @@
                 background-image: url({{ asset('images/herofixed.png') }});
             ">
                 <h1 class="text-primarybase text-7xl font-bold mt-20 mb-10">
-                    eFarm
+                    Ternak Express
                 </h1>
 
                 <span class="text-center font-bold my-20 text-white/90">
@@ -80,9 +80,9 @@
             <div class="mx-auto px-4 md:px-8">
                 <div class="mb-4 flex items-center justify-between gap-8 sm:mb-8 md:mb-12 flex-col">
                     <div class="flex items-center flex-col">
-                        <h2 class="text-6xl font-bold text-gray-800 lg:text-6xl ">Dokumentasi eFarm</h2>
+                        <h2 class="text-6xl font-bold text-gray-800 lg:text-6xl ">Dokumentasi Ternak Express</h2>
                         <p class="max-w-screen text-xl mt-3 text-gray-500 ">
-                            Ini adalah aktivitas, kemitraan, produk, penjalanan, dan sejarah dari eFarm
+                            Ini adalah aktivitas, kemitraan, produk, penjalanan, dan sejarah dari Ternak Express
                         </p>
                     </div>
 

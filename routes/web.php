@@ -77,6 +77,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/**
+     * Route for logout Admin
+     */
+Route::get('admin/logout', [AuthAdminController::class, 'destroy'])->name('admin.logout');
+
 Route::get('customer/success/verify/{hash}', function () {
     return view('customer.auth.verify');
 })->name('customer.auth.verified');
@@ -340,10 +345,7 @@ Route::middleware(['auth', 'role:Admin'])->group(function () {
     Route::get('admin/account/customer', [CustomerAccountController::class, 'index'])->name('admin.customer.account');
     Route::put('admin/account/customer/status/{id}', [CustomerAccountController::class, 'status_handling'])->name('admin.customer.status');
 
-    /**
-     * Route for logout Admin
-     */
-    Route::get('admin/logout', [AuthAdminController::class, 'destroy'])->name('admin.logout');
+
 });
 
 

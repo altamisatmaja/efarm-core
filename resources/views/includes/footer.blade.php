@@ -21,7 +21,7 @@
             <div class="space-y-8">
                 <a href="/">
                     <img class="h-14" src="{{ asset('footer-logo.png') }}" alt="Company name">
-                    <p class="text-md leading-6 text-white">eFarm: Partner Peternakanmu</p>
+                    <p class="text-md leading-6 text-white">Ternak Express: Partner Peternakanmu</p>
                 </a>
             </div>
             <div class="xs:mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
@@ -107,13 +107,12 @@
                 <div class="flex justify-center">
                     <div class="flex items-center w-auto rounded-lg px-4 py-2">
                         <div class="flex space-x-6">
-                            <a href="#" class="text-gray-400 hover:text-gray-500">
-                                <span class="sr-only">Facebook</span>
+                            <a href="#" class="text-primarybase hover:text-gray-500">
+                                <span class="sr-only"></span>
                                 <img src="{{ asset('bxl-facebook.png') }}" alt="" srcset="">
                             </a>
-                            <a href="#" class="text-yellow-500 hover:text-gray-500">
+                            <a href="#" class="text-primarybase hover:text-gray-500">
                                 <img src="{{ asset('instagram-logo.png') }}" alt="" srcset="">
-
                             </a>
                         </div>
                     </div>
@@ -122,7 +121,7 @@
         </div>
     </div>
     <div class="border-t border-white pt-8 sm:mt-20 lg:mt-24">
-        <p class="text-md flex justify-center items-center pb-6 leading-5 text-white">&copy; 2024 eFarm, Tbk.
+        <p class="text-md flex justify-center items-center pb-6 leading-5 text-white">&copy; 2024 Ternak Express
             All
             rights
             reserved.</p>

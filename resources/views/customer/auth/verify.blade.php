@@ -1,6 +1,6 @@
 @extends('includes.app')
 
-@section('title', 'eFarm | Berhasil diverifikasi')
+@section('title', 'Ternak Express | Berhasil diverifikasi')
 
 @section('content')
     <div class="bg-white flex my-32 items-center justify-center flex-col">

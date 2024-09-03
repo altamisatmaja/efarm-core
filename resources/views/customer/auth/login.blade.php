@@ -1,6 +1,6 @@
 @extends('includes.app')
 
-@section('title', 'eFarm | Login')
+@section('title', 'Ternak Express | Login')
 
 @section('content')
     <style>
