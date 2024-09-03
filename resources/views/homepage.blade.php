@@ -354,6 +354,10 @@
                 </div>
                 <div>
                     <div class="pl-12">
+                        <h1>{{ url('/') }}</h1>
+                        <h1>{{ config('app.url') }}</h1>
+                        <h1>Asset URL: {{ asset('css/app.css') }}</h1>
+
                         <h3 class="text-2xl text-textbase font-medium mb-6">Hingga dalam satu tahun, Ternak Express
                             berhasil memiliki 1000 lebih partner yang tersebar diseluruh wilayah Indonesia</h3>
                         <div class="grid grid-cols-2 gap-6 justify-between mb-3">
