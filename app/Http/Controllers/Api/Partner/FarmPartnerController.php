@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Partner;
+namespace App\Http\Controllers\Api\Partner;
 
 use App\Http\Controllers\Controller;
 use App\Models\Farm;
@@ -132,7 +132,7 @@ class FarmPartnerController extends Controller
         ]);
     }
 
-    
+
     public function destroy(Farm $farm)
     {
         $farm->delete();
