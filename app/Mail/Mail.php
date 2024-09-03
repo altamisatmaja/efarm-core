@@ -21,7 +21,6 @@ class Mail extends Mailable
         //
     }
 
-
     /**
      * Build the message.
      *
